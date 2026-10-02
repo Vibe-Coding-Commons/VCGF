@@ -9,10 +9,15 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # البدء السريع
 
-1. اختر Profile مناسبًا: `baseline` أو `production` أو `high-assurance`.
-2. اختر Adapter المنصة أو `generic` عند عدم وجود Adapter مخصص.
-3. ثبّت ملفات التعليمات الخاصة بالمنصة كما هو موضح في `platforms/<adapter>/INSTALLATION.md`.
-4. أكمل قوالب سياق المشروع والصلاحيات وتصنيف البيانات والـValidation والـThreat Model حسب النطاق.
-5. اتبع دورة VCGF: Understand → Inspect → Impact/Risk Analysis → Plan → Approval → Implement → Validate/Test → Security/Regression/Release Review → Release → Monitor.
-6. نفذ `python scripts/release-quality-gate.py` للتحقق من Repository الخاص بـVCGF عند المساهمة في الإطار.
-7. لا تدّع Conformance لمشروعك إلا بوجود Evidence وExceptions صحيحة لكل Controls المطلوبة.
+هذا الملف هو أقصر طريق للبدء. للشرح الكامل ارجع إلى [`README.ar.md`](../README.ar.md).
+
+1. حمّل VCGF وفك الضغط.
+2. اختر منصتك من [`docs/platform-guides/`](platform-guides/README.md).
+3. اختر Profile: Baseline للتجارب منخفضة المخاطر، Production للمشاريع الحقيقية، High-Assurance للأنظمة الحساسة.
+4. أكمل [`templates/project-context/project-context.md`](../templates/project-context/project-context.md).
+5. ثبّت ملف Rule/Instruction الذي يحدده دليل منصتك.
+6. ابدأ Session جديدة وأرسل First Session Prompt الموجود في دليل المنصة.
+7. اسأل الـAI عن VCGF Version/Profile/Adapter/Approval Gates للتأكد أن الإطار فعال.
+8. اطلب أول تغيير، وتأكد أن التغيير الحساس يبدأ بـInspect + Impact/Risk + Plan قبل التنفيذ.
+
+بعد التثبيت استخدم [`docs/user-guide.md`](user-guide.md) لطلبات Feature وBug Fix وDatabase Change وSecurity Review وApproval وEvidence وRelease.

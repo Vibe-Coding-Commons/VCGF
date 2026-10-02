@@ -28,6 +28,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 | Full public founder signature in primary identity/legal files | PASS |
 | Forbidden release markers | PASS |
 | VERSION / manifest / adapter version consistency | PASS |
+| Documentation/onboarding completeness and guide links | PASS |
 | Required repository structure | PASS |
 | Empty/temporary/archive files in repository source | PASS |
 | Generated Control catalog freshness | PASS |
@@ -35,6 +36,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 | Generated File Manifest freshness | PASS |
 
 ## Release facts
+- Final repository files: **383**
 - Framework: **VCGF 1.0.0**
 - Release status: **Stable**
 - Canonical Controls: **84**

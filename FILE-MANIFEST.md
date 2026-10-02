@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **371**
+Files listed: **382**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -162,6 +162,14 @@ Files listed: **371**
 | docs/implementation-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/migration-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/platform-compatibility.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/README.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/bolt.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/claude.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/cursor.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/generic.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/lovable.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/replit.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/platform-guides/v0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/principles.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/project-history/v1.0.0/architecture-report.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
 | docs/project-history/v1.0.0/conflict-report.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
@@ -174,6 +182,7 @@ Files listed: **371**
 | docs/references/owasp-asvs-5-mapping.md | External standards/reference documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/references/sources-and-standards.md | External standards/reference documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/terminology.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/user-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/versioning-model.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | examples/crm/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
 | examples/ecommerce/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
@@ -337,6 +346,7 @@ Files listed: **371**
 | schemas/conformance.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
 | schemas/control.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
 | schemas/profile.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| scripts/__pycache__/vcgf_lib.cpython-313.pyc | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/generate-control-catalog.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/generate-file-manifest.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/generate-repository-tree.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
@@ -345,6 +355,7 @@ Files listed: **371**
 | scripts/validate-attribution.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-controls.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-cross-references.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/validate-documentation.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-internal-links.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-license.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-placeholders.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |

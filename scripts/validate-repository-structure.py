@@ -9,8 +9,8 @@ from vcgf_lib import *
 
 def main():
     errors=[]
-    required_dirs=['.github/ISSUE_TEMPLATE','.github/workflows','controls','spec','profiles','schemas','platforms','templates','checklists','playbooks','examples','docs/project-history/v1.0.0','docs/references','legal','scripts','assets/brand']
-    required_files=['README.md','README.ar.md','LICENSE','NOTICE.md','COPYRIGHT.md','AUTHORS.md','CITATION.cff','VERSION','CHANGELOG.md','ROADMAP.md','GOVERNANCE.md','SECURITY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','VCGF-MANIFEST.yaml','FILE-MANIFEST.md','REPOSITORY-TREE.md','.gitignore','.gitattributes','.editorconfig']
+    required_dirs=['.github/ISSUE_TEMPLATE','.github/workflows','controls','spec','profiles','schemas','platforms','templates','checklists','playbooks','examples','docs/project-history/v1.0.0','docs/references','docs/platform-guides','legal','scripts','assets/brand']
+    required_files=['README.md','README.ar.md','LICENSE','NOTICE.md','COPYRIGHT.md','AUTHORS.md','CITATION.cff','VERSION','CHANGELOG.md','ROADMAP.md','GOVERNANCE.md','SECURITY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','VCGF-MANIFEST.yaml','FILE-MANIFEST.md','REPOSITORY-TREE.md','docs/user-guide.md','.gitignore','.gitattributes','.editorconfig']
     for d in required_dirs:
         if not (ROOT/d).is_dir(): errors.append(f"missing directory {d}")
     for f in required_files:

@@ -7,34 +7,37 @@ Email: i@hamada.io
 GitHub: https://github.com/Vibe-Coding-Commons
 -->
 
-# VCGF adapter: Generic / Vendor-Neutral
+# VCGF adapter: Generic
 
 **Adapter:** `generic`  
 **Version:** 1.0.0  
 **Framework compatibility:** `>=1.0.0 <2.0.0`  
 **Status:** stable  
-**Surface:** Portable AI-assisted development workflow  
+**Platform surface:** Portable AI-assisted development workflow
 
-## Scope
+## Purpose
 
 Reference adapter for tools without a dedicated VCGF adapter. It uses portable repository instructions, prompts, external CI, and runtime controls.
 
-## Use this adapter when
+## Quick setup
 
-You are applying VCGF to the documented platform surface above. The Core defines what the project must achieve; this adapter explains how to carry VCGF instructions, prompts, evidence, and external-control mappings into Generic / Vendor-Neutral.
+Load the portable project rules into the persistent instruction mechanism of your tool, or paste them into governed sessions.
 
-## Install
+For a beginner-friendly, step-by-step installation, first-session prompt, activation test, examples, evidence/checklist usage, troubleshooting, and update process, use the full guide:
 
-Follow [`INSTALLATION.md`](INSTALLATION.md), then validate the adapter with `python scripts/validate-adapters.py` from the repository root.
+**→ [`../../docs/platform-guides/generic.md`](../../docs/platform-guides/generic.md)**
 
-## Canonical files
+## Canonical adapter files
 
-- `adapter.yaml`: adapter identity, version, scope, and capability declaration.
-- `control-mapping.yaml`: machine-readable mapping to every VCGF control.
-- `verification/sources.yaml`: verified platform claims and official sources.
-- `rules/`: platform-appropriate instruction assets.
-- `prompts/`: review prompts that supplement persistent rules.
+- `adapter.yaml` — identity, version, scope, capabilities, limitations, and compatibility.
+- `control-mapping.yaml` — machine-readable mapping to VCGF controls.
+- `CONTROL-MAPPING.md` — human-readable mapping.
+- `verification/sources.yaml` — source-traceable platform claims.
+- `CAPABILITIES.md` / `LIMITATIONS.md` — supported behavior and boundaries.
+- `rules/` — platform-appropriate VCGF instruction assets.
+- `prompts/` — supplemental review prompts.
+- `tests/` — adapter verification guidance.
 
 ## Security boundary
 
-Agent instructions are never treated as a substitute for runtime authentication, authorization, validation, encryption, secret management, audit, or production controls unless the mapping explicitly identifies documented platform enforcement.
+The adapter explains how VCGF guidance reaches Generic. It does not automatically enforce application-runtime authentication, authorization, validation, encryption, secrets, database security, file access, or production controls unless a control mapping explicitly identifies verified platform enforcement.

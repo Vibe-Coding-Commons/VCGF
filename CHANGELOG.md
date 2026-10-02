@@ -14,6 +14,8 @@ This project follows a Keep a Changelog-style release history and Semantic Versi
 ## [1.0.0] - 2026-10-02
 
 ### Added
+
+- Human-first English and Arabic onboarding experience, daily user guide, and verified setup guides for all seven adapters.
 - Vendor-neutral VCGF Core architecture and 84 normative controls.
 - Baseline, Production, and High-Assurance profiles.
 - Generic, Lovable, Claude Code, Bolt, v0, Replit, and Cursor adapters with independent versioning.

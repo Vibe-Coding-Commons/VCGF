@@ -166,6 +166,15 @@ VCGF/
 │       ├── vcgf-test-005-validation-and-injection-testing.md
 │       └── vcgf-test-006-recovery-flow-testing.md
 ├── docs
+│   ├── platform-guides
+│   │   ├── bolt.md
+│   │   ├── claude.md
+│   │   ├── cursor.md
+│   │   ├── generic.md
+│   │   ├── lovable.md
+│   │   ├── README.md
+│   │   ├── replit.md
+│   │   └── v0.md
 │   ├── project-history
 │   │   └── v1.0.0
 │   │       ├── architecture-report.md
@@ -188,6 +197,7 @@ VCGF/
 │   ├── principles.md
 │   ├── quick-start.ar.md
 │   ├── terminology.md
+│   ├── user-guide.md
 │   └── versioning-model.md
 ├── examples
 │   ├── crm
@@ -437,6 +447,7 @@ VCGF/
 │   ├── validate-attribution.py
 │   ├── validate-controls.py
 │   ├── validate-cross-references.py
+│   ├── validate-documentation.py
 │   ├── validate-internal-links.py
 │   ├── validate-license.py
 │   ├── validate-placeholders.py

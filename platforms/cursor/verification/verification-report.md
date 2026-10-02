@@ -24,8 +24,8 @@ Platform-specific claims in this adapter are limited to claims recorded in `sour
 
 ## Claims reviewed
 
-- **CURSOR-CLAIM-001 — VERIFIED:** Cursor Project Rules are stored under .cursor/rules and provide persistent scoped instructions. (https://docs.cursor.com/context/rules-for-ai)
-- **CURSOR-CLAIM-002 — VERIFIED:** Cursor supports root AGENTS.md as a simple project instruction format. (https://docs.cursor.com/context/rules-for-ai)
+- **CURSOR-CLAIM-001 — VERIFIED:** Cursor Project Rules are stored under .cursor/rules and provide persistent scoped instructions. (https://cursor.com/docs/rules)
+- **CURSOR-CLAIM-002 — VERIFIED:** Cursor supports root AGENTS.md as a simple project instruction format. (https://cursor.com/docs/rules)
 
 ## Limitations
 

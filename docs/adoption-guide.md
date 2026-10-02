@@ -9,6 +9,11 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Adoption guide
 
+## Start with the user journey
+
+If this is your first time using VCGF, begin with the [main README](../README.md), then choose a [platform setup guide](platform-guides/README.md). After installation, use the [daily user guide](user-guide.md) for features, bug fixes, database changes, approvals, evidence, and releases.
+
+
 1. Identify project scope, users, data, trust boundaries, and deployment context.
 2. Choose Baseline, Production, or High-Assurance profile.
 3. Choose the dedicated adapter or Generic Adapter.

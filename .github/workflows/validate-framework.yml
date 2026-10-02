@@ -26,4 +26,5 @@ jobs:
       - run: python scripts/validate-placeholders.py
       - run: python scripts/validate-license.py
       - run: python scripts/validate-version.py
+      - run: python scripts/validate-documentation.py
       - run: python scripts/validate-repository-structure.py

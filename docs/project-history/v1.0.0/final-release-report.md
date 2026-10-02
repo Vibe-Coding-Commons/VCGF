@@ -25,7 +25,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 | Item | Count |
 |---|---:|
-| Final repository files | 372 |
+| Final repository files | 383 |
 | Canonical normative Controls | 84 |
 | Control domains | 17 |
 | Profiles | 3 |
@@ -89,8 +89,16 @@ The release quality gate runs generators first, then validators. The final local
 | SPDX / founder attribution | PASS |
 | Release-marker scan | PASS |
 | Version consistency | PASS |
+| Documentation / onboarding validation | PASS |
 | Repository structure | PASS |
 | Combined release quality gate | PASS |
+
+
+## Human-first documentation and onboarding
+
+The final documentation experience now includes a full English README, equivalent Arabic README, `docs/user-guide.md`, and 7 platform-specific setup guides plus the platform-guide index. The guides explain beginner and developer installation paths, profile selection, project-context preparation, first-session initialization, activation verification, feature/bug/database/security-review requests, approval handling, evidence, completion criteria, troubleshooting, and update workflow.
+
+A dedicated `scripts/validate-documentation.py` validator is part of the combined release quality gate and GitHub framework validation workflow.
 
 ## GitHub automation
 
@@ -106,7 +114,7 @@ The migration input inventory contained 93 source artifacts. Recorded actions we
 - **MERGE:** 1
 - **DEPRECATE:** 0
 
-The final release contains 372 repository files, a net increase of 279 maintained/generated artifacts over the migration-input inventory as the package was converted into a complete open-source framework repository with Controls, schemas, adapters, verification evidence, automation, examples, legal metadata, and release governance.
+The final release contains 383 repository files, a net increase of 290 maintained/generated artifacts over the migration-input inventory as the package was converted into a complete open-source framework repository with Controls, schemas, adapters, verification evidence, automation, examples, legal metadata, and release governance.
 
 ## Files moved in final hardening
 
