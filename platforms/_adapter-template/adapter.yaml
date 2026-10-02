@@ -1,0 +1,31 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: adapter-template
+platform_name: VCGF Adapter Template
+vendor: VCGF
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+status: experimental
+release_date: '2026-10-02'
+last_verified: '2026-10-02'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://github.com/Vibe-Coding-Commons/VCGF/blob/main/platforms/_adapter-template/README.md
+platform_surface: Reference adapter-authoring template
+scope: A reusable, non-platform adapter authoring package. It is not a supported platform
+  adapter and must not be listed as conformant platform support.
+supported_capabilities:
+- Defines the required adapter file structure
+- Defines verification and mapping requirements
+unsupported_capabilities:
+- Contains no vendor platform capability claims.
+known_limitations:
+- Must be specialized and source-verified before a derived adapter can be released.
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: unverified

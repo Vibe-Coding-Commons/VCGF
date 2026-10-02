@@ -1,0 +1,871 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+# AUTO-GENERATED — DO NOT EDIT MANUALLY
+
+catalog_version: 1.0.0
+framework_version: 1.0.0
+source: Control Markdown front matter
+control_count: 84
+controls:
+- id: VCGF-AI-001
+  domain: ai-governance
+  title: Inspect Before Generate
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/ai-governance/vcgf-ai-001-inspect-before-generate.md
+- id: VCGF-AI-002
+  domain: ai-governance
+  title: No Silent Assumptions
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/ai-governance/vcgf-ai-002-no-silent-assumptions.md
+- id: VCGF-AI-003
+  domain: ai-governance
+  title: Architecture Drift Prevention
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/ai-governance/vcgf-ai-003-architecture-drift-prevention.md
+- id: VCGF-AI-004
+  domain: ai-governance
+  title: Unauthorized Refactoring and Feature Change Prevention
+  status: normative
+  requirement_level: MUST NOT
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/ai-governance/vcgf-ai-004-unauthorized-refactoring-and-feature-change-prevention.md
+- id: VCGF-AI-005
+  domain: ai-governance
+  title: Hallucinated API and Dependency Prevention
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/ai-governance/vcgf-ai-005-hallucinated-api-and-dependency-prevention.md
+- id: VCGF-AI-006
+  domain: ai-governance
+  title: Sensitive Change Guardrails
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/ai-governance/vcgf-ai-006-sensitive-change-guardrails.md
+- id: VCGF-AI-007
+  domain: ai-governance
+  title: Security Control Tamper Prevention
+  status: normative
+  requirement_level: MUST NOT
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/ai-governance/vcgf-ai-007-security-control-tamper-prevention.md
+- id: VCGF-AI-008
+  domain: ai-governance
+  title: Prompt and Tool Injection Resilience
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/ai-governance/vcgf-ai-008-prompt-and-tool-injection-resilience.md
+- id: VCGF-AI-009
+  domain: ai-governance
+  title: Persistent Context Governance
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  path: controls/ai-governance/vcgf-ai-009-persistent-context-governance.md
+- id: VCGF-API-001
+  domain: api
+  title: API and Server Function Security
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/api/vcgf-api-001-api-and-server-function-security.md
+- id: VCGF-API-002
+  domain: api
+  title: Business Logic Integrity
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/api/vcgf-api-002-business-logic-integrity.md
+- id: VCGF-API-003
+  domain: api
+  title: Rate Limiting and Abuse Prevention
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/api/vcgf-api-003-rate-limiting-and-abuse-prevention.md
+- id: VCGF-API-004
+  domain: api
+  title: SSRF, CSRF, CORS and Webhook Security
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/api/vcgf-api-004-ssrf-csrf-cors-and-webhook-security.md
+- id: VCGF-API-005
+  domain: api
+  title: Third-Party Integration Security
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/api/vcgf-api-005-third-party-integration-security.md
+- id: VCGF-ARCH-001
+  domain: architecture
+  title: Tenant Isolation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/architecture/vcgf-arch-001-tenant-isolation.md
+- id: VCGF-ARCH-002
+  domain: architecture
+  title: Trust Boundary Separation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/architecture/vcgf-arch-002-trust-boundary-separation.md
+- id: VCGF-ARCH-003
+  domain: architecture
+  title: Established System as Contract
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/architecture/vcgf-arch-003-established-system-as-contract.md
+- id: VCGF-ARCH-004
+  domain: architecture
+  title: Separation of Concerns
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  path: controls/architecture/vcgf-arch-004-separation-of-concerns.md
+- id: VCGF-ARCH-005
+  domain: architecture
+  title: Threat Modeling
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/architecture/vcgf-arch-005-threat-modeling.md
+- id: VCGF-AUDIT-001
+  domain: logging-auditing
+  title: Secure Errors and Diagnostic Logging
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/logging-auditing/vcgf-audit-001-secure-errors-and-diagnostic-logging.md
+- id: VCGF-AUDIT-002
+  domain: logging-auditing
+  title: Privileged and Business Audit Trail
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/logging-auditing/vcgf-audit-002-privileged-and-business-audit-trail.md
+- id: VCGF-AUDIT-003
+  domain: logging-auditing
+  title: Audit Tamper Resistance
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  path: controls/logging-auditing/vcgf-audit-003-audit-tamper-resistance.md
+- id: VCGF-DATA-001
+  domain: data-protection
+  title: Backup and Export Protection
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/data-protection/vcgf-data-001-backup-and-export-protection.md
+- id: VCGF-DATA-002
+  domain: data-protection
+  title: Data Classification and Retention
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/data-protection/vcgf-data-002-data-classification-and-retention.md
+- id: VCGF-DATA-003
+  domain: data-protection
+  title: Field-Level Encryption
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/data-protection/vcgf-data-003-field-level-encryption.md
+- id: VCGF-DATA-004
+  domain: data-protection
+  title: Key Management and Rotation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/data-protection/vcgf-data-004-key-management-and-rotation.md
+- id: VCGF-DATA-005
+  domain: data-protection
+  title: Searchable Encrypted Data
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  path: controls/data-protection/vcgf-data-005-searchable-encrypted-data.md
+- id: VCGF-DATA-006
+  domain: data-protection
+  title: Data in Transit Protection
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/data-protection/vcgf-data-006-data-in-transit-protection.md
+- id: VCGF-DB-001
+  domain: database
+  title: Database Change Governance
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/database/vcgf-db-001-database-change-governance.md
+- id: VCGF-DB-002
+  domain: database
+  title: Database Integrity
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/database/vcgf-db-002-database-integrity.md
+- id: VCGF-DB-003
+  domain: database
+  title: Database Encryption Implementation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/database/vcgf-db-003-database-encryption-implementation.md
+- id: VCGF-DB-004
+  domain: database
+  title: Row-Level Authorization Testing
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/database/vcgf-db-004-row-level-authorization-testing.md
+- id: VCGF-DB-005
+  domain: database
+  title: SQL Query Security
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/database/vcgf-db-005-sql-query-security.md
+- id: VCGF-DB-006
+  domain: database
+  title: Transaction and Concurrency Integrity
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/database/vcgf-db-006-transaction-and-concurrency-integrity.md
+- id: VCGF-DEP-001
+  domain: dependencies
+  title: Dependency and Supply-Chain Security
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/dependencies/vcgf-dep-001-dependency-and-supply-chain-security.md
+- id: VCGF-DEP-002
+  domain: dependencies
+  title: Locked and Reproducible Dependencies
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  path: controls/dependencies/vcgf-dep-002-locked-and-reproducible-dependencies.md
+- id: VCGF-DEP-003
+  domain: dependencies
+  title: Dependency Vulnerability Review
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/dependencies/vcgf-dep-003-dependency-vulnerability-review.md
+- id: VCGF-DEP-004
+  domain: dependencies
+  title: SBOM and Dependency Provenance
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/dependencies/vcgf-dep-004-sbom-and-dependency-provenance.md
+- id: VCGF-FILE-001
+  domain: file-handling
+  title: File Upload and Storage Security
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/file-handling/vcgf-file-001-file-upload-and-storage-security.md
+- id: VCGF-FILE-002
+  domain: file-handling
+  title: Private-by-Default File Access
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/file-handling/vcgf-file-002-private-by-default-file-access.md
+- id: VCGF-GOV-001
+  domain: governance
+  title: Change Impact Analysis
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/governance/vcgf-gov-001-change-impact-analysis.md
+- id: VCGF-GOV-002
+  domain: governance
+  title: Human Approval Gates
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/governance/vcgf-gov-002-human-approval-gates.md
+- id: VCGF-GOV-003
+  domain: governance
+  title: Security Exception Management
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/governance/vcgf-gov-003-security-exception-management.md
+- id: VCGF-GOV-004
+  domain: governance
+  title: Evidence-Driven Governance
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/governance/vcgf-gov-004-evidence-driven-governance.md
+- id: VCGF-GOV-005
+  domain: governance
+  title: Minimum Safe Change
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/governance/vcgf-gov-005-minimum-safe-change.md
+- id: VCGF-GOV-006
+  domain: governance
+  title: Single Source of Truth for Controls
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/governance/vcgf-gov-006-single-source-of-truth-for-controls.md
+- id: VCGF-IAM-001
+  domain: identity-access
+  title: Enumeration and Brute-Force Resistance
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/identity-access/vcgf-iam-001-enumeration-and-brute-force-resistance.md
+- id: VCGF-IAM-002
+  domain: identity-access
+  title: Authentication Baseline
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/identity-access/vcgf-iam-002-authentication-baseline.md
+- id: VCGF-IAM-003
+  domain: identity-access
+  title: MFA and Session Security
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/identity-access/vcgf-iam-003-mfa-and-session-security.md
+- id: VCGF-IAM-004
+  domain: identity-access
+  title: Password Storage and Policy
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/identity-access/vcgf-iam-004-password-storage-and-policy.md
+- id: VCGF-IAM-005
+  domain: identity-access
+  title: Secure Password Reset and Recovery
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/identity-access/vcgf-iam-005-secure-password-reset-and-recovery.md
+- id: VCGF-IAM-006
+  domain: identity-access
+  title: Privileged Access Administration
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/identity-access/vcgf-iam-006-privileged-access-administration.md
+- id: VCGF-IAM-007
+  domain: identity-access
+  title: Authorization, RBAC, ABAC and Data-Layer Enforcement
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/identity-access/vcgf-iam-007-authorization-rbac-abac-and-data-layer-enforcement.md
+- id: VCGF-IR-001
+  domain: incident-response
+  title: Incident Response Minimums
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/incident-response/vcgf-ir-001-incident-response-minimums.md
+- id: VCGF-IR-002
+  domain: incident-response
+  title: Credential and Key Compromise Response
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/incident-response/vcgf-ir-002-credential-and-key-compromise-response.md
+- id: VCGF-IR-003
+  domain: incident-response
+  title: Personal Data Incident Handling
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/incident-response/vcgf-ir-003-personal-data-incident-handling.md
+- id: VCGF-OPS-001
+  domain: operations
+  title: Environment Separation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/operations/vcgf-ops-001-environment-separation.md
+- id: VCGF-OPS-002
+  domain: operations
+  title: Production Protection
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/operations/vcgf-ops-002-production-protection.md
+- id: VCGF-OPS-003
+  domain: operations
+  title: Backup and Recovery Validation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/operations/vcgf-ops-003-backup-and-recovery-validation.md
+- id: VCGF-OPS-004
+  domain: operations
+  title: Configuration Drift Control
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  path: controls/operations/vcgf-ops-004-configuration-drift-control.md
+- id: VCGF-OPS-005
+  domain: operations
+  title: Security Monitoring and Alerting
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/operations/vcgf-ops-005-security-monitoring-and-alerting.md
+- id: VCGF-PRIV-001
+  domain: privacy
+  title: Logging Redaction and Privacy
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/privacy/vcgf-priv-001-logging-redaction-and-privacy.md
+- id: VCGF-PRIV-002
+  domain: privacy
+  title: Personal Data Protection
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/privacy/vcgf-priv-002-personal-data-protection.md
+- id: VCGF-PRIV-003
+  domain: privacy
+  title: Data Minimization and Purpose Limitation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/privacy/vcgf-priv-003-data-minimization-and-purpose-limitation.md
+- id: VCGF-PRIV-004
+  domain: privacy
+  title: Data Lifecycle, Retention and Secure Deletion
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/privacy/vcgf-priv-004-data-lifecycle-retention-and-secure-deletion.md
+- id: VCGF-REL-001
+  domain: release
+  title: Definition of Done
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/release/vcgf-rel-001-definition-of-done.md
+- id: VCGF-REL-002
+  domain: release
+  title: Pre-Release Security Gate
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/release/vcgf-rel-002-pre-release-security-gate.md
+- id: VCGF-REL-003
+  domain: release
+  title: Rollback and Recovery Readiness
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/release/vcgf-rel-003-rollback-and-recovery-readiness.md
+- id: VCGF-REL-004
+  domain: release
+  title: Post-Release Monitoring
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  path: controls/release/vcgf-rel-004-post-release-monitoring.md
+- id: VCGF-REL-005
+  domain: release
+  title: Release Artifact Integrity and Provenance
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/release/vcgf-rel-005-release-artifact-integrity-and-provenance.md
+- id: VCGF-SEC-001
+  domain: security
+  title: Critical Field Validation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/security/vcgf-sec-001-critical-field-validation.md
+- id: VCGF-SEC-002
+  domain: security
+  title: File and URL Validation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/security/vcgf-sec-002-file-and-url-validation.md
+- id: VCGF-SEC-003
+  domain: security
+  title: Injection Defense
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/security/vcgf-sec-003-injection-defense.md
+- id: VCGF-SEC-004
+  domain: security
+  title: Trusted-Layer Input Validation
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/security/vcgf-sec-004-trusted-layer-input-validation.md
+- id: VCGF-SEC-005
+  domain: security
+  title: Output Encoding and Sanitization
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/security/vcgf-sec-005-output-encoding-and-sanitization.md
+- id: VCGF-SEC-006
+  domain: security
+  title: Secure Defaults and Fail-Closed Behavior
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/security/vcgf-sec-006-secure-defaults-and-fail-closed-behavior.md
+- id: VCGF-SECR-001
+  domain: secrets
+  title: Secrets and Environment Protection
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/secrets/vcgf-secr-001-secrets-and-environment-protection.md
+- id: VCGF-SECR-002
+  domain: secrets
+  title: Secret Rotation and Compromise Response
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/secrets/vcgf-secr-002-secret-rotation-and-compromise-response.md
+- id: VCGF-TEST-001
+  domain: testing
+  title: Authorization Negative Testing
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/testing/vcgf-test-001-authorization-negative-testing.md
+- id: VCGF-TEST-002
+  domain: testing
+  title: Secure Code Review
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - baseline
+  - production
+  path: controls/testing/vcgf-test-002-secure-code-review.md
+- id: VCGF-TEST-003
+  domain: testing
+  title: Security Regression Review
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/testing/vcgf-test-003-security-regression-review.md
+- id: VCGF-TEST-004
+  domain: testing
+  title: Security Test Strategy
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/testing/vcgf-test-004-security-test-strategy.md
+- id: VCGF-TEST-005
+  domain: testing
+  title: Validation and Injection Testing
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/testing/vcgf-test-005-validation-and-injection-testing.md
+- id: VCGF-TEST-006
+  domain: testing
+  title: Recovery Flow Testing
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.0.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/testing/vcgf-test-006-recovery-flow-testing.md

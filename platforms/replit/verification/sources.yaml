@@ -1,0 +1,18 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+platform: replit
+adapter_version: 1.0.0
+last_verified: '2026-10-02'
+claims:
+- id: REPLIT-CLAIM-001
+  capability: Replit Agent reads a root replit.md file to understand project architecture,
+    conventions, coding patterns, package managers, and dependencies.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://docs.replit.com/features/project-setup/replit-dot-md
+  verified_on: '2026-10-02'

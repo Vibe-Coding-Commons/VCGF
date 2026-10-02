@@ -1,0 +1,832 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: bolt
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+generated_from: VCGF control front matter plus verified adapter capabilities
+mappings:
+- control_id: VCGF-AI-001
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-002
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-003
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-004
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-005
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-006
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-007
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-008
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AI-009
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-API-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-API-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-API-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-API-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-API-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-ARCH-001
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-ARCH-002
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-ARCH-003
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-ARCH-004
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-ARCH-005
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AUDIT-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AUDIT-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-AUDIT-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DATA-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DATA-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DATA-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DATA-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DATA-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DATA-006
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DB-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DB-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DB-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DB-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DB-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DB-006
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DEP-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DEP-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DEP-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-DEP-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-FILE-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-FILE-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-GOV-001
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-GOV-002
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-GOV-003
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-GOV-004
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-GOV-005
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-GOV-006
+  status: PROMPT-ENFORCED
+  enforcement: AI instructions / review workflow
+  implementation: Load VCGF governance rules through the Bolt web project agent instruction
+    surface and require project evidence.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: BOLT-CLAIM-001
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IAM-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IAM-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IAM-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IAM-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IAM-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IAM-006
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IAM-007
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IR-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IR-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-IR-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-OPS-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-OPS-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-OPS-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-OPS-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-OPS-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-PRIV-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-PRIV-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-PRIV-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-PRIV-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-REL-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-REL-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-REL-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-REL-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-REL-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SEC-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SEC-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SEC-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SEC-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SEC-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SEC-006
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SECR-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-SECR-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-TEST-001
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-TEST-002
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-TEST-003
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-TEST-004
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-TEST-005
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.
+- control_id: VCGF-TEST-006
+  status: EXTERNAL
+  enforcement: Application / repository / CI / infrastructure
+  implementation: Implement and verify this normative control in trusted application
+    code, database policy, CI, cloud configuration, or operational tooling; the adapter
+    does not claim native runtime enforcement.
+  evidence: Project-specific evidence required by the control and selected profile.
+  source_claim: null
+  last_verified: '2026-10-02'
+  notes: Adapter mapping does not weaken the normative Core requirement.

@@ -1,0 +1,102 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+profile_id: baseline
+profile_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+assurance: baseline
+description: Minimum VCGF governance for prototypes and low-risk applications.
+required_controls:
+- VCGF-AI-001
+- VCGF-AI-002
+- VCGF-AI-005
+- VCGF-API-001
+- VCGF-ARCH-002
+- VCGF-ARCH-005
+- VCGF-DB-001
+- VCGF-DB-002
+- VCGF-DB-005
+- VCGF-DEP-001
+- VCGF-FILE-001
+- VCGF-GOV-001
+- VCGF-GOV-005
+- VCGF-IAM-002
+- VCGF-IAM-004
+- VCGF-IAM-005
+- VCGF-IAM-007
+- VCGF-PRIV-003
+- VCGF-REL-001
+- VCGF-SEC-001
+- VCGF-SEC-003
+- VCGF-SEC-004
+- VCGF-SEC-005
+- VCGF-SECR-001
+- VCGF-TEST-002
+optional_controls:
+- VCGF-AI-003
+- VCGF-AI-004
+- VCGF-AI-006
+- VCGF-AI-007
+- VCGF-AI-008
+- VCGF-AI-009
+- VCGF-API-002
+- VCGF-API-003
+- VCGF-API-004
+- VCGF-API-005
+- VCGF-ARCH-001
+- VCGF-ARCH-003
+- VCGF-ARCH-004
+- VCGF-AUDIT-001
+- VCGF-AUDIT-002
+- VCGF-AUDIT-003
+- VCGF-DATA-001
+- VCGF-DATA-002
+- VCGF-DATA-003
+- VCGF-DATA-004
+- VCGF-DATA-005
+- VCGF-DATA-006
+- VCGF-DB-003
+- VCGF-DB-004
+- VCGF-DB-006
+- VCGF-DEP-002
+- VCGF-DEP-003
+- VCGF-DEP-004
+- VCGF-FILE-002
+- VCGF-GOV-002
+- VCGF-GOV-003
+- VCGF-GOV-004
+- VCGF-GOV-006
+- VCGF-IAM-001
+- VCGF-IAM-003
+- VCGF-IAM-006
+- VCGF-IR-001
+- VCGF-IR-002
+- VCGF-IR-003
+- VCGF-OPS-001
+- VCGF-OPS-002
+- VCGF-OPS-003
+- VCGF-OPS-004
+- VCGF-OPS-005
+- VCGF-PRIV-001
+- VCGF-PRIV-002
+- VCGF-PRIV-004
+- VCGF-REL-002
+- VCGF-REL-003
+- VCGF-REL-004
+- VCGF-REL-005
+- VCGF-SEC-002
+- VCGF-SEC-006
+- VCGF-SECR-002
+- VCGF-TEST-001
+- VCGF-TEST-003
+- VCGF-TEST-004
+- VCGF-TEST-005
+- VCGF-TEST-006
+evidence_requirements:
+- Implementation or review evidence for every required MUST/MUST NOT control.
+- Negative-test evidence for authentication, authorization, validation, and injection
+  controls when those capabilities exist.

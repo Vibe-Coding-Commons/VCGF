@@ -1,0 +1,33 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: cursor
+platform_name: Cursor
+vendor: Cursor
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+status: stable
+release_date: '2026-10-02'
+last_verified: '2026-10-02'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://cursor.com/docs/rules
+platform_surface: Cursor Agent / IDE project rules
+scope: Cursor Project Rules under .cursor/rules and root AGENTS.md as documented for
+  Cursor Agent. Runtime security controls remain project responsibilities.
+supported_capabilities:
+- Project Rules under .cursor/rules
+- AGENTS.md project instructions
+- Scoped project rules
+unsupported_capabilities:
+- Rules do not by themselves enforce application-runtime security.
+known_limitations:
+- Rule adherence is behavioral context; trusted runtime controls and CI remain external.
+- Legacy .cursorrules is not used as the preferred VCGF mechanism.
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: verified

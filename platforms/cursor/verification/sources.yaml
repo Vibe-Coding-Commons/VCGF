@@ -1,0 +1,24 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+platform: cursor
+adapter_version: 1.0.0
+last_verified: '2026-10-02'
+claims:
+- id: CURSOR-CLAIM-001
+  capability: Cursor Project Rules are stored under .cursor/rules and provide persistent
+    scoped instructions.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://cursor.com/docs/rules
+  verified_on: '2026-10-02'
+- id: CURSOR-CLAIM-002
+  capability: Cursor supports root AGENTS.md as a simple project instruction format.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://cursor.com/docs/rules
+  verified_on: '2026-10-02'

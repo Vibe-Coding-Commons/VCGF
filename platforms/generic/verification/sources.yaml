@@ -1,0 +1,17 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+platform: generic
+adapter_version: 1.0.0
+last_verified: '2026-10-02'
+claims:
+- id: GENERIC-CLAIM-001
+  capability: Reference adapter is defined by VCGF itself.
+  status: VERIFIED
+  source_type: framework-spec
+  source: spec/VCGF-CORE.md
+  verified_on: '2026-10-02'

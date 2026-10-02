@@ -1,0 +1,34 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: replit
+platform_name: Replit
+vendor: Replit
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+status: stable
+release_date: '2026-10-02'
+last_verified: '2026-10-02'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://docs.replit.com/features/project-setup/replit-dot-md
+platform_surface: Replit Agent project
+scope: Replit Agent project instructions through root replit.md. Other Replit AI surfaces
+  are not assumed.
+supported_capabilities:
+- Root replit.md project instructions
+- Agent consumption of architecture, conventions, dependencies, and preferences from
+  replit.md
+unsupported_capabilities:
+- replit.md does not automatically govern unrelated AI tools.
+- Runtime controls are not enforced by replit.md itself.
+known_limitations:
+- Agent may update replit.md, so governance changes to that file should be code-reviewed.
+- Application runtime security remains an implementation responsibility.
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: verified

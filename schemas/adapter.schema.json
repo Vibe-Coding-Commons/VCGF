@@ -1,0 +1,111 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/adapter.schema.json",
+  "title": "VCGF Adapter Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "adapter_id",
+    "platform_name",
+    "vendor",
+    "adapter_version",
+    "framework_compatibility",
+    "status",
+    "release_date",
+    "last_verified",
+    "maintainer",
+    "documentation",
+    "platform_surface",
+    "scope",
+    "supported_capabilities",
+    "unsupported_capabilities",
+    "known_limitations",
+    "control_mapping",
+    "verification_sources",
+    "verification_status"
+  ],
+  "properties": {
+    "adapter_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "platform_name": {
+      "type": "string"
+    },
+    "vendor": {
+      "type": "string"
+    },
+    "adapter_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "framework_compatibility": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "experimental",
+        "beta",
+        "stable",
+        "deprecated"
+      ]
+    },
+    "release_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "last_verified": {
+      "type": "string",
+      "format": "date"
+    },
+    "maintainer": {
+      "type": "string"
+    },
+    "documentation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "minItems": 1
+    },
+    "platform_surface": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "supported_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unsupported_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "control_mapping": {
+      "const": "control-mapping.yaml"
+    },
+    "verification_sources": {
+      "const": "verification/sources.yaml"
+    },
+    "verification_status": {
+      "enum": [
+        "verified",
+        "partially-verified",
+        "unverified"
+      ]
+    }
+  }
+}

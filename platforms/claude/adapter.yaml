@@ -1,0 +1,36 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: claude
+platform_name: Claude
+vendor: Anthropic
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+status: stable
+release_date: '2026-10-02'
+last_verified: '2026-10-02'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://code.claude.com/docs/en/memory
+platform_surface: Claude Code
+scope: Project instructions through CLAUDE.md and supported project-instruction mechanisms
+  for Claude Code. This adapter does not claim behavior for Claude Web or the Claude
+  API unless separately documented.
+supported_capabilities:
+- Project CLAUDE.md instructions
+- Project instruction hierarchy and scoped instruction files
+- AGENTS.md compatibility in supported Claude Code versions
+unsupported_capabilities:
+- Claude Web and Claude API are outside this adapter scope.
+- CLAUDE.md is behavioral context, not a hard runtime security enforcement layer.
+known_limitations:
+- Instructions can guide behavior but runtime and CI controls remain external.
+- AGENTS.md loading semantics depend on Claude Code version and project-instruction
+  configuration.
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: verified

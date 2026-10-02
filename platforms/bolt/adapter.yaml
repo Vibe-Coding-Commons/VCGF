@@ -1,0 +1,33 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: bolt
+platform_name: Bolt
+vendor: StackBlitz
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+status: stable
+release_date: '2026-10-02'
+last_verified: '2026-10-02'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://support.bolt.new/settings/project-settings
+platform_surface: Bolt web project agent
+scope: Bolt Project Knowledge and project-context workflow documented in Bolt project
+  settings. Runtime controls remain application responsibilities.
+supported_capabilities:
+- Project Knowledge for persistent project-specific instructions
+- Project context management
+unsupported_capabilities:
+- No hard runtime security enforcement is inferred from Project Knowledge.
+known_limitations:
+- Project Knowledge guides the agent but does not replace trusted server/database
+  controls.
+- Capabilities not present in official documentation are not claimed by this adapter.
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: verified

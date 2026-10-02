@@ -1,0 +1,32 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+platform: claude
+adapter_version: 1.0.0
+last_verified: '2026-10-02'
+claims:
+- id: CLAUDE-CLAIM-001
+  capability: Claude Code loads CLAUDE.md project instructions for coding standards,
+    workflows, and project architecture.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://code.claude.com/docs/en/memory
+  verified_on: '2026-10-02'
+- id: CLAUDE-CLAIM-002
+  capability: Claude Code can read AGENTS.md under documented project-instruction
+    conditions.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://code.claude.com/docs/en/memory
+  verified_on: '2026-10-02'
+- id: CLAUDE-CLAIM-003
+  capability: CLAUDE.md instructions shape behavior but are not hard enforcement;
+    managed settings can enforce selected client constraints.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://code.claude.com/docs/en/memory
+  verified_on: '2026-10-02'

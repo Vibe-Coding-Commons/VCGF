@@ -1,0 +1,38 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+platform: lovable
+adapter_version: 1.0.0
+last_verified: '2026-10-02'
+claims:
+- id: LOVABLE-CLAIM-001
+  capability: Workspace Knowledge and Project Knowledge provide persistent instructions
+    and context.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://docs.lovable.dev/features/knowledge
+  verified_on: '2026-10-02'
+- id: LOVABLE-CLAIM-002
+  capability: Lovable reads repository instruction files such as AGENTS.md or CLAUDE.md;
+    root AGENTS.md is always read.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://docs.lovable.dev/features/knowledge
+  verified_on: '2026-10-02'
+- id: LOVABLE-CLAIM-003
+  capability: Lovable provides browser testing, frontend tests, and edge-function
+    verification.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://docs.lovable.dev/features/testing
+  verified_on: '2026-10-02'
+- id: LOVABLE-CLAIM-004
+  capability: Lovable documents built-in security scans.
+  status: VERIFIED
+  source_type: official-documentation
+  source: https://docs.lovable.dev/features/security
+  verified_on: '2026-10-02'

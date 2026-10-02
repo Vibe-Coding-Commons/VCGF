@@ -1,0 +1,33 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: generic
+platform_name: Generic / Vendor-Neutral
+vendor: VCGF
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+status: stable
+release_date: '2026-10-02'
+last_verified: '2026-10-02'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://github.com/Vibe-Coding-Commons/VCGF/blob/main/platforms/generic/README.md
+platform_surface: Portable AI-assisted development workflow
+scope: Reference adapter for tools without a dedicated VCGF adapter. It uses portable
+  repository instructions, prompts, external CI, and runtime controls.
+supported_capabilities:
+- Portable repository instruction file
+- Portable pre-change and release prompts
+- External CI and runtime-control mapping
+unsupported_capabilities:
+- No vendor-native enforcement is claimed.
+known_limitations:
+- Behavioral instructions depend on the selected AI tool consuming the provided context.
+- Runtime security and CI enforcement must be implemented by the project environment.
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: verified

@@ -1,0 +1,38 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+adapter_id: v0
+platform_name: v0
+vendor: Vercel
+adapter_version: 1.0.0
+framework_compatibility: '>=1.0.0 <2.0.0'
+status: stable
+release_date: '2026-10-02'
+last_verified: '2026-10-02'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://v0.app/docs/instructions
+- https://v0.app/docs/projects
+- https://v0.app/docs/github
+platform_surface: v0 web agent and Projects
+scope: v0 Instructions, Plan Mode, Projects, environment-variable project settings,
+  and GitHub-connected workflow documented by v0.
+supported_capabilities:
+- Reusable custom Instructions
+- Plan Mode with approval before implementation
+- Projects with shared settings and environment variables
+- GitHub branch and pull-request workflow
+unsupported_capabilities:
+- VCGF does not infer runtime security enforcement merely from v0 generation or project
+  settings.
+known_limitations:
+- Instructions are behavioral controls and must be reinforced by code, tests, CI,
+  and runtime authorization.
+- Platform behavior outside the documented v0 project and Git surfaces is not assumed.
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: verified

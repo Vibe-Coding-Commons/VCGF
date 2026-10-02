@@ -1,0 +1,60 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+
+framework_name: Vibe Coding Governance Framework
+framework_acronym: VCGF
+framework_version: 1.0.0
+specification_version: 1.0.0
+release_status: stable
+release_date: '2026-10-02'
+maintainer: Eng. Hamada Sami
+license: Apache-2.0
+repository: https://github.com/Vibe-Coding-Commons/VCGF
+organization: Vibe Coding Commons
+supported_adapters:
+- generic
+- lovable
+- claude
+- bolt
+- v0
+- replit
+- cursor
+adapter_versions:
+  generic: 1.0.0
+  lovable: 1.0.0
+  claude: 1.0.0
+  bolt: 1.0.0
+  v0: 1.0.0
+  replit: 1.0.0
+  cursor: 1.0.0
+control_domains:
+- governance
+- ai-governance
+- architecture
+- security
+- identity-access
+- data-protection
+- privacy
+- database
+- api
+- secrets
+- dependencies
+- file-handling
+- logging-auditing
+- testing
+- release
+- operations
+- incident-response
+profiles:
+- baseline
+- production
+- high-assurance
+schema_versions:
+  adapter: 1.0.0
+  control: 1.0.0
+  profile: 1.0.0
+  conformance: 1.0.0
