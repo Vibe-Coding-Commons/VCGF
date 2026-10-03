@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+capability_id: privacy
+description: Master sections [14, 36]; task-specific requirements, not standalone
+  product certification
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions: []
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-PRIV-002
+- VCGF-PRIV-003
+- VCGF-PRIV-004
+- VCGF-DATA-002
+dependencies:
+- relation: requires
+  targets:
+  - fields
+  reason: privacy requires evaluation of fields
+required_evidence:
+- positive and negative tests scoped to capability
+- implementation and environment reference
+exception_policy: Explicit owner-approved, expiring exception; no automatic compliance

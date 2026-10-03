@@ -1,0 +1,92 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/preferences.schema.json",
+  "title": "VCGF 1.1 preferences contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "interaction_language": {
+      "enum": [
+        "ar",
+        "en",
+        "auto"
+      ]
+    },
+    "dialect": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "code_language_behavior": {
+      "const": "preserve_project_conventions"
+    },
+    "project_ui_languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "documentation_languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "presentation": {
+      "enum": [
+        "beginner",
+        "expert"
+      ]
+    },
+    "verbosity": {
+      "enum": [
+        "concise",
+        "detailed"
+      ]
+    },
+    "interaction_mode": {
+      "enum": [
+        "quiet",
+        "explain"
+      ]
+    },
+    "persistence": {
+      "enum": [
+        "project",
+        "user",
+        "session"
+      ]
+    },
+    "first_run_confirmed": {
+      "type": "boolean"
+    },
+    "updated_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    }
+  },
+  "required": [
+    "contract_version",
+    "interaction_language",
+    "dialect",
+    "code_language_behavior",
+    "project_ui_languages",
+    "documentation_languages",
+    "presentation",
+    "verbosity",
+    "interaction_mode",
+    "persistence",
+    "first_run_confirmed",
+    "updated_at"
+  ]
+}

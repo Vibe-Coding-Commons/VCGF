@@ -1,0 +1,80 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0
+capability_requirements:
+  fields:
+  - packs/requirements/section-14.md
+  ux-accessibility:
+  - packs/requirements/section-15.md
+  identity:
+  - packs/requirements/section-16.md
+  password-recovery:
+  - packs/requirements/section-17.md
+  admin:
+  - packs/requirements/section-18.md
+  - packs/requirements/section-19.md
+  - packs/requirements/section-20.md
+  step-up:
+  - packs/requirements/section-19.md
+  strong-auth:
+  - packs/requirements/section-20.md
+  email:
+  - packs/requirements/section-21.md
+  sessions:
+  - packs/requirements/section-22.md
+  - packs/requirements/section-23.md
+  - packs/requirements/section-24.md
+  - packs/requirements/section-25.md
+  script-protection:
+  - packs/requirements/section-26.md
+  public-discovery:
+  - packs/requirements/section-27.md
+  api:
+  - packs/requirements/section-28.md
+  database:
+  - packs/requirements/section-29.md
+  - packs/requirements/section-30.md
+  - packs/requirements/section-35.md
+  backup-restore:
+  - packs/requirements/section-29.md
+  - packs/requirements/section-30.md
+  - packs/requirements/section-31.md
+  - packs/requirements/section-32.md
+  - packs/requirements/section-33.md
+  - packs/requirements/section-34.md
+  - packs/requirements/section-35.md
+  - packs/requirements/section-38.md
+  - packs/requirements/section-39.md
+  files:
+  - packs/requirements/section-36.md
+  - packs/requirements/section-37.md
+  - packs/requirements/section-38.md
+  - packs/requirements/section-39.md
+  privacy:
+  - packs/requirements/section-14.md
+  - packs/requirements/section-36.md
+  payment:
+  - packs/requirements/section-14.md
+  - packs/requirements/section-28.md
+  authorization:
+  - packs/requirements/section-19.md
+  - packs/requirements/section-28.md
+  incident:
+  - packs/requirements/section-34.md
+  - packs/requirements/section-35.md
+  deletion:
+  - packs/requirements/section-14.md
+  - packs/requirements/section-34.md
+capability_references:
+  identity:
+  - docs/references/owasp-asvs-5-mapping.md
+  password-recovery:
+  - docs/references/owasp-asvs-5-mapping.md
+  admin:
+  - docs/references/owasp-asvs-5-mapping.md
+  strong-auth:
+  - docs/references/owasp-asvs-5-mapping.md
+  sessions:
+  - docs/references/owasp-asvs-5-mapping.md
+  api:
+  - docs/references/owasp-asvs-5-mapping.md
+  files:
+  - docs/references/owasp-asvs-5-mapping.md

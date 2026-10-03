@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+capability_id: identity
+description: Master sections [16]; task-specific requirements, not standalone product
+  certification
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions: []
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-IAM-001
+- VCGF-IAM-002
+- VCGF-IAM-004
+- VCGF-IAM-007
+dependencies:
+- relation: requires
+  targets:
+  - sessions
+  reason: identity requires evaluation of sessions
+- relation: requires
+  targets:
+  - fields
+  reason: identity requires evaluation of fields
+- relation: requires
+  targets:
+  - ux-accessibility
+  reason: identity requires evaluation of ux-accessibility
+- relation: requires
+  targets:
+  - audit
+  reason: identity requires evaluation of audit
+- relation: requires_when
+  targets:
+  - password-recovery
+  condition:
+    fact: auth-model
+    operator: equals
+    value: local-password
+  reason: Local passwords need recovery; SSO delegates recovery to identity provider
+required_evidence:
+- positive and negative tests scoped to capability
+- implementation and environment reference
+exception_policy: Explicit owner-approved, expiring exception; no automatic compliance

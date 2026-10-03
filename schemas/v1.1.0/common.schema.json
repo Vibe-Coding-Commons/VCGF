@@ -1,0 +1,109 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/common.schema.json",
+  "title": "VCGF shared contract definitions",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,79}$"
+    },
+    "control_id": {
+      "type": "string",
+      "pattern": "^VCGF-(GOV|AI|ARCH|SEC|IAM|DATA|PRIV|DB|API|SECR|DEP|FILE|AUDIT|TEST|REL|OPS|IR)-[0-9]{3}$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "profile": {
+      "enum": [
+        "baseline",
+        "production",
+        "high-assurance"
+      ]
+    },
+    "risk": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "environment": {
+      "enum": [
+        "development",
+        "test",
+        "staging",
+        "production",
+        "unknown"
+      ]
+    },
+    "support": {
+      "enum": [
+        "native",
+        "configurable",
+        "behavioral",
+        "external",
+        "partial",
+        "unsupported",
+        "unverified",
+        "not_applicable"
+      ]
+    },
+    "mechanism": {
+      "enum": [
+        "technical",
+        "behavioral",
+        "external",
+        "unsupported",
+        "unverified"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 3
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fact": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "operator": {
+          "enum": [
+            "equals",
+            "not_equals",
+            "exists"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "fact",
+        "operator"
+      ]
+    }
+  }
+}

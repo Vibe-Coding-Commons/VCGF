@@ -1,0 +1,52 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+adapter_id: chatgpt
+adapter_version: 1.1.0
+platform_surface: Candidate compact runtime instructions; live platform version not
+  observed
+platform_version: Unverified
+framework_compatibility: '>=1.1.0 <2.0.0'
+maturity: experimental
+capabilities:
+- capability_id: progressive-loading
+  mechanism: unverified
+  support: unverified
+  limitations:
+  - No live surface experiment or host permission evidence yet
+  source_refs:
+  - runtime/bootstrap.md
+  verification: not_tested
+  test_evidence_refs: []
+  verified_at: null
+- capability_id: tool-enforcement
+  mechanism: unverified
+  support: unverified
+  limitations:
+  - No live surface experiment or host permission evidence yet
+  source_refs:
+  - runtime/bootstrap.md
+  verification: not_tested
+  test_evidence_refs: []
+  verified_at: null
+- capability_id: persistent-context
+  mechanism: unverified
+  support: unverified
+  limitations:
+  - No live surface experiment or host permission evidence yet
+  source_refs:
+  - runtime/bootstrap.md
+  verification: not_tested
+  test_evidence_refs: []
+  verified_at: null
+- capability_id: adapter-deduplication
+  mechanism: unverified
+  support: unverified
+  limitations:
+  - No live surface experiment or host permission evidence yet
+  source_refs:
+  - runtime/bootstrap.md
+  verification: not_tested
+  test_evidence_refs: []
+  verified_at: null
+assessed_at: '2026-10-03T13:05:28Z'
+reviewer: local source review only

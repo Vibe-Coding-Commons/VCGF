@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+name: Validate opt-in runtime
+on:
+  workflow_dispatch:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  local-reference-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt -r examples/integrations/requirements.txt
+      - run: python -B scripts/validate-runtime.py
+      - run: python -B scripts/generate-runtime-registry.py --check
+      - run: python -B scripts/generate-adapter-rules.py --check
+      - run: python -B tests/contracts/test_phase1.py
+      - run: python -B tests/scenarios/test_runtime.py
+      - run: python -B tests/scenarios/test_gates.py
+      - run: python -B tests/scenarios/test_adapters.py
+      - run: python -B tests/scenarios/test_integrations.py

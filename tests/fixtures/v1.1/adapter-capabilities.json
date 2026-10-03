@@ -1,0 +1,31 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "synthetic": true,
+  "record": {
+    "contract_version": "1.1.0",
+    "adapter_id": "generic",
+    "adapter_version": "1.0.0",
+    "platform_surface": "Synthetic fixture, not a platform experiment",
+    "platform_version": "fixture",
+    "framework_compatibility": ">=1.1.0 <2.0.0",
+    "maturity": "experimental",
+    "capabilities": [
+      {
+        "capability_id": "auth",
+        "mechanism": "external",
+        "support": "external",
+        "limitations": [
+          "No native enforcement"
+        ],
+        "source_refs": [
+          "fixture:source"
+        ],
+        "verification": "not_tested",
+        "test_evidence_refs": [],
+        "verified_at": null
+      }
+    ],
+    "assessed_at": "2026-10-03T12:00:00Z",
+    "reviewer": "fixture-reviewer"
+  }
+}

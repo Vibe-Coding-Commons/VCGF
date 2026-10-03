@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+capability_id: incident
+description: Master sections [34, 35]; task-specific requirements, not standalone
+  product certification
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions: []
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-IR-001
+- VCGF-IR-002
+- VCGF-IR-003
+- VCGF-OPS-002
+- VCGF-REL-003
+dependencies:
+- relation: requires
+  targets:
+  - audit
+  reason: incident requires evaluation of audit
+- relation: requires
+  targets:
+  - backup-restore
+  reason: incident requires evaluation of backup-restore
+required_evidence:
+- positive and negative tests scoped to capability
+- implementation and environment reference
+exception_policy: Explicit owner-approved, expiring exception; no automatic compliance

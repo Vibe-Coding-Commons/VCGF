@@ -1,0 +1,267 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/route-result.schema.json",
+  "title": "VCGF 1.1 route-result contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "task_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "input_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "policy_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "context_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "environment": {
+      "$ref": "common.schema.json#/$defs/environment"
+    },
+    "risk": {
+      "$ref": "common.schema.json#/$defs/risk"
+    },
+    "profile": {
+      "$ref": "common.schema.json#/$defs/profile"
+    },
+    "profile_selection": {
+      "enum": [
+        "user_confirmed",
+        "existing_confirmed",
+        "proposed"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "lean",
+        "standard",
+        "deep"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "ready_to_plan",
+        "blocked"
+      ]
+    },
+    "selected_control_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "loaded_control_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "excluded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "control_id": {
+            "$ref": "common.schema.json#/$defs/control_id"
+          },
+          "reason": {
+            "$ref": "common.schema.json#/$defs/reason"
+          }
+        },
+        "required": [
+          "control_id",
+          "reason"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "control_id": {
+            "$ref": "common.schema.json#/$defs/control_id"
+          },
+          "capability_id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "$ref": "common.schema.json#/$defs/reason"
+          }
+        },
+        "required": [
+          "control_id",
+          "capability_id",
+          "source",
+          "reason"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cost_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "measurement": {
+          "enum": [
+            "observed",
+            "estimated",
+            "unavailable"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "overflow_policy": {
+          "const": "split_raise_or_block"
+        }
+      },
+      "required": [
+        "limit_tokens",
+        "cost_tokens",
+        "measurement",
+        "method",
+        "overflow_policy"
+      ]
+    },
+    "inspection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "completed": {
+          "type": "boolean"
+        },
+        "evidence_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "completed",
+        "evidence_ref"
+      ]
+    },
+    "approval_required": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "contract_version",
+    "task_id",
+    "input_sha256",
+    "policy_sha256",
+    "context_sha256",
+    "environment",
+    "risk",
+    "profile",
+    "profile_selection",
+    "mode",
+    "decision",
+    "selected_control_ids",
+    "loaded_control_ids",
+    "excluded",
+    "reasons",
+    "blockers",
+    "budget",
+    "inspection",
+    "approval_required"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "blocked"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "blockers": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "ready_to_plan"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "blockers": {
+            "maxItems": 0
+          },
+          "profile_selection": {
+            "not": {
+              "const": "proposed"
+            }
+          },
+          "inspection": {
+            "properties": {
+              "completed": {
+                "const": true
+              },
+              "evidence_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

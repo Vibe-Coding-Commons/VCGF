@@ -1,0 +1,27 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "synthetic": true,
+  "record": {
+    "contract_version": "1.1.0",
+    "approval_id": "fixture",
+    "status": "approved",
+    "requested_by": "fixture-agent",
+    "decision_by": {
+      "subject": "fixture-owner",
+      "role": "owner",
+      "authority_evidence": "fixture:identity-not-authenticated"
+    },
+    "action": "fixture-only",
+    "resources": [
+      "fixture:file"
+    ],
+    "environment": "test",
+    "plan_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "action_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "policy_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "issued_at": "2026-10-03T12:00:00Z",
+    "expires_at": "2026-10-04T12:00:00Z",
+    "decision_at": "2026-10-03T12:00:00Z",
+    "reason": "Synthetic positive contract fixture; not authorization"
+  }
+}

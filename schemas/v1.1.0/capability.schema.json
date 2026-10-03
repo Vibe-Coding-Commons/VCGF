@@ -1,0 +1,190 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/capability.schema.json",
+  "title": "VCGF 1.1 capability contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "capability_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "applies_to": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "development_agent",
+          "product_ai",
+          "application",
+          "operations"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/condition"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "unknown_policy": {
+          "const": "block_or_request_fact"
+        }
+      },
+      "required": [
+        "conditions",
+        "unknown_policy"
+      ]
+    },
+    "control_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "relation": {
+            "enum": [
+              "requires",
+              "requires_when",
+              "any_of",
+              "recommends",
+              "provided_by",
+              "conflicts_with"
+            ]
+          },
+          "targets": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "condition": {
+            "$ref": "common.schema.json#/$defs/condition"
+          },
+          "reason": {
+            "$ref": "common.schema.json#/$defs/reason"
+          }
+        },
+        "required": [
+          "relation",
+          "targets",
+          "reason"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "relation": {
+                  "const": "requires_when"
+                }
+              },
+              "required": [
+                "relation"
+              ]
+            },
+            "then": {
+              "required": [
+                "condition"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "relation": {
+                  "enum": [
+                    "requires",
+                    "recommends",
+                    "provided_by",
+                    "conflicts_with",
+                    "requires_when"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "targets": {
+                  "maxItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "relation": {
+                  "not": {
+                    "const": "requires_when"
+                  }
+                }
+              }
+            },
+            "then": {
+              "not": {
+                "required": [
+                  "condition"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "required_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "exception_policy": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "contract_version",
+    "capability_id",
+    "description",
+    "owner",
+    "applies_to",
+    "applicability",
+    "control_ids",
+    "dependencies",
+    "required_evidence",
+    "exception_policy"
+  ]
+}

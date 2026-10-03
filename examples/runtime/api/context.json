@@ -1,0 +1,41 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "synthetic": true,
+  "record": {
+    "contract_version": "1.1.0",
+    "project_id": "synthetic-api",
+    "snapshot_id": "faa0f0419054dac6d9e4cc1b941262f4f655515d0050a3e0a3a1ed6ade74ef49",
+    "environment": "test",
+    "development_agent": {
+      "uses_tools": true,
+      "uses_external_content": true
+    },
+    "product_ai": {
+      "uses_llm": false,
+      "uses_agent": false
+    },
+    "facts": [
+      {
+        "key": "auth-model",
+        "state": "known",
+        "value": "local-password",
+        "source": {
+          "kind": "repository",
+          "reference": "config.json",
+          "content_sha256": "64d88cc34aa41adf7cec4c83af9f76cc1c4527b7369421a4e780b82bdca9bb0d"
+        },
+        "observed_at": "2026-10-03T13:36:06.118483+00:00",
+        "expires_at": "2026-10-04T13:36:06.118483+00:00"
+      }
+    ],
+    "invalidates_on": [
+      "identity"
+    ],
+    "handoff": {
+      "summary": "Synthetic",
+      "pending_decisions": [],
+      "next_step": "Inspect",
+      "secrets_included": false
+    }
+  }
+}

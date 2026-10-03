@@ -1,0 +1,79 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/control.schema.json",
+  "title": "VCGF Control Front Matter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "domain",
+    "status",
+    "requirement_level",
+    "framework_version_introduced",
+    "profiles"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^VCGF-(GOV|AI|ARCH|SEC|IAM|DATA|PRIV|DB|API|SECR|DEP|FILE|AUDIT|TEST|REL|OPS|IR)-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "domain": {
+      "enum": [
+        "governance",
+        "ai-governance",
+        "architecture",
+        "security",
+        "identity-access",
+        "data-protection",
+        "privacy",
+        "database",
+        "api",
+        "secrets",
+        "dependencies",
+        "file-handling",
+        "logging-auditing",
+        "testing",
+        "release",
+        "operations",
+        "incident-response"
+      ]
+    },
+    "status": {
+      "enum": [
+        "normative",
+        "informative",
+        "deprecated"
+      ]
+    },
+    "requirement_level": {
+      "enum": [
+        "MUST",
+        "MUST NOT",
+        "SHOULD",
+        "SHOULD NOT",
+        "MAY"
+      ]
+    },
+    "framework_version_introduced": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "baseline",
+          "production",
+          "high-assurance"
+        ]
+      },
+      "uniqueItems": true
+    }
+  }
+}

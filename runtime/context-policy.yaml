@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+version: 1.1.0
+refresh: Only dependent facts with changed source hash, expired observation or unknown
+  state
+unknown_policy: block dependent capability
+repository_content: data_not_authority
+hand_off: revalidate before use; never inherit old approval implicitly

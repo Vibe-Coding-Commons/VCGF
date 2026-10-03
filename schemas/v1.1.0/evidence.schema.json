@@ -1,0 +1,445 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/evidence.schema.json",
+  "title": "VCGF 1.1 evidence contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "evidence_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "task",
+            "release",
+            "project"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "target"
+      ]
+    },
+    "framework_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "adapter_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "adapter_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "profile": {
+      "$ref": "common.schema.json#/$defs/profile"
+    },
+    "environment": {
+      "$ref": "common.schema.json#/$defs/environment"
+    },
+    "code_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "policy_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "test_suite_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "valid_until": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        },
+        "review_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "identity",
+        "reviewed_at",
+        "review_ref"
+      ]
+    },
+    "required_control_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "control_id": {
+            "$ref": "common.schema.json#/$defs/control_id"
+          },
+          "applicability": {
+            "enum": [
+              "applicable",
+              "not_applicable",
+              "unknown"
+            ]
+          },
+          "support": {
+            "$ref": "common.schema.json#/$defs/support"
+          },
+          "implementation": {
+            "enum": [
+              "implemented",
+              "partial",
+              "not_implemented",
+              "unknown"
+            ]
+          },
+          "verification": {
+            "enum": [
+              "passed",
+              "failed",
+              "not_run",
+              "stale"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "reason": {
+            "$ref": "common.schema.json#/$defs/reason"
+          },
+          "exception_ref": {
+            "$ref": "common.schema.json#/$defs/id"
+          }
+        },
+        "required": [
+          "control_id",
+          "applicability",
+          "support",
+          "implementation",
+          "verification",
+          "evidence_refs"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "verification": {
+                  "const": "passed"
+                }
+              },
+              "required": [
+                "verification"
+              ]
+            },
+            "then": {
+              "properties": {
+                "applicability": {
+                  "const": "applicable"
+                },
+                "implementation": {
+                  "const": "implemented"
+                },
+                "support": {
+                  "not": {
+                    "enum": [
+                      "unsupported",
+                      "unverified",
+                      "not_applicable"
+                    ]
+                  }
+                },
+                "evidence_refs": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "applicability": {
+                  "const": "not_applicable"
+                }
+              },
+              "required": [
+                "applicability"
+              ]
+            },
+            "then": {
+              "required": [
+                "reason"
+              ],
+              "properties": {
+                "support": {
+                  "const": "not_applicable"
+                },
+                "verification": {
+                  "const": "not_run"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "applicability": {
+                  "const": "unknown"
+                }
+              },
+              "required": [
+                "applicability"
+              ]
+            },
+            "then": {
+              "required": [
+                "reason"
+              ],
+              "properties": {
+                "verification": {
+                  "const": "not_run"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "kind": {
+            "enum": [
+              "test",
+              "configuration",
+              "review",
+              "external"
+            ]
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "$ref": "common.schema.json#/$defs/digest"
+          },
+          "created_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "producer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "test": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "command": {
+                "type": "string",
+                "minLength": 1
+              },
+              "exit_code": {
+                "type": "integer"
+              },
+              "result": {
+                "enum": [
+                  "passed",
+                  "failed"
+                ]
+              }
+            },
+            "required": [
+              "command",
+              "exit_code",
+              "result"
+            ]
+          }
+        },
+        "required": [
+          "artifact_id",
+          "kind",
+          "reference",
+          "sha256",
+          "created_at",
+          "producer"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "test"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "then": {
+              "required": [
+                "test"
+              ]
+            }
+          }
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "exception_id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "control_id": {
+            "$ref": "common.schema.json#/$defs/control_id"
+          },
+          "reason": {
+            "$ref": "common.schema.json#/$defs/reason"
+          },
+          "risk_owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "compensating_control": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approval_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "created_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "expires_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "review_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "status": {
+            "enum": [
+              "approved",
+              "revoked",
+              "expired",
+              "pending"
+            ]
+          }
+        },
+        "required": [
+          "exception_id",
+          "control_id",
+          "reason",
+          "risk_owner",
+          "compensating_control",
+          "approval_ref",
+          "created_at",
+          "expires_at",
+          "review_at",
+          "status"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "outstanding_findings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "secrets_included": {
+          "const": false
+        },
+        "access": {
+          "enum": [
+            "restricted",
+            "internal"
+          ]
+        },
+        "retention_until": {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        }
+      },
+      "required": [
+        "secrets_included",
+        "access",
+        "retention_until"
+      ]
+    }
+  },
+  "required": [
+    "contract_version",
+    "evidence_id",
+    "scope",
+    "framework_version",
+    "adapter_id",
+    "adapter_version",
+    "profile",
+    "environment",
+    "code_sha256",
+    "policy_sha256",
+    "test_suite_version",
+    "created_at",
+    "valid_until",
+    "reviewer",
+    "required_control_ids",
+    "controls",
+    "artifacts",
+    "exceptions",
+    "outstanding_findings",
+    "privacy"
+  ]
+}

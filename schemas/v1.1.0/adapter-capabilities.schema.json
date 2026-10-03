@@ -1,0 +1,190 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/adapter-capabilities.schema.json",
+  "title": "VCGF 1.1 adapter-capabilities contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "adapter_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "adapter_version": {
+      "$ref": "common.schema.json#/$defs/semver"
+    },
+    "platform_surface": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "framework_compatibility": {
+      "type": "string",
+      "minLength": 1
+    },
+    "maturity": {
+      "enum": [
+        "experimental",
+        "beta",
+        "stable",
+        "deprecated"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "capability_id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "mechanism": {
+            "$ref": "common.schema.json#/$defs/mechanism"
+          },
+          "support": {
+            "$ref": "common.schema.json#/$defs/support"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "verification": {
+            "enum": [
+              "not_tested",
+              "passed",
+              "failed",
+              "stale"
+            ]
+          },
+          "test_evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "verified_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "capability_id",
+          "mechanism",
+          "support",
+          "limitations",
+          "source_refs",
+          "verification",
+          "test_evidence_refs",
+          "verified_at"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "verification": {
+                  "const": "passed"
+                }
+              },
+              "required": [
+                "verification"
+              ]
+            },
+            "then": {
+              "properties": {
+                "test_evidence_refs": {
+                  "minItems": 1
+                },
+                "verified_at": {
+                  "$ref": "common.schema.json#/$defs/timestamp"
+                },
+                "support": {
+                  "not": {
+                    "enum": [
+                      "unsupported",
+                      "unverified",
+                      "not_applicable"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "assessed_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "contract_version",
+    "adapter_id",
+    "adapter_version",
+    "platform_surface",
+    "platform_version",
+    "framework_compatibility",
+    "maturity",
+    "capabilities",
+    "assessed_at",
+    "reviewer"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "maturity": {
+            "const": "stable"
+          }
+        },
+        "required": [
+          "maturity"
+        ]
+      },
+      "then": {
+        "properties": {
+          "capabilities": {
+            "items": {
+              "properties": {
+                "verification": {
+                  "const": "passed"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

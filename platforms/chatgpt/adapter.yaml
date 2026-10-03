@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami
+adapter_id: chatgpt
+platform_name: ChatGPT
+vendor: OpenAI
+adapter_version: 1.1.0
+framework_compatibility: '>=1.1.0 <2.0.0'
+status: experimental
+release_date: '2026-10-03'
+last_verified: '2026-10-03'
+maintainer: Eng. Hamada Sami
+documentation:
+- https://github.com/Vibe-Coding-Commons/VCGF
+platform_surface: Repository-mediated VCGF runtime entry; personal Skill installation
+  not performed
+scope: Opt-in local CLI and behavioral workflow; actual platform surface Unverified
+supported_capabilities:
+- Local reference CLI when a host can run Python; platform integration unverified
+unsupported_capabilities:
+- No authenticated tool enforcement or platform certification claimed
+known_limitations:
+- Skill packaging and live surface verification remain acceptance gaps
+control_mapping: control-mapping.yaml
+verification_sources: verification/sources.yaml
+verification_status: unverified

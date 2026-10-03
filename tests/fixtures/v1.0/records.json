@@ -1,0 +1,1577 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "synthetic_conformance": true,
+  "records": {
+    "controls": [
+      {
+        "id": "VCGF-AI-001",
+        "title": "Inspect Before Generate",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-002",
+        "title": "No Silent Assumptions",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-003",
+        "title": "Architecture Drift Prevention",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-004",
+        "title": "Unauthorized Refactoring and Feature Change Prevention",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST NOT",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-005",
+        "title": "Hallucinated API and Dependency Prevention",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-006",
+        "title": "Sensitive Change Guardrails",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-007",
+        "title": "Security Control Tamper Prevention",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST NOT",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-008",
+        "title": "Prompt and Tool Injection Resilience",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AI-009",
+        "title": "Persistent Context Governance",
+        "domain": "ai-governance",
+        "status": "normative",
+        "requirement_level": "SHOULD",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance"
+        ]
+      },
+      {
+        "id": "VCGF-API-001",
+        "title": "API and Server Function Security",
+        "domain": "api",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-API-002",
+        "title": "Business Logic Integrity",
+        "domain": "api",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-API-003",
+        "title": "Rate Limiting and Abuse Prevention",
+        "domain": "api",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-API-004",
+        "title": "SSRF, CSRF, CORS and Webhook Security",
+        "domain": "api",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-API-005",
+        "title": "Third-Party Integration Security",
+        "domain": "api",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-ARCH-001",
+        "title": "Tenant Isolation",
+        "domain": "architecture",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-ARCH-002",
+        "title": "Trust Boundary Separation",
+        "domain": "architecture",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-ARCH-003",
+        "title": "Established System as Contract",
+        "domain": "architecture",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-ARCH-004",
+        "title": "Separation of Concerns",
+        "domain": "architecture",
+        "status": "normative",
+        "requirement_level": "SHOULD",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance"
+        ]
+      },
+      {
+        "id": "VCGF-ARCH-005",
+        "title": "Threat Modeling",
+        "domain": "architecture",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DATA-001",
+        "title": "Backup and Export Protection",
+        "domain": "data-protection",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DATA-002",
+        "title": "Data Classification and Retention",
+        "domain": "data-protection",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DATA-003",
+        "title": "Field-Level Encryption",
+        "domain": "data-protection",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DATA-004",
+        "title": "Key Management and Rotation",
+        "domain": "data-protection",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DATA-005",
+        "title": "Searchable Encrypted Data",
+        "domain": "data-protection",
+        "status": "normative",
+        "requirement_level": "SHOULD",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance"
+        ]
+      },
+      {
+        "id": "VCGF-DATA-006",
+        "title": "Data in Transit Protection",
+        "domain": "data-protection",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DB-001",
+        "title": "Database Change Governance",
+        "domain": "database",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DB-002",
+        "title": "Database Integrity",
+        "domain": "database",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DB-003",
+        "title": "Database Encryption Implementation",
+        "domain": "database",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DB-004",
+        "title": "Row-Level Authorization Testing",
+        "domain": "database",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DB-005",
+        "title": "SQL Query Security",
+        "domain": "database",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DB-006",
+        "title": "Transaction and Concurrency Integrity",
+        "domain": "database",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DEP-001",
+        "title": "Dependency and Supply-Chain Security",
+        "domain": "dependencies",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DEP-002",
+        "title": "Locked and Reproducible Dependencies",
+        "domain": "dependencies",
+        "status": "normative",
+        "requirement_level": "SHOULD",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance"
+        ]
+      },
+      {
+        "id": "VCGF-DEP-003",
+        "title": "Dependency Vulnerability Review",
+        "domain": "dependencies",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-DEP-004",
+        "title": "SBOM and Dependency Provenance",
+        "domain": "dependencies",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-FILE-001",
+        "title": "File Upload and Storage Security",
+        "domain": "file-handling",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-FILE-002",
+        "title": "Private-by-Default File Access",
+        "domain": "file-handling",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-GOV-001",
+        "title": "Change Impact Analysis",
+        "domain": "governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-GOV-002",
+        "title": "Human Approval Gates",
+        "domain": "governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-GOV-003",
+        "title": "Security Exception Management",
+        "domain": "governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-GOV-004",
+        "title": "Evidence-Driven Governance",
+        "domain": "governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-GOV-005",
+        "title": "Minimum Safe Change",
+        "domain": "governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-GOV-006",
+        "title": "Single Source of Truth for Controls",
+        "domain": "governance",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IAM-001",
+        "title": "Enumeration and Brute-Force Resistance",
+        "domain": "identity-access",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IAM-002",
+        "title": "Authentication Baseline",
+        "domain": "identity-access",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IAM-003",
+        "title": "MFA and Session Security",
+        "domain": "identity-access",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IAM-004",
+        "title": "Password Storage and Policy",
+        "domain": "identity-access",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IAM-005",
+        "title": "Secure Password Reset and Recovery",
+        "domain": "identity-access",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IAM-006",
+        "title": "Privileged Access Administration",
+        "domain": "identity-access",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IAM-007",
+        "title": "Authorization, RBAC, ABAC and Data-Layer Enforcement",
+        "domain": "identity-access",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IR-001",
+        "title": "Incident Response Minimums",
+        "domain": "incident-response",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IR-002",
+        "title": "Credential and Key Compromise Response",
+        "domain": "incident-response",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-IR-003",
+        "title": "Personal Data Incident Handling",
+        "domain": "incident-response",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AUDIT-001",
+        "title": "Secure Errors and Diagnostic Logging",
+        "domain": "logging-auditing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AUDIT-002",
+        "title": "Privileged and Business Audit Trail",
+        "domain": "logging-auditing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-AUDIT-003",
+        "title": "Audit Tamper Resistance",
+        "domain": "logging-auditing",
+        "status": "normative",
+        "requirement_level": "SHOULD",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance"
+        ]
+      },
+      {
+        "id": "VCGF-OPS-001",
+        "title": "Environment Separation",
+        "domain": "operations",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-OPS-002",
+        "title": "Production Protection",
+        "domain": "operations",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-OPS-003",
+        "title": "Backup and Recovery Validation",
+        "domain": "operations",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-OPS-004",
+        "title": "Configuration Drift Control",
+        "domain": "operations",
+        "status": "normative",
+        "requirement_level": "SHOULD",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance"
+        ]
+      },
+      {
+        "id": "VCGF-OPS-005",
+        "title": "Security Monitoring and Alerting",
+        "domain": "operations",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-PRIV-001",
+        "title": "Logging Redaction and Privacy",
+        "domain": "privacy",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-PRIV-002",
+        "title": "Personal Data Protection",
+        "domain": "privacy",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-PRIV-003",
+        "title": "Data Minimization and Purpose Limitation",
+        "domain": "privacy",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-PRIV-004",
+        "title": "Data Lifecycle, Retention and Secure Deletion",
+        "domain": "privacy",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-REL-001",
+        "title": "Definition of Done",
+        "domain": "release",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-REL-002",
+        "title": "Pre-Release Security Gate",
+        "domain": "release",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-REL-003",
+        "title": "Rollback and Recovery Readiness",
+        "domain": "release",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-REL-004",
+        "title": "Post-Release Monitoring",
+        "domain": "release",
+        "status": "normative",
+        "requirement_level": "SHOULD",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance"
+        ]
+      },
+      {
+        "id": "VCGF-REL-005",
+        "title": "Release Artifact Integrity and Provenance",
+        "domain": "release",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SECR-001",
+        "title": "Secrets and Environment Protection",
+        "domain": "secrets",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SECR-002",
+        "title": "Secret Rotation and Compromise Response",
+        "domain": "secrets",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SEC-001",
+        "title": "Critical Field Validation",
+        "domain": "security",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SEC-002",
+        "title": "File and URL Validation",
+        "domain": "security",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SEC-003",
+        "title": "Injection Defense",
+        "domain": "security",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SEC-004",
+        "title": "Trusted-Layer Input Validation",
+        "domain": "security",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SEC-005",
+        "title": "Output Encoding and Sanitization",
+        "domain": "security",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-SEC-006",
+        "title": "Secure Defaults and Fail-Closed Behavior",
+        "domain": "security",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-TEST-001",
+        "title": "Authorization Negative Testing",
+        "domain": "testing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-TEST-002",
+        "title": "Secure Code Review",
+        "domain": "testing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "baseline",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-TEST-003",
+        "title": "Security Regression Review",
+        "domain": "testing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-TEST-004",
+        "title": "Security Test Strategy",
+        "domain": "testing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-TEST-005",
+        "title": "Validation and Injection Testing",
+        "domain": "testing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      },
+      {
+        "id": "VCGF-TEST-006",
+        "title": "Recovery Flow Testing",
+        "domain": "testing",
+        "status": "normative",
+        "requirement_level": "MUST",
+        "framework_version_introduced": "1.0.0",
+        "profiles": [
+          "high-assurance",
+          "production"
+        ]
+      }
+    ],
+    "profiles": [
+      {
+        "profile_id": "baseline",
+        "profile_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "assurance": "baseline",
+        "description": "Minimum VCGF governance for prototypes and low-risk applications.",
+        "required_controls": [
+          "VCGF-AI-001",
+          "VCGF-AI-002",
+          "VCGF-AI-005",
+          "VCGF-API-001",
+          "VCGF-ARCH-002",
+          "VCGF-ARCH-005",
+          "VCGF-DB-001",
+          "VCGF-DB-002",
+          "VCGF-DB-005",
+          "VCGF-DEP-001",
+          "VCGF-FILE-001",
+          "VCGF-GOV-001",
+          "VCGF-GOV-005",
+          "VCGF-IAM-002",
+          "VCGF-IAM-004",
+          "VCGF-IAM-005",
+          "VCGF-IAM-007",
+          "VCGF-PRIV-003",
+          "VCGF-REL-001",
+          "VCGF-SEC-001",
+          "VCGF-SEC-003",
+          "VCGF-SEC-004",
+          "VCGF-SEC-005",
+          "VCGF-SECR-001",
+          "VCGF-TEST-002"
+        ],
+        "optional_controls": [
+          "VCGF-AI-003",
+          "VCGF-AI-004",
+          "VCGF-AI-006",
+          "VCGF-AI-007",
+          "VCGF-AI-008",
+          "VCGF-AI-009",
+          "VCGF-API-002",
+          "VCGF-API-003",
+          "VCGF-API-004",
+          "VCGF-API-005",
+          "VCGF-ARCH-001",
+          "VCGF-ARCH-003",
+          "VCGF-ARCH-004",
+          "VCGF-AUDIT-001",
+          "VCGF-AUDIT-002",
+          "VCGF-AUDIT-003",
+          "VCGF-DATA-001",
+          "VCGF-DATA-002",
+          "VCGF-DATA-003",
+          "VCGF-DATA-004",
+          "VCGF-DATA-005",
+          "VCGF-DATA-006",
+          "VCGF-DB-003",
+          "VCGF-DB-004",
+          "VCGF-DB-006",
+          "VCGF-DEP-002",
+          "VCGF-DEP-003",
+          "VCGF-DEP-004",
+          "VCGF-FILE-002",
+          "VCGF-GOV-002",
+          "VCGF-GOV-003",
+          "VCGF-GOV-004",
+          "VCGF-GOV-006",
+          "VCGF-IAM-001",
+          "VCGF-IAM-003",
+          "VCGF-IAM-006",
+          "VCGF-IR-001",
+          "VCGF-IR-002",
+          "VCGF-IR-003",
+          "VCGF-OPS-001",
+          "VCGF-OPS-002",
+          "VCGF-OPS-003",
+          "VCGF-OPS-004",
+          "VCGF-OPS-005",
+          "VCGF-PRIV-001",
+          "VCGF-PRIV-002",
+          "VCGF-PRIV-004",
+          "VCGF-REL-002",
+          "VCGF-REL-003",
+          "VCGF-REL-004",
+          "VCGF-REL-005",
+          "VCGF-SEC-002",
+          "VCGF-SEC-006",
+          "VCGF-SECR-002",
+          "VCGF-TEST-001",
+          "VCGF-TEST-003",
+          "VCGF-TEST-004",
+          "VCGF-TEST-005",
+          "VCGF-TEST-006"
+        ],
+        "evidence_requirements": [
+          "Implementation or review evidence for every required MUST/MUST NOT control.",
+          "Negative-test evidence for authentication, authorization, validation, and injection controls when those capabilities exist."
+        ]
+      },
+      {
+        "profile_id": "high-assurance",
+        "profile_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "assurance": "high-assurance",
+        "description": "Strengthened VCGF profile for sensitive, institutional, regulated, or high-impact systems.",
+        "required_controls": [
+          "VCGF-AI-001",
+          "VCGF-AI-002",
+          "VCGF-AI-003",
+          "VCGF-AI-004",
+          "VCGF-AI-005",
+          "VCGF-AI-006",
+          "VCGF-AI-007",
+          "VCGF-AI-008",
+          "VCGF-AI-009",
+          "VCGF-API-001",
+          "VCGF-API-002",
+          "VCGF-API-003",
+          "VCGF-API-004",
+          "VCGF-API-005",
+          "VCGF-ARCH-001",
+          "VCGF-ARCH-002",
+          "VCGF-ARCH-003",
+          "VCGF-ARCH-004",
+          "VCGF-ARCH-005",
+          "VCGF-AUDIT-001",
+          "VCGF-AUDIT-002",
+          "VCGF-AUDIT-003",
+          "VCGF-DATA-001",
+          "VCGF-DATA-002",
+          "VCGF-DATA-003",
+          "VCGF-DATA-004",
+          "VCGF-DATA-005",
+          "VCGF-DATA-006",
+          "VCGF-DB-001",
+          "VCGF-DB-002",
+          "VCGF-DB-003",
+          "VCGF-DB-004",
+          "VCGF-DB-005",
+          "VCGF-DB-006",
+          "VCGF-DEP-001",
+          "VCGF-DEP-002",
+          "VCGF-DEP-003",
+          "VCGF-DEP-004",
+          "VCGF-FILE-001",
+          "VCGF-FILE-002",
+          "VCGF-GOV-001",
+          "VCGF-GOV-002",
+          "VCGF-GOV-003",
+          "VCGF-GOV-004",
+          "VCGF-GOV-005",
+          "VCGF-GOV-006",
+          "VCGF-IAM-001",
+          "VCGF-IAM-002",
+          "VCGF-IAM-003",
+          "VCGF-IAM-004",
+          "VCGF-IAM-005",
+          "VCGF-IAM-006",
+          "VCGF-IAM-007",
+          "VCGF-IR-001",
+          "VCGF-IR-002",
+          "VCGF-IR-003",
+          "VCGF-OPS-001",
+          "VCGF-OPS-002",
+          "VCGF-OPS-003",
+          "VCGF-OPS-004",
+          "VCGF-OPS-005",
+          "VCGF-PRIV-001",
+          "VCGF-PRIV-002",
+          "VCGF-PRIV-003",
+          "VCGF-PRIV-004",
+          "VCGF-REL-001",
+          "VCGF-REL-002",
+          "VCGF-REL-003",
+          "VCGF-REL-004",
+          "VCGF-REL-005",
+          "VCGF-SEC-001",
+          "VCGF-SEC-002",
+          "VCGF-SEC-003",
+          "VCGF-SEC-004",
+          "VCGF-SEC-005",
+          "VCGF-SEC-006",
+          "VCGF-SECR-001",
+          "VCGF-SECR-002",
+          "VCGF-TEST-001",
+          "VCGF-TEST-002",
+          "VCGF-TEST-003",
+          "VCGF-TEST-004",
+          "VCGF-TEST-005",
+          "VCGF-TEST-006"
+        ],
+        "optional_controls": [],
+        "evidence_requirements": [
+          "Independent or dual-person review for high-risk controls where practical.",
+          "Comprehensive security test evidence, threat model, provenance, monitoring, recovery, and approved exceptions."
+        ]
+      },
+      {
+        "profile_id": "production",
+        "profile_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "assurance": "production",
+        "description": "VCGF profile for production applications handling real users, business data, or internet-facing services.",
+        "required_controls": [
+          "VCGF-AI-001",
+          "VCGF-AI-002",
+          "VCGF-AI-003",
+          "VCGF-AI-004",
+          "VCGF-AI-005",
+          "VCGF-AI-006",
+          "VCGF-AI-007",
+          "VCGF-AI-008",
+          "VCGF-API-001",
+          "VCGF-API-002",
+          "VCGF-API-003",
+          "VCGF-API-004",
+          "VCGF-API-005",
+          "VCGF-ARCH-001",
+          "VCGF-ARCH-002",
+          "VCGF-ARCH-003",
+          "VCGF-ARCH-005",
+          "VCGF-AUDIT-001",
+          "VCGF-AUDIT-002",
+          "VCGF-DATA-001",
+          "VCGF-DATA-002",
+          "VCGF-DATA-003",
+          "VCGF-DATA-004",
+          "VCGF-DATA-006",
+          "VCGF-DB-001",
+          "VCGF-DB-002",
+          "VCGF-DB-003",
+          "VCGF-DB-004",
+          "VCGF-DB-005",
+          "VCGF-DB-006",
+          "VCGF-DEP-001",
+          "VCGF-DEP-003",
+          "VCGF-DEP-004",
+          "VCGF-FILE-001",
+          "VCGF-FILE-002",
+          "VCGF-GOV-001",
+          "VCGF-GOV-002",
+          "VCGF-GOV-003",
+          "VCGF-GOV-004",
+          "VCGF-GOV-005",
+          "VCGF-GOV-006",
+          "VCGF-IAM-001",
+          "VCGF-IAM-002",
+          "VCGF-IAM-003",
+          "VCGF-IAM-004",
+          "VCGF-IAM-005",
+          "VCGF-IAM-006",
+          "VCGF-IAM-007",
+          "VCGF-IR-001",
+          "VCGF-IR-002",
+          "VCGF-IR-003",
+          "VCGF-OPS-001",
+          "VCGF-OPS-002",
+          "VCGF-OPS-003",
+          "VCGF-OPS-005",
+          "VCGF-PRIV-001",
+          "VCGF-PRIV-002",
+          "VCGF-PRIV-003",
+          "VCGF-PRIV-004",
+          "VCGF-REL-001",
+          "VCGF-REL-002",
+          "VCGF-REL-003",
+          "VCGF-REL-005",
+          "VCGF-SEC-001",
+          "VCGF-SEC-002",
+          "VCGF-SEC-003",
+          "VCGF-SEC-004",
+          "VCGF-SEC-005",
+          "VCGF-SEC-006",
+          "VCGF-SECR-001",
+          "VCGF-SECR-002",
+          "VCGF-TEST-001",
+          "VCGF-TEST-002",
+          "VCGF-TEST-003",
+          "VCGF-TEST-004",
+          "VCGF-TEST-005",
+          "VCGF-TEST-006"
+        ],
+        "optional_controls": [
+          "VCGF-AI-009",
+          "VCGF-ARCH-004",
+          "VCGF-AUDIT-003",
+          "VCGF-DATA-005",
+          "VCGF-DEP-002",
+          "VCGF-OPS-004",
+          "VCGF-REL-004"
+        ],
+        "evidence_requirements": [
+          "Automated test or equivalent reproducible evidence for required security controls.",
+          "Release-gate evidence, threat model, dependency inventory, and operational monitoring evidence where applicable."
+        ]
+      }
+    ],
+    "adapters": [
+      {
+        "adapter_id": "bolt",
+        "platform_name": "Bolt",
+        "vendor": "StackBlitz",
+        "adapter_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "status": "stable",
+        "release_date": "2026-10-02",
+        "last_verified": "2026-10-02",
+        "maintainer": "Eng. Hamada Sami",
+        "documentation": [
+          "https://support.bolt.new/settings/project-settings"
+        ],
+        "platform_surface": "Bolt web project agent",
+        "scope": "Bolt Project Knowledge and project-context workflow documented in Bolt project settings. Runtime controls remain application responsibilities.",
+        "supported_capabilities": [
+          "Project Knowledge for persistent project-specific instructions",
+          "Project context management"
+        ],
+        "unsupported_capabilities": [
+          "No hard runtime security enforcement is inferred from Project Knowledge."
+        ],
+        "known_limitations": [
+          "Project Knowledge guides the agent but does not replace trusted server/database controls.",
+          "Capabilities not present in official documentation are not claimed by this adapter."
+        ],
+        "control_mapping": "control-mapping.yaml",
+        "verification_sources": "verification/sources.yaml",
+        "verification_status": "verified"
+      },
+      {
+        "adapter_id": "claude",
+        "platform_name": "Claude",
+        "vendor": "Anthropic",
+        "adapter_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "status": "stable",
+        "release_date": "2026-10-02",
+        "last_verified": "2026-10-02",
+        "maintainer": "Eng. Hamada Sami",
+        "documentation": [
+          "https://code.claude.com/docs/en/memory"
+        ],
+        "platform_surface": "Claude Code",
+        "scope": "Project instructions through CLAUDE.md and supported project-instruction mechanisms for Claude Code. This adapter does not claim behavior for Claude Web or the Claude API unless separately documented.",
+        "supported_capabilities": [
+          "Project CLAUDE.md instructions",
+          "Project instruction hierarchy and scoped instruction files",
+          "AGENTS.md compatibility in supported Claude Code versions"
+        ],
+        "unsupported_capabilities": [
+          "Claude Web and Claude API are outside this adapter scope.",
+          "CLAUDE.md is behavioral context, not a hard runtime security enforcement layer."
+        ],
+        "known_limitations": [
+          "Instructions can guide behavior but runtime and CI controls remain external.",
+          "AGENTS.md loading semantics depend on Claude Code version and project-instruction configuration."
+        ],
+        "control_mapping": "control-mapping.yaml",
+        "verification_sources": "verification/sources.yaml",
+        "verification_status": "verified"
+      },
+      {
+        "adapter_id": "cursor",
+        "platform_name": "Cursor",
+        "vendor": "Cursor",
+        "adapter_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "status": "stable",
+        "release_date": "2026-10-02",
+        "last_verified": "2026-10-02",
+        "maintainer": "Eng. Hamada Sami",
+        "documentation": [
+          "https://cursor.com/docs/rules"
+        ],
+        "platform_surface": "Cursor Agent / IDE project rules",
+        "scope": "Cursor Project Rules under .cursor/rules and root AGENTS.md as documented for Cursor Agent. Runtime security controls remain project responsibilities.",
+        "supported_capabilities": [
+          "Project Rules under .cursor/rules",
+          "AGENTS.md project instructions",
+          "Scoped project rules"
+        ],
+        "unsupported_capabilities": [
+          "Rules do not by themselves enforce application-runtime security."
+        ],
+        "known_limitations": [
+          "Rule adherence is behavioral context; trusted runtime controls and CI remain external.",
+          "Legacy .cursorrules is not used as the preferred VCGF mechanism."
+        ],
+        "control_mapping": "control-mapping.yaml",
+        "verification_sources": "verification/sources.yaml",
+        "verification_status": "verified"
+      },
+      {
+        "adapter_id": "generic",
+        "platform_name": "Generic / Vendor-Neutral",
+        "vendor": "VCGF",
+        "adapter_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "status": "stable",
+        "release_date": "2026-10-02",
+        "last_verified": "2026-10-02",
+        "maintainer": "Eng. Hamada Sami",
+        "documentation": [
+          "https://github.com/Vibe-Coding-Commons/VCGF/blob/main/platforms/generic/README.md"
+        ],
+        "platform_surface": "Portable AI-assisted development workflow",
+        "scope": "Reference adapter for tools without a dedicated VCGF adapter. It uses portable repository instructions, prompts, external CI, and runtime controls.",
+        "supported_capabilities": [
+          "Portable repository instruction file",
+          "Portable pre-change and release prompts",
+          "External CI and runtime-control mapping"
+        ],
+        "unsupported_capabilities": [
+          "No vendor-native enforcement is claimed."
+        ],
+        "known_limitations": [
+          "Behavioral instructions depend on the selected AI tool consuming the provided context.",
+          "Runtime security and CI enforcement must be implemented by the project environment."
+        ],
+        "control_mapping": "control-mapping.yaml",
+        "verification_sources": "verification/sources.yaml",
+        "verification_status": "verified"
+      },
+      {
+        "adapter_id": "lovable",
+        "platform_name": "Lovable",
+        "vendor": "Lovable",
+        "adapter_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "status": "stable",
+        "release_date": "2026-10-02",
+        "last_verified": "2026-10-02",
+        "maintainer": "Eng. Hamada Sami",
+        "documentation": [
+          "https://docs.lovable.dev/features/knowledge",
+          "https://docs.lovable.dev/features/testing",
+          "https://docs.lovable.dev/features/security"
+        ],
+        "platform_surface": "Lovable web application builder and project repository context",
+        "scope": "Workspace Knowledge, Project Knowledge, repository instruction files, built-in verification tools, and security-review surfaces documented by Lovable.",
+        "supported_capabilities": [
+          "Workspace Knowledge and Project Knowledge",
+          "Repository instruction files including root AGENTS.md",
+          "Browser testing, frontend tests, and edge-function verification",
+          "Built-in security scans as supporting evidence"
+        ],
+        "unsupported_capabilities": [
+          "VCGF does not treat Lovable instructions or scans as a substitute for application-runtime authorization, validation, encryption, or operational controls."
+        ],
+        "known_limitations": [
+          "Knowledge and instruction files shape agent behavior; they are not an application-runtime enforcement boundary.",
+          "Platform security scans are evidence inputs, not proof of complete VCGF conformance."
+        ],
+        "control_mapping": "control-mapping.yaml",
+        "verification_sources": "verification/sources.yaml",
+        "verification_status": "verified"
+      },
+      {
+        "adapter_id": "replit",
+        "platform_name": "Replit",
+        "vendor": "Replit",
+        "adapter_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "status": "stable",
+        "release_date": "2026-10-02",
+        "last_verified": "2026-10-02",
+        "maintainer": "Eng. Hamada Sami",
+        "documentation": [
+          "https://docs.replit.com/features/project-setup/replit-dot-md"
+        ],
+        "platform_surface": "Replit Agent project",
+        "scope": "Replit Agent project instructions through root replit.md. Other Replit AI surfaces are not assumed.",
+        "supported_capabilities": [
+          "Root replit.md project instructions",
+          "Agent consumption of architecture, conventions, dependencies, and preferences from replit.md"
+        ],
+        "unsupported_capabilities": [
+          "replit.md does not automatically govern unrelated AI tools.",
+          "Runtime controls are not enforced by replit.md itself."
+        ],
+        "known_limitations": [
+          "Agent may update replit.md, so governance changes to that file should be code-reviewed.",
+          "Application runtime security remains an implementation responsibility."
+        ],
+        "control_mapping": "control-mapping.yaml",
+        "verification_sources": "verification/sources.yaml",
+        "verification_status": "verified"
+      },
+      {
+        "adapter_id": "v0",
+        "platform_name": "v0",
+        "vendor": "Vercel",
+        "adapter_version": "1.0.0",
+        "framework_compatibility": ">=1.0.0 <2.0.0",
+        "status": "stable",
+        "release_date": "2026-10-02",
+        "last_verified": "2026-10-02",
+        "maintainer": "Eng. Hamada Sami",
+        "documentation": [
+          "https://v0.app/docs/instructions",
+          "https://v0.app/docs/projects",
+          "https://v0.app/docs/github"
+        ],
+        "platform_surface": "v0 web agent and Projects",
+        "scope": "v0 Instructions, Plan Mode, Projects, environment-variable project settings, and GitHub-connected workflow documented by v0.",
+        "supported_capabilities": [
+          "Reusable custom Instructions",
+          "Plan Mode with approval before implementation",
+          "Projects with shared settings and environment variables",
+          "GitHub branch and pull-request workflow"
+        ],
+        "unsupported_capabilities": [
+          "VCGF does not infer runtime security enforcement merely from v0 generation or project settings."
+        ],
+        "known_limitations": [
+          "Instructions are behavioral controls and must be reinforced by code, tests, CI, and runtime authorization.",
+          "Platform behavior outside the documented v0 project and Git surfaces is not assumed."
+        ],
+        "control_mapping": "control-mapping.yaml",
+        "verification_sources": "verification/sources.yaml",
+        "verification_status": "verified"
+      }
+    ],
+    "conformance": {
+      "framework_version": "1.0.0",
+      "profile": "baseline",
+      "adapter": "generic",
+      "adapter_version": "1.0.0",
+      "validation_date": "2026-10-03",
+      "outstanding_findings": [
+        "Synthetic legacy fixture: no project conformance claimed"
+      ],
+      "unsupported_controls": [],
+      "external_controls": [],
+      "exceptions": [],
+      "controls": [
+        {
+          "control_id": "VCGF-GOV-001",
+          "status": "FAIL",
+          "evidence": []
+        }
+      ]
+    }
+  }
+}

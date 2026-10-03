@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+capability_id: files
+description: Master sections [36, 37, 38, 39]; task-specific requirements, not standalone
+  product certification
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions: []
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-FILE-001
+- VCGF-FILE-002
+- VCGF-SEC-002
+dependencies:
+- relation: requires
+  targets:
+  - fields
+  reason: files requires evaluation of fields
+- relation: requires
+  targets:
+  - backup-restore
+  reason: files requires evaluation of backup-restore
+required_evidence:
+- positive and negative tests scoped to capability
+- implementation and environment reference
+exception_policy: Explicit owner-approved, expiring exception; no automatic compliance

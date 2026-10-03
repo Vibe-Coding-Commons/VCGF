@@ -1,0 +1,122 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/approval.schema.json",
+  "title": "VCGF 1.1 approval contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "approval_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "approved",
+        "denied",
+        "revoked"
+      ]
+    },
+    "requested_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_by": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_evidence": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "subject",
+        "role",
+        "authority_evidence"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "environment": {
+      "$ref": "common.schema.json#/$defs/environment"
+    },
+    "plan_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "action_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "policy_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "issued_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "expires_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "decision_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "reason": {
+      "$ref": "common.schema.json#/$defs/reason"
+    }
+  },
+  "required": [
+    "contract_version",
+    "approval_id",
+    "status",
+    "requested_by",
+    "action",
+    "resources",
+    "environment",
+    "plan_sha256",
+    "action_sha256",
+    "policy_sha256",
+    "issued_at",
+    "expires_at"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "not": {
+              "const": "pending"
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "decision_by",
+          "decision_at",
+          "reason"
+        ]
+      }
+    }
+  ]
+}

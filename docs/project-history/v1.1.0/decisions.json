@@ -1,0 +1,173 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "approval_ref": "AP-20261003-P1",
+  "source": "approval.md",
+  "decisions": [
+    {
+      "id": "D01",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D02",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D03",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D04",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D05",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D06",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D07",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D08",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D09",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D10",
+      "status": "approved_with_user_conditions",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D11",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D12",
+      "status": "approved_with_user_conditions",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D13",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D14",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D15",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D16",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D17",
+      "status": "planned_separate_approval",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D18",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D19",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    },
+    {
+      "id": "D20",
+      "status": "approved",
+      "implementation_status": "not_complete",
+      "conditions_ref": "approval.md"
+    }
+  ],
+  "deferrals": [
+    {
+      "id": "F01",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F02",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F03",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F04",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F05",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F06",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F07",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F08",
+      "status": "approved_with_retained_minimum"
+    },
+    {
+      "id": "F09",
+      "status": "approved_general_engines_only"
+    },
+    {
+      "id": "F10",
+      "status": "rejected_no_platform_reduction"
+    },
+    {
+      "id": "F11",
+      "status": "planned_separate_approval"
+    }
+  ]
+}

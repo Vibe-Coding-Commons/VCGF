@@ -1,0 +1,2559 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "approval_ref": "AP-20261003-P1",
+  "platforms_retained": [
+    "generic",
+    "claude",
+    "cursor",
+    "lovable",
+    "bolt",
+    "v0",
+    "replit"
+  ],
+  "platforms_to_add": [
+    "chatgpt"
+  ],
+  "phase_authorized": "all_remaining_phases_of_approved_v1_1_plan",
+  "later_phase_authorization": "granted_with_existing_boundaries",
+  "rules": [
+    "No further scope reduction or deferral without explicit approval",
+    "All capabilities in sections 14-39 remain in the approved scope; contract validation is not runtime implementation",
+    "Before packs: freeze technologies, email providers, database engines, storage, test environments and acceptance",
+    "Live authorized sandbox email integration and coordinated database/attachment restore required; mock-only results insufficient",
+    "Recovery objectives justified for persistent production data; no invented defaults",
+    "Discovery/Readiness remains planned and separately approved"
+  ],
+  "backlog": [
+    {
+      "id": "B001",
+      "original_title": "**Token-Efficient Progressive Loading**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/loader.py"
+      ]
+    },
+    {
+      "id": "B002",
+      "original_title": "**Task Router**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/router.py"
+      ]
+    },
+    {
+      "id": "B003",
+      "original_title": "**Runtime Core مصغر**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/bootstrap.md"
+      ]
+    },
+    {
+      "id": "B004",
+      "original_title": "**Control Index**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/registry.py"
+      ]
+    },
+    {
+      "id": "B005",
+      "original_title": "**Control Dependency Graph**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/resolver.py"
+      ]
+    },
+    {
+      "id": "B006",
+      "original_title": "**Risk-Based Loading**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/router.py"
+      ]
+    },
+    {
+      "id": "B007",
+      "original_title": "**Token Budget Policy**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/loader.py"
+      ]
+    },
+    {
+      "id": "B008",
+      "original_title": "**Lean / Standard / Deep Modes**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/router.py"
+      ]
+    },
+    {
+      "id": "B009",
+      "original_title": "**منع تكرار تعليمات Adapter**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_live_adoption_unverified",
+      "implementation_paths": [
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B010",
+      "original_title": "**Runtime vs Documentation Separation**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/loader.py"
+      ]
+    },
+    {
+      "id": "B011",
+      "original_title": "**Project Context Manifest**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_trusted_observation_adapter_missing",
+      "implementation_paths": [
+        "runtime/context.py"
+      ]
+    },
+    {
+      "id": "B012",
+      "original_title": "**Session Handoff**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/context.py"
+      ]
+    },
+    {
+      "id": "B013",
+      "original_title": "**Context Refresh Rules**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/context.py"
+      ]
+    },
+    {
+      "id": "B014",
+      "original_title": "**Evidence Minimal Mode**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B015",
+      "original_title": "**Evidence Standard Mode**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B016",
+      "original_title": "**Evidence Audit Mode**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_reference_tested",
+      "implementation_paths": [
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B017",
+      "original_title": "**Benchmark / Test Suite لـVCGF نفسه**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_suite_not_full_acceptance",
+      "implementation_paths": [
+        "tests/scenarios/"
+      ]
+    },
+    {
+      "id": "B018",
+      "original_title": "**Token Consumption Benchmark**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_bytes_only_model_tokens_unverified",
+      "implementation_paths": [
+        "tests/benchmarks/measure_context.py"
+      ]
+    },
+    {
+      "id": "B019",
+      "original_title": "**Adapter Certification / Verification**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "unverified_live_surfaces",
+      "implementation_paths": [
+        "platforms/"
+      ]
+    },
+    {
+      "id": "B020",
+      "original_title": "**Adapter Update Checker**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_offline_snapshot_comparison",
+      "implementation_paths": [
+        "scripts/check-adapter-updates.py"
+      ]
+    },
+    {
+      "id": "B021",
+      "original_title": "**Single Source → Generated Adapters**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "local_generation_tested_live_adoption_unverified",
+      "implementation_paths": [
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B022",
+      "original_title": "**Adapter Regression Tests**",
+      "source_section": 61,
+      "scope_status": "approved_core",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_equivalence_live_canary_unverified",
+      "implementation_paths": [
+        "tests/scenarios/test_adapters.py"
+      ]
+    },
+    {
+      "id": "B023",
+      "original_title": "OWASP ASVS Crosswalk",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B024",
+      "original_title": "OWASP Web Top 10 Mapping",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B025",
+      "original_title": "OWASP API Security Mapping",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B026",
+      "original_title": "OWASP Agentic Security Mapping",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B027",
+      "original_title": "CWE Mapping",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B028",
+      "original_title": "NIST SSDF Mapping",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B029",
+      "original_title": "NIST AI RMF Mapping",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B030",
+      "original_title": "Threat Modeling Automation",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B031",
+      "original_title": "Abuse Case Modeling",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B032",
+      "original_title": "Security Control Dependency Mapping",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B033",
+      "original_title": "Security Reference Resolver",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B034",
+      "original_title": "Standards Version Tracking",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B035",
+      "original_title": "Mapping Validation CI",
+      "source_section": 62,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F01",
+      "scope_boundary": [
+        "توسعة B023–B035 ومعايير القطاع",
+        "§80 v1.2",
+        "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+        "مراجع مختص ومصادر مثبتة واختبارات"
+      ]
+    },
+    {
+      "id": "B036",
+      "original_title": "Repository Prompt Injection Protection",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B037",
+      "original_title": "Indirect Prompt Injection Protection",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B038",
+      "original_title": "Context Poisoning Detection",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B039",
+      "original_title": "Malicious Instruction File Detection",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B040",
+      "original_title": "Tool Permission Governance",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B041",
+      "original_title": "Tool Allowlist / Denylist",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B042",
+      "original_title": "High-Risk Tool Approval Gates",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B043",
+      "original_title": "Destructive Command Preflight",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B044",
+      "original_title": "Network / External Request Governance",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B045",
+      "original_title": "Secrets Access Governance",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B046",
+      "original_title": "Data Exfiltration Protection",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B047",
+      "original_title": "MCP / Connector Security Controls",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B048",
+      "original_title": "RAG / External Knowledge Trust Controls",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B049",
+      "original_title": "AI Code Execution Safety",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B050",
+      "original_title": "Read-Only Audit Mode",
+      "source_section": 63,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B051",
+      "original_title": "Plan → Approve → Execute Separation",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B052",
+      "original_title": "Inspect Before Modify Enforcement",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B053",
+      "original_title": "Minimum Safe Change Policy",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B054",
+      "original_title": "Patch Size / Change Scope Guard",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B055",
+      "original_title": "No Drive-By Refactoring",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B056",
+      "original_title": "Architecture Drift Detector",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B057",
+      "original_title": "Silent Assumption Registry",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B058",
+      "original_title": "Unknown / Unverified State",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B059",
+      "original_title": "Hallucinated API Detection",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B060",
+      "original_title": "Hallucinated Package Detection",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B061",
+      "original_title": "Typosquatting Dependency Check",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B062",
+      "original_title": "Model Switching Safety",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B063",
+      "original_title": "Independent Self-Review Pass",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B064",
+      "original_title": "Optional Second-Verifier Agent",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B065",
+      "original_title": "Change Manifest Before Execution",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B066",
+      "original_title": "Rollback Plan for High-Risk Changes",
+      "source_section": 64,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B067",
+      "original_title": "Profile Inheritance",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B068",
+      "original_title": "Custom Profiles",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B069",
+      "original_title": "Organization Overlay",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B070",
+      "original_title": "Project Overlay",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B071",
+      "original_title": "Regulatory Overlay",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B072",
+      "original_title": "Data Sensitivity Overlay",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B073",
+      "original_title": "Environment Profiles: Dev / Staging / Production",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B074",
+      "original_title": "Automatic Profile Recommendation مع موافقة المستخدم",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B075",
+      "original_title": "Documented Control Overrides",
+      "source_section": 65,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F02",
+      "scope_boundary": [
+        "تركيب كامل B067–B075",
+        "§80 v2",
+        "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+        "اعتماد semantics وfixtures تعارض"
+      ]
+    },
+    {
+      "id": "B076",
+      "original_title": "Machine-Readable Evidence Schema",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B077",
+      "original_title": "Evidence Hashing",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B078",
+      "original_title": "Evidence Provenance",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B079",
+      "original_title": "Evidence Freshness",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B080",
+      "original_title": "Evidence Pack Generator",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B081",
+      "original_title": "Automatic Conformance Report",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B082",
+      "original_title": "JSON Conformance Output",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B083",
+      "original_title": "Exception Expiration",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B084",
+      "original_title": "Exception Owner",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B085",
+      "original_title": "Compensating Control Tracking",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B086",
+      "original_title": "NOT-APPLICABLE Reason Required",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B087",
+      "original_title": "UNSUPPORTED Control Handling",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B088",
+      "original_title": "Release Attestation Package",
+      "source_section": 66,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_evidence_gate_trusted_host_integration_required",
+      "implementation_paths": [
+        "runtime/evidence.py",
+        "runtime/approval.py",
+        "runtime/evidence_pack.py"
+      ]
+    },
+    {
+      "id": "B089",
+      "original_title": "Add Login",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B090",
+      "original_title": "Password Reset",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B091",
+      "original_title": "Add Admin Role",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B092",
+      "original_title": "Upload Customer Files",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B093",
+      "original_title": "Add Payment Integration",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B094",
+      "original_title": "Database Migration",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B095",
+      "original_title": "Store Personal Data",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B096",
+      "original_title": "Add Third-Party API",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B097",
+      "original_title": "Install npm Package",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B098",
+      "original_title": "Emergency Production Fix",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B099",
+      "original_title": "Delete Customer Data",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B100",
+      "original_title": "Change Authorization Model",
+      "source_section": 67,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "synthetic_router_case_tested_product_flow_unverified",
+      "implementation_paths": [
+        "examples/runtime/",
+        "tests/scenarios/test_runtime.py"
+      ]
+    },
+    {
+      "id": "B101",
+      "original_title": "**Adapter Compatibility Matrix**",
+      "source_section": 68,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B102",
+      "original_title": "**Adapter Capability Detection**",
+      "source_section": 68,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B103",
+      "original_title": "**Graceful Degradation**",
+      "source_section": 68,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B104",
+      "original_title": "**Generic Adapter Fallback**",
+      "source_section": 68,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B105",
+      "original_title": "**Adapter Migration Guide**",
+      "source_section": 68,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B106",
+      "original_title": "**Adapter Deprecation Policy**",
+      "source_section": 68,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B107",
+      "original_title": "**Canary Tests بعد تحديث المنصة**",
+      "source_section": 68,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B108",
+      "original_title": "`vcgf init`",
+      "source_section": 69,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F03",
+      "scope_boundary": [
+        "B108/B109/B111/B116–B118 وواجهة CLI واسعة",
+        "§58/§80",
+        "أوامر route/validate/explain/evidence الأساسية الآن؛ التثبيت/المعالج الواسع مرشح تأجيل",
+        "عقود runtime مستقرة واختبار عدم إتلاف ملفات المستخدم"
+      ]
+    },
+    {
+      "id": "B109",
+      "original_title": "`vcgf doctor`",
+      "source_section": 69,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F03",
+      "scope_boundary": [
+        "B108/B109/B111/B116–B118 وواجهة CLI واسعة",
+        "§58/§80",
+        "أوامر route/validate/explain/evidence الأساسية الآن؛ التثبيت/المعالج الواسع مرشح تأجيل",
+        "عقود runtime مستقرة واختبار عدم إتلاف ملفات المستخدم"
+      ]
+    },
+    {
+      "id": "B110",
+      "original_title": "`vcgf validate`",
+      "source_section": 69,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B111",
+      "original_title": "`vcgf audit`",
+      "source_section": 69,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F03",
+      "scope_boundary": [
+        "B108/B109/B111/B116–B118 وواجهة CLI واسعة",
+        "§58/§80",
+        "أوامر route/validate/explain/evidence الأساسية الآن؛ التثبيت/المعالج الواسع مرشح تأجيل",
+        "عقود runtime مستقرة واختبار عدم إتلاف ملفات المستخدم"
+      ]
+    },
+    {
+      "id": "B112",
+      "original_title": "`vcgf controls`",
+      "source_section": 69,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B113",
+      "original_title": "`vcgf explain VCGF-IAM-003`",
+      "source_section": 69,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B114",
+      "original_title": "`vcgf evidence`",
+      "source_section": 69,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B115",
+      "original_title": "`vcgf release-check`",
+      "source_section": 69,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B116",
+      "original_title": "**Interactive Setup Wizard**",
+      "source_section": 69,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F03",
+      "scope_boundary": [
+        "B108/B109/B111/B116–B118 وواجهة CLI واسعة",
+        "§58/§80",
+        "أوامر route/validate/explain/evidence الأساسية الآن؛ التثبيت/المعالج الواسع مرشح تأجيل",
+        "عقود runtime مستقرة واختبار عدم إتلاف ملفات المستخدم"
+      ]
+    },
+    {
+      "id": "B117",
+      "original_title": "**Automatic Adapter Installation**",
+      "source_section": 69,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F03",
+      "scope_boundary": [
+        "B108/B109/B111/B116–B118 وواجهة CLI واسعة",
+        "§58/§80",
+        "أوامر route/validate/explain/evidence الأساسية الآن؛ التثبيت/المعالج الواسع مرشح تأجيل",
+        "عقود runtime مستقرة واختبار عدم إتلاف ملفات المستخدم"
+      ]
+    },
+    {
+      "id": "B118",
+      "original_title": "**Project Bootstrap Generator**",
+      "source_section": 69,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F03",
+      "scope_boundary": [
+        "B108/B109/B111/B116–B118 وواجهة CLI واسعة",
+        "§58/§80",
+        "أوامر route/validate/explain/evidence الأساسية الآن؛ التثبيت/المعالج الواسع مرشح تأجيل",
+        "عقود runtime مستقرة واختبار عدم إتلاف ملفات المستخدم"
+      ]
+    },
+    {
+      "id": "B119",
+      "original_title": "**Official VCGF ChatGPT Skill**",
+      "source_section": 70,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "repository_skill_source_created_live_unverified",
+      "implementation_paths": [
+        "platforms/chatgpt/skills/vcgf/SKILL.md"
+      ]
+    },
+    {
+      "id": "B120",
+      "original_title": "**Skill Progressive Loading**",
+      "source_section": 70,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B121",
+      "original_title": "**Claude CLAUDE.md Generator**",
+      "source_section": 70,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B122",
+      "original_title": "**Cursor Rules Generator**",
+      "source_section": 70,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B123",
+      "original_title": "**Lovable Knowledge Generator**",
+      "source_section": 70,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B124",
+      "original_title": "**Platform-Specific Compact Runtime**",
+      "source_section": 70,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B125",
+      "original_title": "**Cross-Platform Runtime Equivalence Tests**",
+      "source_section": 70,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_or_pending_live_surface_acceptance",
+      "implementation_paths": [
+        "platforms/",
+        "scripts/generate-adapter-rules.py"
+      ]
+    },
+    {
+      "id": "B126",
+      "original_title": "**VCGF RFC Process**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B127",
+      "original_title": "**ADR — Architecture Decision Records**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B128",
+      "original_title": "**Control Lifecycle**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B129",
+      "original_title": "**Control Deprecation Policy**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B130",
+      "original_title": "**Framework Compatibility Policy**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B131",
+      "original_title": "**Long-Term Support Releases**",
+      "source_section": 71,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F04",
+      "scope_boundary": [
+        "B131/B135/B136",
+        "حوكمة مستقبلية",
+        "لا تعهد LTS/cadence دون موارد؛ migration guide الآن ومساعد آلي لاحقًا",
+        "سياسة دعم وفريق ومسؤول"
+      ]
+    },
+    {
+      "id": "B132",
+      "original_title": "**Domain Maintainers**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B133",
+      "original_title": "**Security Reviewers**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B134",
+      "original_title": "**Public Roadmap**",
+      "source_section": 71,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started"
+    },
+    {
+      "id": "B135",
+      "original_title": "**Release Cadence**",
+      "source_section": 71,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F04",
+      "scope_boundary": [
+        "B131/B135/B136",
+        "حوكمة مستقبلية",
+        "لا تعهد LTS/cadence دون موارد؛ migration guide الآن ومساعد آلي لاحقًا",
+        "سياسة دعم وفريق ومسؤول"
+      ]
+    },
+    {
+      "id": "B136",
+      "original_title": "**Migration Assistant بين الإصدارات**",
+      "source_section": 71,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F04",
+      "scope_boundary": [
+        "B131/B135/B136",
+        "حوكمة مستقبلية",
+        "لا تعهد LTS/cadence دون موارد؛ migration guide الآن ومساعد آلي لاحقًا",
+        "سياسة دعم وفريق ومسؤول"
+      ]
+    },
+    {
+      "id": "B137",
+      "original_title": "**Why was this Control loaded?**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B138",
+      "original_title": "**Show Active Context**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B139",
+      "original_title": "**Estimated Context Cost**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B140",
+      "original_title": "**Dry Run Mode**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B141",
+      "original_title": "**Explain Mode**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B142",
+      "original_title": "**Beginner Mode**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B143",
+      "original_title": "**Expert Mode**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B144",
+      "original_title": "**Quiet Mode**",
+      "source_section": 72,
+      "scope_status": "approved_v1_1",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "partial_local_cli",
+      "implementation_paths": [
+        "scripts/vcgf.py"
+      ]
+    },
+    {
+      "id": "B145",
+      "original_title": "**Saudi PDPL Pack**",
+      "source_section": 73,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F05",
+      "scope_boundary": [
+        "B145–B150",
+        "§60 يصرح Extensions مستقبلية",
+        "خارج Core، مستقبل كما ورد؛ ليست محذوفة",
+        "مراجعة اختصاصية قانونية/امتثال عند تنفيذها"
+      ]
+    },
+    {
+      "id": "B146",
+      "original_title": "**GDPR Pack**",
+      "source_section": 73,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F05",
+      "scope_boundary": [
+        "B145–B150",
+        "§60 يصرح Extensions مستقبلية",
+        "خارج Core، مستقبل كما ورد؛ ليست محذوفة",
+        "مراجعة اختصاصية قانونية/امتثال عند تنفيذها"
+      ]
+    },
+    {
+      "id": "B147",
+      "original_title": "**HIPAA-oriented Pack**",
+      "source_section": 73,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F05",
+      "scope_boundary": [
+        "B145–B150",
+        "§60 يصرح Extensions مستقبلية",
+        "خارج Core، مستقبل كما ورد؛ ليست محذوفة",
+        "مراجعة اختصاصية قانونية/امتثال عند تنفيذها"
+      ]
+    },
+    {
+      "id": "B148",
+      "original_title": "**PCI DSS Mapping**",
+      "source_section": 73,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F05",
+      "scope_boundary": [
+        "B145–B150",
+        "§60 يصرح Extensions مستقبلية",
+        "خارج Core، مستقبل كما ورد؛ ليست محذوفة",
+        "مراجعة اختصاصية قانونية/امتثال عند تنفيذها"
+      ]
+    },
+    {
+      "id": "B149",
+      "original_title": "**ISO 27001 Mapping**",
+      "source_section": 73,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F05",
+      "scope_boundary": [
+        "B145–B150",
+        "§60 يصرح Extensions مستقبلية",
+        "خارج Core، مستقبل كما ورد؛ ليست محذوفة",
+        "مراجعة اختصاصية قانونية/امتثال عند تنفيذها"
+      ]
+    },
+    {
+      "id": "B150",
+      "original_title": "**SOC 2 Mapping**",
+      "source_section": 73,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F05",
+      "scope_boundary": [
+        "B145–B150",
+        "§60 يصرح Extensions مستقبلية",
+        "خارج Core، مستقبل كما ورد؛ ليست محذوفة",
+        "مراجعة اختصاصية قانونية/امتثال عند تنفيذها"
+      ]
+    },
+    {
+      "id": "B151",
+      "original_title": "Documentation Website",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B152",
+      "original_title": "Searchable Controls Website",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B153",
+      "original_title": "Interactive Control Explorer",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B154",
+      "original_title": "Visual Architecture Diagrams",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B155",
+      "original_title": "Control Dependency Graph UI",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B156",
+      "original_title": "Adapter Comparison Page",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B157",
+      "original_title": "Web-Based VCGF Configurator",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B158",
+      "original_title": "Online Profile Builder",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B159",
+      "original_title": "Download Generator",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B160",
+      "original_title": "VS Code Extension",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B161",
+      "original_title": "Cursor Extension / Integration إن أمكن",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B162",
+      "original_title": "GitHub App",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B163",
+      "original_title": "GitLab Integration",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B164",
+      "original_title": "Marketplace Distribution",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B165",
+      "original_title": "npm Package",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B166",
+      "original_title": "Python Package",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B167",
+      "original_title": "Docker Image",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B168",
+      "original_title": "MCP Server لـVCGF",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B169",
+      "original_title": "Public API / SDK",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B170",
+      "original_title": "JSON Control Registry",
+      "source_section": 74,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F06",
+      "scope_boundary": [
+        "B151–B170",
+        "§74 ليست أولوية الآن",
+        "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+        "إثبات المحرك، threat model للتوزيع"
+      ]
+    },
+    {
+      "id": "B171",
+      "original_title": "شعار وهوية موحدة أفضل",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B172",
+      "original_title": "موقع مثل `vcgf.dev`",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B173",
+      "original_title": "Documentation Search",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B174",
+      "original_title": "فيديو Quick Start",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B175",
+      "original_title": "أمثلة YouTube",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B176",
+      "original_title": "Interactive Playground",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B177",
+      "original_title": "Demo Repository",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B178",
+      "original_title": "Starter Projects",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B179",
+      "original_title": "Case Studies",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B180",
+      "original_title": "Community Discord / Discussions",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B181",
+      "original_title": "GitHub Discussions",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B182",
+      "original_title": "Contributor Badges",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B183",
+      "original_title": "Release Newsletter",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B184",
+      "original_title": "دعم لغات إضافية بجانب العربية والإنجليزية",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B185",
+      "original_title": "مقارنة Before / After حقيقية",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B186",
+      "original_title": "Public Adoption Examples",
+      "source_section": 75,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F07",
+      "scope_boundary": [
+        "B171–B186",
+        "§75 انتشار",
+        "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+        "بيانات حقيقية وموافقة نشر وأثر مثبت"
+      ]
+    },
+    {
+      "id": "B187",
+      "original_title": "GUI Desktop App",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B188",
+      "original_title": "Mobile App لـVCGF",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B189",
+      "original_title": "Browser Extension",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B190",
+      "original_title": "Public Leaderboard للمشاريع",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B191",
+      "original_title": "Gamification",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B192",
+      "original_title": "شهادات PDF تلقائية",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B193",
+      "original_title": "Commercial Certification Program",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B194",
+      "original_title": "Training Academy",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B195",
+      "original_title": "Official Examination",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B196",
+      "original_title": "Partner Program",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    },
+    {
+      "id": "B197",
+      "original_title": "Consultant Registry",
+      "source_section": 76,
+      "scope_status": "approved_bounded_deferral_with_retained_requirements",
+      "scope_detail_ref": "approved-analysis.md — sections 5 and 6; overridden by approval.md",
+      "v1_1_delivery_status": "not_started",
+      "deferral_ref": "F08",
+      "scope_boundary": [
+        "B187–B197",
+        "§76 آخر الأولويات",
+        "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+        "قرار منتج مستقل وسياسة نزاهة"
+      ]
+    }
+  ],
+  "approved_deferral_boundaries": {
+    "F01": [
+      "توسعة B023–B035 ومعايير القطاع",
+      "§80 v1.2",
+      "حد Mapping اللازم للحزم الحالية الآن؛ تغطية شاملة لاحقًا، لا ادعاء اكتمال",
+      "مراجع مختص ومصادر مثبتة واختبارات"
+    ],
+    "F02": [
+      "تركيب كامل B067–B075",
+      "§80 v2",
+      "عقد وأسبقية وتوصية profile الآن؛ Organization composer كامل لاحقًا",
+      "اعتماد semantics وfixtures تعارض"
+    ],
+    "F03": [
+      "B108/B109/B111/B116–B118 وواجهة CLI واسعة",
+      "§58/§80",
+      "أوامر route/validate/explain/evidence الأساسية الآن؛ التثبيت/المعالج الواسع مرشح تأجيل",
+      "عقود runtime مستقرة واختبار عدم إتلاف ملفات المستخدم"
+    ],
+    "F04": [
+      "B131/B135/B136",
+      "حوكمة مستقبلية",
+      "لا تعهد LTS/cadence دون موارد؛ migration guide الآن ومساعد آلي لاحقًا",
+      "سياسة دعم وفريق ومسؤول"
+    ],
+    "F05": [
+      "B145–B150",
+      "§60 يصرح Extensions مستقبلية",
+      "خارج Core، مستقبل كما ورد؛ ليست محذوفة",
+      "مراجعة اختصاصية قانونية/امتثال عند تنفيذها"
+    ],
+    "F06": [
+      "B151–B170",
+      "§74 ليست أولوية الآن",
+      "واجهات/توزيع عام لاحقًا؛ B170 internal registry استثناء لازم الآن",
+      "إثبات المحرك، threat model للتوزيع"
+    ],
+    "F07": [
+      "B171–B186",
+      "§75 انتشار",
+      "مستقبل؛ B185 Before/After داخلي جزء Benchmark الآن، نشر دراسة لاحقًا",
+      "بيانات حقيقية وموافقة نشر وأثر مثبت"
+    ],
+    "F08": [
+      "B187–B197",
+      "§76 آخر الأولويات",
+      "مستقبل؛ لا شهادات أو شارات تبنى تلقائيًا",
+      "قرار منتج مستقل وسياسة نزاهة"
+    ],
+    "F09": [
+      "محركات بريد/Backup عامة كاملة",
+      "توصية R21 لا موافقة أصلية",
+      "مرشح تأجيل **فقط** إذا اعتمدت D10؛ تبقى حزم القدرات وتكاملات الإثبات",
+      "حسم stack/engines/providers وتشغيلها"
+    ],
+    "F10": [
+      "تقليل منصات التحقق إلى اثنتين +Generic",
+      "توصية المراجعة",
+      "غير معتمد وغير مفترض في النطاق الموصى به",
+      "اختيار صريح للأرقام/الأسطح التي تؤجل"
+    ],
+    "F11": [
+      "Discovery/Readiness الشامل",
+      "R18 والسياق الأوسع",
+      "إضافة مستقلة تحتاج D17؛ لا توصف كمتطلب أصلي مفقود",
+      "تعريف المستندات ومقابلة الاستكمال وبواباتها"
+    ]
+  },
+  "baseline_status": "Existing v1.0 implementation preserved; v1_1_delivery_status describes new approved work only",
+  "pack_gate": {
+    "status": "required_before_pack_phase",
+    "email_minimum": [
+      "Generic SMTP over TLS",
+      "Microsoft 365 OAuth 2.0"
+    ],
+    "preferred_when_appropriate": "Microsoft Graph",
+    "freeze": [
+      "technologies_and_versions",
+      "email_providers",
+      "database_engines",
+      "storage_types",
+      "included_capabilities",
+      "test_environments",
+      "acceptance_criteria"
+    ],
+    "evidence": [
+      "authorized_real_email_integration",
+      "backup_restore",
+      "database_attachment_consistency"
+    ],
+    "unavailable_result": "blocker_or_Unverified"
+  },
+  "continuation_approval_ref": "AP-20261003-ALL",
+  "status_rule": "local_reference_tested applies only to listed Python component and synthetic/local evidence; no release acceptance or universal platform/product claim"
+}

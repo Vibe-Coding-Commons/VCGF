@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+capability_id: sessions
+description: Master sections [22, 23, 24, 25]; task-specific requirements, not standalone
+  product certification
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions: []
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-IAM-003
+- VCGF-DATA-006
+- VCGF-API-004
+dependencies:
+- relation: requires
+  targets:
+  - audit
+  reason: sessions requires evaluation of audit
+required_evidence:
+- positive and negative tests scoped to capability
+- implementation and environment reference
+exception_policy: Explicit owner-approved, expiring exception; no automatic compliance

@@ -1,0 +1,21 @@
+<!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
+
+# Opt-in reference runtime — development checkpoint
+
+Install the existing requirements-dev.txt in an isolated Python 3.12 environment. Run `python scripts/vcgf.py --help`. Commands are route, validate, controls, explain, handoff, evidence and release-check. No command executes a project patch, deployment, mail or backup.
+
+`route TASK.json CONTEXT.json --project-root PATH --dry-run` returns a RouteResult, selected capabilities and active_context. The CLI is always read-only; dry-run makes that intent explicit. `--quiet` omits loaded text, never blockers or approvals. `--presentation beginner` adds next-step help. ar/en/auto preferences belong to the independent preferences contract; `runtime.context.preferences_prompt` asks only if confirmation is missing. Language does not alter project UI/code conventions.
+
+Task fields: task_id, intent, classification_confirmed, profile, profile_confirmed, mode, budget, inspection. Optional overlay_add_controls, overlay_remove_controls and risk_signals. Accepted intents are listed in runtime/routing-policy.yaml. Classify after inspection: this is deterministic routing over an explicitly classified task, not an arbitrary-language parser. Unknown intents are rejected. Production, destructive actions and sensitive changes raise risk. Task coverage differs from project Profile coverage; project/release evidence must cover every required Profile control.
+
+Repository facts are refreshed only when source bytes change, observation expires or the fact is unknown. Fact values and inspections are assertions from the caller; hashes do not prove that a human inspected the project or that an asserted interpretation is true. An authenticated host must own context and classification at a sensitive execution boundary. External/user facts need a trusted observation adapter and currently remain unknown. Session handoff always requires revalidation.
+
+The dependency resolver backtracks through alternatives, rejects cycles/missing references/conflicts, treats unknown separately from false and has a bounded search limit. requires/requires_when/any_of drive selection; recommends/provided_by retain informational semantics. Overlay removal never weakens canonical requirements. Loading is confined to the trusted root, rejects symlinks and stale hashes, deduplicates file paths and blocks instead of dropping controls when a budget cannot fit. Budget cost is a UTF-8 byte estimate, not measured LLM tokens.
+
+`generate-runtime-registry.py` writes a derived registry; `--check` reads only. The runtime builds from canonical sources, so the derived file never becomes a second policy authority. `generate-adapter-rules.py` creates one candidate entry per platform and `--check` verifies source equivalence. Opt-in installation must select one entry, not stack legacy copies and generated rules. Local equivalence is not a platform experiment.
+
+Approval and evidence gates require host-owned identity/review callbacks. A callback written in an untrusted project is not a trust anchor. The CLI deliberately cannot return authenticated release PASS without a host integration. Gate authentication must validate signer, authority, scoped action/resource/digests and revocation, immediately before the sensitive effect; the host must also handle replay/TOCTOU and lock execution scope. The reference guarded_call demonstrates ordering, not a universal tool broker.
+
+Evidence files are verified locally against their hashes and current validity, required Profile coverage, findings and exception expiry/review date. N/A requires a reason assessed by the trusted reviewer. An active exception yields CONDITIONAL rather than unconditional PASS. A reviewer must authenticate exception ownership and its approval reference. Minimal/standard/audit views never remove controls, unresolved findings or exceptions from the decision. No file validator proves a test actually ran.
+
+Protected canonical controls, Profiles and legal files remain unchanged. VERSION stays 1.0.0 until the entire target-1.1 acceptance scope is satisfied. No deployment or publication permission is inferred from any result.

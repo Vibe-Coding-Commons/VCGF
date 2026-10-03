@@ -1,0 +1,2552 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "bootstrap": {
+    "path": "runtime/bootstrap.md",
+    "sha256": "096d2f9db07bc6c71fda7097b253bad1a92ba4a3f8ffb1ff2341d13dbf8f2108"
+  },
+  "capabilities": [
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "admin",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IAM-006",
+        "VCGF-IAM-003",
+        "VCGF-GOV-002"
+      ],
+      "dependencies": [
+        {
+          "reason": "admin requires evaluation of identity",
+          "relation": "requires",
+          "targets": [
+            "identity"
+          ]
+        },
+        {
+          "reason": "admin requires evaluation of strong-auth",
+          "relation": "requires",
+          "targets": [
+            "strong-auth"
+          ]
+        },
+        {
+          "reason": "admin requires evaluation of step-up",
+          "relation": "requires",
+          "targets": [
+            "step-up"
+          ]
+        }
+      ],
+      "description": "Master sections [18, 19, 20]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "api",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-API-001",
+        "VCGF-API-003",
+        "VCGF-API-004",
+        "VCGF-API-005"
+      ],
+      "dependencies": [
+        {
+          "reason": "api requires evaluation of fields",
+          "relation": "requires",
+          "targets": [
+            "fields"
+          ]
+        }
+      ],
+      "description": "Master sections [28]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "audit",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-AUDIT-001",
+        "VCGF-AUDIT-002",
+        "VCGF-PRIV-001"
+      ],
+      "dependencies": [],
+      "description": "Master sections [21, 23, 34]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "authorization",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IAM-007",
+        "VCGF-ARCH-001",
+        "VCGF-TEST-001"
+      ],
+      "dependencies": [
+        {
+          "reason": "authorization requires evaluation of identity",
+          "relation": "requires",
+          "targets": [
+            "identity"
+          ]
+        },
+        {
+          "reason": "authorization requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [19, 28]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "backup-restore",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-DATA-001",
+        "VCGF-OPS-003",
+        "VCGF-REL-003"
+      ],
+      "dependencies": [
+        {
+          "reason": "backup-restore requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [29, 30, 31, 32, 33, 34, 35, 38, 39]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "database",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-DB-001",
+        "VCGF-DB-002",
+        "VCGF-DB-005",
+        "VCGF-DB-006"
+      ],
+      "dependencies": [
+        {
+          "reason": "database requires evaluation of backup-restore",
+          "relation": "requires",
+          "targets": [
+            "backup-restore"
+          ]
+        }
+      ],
+      "description": "Master sections [29, 30, 35]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "deletion",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-PRIV-004",
+        "VCGF-GOV-002"
+      ],
+      "dependencies": [
+        {
+          "reason": "deletion requires evaluation of database",
+          "relation": "requires",
+          "targets": [
+            "database"
+          ]
+        },
+        {
+          "reason": "deletion requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [14, 34]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "development_agent"
+      ],
+      "capability_id": "development-agent",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-AI-001",
+        "VCGF-AI-002",
+        "VCGF-AI-004",
+        "VCGF-AI-006",
+        "VCGF-AI-008",
+        "VCGF-AI-009",
+        "VCGF-GOV-005"
+      ],
+      "dependencies": [],
+      "description": "Master sections [46, 45]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "email",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-API-005",
+        "VCGF-DATA-006",
+        "VCGF-SECR-001",
+        "VCGF-PRIV-001"
+      ],
+      "dependencies": [
+        {
+          "reason": "email requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [21]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "fields",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-SEC-001",
+        "VCGF-SEC-003",
+        "VCGF-SEC-004",
+        "VCGF-SEC-005",
+        "VCGF-DB-002",
+        "VCGF-TEST-005"
+      ],
+      "dependencies": [],
+      "description": "Master sections [14]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "files",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-FILE-001",
+        "VCGF-FILE-002",
+        "VCGF-SEC-002"
+      ],
+      "dependencies": [
+        {
+          "reason": "files requires evaluation of fields",
+          "relation": "requires",
+          "targets": [
+            "fields"
+          ]
+        },
+        {
+          "reason": "files requires evaluation of backup-restore",
+          "relation": "requires",
+          "targets": [
+            "backup-restore"
+          ]
+        }
+      ],
+      "description": "Master sections [36, 37, 38, 39]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "identity",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IAM-001",
+        "VCGF-IAM-002",
+        "VCGF-IAM-004",
+        "VCGF-IAM-007"
+      ],
+      "dependencies": [
+        {
+          "reason": "identity requires evaluation of sessions",
+          "relation": "requires",
+          "targets": [
+            "sessions"
+          ]
+        },
+        {
+          "reason": "identity requires evaluation of fields",
+          "relation": "requires",
+          "targets": [
+            "fields"
+          ]
+        },
+        {
+          "reason": "identity requires evaluation of ux-accessibility",
+          "relation": "requires",
+          "targets": [
+            "ux-accessibility"
+          ]
+        },
+        {
+          "reason": "identity requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        },
+        {
+          "condition": {
+            "fact": "auth-model",
+            "operator": "equals",
+            "value": "local-password"
+          },
+          "reason": "Local passwords need recovery; SSO delegates recovery to identity provider",
+          "relation": "requires_when",
+          "targets": [
+            "password-recovery"
+          ]
+        }
+      ],
+      "description": "Master sections [16]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "incident",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IR-001",
+        "VCGF-IR-002",
+        "VCGF-IR-003",
+        "VCGF-OPS-002",
+        "VCGF-REL-003"
+      ],
+      "dependencies": [
+        {
+          "reason": "incident requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        },
+        {
+          "reason": "incident requires evaluation of backup-restore",
+          "relation": "requires",
+          "targets": [
+            "backup-restore"
+          ]
+        }
+      ],
+      "description": "Master sections [34, 35]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "password-recovery",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IAM-005",
+        "VCGF-TEST-006"
+      ],
+      "dependencies": [
+        {
+          "reason": "password-recovery requires evaluation of email",
+          "relation": "requires",
+          "targets": [
+            "email"
+          ]
+        },
+        {
+          "reason": "password-recovery requires evaluation of sessions",
+          "relation": "requires",
+          "targets": [
+            "sessions"
+          ]
+        },
+        {
+          "reason": "password-recovery requires evaluation of fields",
+          "relation": "requires",
+          "targets": [
+            "fields"
+          ]
+        },
+        {
+          "reason": "password-recovery requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [17]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "payment",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-API-002",
+        "VCGF-API-004",
+        "VCGF-DATA-006"
+      ],
+      "dependencies": [
+        {
+          "reason": "payment requires evaluation of api",
+          "relation": "requires",
+          "targets": [
+            "api"
+          ]
+        },
+        {
+          "reason": "payment requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [14, 28]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "privacy",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-PRIV-002",
+        "VCGF-PRIV-003",
+        "VCGF-PRIV-004",
+        "VCGF-DATA-002"
+      ],
+      "dependencies": [
+        {
+          "reason": "privacy requires evaluation of fields",
+          "relation": "requires",
+          "targets": [
+            "fields"
+          ]
+        }
+      ],
+      "description": "Master sections [14, 36]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "product-ai",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-AI-008",
+        "VCGF-ARCH-002",
+        "VCGF-SECR-001"
+      ],
+      "dependencies": [
+        {
+          "reason": "product-ai requires evaluation of api",
+          "relation": "requires",
+          "targets": [
+            "api"
+          ]
+        }
+      ],
+      "description": "Master sections [28, 46]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [
+          {
+            "fact": "public-indexable",
+            "operator": "equals",
+            "value": true
+          }
+        ],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "public-discovery",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-TEST-002"
+      ],
+      "dependencies": [],
+      "description": "Master sections [27]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "script-protection",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-DEP-001",
+        "VCGF-DEP-002",
+        "VCGF-DEP-003",
+        "VCGF-DEP-004",
+        "VCGF-REL-005",
+        "VCGF-SECR-001"
+      ],
+      "dependencies": [],
+      "description": "Master sections [26]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "sessions",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IAM-003",
+        "VCGF-DATA-006",
+        "VCGF-API-004"
+      ],
+      "dependencies": [
+        {
+          "reason": "sessions requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [22, 23, 24, 25]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "step-up",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IAM-003",
+        "VCGF-IAM-006"
+      ],
+      "dependencies": [
+        {
+          "reason": "step-up requires evaluation of sessions",
+          "relation": "requires",
+          "targets": [
+            "sessions"
+          ]
+        },
+        {
+          "reason": "step-up requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [19]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "strong-auth",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-IAM-003",
+        "VCGF-IAM-005"
+      ],
+      "dependencies": [
+        {
+          "reason": "strong-auth requires evaluation of sessions",
+          "relation": "requires",
+          "targets": [
+            "sessions"
+          ]
+        },
+        {
+          "reason": "strong-auth requires evaluation of audit",
+          "relation": "requires",
+          "targets": [
+            "audit"
+          ]
+        }
+      ],
+      "description": "Master sections [20]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "ux-accessibility",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-TEST-002"
+      ],
+      "dependencies": [],
+      "description": "Master sections [15]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    }
+  ],
+  "controls": {
+    "VCGF-AI-001": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-001",
+      "path": "controls/ai-governance/vcgf-ai-001-inspect-before-generate.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "8ef80c8dc447892c9253741e6bb487117d1c40323087163f8c2e31f679e1344c",
+      "status": "normative",
+      "title": "Inspect Before Generate"
+    },
+    "VCGF-AI-002": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-002",
+      "path": "controls/ai-governance/vcgf-ai-002-no-silent-assumptions.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "3f829f03b326fb1dc1da9cd480dd0da2d8e6aacc49643e90472403c118f2d600",
+      "status": "normative",
+      "title": "No Silent Assumptions"
+    },
+    "VCGF-AI-003": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-003",
+      "path": "controls/ai-governance/vcgf-ai-003-architecture-drift-prevention.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "0db33381b645bdd07edec447b92a896dfda817df4000bdd4079ee9294fbca6e6",
+      "status": "normative",
+      "title": "Architecture Drift Prevention"
+    },
+    "VCGF-AI-004": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-004",
+      "path": "controls/ai-governance/vcgf-ai-004-unauthorized-refactoring-and-feature-change-prevention.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST NOT",
+      "sha256": "02b0fb563c6c67b3314cf5da2c22da81c2daf4908edd947e812d87aa9a66b4a2",
+      "status": "normative",
+      "title": "Unauthorized Refactoring and Feature Change Prevention"
+    },
+    "VCGF-AI-005": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-005",
+      "path": "controls/ai-governance/vcgf-ai-005-hallucinated-api-and-dependency-prevention.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "da0c2f006def6befdd4e52cd262212cebd83f07bf00dbfec0248b1a184227de1",
+      "status": "normative",
+      "title": "Hallucinated API and Dependency Prevention"
+    },
+    "VCGF-AI-006": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-006",
+      "path": "controls/ai-governance/vcgf-ai-006-sensitive-change-guardrails.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "89a5ee99c7013e496de6b91b1dff80b15ab71f6d2c6e37fae96eb25437636240",
+      "status": "normative",
+      "title": "Sensitive Change Guardrails"
+    },
+    "VCGF-AI-007": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-007",
+      "path": "controls/ai-governance/vcgf-ai-007-security-control-tamper-prevention.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST NOT",
+      "sha256": "0eef916b397fd0161e34168104cbbe7857c2e4b1d1c5acf268baf25eb539edbe",
+      "status": "normative",
+      "title": "Security Control Tamper Prevention"
+    },
+    "VCGF-AI-008": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-008",
+      "path": "controls/ai-governance/vcgf-ai-008-prompt-and-tool-injection-resilience.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "1ddb814109ef0afcd5d9be8ad7a54bb5983e845ef72bffe11b2e7380b7968b0c",
+      "status": "normative",
+      "title": "Prompt and Tool Injection Resilience"
+    },
+    "VCGF-AI-009": {
+      "domain": "ai-governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AI-009",
+      "path": "controls/ai-governance/vcgf-ai-009-persistent-context-governance.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "dd8ebe67206660b0c8be671c29f81f58147f5c73ecd1b51bc7e9ec35e0d67bc5",
+      "status": "normative",
+      "title": "Persistent Context Governance"
+    },
+    "VCGF-API-001": {
+      "domain": "api",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-API-001",
+      "path": "controls/api/vcgf-api-001-api-and-server-function-security.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "0d89543e922de1ee6a0575688b270fccc6c2464cfbffeaf80f5e1981da180aa3",
+      "status": "normative",
+      "title": "API and Server Function Security"
+    },
+    "VCGF-API-002": {
+      "domain": "api",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-API-002",
+      "path": "controls/api/vcgf-api-002-business-logic-integrity.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "a83b9807d7ee44915481c70173cefb3988c3eafbceebe64aaf78e30c205870d0",
+      "status": "normative",
+      "title": "Business Logic Integrity"
+    },
+    "VCGF-API-003": {
+      "domain": "api",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-API-003",
+      "path": "controls/api/vcgf-api-003-rate-limiting-and-abuse-prevention.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "923656f09e21affe54244a07a95b9747f426908bc0323b948ac6613ed13731bd",
+      "status": "normative",
+      "title": "Rate Limiting and Abuse Prevention"
+    },
+    "VCGF-API-004": {
+      "domain": "api",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-API-004",
+      "path": "controls/api/vcgf-api-004-ssrf-csrf-cors-and-webhook-security.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "7e591c4ca28109dc22dc8b6625d7c0caf58ec0f2327f98a6a95fa45486405389",
+      "status": "normative",
+      "title": "SSRF, CSRF, CORS and Webhook Security"
+    },
+    "VCGF-API-005": {
+      "domain": "api",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-API-005",
+      "path": "controls/api/vcgf-api-005-third-party-integration-security.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "f985ad4404a9c31c3f3b0fdfd91a477e2a1d78592c9e9b7129ac8231e988e35f",
+      "status": "normative",
+      "title": "Third-Party Integration Security"
+    },
+    "VCGF-ARCH-001": {
+      "domain": "architecture",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-ARCH-001",
+      "path": "controls/architecture/vcgf-arch-001-tenant-isolation.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "3fb2bdb9ab24f2295df9aeb2f5c023144b9fd8f6b19a7025a53f66e7b9432e56",
+      "status": "normative",
+      "title": "Tenant Isolation"
+    },
+    "VCGF-ARCH-002": {
+      "domain": "architecture",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-ARCH-002",
+      "path": "controls/architecture/vcgf-arch-002-trust-boundary-separation.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "e18fd20eb13b44f2ebe4927ccbad965558400a2b1c5a42e8d0e9b8b4f615304d",
+      "status": "normative",
+      "title": "Trust Boundary Separation"
+    },
+    "VCGF-ARCH-003": {
+      "domain": "architecture",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-ARCH-003",
+      "path": "controls/architecture/vcgf-arch-003-established-system-as-contract.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "bdc9c88cc1ebe8b545cd2cf7f8406670aa76fd5ad977d5d34a54589720349507",
+      "status": "normative",
+      "title": "Established System as Contract"
+    },
+    "VCGF-ARCH-004": {
+      "domain": "architecture",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-ARCH-004",
+      "path": "controls/architecture/vcgf-arch-004-separation-of-concerns.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "38cb4fbbac513b3f54f510c6192f3ac0ac52efdeda07617f0107525b2cc312d2",
+      "status": "normative",
+      "title": "Separation of Concerns"
+    },
+    "VCGF-ARCH-005": {
+      "domain": "architecture",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-ARCH-005",
+      "path": "controls/architecture/vcgf-arch-005-threat-modeling.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "85eac2acc72ec9677694142fbda65fd63609725cdda703269da4fc3576594a35",
+      "status": "normative",
+      "title": "Threat Modeling"
+    },
+    "VCGF-AUDIT-001": {
+      "domain": "logging-auditing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AUDIT-001",
+      "path": "controls/logging-auditing/vcgf-audit-001-secure-errors-and-diagnostic-logging.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "0db5d4bf6189fd3f4e85eaad30c5f087b8913b33f3a930cb78be808af86e2203",
+      "status": "normative",
+      "title": "Secure Errors and Diagnostic Logging"
+    },
+    "VCGF-AUDIT-002": {
+      "domain": "logging-auditing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AUDIT-002",
+      "path": "controls/logging-auditing/vcgf-audit-002-privileged-and-business-audit-trail.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "2831d0b615b6b8c9e59f7f98a5d7c03045ba8897ea98b953f0dd0d96a2c76c49",
+      "status": "normative",
+      "title": "Privileged and Business Audit Trail"
+    },
+    "VCGF-AUDIT-003": {
+      "domain": "logging-auditing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-AUDIT-003",
+      "path": "controls/logging-auditing/vcgf-audit-003-audit-tamper-resistance.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "ba5abb884813d3b88092ed0a0152a4f977d06f2caefa475760ce9a36b38d5db9",
+      "status": "normative",
+      "title": "Audit Tamper Resistance"
+    },
+    "VCGF-DATA-001": {
+      "domain": "data-protection",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DATA-001",
+      "path": "controls/data-protection/vcgf-data-001-backup-and-export-protection.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "22767f76c3b248cce566d04b830266912d93418cca4486772fc4046a82faf6d4",
+      "status": "normative",
+      "title": "Backup and Export Protection"
+    },
+    "VCGF-DATA-002": {
+      "domain": "data-protection",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DATA-002",
+      "path": "controls/data-protection/vcgf-data-002-data-classification-and-retention.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "1cdc04baea38d8f270f3a618d0b882d2994c40ccf0d04d341fd98c763bea4bd0",
+      "status": "normative",
+      "title": "Data Classification and Retention"
+    },
+    "VCGF-DATA-003": {
+      "domain": "data-protection",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DATA-003",
+      "path": "controls/data-protection/vcgf-data-003-field-level-encryption.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "e926f11482ba202d7e9ae130ad3620fec1bd75ae71b4063d988764d2f05d371f",
+      "status": "normative",
+      "title": "Field-Level Encryption"
+    },
+    "VCGF-DATA-004": {
+      "domain": "data-protection",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DATA-004",
+      "path": "controls/data-protection/vcgf-data-004-key-management-and-rotation.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "2b06f43913dfa6afc9e311baefaf2aab4c319741935e06bbc4982f01d8a0f150",
+      "status": "normative",
+      "title": "Key Management and Rotation"
+    },
+    "VCGF-DATA-005": {
+      "domain": "data-protection",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DATA-005",
+      "path": "controls/data-protection/vcgf-data-005-searchable-encrypted-data.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "6be47f37f48c36fd47d2dfa5d2cbe696bcfcdfbaae27e9827367795b25ff49f6",
+      "status": "normative",
+      "title": "Searchable Encrypted Data"
+    },
+    "VCGF-DATA-006": {
+      "domain": "data-protection",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DATA-006",
+      "path": "controls/data-protection/vcgf-data-006-data-in-transit-protection.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "986fd8a511c4705978840788c7759c01fa6758278de169cde1560ba75f91dd59",
+      "status": "normative",
+      "title": "Data in Transit Protection"
+    },
+    "VCGF-DB-001": {
+      "domain": "database",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DB-001",
+      "path": "controls/database/vcgf-db-001-database-change-governance.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "cf2e6cb1472def8bbb80d82bacbba2f2c3fc5183d25aa7fc8aa729275024f532",
+      "status": "normative",
+      "title": "Database Change Governance"
+    },
+    "VCGF-DB-002": {
+      "domain": "database",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DB-002",
+      "path": "controls/database/vcgf-db-002-database-integrity.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "41fcff86dd62032f58cdf07423209877d36995fbc61c78804b7f3cbfb3ef28c6",
+      "status": "normative",
+      "title": "Database Integrity"
+    },
+    "VCGF-DB-003": {
+      "domain": "database",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DB-003",
+      "path": "controls/database/vcgf-db-003-database-encryption-implementation.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "6408d357cc0d47485c14b329f29228fa145eb26fd05f73f2cd0ae9470cfa6119",
+      "status": "normative",
+      "title": "Database Encryption Implementation"
+    },
+    "VCGF-DB-004": {
+      "domain": "database",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DB-004",
+      "path": "controls/database/vcgf-db-004-row-level-authorization-testing.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "5284cac6fa85539f0379a3696f1de35288a88cc822c95d303c00b6f3e1f16f61",
+      "status": "normative",
+      "title": "Row-Level Authorization Testing"
+    },
+    "VCGF-DB-005": {
+      "domain": "database",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DB-005",
+      "path": "controls/database/vcgf-db-005-sql-query-security.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "12aab95d2d8c7a746be81a080d3d4d1bb7983b390009fcdd92f70892a404ecfd",
+      "status": "normative",
+      "title": "SQL Query Security"
+    },
+    "VCGF-DB-006": {
+      "domain": "database",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DB-006",
+      "path": "controls/database/vcgf-db-006-transaction-and-concurrency-integrity.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "86d22c305bc3b89a17f01335d5fe00dae52178a52ee8cca4ba83767d30acbf9e",
+      "status": "normative",
+      "title": "Transaction and Concurrency Integrity"
+    },
+    "VCGF-DEP-001": {
+      "domain": "dependencies",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DEP-001",
+      "path": "controls/dependencies/vcgf-dep-001-dependency-and-supply-chain-security.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "4f841e44e68956a99aca31dfafd6460e286cad45aa66fccad461e5f02a5a5652",
+      "status": "normative",
+      "title": "Dependency and Supply-Chain Security"
+    },
+    "VCGF-DEP-002": {
+      "domain": "dependencies",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DEP-002",
+      "path": "controls/dependencies/vcgf-dep-002-locked-and-reproducible-dependencies.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "7cc587ca567fdfc6bba12412647a234ad319ec557c31f15d616505a269a29bb7",
+      "status": "normative",
+      "title": "Locked and Reproducible Dependencies"
+    },
+    "VCGF-DEP-003": {
+      "domain": "dependencies",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DEP-003",
+      "path": "controls/dependencies/vcgf-dep-003-dependency-vulnerability-review.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "07c4a2e0e406c9c76f754d116a1acfb44db3e8e0e61a4324bba5183292f5f18a",
+      "status": "normative",
+      "title": "Dependency Vulnerability Review"
+    },
+    "VCGF-DEP-004": {
+      "domain": "dependencies",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-DEP-004",
+      "path": "controls/dependencies/vcgf-dep-004-sbom-and-dependency-provenance.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "182c85a1ad531429e45011fb2fa95dc95c18029780abf7d1715a02a4cf29adf2",
+      "status": "normative",
+      "title": "SBOM and Dependency Provenance"
+    },
+    "VCGF-FILE-001": {
+      "domain": "file-handling",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-FILE-001",
+      "path": "controls/file-handling/vcgf-file-001-file-upload-and-storage-security.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "670f3852fe04c35bb7241d6503f1b862032326dfdd8292755cf6971a36b5e81b",
+      "status": "normative",
+      "title": "File Upload and Storage Security"
+    },
+    "VCGF-FILE-002": {
+      "domain": "file-handling",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-FILE-002",
+      "path": "controls/file-handling/vcgf-file-002-private-by-default-file-access.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "324b2b7dfcd58386d1694eab2e566032e2eca9de33425be669aeb9d5401d1e26",
+      "status": "normative",
+      "title": "Private-by-Default File Access"
+    },
+    "VCGF-GOV-001": {
+      "domain": "governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-GOV-001",
+      "path": "controls/governance/vcgf-gov-001-change-impact-analysis.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "2a4f1006c655c802b7f52455853e281f37247c6834102ada61fcbac301199362",
+      "status": "normative",
+      "title": "Change Impact Analysis"
+    },
+    "VCGF-GOV-002": {
+      "domain": "governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-GOV-002",
+      "path": "controls/governance/vcgf-gov-002-human-approval-gates.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "f590a8ce37d77437ef0121bfd27ac31dac224406906e170f96f65c62a1336c21",
+      "status": "normative",
+      "title": "Human Approval Gates"
+    },
+    "VCGF-GOV-003": {
+      "domain": "governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-GOV-003",
+      "path": "controls/governance/vcgf-gov-003-security-exception-management.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "e069ec49891ce7abd6f783db3f16c569eec29785ce10f80ea003478652555640",
+      "status": "normative",
+      "title": "Security Exception Management"
+    },
+    "VCGF-GOV-004": {
+      "domain": "governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-GOV-004",
+      "path": "controls/governance/vcgf-gov-004-evidence-driven-governance.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "98cdcc1cf989dba1c72478e7ed602aad2e78625f1abf4cabdcbbf345634d7fe6",
+      "status": "normative",
+      "title": "Evidence-Driven Governance"
+    },
+    "VCGF-GOV-005": {
+      "domain": "governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-GOV-005",
+      "path": "controls/governance/vcgf-gov-005-minimum-safe-change.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "675a0771c9cc1432d4e9fe9f11d9b69bbaeb80dbc85da90ed9eaf327a9da8a0b",
+      "status": "normative",
+      "title": "Minimum Safe Change"
+    },
+    "VCGF-GOV-006": {
+      "domain": "governance",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-GOV-006",
+      "path": "controls/governance/vcgf-gov-006-single-source-of-truth-for-controls.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "1874948dc3cc731384405401626965abd3e49c9367f11a8f59206812d067e6c5",
+      "status": "normative",
+      "title": "Single Source of Truth for Controls"
+    },
+    "VCGF-IAM-001": {
+      "domain": "identity-access",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IAM-001",
+      "path": "controls/identity-access/vcgf-iam-001-enumeration-and-brute-force-resistance.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "bfbfc439eb7ef8ccfba4358c6789ecac0eb85f841833e12932d0f0d960709425",
+      "status": "normative",
+      "title": "Enumeration and Brute-Force Resistance"
+    },
+    "VCGF-IAM-002": {
+      "domain": "identity-access",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IAM-002",
+      "path": "controls/identity-access/vcgf-iam-002-authentication-baseline.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "c7cc947b240ea9537d72842efbcf7085892820082665aff99fc33ebcc3e8fc92",
+      "status": "normative",
+      "title": "Authentication Baseline"
+    },
+    "VCGF-IAM-003": {
+      "domain": "identity-access",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IAM-003",
+      "path": "controls/identity-access/vcgf-iam-003-mfa-and-session-security.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "a4abd6b64b3082441a7ee9060045727d5adda9ca2873c490fed6ab5ae66d0271",
+      "status": "normative",
+      "title": "MFA and Session Security"
+    },
+    "VCGF-IAM-004": {
+      "domain": "identity-access",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IAM-004",
+      "path": "controls/identity-access/vcgf-iam-004-password-storage-and-policy.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "f3afc69968ea3ab4fadf3c5cf13b87fc3aad93ac249b8cd8c67861bc83631621",
+      "status": "normative",
+      "title": "Password Storage and Policy"
+    },
+    "VCGF-IAM-005": {
+      "domain": "identity-access",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IAM-005",
+      "path": "controls/identity-access/vcgf-iam-005-secure-password-reset-and-recovery.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "32f89440774db8a38204bcd1ca70b6040584e8fd99f544719a1c6c1c40aa4d30",
+      "status": "normative",
+      "title": "Secure Password Reset and Recovery"
+    },
+    "VCGF-IAM-006": {
+      "domain": "identity-access",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IAM-006",
+      "path": "controls/identity-access/vcgf-iam-006-privileged-access-administration.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "bed368a1865be0313b3c4ca7ad84b37f6f11957b0cb4e6db9ac8534431a40233",
+      "status": "normative",
+      "title": "Privileged Access Administration"
+    },
+    "VCGF-IAM-007": {
+      "domain": "identity-access",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IAM-007",
+      "path": "controls/identity-access/vcgf-iam-007-authorization-rbac-abac-and-data-layer-enforcement.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "8b1aa2f511146952c1635879a450369520b6069553b7c3ad11126671481bad56",
+      "status": "normative",
+      "title": "Authorization, RBAC, ABAC and Data-Layer Enforcement"
+    },
+    "VCGF-IR-001": {
+      "domain": "incident-response",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IR-001",
+      "path": "controls/incident-response/vcgf-ir-001-incident-response-minimums.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "f5ebcbaebedd11cb5e5d024aba3e3bc9ad2db2562af0dfe3c3131d021b6f5215",
+      "status": "normative",
+      "title": "Incident Response Minimums"
+    },
+    "VCGF-IR-002": {
+      "domain": "incident-response",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IR-002",
+      "path": "controls/incident-response/vcgf-ir-002-credential-and-key-compromise-response.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "d4f72836b741358961c1db33456b3739af4e3067df5a291fe09ddd82dc44d256",
+      "status": "normative",
+      "title": "Credential and Key Compromise Response"
+    },
+    "VCGF-IR-003": {
+      "domain": "incident-response",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-IR-003",
+      "path": "controls/incident-response/vcgf-ir-003-personal-data-incident-handling.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "4469bdfa38d8042d0abc03164cb5674f77b490afeaa4a1c470b02318a21b497c",
+      "status": "normative",
+      "title": "Personal Data Incident Handling"
+    },
+    "VCGF-OPS-001": {
+      "domain": "operations",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-OPS-001",
+      "path": "controls/operations/vcgf-ops-001-environment-separation.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "ddc2e02b5fffbd41f0de7f7e520be1db7f75f74ea7ef25a27fe502f3a602cc33",
+      "status": "normative",
+      "title": "Environment Separation"
+    },
+    "VCGF-OPS-002": {
+      "domain": "operations",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-OPS-002",
+      "path": "controls/operations/vcgf-ops-002-production-protection.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "2eaed5447125b984f6e873d8f286efa964714205f24caa85c66c72c2f01abdd3",
+      "status": "normative",
+      "title": "Production Protection"
+    },
+    "VCGF-OPS-003": {
+      "domain": "operations",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-OPS-003",
+      "path": "controls/operations/vcgf-ops-003-backup-and-recovery-validation.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "30c2e0a102543528a6db9cfb6dfb5ae63970c30a4204fdded4ca03f149ef8582",
+      "status": "normative",
+      "title": "Backup and Recovery Validation"
+    },
+    "VCGF-OPS-004": {
+      "domain": "operations",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-OPS-004",
+      "path": "controls/operations/vcgf-ops-004-configuration-drift-control.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "5a2e172a3e49a2abb3741800457852bb5e13174251b3be6f6057da5928b093b2",
+      "status": "normative",
+      "title": "Configuration Drift Control"
+    },
+    "VCGF-OPS-005": {
+      "domain": "operations",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-OPS-005",
+      "path": "controls/operations/vcgf-ops-005-security-monitoring-and-alerting.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "44c30d2268f1da813a55249e5c9adeda93bb1a395d946db182f25cd10d33503c",
+      "status": "normative",
+      "title": "Security Monitoring and Alerting"
+    },
+    "VCGF-PRIV-001": {
+      "domain": "privacy",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-PRIV-001",
+      "path": "controls/privacy/vcgf-priv-001-logging-redaction-and-privacy.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "ccba0827da0d88fef09724d4c0adf819e2a0fb8144ba6729716f7c9e4c5a72f2",
+      "status": "normative",
+      "title": "Logging Redaction and Privacy"
+    },
+    "VCGF-PRIV-002": {
+      "domain": "privacy",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-PRIV-002",
+      "path": "controls/privacy/vcgf-priv-002-personal-data-protection.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "2c45990b99e9f5231adee9a2e253a27d63c3f63d0b7b331932c18f7b64067f50",
+      "status": "normative",
+      "title": "Personal Data Protection"
+    },
+    "VCGF-PRIV-003": {
+      "domain": "privacy",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-PRIV-003",
+      "path": "controls/privacy/vcgf-priv-003-data-minimization-and-purpose-limitation.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "3cac53c81de2e9c3febbe63644ad7262ffccd370df12a4a7684ae4716f99f08c",
+      "status": "normative",
+      "title": "Data Minimization and Purpose Limitation"
+    },
+    "VCGF-PRIV-004": {
+      "domain": "privacy",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-PRIV-004",
+      "path": "controls/privacy/vcgf-priv-004-data-lifecycle-retention-and-secure-deletion.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "bd30105e267c3f6480102ef605d90e47466d2d1f1d1868cfad4f0402c24d9e9d",
+      "status": "normative",
+      "title": "Data Lifecycle, Retention and Secure Deletion"
+    },
+    "VCGF-REL-001": {
+      "domain": "release",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-REL-001",
+      "path": "controls/release/vcgf-rel-001-definition-of-done.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "f0338bf3f95c6c788017bb99997f0cb11567109e43d1940804b22e03edff0236",
+      "status": "normative",
+      "title": "Definition of Done"
+    },
+    "VCGF-REL-002": {
+      "domain": "release",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-REL-002",
+      "path": "controls/release/vcgf-rel-002-pre-release-security-gate.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "cef8400f3f2423f7f6b0d025cb8fe2b80d42a7e36fe46f37e4f971e3ffbc2378",
+      "status": "normative",
+      "title": "Pre-Release Security Gate"
+    },
+    "VCGF-REL-003": {
+      "domain": "release",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-REL-003",
+      "path": "controls/release/vcgf-rel-003-rollback-and-recovery-readiness.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "71bcd64a882ee91eaf4afaf4415755b4509c96aa2c79a6c882a78a3f322807f7",
+      "status": "normative",
+      "title": "Rollback and Recovery Readiness"
+    },
+    "VCGF-REL-004": {
+      "domain": "release",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-REL-004",
+      "path": "controls/release/vcgf-rel-004-post-release-monitoring.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "bebd7f2a860fd9998a966c5d6d0a07f404deab976ad6803aceff7bbcd8060355",
+      "status": "normative",
+      "title": "Post-Release Monitoring"
+    },
+    "VCGF-REL-005": {
+      "domain": "release",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-REL-005",
+      "path": "controls/release/vcgf-rel-005-release-artifact-integrity-and-provenance.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "e61378e29d7c9a2f1308fe258a6bffe515bfaf9c1449daa449903e36f4cd290a",
+      "status": "normative",
+      "title": "Release Artifact Integrity and Provenance"
+    },
+    "VCGF-SEC-001": {
+      "domain": "security",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SEC-001",
+      "path": "controls/security/vcgf-sec-001-critical-field-validation.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "35ad4b6254e3e30eacbf06dc916bde8be68b5ae3743850af30e88e4918c0ec87",
+      "status": "normative",
+      "title": "Critical Field Validation"
+    },
+    "VCGF-SEC-002": {
+      "domain": "security",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SEC-002",
+      "path": "controls/security/vcgf-sec-002-file-and-url-validation.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "5bfa5fa0d990636f274f7c0d33e68d3f9eb7c8013d26823f5d644790f5b3f701",
+      "status": "normative",
+      "title": "File and URL Validation"
+    },
+    "VCGF-SEC-003": {
+      "domain": "security",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SEC-003",
+      "path": "controls/security/vcgf-sec-003-injection-defense.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "c39c5303ca11d538ec228c1176e404ec0ac2ca329b1a169cfb7a4be0e38576a2",
+      "status": "normative",
+      "title": "Injection Defense"
+    },
+    "VCGF-SEC-004": {
+      "domain": "security",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SEC-004",
+      "path": "controls/security/vcgf-sec-004-trusted-layer-input-validation.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "e5f06e17aaa474441836f4826a8bee92fcb9e9a0adcc54cc16c2014cf2d42761",
+      "status": "normative",
+      "title": "Trusted-Layer Input Validation"
+    },
+    "VCGF-SEC-005": {
+      "domain": "security",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SEC-005",
+      "path": "controls/security/vcgf-sec-005-output-encoding-and-sanitization.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "46d6200615c12a377ab73cd182a938d938632a4ab5eeb30368c005a577102d6b",
+      "status": "normative",
+      "title": "Output Encoding and Sanitization"
+    },
+    "VCGF-SEC-006": {
+      "domain": "security",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SEC-006",
+      "path": "controls/security/vcgf-sec-006-secure-defaults-and-fail-closed-behavior.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "125ef34c45e3a26fa32620c419987e72d5ce05512745bc3004c83c18e9418a45",
+      "status": "normative",
+      "title": "Secure Defaults and Fail-Closed Behavior"
+    },
+    "VCGF-SECR-001": {
+      "domain": "secrets",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SECR-001",
+      "path": "controls/secrets/vcgf-secr-001-secrets-and-environment-protection.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "6657e609277470f952dc378e0f8fb965cf3632c19ab6011eb07cefb114e72815",
+      "status": "normative",
+      "title": "Secrets and Environment Protection"
+    },
+    "VCGF-SECR-002": {
+      "domain": "secrets",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-SECR-002",
+      "path": "controls/secrets/vcgf-secr-002-secret-rotation-and-compromise-response.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "4e847eb2a0dff75babba412e8195c8f029b4f1b7f71cd4161713d83bec269573",
+      "status": "normative",
+      "title": "Secret Rotation and Compromise Response"
+    },
+    "VCGF-TEST-001": {
+      "domain": "testing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-TEST-001",
+      "path": "controls/testing/vcgf-test-001-authorization-negative-testing.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "5d6663336f9c6d8564b03c75953b113e5215e3f3c02ce29cf80a9a2fc9ea011d",
+      "status": "normative",
+      "title": "Authorization Negative Testing"
+    },
+    "VCGF-TEST-002": {
+      "domain": "testing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-TEST-002",
+      "path": "controls/testing/vcgf-test-002-secure-code-review.md",
+      "profiles": [
+        "high-assurance",
+        "baseline",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "3f4c04f8112951dc9e45159acb4003f47d2fba6ecb3515b06b51e48d0a12e1b2",
+      "status": "normative",
+      "title": "Secure Code Review"
+    },
+    "VCGF-TEST-003": {
+      "domain": "testing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-TEST-003",
+      "path": "controls/testing/vcgf-test-003-security-regression-review.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "ac6a87ebedbf6401043fa0fd8d8592926c9b2553f51483bd4332ceed3a64948b",
+      "status": "normative",
+      "title": "Security Regression Review"
+    },
+    "VCGF-TEST-004": {
+      "domain": "testing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-TEST-004",
+      "path": "controls/testing/vcgf-test-004-security-test-strategy.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "eef486a375412d12bef529fad1db2fd2ddff83027df7cbe397a01b8d4b150cf3",
+      "status": "normative",
+      "title": "Security Test Strategy"
+    },
+    "VCGF-TEST-005": {
+      "domain": "testing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-TEST-005",
+      "path": "controls/testing/vcgf-test-005-validation-and-injection-testing.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "4fbf3a704ff15dc338ce93f0d6b9fac4913ee12fed38116b95e380d56f65337e",
+      "status": "normative",
+      "title": "Validation and Injection Testing"
+    },
+    "VCGF-TEST-006": {
+      "domain": "testing",
+      "framework_version_introduced": "1.0.0",
+      "id": "VCGF-TEST-006",
+      "path": "controls/testing/vcgf-test-006-recovery-flow-testing.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "971ebb7f465835a9add24f44412bcc7ffc34cc7f247edde84cde77540f57a574",
+      "status": "normative",
+      "title": "Recovery Flow Testing"
+    }
+  },
+  "pack_map": {
+    "capability_references": {
+      "admin": [
+        "docs/references/owasp-asvs-5-mapping.md"
+      ],
+      "api": [
+        "docs/references/owasp-asvs-5-mapping.md"
+      ],
+      "files": [
+        "docs/references/owasp-asvs-5-mapping.md"
+      ],
+      "identity": [
+        "docs/references/owasp-asvs-5-mapping.md"
+      ],
+      "password-recovery": [
+        "docs/references/owasp-asvs-5-mapping.md"
+      ],
+      "sessions": [
+        "docs/references/owasp-asvs-5-mapping.md"
+      ],
+      "strong-auth": [
+        "docs/references/owasp-asvs-5-mapping.md"
+      ]
+    },
+    "capability_requirements": {
+      "admin": [
+        "packs/requirements/section-18.md",
+        "packs/requirements/section-19.md",
+        "packs/requirements/section-20.md"
+      ],
+      "api": [
+        "packs/requirements/section-28.md"
+      ],
+      "authorization": [
+        "packs/requirements/section-19.md",
+        "packs/requirements/section-28.md"
+      ],
+      "backup-restore": [
+        "packs/requirements/section-29.md",
+        "packs/requirements/section-30.md",
+        "packs/requirements/section-31.md",
+        "packs/requirements/section-32.md",
+        "packs/requirements/section-33.md",
+        "packs/requirements/section-34.md",
+        "packs/requirements/section-35.md",
+        "packs/requirements/section-38.md",
+        "packs/requirements/section-39.md"
+      ],
+      "database": [
+        "packs/requirements/section-29.md",
+        "packs/requirements/section-30.md",
+        "packs/requirements/section-35.md"
+      ],
+      "deletion": [
+        "packs/requirements/section-14.md",
+        "packs/requirements/section-34.md"
+      ],
+      "email": [
+        "packs/requirements/section-21.md"
+      ],
+      "fields": [
+        "packs/requirements/section-14.md"
+      ],
+      "files": [
+        "packs/requirements/section-36.md",
+        "packs/requirements/section-37.md",
+        "packs/requirements/section-38.md",
+        "packs/requirements/section-39.md"
+      ],
+      "identity": [
+        "packs/requirements/section-16.md"
+      ],
+      "incident": [
+        "packs/requirements/section-34.md",
+        "packs/requirements/section-35.md"
+      ],
+      "password-recovery": [
+        "packs/requirements/section-17.md"
+      ],
+      "payment": [
+        "packs/requirements/section-14.md",
+        "packs/requirements/section-28.md"
+      ],
+      "privacy": [
+        "packs/requirements/section-14.md",
+        "packs/requirements/section-36.md"
+      ],
+      "public-discovery": [
+        "packs/requirements/section-27.md"
+      ],
+      "script-protection": [
+        "packs/requirements/section-26.md"
+      ],
+      "sessions": [
+        "packs/requirements/section-22.md",
+        "packs/requirements/section-23.md",
+        "packs/requirements/section-24.md",
+        "packs/requirements/section-25.md"
+      ],
+      "step-up": [
+        "packs/requirements/section-19.md"
+      ],
+      "strong-auth": [
+        "packs/requirements/section-20.md"
+      ],
+      "ux-accessibility": [
+        "packs/requirements/section-15.md"
+      ]
+    }
+  },
+  "policy": {
+    "deep_review_controls": [
+      "VCGF-TEST-002",
+      "VCGF-TEST-003",
+      "VCGF-ARCH-005"
+    ],
+    "full_framework_loading": false,
+    "intents": {
+      "admin": {
+        "capabilities": [
+          "admin"
+        ],
+        "risk": "HIGH"
+      },
+      "api": {
+        "capabilities": [
+          "api"
+        ],
+        "risk": "MEDIUM"
+      },
+      "authorization": {
+        "capabilities": [
+          "authorization"
+        ],
+        "risk": "HIGH"
+      },
+      "button-color": {
+        "capabilities": [
+          "ux-accessibility"
+        ],
+        "risk": "LOW"
+      },
+      "deletion": {
+        "capabilities": [
+          "deletion"
+        ],
+        "risk": "CRITICAL"
+      },
+      "dependency": {
+        "capabilities": [
+          "script-protection"
+        ],
+        "risk": "MEDIUM"
+      },
+      "emergency": {
+        "capabilities": [
+          "incident"
+        ],
+        "risk": "CRITICAL"
+      },
+      "login": {
+        "capabilities": [
+          "identity"
+        ],
+        "risk": "HIGH"
+      },
+      "migration": {
+        "capabilities": [
+          "database"
+        ],
+        "risk": "HIGH"
+      },
+      "passkey": {
+        "capabilities": [
+          "strong-auth",
+          "identity"
+        ],
+        "risk": "HIGH"
+      },
+      "payment": {
+        "capabilities": [
+          "payment"
+        ],
+        "risk": "HIGH"
+      },
+      "pii": {
+        "capabilities": [
+          "privacy"
+        ],
+        "risk": "HIGH"
+      },
+      "public-page": {
+        "capabilities": [
+          "public-discovery",
+          "ux-accessibility"
+        ],
+        "risk": "LOW"
+      },
+      "reset": {
+        "capabilities": [
+          "password-recovery"
+        ],
+        "risk": "HIGH"
+      },
+      "upload": {
+        "capabilities": [
+          "files"
+        ],
+        "risk": "HIGH"
+      }
+    },
+    "minimum_controls": [
+      "VCGF-AI-001",
+      "VCGF-GOV-001",
+      "VCGF-GOV-005"
+    ],
+    "policy_version": "1.1.0",
+    "standard_review_controls": [
+      "VCGF-TEST-002"
+    ]
+  },
+  "policy_sha256": "27cf73002941a6e102f919ca75b8aea7ae7ca28c4fe31aa8abcf6453819f9760",
+  "profiles": {
+    "baseline": [
+      "VCGF-AI-001",
+      "VCGF-AI-002",
+      "VCGF-AI-005",
+      "VCGF-API-001",
+      "VCGF-ARCH-002",
+      "VCGF-ARCH-005",
+      "VCGF-DB-001",
+      "VCGF-DB-002",
+      "VCGF-DB-005",
+      "VCGF-DEP-001",
+      "VCGF-FILE-001",
+      "VCGF-GOV-001",
+      "VCGF-GOV-005",
+      "VCGF-IAM-002",
+      "VCGF-IAM-004",
+      "VCGF-IAM-005",
+      "VCGF-IAM-007",
+      "VCGF-PRIV-003",
+      "VCGF-REL-001",
+      "VCGF-SEC-001",
+      "VCGF-SEC-003",
+      "VCGF-SEC-004",
+      "VCGF-SEC-005",
+      "VCGF-SECR-001",
+      "VCGF-TEST-002"
+    ],
+    "high-assurance": [
+      "VCGF-AI-001",
+      "VCGF-AI-002",
+      "VCGF-AI-003",
+      "VCGF-AI-004",
+      "VCGF-AI-005",
+      "VCGF-AI-006",
+      "VCGF-AI-007",
+      "VCGF-AI-008",
+      "VCGF-AI-009",
+      "VCGF-API-001",
+      "VCGF-API-002",
+      "VCGF-API-003",
+      "VCGF-API-004",
+      "VCGF-API-005",
+      "VCGF-ARCH-001",
+      "VCGF-ARCH-002",
+      "VCGF-ARCH-003",
+      "VCGF-ARCH-004",
+      "VCGF-ARCH-005",
+      "VCGF-AUDIT-001",
+      "VCGF-AUDIT-002",
+      "VCGF-AUDIT-003",
+      "VCGF-DATA-001",
+      "VCGF-DATA-002",
+      "VCGF-DATA-003",
+      "VCGF-DATA-004",
+      "VCGF-DATA-005",
+      "VCGF-DATA-006",
+      "VCGF-DB-001",
+      "VCGF-DB-002",
+      "VCGF-DB-003",
+      "VCGF-DB-004",
+      "VCGF-DB-005",
+      "VCGF-DB-006",
+      "VCGF-DEP-001",
+      "VCGF-DEP-002",
+      "VCGF-DEP-003",
+      "VCGF-DEP-004",
+      "VCGF-FILE-001",
+      "VCGF-FILE-002",
+      "VCGF-GOV-001",
+      "VCGF-GOV-002",
+      "VCGF-GOV-003",
+      "VCGF-GOV-004",
+      "VCGF-GOV-005",
+      "VCGF-GOV-006",
+      "VCGF-IAM-001",
+      "VCGF-IAM-002",
+      "VCGF-IAM-003",
+      "VCGF-IAM-004",
+      "VCGF-IAM-005",
+      "VCGF-IAM-006",
+      "VCGF-IAM-007",
+      "VCGF-IR-001",
+      "VCGF-IR-002",
+      "VCGF-IR-003",
+      "VCGF-OPS-001",
+      "VCGF-OPS-002",
+      "VCGF-OPS-003",
+      "VCGF-OPS-004",
+      "VCGF-OPS-005",
+      "VCGF-PRIV-001",
+      "VCGF-PRIV-002",
+      "VCGF-PRIV-003",
+      "VCGF-PRIV-004",
+      "VCGF-REL-001",
+      "VCGF-REL-002",
+      "VCGF-REL-003",
+      "VCGF-REL-004",
+      "VCGF-REL-005",
+      "VCGF-SEC-001",
+      "VCGF-SEC-002",
+      "VCGF-SEC-003",
+      "VCGF-SEC-004",
+      "VCGF-SEC-005",
+      "VCGF-SEC-006",
+      "VCGF-SECR-001",
+      "VCGF-SECR-002",
+      "VCGF-TEST-001",
+      "VCGF-TEST-002",
+      "VCGF-TEST-003",
+      "VCGF-TEST-004",
+      "VCGF-TEST-005",
+      "VCGF-TEST-006"
+    ],
+    "production": [
+      "VCGF-AI-001",
+      "VCGF-AI-002",
+      "VCGF-AI-003",
+      "VCGF-AI-004",
+      "VCGF-AI-005",
+      "VCGF-AI-006",
+      "VCGF-AI-007",
+      "VCGF-AI-008",
+      "VCGF-API-001",
+      "VCGF-API-002",
+      "VCGF-API-003",
+      "VCGF-API-004",
+      "VCGF-API-005",
+      "VCGF-ARCH-001",
+      "VCGF-ARCH-002",
+      "VCGF-ARCH-003",
+      "VCGF-ARCH-005",
+      "VCGF-AUDIT-001",
+      "VCGF-AUDIT-002",
+      "VCGF-DATA-001",
+      "VCGF-DATA-002",
+      "VCGF-DATA-003",
+      "VCGF-DATA-004",
+      "VCGF-DATA-006",
+      "VCGF-DB-001",
+      "VCGF-DB-002",
+      "VCGF-DB-003",
+      "VCGF-DB-004",
+      "VCGF-DB-005",
+      "VCGF-DB-006",
+      "VCGF-DEP-001",
+      "VCGF-DEP-003",
+      "VCGF-DEP-004",
+      "VCGF-FILE-001",
+      "VCGF-FILE-002",
+      "VCGF-GOV-001",
+      "VCGF-GOV-002",
+      "VCGF-GOV-003",
+      "VCGF-GOV-004",
+      "VCGF-GOV-005",
+      "VCGF-GOV-006",
+      "VCGF-IAM-001",
+      "VCGF-IAM-002",
+      "VCGF-IAM-003",
+      "VCGF-IAM-004",
+      "VCGF-IAM-005",
+      "VCGF-IAM-006",
+      "VCGF-IAM-007",
+      "VCGF-IR-001",
+      "VCGF-IR-002",
+      "VCGF-IR-003",
+      "VCGF-OPS-001",
+      "VCGF-OPS-002",
+      "VCGF-OPS-003",
+      "VCGF-OPS-005",
+      "VCGF-PRIV-001",
+      "VCGF-PRIV-002",
+      "VCGF-PRIV-003",
+      "VCGF-PRIV-004",
+      "VCGF-REL-001",
+      "VCGF-REL-002",
+      "VCGF-REL-003",
+      "VCGF-REL-005",
+      "VCGF-SEC-001",
+      "VCGF-SEC-002",
+      "VCGF-SEC-003",
+      "VCGF-SEC-004",
+      "VCGF-SEC-005",
+      "VCGF-SEC-006",
+      "VCGF-SECR-001",
+      "VCGF-SECR-002",
+      "VCGF-TEST-001",
+      "VCGF-TEST-002",
+      "VCGF-TEST-003",
+      "VCGF-TEST-004",
+      "VCGF-TEST-005",
+      "VCGF-TEST-006"
+    ]
+  },
+  "resources": {
+    "docs/references/owasp-asvs-5-mapping.md": {
+      "path": "docs/references/owasp-asvs-5-mapping.md",
+      "sha256": "5abd0ffdf6c442798ac0fbb2574b953ad91f96ba980e18b3b9be6556b9caca8a"
+    },
+    "packs/requirements/section-14.md": {
+      "path": "packs/requirements/section-14.md",
+      "sha256": "873c75554f28d3ab11b72af8db82221430c713361d3e2fca55b6062179936179"
+    },
+    "packs/requirements/section-15.md": {
+      "path": "packs/requirements/section-15.md",
+      "sha256": "1750ee7fd25bf022ffe40f672c10314c8a2388e7e88d1ead6e1ef2a559668e1d"
+    },
+    "packs/requirements/section-16.md": {
+      "path": "packs/requirements/section-16.md",
+      "sha256": "08d62e048868d51f77c338633780514b07a191b5aec907e7dc93fd75524d71e1"
+    },
+    "packs/requirements/section-17.md": {
+      "path": "packs/requirements/section-17.md",
+      "sha256": "7841a81c02ef889dca7f53085569ad1a5879fc4009d2ef9981530d7d0c4f8318"
+    },
+    "packs/requirements/section-18.md": {
+      "path": "packs/requirements/section-18.md",
+      "sha256": "a11b117c55651ef9e7cf08bf6ac237c9adcf6eafc460921da49bd7993bcbfb17"
+    },
+    "packs/requirements/section-19.md": {
+      "path": "packs/requirements/section-19.md",
+      "sha256": "dc39bc410039d95d5a611660cce49606127d6a354170c9da167131d09ed8e046"
+    },
+    "packs/requirements/section-20.md": {
+      "path": "packs/requirements/section-20.md",
+      "sha256": "3a2061c27817c4ec866e1c1aaf0088ffc936abf7abff5c7cbc2333f9ee360335"
+    },
+    "packs/requirements/section-21.md": {
+      "path": "packs/requirements/section-21.md",
+      "sha256": "f495602ee9fb6687aa7fe53b00aec74c7b69d72017cbc309a5f23d1dd66970cf"
+    },
+    "packs/requirements/section-22.md": {
+      "path": "packs/requirements/section-22.md",
+      "sha256": "8a3397d043742f265dc68cef60f7db9cb06c2f6be03a451076887c38ced85140"
+    },
+    "packs/requirements/section-23.md": {
+      "path": "packs/requirements/section-23.md",
+      "sha256": "8bb225b2f1c6b57750e4544cf2e342464db26f1c40686593742853e047693b4d"
+    },
+    "packs/requirements/section-24.md": {
+      "path": "packs/requirements/section-24.md",
+      "sha256": "ebf55177dfd3371bd9fc0602acf521b327ae0d8941c30bcb9430c48d5ed06440"
+    },
+    "packs/requirements/section-25.md": {
+      "path": "packs/requirements/section-25.md",
+      "sha256": "746a2c91473cb43797436411547bac3dcd9e6989febfb9df5fc547e65c8fd2fa"
+    },
+    "packs/requirements/section-26.md": {
+      "path": "packs/requirements/section-26.md",
+      "sha256": "fa13ade97d27bcbc1289636bc9296c4abc758ac31d3b4c4f0f9affa447eb1170"
+    },
+    "packs/requirements/section-27.md": {
+      "path": "packs/requirements/section-27.md",
+      "sha256": "0a353e0aefb92c8630fd4adc5f5d7dc7c3e809f8fdb775dffb0ea37c19cd7d85"
+    },
+    "packs/requirements/section-28.md": {
+      "path": "packs/requirements/section-28.md",
+      "sha256": "70963ae92215d6a24c37f0cdd34d0112459dcf479e70da9dbeff0d6f91d52b4e"
+    },
+    "packs/requirements/section-29.md": {
+      "path": "packs/requirements/section-29.md",
+      "sha256": "c32515f7d520d67c0f2181b69b0af8bbd6e9c20aa5eae7df6ca23e3849095bb7"
+    },
+    "packs/requirements/section-30.md": {
+      "path": "packs/requirements/section-30.md",
+      "sha256": "da368cbdb095a56419f8d83b723d504a4f2836d4243736f2550c31e62729aa85"
+    },
+    "packs/requirements/section-31.md": {
+      "path": "packs/requirements/section-31.md",
+      "sha256": "97c0519fc10bb2efd232fb2def63d73b3f9e8a8989e6e7c2723cb1a60f094fed"
+    },
+    "packs/requirements/section-32.md": {
+      "path": "packs/requirements/section-32.md",
+      "sha256": "ea635a1326c84e3507687fecd6623c27dd28baeed158d6f31a4df6d05bea1e4b"
+    },
+    "packs/requirements/section-33.md": {
+      "path": "packs/requirements/section-33.md",
+      "sha256": "55bc571bd2c62efb4f4477bcd5f7d6d67129c5bed5402a3ca4c876676e3114e7"
+    },
+    "packs/requirements/section-34.md": {
+      "path": "packs/requirements/section-34.md",
+      "sha256": "6cae4e2df6bd32181147254b59a28b230a4361bbdaf4b1f0c8e9ac403d02bb2f"
+    },
+    "packs/requirements/section-35.md": {
+      "path": "packs/requirements/section-35.md",
+      "sha256": "c45b631047ce46c73bc37bff37b7980821c27d58e15522dec01e690805a83a4c"
+    },
+    "packs/requirements/section-36.md": {
+      "path": "packs/requirements/section-36.md",
+      "sha256": "75f0aea8a9f0028712a5a9ba8c2ef83ddce7729f329d9c907a0170e698513639"
+    },
+    "packs/requirements/section-37.md": {
+      "path": "packs/requirements/section-37.md",
+      "sha256": "1528de5132ff728066d539ff00f486c3494aaca18cb2e31aaabbd31b624b18e3"
+    },
+    "packs/requirements/section-38.md": {
+      "path": "packs/requirements/section-38.md",
+      "sha256": "ba613ba2ab6120081f58a665713d8c22429afc8f1d6c3b5fdcad895119503b0e"
+    },
+    "packs/requirements/section-39.md": {
+      "path": "packs/requirements/section-39.md",
+      "sha256": "a776fe3d2e465acd56da89b6339f65735a23cdbf705492971b68caaf1a63927a"
+    }
+  },
+  "version": "1.1.0"
+}

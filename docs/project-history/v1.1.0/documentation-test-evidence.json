@@ -1,0 +1,86 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami",
+  "scope": "Documentation update only; historical integration evidence is not rerun or promoted",
+  "python": "3.12.14",
+  "repository_version": "1.0.0",
+  "target": "1.1.0 Unreleased",
+  "results": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-documentation.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS validate-documentation\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-internal-links.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS validate-internal-links\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-attribution.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS validate-attribution\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-version.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS validate-version\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-cross-references.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS validate-cross-references\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-license.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS validate-license\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/contracts",
+        "-p",
+        "test_phase1.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ".................................................................................................\n----------------------------------------------------------------------\nRan 97 tests in 2.051s\n\nOK\n"
+    }
+  ],
+  "tested_contract_suite_sha256": "046b440c1745580e18c6c6a227a9d79be285141c4171b2a5f71e767c625f19d9"
+}

@@ -1,0 +1,64 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "synthetic": true,
+  "record": {
+    "contract_version": "1.1.0",
+    "evidence_id": "fixture",
+    "scope": {
+      "kind": "task",
+      "target": "synthetic"
+    },
+    "framework_version": "1.1.0",
+    "adapter_id": "generic",
+    "adapter_version": "1.0.0",
+    "profile": "baseline",
+    "environment": "test",
+    "code_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "policy_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "test_suite_version": "synthetic",
+    "created_at": "2026-10-03T12:00:00Z",
+    "valid_until": "2026-10-04T12:00:00Z",
+    "reviewer": {
+      "identity": "fixture-reviewer",
+      "reviewed_at": "2026-10-03T12:00:00Z",
+      "review_ref": "fixture:review"
+    },
+    "required_control_ids": [
+      "VCGF-GOV-001"
+    ],
+    "controls": [
+      {
+        "control_id": "VCGF-GOV-001",
+        "applicability": "applicable",
+        "support": "external",
+        "implementation": "implemented",
+        "verification": "passed",
+        "evidence_refs": [
+          "fixture-test"
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "artifact_id": "fixture-test",
+        "kind": "test",
+        "reference": "fixture:does-not-exist",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-10-03T12:00:00Z",
+        "producer": "fixture",
+        "test": {
+          "command": "NOT EXECUTED: illustrative only",
+          "exit_code": 0,
+          "result": "passed"
+        }
+      }
+    ],
+    "exceptions": [],
+    "outstanding_findings": [],
+    "privacy": {
+      "secrets_included": false,
+      "access": "restricted",
+      "retention_until": "2026-10-04T12:00:00Z"
+    }
+  }
+}

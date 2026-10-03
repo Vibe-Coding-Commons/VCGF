@@ -1,0 +1,17 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "synthetic": true,
+  "record": {
+    "task_id": "synthetic-dependency",
+    "intent": "dependency",
+    "classification_confirmed": true,
+    "profile": "high-assurance",
+    "profile_confirmed": true,
+    "mode": "lean",
+    "budget": 300000,
+    "inspection": {
+      "completed": true,
+      "evidence_ref": "synthetic:fixture-inspection"
+    }
+  }
+}

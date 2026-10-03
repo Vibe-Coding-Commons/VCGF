@@ -1,0 +1,76 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "frozen_before_reference_implementation": true,
+  "approval_ref": "AP-20261003-ALL; D10",
+  "status": "reference_scope_fixed_acceptance_pending",
+  "technology": {
+    "runtime": "Python 3.12",
+    "crypto": "cryptography 46.0.0 AES-256-GCM"
+  },
+  "email": {
+    "providers": [
+      "Generic SMTP over verified TLS",
+      "Microsoft 365 SMTP OAuth 2.0 XOAUTH2"
+    ],
+    "graph": "preferred integration remains pending; not replaced by Basic Auth",
+    "features": [
+      "timeout",
+      "From",
+      "Reply-To",
+      "plain-text AR/EN templates",
+      "redacted result",
+      "explicit sandbox recipient allowlist",
+      "encrypted SQLite outbox",
+      "bounded retry on explicit temporary refusal",
+      "ambiguous timeout reconciliation"
+    ],
+    "still_required": [
+      "real provider receipt and OAuth failure/expiry evidence",
+      "SPF DKIM DMARC deployment validation",
+      "connection test on named external provider"
+    ]
+  },
+  "backup": {
+    "reference_engines": [
+      "SQLite 3.53.1",
+      "PostgreSQL 18",
+      "MySQL 8.4 InnoDB"
+    ],
+    "storage": [
+      "private local filesystem with tenant/workspace attachment metadata"
+    ],
+    "other_engines_and_object_storage": "retained as extensibility requirement; not claimed supported by these references",
+    "consistency": "application write barrier held across database snapshot and attachment capture; restored row/hash comparison",
+    "features": [
+      "snapshot",
+      "compressed encrypted unified set",
+      "manifest and checksums",
+      "restore to new destination only",
+      "missing attachment rejection",
+      "tamper rejection",
+      "schedule expressions",
+      "retention candidate plan",
+      "one-use short-lived download gate",
+      "recovery objective and pre-migration gate",
+      "sandbox PostgreSQL/MySQL dump and restore adapters"
+    ],
+    "still_required": [
+      "external scheduler execution/history integration",
+      "host identity and download endpoint integration",
+      "live PostgreSQL/MySQL restored database/attachment consistency",
+      "production-specific recovery objectives and measured recovery drill"
+    ]
+  },
+  "environments": {
+    "local": "temporary synthetic data only",
+    "smtp": "local TLS sink plus separately authorized external provider sandbox",
+    "microsoft365": "tenant/application/mailbox test setup not supplied",
+    "postgresql_mysql": "binaries/server/container runtime unavailable"
+  },
+  "acceptance": [
+    "positive and negative tests per implementation",
+    "real provider receipt and identity authorization evidence for mail",
+    "database and attachment restore equality",
+    "unavailable tests remain Unverified, never automatic deferral"
+  ]
+}

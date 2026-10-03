@@ -1,0 +1,32 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "approval_ref": "AP-20261003-ALL",
+  "phase2_add": [
+    "runtime/resolver.py",
+    "runtime/loader.py",
+    "runtime/context.py",
+    "runtime/router.py",
+    "runtime/registry.py",
+    "runtime/routing-policy.yaml",
+    "scripts/vcgf.py",
+    "scripts/generate-runtime-registry.py",
+    "tests/scenarios/test_runtime.py",
+    "examples/runtime/"
+  ],
+  "phase3_add": [
+    "runtime/evidence.py",
+    "runtime/approval.py",
+    "runtime/scope_guard.py",
+    "tests/scenarios/test_gates.py"
+  ],
+  "protected": [
+    "controls/",
+    "profiles/",
+    "LICENSE",
+    "NOTICE.md",
+    "AUTHORS.md",
+    "COPYRIGHT.md",
+    "legal/"
+  ],
+  "later_phases": "Record exact reference stack before pack implementation; retain explicit Unverified results; no release claim before acceptance"
+}

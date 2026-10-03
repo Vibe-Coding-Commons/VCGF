@@ -1,0 +1,12 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami",
+  "approval": "User request 2026-10-03 17:10:50 Asia/Riyadh: update README ar/en, what is new, version and usage results",
+  "allowed_original_documentation_changes": {
+    "README.md": "46115e6eb29c5766022d7235d2e714405613b9579739e449f8b4a7a759621162",
+    "README.ar.md": "cfd0bb7bcb68d2c1407ae223e3e08619a480822d4852190b4231cb003d739ef7",
+    "CHANGELOG.md": "9a65dcb3f2faa61626e9731fcbed0a557a94cdc820db63ff9583765cda0f6ffc"
+  },
+  "protected_policy": "All other 380 original files must retain their original hashes; frozen original snapshot remains unchanged",
+  "version": "1.0.0",
+  "target": "1.1.0 Unreleased"
+}

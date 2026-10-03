@@ -1,0 +1,78 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+policy_version: 1.1.0
+minimum_controls:
+- VCGF-AI-001
+- VCGF-GOV-001
+- VCGF-GOV-005
+standard_review_controls:
+- VCGF-TEST-002
+deep_review_controls:
+- VCGF-TEST-002
+- VCGF-TEST-003
+- VCGF-ARCH-005
+intents:
+  login:
+    capabilities:
+    - identity
+    risk: HIGH
+  reset:
+    capabilities:
+    - password-recovery
+    risk: HIGH
+  admin:
+    capabilities:
+    - admin
+    risk: HIGH
+  upload:
+    capabilities:
+    - files
+    risk: HIGH
+  payment:
+    capabilities:
+    - payment
+    risk: HIGH
+  migration:
+    capabilities:
+    - database
+    risk: HIGH
+  pii:
+    capabilities:
+    - privacy
+    risk: HIGH
+  api:
+    capabilities:
+    - api
+    risk: MEDIUM
+  dependency:
+    capabilities:
+    - script-protection
+    risk: MEDIUM
+  emergency:
+    capabilities:
+    - incident
+    risk: CRITICAL
+  deletion:
+    capabilities:
+    - deletion
+    risk: CRITICAL
+  authorization:
+    capabilities:
+    - authorization
+    risk: HIGH
+  button-color:
+    capabilities:
+    - ux-accessibility
+    risk: LOW
+  passkey:
+    capabilities:
+    - strong-auth
+    - identity
+    risk: HIGH
+  public-page:
+    capabilities:
+    - public-discovery
+    - ux-accessibility
+    risk: LOW
+full_framework_loading: false

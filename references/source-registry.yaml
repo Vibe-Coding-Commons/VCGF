@@ -1,0 +1,63 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami
+checked_on: '2026-10-03'
+sources:
+- id: smtp-oauth
+  url: https://learn.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth
+  observation: OAuth2/XOAUTH2; provider sandbox unverified
+  method: official web source read/search
+  implementation_verification: not implied
+- id: mysql-8.4
+  url: https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html
+  observation: 8.4 reference; consistent InnoDB dump requires DDL/application coordination
+  method: official web source read/search
+  implementation_verification: not implied
+- id: postgresql-18
+  url: https://www.postgresql.org/docs/18/app-pgdump.html
+  observation: 18 reference; custom-format dump and pg_restore
+  method: official web source read/search
+  implementation_verification: not implied
+- id: sqlite
+  url: https://www.sqlite.org/backup.html
+  observation: SQLite online backup API; attachment coordination is separate
+  method: official web source read/search
+  implementation_verification: not implied
+- id: asvs
+  url: https://owasp.org/projects/asvs
+  observation: Existing v1.0 high-level ASVS mapping retained
+  method: official web source read/search
+  implementation_verification: not implied
+- id: top10
+  url: https://owasp.org/Top10/2025
+  observation: 2025 awareness document
+  method: official web source read/search
+  implementation_verification: not implied
+- id: api-top10
+  url: https://api-security.owasp.org/editions/2023/en/0x04-release-notes/
+  observation: 2023 awareness mapping
+  method: official web source read/search
+  implementation_verification: not implied
+- id: agentic
+  url: https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/
+  observation: Agentic publication; detailed crosswalk pending
+  method: official web source read/search
+  implementation_verification: not implied
+- id: ssdf
+  url: https://csrc.nist.gov/pubs/sp/800/218/final
+  observation: SSDF 1.1 reference
+  method: official web source read/search
+  implementation_verification: not implied
+- id: wcag
+  url: https://www.w3.org/TR/WCAG22/
+  observation: 2.2 reference; no project AA compliance claim
+  method: official web source read/search
+  implementation_verification: not implied
+- id: webauthn
+  url: https://www.w3.org/TR/webauthn-3/
+  observation: Level 3 recommendation page observed
+  method: official web source read/search
+  implementation_verification: not implied
+- id: dbsc
+  url: https://developer.chrome.com/blog/dbsc-windows-announcement
+  observation: Chrome 145 Windows availability; not a universal browser guarantee
+  method: official web source read/search
+  implementation_verification: not implied

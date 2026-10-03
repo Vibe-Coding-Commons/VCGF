@@ -1,0 +1,92 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/conformance.schema.json",
+  "title": "VCGF Conformance Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "framework_version",
+    "profile",
+    "adapter",
+    "adapter_version",
+    "validation_date",
+    "outstanding_findings",
+    "unsupported_controls",
+    "external_controls",
+    "exceptions",
+    "controls"
+  ],
+  "properties": {
+    "framework_version": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "string"
+    },
+    "adapter": {
+      "type": "string"
+    },
+    "adapter_version": {
+      "type": "string"
+    },
+    "validation_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "outstanding_findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unsupported_controls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "external_controls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "control_id",
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "control_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "EXCEPTION",
+              "NOT-APPLICABLE"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

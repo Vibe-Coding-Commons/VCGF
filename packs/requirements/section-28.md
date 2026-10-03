@@ -1,0 +1,7 @@
+<!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
+
+# 28. OWASP Security Alignment Engine  يجب أن يظل VCGF صاحب الـControls الخاصة به.  ولا يتم نسخ OWASP داخل VCGF.  بل يتم إنشاء:  ```text Crosswalk Mapping References ```  إلى المعايير ذات الصلة.  يمكن الربط مع:  - **OWASP ASVS 5.0** للتحقق التفصيلي. - **OWASP Top 10:2025** للتوعية بالمخاطر. - **OWASP API Security Top 10:2023** عندما توجد APIs ذات صلة. - **OWASP Top 10 for Agentic Applications 2026** عندما توجد Agents / Tools / MCP / Autonomous Workflows.  يجب الانتباه إلى أن OWASP Top 10 وثيقة Awareness ونقطة بداية، وليست Security Checklist كاملة؛ ولذلك يعتبر ASVS أنسب للتغطية التفصيلية.  مرجع:  [OWASP ASVS](https://owasp.org/projects/asvs?tab=get-involved&utm_source=chatgpt.com)  ### قواعد التحميل  - Agentic Controls لا تُحمّل لموقع عادي لا يستخدم Agents. - API Security لا تُحمّل إذا لم توجد API ذات صلة. - External Mappings يتم تحميلها فقط عندما تحتاجها المهمة.  ### قاعدة أساسية  لا تنسخ هذه المعايير داخل VCGF.  ولا تدّعِ:  ```text Certification Endorsement OWASP Certified ```  المطلوب هو:  ```text Alignment Crosswalk Mapping ```  فقط.  ---  
+
+## Verification boundary
+
+This file preserves original requirements. Each requirement needs applicable implementation evidence or a justified N/A. Presence of this document is not implementation or successful testing. D10 and D12 in continuation approval govern email/backup and recovery objectives.

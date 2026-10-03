@@ -1,0 +1,66 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/profile.schema.json",
+  "title": "VCGF Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_id",
+    "profile_version",
+    "framework_compatibility",
+    "assurance",
+    "description",
+    "required_controls",
+    "optional_controls",
+    "evidence_requirements"
+  ],
+  "properties": {
+    "profile_id": {
+      "enum": [
+        "baseline",
+        "production",
+        "high-assurance"
+      ]
+    },
+    "profile_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "framework_compatibility": {
+      "type": "string"
+    },
+    "assurance": {
+      "enum": [
+        "baseline",
+        "production",
+        "high-assurance"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "required_controls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^VCGF-[A-Z0-9-]+-[0-9]{3}$"
+      },
+      "uniqueItems": true
+    },
+    "optional_controls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^VCGF-[A-Z0-9-]+-[0-9]{3}$"
+      },
+      "uniqueItems": true
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

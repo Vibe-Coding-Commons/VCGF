@@ -1,0 +1,5 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "auth_model": "local-password",
+  "fixture_only": true
+}

@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+capability_id: public-discovery
+description: Master sections [27]; task-specific requirements, not standalone product
+  certification
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions:
+  - fact: public-indexable
+    operator: equals
+    value: true
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-TEST-002
+dependencies: []
+required_evidence:
+- positive and negative tests scoped to capability
+- implementation and environment reference
+exception_policy: Explicit owner-approved, expiring exception; no automatic compliance

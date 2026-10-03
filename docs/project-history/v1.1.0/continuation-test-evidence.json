@@ -1,0 +1,446 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "dependencies": {
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "cryptography": "46.0.0",
+      "referencing": "0.37.0"
+    }
+  },
+  "scope": "local deterministic code, localhost TLS and SQLite only",
+  "results": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "tests/contracts/test_phase1.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:47:39.813379+00:00",
+      "finished_at": "2026-10-03T13:47:42.163546+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_95_legacy_records_still_accepted (__main__.CompatibilityTests.test_95_legacy_records_still_accepted) ... ok\ntest_all_383_baseline_files_unchanged (__main__.CompatibilityTests.test_all_383_baseline_files_unchanged) ... ok\ntest_frozen_v1_schemas_identical (__main__.CompatibilityTests.test_frozen_v1_schemas_identical) ... ok\ntest_legacy_permissiveness_not_silently_rewritten (__main__.CompatibilityTests.test_legacy_permissiveness_not_silently_rewritten) ... ok\ntest_accept_adapter_capabilities (__main__.ContractTests.test_accept_adapter_capabilities) ... ok\ntest_accept_approval (__main__.ContractTests.test_accept_approval) ... ok\ntest_accept_capability (__main__.ContractTests.test_accept_capability) ... ok\ntest_accept_context (__main__.ContractTests.test_accept_context) ... ok\ntest_accept_evidence (__main__.ContractTests.test_accept_evidence) ... ok\ntest_accept_preferences (__main__.ContractTests.test_accept_preferences) ... ok\ntest_accept_route_result (__main__.ContractTests.test_accept_route_result) ... ok\ntest_all_local_schemas_are_valid (__main__.ContractTests.test_all_local_schemas_are_valid) ... ok\ntest_blocked_route_preserves_missing_context (__main__.ContractTests.test_blocked_route_preserves_missing_context) ... ok\ntest_cli_exit_codes_and_no_writes (__main__.ContractTests.test_cli_exit_codes_and_no_writes) ... ok\ntest_commands_are_data_not_executed (__main__.ContractTests.test_commands_are_data_not_executed) ... ok\ntest_context_arbitrary_fact_data_not_interpreted_as_controls (__main__.ContractTests.test_context_arbitrary_fact_data_not_interpreted_as_controls) ... ok\ntest_current_time_authority_is_not_claimed (__main__.ContractTests.test_current_time_authority_is_not_claimed) ... ok\ntest_lowercase_rfc3339_is_accepted (__main__.ContractTests.test_lowercase_rfc3339_is_accepted) ... ok\ntest_na_reasoned_record_can_be_archived (__main__.ContractTests.test_na_reasoned_record_can_be_archived) ... ok\ntest_no_automatic_project_conformance_inference (__main__.ContractTests.test_no_automatic_project_conformance_inference) ... ok\ntest_reject_adapter_capabilities_behavioral_as_technical (__main__.ContractTests.test_reject_adapter_capabilities_behavioral_as_technical) ... ok\ntest_reject_adapter_capabilities_native_as_external (__main__.ContractTests.test_reject_adapter_capabilities_native_as_external) ... ok\ntest_reject_adapter_capabilities_passed_without_test (__main__.ContractTests.test_reject_adapter_capabilities_passed_without_test) ... ok\ntest_reject_adapter_capabilities_stable_untested (__main__.ContractTests.test_reject_adapter_capabilities_stable_untested) ... ok\ntest_reject_approval_decision_after_expiry (__main__.ContractTests.test_reject_approval_decision_after_expiry) ... ok\ntest_reject_approval_missing_authority_evidence (__main__.ContractTests.test_reject_approval_missing_authority_evidence) ... ok\ntest_reject_approval_missing_scope_digest (__main__.ContractTests.test_reject_approval_missing_scope_digest) ... ok\ntest_reject_approval_reversed_validity (__main__.ContractTests.test_reject_approval_reversed_validity) ... ok\ntest_reject_approval_self_approval (__main__.ContractTests.test_reject_approval_self_approval) ... ok\ntest_reject_approval_unknown_environment (__main__.ContractTests.test_reject_approval_unknown_environment) ... ok\ntest_reject_capability_condition_missing_value (__main__.ContractTests.test_reject_capability_condition_missing_value) ... ok\ntest_reject_capability_empty_any_of (__main__.ContractTests.test_reject_capability_empty_any_of) ... ok\ntest_reject_capability_exists_with_value (__main__.ContractTests.test_reject_capability_exists_with_value) ... ok\ntest_reject_capability_missing_condition (__main__.ContractTests.test_reject_capability_missing_condition) ... ok\ntest_reject_capability_nondeclarative_operator (__main__.ContractTests.test_reject_capability_nondeclarative_operator) ... ok\ntest_reject_capability_plural_requires (__main__.ContractTests.test_reject_capability_plural_requires) ... ok\ntest_reject_capability_unknown_control (__main__.ContractTests.test_reject_capability_unknown_control) ... ok\ntest_reject_capability_unknown_relation (__main__.ContractTests.test_reject_capability_unknown_relation) ... ok\ntest_reject_context_duplicate_fact (__main__.ContractTests.test_reject_context_duplicate_fact) ... ok\ntest_reject_context_invalid_hash (__main__.ContractTests.test_reject_context_invalid_hash) ... ok\ntest_reject_context_known_null (__main__.ContractTests.test_reject_context_known_null) ... ok\ntest_reject_context_missing_provenance (__main__.ContractTests.test_reject_context_missing_provenance) ... ok\ntest_reject_context_reversed_expiry (__main__.ContractTests.test_reject_context_reversed_expiry) ... ok\ntest_reject_context_secret_handoff (__main__.ContractTests.test_reject_context_secret_handoff) ... ok\ntest_reject_context_unknown_has_invented_value (__main__.ContractTests.test_reject_context_unknown_has_invented_value) ... ok\ntest_reject_evidence_contradictory_exit (__main__.ContractTests.test_reject_evidence_contradictory_exit) ... ok\ntest_reject_evidence_declared_missing_control (__main__.ContractTests.test_reject_evidence_declared_missing_control) ... ok\ntest_reject_evidence_duplicate_control (__main__.ContractTests.test_reject_evidence_duplicate_control) ... ok\ntest_reject_evidence_empty_controls (__main__.ContractTests.test_reject_evidence_empty_controls) ... ok\ntest_reject_evidence_empty_exception (__main__.ContractTests.test_reject_evidence_empty_exception) ... ok\ntest_reject_evidence_empty_required_set (__main__.ContractTests.test_reject_evidence_empty_required_set) ... ok\ntest_reject_evidence_extra_conformance_claim (__main__.ContractTests.test_reject_evidence_extra_conformance_claim) ... ok\ntest_reject_evidence_future_artifact (__main__.ContractTests.test_reject_evidence_future_artifact) ... ok\ntest_reject_evidence_invalid_date (__main__.ContractTests.test_reject_evidence_invalid_date) ... ok\ntest_reject_evidence_missing_artifact (__main__.ContractTests.test_reject_evidence_missing_artifact) ... ok\ntest_reject_evidence_na_without_reason (__main__.ContractTests.test_reject_evidence_na_without_reason) ... ok\ntest_reject_evidence_not_implemented_pass (__main__.ContractTests.test_reject_evidence_not_implemented_pass) ... ok\ntest_reject_evidence_passed_without_evidence (__main__.ContractTests.test_reject_evidence_passed_without_evidence) ... ok\ntest_reject_evidence_secret_flag (__main__.ContractTests.test_reject_evidence_secret_flag) ... ok\ntest_reject_evidence_unknown_pass_control (__main__.ContractTests.test_reject_evidence_unknown_pass_control) ... ok\ntest_reject_evidence_unresolved_exception (__main__.ContractTests.test_reject_evidence_unresolved_exception) ... ok\ntest_reject_evidence_unsupported_pass (__main__.ContractTests.test_reject_evidence_unsupported_pass) ... ok\ntest_reject_preferences_code_conventions_changed (__main__.ContractTests.test_reject_preferences_code_conventions_changed) ... ok\ntest_reject_preferences_impossible_calendar_date (__main__.ContractTests.test_reject_preferences_impossible_calendar_date) ... ok\ntest_reject_preferences_invalid_language (__main__.ContractTests.test_reject_preferences_invalid_language) ... ok\ntest_reject_preferences_invalid_timestamp (__main__.ContractTests.test_reject_preferences_invalid_timestamp) ... ok\ntest_reject_preferences_invalid_timezone_offset (__main__.ContractTests.test_reject_preferences_invalid_timezone_offset) ... ok\ntest_reject_preferences_timezone_required (__main__.ContractTests.test_reject_preferences_timezone_required) ... ok\ntest_reject_route_result_empty_blocked_reason (__main__.ContractTests.test_reject_route_result_empty_blocked_reason) ... ok\ntest_reject_route_result_estimated_null (__main__.ContractTests.test_reject_route_result_estimated_null) ... ok\ntest_reject_route_result_excluded_selected (__main__.ContractTests.test_reject_route_result_excluded_selected) ... ok\ntest_reject_route_result_high_without_approval (__main__.ContractTests.test_reject_route_result_high_without_approval) ... ok\ntest_reject_route_result_missing_selected_load (__main__.ContractTests.test_reject_route_result_missing_selected_load) ... ok\ntest_reject_route_result_over_budget (__main__.ContractTests.test_reject_route_result_over_budget) ... ok\ntest_reject_route_result_proposed_profile_ready (__main__.ContractTests.test_reject_route_result_proposed_profile_ready) ... ok\ntest_reject_route_result_unavailable_zero (__main__.ContractTests.test_reject_route_result_unavailable_zero) ... ok\ntest_reject_route_result_unexplained_selection (__main__.ContractTests.test_reject_route_result_unexplained_selection) ... ok\ntest_reject_route_result_uninspected_ready (__main__.ContractTests.test_reject_route_result_uninspected_ready) ... ok\ntest_reject_route_result_unselected_loaded (__main__.ContractTests.test_reject_route_result_unselected_loaded) ... ok\ntest_reject_unknown_field_adapter_capabilities (__main__.ContractTests.test_reject_unknown_field_adapter_capabilities) ... ok\ntest_reject_unknown_field_approval (__main__.ContractTests.test_reject_unknown_field_approval) ... ok\ntest_reject_unknown_field_capability (__main__.ContractTests.test_reject_unknown_field_capability) ... ok\ntest_reject_unknown_field_context (__main__.ContractTests.test_reject_unknown_field_context) ... ok\ntest_reject_unknown_field_evidence (__main__.ContractTests.test_reject_unknown_field_evidence) ... ok\ntest_reject_unknown_field_preferences (__main__.ContractTests.test_reject_unknown_field_preferences) ... ok\ntest_reject_unknown_field_route_result (__main__.ContractTests.test_reject_unknown_field_route_result) ... ok\ntest_reject_version_adapter_capabilities (__main__.ContractTests.test_reject_version_adapter_capabilities) ... ok\ntest_reject_version_approval (__main__.ContractTests.test_reject_version_approval) ... ok\ntest_reject_version_capability (__main__.ContractTests.test_reject_version_capability) ... ok\ntest_reject_version_context (__main__.ContractTests.test_reject_version_context) ... ok\ntest_reject_version_evidence (__main__.ContractTests.test_reject_version_evidence) ... ok\ntest_reject_version_preferences (__main__.ContractTests.test_reject_version_preferences) ... ok\ntest_reject_version_route_result (__main__.ContractTests.test_reject_version_route_result) ... ok\ntest_remote_schema_resolution_is_denied (__main__.ContractTests.test_remote_schema_resolution_is_denied) ... ok\ntest_unknown_contract_name_rejected (__main__.ContractTests.test_unknown_contract_name_rejected) ... ok\ntest_unknown_evidence_not_claimed_as_pass (__main__.ContractTests.test_unknown_evidence_not_claimed_as_pass) ... ok\ntest_unknown_fact_is_not_false (__main__.ContractTests.test_unknown_fact_is_not_false) ... ok\n\n----------------------------------------------------------------------\nRan 97 tests in 2.191s\n\nOK\n",
+      "tests_run": 97
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "tests/scenarios/test_runtime.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:47:42.163723+00:00",
+      "finished_at": "2026-10-03T13:48:10.312252+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_all_alternatives_fail (__main__.GraphTests.test_all_alternatives_fail) ... ok\ntest_alternative_backtracks_across_later_root (__main__.GraphTests.test_alternative_backtracks_across_later_root) ... ok\ntest_any_of_rollback (__main__.GraphTests.test_any_of_rollback) ... ok\ntest_boolean_not_number (__main__.GraphTests.test_boolean_not_number) ... ok\ntest_conflict_symmetric (__main__.GraphTests.test_conflict_symmetric) ... ok\ntest_cycle (__main__.GraphTests.test_cycle) ... ok\ntest_missing_reference (__main__.GraphTests.test_missing_reference) ... ok\ntest_optional_edges_do_not_force_load (__main__.GraphTests.test_optional_edges_do_not_force_load) ... ok\ntest_shared_dependency (__main__.GraphTests.test_shared_dependency) ... ok\ntest_unknown_not_false (__main__.GraphTests.test_unknown_not_false) ... ok\ntest_absolute (__main__.LoaderTests.test_absolute) ... ok\ntest_deduplicated (__main__.LoaderTests.test_deduplicated) ... ok\ntest_hash_mismatch (__main__.LoaderTests.test_hash_mismatch) ... ok\ntest_symlink (__main__.LoaderTests.test_symlink) ... ok\ntest_traversal (__main__.LoaderTests.test_traversal) ... ok\ntest_agent_separate_from_product (__main__.RuntimeTests.test_agent_separate_from_product) ... ok\ntest_all_12_original_intents (__main__.RuntimeTests.test_all_12_original_intents) ... ok\ntest_budget_never_drops_controls (__main__.RuntimeTests.test_budget_never_drops_controls) ... ok\ntest_button_color_not_login (__main__.RuntimeTests.test_button_color_not_login) ... ok\ntest_changed_source_blocks_dependent_task (__main__.RuntimeTests.test_changed_source_blocks_dependent_task) ... ok\ntest_changed_unrelated_fact_does_not_block_color (__main__.RuntimeTests.test_changed_unrelated_fact_does_not_block_color) ... ok\ntest_confirmed_language_not_reasked (__main__.RuntimeTests.test_confirmed_language_not_reasked) ... ok\ntest_determinism (__main__.RuntimeTests.test_determinism) ... ok\ntest_expired_context (__main__.RuntimeTests.test_expired_context) ... ok\ntest_first_language_question (__main__.RuntimeTests.test_first_language_question) ... ok\ntest_handoff_requires_revalidation (__main__.RuntimeTests.test_handoff_requires_revalidation) ... ok\ntest_login_dependencies (__main__.RuntimeTests.test_login_dependencies) ... ok\ntest_modes_never_remove_minimum (__main__.RuntimeTests.test_modes_never_remove_minimum) ... ok\ntest_overlay_removal_blocks (__main__.RuntimeTests.test_overlay_removal_blocks) ... ok\ntest_production_baseline_blocks (__main__.RuntimeTests.test_production_baseline_blocks) ... ok\ntest_profile_recommendation_needs_confirmation (__main__.RuntimeTests.test_profile_recommendation_needs_confirmation) ... ok\ntest_sso_has_no_local_recovery (__main__.RuntimeTests.test_sso_has_no_local_recovery) ... ok\ntest_uninspected_blocks (__main__.RuntimeTests.test_uninspected_blocks) ... ok\n\n----------------------------------------------------------------------\nRan 33 tests in 28.013s\n\nOK\n",
+      "tests_run": 33
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "tests/scenarios/test_gates.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:10.312314+00:00",
+      "finished_at": "2026-10-03T13:48:11.349829+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_artifact_traversal (__main__.GateTests.test_artifact_traversal) ... ok\ntest_authenticator_exception_fails_closed (__main__.GateTests.test_authenticator_exception_fails_closed) ... ok\ntest_changed_artifact (__main__.GateTests.test_changed_artifact) ... ok\ntest_changed_scope_fields (__main__.GateTests.test_changed_scope_fields) ... ok\ntest_code_changed (__main__.GateTests.test_code_changed) ... ok\ntest_denied_call_has_no_effect (__main__.GateTests.test_denied_call_has_no_effect) ... ok\ntest_empty_legacy_not_upgraded (__main__.GateTests.test_empty_legacy_not_upgraded) ... ok\ntest_evidence_modes_preserve_failure_and_findings (__main__.GateTests.test_evidence_modes_preserve_failure_and_findings) ... ok\ntest_expired_approval (__main__.GateTests.test_expired_approval) ... ok\ntest_missing_artifact (__main__.GateTests.test_missing_artifact) ... ok\ntest_missing_authenticator_blocks (__main__.GateTests.test_missing_authenticator_blocks) ... ok\ntest_no_review_no_pass (__main__.GateTests.test_no_review_no_pass) ... ok\ntest_project_coverage_not_task_coverage (__main__.GateTests.test_project_coverage_not_task_coverage) ... ok\ntest_revocation (__main__.GateTests.test_revocation) ... ok\ntest_scope_guard_approved (__main__.GateTests.test_scope_guard_approved) ... ok\ntest_scope_guard_protected (__main__.GateTests.test_scope_guard_protected) ... ok\ntest_scope_guard_unapproved (__main__.GateTests.test_scope_guard_unapproved) ... ok\ntest_snapshot_deletion (__main__.GateTests.test_snapshot_deletion) ... ok\ntest_stale_evidence (__main__.GateTests.test_stale_evidence) ... ok\ntest_trusted_fake_authenticator_only_for_fixture (__main__.GateTests.test_trusted_fake_authenticator_only_for_fixture) ... ok\ntest_valid_synthetic_scoped_evidence (__main__.GateTests.test_valid_synthetic_scoped_evidence) ... ok\ntest_wrong_identity_blocks (__main__.GateTests.test_wrong_identity_blocks) ... ok\n\n----------------------------------------------------------------------\nRan 22 tests in 0.906s\n\nOK\n",
+      "tests_run": 22
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "tests/scenarios/test_adapters.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:11.349885+00:00",
+      "finished_at": "2026-10-03T13:48:11.878856+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_all_eight_candidates_match_template (__main__.AdapterTests.test_all_eight_candidates_match_template) ... ok\ntest_capability_sidecars_do_not_inherit_legacy_verified (__main__.AdapterTests.test_capability_sidecars_do_not_inherit_legacy_verified) ... ok\ntest_chatgpt_old_schema_and_control_coverage (__main__.AdapterTests.test_chatgpt_old_schema_and_control_coverage) ... ok\ntest_generated_entry_is_compact (__main__.AdapterTests.test_generated_entry_is_compact) ... ok\ntest_repository_skill_frontmatter_and_size (__main__.AdapterTests.test_repository_skill_frontmatter_and_size) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.414s\n\nOK\n",
+      "tests_run": 5
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "tests/scenarios/test_integrations.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:49:48.917823+00:00",
+      "finished_at": "2026-10-03T13:49:49.795230+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_authenticated_tamper_rejection (__main__.BackupTests.test_authenticated_tamper_rejection) ... ok\ntest_existing_destination_never_overwritten (__main__.BackupTests.test_existing_destination_never_overwritten) ... ok\ntest_inconsistent_attachment_prevents_backup (__main__.BackupTests.test_inconsistent_attachment_prevents_backup) ... ok\ntest_missing_attachment_prevents_backup (__main__.BackupTests.test_missing_attachment_prevents_backup) ... ok\ntest_private_archive_permissions (__main__.BackupTests.test_private_archive_permissions) ... ok\ntest_real_restore_after_mutation (__main__.BackupTests.test_real_restore_after_mutation) ... ok\ntest_symlink_rejected (__main__.BackupTests.test_symlink_rejected) ... ok\ntest_wrong_key (__main__.BackupTests.test_wrong_key) ... ok\ntest_m365_no_basic_fallback (__main__.MailTests.test_m365_no_basic_fallback) ... ok\ntest_no_plaintext_mode (__main__.MailTests.test_no_plaintext_mode) ... ok\ntest_real_local_tls_delivery_ar_en (__main__.MailTests.test_real_local_tls_delivery_ar_en) ... ok\ntest_recipient_guard_before_connection (__main__.MailTests.test_recipient_guard_before_connection) ... ok\ntest_download_expired (__main__.OperationTests.test_download_expired) ... ok\ntest_download_once_and_bound (__main__.OperationTests.test_download_once_and_bound) ... ok\ntest_download_without_stepup (__main__.OperationTests.test_download_without_stepup) ... ok\ntest_invalid_custom_schedule (__main__.OperationTests.test_invalid_custom_schedule) ... ok\ntest_invalid_recovery_targets_rejected (__main__.OperationTests.test_invalid_recovery_targets_rejected) ... ok\ntest_queue_ambiguous_timeout_needs_review (__main__.OperationTests.test_queue_ambiguous_timeout_needs_review) ... ok\ntest_queue_retry_only_explicit_temporary_refusal (__main__.OperationTests.test_queue_retry_only_explicit_temporary_refusal) ... ok\ntest_recovery_requires_objectives_and_verified_backup (__main__.OperationTests.test_recovery_requires_objectives_and_verified_backup) ... ok\ntest_schedule_and_retention (__main__.OperationTests.test_schedule_and_retention) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.671s\n\nOK\n",
+      "tests_run": 21
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-adapters.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:12.747358+00:00",
+      "finished_at": "2026-10-03T13:48:13.150063+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-adapters: 7 supported adapters\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-attribution.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.150112+00:00",
+      "finished_at": "2026-10-03T13:48:13.227874+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-attribution\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-controls.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.227939+00:00",
+      "finished_at": "2026-10-03T13:48:13.376171+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-controls: 84 controls\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-cross-references.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.376215+00:00",
+      "finished_at": "2026-10-03T13:48:13.501352+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-cross-references\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-documentation.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.501394+00:00",
+      "finished_at": "2026-10-03T13:48:13.540225+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-documentation\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-internal-links.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.540262+00:00",
+      "finished_at": "2026-10-03T13:48:13.600282+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-internal-links\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-license.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.600316+00:00",
+      "finished_at": "2026-10-03T13:48:13.642014+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-license\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-placeholders.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.642051+00:00",
+      "finished_at": "2026-10-03T13:48:13.798010+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-placeholders\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-profiles.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.798136+00:00",
+      "finished_at": "2026-10-03T13:48:13.975753+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-profiles\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-repository-structure.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:13.975797+00:00",
+      "finished_at": "2026-10-03T13:48:14.022362+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-repository-structure\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-schemas.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:14.022403+00:00",
+      "finished_at": "2026-10-03T13:48:14.163773+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-schemas: 4 JSON Schemas\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-vendor-neutral-core.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:14.163823+00:00",
+      "finished_at": "2026-10-03T13:48:14.218363+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-vendor-neutral-core\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-version.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:14.218406+00:00",
+      "finished_at": "2026-10-03T13:48:14.266086+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-version\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-yaml.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:14.266127+00:00",
+      "finished_at": "2026-10-03T13:48:14.783687+00:00",
+      "exit_code": 0,
+      "stdout": "PASS validate-yaml\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/generate-runtime-registry.py",
+        "--check"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:14.783731+00:00",
+      "finished_at": "2026-10-03T13:48:15.850697+00:00",
+      "exit_code": 0,
+      "stdout": "PASS registry matches sources\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/generate-adapter-rules.py",
+        "--check"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:15.850746+00:00",
+      "finished_at": "2026-10-03T13:48:15.879658+00:00",
+      "exit_code": 0,
+      "stdout": "{'status': 'PASS', 'different': [], 'claim': 'source equivalence only'}\n",
+      "stderr": "",
+      "tests_run": null
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "scripts/validate-runtime.py"
+      ],
+      "cwd": "project root",
+      "started_at": "2026-10-03T13:48:15.879821+00:00",
+      "finished_at": "2026-10-03T13:48:16.887419+00:00",
+      "exit_code": 0,
+      "stdout": "PASS local capability schemas, canonical references and resolvable synthetic graph; no product/runtime integration claim\n",
+      "stderr": "",
+      "tests_run": null
+    }
+  ],
+  "tested_sha256": {
+    "runtime/context-policy.yaml": "b2c8865feccf2a38e590f656fffc6d20d1387a19b652878a048e4f82b693df95",
+    "runtime/registry.py": "12fe02c8ad8c6b2264b40ecd98ed744b8e5331e3a8b33e98444262cccc43556b",
+    "runtime/__init__.py": "5273163bf486f73a5483f0c2a4c563fa1d038624251ef02eb1e6a7c885d1d5a2",
+    "runtime/scope_guard.py": "8316eb1487e8619597352defb65eb07b12b65f4215efece06a04bf56d694d30d",
+    "runtime/contracts.py": "40118e07554fc32f5efda4381d8593355e3cf7da428febe7a8ddfc53c491aba9",
+    "runtime/approval.py": "2d8f9abea0be211b8788698cbbc860b5e10ddda3780792085e0491f5daa11e54",
+    "runtime/loader.py": "c06c0b24978177791f85737b2e72d6437926f25b0cd73a2010e3ea05a650a604",
+    "runtime/router.py": "d3201b058537f3d0560b7917f76da672b8e88c2326640b611492b600aaf9cdfd",
+    "runtime/preferences-policy.yaml": "e68b4634d840c0c448e242c5e3a72fbd3fb050dfd36cfac1ceb6ccf0c56687d7",
+    "runtime/context.py": "02c6e9f5c32f4c04e68e635b4af9cd1eeee548910068320fb63113db7ac35fbf",
+    "runtime/pack-map.yaml": "ca40ebb6ecf9b505ad2c4ca232dde5031c2c1c21477141fe122330629eabefa3",
+    "runtime/routing-policy.yaml": "e89d98462add6f5a5f3a693dccb880efedaa88a6b1e0c57cce065ffb615c23f9",
+    "runtime/resolver.py": "4f5375014713a2fa3ba474ba77cb1aef588527a47c33f9f656188a5fe138a104",
+    "runtime/evidence.py": "32a261b53d8672ee497d485f3ba2e2c8c464c612c0ff2e583c46e2d166df80fa",
+    "runtime/bootstrap.md": "096d2f9db07bc6c71fda7097b253bad1a92ba4a3f8ffb1ff2341d13dbf8f2108",
+    "runtime/evidence_pack.py": "6a37302f17dfd805239cb0cd0bd9a6feb8cf3bd646dfd81f4961d7c644fcf7f4",
+    "capabilities/ux-accessibility.yaml": "a03f46a6e6808f810e8687072898bc24059bdf623bfbbe199a76d91e6fedb2d8",
+    "capabilities/sessions.yaml": "2978a0ada887cbd184f06887336e962e5b2bb6275d50532b50d16f55f54588bf",
+    "capabilities/database.yaml": "c6c70f752e68e2a5edd5fbaa76ae72b5b24e2cd31cd4412a8bc36a64514d3770",
+    "capabilities/incident.yaml": "9e795dd579ca1f2eca3365642c831693d6cba17b0987e2031e3ace09f81d5d39",
+    "capabilities/script-protection.yaml": "203ed43cf3ae9ff23bd254f4669597fcf4226732e07b66c57255f2e7d855ab04",
+    "capabilities/files.yaml": "9d7e79ea3a4de1f8c61f244b3be428f6aaf5e5535c8b45346888f81073b57ba4",
+    "capabilities/payment.yaml": "324eaba40784872804dc3f4b8e3d4ceb2ef42e51e8eca6a26060d2e22e71945e",
+    "capabilities/email.yaml": "449f72c3c0ae56ee51c1b899a4cc4c2b46c35cef9874c112396845aeb1044300",
+    "capabilities/privacy.yaml": "b16868f7e1e85c66a974bcf1d940b2044af6e56116357cdad30f7eccf1770a80",
+    "capabilities/product-ai.yaml": "966dbb738df005ad9e2a30f39c3c66384290ebbf7dc63c69227537701b036b4a",
+    "capabilities/public-discovery.yaml": "e1e2d1cc3cddd67a17eb7055ea790f9f936fb6732aef883a7120682adb9f594e",
+    "capabilities/identity.yaml": "4259e383ff494ad6ee9c2fbbc93d87e2fab16119ab5c1797161715e19e88a2c1",
+    "capabilities/password-recovery.yaml": "50d55fbf246fa7f64387102452bad8e800f96f7f2605f68bad90c43c807fc722",
+    "capabilities/audit.yaml": "1cac41792b84e408d0215f0dd1bca96b3b69f1fa61597ce93b120d1c03cbdea1",
+    "capabilities/step-up.yaml": "4747c3888f41c2072ab6d7afeaefbfede85337ececdb857bc75a7538cb69a629",
+    "capabilities/strong-auth.yaml": "32a32e00dd0e1bc6310e07fca70377e5ed1ef18cd4716ecf699a7b7c621975e2",
+    "capabilities/development-agent.yaml": "4af36da3c67e9a49ecad9b7f7cb78346d64465f3633fe34cc98bfe19880847d9",
+    "capabilities/deletion.yaml": "9ec5de887ac8aebe3b43f279ad542673563aeab69938c97ff238effcd9b0bb46",
+    "capabilities/fields.yaml": "94c6dac91e1f7455c6752ac50117f45b0b287cca9a75ffa0b195ecf5030d3d24",
+    "capabilities/api.yaml": "0a746fe7a340036c6c607a03b832d98ffc618e81ab68674b7a6808061fd69006",
+    "capabilities/backup-restore.yaml": "2bb4df74959bbc23c479208917944244c71e2ec5a267135042340101d23e9694",
+    "capabilities/authorization.yaml": "9e9b3eb240a5882dd0ad994023accc1af38b68e4dbb80370d37df55efedf6076",
+    "capabilities/admin.yaml": "229ad9c732f87663472bacc9a69fc27ebadfc7bf65ef676c7201fa0526f779fe",
+    "schemas/v1.1.0/evidence.schema.json": "adc0adbb95b70dff52faf9539d88fabf98f04003c855623d1aaf682022fbfc24",
+    "schemas/v1.1.0/approval.schema.json": "a65d102faac2dc20ea1fc369261c2aae6c9997a60d23384cf7c8572cfb1623a9",
+    "schemas/v1.1.0/capability.schema.json": "4e9da65bf24c4334a2cc1fcc48bd74361226626d08be85b54268c33136e6ffdc",
+    "schemas/v1.1.0/common.schema.json": "4b3a312fde03ce905f00d488bc1becbefa075f78ebfe6d0f71ec9929b16c8c71",
+    "schemas/v1.1.0/adapter-capabilities.schema.json": "e1799af385d7a82eb9fc44412dd992c3e7120e8cfea9f3bbbf6c60008de516b1",
+    "schemas/v1.1.0/context.schema.json": "ed312c5bcb6a736edc7c8cd372e34ad6047024638b3420d35ca0e9ad3b44fb29",
+    "schemas/v1.1.0/route-result.schema.json": "abfbd98aa35076e268674c68e34113608635f4ff665f4f02366e0afa02abdf6d",
+    "schemas/v1.1.0/preferences.schema.json": "610603697c2fd9a49e56def7ec1b1f1505a2e3db9ca522697a1692a7453845d1",
+    "tests/contracts/test_phase1.py": "a70d6cffb298a12330ebaedd557f707a9b95eb4db701d7a3ec4043e4a53fad71",
+    "tests/scenarios/test_gates.py": "bdc16d91172d938e0bb4e8344795e36cf3b0ab23ed5bb28d170aadce6de0f0d3",
+    "tests/scenarios/test_runtime.py": "65ee2378443c8973b9c4dfeb21465d4cda2da37184ff32c0f6d6f1b6a09e71d8",
+    "tests/scenarios/test_adapters.py": "ec2f15a50c1e1ddadff5946c7f19dc16c04a970fb5b6c118fe9c80e91b49945b",
+    "tests/scenarios/test_integrations.py": "a956cfd65f419729bb8795427abe35d52468a16958b6e27456710bd167aa4d85",
+    "tests/benchmarks/measure_context.py": "a7df87c73eb947f31603811984b4cf1363937b4271281d92bddfbd531fe75fa7",
+    "tests/fixtures/v1.1/adapter-capabilities.json": "93749d51031e31e78caa6c252fdbc2f768270e6ff8ff2a7ef18f5e87e982ad86",
+    "tests/fixtures/v1.1/preferences.json": "e043028d3ae84735975eed413b69a720b174a79f9f2123a8fbe03790c78c73ed",
+    "tests/fixtures/v1.1/context.json": "8292d2d31fd6da4576f886b032f5518f6c86df64de59e3ff9aea32c1205c81a8",
+    "tests/fixtures/v1.1/route-result.json": "6e58c65c548a09801dd95da3e82af188d31376466036a942e2968736f4c13d02",
+    "tests/fixtures/v1.1/approval.json": "356e1fdd1e77a367a5c943274bd03d59e161c631db5aaf30eff9589be81eed0e",
+    "tests/fixtures/v1.1/capability.json": "456d5dd6f6099b2f6b5c8864ea01041f380e9aa81e7871204fd279b6210696cd",
+    "tests/fixtures/v1.1/evidence.json": "518ae9f1391f1264b513f9f8eb628c9f61ababdeaef64a5948e67f7ee9b5c420",
+    "tests/fixtures/v1.0/records.json": "3ac492892f771480623a459e08b56664e41a680ab446c0f4e0c9e0dfa5f4447e",
+    "tests/fixtures/v1.0/baseline-hashes.json": "15e719086c102457afe85d362faea51f960aeb0a008ffeedbc4474ded4c5f3f0",
+    "tests/fixtures/v1.0/schemas/adapter.schema.json": "23fc26b885c9551f3b7141b437a9c45633fb0e2abdee22ce0203c116abb3edf0",
+    "tests/fixtures/v1.0/schemas/conformance.schema.json": "f68e9edc3661ba1978367c222553453b70a2a4148ed7c8676ee08df333684827",
+    "tests/fixtures/v1.0/schemas/profile.schema.json": "c10a3e6e719eb87bc7d60b1e909989d67014c87991829f590280cc71f92ae2ec",
+    "tests/fixtures/v1.0/schemas/control.schema.json": "65c5d88bc6e2e371cc754546d6aefb28f53c6c679c66999142b4a31a1eb945fb",
+    "examples/integrations/README.md": "3d05ef00379a303acda10545a0f55f62086ed10cec371fb0c198c4a7de37e485",
+    "examples/integrations/requirements.txt": "ea66c03cd13b8220c3a0283cd966cdc5cd9fe82dea7cc171c3d2a53b5a63c5e3",
+    "examples/integrations/backup/operations.py": "12e7b067075cc1416ec3a6040539bddc4ceba3b1edbfb22c132aad95cdb50a78",
+    "examples/integrations/backup/sql_engines.py": "e7ebdca54d4b6705b335db2bae2f51de9840e081f56ed63a0169e79dfd4495bb",
+    "examples/integrations/backup/unified.py": "26e5d737e9cb535489fecf1c2a2c16c90796c7b1f25f540c45103330e33fc968",
+    "examples/integrations/email/queue.py": "4dfa028bd0437b098b7e145113f4db245fd5cd92f6e016ff505519c25d12b740",
+    "examples/integrations/email/delivery.py": "2138b45ae4d70a2652b79833b0db9c9b2cd9328c99d9a255860d22f45b4a4abe",
+    "scripts/validate-version.py": "00bf742c4ba32d87f57cece0a7c97f03f4c03a16b52027d33631ec518dda7b52",
+    "scripts/validate-schemas.py": "1bb103f16e568e6a16fac8a95259e803ad517bee124e301714614dfd44ff8fec",
+    "scripts/validate-profiles.py": "800cfe4ca4715debee830d20b6cac6b0d5587560bdbc94069056f32a483f89e2",
+    "scripts/validate-contracts.py": "bed2098348b73e99d77dfb9aa1d5b890fe72507c299cdc60f249d4e35110a5c2",
+    "scripts/validate-adapters.py": "f4ecfc0ad195e49b9f99799614aaae1b7e9b619d635fdae335478f41ee2f0adb",
+    "scripts/validate-documentation.py": "14653e0dfa4905af788d9f1e720e3d5b280f773c2dbcc5c096649215ad681153",
+    "scripts/validate-yaml.py": "7bd021bcc7c123fb47d23de0edf4f25cd844a7b013592839b8ee0516c5288e54",
+    "scripts/validate-attribution.py": "2699e4b7387777e82c50a3c5bc333457bf1904d2ebf2097fd5389613f33c42dc",
+    "scripts/vcgf.py": "9f2029d740cb968bf1851c73d20d930fa63eb6998e5ad2ad2491c3252e5cd40a",
+    "scripts/validate-runtime.py": "ab42b8917496094e6408680fddf61ad98298a562e3e5f9455220c1aa70d95244",
+    "scripts/validate-repository-structure.py": "1c1b3c56f3863d65a2833a02e7834fb75b6777e4ce484f17b3af64babbb8f838",
+    "scripts/check-adapter-updates.py": "7dc7c36019c5e43147ca609822c5c46a0ccb2117f777fe4817c609162c5eac92",
+    "scripts/validate-controls.py": "aa9d9ca7252c8d121721a5f686135ea0b076a225983277b5f7f621de72b82258",
+    "scripts/generate-control-catalog.py": "ca0ac5f1dd683e2bb1233aa50a76a92ae4c16a78f8e7ccf7cd65b0bfed9e7df6",
+    "scripts/generate-file-manifest.py": "76062e15670ecaec7879b93ae09922dd8b58cdcec5d15e8fb82739a4139f43dd",
+    "scripts/vcgf_lib.py": "197e1591a74d2ada86ecb36f3300ff8f45bfbe143c716ebc816b9f20635906c6",
+    "scripts/validate-cross-references.py": "0edda28970e1df531db1c2f3ab723ff6e7b6f87434ef2e3bbec2d4df0ab8abe9",
+    "scripts/validate-placeholders.py": "f38f63210be6beb9baf1e664dd1b3f87815ad3f9fe417c62cc2e955a354b057f",
+    "scripts/generate-adapter-rules.py": "05d74caa151422d886decc650caf49b1a05d3349789b587372365876051834b5",
+    "scripts/validate-internal-links.py": "076f6cf2cbb6a3078e73d86c5a46a33797cb2eae3c2582c29c428d234a058c31",
+    "scripts/release-quality-gate.py": "2e48d63f6da18be4c4476a0804b0bd72ab5d0988242142f715742eb997067f6f",
+    "scripts/generate-runtime-registry.py": "2e657f3052cb6f5480f59908889c12da6d572a5b6efc2b0b47578f50aa5476d1",
+    "scripts/validate-vendor-neutral-core.py": "f4c482a5e62d3c970781d496e77086ba8327cdafca44e2f5ea5795cc1b9b9474",
+    "scripts/validate-license.py": "f8d2b1995a3e0241cb04ee885cf07bd659ddd98c0f8dd0c293b24abf68137c5f",
+    "scripts/generate-repository-tree.py": "d4a7ade2f65488bd4e49f5954f5a6dbd8ba04ac93cd25f65b9f241c9dda82111",
+    "scripts/__pycache__/vcgf_lib.cpython-313.pyc": "6e5d07457cee2fc5950f2c2c709f3d6306c4a467814ff8d77ad331fc07ee30ce"
+  },
+  "earlier_findings": [
+    {
+      "finding": "local TCP socket blocked in default sandbox",
+      "resolution": "authorized local-only test rerun with sandbox permission; no external email"
+    },
+    {
+      "finding": "greedy any_of could reject a satisfiable later-root combination",
+      "resolution": "bounded backtracking across remaining roots; regression test added"
+    }
+  ],
+  "not_run": [
+    "live Microsoft 365",
+    "live PostgreSQL/MySQL",
+    "real platform surfaces",
+    "paid model benchmark",
+    "GitHub CI",
+    "release-quality-gate.py",
+    "production operations"
+  ]
+}

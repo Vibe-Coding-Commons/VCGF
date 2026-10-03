@@ -1,0 +1,231 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/context.schema.json",
+  "title": "VCGF 1.1 context contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "project_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "snapshot_id": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "environment": {
+      "$ref": "common.schema.json#/$defs/environment"
+    },
+    "development_agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "uses_tools": {
+          "type": "boolean"
+        },
+        "uses_external_content": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "uses_tools",
+        "uses_external_content"
+      ]
+    },
+    "product_ai": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "uses_llm": {
+          "type": "boolean"
+        },
+        "uses_agent": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "uses_llm",
+        "uses_agent"
+      ]
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "state": {
+            "enum": [
+              "known",
+              "unknown"
+            ]
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "array",
+              "object",
+              "null"
+            ]
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "enum": [
+                  "user",
+                  "repository",
+                  "tool",
+                  "official_documentation"
+                ]
+              },
+              "reference": {
+                "type": "string",
+                "minLength": 1
+              },
+              "content_sha256": {
+                "$ref": "common.schema.json#/$defs/digest"
+              }
+            },
+            "required": [
+              "kind",
+              "reference",
+              "content_sha256"
+            ]
+          },
+          "observed_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "expires_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "reason": {
+            "$ref": "common.schema.json#/$defs/reason"
+          }
+        },
+        "required": [
+          "key",
+          "state",
+          "value",
+          "source",
+          "observed_at",
+          "expires_at"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "state": {
+                  "const": "unknown"
+                }
+              },
+              "required": [
+                "state"
+              ]
+            },
+            "then": {
+              "properties": {
+                "value": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "state": {
+                  "const": "known"
+                }
+              },
+              "required": [
+                "state"
+              ]
+            },
+            "then": {
+              "properties": {
+                "value": {
+                  "not": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "invalidates_on": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "code",
+          "policy",
+          "dependencies",
+          "identity",
+          "authorization",
+          "environment",
+          "platform"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pending_decisions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "next_step": {
+          "type": "string",
+          "minLength": 1
+        },
+        "secrets_included": {
+          "const": false
+        }
+      },
+      "required": [
+        "summary",
+        "pending_decisions",
+        "next_step",
+        "secrets_included"
+      ]
+    }
+  },
+  "required": [
+    "contract_version",
+    "project_id",
+    "snapshot_id",
+    "environment",
+    "development_agent",
+    "product_ai",
+    "facts",
+    "invalidates_on",
+    "handoff"
+  ]
+}

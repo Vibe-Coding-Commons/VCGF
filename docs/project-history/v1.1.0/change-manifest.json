@@ -1,0 +1,146 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "baseline_file_count": 383,
+  "modified": [],
+  "removed": [],
+  "added": [
+    {
+      "path": "docs/contracts-v1.1.md",
+      "sha256": "4e6759af3585bb6111ade4ce9a771ae162edc7fa48cd9e3e3cf85cc9a585fbe7"
+    },
+    {
+      "path": "docs/project-history/v1.1.0/PHASE1_REPORT_AR.md",
+      "sha256": "457a84a9922f9a0f2388b93c44eb0f9555dc03cd491ea1e99a3b91e213e18908"
+    },
+    {
+      "path": "docs/project-history/v1.1.0/approval.md",
+      "sha256": "80d8a317d017cfe78bc235b56f09279b59564ffe45b6fcac74d125267e1e895c"
+    },
+    {
+      "path": "docs/project-history/v1.1.0/approved-analysis.md",
+      "sha256": "3296b93828300369387936a9595b048799c54dd880e8984c3a986bc7aa33d836"
+    },
+    {
+      "path": "docs/project-history/v1.1.0/decisions.json",
+      "sha256": "fbe04252b8e8b7dbbb68435d942d7eb017227e7ebdc8355560008e95dd12cff2"
+    },
+    {
+      "path": "docs/project-history/v1.1.0/progress.json",
+      "sha256": "87b32a6c348aa6f8f25f2d8440cd81b5c7fc9cd6c6482a7632991293b455d3fa"
+    },
+    {
+      "path": "docs/project-history/v1.1.0/scope-register.json",
+      "sha256": "f39aa7d7dc5f0a7d227a1d56e8a2d2ab3551520e0f0d9edbe061dcb5b539b00d"
+    },
+    {
+      "path": "docs/project-history/v1.1.0/test-evidence.json",
+      "sha256": "4e8fa1da6b7d7ebcd97b527abec4852ddb53d4fe4f296c23318da94b9bf65c45"
+    },
+    {
+      "path": "runtime/__init__.py",
+      "sha256": "5273163bf486f73a5483f0c2a4c563fa1d038624251ef02eb1e6a7c885d1d5a2"
+    },
+    {
+      "path": "runtime/bootstrap.md",
+      "sha256": "b7bbc8065dbcb3c0926b6204d71eccfa87a565f780f9bfcddcf8ce10cdc57405"
+    },
+    {
+      "path": "runtime/contracts.py",
+      "sha256": "505a66e2a65ed0db8c0d850c73ff58d608b160facc95acda128afb0220dc8b98"
+    },
+    {
+      "path": "schemas/v1.1.0/adapter-capabilities.schema.json",
+      "sha256": "e1799af385d7a82eb9fc44412dd992c3e7120e8cfea9f3bbbf6c60008de516b1"
+    },
+    {
+      "path": "schemas/v1.1.0/approval.schema.json",
+      "sha256": "a65d102faac2dc20ea1fc369261c2aae6c9997a60d23384cf7c8572cfb1623a9"
+    },
+    {
+      "path": "schemas/v1.1.0/capability.schema.json",
+      "sha256": "4e9da65bf24c4334a2cc1fcc48bd74361226626d08be85b54268c33136e6ffdc"
+    },
+    {
+      "path": "schemas/v1.1.0/common.schema.json",
+      "sha256": "4b3a312fde03ce905f00d488bc1becbefa075f78ebfe6d0f71ec9929b16c8c71"
+    },
+    {
+      "path": "schemas/v1.1.0/context.schema.json",
+      "sha256": "ed312c5bcb6a736edc7c8cd372e34ad6047024638b3420d35ca0e9ad3b44fb29"
+    },
+    {
+      "path": "schemas/v1.1.0/evidence.schema.json",
+      "sha256": "adc0adbb95b70dff52faf9539d88fabf98f04003c855623d1aaf682022fbfc24"
+    },
+    {
+      "path": "schemas/v1.1.0/preferences.schema.json",
+      "sha256": "610603697c2fd9a49e56def7ec1b1f1505a2e3db9ca522697a1692a7453845d1"
+    },
+    {
+      "path": "schemas/v1.1.0/route-result.schema.json",
+      "sha256": "abfbd98aa35076e268674c68e34113608635f4ff665f4f02366e0afa02abdf6d"
+    },
+    {
+      "path": "scripts/validate-contracts.py",
+      "sha256": "bed2098348b73e99d77dfb9aa1d5b890fe72507c299cdc60f249d4e35110a5c2"
+    },
+    {
+      "path": "tests/contracts/test_phase1.py",
+      "sha256": "a70d6cffb298a12330ebaedd557f707a9b95eb4db701d7a3ec4043e4a53fad71"
+    },
+    {
+      "path": "tests/fixtures/v1.0/baseline-hashes.json",
+      "sha256": "15e719086c102457afe85d362faea51f960aeb0a008ffeedbc4474ded4c5f3f0"
+    },
+    {
+      "path": "tests/fixtures/v1.0/records.json",
+      "sha256": "3ac492892f771480623a459e08b56664e41a680ab446c0f4e0c9e0dfa5f4447e"
+    },
+    {
+      "path": "tests/fixtures/v1.0/schemas/adapter.schema.json",
+      "sha256": "23fc26b885c9551f3b7141b437a9c45633fb0e2abdee22ce0203c116abb3edf0"
+    },
+    {
+      "path": "tests/fixtures/v1.0/schemas/conformance.schema.json",
+      "sha256": "f68e9edc3661ba1978367c222553453b70a2a4148ed7c8676ee08df333684827"
+    },
+    {
+      "path": "tests/fixtures/v1.0/schemas/control.schema.json",
+      "sha256": "65c5d88bc6e2e371cc754546d6aefb28f53c6c679c66999142b4a31a1eb945fb"
+    },
+    {
+      "path": "tests/fixtures/v1.0/schemas/profile.schema.json",
+      "sha256": "c10a3e6e719eb87bc7d60b1e909989d67014c87991829f590280cc71f92ae2ec"
+    },
+    {
+      "path": "tests/fixtures/v1.1/adapter-capabilities.json",
+      "sha256": "93749d51031e31e78caa6c252fdbc2f768270e6ff8ff2a7ef18f5e87e982ad86"
+    },
+    {
+      "path": "tests/fixtures/v1.1/approval.json",
+      "sha256": "356e1fdd1e77a367a5c943274bd03d59e161c631db5aaf30eff9589be81eed0e"
+    },
+    {
+      "path": "tests/fixtures/v1.1/capability.json",
+      "sha256": "456d5dd6f6099b2f6b5c8864ea01041f380e9aa81e7871204fd279b6210696cd"
+    },
+    {
+      "path": "tests/fixtures/v1.1/context.json",
+      "sha256": "8292d2d31fd6da4576f886b032f5518f6c86df64de59e3ff9aea32c1205c81a8"
+    },
+    {
+      "path": "tests/fixtures/v1.1/evidence.json",
+      "sha256": "518ae9f1391f1264b513f9f8eb628c9f61ababdeaef64a5948e67f7ee9b5c420"
+    },
+    {
+      "path": "tests/fixtures/v1.1/preferences.json",
+      "sha256": "e043028d3ae84735975eed413b69a720b174a79f9f2123a8fbe03790c78c73ed"
+    },
+    {
+      "path": "tests/fixtures/v1.1/route-result.json",
+      "sha256": "6e58c65c548a09801dd95da3e82af188d31376466036a942e2968736f4c13d02"
+    }
+  ],
+  "self_exclusion": "change-manifest.json is an added file; its own hash is intentionally excluded",
+  "added_total_including_manifest": 35
+}
