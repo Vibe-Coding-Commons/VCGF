@@ -1,0 +1,36 @@
+........................................................................ [ 51%]
+.................F...................................................    [100%]
+=================================== FAILURES ===================================
+___________________ test_schema_remote_resolution_forbidden ____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_schema_remote_resolution_0')
+
+    def test_schema_remote_resolution_forbidden(tmp_path):
+        path=tmp_path/'schema.json';path.write_text(json.dumps({'$schema':'https://json-schema.org/draft/2020-12/schema','$ref':'https://example.invalid/remote.json'}))
+        with pytest.raises(Exception) as error:
+            validate(path,{})
+>       assert 'reference' in str(type(error.value)).lower() or 'resolve' in str(error.value).lower()
+E       assert ('reference' in "<class 'jsonschema.exceptions._wrappedreferencingerror'>" or 'resolve' in 'unresolvable: https://example.invalid/remote.json')
+E        +  where "<class 'jsonschema.exceptions._wrappedreferencingerror'>" = <built-in method lower of str object at 0x7f1f11294650>()
+E        +    where <built-in method lower of str object at 0x7f1f11294650> = "<class 'jsonschema.exceptions._WrappedReferencingError'>".lower
+E        +      where "<class 'jsonschema.exceptions._WrappedReferencingError'>" = str(<class 'jsonschema.exceptions._WrappedReferencingError'>)
+E        +        where <class 'jsonschema.exceptions._WrappedReferencingError'> = type(<WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')>)
+E        +          where <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> = <ExceptionInfo <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> tblen=5>.value
+E        +  and   'unresolvable: https://example.invalid/remote.json' = <built-in method lower of str object at 0x7f1f111ac1b0>()
+E        +    where <built-in method lower of str object at 0x7f1f111ac1b0> = 'Unresolvable: https://example.invalid/remote.json'.lower
+E        +      where 'Unresolvable: https://example.invalid/remote.json' = str(<WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')>)
+E        +        where <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> = <ExceptionInfo <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> tblen=5>.value
+
+tests/adaptive/test_inputs.py:125: AssertionError
+=========================== short test summary info ============================
+FAILED tests/adaptive/test_inputs.py::test_schema_remote_resolution_forbidden - assert ('reference' in "<class 'jsonschema.exceptions._wrappedreferencingerror'>" or 'resolve' in 'unresolvable: https://example.invalid/remote.json')
+ +  where "<class 'jsonschema.exceptions._wrappedreferencingerror'>" = <built-in method lower of str object at 0x7f1f11294650>()
+ +    where <built-in method lower of str object at 0x7f1f11294650> = "<class 'jsonschema.exceptions._WrappedReferencingError'>".lower
+ +      where "<class 'jsonschema.exceptions._WrappedReferencingError'>" = str(<class 'jsonschema.exceptions._WrappedReferencingError'>)
+ +        where <class 'jsonschema.exceptions._WrappedReferencingError'> = type(<WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')>)
+ +          where <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> = <ExceptionInfo <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> tblen=5>.value
+ +  and   'unresolvable: https://example.invalid/remote.json' = <built-in method lower of str object at 0x7f1f111ac1b0>()
+ +    where <built-in method lower of str object at 0x7f1f111ac1b0> = 'Unresolvable: https://example.invalid/remote.json'.lower
+ +      where 'Unresolvable: https://example.invalid/remote.json' = str(<WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')>)
+ +        where <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> = <ExceptionInfo <WrappedReferencingError Unresolvable(ref='https://example.invalid/remote.json')> tblen=5>.value
+1 failed, 140 passed in 7.03s

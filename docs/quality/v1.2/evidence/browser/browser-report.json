@@ -1,0 +1,702 @@
+{
+  "observed_at": "2026-10-21T08:45:34.675107+00:00",
+  "scope": "synthetic_static_html_chromium_only",
+  "browser": "144.0.7559.96",
+  "checks": [
+    {
+      "name": "ar-320-direction",
+      "passed": true
+    },
+    {
+      "name": "ar-320-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "ar-320-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "ar-320-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "ar-320-four-records",
+      "passed": true
+    },
+    {
+      "name": "ar-320-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "ar-320-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-320-details-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-320-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "ar-320-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "ar-320-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "ar-320-search",
+      "passed": true
+    },
+    {
+      "name": "ar-320-empty-state",
+      "passed": true
+    },
+    {
+      "name": "ar-320-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "en-320-direction",
+      "passed": true
+    },
+    {
+      "name": "en-320-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "en-320-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "en-320-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "en-320-four-records",
+      "passed": true
+    },
+    {
+      "name": "en-320-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "en-320-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "en-320-details-retained",
+      "passed": true
+    },
+    {
+      "name": "en-320-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "en-320-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "en-320-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "en-320-search",
+      "passed": true
+    },
+    {
+      "name": "en-320-empty-state",
+      "passed": true
+    },
+    {
+      "name": "en-320-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "ar-390-direction",
+      "passed": true
+    },
+    {
+      "name": "ar-390-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "ar-390-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "ar-390-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "ar-390-four-records",
+      "passed": true
+    },
+    {
+      "name": "ar-390-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "ar-390-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-390-details-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-390-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "ar-390-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "ar-390-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "ar-390-search",
+      "passed": true
+    },
+    {
+      "name": "ar-390-empty-state",
+      "passed": true
+    },
+    {
+      "name": "ar-390-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "en-390-direction",
+      "passed": true
+    },
+    {
+      "name": "en-390-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "en-390-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "en-390-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "en-390-four-records",
+      "passed": true
+    },
+    {
+      "name": "en-390-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "en-390-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "en-390-details-retained",
+      "passed": true
+    },
+    {
+      "name": "en-390-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "en-390-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "en-390-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "en-390-search",
+      "passed": true
+    },
+    {
+      "name": "en-390-empty-state",
+      "passed": true
+    },
+    {
+      "name": "en-390-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "ar-768-direction",
+      "passed": true
+    },
+    {
+      "name": "ar-768-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "ar-768-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "ar-768-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "ar-768-four-records",
+      "passed": true
+    },
+    {
+      "name": "ar-768-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "ar-768-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-768-details-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-768-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "ar-768-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "ar-768-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "ar-768-search",
+      "passed": true
+    },
+    {
+      "name": "ar-768-empty-state",
+      "passed": true
+    },
+    {
+      "name": "ar-768-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "en-768-direction",
+      "passed": true
+    },
+    {
+      "name": "en-768-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "en-768-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "en-768-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "en-768-four-records",
+      "passed": true
+    },
+    {
+      "name": "en-768-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "en-768-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "en-768-details-retained",
+      "passed": true
+    },
+    {
+      "name": "en-768-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "en-768-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "en-768-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "en-768-search",
+      "passed": true
+    },
+    {
+      "name": "en-768-empty-state",
+      "passed": true
+    },
+    {
+      "name": "en-768-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-direction",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-four-records",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-details-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-search",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-empty-state",
+      "passed": true
+    },
+    {
+      "name": "ar-1280-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "en-1280-direction",
+      "passed": true
+    },
+    {
+      "name": "en-1280-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "en-1280-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "en-1280-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "en-1280-four-records",
+      "passed": true
+    },
+    {
+      "name": "en-1280-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "en-1280-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "en-1280-details-retained",
+      "passed": true
+    },
+    {
+      "name": "en-1280-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "en-1280-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "en-1280-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "en-1280-search",
+      "passed": true
+    },
+    {
+      "name": "en-1280-empty-state",
+      "passed": true
+    },
+    {
+      "name": "en-1280-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-direction",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-four-records",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-details-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-search",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-empty-state",
+      "passed": true
+    },
+    {
+      "name": "ar-1440-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "en-1440-direction",
+      "passed": true
+    },
+    {
+      "name": "en-1440-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "en-1440-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "en-1440-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "en-1440-four-records",
+      "passed": true
+    },
+    {
+      "name": "en-1440-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "en-1440-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "en-1440-details-retained",
+      "passed": true
+    },
+    {
+      "name": "en-1440-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "en-1440-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "en-1440-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "en-1440-search",
+      "passed": true
+    },
+    {
+      "name": "en-1440-empty-state",
+      "passed": true
+    },
+    {
+      "name": "en-1440-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-direction",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-four-records",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-details-retained",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-search",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-empty-state",
+      "passed": true
+    },
+    {
+      "name": "ar-1920-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "en-1920-direction",
+      "passed": true
+    },
+    {
+      "name": "en-1920-no-root-overflow",
+      "passed": true
+    },
+    {
+      "name": "en-1920-one-visible-view",
+      "passed": true
+    },
+    {
+      "name": "en-1920-appropriate-view",
+      "passed": true
+    },
+    {
+      "name": "en-1920-four-records",
+      "passed": true
+    },
+    {
+      "name": "en-1920-keyboard-details",
+      "passed": true
+    },
+    {
+      "name": "en-1920-focus-retained",
+      "passed": true
+    },
+    {
+      "name": "en-1920-details-retained",
+      "passed": true
+    },
+    {
+      "name": "en-1920-live-action-announcement",
+      "passed": true
+    },
+    {
+      "name": "en-1920-calendar-preserved",
+      "passed": true
+    },
+    {
+      "name": "en-1920-isolated-identifiers",
+      "passed": true
+    },
+    {
+      "name": "en-1920-search",
+      "passed": true
+    },
+    {
+      "name": "en-1920-empty-state",
+      "passed": true
+    },
+    {
+      "name": "en-1920-200-percent-text-root-reflow",
+      "passed": true
+    },
+    {
+      "name": "record-content-escaped",
+      "passed": true
+    },
+    {
+      "name": "no-page-javascript-errors",
+      "passed": true
+    },
+    {
+      "name": "no-external-requests",
+      "passed": true
+    }
+  ],
+  "passed": 171,
+  "failed": 0,
+  "page_errors": [],
+  "network_requests": [],
+  "limitations": [
+    "No real Laravel/React/Vue application tested",
+    "No Firefox/WebKit or physical mobile device tested",
+    "No manual screen-reader or WCAG conformance claim",
+    "200% text sizing is not full browser zoom certification",
+    "Uses system fonts; local font binaries and shaping not verified"
+  ]
+}

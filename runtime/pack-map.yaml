@@ -1,5 +1,9 @@
 # SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0
 capability_requirements:
+  adaptive-engineering:
+  - packs/engineering/adaptive.md
+  adaptive-ux:
+  - packs/ux/adaptive.md
   fields:
   - packs/requirements/section-14.md
   ux-accessibility:

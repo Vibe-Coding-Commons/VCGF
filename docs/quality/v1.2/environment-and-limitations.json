@@ -1,0 +1,58 @@
+{
+  "python": "3.13.5",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "tested_scope": "verified source subset plus candidate overlay",
+  "full_checkout": false,
+  "remote_write": {
+    "operation": "create_branch",
+    "result": "HTTP 403 Resource not accessible by integration",
+    "branch_created": false
+  },
+  "branch_protection_read": "HTTP 403; settings unverified",
+  "target_projects": [
+    {
+      "stack": "Laravel + React",
+      "runtime_tested": false,
+      "version": null,
+      "reason": "No complete authorized application/Composer environment available"
+    },
+    {
+      "stack": "Laravel + Vue",
+      "runtime_tested": false,
+      "version": null,
+      "reason": "No complete authorized application/Composer environment available"
+    },
+    {
+      "stack": "generic static HTML",
+      "runtime_tested": true,
+      "browser_engine": "Chromium",
+      "synthetic": true
+    },
+    {
+      "stack": "legacy VCGF router",
+      "runtime_tested": false,
+      "reason": "Full runtime files and schemas not locally available; implemented optional route remains unverified"
+    }
+  ],
+  "other_unverified": [
+    "Full v1.0/v1.1 regression",
+    "Python 3.12 and Windows",
+    "Firefox and WebKit",
+    "Physical mobile devices",
+    "Manual assistive technology",
+    "Licensed font binaries",
+    "Actual Microsoft 365 OAuth delivery",
+    "PostgreSQL/MySQL restore consistency",
+    "Trusted host enforcement",
+    "Live platform adapters",
+    "Current online vulnerability review and complete SBOM"
+  ],
+  "python_packages": {
+    "jsonschema": "4.26.0",
+    "PyYAML": "6.0.3",
+    "pytest": "9.0.2",
+    "coverage": "7.13.3",
+    "playwright": "1.57.0",
+    "cryptography": "46.0.4"
+  }
+}

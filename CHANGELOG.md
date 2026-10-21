@@ -11,6 +11,25 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 This project follows a Keep a Changelog-style release history and Semantic Versioning.
 
+## [Unreleased] — VCGF v1.2 Adaptive Engineering & UX
+
+### Added
+- Adaptive Engineering Engine for architecture and design pattern recommendations.
+- Adaptive UX Intelligence Engine for project-specific user experience decisions.
+- Responsive mobile, tablet, and desktop design guidance.
+- RTL/LTR component standards and bidirectional content support.
+- Local WOFF2 typography and font performance guidelines.
+- New validation contracts, automated tests, and 21 cumulative release acceptance gates.
+
+### Improved
+- Runtime integration with existing VCGF capabilities.
+- Engineering decision traceability and evidence validation.
+- Arabic and English documentation.
+- Release governance and quality assurance.
+
+### Release Status
+Integration candidate. Production acceptance remains pending full repository regression, real application integration, and outstanding release gates. Existing controls, licensing, and founder rights are preserved.
+
 ## [Unreleased] — target 1.1.0
 
 Development checkpoint; VERSION remains 1.0.0. This is not a published or fully accepted release.

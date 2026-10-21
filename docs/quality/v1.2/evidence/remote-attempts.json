@@ -1,0 +1,14 @@
+{
+  "observed_date": "2026-10-21",
+  "branch": "vcgf/v1.2-engine-integration-20261021",
+  "create_branch": {
+    "status": 403,
+    "message": "Resource not accessible by integration",
+    "result": "no remote branch created"
+  },
+  "branch_protection_read": {
+    "status": 403,
+    "conclusion": "unverified, not absent"
+  },
+  "no_permission_bypass": true
+}

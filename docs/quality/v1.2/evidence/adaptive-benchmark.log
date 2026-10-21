@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-10-21T08:45:36.428030+00:00",
+  "scope": "single-process synthetic microbenchmark",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "logical_cpu_count": 5,
+  "iterations": 100,
+  "cold_ms": 129.38,
+  "warm_p50_ms": 8.728,
+  "warm_p95_ms": 12.243,
+  "warm_max_ms": 16.016,
+  "traced_peak_bytes_one_warm_call": 1184491,
+  "threaded_requests": 32,
+  "workers": 4,
+  "threaded_elapsed_seconds": 0.55,
+  "threaded_blocked": 0,
+  "deterministic_thread_results": true,
+  "no_production_slo_claim": true,
+  "fixture_bytes": 67
+}

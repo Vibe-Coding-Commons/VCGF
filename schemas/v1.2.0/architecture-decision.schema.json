@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.2.0/architecture-decision.schema.json",
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0. Opt-in planning contract, not a release claim.",
+  "title": "architecture-decision (opt-in 1.2.0)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.2.0"
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "fingerprint_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "maxLength": 4096
+    },
+    "catalog_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "maxLength": 4096
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 4096
+    },
+    "state": {
+      "enum": [
+        "proposed",
+        "blocked",
+        "approved",
+        "implemented",
+        "verified",
+        "unverified"
+      ]
+    },
+    "architecture": {
+      "enum": [
+        "lean_layers",
+        "modular_monolith",
+        "selective_ddd",
+        "distributed_services",
+        "retain_existing",
+        "unknown"
+      ]
+    },
+    "choices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "category": {
+            "enum": [
+              "pattern",
+              "package",
+              "ui_library",
+              "architecture"
+            ]
+          },
+          "selected": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 4096
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 256
+          },
+          "constraints": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 256
+          },
+          "verification_needed": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 256
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "selected",
+          "reason",
+          "evidence_refs",
+          "constraints",
+          "verification_needed"
+        ]
+      },
+      "maxItems": 256
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "approved",
+            "rejected",
+            "not_required"
+          ]
+        },
+        "approval_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "required",
+        "status",
+        "approval_ref"
+      ]
+    },
+    "evidence_status": {
+      "enum": [
+        "not_run",
+        "partial",
+        "passed_scoped_checks",
+        "failed",
+        "unverified"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    }
+  },
+  "required": [
+    "contract_version",
+    "decision_id",
+    "project_id",
+    "fingerprint_sha256",
+    "catalog_sha256",
+    "decided_at",
+    "state",
+    "architecture",
+    "choices",
+    "blockers",
+    "approval",
+    "evidence_status",
+    "limitations"
+  ]
+}

@@ -1,0 +1,114 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+status: integration-candidate
+proposal: VCGF-v1.2-UXI
+rule_version: 1.2.0
+policy: Evidence-informed and read-only; no forced migrations
+design_schools:
+  business_operations:
+    school: task_first_enterprise
+    navigation: sidebar_task
+    density: adaptive
+    reason: Frequent structured workflows need repeatable controls and clear state visibility
+  public_service:
+    school: service_journey
+    navigation: service_catalog
+    density: balanced
+    reason: Service findability and transparent case status are primary
+  commerce:
+    school: conversion
+    navigation: top_navigation
+    density: balanced
+    reason: Decision confidence, product discovery and transaction clarity are primary
+  editorial:
+    school: editorial_brand
+    navigation: top_navigation
+    density: spacious
+    reason: Readable structured content and search matter more than dense task tools
+  operational_monitoring:
+    school: operations_command
+    navigation: alert_queue
+    density: adaptive
+    reason: Critical signals and actions should be prioritized over decorative dashboards
+  learning:
+    school: learning_progress
+    navigation: learning_path
+    density: balanced
+    reason: Learning progression and feedback drive interaction
+  kiosk:
+    school: touch_kiosk
+    navigation: touch_hub
+    density: spacious
+    reason: Public touch interface needs large clear actions and privacy-conscious completion
+  mixed:
+    school: hybrid
+    navigation: hybrid
+    density: adaptive
+    reason: Different role journeys warrant differing layouts rather than a forced uniform school
+  unknown:
+    school: undetermined
+    navigation: undetermined
+    density: undetermined
+    reason: Cannot certify project design style without verified product type
+workflow_patterns:
+  read:
+    pattern: content_hierarchy
+    desktop: constrained_reading_column
+    mobile: single_column_reading
+    tablet: fluid_reading_column
+  browse:
+    pattern: search_discovery
+    desktop: search_filters_and_results
+    mobile: search_filter_sheet
+    tablet: two_pane_when_space_allows
+  form:
+    pattern: contextual_form
+    desktop: contextual_fields_and_inline_validation
+    mobile: progressive_single_column_form
+    tablet: contextual_fields_and_inline_validation
+  approval:
+    pattern: stateful_approval
+    desktop: queue_preview_context_actions
+    mobile: priority_card_details_actions
+    tablet: queue_plus_details
+  monitor:
+    pattern: operational_monitoring
+    desktop: dense_alerts_workbench
+    mobile: critical_alert_list
+    tablet: alerts_and_status_panels
+  kiosk_action:
+    pattern: touch_guided_flow
+    desktop: touch_guided_flow
+    mobile: touch_guided_flow
+    tablet: touch_guided_flow
+  unknown:
+    pattern: undetermined
+    desktop: needs_discovery
+    mobile: needs_discovery
+    tablet: needs_discovery
+overrides:
+- when: interaction=browse and (data_density=high or record_volume=large)
+  result: data_workbench desktop plus accessible mobile summary-details; no lost information
+- when: criticality=high/critical
+  result: explicit irreversible-action confirmation, input validation, recovery and fail safe
+- when: existing_design_system nonempty
+  result: preserve design system; review before proposing migration
+- when: mixed ar/en and bidirectional
+  result: logical CSS, semantic icons, bdi, explicit per-field direction
+- when: font assets
+  result: license verification, WOFF2 baseline, measured subset/variable/fonts preload strategy
+verification_required:
+- task_completions
+- mobile_tablet_desktop
+- rtl_ltr_bidi
+- wcag22_aa_manual_automated
+- keyboard_touch_screenreader
+- performance_font_metrics
+- responsive_zoom
+- security_and_data_access
+sources:
+  w3c_bidi: https://www.w3.org/International/articles/inline-bidi-markup/
+  w3c_wcag: https://www.w3.org/TR/WCAG22/
+  mdn_css_logic: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/inset-inline-start
+  webdev_fonts: https://web.dev/learn/performance/optimize-web-fonts
+  webdev_vitals: https://web.dev/articles/vitals

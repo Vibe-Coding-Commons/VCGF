@@ -1,0 +1,52 @@
+{
+  "contract_version": "1.2.0",
+  "project_id": "synthetic-enterprise-ecm",
+  "captured_at": "2026-10-21T06:40:00+00:00",
+  "project_kind": "enterprise_app",
+  "backend": "laravel",
+  "frontend": "vue",
+  "detected_versions": {
+    "laravel": "synthetic-example-not-a-version",
+    "vue": "synthetic-example-not-a-version"
+  },
+  "sources": [
+    {
+      "path": "synthetic/architecture.md",
+      "sha256": "7c0397b4d01a8aee772a21ba8d64ab7a364dc6375c0b5cebd53b630f95f42d4c",
+      "kind": "reviewer_note"
+    },
+    {
+      "path": "synthetic/package.json",
+      "sha256": "b294b42355e280f6173df8dc4ac8f17daead1e37ce6780a2982c46520f2827b2",
+      "kind": "local_file"
+    }
+  ],
+  "complexity": {
+    "business_rules": 3,
+    "bounded_contexts": 3,
+    "data_concurrency": 3,
+    "external_integrations": 3,
+    "compliance_data_risk": 3,
+    "tenant_authorization": 3,
+    "ui_interaction": 3,
+    "team_change": 2
+  },
+  "risk_flags": [
+    "pii",
+    "payment",
+    "multi_tenant"
+  ],
+  "unknown_facts": [
+    "actual library compatibility not yet verified"
+  ],
+  "human_confirmation": "unconfirmed",
+  "architecture_facts": {
+    "independent_domains": true,
+    "multiple_persistence_sources": true,
+    "multiple_service_providers": true,
+    "highly_reused_operations": true,
+    "complex_workflow": true,
+    "retriable_financial_operations": true,
+    "existing_component_library": "PrimeVue (synthetic)"
+  }
+}

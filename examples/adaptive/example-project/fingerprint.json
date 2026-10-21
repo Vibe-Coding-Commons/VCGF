@@ -1,0 +1,42 @@
+{
+  "contract_version": "1.2.0",
+  "project_id": "synthetic-paired-example",
+  "captured_at": "2026-10-21T08:40:10.073259+00:00",
+  "project_kind": "simple_app",
+  "backend": "laravel",
+  "frontend": "blade",
+  "detected_versions": {
+    "laravel": "synthetic-example-not-a-version"
+  },
+  "sources": [
+    {
+      "path": "brief.md",
+      "sha256": "f856f06ada359678de85de7f64fd908f7332e0ad5f8db326c3809ef6cfc63863",
+      "kind": "local_file"
+    }
+  ],
+  "complexity": {
+    "business_rules": 1,
+    "bounded_contexts": 0,
+    "data_concurrency": 0,
+    "external_integrations": 0,
+    "compliance_data_risk": 1,
+    "tenant_authorization": 0,
+    "ui_interaction": 1,
+    "team_change": 0
+  },
+  "risk_flags": [
+    "none"
+  ],
+  "unknown_facts": [],
+  "human_confirmation": "not_required_for_read_only_advice",
+  "architecture_facts": {
+    "independent_domains": false,
+    "multiple_persistence_sources": false,
+    "multiple_service_providers": false,
+    "highly_reused_operations": false,
+    "complex_workflow": false,
+    "retriable_financial_operations": false,
+    "existing_component_library": "Laravel Blade (synthetic)"
+  }
+}

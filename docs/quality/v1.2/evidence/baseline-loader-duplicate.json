@@ -1,0 +1,7 @@
+{
+  "source_git_blob": "35604943783a3f8726bb76ebde83a694282759b9",
+  "test": "same path with conflicting expected digest",
+  "observed": "accepted second conflicting record without validation",
+  "loaded_count": 1,
+  "blocked": false
+}

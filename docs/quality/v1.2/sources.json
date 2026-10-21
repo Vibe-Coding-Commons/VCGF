@@ -1,0 +1,26 @@
+{
+  "reviewed_on": "2026-10-21",
+  "sources": [
+    {
+      "id": "SRC-REPO",
+      "url": "https://github.com/Vibe-Coding-Commons/VCGF",
+      "ref": "419d8331e7b78c96b946d5815fbe886068dabfe5",
+      "use": "Current source and immutable baseline metadata"
+    },
+    {
+      "id": "SRC-WCAG",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "use": "Accessibility acceptance guidance, not a conformance claim"
+    },
+    {
+      "id": "SRC-GHA",
+      "url": "https://docs.github.com/en/actions/reference/security/secure-use",
+      "use": "Least permissions and full action SHA pinning"
+    },
+    {
+      "id": "SRC-SSDF",
+      "url": "https://csrc.nist.gov/Projects/ssdf",
+      "use": "Organizational readiness, software protection, secure production and vulnerability response"
+    }
+  ]
+}

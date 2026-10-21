@@ -1,0 +1,12 @@
+Name                              Stmts   Miss Branch BrPart  Cover
+-------------------------------------------------------------------
+runtime/adaptive/__init__.py          1      0      0      0   100%
+runtime/adaptive/cli.py              45      8     12      2    75%
+runtime/adaptive/common.py          157     14     58      5    88%
+runtime/adaptive/coordinator.py      92     14     40      3    86%
+runtime/adaptive/engineering.py     102     21     52     12    75%
+runtime/adaptive/release.py          68      0     34      0   100%
+runtime/adaptive/schools.py          41      2     20      5    89%
+runtime/adaptive/ux.py              124      8     34      8    90%
+-------------------------------------------------------------------
+TOTAL                               630     67    250     35    86%

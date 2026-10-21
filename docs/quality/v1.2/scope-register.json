@@ -1,0 +1,517 @@
+{
+  "record_version": "1.2.0",
+  "task_count": 51,
+  "statement": "All 51 RFC tasks retained. Local implementation is not full acceptance. No automatic waiver.",
+  "tasks": [
+    {
+      "id": "ENG-B001",
+      "change": "Verify HEAD, v1.1 open items, frozen assets and baseline tests",
+      "acceptance": "hash-pinned baseline report; no changes to protected files",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B002",
+      "change": "Register compatibility, release and schema strategy",
+      "acceptance": "explicit v1.1 not-final caveat and planned minor version separation",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B003",
+      "change": "Add optional project fingerprint v1.2 JSON Schema",
+      "acceptance": "valid and invalid fixture coverage, unknown facts represented",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B004",
+      "change": "Add decision/ADR v1.2 JSON Schema",
+      "acceptance": "every selected option has reason, evidence, constraints, alternatives",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B005",
+      "change": "Create canonical engineering pattern/package/UI registry with provenance metadata",
+      "acceptance": "no unsupported license/version assertions, no duplicate authority",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B006",
+      "change": "Create complexity/risk/applicability rubric",
+      "acceptance": "financial/PII/high-risk flags override naive size scoring",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B007",
+      "change": "Implement confined read-only project inspection adapter",
+      "acceptance": "symlink/traversal/secret-read negative tests and source hashes",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B008",
+      "change": "Implement deterministic architecture choice evaluator",
+      "acceptance": "same fingerprint and registry hashes produce same decision",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B009",
+      "change": "Implement option conflicts, unknown facts and policy overrides",
+      "acceptance": "incomplete critical facts block, no accidental default to Laravel",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B010",
+      "change": "Produce machine-readable decision and human-readable ADR in AR and EN",
+      "acceptance": "selected and rejected alternatives plus human approval state",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B011",
+      "change": "Laravel backend pattern guidance and sample reference implementations",
+      "acceptance": "small/medium/large projects select different abstractions",
+      "status": "not_completed",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B012",
+      "change": "React component/data-grid/form/state guide",
+      "acceptance": "shadcn Base UI and Radix supported without forced migration",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B013",
+      "change": "Vue component/data-grid/form/state guide",
+      "acceptance": "Reka UI references, PrimeVue and TanStack compared fairly",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B014",
+      "change": "Cross-framework Design System RTL/a11y/responsive guide",
+      "acceptance": "WCAG manual/automated tests and realistic dense UI scenarios",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B015",
+      "change": "Framework/package compatibility reviews",
+      "acceptance": "dependency locks, licenses, PHP JS support, SBOM and vulnerabilities",
+      "status": "not_completed",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B016",
+      "change": "Add opt-in CLI 'architecture' command without changing v1.1 route contracts",
+      "acceptance": "existing vcgf.py behavior bit-for-bit compatible on legacy fixtures",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B017",
+      "change": "Add opt-in capabilities and routing technology overlay",
+      "acceptance": "Laravel/React/Vue pack never loaded when unrelated",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B018",
+      "change": "Load selected packs with existing trusted root/hash/token budget policy",
+      "acceptance": "proof of dedup, no unknown files, bounded context",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B019",
+      "change": "Extend existing adapters through generated rules only when platform evidence exists",
+      "acceptance": "unsupported capabilities marked EXTERNAL/UNVERIFIED not native",
+      "status": "not_completed",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B020",
+      "change": "Add negative and property-based tests for pattern selection",
+      "acceptance": "no repository on simple app; no DDD based on table count",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B021",
+      "change": "Add backend correctness/transaction/idempotency/query-performance tests",
+      "acceptance": "no money double-processing, no N+1 regressions, auth at data layer",
+      "status": "not_completed",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B022",
+      "change": "Add frontend responsive/RTL/WCAG/keyboard/data-grid tests",
+      "acceptance": "tests on desktop/tablet/mobile AR/EN fixtures",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B023",
+      "change": "Verify all existing v1.0/v1.1 automated checks and migration compatibility",
+      "acceptance": "no regression or disabled validator to obtain green status",
+      "status": "not_completed",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B024",
+      "change": "Update README.md, README.ar.md, CHANGELOG.md and migration guide",
+      "acceptance": "documented what's new, opt-in usage, capabilities and limitations",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "ENG-B025",
+      "change": "Publish phased evidence and explicit release decision",
+      "acceptance": "no final 1.2 tag until 1.1 accepted and all hard blockers resolved",
+      "status": "partial_local_implementation",
+      "source_rfc": "02-Implementation-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B001",
+      "change": "Record current VCGF HEAD and verify 1.1 checkpoint / open items",
+      "acceptance": "Pinned commit, no version inflation",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B002",
+      "change": "Review canonical controls for non-overlap and rights",
+      "acceptance": "Existing 84 Control IDs and founder/legal unchanged",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B003",
+      "change": "Define UX versioned opt-in compatibility with engine v1.2",
+      "acceptance": "No breaking change to route-result or v1.1 schemas",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B004",
+      "change": "Implement trustworthy read-only UX discovery from PRD, scope, personas and flows",
+      "acceptance": "Verified sources only; UNVERIFIED for missing audience/task data",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B005",
+      "change": "Implement UX Discovery JSON Schema and negative fixtures",
+      "acceptance": "Reject malformed locales, unknown enumerations and invalid flows",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B006",
+      "change": "Implement UX Decision Record and alternatives contract",
+      "acceptance": "Trace each decision to evidence, rejected options and QA",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B007",
+      "change": "Build multi-role JTBD / task success / persona interviews",
+      "acceptance": "Top three tasks and outcomes validated with owner",
+      "status": "not_completed",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B008",
+      "change": "Choose school by product type and task complexity not UI framework",
+      "acceptance": "Enterprise/government/commerce/editorial/kiosk vary",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B009",
+      "change": "Choose responsive device-specific information and interaction density",
+      "acceptance": "Desktop and mobile workflows preserve critical data",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B010",
+      "change": "Build uncertainty and approval gates with deterministic rules",
+      "acceptance": "Unknowns never default to verified; high risk blocks release",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B011",
+      "change": "Honor existing design system, tokens, brand and component migrations",
+      "acceptance": "No automatic visual-system replacement",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B012",
+      "change": "Logical CSS properties and direction-aware component contract",
+      "acceptance": "RTL/LTR bidirectional matrix and documented exceptions",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B013",
+      "change": "Per-icon semantic mirror registry",
+      "acceptance": "Navigation icons can flip; logos and charts not blindly mirrored",
+      "status": "not_completed",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B014",
+      "change": "Mixed BiDi fields and locale numbers/dates/currency policies",
+      "acceptance": "bdi, dir=auto/ltr, Intl, account alignment verified",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B015",
+      "change": "Create self-hosted font licensing and WOFF2/subset strategy",
+      "acceptance": "No CDN dependence by default only when licensed and appropriate",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B016",
+      "change": "Validate Arabic/Latin glyph coverage and measured type tokens",
+      "acceptance": "Diacritics and fallback, zoom, no fixed px inflation",
+      "status": "not_completed",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B017",
+      "change": "Conditional preload and font-display performance tests",
+      "acceptance": "Only critical tested preloads, CLS/requests metrics",
+      "status": "not_completed",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B018",
+      "change": "Design and verify enterprise data grids and responsive disclosure",
+      "acceptance": "Mobile access to all important data, keyboard/touch details",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B019",
+      "change": "Design complex inline workflows and action-oriented contextual forms",
+      "acceptance": "No unnecessary identity-check detour or lost form input",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B020",
+      "change": "Implement accessible errors, empty/loading/offline/success states",
+      "acceptance": "WCAG 2.2 AA review and cross-device tests",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B021",
+      "change": "Add dense ultrawide, touch kiosk and public-service reference cases",
+      "acceptance": "Wide monitor, kiosk privacy, service journey verified",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B022",
+      "change": "Integrate UX decisions with existing runtime loader/registry opt-in",
+      "acceptance": "Preserve v1.1 semantics and prevent pack loading unrelated projects",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B023",
+      "change": "Implement design-specific schema/property/UI/E2E cross-language tests",
+      "acceptance": "All listed UX acceptance cases automated where possible",
+      "status": "partial_local_implementation",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B024",
+      "change": "Run manual keyboard/SR/real device/user task checks with evidence",
+      "acceptance": "UNVERIFIED when field/manual tests not executed",
+      "status": "not_completed",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B025",
+      "change": "Run original 1.0/1.1 regression and CI validators",
+      "acceptance": "No bypasses or permission changes",
+      "status": "not_completed",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    },
+    {
+      "id": "UX-B026",
+      "change": "Update bilingual README, changelog, examples, release decision",
+      "acceptance": "v1.2 unreleased until all hard gates satisfied",
+      "status": "implemented_locally_acceptance_pending",
+      "source_rfc": "17-UX-Decision-Backlog.yaml",
+      "remote_merged": false,
+      "acceptance_passed": false,
+      "note": "Local test scope and outstanding acceptance are recorded in evaluation-ar.md and integration-log.md."
+    }
+  ]
+}

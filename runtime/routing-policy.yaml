@@ -75,4 +75,9 @@ intents:
     - public-discovery
     - ux-accessibility
     risk: LOW
+  design-review:
+    capabilities:
+    - adaptive-engineering
+    - adaptive-ux
+    risk: MEDIUM
 full_framework_loading: false
