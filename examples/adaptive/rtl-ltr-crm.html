@@ -1,0 +1,132 @@
+<!doctype html>
+<!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VCGF UXI — Responsive CRM reference (synthetic data)</title>
+<style>
+  :root{color-scheme:light;--paper:#f7f9fc;--white:#fff;--ink:#17263e;--muted:#586779;--line:#e4e9f2;--teal:#087e85;--blue:#205ac9;--warn:#99600c;--success:#25643a;--r:14px;--shadow:0 5px 28px rgba(31,48,80,.05)}
+  *{box-sizing:border-box}
+  html{font-family:system-ui,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--paper);color:var(--ink)}
+  body{margin:0;line-height:1.55}
+  .shell{width:min(100% - 2rem,1760px);margin-inline:auto;padding-block:24px 40px}
+  .apphead{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-block-end:20px}
+  .mark{display:flex;align-items:center;gap:12px;min-width:0}
+  .markicon{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:var(--ink);color:white;font-size:.9rem;font-weight:750}
+  h1{font-size:clamp(1.25rem,2vw,1.65rem);margin:0}
+  .sub{color:var(--muted);font-size:.88rem;margin:.25rem 0 0}
+  .switcher{background:var(--white);border:1px solid var(--line);border-radius:9px;padding:10px 14px;color:var(--ink);cursor:pointer;min-height:44px;font-weight:650}
+  .switcher:focus-visible,input:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+  .summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-block-end:14px}
+  .metric{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}
+  .metric small{color:var(--muted);display:block}.metric strong{font-size:1.45rem;display:block;line-height:1.4}
+  .workspace{background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+  .controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 16px;border-block-end:1px solid var(--line)}
+  .controls label{font-weight:650;font-size:.95rem}.search{display:flex;align-items:center;gap:12px;flex:1;max-width:440px}
+  .search input{width:100%;min-width:0;border:1px solid #b7c3d5;background:#fff;border-radius:9px;padding:10px 12px;min-height:44px;text-align:start;font:inherit}
+  .muted{color:var(--muted);font-size:.86rem}
+  .table-wrap{overflow-x:auto;max-width:100%}table{border-collapse:collapse;width:100%;min-width:860px;font-size:.87rem}
+  th{text-align:start;background:#f8fafd;color:#485a72;white-space:nowrap;font-weight:700}
+  th,td{padding:10px 12px;border-block-end:1px solid #edf0f5;vertical-align:middle}
+  tbody tr:hover{background:#f7fbfd}tbody tr:focus-within{background:#f1f8fa}
+  th:first-child,td:first-child{padding-inline-start:20px}th:last-child,td:last-child{padding-inline-end:20px}
+  .id{direction:ltr;unicode-bidi:isolate;display:inline-block;font-variant-numeric:tabular-nums;font-size:.8rem;font-weight:600;color:var(--blue)}
+  .person{font-weight:700;display:block}.smaller{font-size:.78rem;color:var(--muted)}
+  .money{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}.date{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .status{display:inline-flex;align-items:center;gap:5px;border-radius:9px;padding:3px 9px;font-weight:650;background:#e9f5f5;color:#08676d;white-space:nowrap}
+  .status.overdue{background:#fff4df;color:var(--warn)}.status.complete{background:#e5f5e9;color:var(--success)}
+  details.note{max-width:260px}details.note summary{cursor:pointer;color:var(--blue);border-radius:5px;list-style:none}
+  details.note summary::-webkit-details-marker{display:none}
+  details.note p{margin:6px 0 0;color:var(--muted);font-size:.84rem;white-space:normal;overflow-wrap:anywhere}
+  .action{border:1px solid #a9cfda;color:var(--teal);background:#f1fbfc;border-radius:9px;font:inherit;font-size:.82rem;font-weight:700;padding:10px;min-height:44px;cursor:pointer}
+  .action:hover{background:#e0f4f5}.mobile-cards{display:none;padding:12px;gap:10px}
+  .mobile-card{border:1px solid var(--line);border-radius:11px;padding:13px;background:white}
+  .card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .card-line{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-block:10px}
+  .card-details{margin-block-start:8px;border-block-start:1px solid var(--line);padding-block-start:8px}
+  .card-details summary{color:var(--blue);font-weight:650;cursor:pointer;padding:10px 0}
+  .meta{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start;margin:0}.meta dt{color:var(--muted)}.meta dd{margin:0;text-align:end;overflow-wrap:anywhere}
+  .minihead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-block:10px}
+  .sr-only{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .footer{padding:12px 16px;color:var(--muted);font-size:.79rem}
+  @media(max-width:860px){.shell{width:min(100% - 1rem,650px);padding-block-start:16px}.table-wrap{display:none}.mobile-cards{display:grid}.controls{align-items:stretch}.search{max-width:none;flex-basis:100%}.summary{gap:8px}.metric{padding:12px}.metric strong{font-size:1.2rem}}
+  @media(max-width:400px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.metric:last-child{grid-column:1/-1}.apphead{align-items:flex-start}}
+  @media(prefers-reduced-motion:no-preference){button{transition:background .15s ease}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <div id="actionStatus" role="status" class="sr-only" aria-live="polite"></div>
+  <header class="apphead">
+    <div class="mark"><div class="markicon" aria-hidden="true">UX</div><div><h1 id="title">متابعة العملاء — مساحة عمل ذكية</h1><p class="sub" id="subtitle">مثال تعليمي من VCGF UXI؛ بيانات افتراضية وليست برنامج CRM إنتاجيًا</p></div></div>
+    <button class="switcher" id="langToggle" type="button" aria-label="Change interface language">English / العربية</button>
+  </header>
+  <section class="summary" id="metricsArea" aria-label="ملخص المتابعات">
+    <div class="metric"><small id="labelAll">إجمالي المتابعات</small><strong id="countAll">4</strong></div>
+    <div class="metric"><small id="labelLate">تحتاج متابعة</small><strong id="countLate">2</strong></div>
+    <div class="metric"><small id="labelDone">المكتملة</small><strong id="countDone">1</strong></div>
+  </section>
+  <section class="workspace" aria-labelledby="tableHeading">
+    <div class="controls"><strong id="tableHeading">المتابعات الأخيرة</strong><div class="search"><label for="searchInput" id="searchLabel">بحث</label><input id="searchInput" type="search" dir="auto" autocomplete="off" placeholder="ابحث عن الاسم أو المعرّف"></div><span class="muted" id="visibleLabel" aria-live="polite"></span></div>
+    <div class="table-wrap"><table><thead><tr><th scope="col" id="thPerson">العميل / الرقم</th><th scope="col" id="thStatus">الحالة</th><th scope="col" id="thDate">موعد المتابعة</th><th scope="col" id="thMoney">القيمة</th><th scope="col" id="thNote">آخر ملاحظة</th><th scope="col" id="thAction">الإجراء</th></tr></thead><tbody id="desktopRows"></tbody></table></div>
+    <div class="mobile-cards" id="mobileCards" aria-label="بطاقات المتابعات"></div>
+    <div class="footer" id="hint">جميع المعلومات متاحة في الجوال عبر تفاصيل السجل — لا يعتمد المحتوى المهم على Hover فقط</div>
+  </section>
+</main>
+<script>
+'use strict';
+// Illustrative inline dataset. No API, no storage, no PII, no authentication or server-side authorization.
+const records=[
+{id:'CRM-1042',ar:'شركة المدار التجريبية',en:'Sample Orbit Co.',date:'2026-10-23',amount:72500,status:'due',noteAr:'تمت مراجعة العرض الفني، العميل ينتظر موافقة الإدارة على المتطلبات النهائية وإصدار أمر الشراء.',noteEn:'Technical proposal reviewed. The client awaits management approval of final requirements and purchase order.'},
+{id:'CRM-1043',ar:'مؤسسة النسيم الافتراضية',en:'Sample Breeze Est.',date:'2026-10-20',amount:18400,status:'late',noteAr:'الموعد السابق لم يكتمل ونحتاج إعادة التواصل مع المسؤول عن النظام خلال يومين.',noteEn:'Previous appointment not completed; follow up with the systems owner within two days.'},
+{id:'CRM-1044',ar:'مركز الإبداع التجريبي',en:'Sample Innovation Center',date:'2026-10-19',amount:33000,status:'done',noteAr:'تم إرسال وثائق التعاقد واستلام تأكيد نهائي من جهة الاتصال.',noteEn:'Agreement documents sent and final confirmation received from contact.'},
+{id:'CRM-1045',ar:'شركة البيان الافتراضية',en:'Sample Statement Ltd.',date:'2026-10-21',amount:12500,status:'late',noteAr:'يحتاج العميل توضيحاً حول آلية التوقيع الإلكتروني وربط الملفات بالمراسلات.',noteEn:'The client needs clarification on digital signing and linking documents to correspondence.'}
+];
+let lang='ar';
+const translations={
+ ar:{title:'متابعة العملاء — مساحة عمل ذكية',subtitle:'مثال تعليمي من VCGF UXI؛ بيانات افتراضية وليست برنامج CRM إنتاجيًا',labelAll:'إجمالي المتابعات',labelLate:'تحتاج متابعة',labelDone:'المكتملة',tableHeading:'المتابعات الأخيرة',searchLabel:'بحث',searchPlaceholder:'ابحث عن الاسم أو المعرّف',person:'العميل / الرقم',status:'الحالة',date:'موعد المتابعة',money:'القيمة',note:'آخر ملاحظة',action:'الإجراء',due:'قادم',late:'متأخر',done:'مكتمل',noteLink:'قراءة الملاحظة',details:'جميع التفاصيل',complete:'تم الإنجاز',open:'إعادة فتح',hint:'جميع المعلومات متاحة في الجوال عبر تفاصيل السجل — لا يعتمد المحتوى المهم على Hover فقط',result:'عدد النتائج: ',noData:'لا توجد نتائج',noteTitle:'الملاحظة'},
+ en:{title:'Customer follow-up — Adaptive workspace',subtitle:'VCGF UXI teaching demo with synthetic data; not a production CRM',labelAll:'Total follow-ups',labelLate:'Needs attention',labelDone:'Completed',tableHeading:'Recent follow-ups',searchLabel:'Search',searchPlaceholder:'Search name or case ID',person:'Customer / reference',status:'Status',date:'Next follow-up',money:'Value',note:'Latest note',action:'Action',due:'Upcoming',late:'Overdue',done:'Completed',noteLink:'Read note',details:'All details',complete:'Mark completed',open:'Reopen',hint:'All essential details remain accessible on mobile — no hover-only content',result:'Results: ',noData:'No matches',noteTitle:'Note'}
+};
+const esc=(v)=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function t(k){return translations[lang][k]}
+function money(v){return new Intl.NumberFormat(lang==='ar'?'ar-SA':'en-GB',{style:'currency',currency:'SAR',numberingSystem:'latn'}).format(v)}
+function date(s){return new Intl.DateTimeFormat(lang==='ar'?'ar-SA':'en-GB',{year:'numeric',month:'short',day:'numeric',numberingSystem:'latn',calendar:'gregory',timeZone:'UTC'}).format(new Date(s+'T00:00:00Z'))}
+function text(id,key){document.getElementById(id).textContent=t(key)}
+function status(r){return `<span class="status ${r.status==='late'?'overdue':r.status==='done'?'complete':''}">${esc(t(r.status))}</span>`}
+function action(r){const label=r.status==='done'?t('open'):t('complete');return `<button class="action" type="button" data-id="${esc(r.id)}" aria-label="${esc(label+' '+r.id)}">${esc(label)}</button>`}
+function desktop(r){return `<tr><td><bdi class="person" dir="auto">${esc(lang==='ar'?r.ar:r.en)}</bdi><span class="id">${esc(r.id)}</span></td><td>${status(r)}</td><td class="date"><bdi dir="auto">${esc(date(r.date))}</bdi></td><td class="money"><bdi dir="auto">${esc(money(r.amount))}</bdi></td><td><details class="note" data-record="${esc(r.id)}" data-panel="note"><summary>${esc(t('noteLink'))}</summary><p>${esc(lang==='ar'?r.noteAr:r.noteEn)}</p></details></td><td>${action(r)}</td></tr>`}
+function mobile(r){return `<article class="mobile-card"><div class="card-header"><div><bdi class="person" dir="auto">${esc(lang==='ar'?r.ar:r.en)}</bdi><span class="id">${esc(r.id)}</span></div>${status(r)}</div><div class="card-line"><span class="date"><bdi dir="auto">${esc(date(r.date))}</bdi></span><strong><bdi dir="auto">${esc(money(r.amount))}</bdi></strong></div><details class="card-details" data-record="${esc(r.id)}" data-panel="card"><summary>${esc(t('details'))}</summary><dl class="meta"><dt>${esc(t('status'))}</dt><dd>${status(r)}</dd><dt>${esc(t('date'))}</dt><dd>${esc(date(r.date))}</dd><dt>${esc(t('money'))}</dt><dd>${esc(money(r.amount))}</dd><dt>${esc(t('noteTitle'))}</dt><dd>${esc(lang==='ar'?r.noteAr:r.noteEn)}</dd></dl></details><div class="minihead">${action(r)}</div></article>`}
+function render(){
+ const expanded=new Set([...document.querySelectorAll('details[data-record][open]')].map(x=>x.dataset.record+':'+x.dataset.panel));
+ const focusedRecord=document.activeElement?.matches('button[data-id]') ? document.activeElement.dataset.id : null;
+
+ document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ document.getElementById('metricsArea').setAttribute('aria-label',lang==='ar'?'ملخص المتابعات':'Follow-up summary');
+ document.getElementById('mobileCards').setAttribute('aria-label',lang==='ar'?'بطاقات المتابعات':'Follow-up cards');
+ document.getElementById('langToggle').setAttribute('aria-label',lang==='ar'?'تغيير اللغة إلى الإنجليزية':'Switch language to Arabic');
+ for(const k of ['title','subtitle','labelAll','labelLate','labelDone','tableHeading','searchLabel','hint'])text(k,k);
+ document.getElementById('searchInput').placeholder=t('searchPlaceholder');
+ for(const [id,key] of [['thPerson','person'],['thStatus','status'],['thDate','date'],['thMoney','money'],['thNote','note'],['thAction','action']])text(id,key);
+ document.getElementById('countAll').textContent=records.length;
+ document.getElementById('countLate').textContent=records.filter(x=>x.status==='late').length;
+ document.getElementById('countDone').textContent=records.filter(x=>x.status==='done').length;
+ const search=document.getElementById('searchInput').value.trim().toLocaleLowerCase();
+ const filtered=records.filter(r=>[r.id,r.ar,r.en,r.noteAr,r.noteEn].some(v=>v.toLocaleLowerCase().includes(search)));
+ document.getElementById('visibleLabel').textContent=t('result')+filtered.length;
+ document.getElementById('desktopRows').innerHTML=filtered.map(desktop).join('') || `<tr><td colspan="6">${esc(t('noData'))}</td></tr>`;
+ document.getElementById('mobileCards').innerHTML=filtered.map(mobile).join('') || `<p>${esc(t('noData'))}</p>`;
+ for(const element of document.querySelectorAll('details[data-record]')){
+   element.open=expanded.has(element.dataset.record+':'+element.dataset.panel);
+ }
+ if(focusedRecord){
+   const target=[...document.querySelectorAll('button[data-id]')].find(x=>x.dataset.id===focusedRecord && x.getClientRects().length);
+   target?.focus({preventScroll:true});
+ }
+}
+document.getElementById('langToggle').addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';render()});
+document.getElementById('searchInput').addEventListener('input',render);
+document.addEventListener('click',evt=>{const target=evt.target.closest('button[data-id]');if(!target)return;const entry=records.find(r=>r.id===target.dataset.id);if(entry){entry.status=entry.status==='done'?'due':'done';render();document.getElementById('actionStatus').textContent=entry.id+' '+t(entry.status)}});
+render();
+</script>
+</body>
+</html>

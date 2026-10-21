@@ -1,0 +1,91 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "contract_version": "1.2.0",
+  "project_id": "example-editorial",
+  "captured_at": "2026-10-21T00:00:00Z",
+  "source_refs": [
+    {
+      "ref": "sample/product-brief.md",
+      "kind": "product_document",
+      "sha256": null,
+      "confidence": "reported"
+    }
+  ],
+  "product_type": "editorial",
+  "product_goals": [
+    "Help readers find trusted long form content"
+  ],
+  "audiences": [
+    {
+      "id": "reader",
+      "role": "Reader",
+      "goal": "Read articles comfortably",
+      "proficiency": "novice",
+      "assistive_needs": []
+    }
+  ],
+  "workflows": [
+    {
+      "id": "reading",
+      "actor_id": "reader",
+      "user_goal": "Read long text without distraction",
+      "frequency": "occasional",
+      "risk": "low",
+      "data_density": "low",
+      "record_volume": "small",
+      "interaction": "read",
+      "important_data": [
+        "title",
+        "author",
+        "article_text"
+      ],
+      "devices": [
+        "mobile",
+        "desktop"
+      ],
+      "recovery_required": false
+    }
+  ],
+  "devices": {
+    "primary": "mobile",
+    "supported": [
+      "desktop",
+      "mobile",
+      "tablet"
+    ],
+    "input_modes": [
+      "mouse",
+      "keyboard",
+      "touch",
+      "assistive"
+    ],
+    "ultrawide_use_case": "Compare many CRM records with preserved status context"
+  },
+  "localization": {
+    "languages": [
+      "ar-SA",
+      "en-US"
+    ],
+    "primary_locale": "ar-SA",
+    "requires_bidirectional_ui": true,
+    "numeric_policy": "latn",
+    "timezone_policy": "user",
+    "currency_codes": [
+      "SAR"
+    ]
+  },
+  "existing_design_system": null,
+  "brand_constraints": [
+    "Preserve existing logo and palette"
+  ],
+  "criticality": "low",
+  "unknown_facts": [],
+  "human_confirmation": "confirmed",
+  "goal_priorities": [
+    {
+      "goal_index": 0,
+      "outcome": "comprehension",
+      "weight": 3
+    }
+  ]
+}

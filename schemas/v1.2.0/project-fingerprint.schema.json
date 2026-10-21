@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.2.0/project-fingerprint.schema.json",
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0. Opt-in planning contract, not a release claim.",
+  "title": "project-fingerprint (opt-in 1.2.0)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$comment": {"const": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0"},
+    "contract_version": {
+      "const": "1.2.0"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 4096
+    },
+    "project_kind": {
+      "enum": [
+        "public_website",
+        "simple_app",
+        "business_app",
+        "enterprise_app",
+        "api",
+        "mobile_backend",
+        "unknown"
+      ]
+    },
+    "backend": {
+      "enum": [
+        "laravel",
+        "php_other",
+        "node",
+        "python",
+        "dotnet",
+        "java",
+        "other",
+        "none",
+        "unknown"
+      ]
+    },
+    "frontend": {
+      "enum": [
+        "react",
+        "vue",
+        "angular",
+        "svelte",
+        "blade",
+        "livewire",
+        "html",
+        "other",
+        "none",
+        "unknown"
+      ]
+    },
+    "detected_versions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "not": {
+              "pattern": "(^/|(^|/)\\.\\.(/|$)|(^|/)\\.env($|[./]))"
+            },
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "maxLength": 4096
+          },
+          "kind": {
+            "enum": [
+              "local_file",
+              "reviewer_note",
+              "user_confirmed"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "kind"
+        ]
+      },
+      "maxItems": 256
+    },
+    "complexity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "business_rules": {
+          "$ref": "#/$defs/rating"
+        },
+        "bounded_contexts": {
+          "$ref": "#/$defs/rating"
+        },
+        "data_concurrency": {
+          "$ref": "#/$defs/rating"
+        },
+        "external_integrations": {
+          "$ref": "#/$defs/rating"
+        },
+        "compliance_data_risk": {
+          "$ref": "#/$defs/rating"
+        },
+        "tenant_authorization": {
+          "$ref": "#/$defs/rating"
+        },
+        "ui_interaction": {
+          "$ref": "#/$defs/rating"
+        },
+        "team_change": {
+          "$ref": "#/$defs/rating"
+        }
+      },
+      "required": [
+        "business_rules",
+        "bounded_contexts",
+        "data_concurrency",
+        "external_integrations",
+        "compliance_data_risk",
+        "tenant_authorization",
+        "ui_interaction",
+        "team_change"
+      ]
+    },
+    "risk_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "pii",
+          "payment",
+          "health",
+          "production",
+          "multi_tenant",
+          "regulated",
+          "public_api",
+          "none"
+        ]
+      },
+      "maxItems": 256
+    },
+    "unknown_facts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "human_confirmation": {
+      "enum": [
+        "confirmed",
+        "unconfirmed",
+        "not_required_for_read_only_advice"
+      ]
+    },
+    "architecture_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "independent_domains": {
+          "$ref": "#/$defs/tristate"
+        },
+        "multiple_persistence_sources": {
+          "$ref": "#/$defs/tristate"
+        },
+        "multiple_service_providers": {
+          "$ref": "#/$defs/tristate"
+        },
+        "highly_reused_operations": {
+          "$ref": "#/$defs/tristate"
+        },
+        "complex_workflow": {
+          "$ref": "#/$defs/tristate"
+        },
+        "retriable_financial_operations": {
+          "$ref": "#/$defs/tristate"
+        },
+        "existing_component_library": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "independent_domains",
+        "multiple_persistence_sources",
+        "multiple_service_providers",
+        "highly_reused_operations",
+        "complex_workflow",
+        "retriable_financial_operations",
+        "existing_component_library"
+      ]
+    }
+  },
+  "required": [
+    "contract_version",
+    "project_id",
+    "captured_at",
+    "project_kind",
+    "backend",
+    "frontend",
+    "detected_versions",
+    "sources",
+    "complexity",
+    "risk_flags",
+    "unknown_facts",
+    "human_confirmation",
+    "architecture_facts"
+  ],
+  "$defs": {
+    "rating": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 3
+    },
+    "tristate": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  }
+}

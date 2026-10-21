@@ -1,0 +1,453 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.2.0/ux-decision.schema.json",
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0. Opt-in planning contract, not a release claim.",
+  "title": "ux-decision (opt-in 1.2.0)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.2.0"
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "discovery_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "maxLength": 4096
+    },
+    "catalog_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "maxLength": 4096
+    },
+    "rule_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "state": {
+      "enum": [
+        "proposed",
+        "blocked",
+        "unverified",
+        "verified"
+      ]
+    },
+    "primary_school": {
+      "enum": [
+        "task_first_enterprise",
+        "service_journey",
+        "conversion",
+        "editorial_brand",
+        "operations_command",
+        "learning_progress",
+        "touch_kiosk",
+        "hybrid",
+        "undetermined"
+      ]
+    },
+    "density": {
+      "enum": [
+        "compact",
+        "balanced",
+        "spacious",
+        "adaptive",
+        "undetermined"
+      ]
+    },
+    "navigation": {
+      "enum": [
+        "sidebar_task",
+        "service_catalog",
+        "top_navigation",
+        "touch_hub",
+        "alert_queue",
+        "learning_path",
+        "hybrid",
+        "undetermined"
+      ]
+    },
+    "design_system_policy": {
+      "enum": [
+        "preserve_existing",
+        "propose_new",
+        "undetermined"
+      ]
+    },
+    "workflow_choices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "workflow_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "pattern": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "desktop": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "mobile": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "tablet": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 256
+          },
+          "verification_needed": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 256
+          },
+          "wide": {
+            "type": "string"
+          },
+          "supported_devices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "important_data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "kiosk": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "workflow_id",
+          "pattern",
+          "desktop",
+          "mobile",
+          "tablet",
+          "reason",
+          "evidence_refs",
+          "verification_needed"
+        ]
+      },
+      "maxItems": 256
+    },
+    "direction_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "document_direction": {
+          "enum": [
+            "rtl",
+            "ltr",
+            "per_locale"
+          ]
+        },
+        "logical_properties_required": {
+          "const": true
+        },
+        "icon_mirroring": {
+          "const": "semantic_per_icon_not_global"
+        },
+        "mixed_text_isolation": {
+          "const": "bdi_or_dir_auto_contextual"
+        },
+        "numeric_policy": {
+          "enum": [
+            "latn",
+            "arab",
+            "locale",
+            "unknown"
+          ]
+        },
+        "test_locales": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 256
+        }
+      },
+      "required": [
+        "document_direction",
+        "logical_properties_required",
+        "icon_mirroring",
+        "mixed_text_isolation",
+        "numeric_policy",
+        "test_locales"
+      ]
+    },
+    "font_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "delivery": {
+          "enum": [
+            "prefer_self_hosting_after_review",
+            "retain_existing_pending_review"
+          ]
+        },
+        "preferred_format": {
+          "const": "woff2_when_supported"
+        },
+        "variable_font": {
+          "const": "benchmark_before_choosing"
+        },
+        "font_display": {
+          "const": "test_swap_optional_tradeoff"
+        },
+        "preload": {
+          "const": "only_critical_verified_font"
+        },
+        "license_review_required": {
+          "const": true
+        },
+        "real_font_assets_included": {
+          "const": false
+        }
+      },
+      "required": [
+        "delivery",
+        "preferred_format",
+        "variable_font",
+        "font_display",
+        "preload",
+        "license_review_required",
+        "real_font_assets_included"
+      ]
+    },
+    "quality_gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "status": {
+            "const": "not_run"
+          },
+          "manual_evidence_required": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "status",
+          "manual_evidence_required"
+        ]
+      },
+      "maxItems": 256
+    },
+    "reasoning_trace": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "outcome": {
+            "enum": [
+              "selected",
+              "rejected",
+              "unknown"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "observed_facts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 256
+          }
+        },
+        "required": [
+          "rule_id",
+          "outcome",
+          "reason",
+          "observed_facts"
+        ]
+      },
+      "maxItems": 256
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "rejected_because": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "id",
+          "rejected_because"
+        ]
+      },
+      "maxItems": 256
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "human_approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "not_required"
+          ]
+        },
+        "approval_ref": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "required",
+        "status",
+        "approval_ref"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "ranking": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "school",
+          "score",
+          "contributions"
+        ],
+        "properties": {
+          "school": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "contributions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "contract_version",
+    "decision_id",
+    "project_id",
+    "discovery_sha256",
+    "catalog_sha256",
+    "rule_version",
+    "state",
+    "primary_school",
+    "density",
+    "navigation",
+    "design_system_policy",
+    "workflow_choices",
+    "direction_strategy",
+    "font_strategy",
+    "quality_gates",
+    "reasoning_trace",
+    "alternatives",
+    "blockers",
+    "human_approval",
+    "limitations"
+  ]
+}

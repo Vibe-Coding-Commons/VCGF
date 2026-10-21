@@ -1,0 +1,269 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "contract_version": "1.2.0",
+  "decision_id": "UXDR-17971d09bbcdf4dca141",
+  "project_id": "example-crm-test",
+  "discovery_sha256": "ce9d425b69d9974c084c7c247f7e4cdefdc8bea46adea5e1bd13110afac3853f",
+  "catalog_sha256": "ad6d54d473c85bf9edadbf83a7b5dab77eb5410177eec8d93eec332ef8561bc8",
+  "rule_version": "1.2.0",
+  "state": "proposed",
+  "primary_school": "task_first_enterprise",
+  "ranking": [
+    {
+      "school": "task_first_enterprise",
+      "score": 16,
+      "contributions": [
+        "+1: Weak product-category prior; never decisive by itself",
+        "+9: Classified goal[0]=efficiency",
+        "+6: Workflow followups: approval"
+      ]
+    },
+    {
+      "school": "conversion",
+      "score": 0,
+      "contributions": []
+    },
+    {
+      "school": "editorial_brand",
+      "score": 0,
+      "contributions": []
+    },
+    {
+      "school": "hybrid",
+      "score": 0,
+      "contributions": []
+    },
+    {
+      "school": "learning_progress",
+      "score": 0,
+      "contributions": []
+    },
+    {
+      "school": "operations_command",
+      "score": 0,
+      "contributions": []
+    },
+    {
+      "school": "service_journey",
+      "score": 0,
+      "contributions": []
+    },
+    {
+      "school": "touch_kiosk",
+      "score": -100,
+      "contributions": [
+        "-100: No kiosk target; do not select a kiosk school"
+      ]
+    }
+  ],
+  "density": "adaptive",
+  "navigation": "sidebar_task",
+  "design_system_policy": "preserve_existing",
+  "workflow_choices": [
+    {
+      "workflow_id": "followups",
+      "pattern": "stateful_approval",
+      "desktop": "queue_preview_context_actions",
+      "mobile": "priority_card_details_actions",
+      "tablet": "not_applicable",
+      "wide": "queue_preview_context_actions_with_context_panel",
+      "supported_devices": [
+        "desktop",
+        "mobile"
+      ],
+      "important_data": [
+        "customer",
+        "due_date",
+        "status",
+        "last_note",
+        "next_action"
+      ],
+      "reason": "User goal: Review 3000 cases and update next action; Interaction: approval",
+      "evidence_refs": [
+        "sample/product-brief.md"
+      ],
+      "verification_needed": [
+        "Perform primary flow on declared devices with keyboard and touch when applicable",
+        "Verify action labels, status transitions and accessible approval details"
+      ]
+    }
+  ],
+  "direction_strategy": {
+    "document_direction": "per_locale",
+    "logical_properties_required": true,
+    "icon_mirroring": "semantic_per_icon_not_global",
+    "mixed_text_isolation": "bdi_or_dir_auto_contextual",
+    "numeric_policy": "latn",
+    "test_locales": [
+      "ar-SA",
+      "en-US"
+    ]
+  },
+  "font_strategy": {
+    "delivery": "retain_existing_pending_review",
+    "preferred_format": "woff2_when_supported",
+    "variable_font": "benchmark_before_choosing",
+    "font_display": "test_swap_optional_tradeoff",
+    "preload": "only_critical_verified_font",
+    "license_review_required": true,
+    "real_font_assets_included": false
+  },
+  "quality_gates": [
+    {
+      "id": "task_completions",
+      "description": "Task completions",
+      "status": "not_run",
+      "manual_evidence_required": true
+    },
+    {
+      "id": "mobile_tablet_desktop",
+      "description": "Mobile tablet desktop",
+      "status": "not_run",
+      "manual_evidence_required": false
+    },
+    {
+      "id": "rtl_ltr_bidi",
+      "description": "Rtl ltr bidi",
+      "status": "not_run",
+      "manual_evidence_required": true
+    },
+    {
+      "id": "wcag22_aa_manual_automated",
+      "description": "Wcag22 aa manual automated",
+      "status": "not_run",
+      "manual_evidence_required": true
+    },
+    {
+      "id": "keyboard_touch_screenreader",
+      "description": "Keyboard touch screenreader",
+      "status": "not_run",
+      "manual_evidence_required": true
+    },
+    {
+      "id": "performance_font_metrics",
+      "description": "Performance font metrics",
+      "status": "not_run",
+      "manual_evidence_required": false
+    },
+    {
+      "id": "responsive_zoom",
+      "description": "Responsive zoom",
+      "status": "not_run",
+      "manual_evidence_required": true
+    },
+    {
+      "id": "security_and_data_access",
+      "description": "Security and data access",
+      "status": "not_run",
+      "manual_evidence_required": false
+    }
+  ],
+  "reasoning_trace": [
+    {
+      "rule_id": "UX-SCHOOL-001",
+      "outcome": "selected",
+      "reason": "Frequent structured workflows need repeatable controls and clear state visibility",
+      "observed_facts": [
+        "business_operations",
+        "Close customer follow-ups quickly",
+        "Never lose historical activity"
+      ]
+    },
+    {
+      "rule_id": "UX-DENSITY-001",
+      "outcome": "selected",
+      "reason": "Dense data requires detailed desktop views plus reachable mobile details, not universal compactness",
+      "observed_facts": [
+        "high_density_or_large_volume=true"
+      ]
+    },
+    {
+      "rule_id": "UX-SYSTEM-001",
+      "outcome": "selected",
+      "reason": "Keep existing design tokens/components and require a separate approved migration if replacement is justified",
+      "observed_facts": [
+        "existing_design_system=Existing verified production tokens"
+      ]
+    },
+    {
+      "rule_id": "UX-WORKFLOW-001",
+      "outcome": "selected",
+      "reason": "Workflow followups pattern chosen according to device, density, risk and task goals",
+      "observed_facts": [
+        "followups",
+        "frequency=routine",
+        "risk=medium",
+        "data_density=high",
+        "interaction=approval"
+      ]
+    },
+    {
+      "rule_id": "UX-BIDI-001",
+      "outcome": "selected",
+      "reason": "Use document dir/lang and semantic per-component orientation, mixed-text isolation and locale policies",
+      "observed_facts": [
+        "direction=per_locale",
+        "numeric=latn"
+      ]
+    },
+    {
+      "rule_id": "UX-FONTS-001",
+      "outcome": "selected",
+      "reason": "Local WOFF2 font delivery is conditional on verified license, font coverage and performance budget",
+      "observed_facts": [
+        "preload_only_measured_critical_font",
+        "not_all_variable_fonts_are_smaller"
+      ]
+    },
+    {
+      "rule_id": "UX-RISK-001",
+      "outcome": "rejected",
+      "reason": "No declared high-impact UI flows; baseline security/accessibility still applies",
+      "observed_facts": [
+        "high_impact=false"
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "service_journey",
+      "rejected_because": "Product category business_operations and documented tasks do not justify this school as the primary one."
+    },
+    {
+      "id": "conversion",
+      "rejected_because": "Product category business_operations and documented tasks do not justify this school as the primary one."
+    },
+    {
+      "id": "editorial_brand",
+      "rejected_because": "Product category business_operations and documented tasks do not justify this school as the primary one."
+    },
+    {
+      "id": "operations_command",
+      "rejected_because": "Product category business_operations and documented tasks do not justify this school as the primary one."
+    },
+    {
+      "id": "learning_progress",
+      "rejected_because": "Product category business_operations and documented tasks do not justify this school as the primary one."
+    },
+    {
+      "id": "touch_kiosk",
+      "rejected_because": "Product category business_operations and documented tasks do not justify this school as the primary one."
+    },
+    {
+      "id": "hybrid",
+      "rejected_because": "Product category business_operations and documented tasks do not justify this school as the primary one."
+    }
+  ],
+  "blockers": [],
+  "human_approval": {
+    "required": false,
+    "status": "not_required",
+    "approval_ref": null
+  },
+  "limitations": [
+    "Proposal from the integrated pure UX engine. Source verification and legacy routing belong to the coordinator.",
+    "Schema validation is not UI, accessibility, performance or security verification.",
+    "All quality gates require real evidence and cannot report PASS from these inferred choices.",
+    "No real font binaries, icon assets, or production components are delivered by this advisor."
+  ]
+}

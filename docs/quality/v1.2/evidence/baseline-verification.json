@@ -1,0 +1,109 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "repository": "Vibe-Coding-Commons/VCGF",
+  "base_commit": "419d8331e7b78c96b946d5815fbe886068dabfe5",
+  "complete_checkout": false,
+  "verified_trees": [
+    {
+      "path": "controls",
+      "git_tree_sha": "670e7a5c2e6458e0c51bb2db25587bf9303e0faf",
+      "files": 101
+    },
+    {
+      "path": "profiles",
+      "git_tree_sha": "6507d3040b0c2758c6bec30f336e3cadad282fcf",
+      "files": 6
+    },
+    {
+      "path": "legal",
+      "git_tree_sha": "e1933419c8acbcc06faebd97e874bb729634654b",
+      "files": 3
+    },
+    {
+      "path": "checklists",
+      "git_tree_sha": "ea03ecccf645dbf0c11d162940a267c748f99fe6",
+      "files": 7
+    },
+    {
+      "path": "playbooks",
+      "git_tree_sha": "1be83a15b88814586ea1643244906cc1bbacaab9",
+      "files": 4
+    },
+    {
+      "path": "assets",
+      "git_tree_sha": "b70ba67d184a671499d8eb45133e3c66ee224919",
+      "files": 1
+    }
+  ],
+  "verified_blobs": [
+    {
+      "path": "VERSION",
+      "git_blob_sha": "3eefcb9dd5b38e2c1dc061052455dd97bcd51e6c"
+    },
+    {
+      "path": "VCGF-MANIFEST.yaml",
+      "git_blob_sha": "a472bb8a863b5048fed980408d5d9b6dd145df74"
+    },
+    {
+      "path": "AUTHORS.md",
+      "git_blob_sha": "4c2a1381294262527e8caa78a134f2291b255068"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob_sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    {
+      "path": "NOTICE.md",
+      "git_blob_sha": "40c597d5f99a5854955f23f285063db5f984d7ce"
+    },
+    {
+      "path": "COPYRIGHT.md",
+      "git_blob_sha": "22e5a74f32cebde574c045b49cd3c175ce664597"
+    },
+    {
+      "path": "GOVERNANCE.md",
+      "git_blob_sha": "c5576ebb363a33b90d9beec1b7a4e8671b71c943"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "git_blob_sha": "1f6172b1cc709bf571f8030b2c732c0a7c0c189d"
+    },
+    {
+      "path": "SECURITY.md",
+      "git_blob_sha": "1b8a4aaf548a7c20bf6fb177ea7f70e82fbbce8c"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "git_blob_sha": "f6131fc7727547967cf301fb1fc8def82dd3db6a"
+    },
+    {
+      "path": "scripts/vcgf.py",
+      "git_blob_sha": "c7843bde155eb393b21361f87341fc7da431b196"
+    },
+    {
+      "path": "runtime/loader.py",
+      "git_blob_sha": "35604943783a3f8726bb76ebde83a694282759b9"
+    },
+    {
+      "path": "runtime/registry.py",
+      "git_blob_sha": "e200492f6bd3e87a7cf68fbcbe02e355e6485951"
+    },
+    {
+      "path": "runtime/routing-policy.yaml",
+      "git_blob_sha": "ffed59894b88df180e302da855c0aabd0675ff22"
+    },
+    {
+      "path": "runtime/pack-map.yaml",
+      "git_blob_sha": "d67dfda9a8b90e039315dec4eef3f6a44d9e4c53"
+    },
+    {
+      "path": "spec/control-catalog.yaml",
+      "git_blob_sha": "6c554231c8cb1e30aad539229fddb8feb47a0940"
+    }
+  ],
+  "extra_verified_blobs": {
+    "README.md": "6f8ebee14e0a9dbc9081961a0651ba67da2eeaad",
+    "README.ar.md": "3c723d45a308c3d86dcf9366304cf6c3d437b217",
+    "CHANGELOG.md": "97371cc42a4231d5003fc6e95c43ff9696139bb6"
+  }
+}

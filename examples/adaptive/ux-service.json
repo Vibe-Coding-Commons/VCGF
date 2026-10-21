@@ -1,0 +1,91 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "contract_version": "1.2.0",
+  "project_id": "example-public-service",
+  "captured_at": "2026-10-21T00:00:00Z",
+  "source_refs": [
+    {
+      "ref": "sample/product-brief.md",
+      "kind": "product_document",
+      "sha256": null,
+      "confidence": "reported"
+    }
+  ],
+  "product_type": "public_service",
+  "product_goals": [
+    "Help citizens apply without unnecessary visits"
+  ],
+  "audiences": [
+    {
+      "id": "citizen",
+      "role": "Citizen",
+      "goal": "Apply for a service and track its status",
+      "proficiency": "novice",
+      "assistive_needs": [
+        "screen_reader"
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "id": "application",
+      "actor_id": "citizen",
+      "user_goal": "Submit an application and get a reference number",
+      "frequency": "occasional",
+      "risk": "medium",
+      "data_density": "low",
+      "record_volume": "small",
+      "interaction": "form",
+      "important_data": [
+        "requirements",
+        "form_validity",
+        "tracking_reference"
+      ],
+      "devices": [
+        "mobile",
+        "desktop"
+      ],
+      "recovery_required": true
+    }
+  ],
+  "devices": {
+    "primary": "mobile",
+    "supported": [
+      "mobile",
+      "desktop"
+    ],
+    "input_modes": [
+      "touch",
+      "keyboard",
+      "assistive"
+    ],
+    "ultrawide_use_case": null
+  },
+  "localization": {
+    "languages": [
+      "ar-SA",
+      "en-US"
+    ],
+    "primary_locale": "ar-SA",
+    "requires_bidirectional_ui": true,
+    "numeric_policy": "locale",
+    "timezone_policy": "user",
+    "currency_codes": [
+      "SAR"
+    ]
+  },
+  "existing_design_system": null,
+  "brand_constraints": [
+    "Text must remain legible after translation"
+  ],
+  "criticality": "medium",
+  "unknown_facts": [],
+  "human_confirmation": "confirmed",
+  "goal_priorities": [
+    {
+      "goal_index": 0,
+      "outcome": "guided_completion",
+      "weight": 3
+    }
+  ]
+}

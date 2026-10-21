@@ -1,0 +1,469 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.2.0/ux-discovery.schema.json",
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0. Opt-in planning contract, not a release claim.",
+  "title": "ux-discovery (opt-in 1.2.0)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$comment": {"const": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0"},
+    "contract_version": {
+      "const": "1.2.0"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 4096
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "kind": {
+            "enum": [
+              "repo_file",
+              "product_document",
+              "trusted_reviewer",
+              "user_confirmed"
+            ]
+          },
+          "sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$",
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "confirmed",
+              "reported",
+              "unknown"
+            ]
+          }
+        },
+        "required": [
+          "ref",
+          "kind",
+          "sha256",
+          "confidence"
+        ]
+      },
+      "maxItems": 256
+    },
+    "product_type": {
+      "enum": [
+        "business_operations",
+        "public_service",
+        "commerce",
+        "editorial",
+        "operational_monitoring",
+        "learning",
+        "kiosk",
+        "mixed",
+        "unknown"
+      ]
+    },
+    "product_goals": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "audiences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "goal": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "proficiency": {
+            "enum": [
+              "novice",
+              "familiar",
+              "expert",
+              "unknown"
+            ]
+          },
+          "assistive_needs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "maxItems": 256
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "goal",
+          "proficiency",
+          "assistive_needs"
+        ]
+      },
+      "maxItems": 256
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "actor_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "user_goal": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "frequency": {
+            "enum": [
+              "routine",
+              "occasional",
+              "one_off",
+              "unknown"
+            ]
+          },
+          "risk": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical",
+              "unknown"
+            ]
+          },
+          "data_density": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "unknown"
+            ]
+          },
+          "record_volume": {
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "unknown"
+            ]
+          },
+          "interaction": {
+            "enum": [
+              "read",
+              "browse",
+              "form",
+              "approval",
+              "monitor",
+              "kiosk_action",
+              "unknown"
+            ]
+          },
+          "important_data": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "uniqueItems": true,
+            "maxItems": 256
+          },
+          "devices": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "mobile",
+                "tablet",
+                "desktop",
+                "kiosk"
+              ]
+            },
+            "maxItems": 256
+          },
+          "recovery_required": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "actor_id",
+          "user_goal",
+          "frequency",
+          "risk",
+          "data_density",
+          "record_volume",
+          "interaction",
+          "important_data",
+          "devices",
+          "recovery_required"
+        ]
+      },
+      "maxItems": 256
+    },
+    "devices": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "primary": {
+          "enum": [
+            "mobile",
+            "tablet",
+            "desktop",
+            "kiosk",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "supported": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "mobile",
+              "tablet",
+              "desktop",
+              "kiosk"
+            ]
+          },
+          "maxItems": 256
+        },
+        "input_modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "touch",
+              "mouse",
+              "keyboard",
+              "assistive"
+            ]
+          },
+          "maxItems": 256
+        },
+        "ultrawide_use_case": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "primary",
+        "supported",
+        "input_modes",
+        "ultrawide_use_case"
+      ]
+    },
+    "localization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "languages": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+            "maxLength": 4096
+          },
+          "maxItems": 256
+        },
+        "primary_locale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "requires_bidirectional_ui": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "numeric_policy": {
+          "enum": [
+            "locale",
+            "latn",
+            "arab",
+            "unknown"
+          ]
+        },
+        "timezone_policy": {
+          "enum": [
+            "user",
+            "tenant",
+            "fixed",
+            "unknown"
+          ]
+        },
+        "currency_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "maxLength": 4096
+          },
+          "maxItems": 256
+        }
+      },
+      "required": [
+        "languages",
+        "primary_locale",
+        "requires_bidirectional_ui",
+        "numeric_policy",
+        "timezone_policy",
+        "currency_codes"
+      ]
+    },
+    "existing_design_system": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "brand_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "criticality": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical",
+        "unknown"
+      ]
+    },
+    "unknown_facts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "maxItems": 256
+    },
+    "human_confirmation": {
+      "enum": [
+        "confirmed",
+        "unconfirmed",
+        "read_only_advice"
+      ]
+    },
+    "goal_priorities": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goal_index",
+          "outcome",
+          "weight"
+        ],
+        "properties": {
+          "goal_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "outcome": {
+            "enum": [
+              "efficiency",
+              "comprehension",
+              "conversion",
+              "learning",
+              "situational_awareness",
+              "guided_completion"
+            ]
+          },
+          "weight": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "contract_version",
+    "project_id",
+    "captured_at",
+    "source_refs",
+    "product_type",
+    "product_goals",
+    "audiences",
+    "workflows",
+    "devices",
+    "localization",
+    "existing_design_system",
+    "brand_constraints",
+    "criticality",
+    "unknown_facts",
+    "human_confirmation"
+  ]
+}

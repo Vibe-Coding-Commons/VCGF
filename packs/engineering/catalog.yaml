@@ -1,0 +1,133 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# RFC advisory catalogue; not a VCGF runtime capability YAML
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+catalog_version: 0.1.0
+status: integration-candidate
+non_normative_note: Require inspection, runtime compatibility, licenses and evidence before use. Never auto-install.
+practice_groups:
+  - group_id: architecture-defaults
+    applies_to: [all]
+    choices:
+      - id: minimal-safe-architecture
+        default: true
+        when: every_project
+        notes: Prefer smallest maintainable implementation preserving domain rules and security boundaries
+      - id: modular-monolith
+        default: false
+        when: clearly_independent_domains_or_complex_permissions_or_long_lived_large_codebase
+        notes: Prefer bounded modules and contracts before microservices
+      - id: full-ddd
+        default: false
+        when: complex_domain_invariants_ubiquitous_language_multiple_bounded_contexts
+        anti_triggers: [table_count_alone]
+        notes: Apply selectively rather than generating ceremony across all modules
+      - id: cqrs
+        default: false
+        when: demonstrated_write_read_model_divergence_or_query_performance_need
+        anti_triggers: [basic_crud]
+  - group_id: backend-patterns
+    applies_to: [laravel, general_backend]
+    choices:
+      - id: dependency-injection
+        default: true
+        when: collaborating_services_or_replaceable_implementations
+        notes: Service Container for collaborators; constructing simple local values is allowed
+      - id: action-classes
+        default: false
+        when: shared_business_operations_or_complex_transactions
+        notes: Do not create one class per trivial CRUD by default
+      - id: repository
+        default: false
+        when: independent_persistence_contract_or_complex_query_abstraction
+        anti_triggers: [eager_one_to_one_eloquent_wrappers]
+      - id: strategy-and-factory
+        default: false
+        when: multiple_payment_shipping_notification_provider_implementations
+      - id: data-transfer-object
+        default: false
+        when: multi_field_transfer_cross_boundary_or_reused_typed_payloads
+        notes: DTO alone does not sanitize or authorize input
+      - id: domain-events-outbox
+        default: false
+        when: reliable_after_commit_cross_system_delivery
+      - id: idempotency
+        default: false
+        when: externally_retried_state_changing_requests
+      - id: state-machine
+        default: false
+        when: multi_step_approval_or_lifecycle_invariants
+  - group_id: laravel-packages
+    applies_to: [laravel]
+    choices:
+      - id: spatie/laravel-query-builder
+        for: allowlisted_filter_sort_include_api
+      - id: spatie/laravel-data
+        for: typed_transfer_and_serialization_with_explicit_validation_strategy
+      - id: spatie/laravel-permission
+        for: role_permission_models_not_a_substitute_for_record_authorization
+      - id: spatie/laravel-activitylog
+        for: activity_logs_not_immutable_audit_proof
+      - id: laravel/sanctum
+        for: first_party_spa_and_api_auth_when_appropriate
+      - id: laravel/horizon
+        for: redis_queues_only
+      - id: laravel/pennant
+        for: controlled_feature_flags
+      - id: laravel/pint
+        for: explicit_style_policy
+      - id: larastan/larastan
+        for: compatible_static_analysis_toolchain
+  - group_id: react-ui
+    applies_to: [react]
+    choices:
+      - id: shadcn-ui-base-ui
+        for: new_custom_design_system_with_owned_components
+        note: new shadcn default July 2026; not automatic migration rule
+      - id: shadcn-ui-radix
+        for: supported_existing_or_explicitly_selected_radix_path
+      - id: radix-ui
+        for: raw_accessible_component_primitives
+      - id: tanstack-react-table
+        for: headless_custom_data_grid_engine
+      - id: react-hook-form
+        for: complex_react_forms_when_compatible
+      - id: tanstack-react-query
+        for: server_state_caching_and_invalidation_when_needed
+  - group_id: vue-ui
+    applies_to: [vue]
+    choices:
+      - id: primevue
+        for: ready_feature_rich_component_suite_and_data_tables
+      - id: reka-ui
+        for: headless_vue_component_primitives
+        note: formerly Radix Vue; avoid legacy name in new projects
+      - id: shadcn-vue
+        for: owned_tailwind_component_system_using_vue
+      - id: tanstack-vue-table
+        for: headless_custom_data_grid_engine
+      - id: vee-validate
+        for: complex_vue_forms_when_compatible
+      - id: pinia
+        for: shared_client_side_application_state_when_needed
+  - group_id: cross-ui-assurance
+    applies_to: [react, vue, any_ui]
+    required_design_checks:
+      - large_screen_and_mobile_adaptive_layout
+      - rtl_ltr_arabic_english_interaction
+      - keyboard_navigation_focus_and_screen_reader
+      - accessible_data_density_and_no_information_loss
+      - large_dataset_server_side_pagination_and_virtualization_when_appropriate
+      - user_feedback_for_loading_empty_error_success
+      - design_tokens_and_component_contracts
+      - measured_bundle_and_interaction_performance
+package_assessment_fields:
+  - actual_versions_and_platform_compatibility
+  - license_and_maintainer
+  - security_advisories_and_provenance
+  - lockfile_reproducibility
+  - package_maintenance_and_release_cadence
+  - frontend_accessibility_rtl_support
+  - measurable_benefit_and_maintenance_cost
+  - conflicts_with_existing_standards

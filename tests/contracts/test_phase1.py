@@ -217,9 +217,38 @@ class CompatibilityTests(unittest.TestCase):
         approval = json.loads((ROOT / "docs/project-history/v1.1.0/documentation-approval.json").read_text())
         allowed = approval["allowed_original_documentation_changes"]
         self.assertEqual(set(allowed), {"README.md", "README.ar.md", "CHANGELOG.md"})
+        # v1.2 is independently pinned. Neither frozen v1.0 hashes nor v1.1 authorization changes.
+        candidate = json.loads((ROOT / "docs/quality/v1.2/baseline-compatibility-v1.2.json").read_text())
+        candidate_files = candidate["allowed_original_file_changes"]
+        candidate_paths = {
+            "README.md", "README.ar.md", "CHANGELOG.md",
+            "FILE-MANIFEST.md", "REPOSITORY-TREE.md", "spec/control-catalog.yaml",
+            "scripts/validate-repository-structure.py", "scripts/generate-file-manifest.py",
+            "scripts/vcgf_lib.py", "scripts/generate-repository-tree.py",
+        }
+        self.assertEqual(candidate["candidate_version"], "1.2.0")
+        self.assertEqual(candidate["review_status"], "PENDING_INDEPENDENT_REVIEW")
+        self.assertEqual(set(candidate_files), candidate_paths)
+        self.assertTrue(candidate_paths <= set(snapshot))
+        for name in candidate_paths:
+            self.assertTrue(candidate_files[name]["reason"].strip())
+            self.assertRegex(candidate_files[name]["sha256_lf"], r"^[0-9a-f]{64}$")
         for name, digest in snapshot.items():
             with self.subTest(file=name):
-                self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), allowed.get(name, digest))
+                # Historical Python 3.13 bytecode is not a portable source file.
+                if name == "scripts/__pycache__/vcgf_lib.cpython-313.pyc":
+                    self.assertEqual(digest, "6e5d07457cee2fc5950f2c2c709f3d6306c4a467814ff8d77ad331fc07ee30ce")
+                    continue
+                observed = (ROOT / name).read_bytes()
+                if name in candidate_paths:
+                    # GitHub .gitattributes pins LF. Normalization here is EOL-only for the
+                    # ten explicitly reviewed files; every other original file is byte-exact.
+                    actual = hashlib.sha256(observed.replace(b"\r\n", b"\n")).hexdigest()
+                    expected = candidate_files[name]["sha256_lf"]
+                else:
+                    actual = hashlib.sha256(observed).hexdigest()
+                    expected = allowed.get(name, digest)
+                self.assertEqual(actual, expected)
 
     def test_frozen_v1_schemas_identical(self):
         for p in (ROOT / "tests/fixtures/v1.0/schemas").glob("*.json"):

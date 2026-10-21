@@ -23,14 +23,42 @@ VCGF/
 │   ├── workflows
 │   │   ├── release-quality-gate.yml
 │   │   ├── validate-adapters.yml
+│   │   ├── validate-adaptive.yml
 │   │   ├── validate-framework.yml
 │   │   ├── validate-links.yml
+│   │   ├── validate-runtime.yml
 │   │   └── validate-schemas.yml
 │   ├── CODEOWNERS
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── assets
 │   └── brand
 │       └── brand-guidelines.md
+├── capabilities
+│   ├── adaptive-engineering.yaml
+│   ├── adaptive-ux.yaml
+│   ├── admin.yaml
+│   ├── api.yaml
+│   ├── audit.yaml
+│   ├── authorization.yaml
+│   ├── backup-restore.yaml
+│   ├── database.yaml
+│   ├── deletion.yaml
+│   ├── development-agent.yaml
+│   ├── email.yaml
+│   ├── fields.yaml
+│   ├── files.yaml
+│   ├── identity.yaml
+│   ├── incident.yaml
+│   ├── password-recovery.yaml
+│   ├── payment.yaml
+│   ├── privacy.yaml
+│   ├── product-ai.yaml
+│   ├── public-discovery.yaml
+│   ├── script-protection.yaml
+│   ├── sessions.yaml
+│   ├── step-up.yaml
+│   ├── strong-auth.yaml
+│   └── ux-accessibility.yaml
 ├── checklists
 │   ├── database-change
 │   │   └── database-change.md
@@ -176,30 +204,104 @@ VCGF/
 │   │   ├── replit.md
 │   │   └── v0.md
 │   ├── project-history
-│   │   └── v1.0.0
-│   │       ├── architecture-report.md
-│   │       ├── conflict-report.md
-│   │       ├── file-inventory.md
-│   │       ├── final-qa-audit.md
-│   │       ├── final-release-report.md
-│   │       ├── migration-map.md
-│   │       └── traceability.md
+│   │   ├── v1.0.0
+│   │   │   ├── architecture-report.md
+│   │   │   ├── conflict-report.md
+│   │   │   ├── file-inventory.md
+│   │   │   ├── final-qa-audit.md
+│   │   │   ├── final-release-report.md
+│   │   │   ├── migration-map.md
+│   │   │   └── traceability.md
+│   │   └── v1.1.0
+│   │       ├── approval.md
+│   │       ├── approved-analysis.md
+│   │       ├── change-manifest.json
+│   │       ├── continuation-approval.md
+│   │       ├── continuation-change-manifest.json
+│   │       ├── continuation-test-evidence.json
+│   │       ├── CONTINUATION_REPORT_AR.md
+│   │       ├── decisions.json
+│   │       ├── documentation-approval.json
+│   │       ├── documentation-change-manifest.json
+│   │       ├── documentation-test-evidence.json
+│   │       ├── documentation-update.md
+│   │       ├── local-context-benchmark.json
+│   │       ├── next-change-plan.json
+│   │       ├── open-items.json
+│   │       ├── PHASE1_REPORT_AR.md
+│   │       ├── progress.json
+│   │       ├── reference-stack.json
+│   │       ├── scope-register.json
+│   │       ├── skill-forward-test.json
+│   │       └── test-evidence.json
+│   ├── quality
+│   │   └── v1.2
+│   │       ├── evidence
+│   │       │   ├── browser
+│   │       │   │   ├── browser-report.json
+│   │       │   │   ├── crm-ar-1440.png
+│   │       │   │   ├── crm-ar-390.png
+│   │       │   │   ├── crm-en-1440.png
+│   │       │   │   └── crm-en-390.png
+│   │       │   ├── adaptive-benchmark.json
+│   │       │   ├── adaptive-benchmark.log
+│   │       │   ├── adaptive-browser.log
+│   │       │   ├── adaptive-coverage.json
+│   │       │   ├── adaptive-coverage.txt
+│   │       │   ├── adaptive-coverage.xml
+│   │       │   ├── adaptive-junit.xml
+│   │       │   ├── adaptive-tests.log
+│   │       │   ├── baseline-loader-duplicate.json
+│   │       │   ├── baseline-verification.json
+│   │       │   ├── candidate-tests-initial.log
+│   │       │   ├── combined-plan-example.json
+│   │       │   ├── engineering-smoke.json
+│   │       │   ├── local-structure.json
+│   │       │   ├── preview-baseline-tests.log
+│   │       │   ├── preview-browser.log
+│   │       │   ├── remote-attempts.json
+│   │       │   ├── results-summary.json
+│   │       │   ├── tested-code-snapshot.json
+│   │       │   └── ux-smoke.json
+│   │       ├── baseline-compatibility-v1.2.json
+│   │       ├── environment-and-limitations.json
+│   │       ├── evaluation-ar.md
+│   │       ├── evaluation-en.md
+│   │       ├── executive-summary.md
+│   │       ├── integration-log.md
+│   │       ├── release-gates.md
+│   │       ├── scope-register.json
+│   │       └── sources.json
 │   ├── references
 │   │   ├── owasp-asvs-5-mapping.md
 │   │   └── sources-and-standards.md
 │   ├── adapter-model.md
 │   ├── adoption-guide.md
 │   ├── architecture.md
+│   ├── contracts-v1.1.md
 │   ├── control-model.md
+│   ├── github-desktop-update.ar.md
 │   ├── implementation-guide.md
 │   ├── migration-guide.md
 │   ├── platform-compatibility.md
 │   ├── principles.md
 │   ├── quick-start.ar.md
+│   ├── runtime-guide.md
 │   ├── terminology.md
 │   ├── user-guide.md
 │   └── versioning-model.md
 ├── examples
+│   ├── adaptive
+│   │   ├── example-project
+│   │   │   ├── brief.md
+│   │   │   ├── discovery.json
+│   │   │   └── fingerprint.json
+│   │   ├── fingerprint-enterprise.json
+│   │   ├── fingerprint-laravel.json
+│   │   ├── rtl-ltr-crm.html
+│   │   ├── ux-crm.json
+│   │   ├── ux-editorial.json
+│   │   └── ux-service.json
 │   ├── crm
 │   │   └── README.md
 │   ├── ecommerce
@@ -208,12 +310,109 @@ VCGF/
 │   │   └── README.md
 │   ├── generic-web-app
 │   │   └── README.md
+│   ├── integrations
+│   │   ├── backup
+│   │   │   ├── operations.py
+│   │   │   ├── sql_engines.py
+│   │   │   └── unified.py
+│   │   ├── email
+│   │   │   ├── delivery.py
+│   │   │   └── queue.py
+│   │   ├── README.md
+│   │   └── requirements.txt
+│   ├── runtime
+│   │   ├── admin
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── api
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── authorization
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── deletion
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── dependency
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── emergency
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── login
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── migration
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── payment
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── pii
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   ├── reset
+│   │   │   ├── config.json
+│   │   │   ├── context.json
+│   │   │   └── task.json
+│   │   └── upload
+│   │       ├── config.json
+│   │       ├── context.json
+│   │       └── task.json
 │   └── saas
 │       └── README.md
 ├── legal
 │   ├── attribution.md
 │   ├── third-party-notices.md
 │   └── trademark-policy.md
+├── packs
+│   ├── engineering
+│   │   ├── adaptive.md
+│   │   ├── catalog.yaml
+│   │   └── release-policy.json
+│   ├── requirements
+│   │   ├── section-14.md
+│   │   ├── section-15.md
+│   │   ├── section-16.md
+│   │   ├── section-17.md
+│   │   ├── section-18.md
+│   │   ├── section-19.md
+│   │   ├── section-20.md
+│   │   ├── section-21.md
+│   │   ├── section-22.md
+│   │   ├── section-23.md
+│   │   ├── section-24.md
+│   │   ├── section-25.md
+│   │   ├── section-26.md
+│   │   ├── section-27.md
+│   │   ├── section-28.md
+│   │   ├── section-29.md
+│   │   ├── section-30.md
+│   │   ├── section-31.md
+│   │   ├── section-32.md
+│   │   ├── section-33.md
+│   │   ├── section-34.md
+│   │   ├── section-35.md
+│   │   ├── section-36.md
+│   │   ├── section-37.md
+│   │   ├── section-38.md
+│   │   └── section-39.md
+│   ├── ux
+│   │   ├── adaptive.md
+│   │   ├── catalog.yaml
+│   │   ├── local-fonts.md
+│   │   └── rtl-ltr.md
+│   └── index.yaml
 ├── platforms
 │   ├── _adapter-template
 │   │   ├── examples
@@ -248,11 +447,13 @@ VCGF/
 │   │   ├── prompts
 │   │   │   └── pre-change-impact-review.md
 │   │   ├── rules
-│   │   │   └── project-knowledge.md
+│   │   │   ├── project-knowledge.md
+│   │   │   └── runtime.generated.md
 │   │   ├── templates
 │   │   │   └── project-context.md
 │   │   ├── tests
-│   │   │   └── adapter-verification.md
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
 │   │   ├── verification
 │   │   │   ├── sources.yaml
 │   │   │   └── verification-report.md
@@ -264,7 +465,41 @@ VCGF/
 │   │   ├── control-mapping.yaml
 │   │   ├── INSTALLATION.md
 │   │   ├── LIMITATIONS.md
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
+│   ├── chatgpt
+│   │   ├── examples
+│   │   │   └── README.md
+│   │   ├── mappings
+│   │   │   └── README.md
+│   │   ├── prompts
+│   │   │   └── README.md
+│   │   ├── rules
+│   │   │   ├── README.md
+│   │   │   └── runtime.generated.md
+│   │   ├── skills
+│   │   │   └── vcgf
+│   │   │       └── SKILL.md
+│   │   ├── templates
+│   │   │   └── README.md
+│   │   ├── tests
+│   │   │   ├── README.md
+│   │   │   └── runtime-canary.md
+│   │   ├── verification
+│   │   │   ├── sources.yaml
+│   │   │   └── verification-report.md
+│   │   ├── ADAPTER.md
+│   │   ├── adapter.yaml
+│   │   ├── CAPABILITIES.md
+│   │   ├── CHANGELOG.md
+│   │   ├── CONTROL-MAPPING.md
+│   │   ├── control-mapping.yaml
+│   │   ├── INSTALLATION.md
+│   │   ├── LIMITATIONS.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
 │   ├── claude
 │   │   ├── examples
 │   │   │   └── example-adoption.md
@@ -273,11 +508,13 @@ VCGF/
 │   │   ├── prompts
 │   │   │   └── pre-change-impact-review.md
 │   │   ├── rules
-│   │   │   └── CLAUDE.md
+│   │   │   ├── CLAUDE.md
+│   │   │   └── runtime.generated.md
 │   │   ├── templates
 │   │   │   └── project-context.md
 │   │   ├── tests
-│   │   │   └── adapter-verification.md
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
 │   │   ├── verification
 │   │   │   ├── sources.yaml
 │   │   │   └── verification-report.md
@@ -289,7 +526,9 @@ VCGF/
 │   │   ├── control-mapping.yaml
 │   │   ├── INSTALLATION.md
 │   │   ├── LIMITATIONS.md
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
 │   ├── cursor
 │   │   ├── examples
 │   │   │   └── example-adoption.md
@@ -299,11 +538,13 @@ VCGF/
 │   │   │   └── pre-change-impact-review.md
 │   │   ├── rules
 │   │   │   ├── AGENTS.md
+│   │   │   ├── runtime.generated.md
 │   │   │   └── vcgf.mdc
 │   │   ├── templates
 │   │   │   └── project-context.md
 │   │   ├── tests
-│   │   │   └── adapter-verification.md
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
 │   │   ├── verification
 │   │   │   ├── sources.yaml
 │   │   │   └── verification-report.md
@@ -315,7 +556,9 @@ VCGF/
 │   │   ├── control-mapping.yaml
 │   │   ├── INSTALLATION.md
 │   │   ├── LIMITATIONS.md
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
 │   ├── generic
 │   │   ├── examples
 │   │   │   └── example-adoption.md
@@ -324,11 +567,13 @@ VCGF/
 │   │   ├── prompts
 │   │   │   └── pre-change-impact-review.md
 │   │   ├── rules
-│   │   │   └── portable-project-rules.md
+│   │   │   ├── portable-project-rules.md
+│   │   │   └── runtime.generated.md
 │   │   ├── templates
 │   │   │   └── project-context.md
 │   │   ├── tests
-│   │   │   └── adapter-verification.md
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
 │   │   ├── verification
 │   │   │   ├── sources.yaml
 │   │   │   └── verification-report.md
@@ -340,7 +585,9 @@ VCGF/
 │   │   ├── control-mapping.yaml
 │   │   ├── INSTALLATION.md
 │   │   ├── LIMITATIONS.md
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
 │   ├── lovable
 │   │   ├── examples
 │   │   │   └── example-adoption.md
@@ -351,11 +598,13 @@ VCGF/
 │   │   ├── rules
 │   │   │   ├── AGENTS.md
 │   │   │   ├── project-knowledge.md
+│   │   │   ├── runtime.generated.md
 │   │   │   └── workspace-knowledge.md
 │   │   ├── templates
 │   │   │   └── project-context.md
 │   │   ├── tests
-│   │   │   └── adapter-verification.md
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
 │   │   ├── verification
 │   │   │   ├── sources.yaml
 │   │   │   └── verification-report.md
@@ -367,7 +616,9 @@ VCGF/
 │   │   ├── control-mapping.yaml
 │   │   ├── INSTALLATION.md
 │   │   ├── LIMITATIONS.md
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
 │   ├── replit
 │   │   ├── examples
 │   │   │   └── example-adoption.md
@@ -376,11 +627,13 @@ VCGF/
 │   │   ├── prompts
 │   │   │   └── pre-change-impact-review.md
 │   │   ├── rules
-│   │   │   └── replit.md
+│   │   │   ├── replit.md
+│   │   │   └── runtime.generated.md
 │   │   ├── templates
 │   │   │   └── project-context.md
 │   │   ├── tests
-│   │   │   └── adapter-verification.md
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
 │   │   ├── verification
 │   │   │   ├── sources.yaml
 │   │   │   └── verification-report.md
@@ -392,7 +645,9 @@ VCGF/
 │   │   ├── control-mapping.yaml
 │   │   ├── INSTALLATION.md
 │   │   ├── LIMITATIONS.md
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
 │   └── v0
 │       ├── examples
 │       │   └── example-adoption.md
@@ -401,11 +656,13 @@ VCGF/
 │       ├── prompts
 │       │   └── pre-change-impact-review.md
 │       ├── rules
-│       │   └── custom-instructions.md
+│       │   ├── custom-instructions.md
+│       │   └── runtime.generated.md
 │       ├── templates
 │       │   └── project-context.md
 │       ├── tests
-│       │   └── adapter-verification.md
+│       │   ├── adapter-verification.md
+│       │   └── runtime-canary.md
 │       ├── verification
 │       │   ├── sources.yaml
 │       │   └── verification-report.md
@@ -417,7 +674,9 @@ VCGF/
 │       ├── control-mapping.yaml
 │       ├── INSTALLATION.md
 │       ├── LIMITATIONS.md
-│       └── README.md
+│       ├── README.md
+│       ├── runtime-capabilities.yaml
+│       └── RUNTIME-INSTALLATION.md
 ├── playbooks
 │   ├── existing-project-hardening-plan.md
 │   ├── key-rotation-playbook.md
@@ -433,18 +692,67 @@ VCGF/
 │   └── production
 │       ├── profile.yaml
 │       └── README.md
+├── references
+│   └── source-registry.yaml
+├── runtime
+│   ├── adaptive
+│   │   ├── __init__.py
+│   │   ├── cli.py
+│   │   ├── common.py
+│   │   ├── coordinator.py
+│   │   ├── engineering.py
+│   │   ├── release.py
+│   │   ├── schools.py
+│   │   └── ux.py
+│   ├── __init__.py
+│   ├── approval.py
+│   ├── bootstrap.md
+│   ├── context-policy.yaml
+│   ├── context.py
+│   ├── contracts.py
+│   ├── evidence.py
+│   ├── evidence_pack.py
+│   ├── loader.py
+│   ├── pack-map.yaml
+│   ├── preferences-policy.yaml
+│   ├── registry.py
+│   ├── resolver.py
+│   ├── router.py
+│   ├── routing-policy.yaml
+│   └── scope_guard.py
 ├── schemas
+│   ├── v1.1.0
+│   │   ├── adapter-capabilities.schema.json
+│   │   ├── approval.schema.json
+│   │   ├── capability.schema.json
+│   │   ├── common.schema.json
+│   │   ├── context.schema.json
+│   │   ├── evidence.schema.json
+│   │   ├── preferences.schema.json
+│   │   └── route-result.schema.json
+│   ├── v1.2.0
+│   │   ├── architecture-decision.schema.json
+│   │   ├── project-fingerprint.schema.json
+│   │   ├── release-evidence.schema.json
+│   │   ├── ux-decision.schema.json
+│   │   └── ux-discovery.schema.json
 │   ├── adapter.schema.json
 │   ├── conformance.schema.json
 │   ├── control.schema.json
 │   └── profile.schema.json
 ├── scripts
+│   ├── benchmark-adaptive.py
+│   ├── check-adapter-updates.py
+│   ├── generate-adapter-rules.py
 │   ├── generate-control-catalog.py
 │   ├── generate-file-manifest.py
 │   ├── generate-repository-tree.py
+│   ├── generate-runtime-registry.py
 │   ├── release-quality-gate.py
+│   ├── test-adaptive-browser.py
 │   ├── validate-adapters.py
 │   ├── validate-attribution.py
+│   ├── validate-contracts.py
 │   ├── validate-controls.py
 │   ├── validate-cross-references.py
 │   ├── validate-documentation.py
@@ -453,10 +761,12 @@ VCGF/
 │   ├── validate-placeholders.py
 │   ├── validate-profiles.py
 │   ├── validate-repository-structure.py
+│   ├── validate-runtime.py
 │   ├── validate-schemas.py
 │   ├── validate-vendor-neutral-core.py
 │   ├── validate-version.py
 │   ├── validate-yaml.py
+│   ├── vcgf.py
 │   └── vcgf_lib.py
 ├── spec
 │   ├── conformance.md
@@ -466,8 +776,11 @@ VCGF/
 │   ├── lifecycle.md
 │   ├── normative-language.md
 │   ├── risk-model.md
+│   ├── runtime-registry.json
 │   └── VCGF-CORE.md
 ├── templates
+│   ├── adapters
+│   │   └── runtime-rules.template.md
 │   ├── architecture
 │   │   ├── change-impact-analysis.md
 │   │   └── security-decision-record.md
@@ -498,6 +811,40 @@ VCGF/
 │   │   └── threat-model.md
 │   └── testing
 │       └── security-test-evidence.md
+├── tests
+│   ├── adaptive
+│   │   ├── conftest.py
+│   │   ├── test_engines.py
+│   │   ├── test_inputs.py
+│   │   ├── test_integration.py
+│   │   ├── test_legacy_loader.py
+│   │   └── test_release.py
+│   ├── benchmarks
+│   │   └── measure_context.py
+│   ├── contracts
+│   │   └── test_phase1.py
+│   ├── fixtures
+│   │   ├── v1.0
+│   │   │   ├── schemas
+│   │   │   │   ├── adapter.schema.json
+│   │   │   │   ├── conformance.schema.json
+│   │   │   │   ├── control.schema.json
+│   │   │   │   └── profile.schema.json
+│   │   │   ├── baseline-hashes.json
+│   │   │   └── records.json
+│   │   └── v1.1
+│   │       ├── adapter-capabilities.json
+│   │       ├── approval.json
+│   │       ├── capability.json
+│   │       ├── context.json
+│   │       ├── evidence.json
+│   │       ├── preferences.json
+│   │       └── route-result.json
+│   └── scenarios
+│       ├── test_adapters.py
+│       ├── test_gates.py
+│       ├── test_integrations.py
+│       └── test_runtime.py
 ├── .editorconfig
 ├── .gitattributes
 ├── .gitignore
@@ -515,6 +862,7 @@ VCGF/
 ├── README.md
 ├── REPOSITORY-TREE.md
 ├── requirements-dev.txt
+├── requirements-quality.txt
 ├── ROADMAP.md
 ├── SECURITY.md
 ├── VCGF-MANIFEST.yaml

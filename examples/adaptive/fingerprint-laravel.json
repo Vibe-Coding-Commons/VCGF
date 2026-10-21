@@ -1,0 +1,43 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "contract_version": "1.2.0",
+  "project_id": "synthetic-laravel-simple",
+  "captured_at": "2026-10-21T06:40:00+00:00",
+  "project_kind": "simple_app",
+  "backend": "laravel",
+  "frontend": "blade",
+  "detected_versions": {
+    "laravel": "synthetic-example-not-a-version"
+  },
+  "sources": [
+    {
+      "path": "synthetic/composer.json",
+      "sha256": "07e390b62b197f2aacf5d7b3b85bcff9d134e6ba26b4f03dd7531141f18f27f0",
+      "kind": "local_file"
+    }
+  ],
+  "complexity": {
+    "business_rules": 1,
+    "bounded_contexts": 0,
+    "data_concurrency": 0,
+    "external_integrations": 0,
+    "compliance_data_risk": 1,
+    "tenant_authorization": 0,
+    "ui_interaction": 1,
+    "team_change": 0
+  },
+  "risk_flags": [
+    "none"
+  ],
+  "unknown_facts": [],
+  "human_confirmation": "not_required_for_read_only_advice",
+  "architecture_facts": {
+    "independent_domains": false,
+    "multiple_persistence_sources": false,
+    "multiple_service_providers": false,
+    "highly_reused_operations": false,
+    "complex_workflow": false,
+    "retriable_financial_operations": false,
+    "existing_component_library": "Laravel Blade (synthetic)"
+  }
+}

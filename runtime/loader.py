@@ -21,12 +21,14 @@ def confined(root, relative):
 def load(root, records, budget):
     if type(budget) is not int or budget <= 0:
         raise ValueError('budget must be a positive integer')
-    seen, items = set(), []
+    seen, items = {}, []
     for record in records:
         name = record['path']
         if name in seen:
+            if seen[name] != record['sha256']:
+                raise ValueError('conflicting hashes for duplicate path: ' + name)
             continue
-        seen.add(name)
+        seen[name] = record['sha256']
         data = confined(root, name).read_bytes()
         if hashlib.sha256(data).hexdigest() != record['sha256']:
             raise ValueError('stale registry hash: ' + name)

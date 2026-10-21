@@ -1,0 +1,123 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "checks": [
+    {
+      "name": "schema:architecture-decision.schema.json",
+      "passed": true,
+      "scope": "JSON Schema meta-validation"
+    },
+    {
+      "name": "schema:project-fingerprint.schema.json",
+      "passed": true,
+      "scope": "JSON Schema meta-validation"
+    },
+    {
+      "name": "schema:release-evidence.schema.json",
+      "passed": true,
+      "scope": "JSON Schema meta-validation"
+    },
+    {
+      "name": "schema:ux-decision.schema.json",
+      "passed": true,
+      "scope": "JSON Schema meta-validation"
+    },
+    {
+      "name": "schema:ux-discovery.schema.json",
+      "passed": true,
+      "scope": "JSON Schema meta-validation"
+    },
+    {
+      "name": "legacy-routing-policy-preserved",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "legacy-pack-map-preserved",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "canonical-control-count",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "new-capability-references:adaptive-ux.yaml",
+      "passed": true,
+      "scope": "reference/field inspection only; full old validator pending"
+    },
+    {
+      "name": "new-capability-references:adaptive-engineering.yaml",
+      "passed": true,
+      "scope": "reference/field inspection only; full old validator pending"
+    },
+    {
+      "name": "protected-paths-not-overlaid",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "python-syntax",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "font-binaries-not-bundled",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "readme-required-sections:README.md",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "readme-required-sections:README.ar.md",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-read-permissions",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-timeout",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-full-sha:actions/checkout",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-full-sha:actions/setup-python",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-full-sha:actions/upload-artifact",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-timeout",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-full-sha:actions/checkout",
+      "passed": true,
+      "scope": "local"
+    },
+    {
+      "name": "workflow-full-sha:actions/setup-python",
+      "passed": true,
+      "scope": "local"
+    }
+  ],
+  "passed": 23,
+  "failed": 0,
+  "limitations": "Local structure/reference inspection; not remote CI or complete repository validation."
+}

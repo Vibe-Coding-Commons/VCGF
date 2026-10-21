@@ -1,0 +1,190 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "contract_version": "1.2.0",
+  "decision_id": "ADR-5e29a68ea18390b96db2",
+  "project_id": "synthetic-laravel-simple",
+  "fingerprint_sha256": "ada14845b1c7d5a7058947c323d0378afff1a503463b2abf10529e88c5375f43",
+  "catalog_sha256": "cf6f06ec9e4e4fa853f72bd0af80c293d453469ebc00a8f52f6c39dae3c29ab8",
+  "decided_at": "2026-10-21T08:26:17.649619+00:00",
+  "state": "proposed",
+  "architecture": "lean_layers",
+  "choices": [
+    {
+      "id": "lean_layers",
+      "category": "architecture",
+      "selected": true,
+      "reason": "Choose minimal Laravel/general framework layering when domain boundaries do not justify extra abstractions.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "modular_monolith",
+      "category": "architecture",
+      "selected": false,
+      "reason": "Use bounded modules and stable contracts where independent domains justify stronger separation.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "selective_ddd",
+      "category": "architecture",
+      "selected": false,
+      "reason": "Use DDD selectively for highly complex independent domains; database table count is not a selection criterion.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "cqrs",
+      "category": "pattern",
+      "selected": false,
+      "reason": "Insufficient read/write divergence or performance measurement; CQRS requires explicit operational evidence.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "dependency-injection",
+      "category": "pattern",
+      "selected": true,
+      "reason": "Use Laravel Service Container for collaborating services; local value object construction remains allowed.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "action-classes",
+      "category": "pattern",
+      "selected": false,
+      "reason": "Extract meaningful repeated operations and business transactions into Actions only when justified.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "repository",
+      "category": "pattern",
+      "selected": false,
+      "reason": "Repository is warranted only if meaningful persistence boundaries or multiple sources are confirmed; do not wrap Eloquent CRUD 1:1.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "strategy-and-factory",
+      "category": "pattern",
+      "selected": false,
+      "reason": "Use provider interface/Strategy/Factory for actual interchangeable integrations; not for a single hard-coded service.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "data-transfer-object",
+      "category": "pattern",
+      "selected": false,
+      "reason": "Typed DTOs help with complex transfers, but authorization, validation, output encoding and SQL safety remain separate obligations.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review recommendation against existing application and runtime constraints."
+      ]
+    },
+    {
+      "id": "spatie/laravel-data",
+      "category": "package",
+      "selected": false,
+      "reason": "Consider spatie/laravel-data only with verified current Laravel/PHP compatibility and explicit request validation strategy.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Review composer constraint/license/advisory and validate request and non-request creation paths."
+      ]
+    },
+    {
+      "id": "spatie/laravel-query-builder",
+      "category": "package",
+      "selected": false,
+      "reason": "Consider allowlisted filtering, sorting and includes for advanced server-side data tables.",
+      "evidence_refs": [
+        "synthetic/composer.json"
+      ],
+      "constraints": [
+        "Proposal only: never modify architecture or install packages automatically."
+      ],
+      "verification_needed": [
+        "Verify allowedFilters/sorts/includes and server-side authorization of every returned row."
+      ]
+    }
+  ],
+  "blockers": [],
+  "approval": {
+    "required": false,
+    "status": "not_required",
+    "approval_ref": null
+  },
+  "evidence_status": "not_run",
+  "limitations": [
+    "Deterministic advisory; source-byte verification is performed by the coordinator, not this pure function.",
+    "No framework package compatibility, security, accessibility or platform enforcement has been independently verified.",
+    "A selected option is a candidate recommendation, not an installed implementation."
+  ]
+}

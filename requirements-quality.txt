@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Versions observed locally; CI resolution and online advisory review remain gates.
+pytest==9.0.2
+coverage==7.13.3
+playwright==1.57.0

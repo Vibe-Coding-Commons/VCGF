@@ -28,7 +28,8 @@ def purpose(path):
 def main():
     generated={'FILE-MANIFEST.md','REPOSITORY-TREE.md','spec/control-catalog.yaml'}
     rows=[]
-    for p in sorted((x for x in ROOT.rglob('*') if x.is_file()),key=lambda x:rel(x)):
+    skip={'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'}
+    for p in sorted((x for x in ROOT.rglob('*') if x.is_file() and not any(part in skip for part in x.relative_to(ROOT).parts)),key=lambda x:rel(x)):
         rp=rel(p)
         if rp=='FILE-MANIFEST.md': continue
         category=rp.split('/',1)[0] if '/' in rp else 'root'

@@ -1,0 +1,133 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "policy_version": "1.2.0",
+  "scope": "Cumulative v1.1 and v1.2 acceptance; no silent deferral or fixture-as-production substitution",
+  "required_gates": [
+    {
+      "id": "QG-BASELINE",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-LEGACY",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-ADAPTIVE",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-PYTHON-MATRIX",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-DEPENDENCIES",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-SBOM",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-LARAVEL-REACT",
+      "accepted_scopes": [
+        "target_project"
+      ]
+    },
+    {
+      "id": "QG-LARAVEL-VUE",
+      "accepted_scopes": [
+        "target_project"
+      ]
+    },
+    {
+      "id": "QG-BROWSERS",
+      "accepted_scopes": [
+        "target_project"
+      ]
+    },
+    {
+      "id": "QG-ACCESSIBILITY",
+      "accepted_scopes": [
+        "manual_target_project"
+      ]
+    },
+    {
+      "id": "QG-USABILITY",
+      "accepted_scopes": [
+        "manual_target_project"
+      ]
+    },
+    {
+      "id": "QG-PERFORMANCE",
+      "accepted_scopes": [
+        "target_project"
+      ]
+    },
+    {
+      "id": "QG-FONTS",
+      "accepted_scopes": [
+        "target_project"
+      ]
+    },
+    {
+      "id": "QG-M365",
+      "accepted_scopes": [
+        "authorized_sandbox"
+      ]
+    },
+    {
+      "id": "QG-SQL-RESTORE",
+      "accepted_scopes": [
+        "authorized_sandbox"
+      ]
+    },
+    {
+      "id": "QG-PLATFORM-ADAPTERS",
+      "accepted_scopes": [
+        "authorized_sandbox"
+      ]
+    },
+    {
+      "id": "QG-V11-SCOPE",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-HOST-TRUST",
+      "accepted_scopes": [
+        "trusted_host"
+      ]
+    },
+    {
+      "id": "QG-REMOTE-REVIEW",
+      "accepted_scopes": [
+        "trusted_host"
+      ]
+    },
+    {
+      "id": "QG-VERSION",
+      "accepted_scopes": [
+        "full_repository"
+      ]
+    },
+    {
+      "id": "QG-RECOVERY",
+      "accepted_scopes": [
+        "target_project"
+      ]
+    }
+  ]
+}

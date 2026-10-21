@@ -710,3 +710,51 @@ Licensed under the Apache License 2.0.
 ## Acknowledgements
 
 VCGF references external security and engineering sources where appropriate, including OWASP material and official platform documentation. Mapping to an external framework does not imply certification, compliance, accreditation, or endorsement. See [`docs/references/`](docs/references/).
+
+## VCGF v1.2 — Adaptive Engineering & UX Intelligence
+
+**Release Status:** Integration candidate — pending final production acceptance.
+
+VCGF v1.2 introduces two adaptive decision engines while preserving existing VCGF v1.1 capabilities, security controls, governance policies, and founder rights.
+
+### What's New
+
+**Adaptive Engineering Engine**
+
+Analyzes project architecture, complexity, technology stack, and business requirements to recommend suitable design patterns, frameworks, and packages without unnecessary over-engineering.
+
+**Adaptive UX Intelligence Engine**
+
+Evaluates project objectives, target audiences, user roles, workflows, and usage scenarios to recommend appropriate UX strategies and interface design patterns.
+
+**Responsive Mobile & Desktop Experience**
+
+Supports task-oriented interface decisions for mobile, tablet, and desktop environments while preserving essential information and functionality.
+
+**RTL / LTR Support**
+
+Provides bidirectional interface guidance using CSS Logical Properties, direction-aware components, mixed-language content handling, and localization rules.
+
+**Typography & Local Fonts**
+
+Supports locally hosted WOFF2 fonts, Arabic and English typography, fallback fonts, and performance-oriented loading strategies.
+
+**Quality Assurance & Release Governance**
+
+Introduces automated validation, integration tests, evidence requirements, and 21 cumulative release acceptance gates.
+
+### Reference CLI
+
+```bash
+python scripts/vcgf.py advise-engineering examples/adaptive/fingerprint-laravel.json
+python scripts/vcgf.py advise-ux examples/adaptive/ux-crm.json
+```
+
+### Documentation
+
+- [Quality Evaluation](docs/quality/v1.2/evaluation-en.md)
+- [Integration Log](docs/quality/v1.2/integration-log.md)
+- [Release Acceptance Gates](docs/quality/v1.2/release-gates.md)
+- [Test Results](docs/quality/v1.2/evidence/results-summary.json)
+
+**Important:** Successful local tests and Git commits do not constitute production acceptance. Full regression testing, real Laravel/React/Vue integration, and outstanding release gates must be completed before official publication.

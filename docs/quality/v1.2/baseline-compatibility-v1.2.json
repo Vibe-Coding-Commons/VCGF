@@ -1,0 +1,51 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "candidate_version": "1.2.0",
+  "baseline": "tests/fixtures/v1.0/baseline-hashes.json (383 original paths; unchanged)",
+  "v1_1_documentation_approval": "docs/project-history/v1.1.0/documentation-approval.json (unchanged)",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "release_status": "NOT_APPROVED_FOR_PRODUCTION",
+  "notes": "Exact candidate-level pinned allowlist. Does not change the original snapshot or historical approvals. A PASS is local compatibility only.",
+  "allowed_original_file_changes": {
+    "CHANGELOG.md": {
+      "sha256_lf": "813f1d3330f6225c56c0d3a7ffa652914a412808a67e44c350f1fc3fe95e080b",
+      "reason": "v1.2 Unreleased candidate notes, not a production release"
+    },
+    "FILE-MANIFEST.md": {
+      "sha256_lf": "3c7ccb72bbdf9666e8a69e3e170a35da8dcb95d447935f3df798827437f278a6",
+      "reason": "Reproducible inventory for the integrated candidate and this bounded compatibility record"
+    },
+    "README.ar.md": {
+      "sha256_lf": "a3803cad65bffc3b11e5ff6134fe3786bd0ed9a143bb8dd5c71488c56a4ca775",
+      "reason": "v1.2 Arabic candidate notes and opt-in commands; original v1.1 record preserved"
+    },
+    "README.md": {
+      "sha256_lf": "cf10efc092d76ab756c241a63ec8e6c2a8c7f483421daf9d9433861a4f4205d8",
+      "reason": "v1.2 English candidate notes and opt-in commands; original v1.1 record preserved"
+    },
+    "REPOSITORY-TREE.md": {
+      "sha256_lf": "adf4ac01ee0cb066519a0883a3cfddb82dfacff4eee888fb8862444c428bb218",
+      "reason": "Reproducible tree for the integrated candidate and this bounded compatibility record"
+    },
+    "scripts/generate-file-manifest.py": {
+      "sha256_lf": "cb6d07fe0e5b927c44660bc3a00f4da9af7ff0337854d60a8c31bf805f13f91e",
+      "reason": "Exclude Git/internal Python caches and coverage outputs from source inventory"
+    },
+    "scripts/generate-repository-tree.py": {
+      "sha256_lf": "35e88b568c15c8df4f4f3d7a3bd95ca879da4b5ebc4285293ec4a859cf41159a",
+      "reason": "Exclude Git/internal Python caches and coverage outputs from source tree"
+    },
+    "scripts/validate-repository-structure.py": {
+      "sha256_lf": "3deaa39e7a236491302f02da50f6076983c6b8cb9283e42bd34634f1bba7f2d0",
+      "reason": "Exclude local Git/internal Python cache and coverage metadata from release-artifact scanning"
+    },
+    "scripts/vcgf_lib.py": {
+      "sha256_lf": "feb72380e7a6d86cd52b1bf7f560209b94802fd2a3f12f1a527ae833355d3607",
+      "reason": "Exclude local Git/internal Python cache and coverage metadata from text-attribution scanning"
+    },
+    "spec/control-catalog.yaml": {
+      "sha256_lf": "d1b73598708deb45a7de86431819fb5db24167bc7a30dc12706f9a06145807b4",
+      "reason": "Regenerated normative catalog; all 84 canonical controls stay preserved"
+    }
+  }
+}

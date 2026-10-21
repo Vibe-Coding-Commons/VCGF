@@ -1,0 +1,94 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
+  "contract_version": "1.2.0",
+  "project_id": "example-crm-test",
+  "captured_at": "2026-10-21T00:00:00Z",
+  "source_refs": [
+    {
+      "ref": "sample/product-brief.md",
+      "kind": "product_document",
+      "sha256": null,
+      "confidence": "reported"
+    }
+  ],
+  "product_type": "business_operations",
+  "product_goals": [
+    "Close customer follow-ups quickly",
+    "Never lose historical activity"
+  ],
+  "audiences": [
+    {
+      "id": "sales-agent",
+      "role": "Sales representative",
+      "goal": "Follow up customer status and next action",
+      "proficiency": "familiar",
+      "assistive_needs": []
+    }
+  ],
+  "workflows": [
+    {
+      "id": "followups",
+      "actor_id": "sales-agent",
+      "user_goal": "Review 3000 cases and update next action",
+      "frequency": "routine",
+      "risk": "medium",
+      "data_density": "high",
+      "record_volume": "large",
+      "interaction": "approval",
+      "important_data": [
+        "customer",
+        "due_date",
+        "status",
+        "last_note",
+        "next_action"
+      ],
+      "devices": [
+        "desktop",
+        "mobile"
+      ],
+      "recovery_required": true
+    }
+  ],
+  "devices": {
+    "primary": "desktop",
+    "supported": [
+      "desktop",
+      "mobile",
+      "tablet"
+    ],
+    "input_modes": [
+      "mouse",
+      "keyboard",
+      "touch",
+      "assistive"
+    ],
+    "ultrawide_use_case": "Compare many CRM records with preserved status context"
+  },
+  "localization": {
+    "languages": [
+      "ar-SA",
+      "en-US"
+    ],
+    "primary_locale": "ar-SA",
+    "requires_bidirectional_ui": true,
+    "numeric_policy": "latn",
+    "timezone_policy": "user",
+    "currency_codes": [
+      "SAR"
+    ]
+  },
+  "existing_design_system": "Existing verified production tokens",
+  "brand_constraints": [
+    "Preserve existing logo and palette"
+  ],
+  "criticality": "medium",
+  "unknown_facts": [],
+  "human_confirmation": "confirmed",
+  "goal_priorities": [
+    {
+      "goal_index": 0,
+      "outcome": "efficiency",
+      "weight": 3
+    }
+  ]
+}

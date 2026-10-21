@@ -4,12 +4,6 @@
 import argparse,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from runtime.contracts import validate_contract,NAMES
-from runtime.registry import build_registry
-from runtime.router import route
-from runtime.context import handoff
-from runtime.evidence import evaluate
-from runtime.evidence_pack import present
 
 
 def read(path):
@@ -18,6 +12,18 @@ def read(path):
 
 
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] in {
+        'advise-engineering', 'advise-ux', 'design-plan', 'release-readiness'
+    }:
+        from runtime.adaptive.cli import main as adaptive_main
+        return adaptive_main(sys.argv[1:])
+    from runtime.contracts import validate_contract,NAMES
+    from runtime.registry import build_registry
+    from runtime.router import route
+    from runtime.context import handoff
+    from runtime.evidence import evaluate
+    from runtime.evidence_pack import present
+
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='cmd',required=True)
     r=sub.add_parser('route');r.add_argument('task');r.add_argument('context');r.add_argument('--project-root',required=True);r.add_argument('--dry-run',action='store_true');r.add_argument('--quiet',action='store_true');r.add_argument('--presentation',choices=['beginner','expert'],default='expert')
     v=sub.add_parser('validate');v.add_argument('contract',choices=sorted(NAMES));v.add_argument('file')

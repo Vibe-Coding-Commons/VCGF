@@ -13,6 +13,62 @@
       "applies_to": [
         "application"
       ],
+      "capability_id": "adaptive-engineering",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-AI-001",
+        "VCGF-AI-002",
+        "VCGF-AI-003",
+        "VCGF-AI-005",
+        "VCGF-ARCH-003",
+        "VCGF-ARCH-004",
+        "VCGF-DEP-001",
+        "VCGF-DEP-002",
+        "VCGF-GOV-001",
+        "VCGF-GOV-004",
+        "VCGF-GOV-005"
+      ],
+      "dependencies": [],
+      "description": "Opt-in evidence-bound adaptive design planning; not product certification",
+      "exception_policy": "Owner-reviewed, scoped, expiring exceptions; no automatic conformance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "hash-bound discovery and explainable decisions",
+        "real target-project and accessibility evidence before release"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "adaptive-ux",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-SEC-004",
+        "VCGF-TEST-002",
+        "VCGF-TEST-003"
+      ],
+      "dependencies": [],
+      "description": "Opt-in evidence-bound adaptive design planning; not product certification",
+      "exception_policy": "Owner-reviewed, scoped, expiring exceptions; no automatic conformance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "hash-bound discovery and explainable decisions",
+        "real target-project and accessibility evidence before release"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
       "capability_id": "admin",
       "contract_version": "1.1.0",
       "control_ids": [
@@ -2047,6 +2103,12 @@
       ]
     },
     "capability_requirements": {
+      "adaptive-engineering": [
+        "packs/engineering/adaptive.md"
+      ],
+      "adaptive-ux": [
+        "packs/ux/adaptive.md"
+      ],
       "admin": [
         "packs/requirements/section-18.md",
         "packs/requirements/section-19.md",
@@ -2176,6 +2238,13 @@
         ],
         "risk": "MEDIUM"
       },
+      "design-review": {
+        "capabilities": [
+          "adaptive-engineering",
+          "adaptive-ux"
+        ],
+        "risk": "MEDIUM"
+      },
       "emergency": {
         "capabilities": [
           "incident"
@@ -2243,7 +2312,7 @@
       "VCGF-TEST-002"
     ]
   },
-  "policy_sha256": "27cf73002941a6e102f919ca75b8aea7ae7ca28c4fe31aa8abcf6453819f9760",
+  "policy_sha256": "ab944f338dee566901b010658d14407dcb1cad5586525092c4fb9e92f1a36211",
   "profiles": {
     "baseline": [
       "VCGF-AI-001",
@@ -2443,6 +2512,10 @@
       "path": "docs/references/owasp-asvs-5-mapping.md",
       "sha256": "5abd0ffdf6c442798ac0fbb2574b953ad91f96ba980e18b3b9be6556b9caca8a"
     },
+    "packs/engineering/adaptive.md": {
+      "path": "packs/engineering/adaptive.md",
+      "sha256": "7d6efcd15abe47538e6a5a29cd958029381c518ec95bd335947a43bba3efccfc"
+    },
     "packs/requirements/section-14.md": {
       "path": "packs/requirements/section-14.md",
       "sha256": "873c75554f28d3ab11b72af8db82221430c713361d3e2fca55b6062179936179"
@@ -2546,6 +2619,10 @@
     "packs/requirements/section-39.md": {
       "path": "packs/requirements/section-39.md",
       "sha256": "a776fe3d2e465acd56da89b6339f65735a23cdbf705492971b68caaf1a63927a"
+    },
+    "packs/ux/adaptive.md": {
+      "path": "packs/ux/adaptive.md",
+      "sha256": "b53074de47e98022f1798ef58c5ec80b32b691981cad9457d1470ef5f9dbfcd6"
     }
   },
   "version": "1.1.0"

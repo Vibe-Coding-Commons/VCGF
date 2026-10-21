@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+contract_version: 1.1.0
+capability_id: adaptive-ux
+description: Opt-in evidence-bound adaptive design planning; not product certification
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions: []
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-SEC-004
+- VCGF-TEST-002
+- VCGF-TEST-003
+dependencies: []
+required_evidence:
+- hash-bound discovery and explainable decisions
+- real target-project and accessibility evidence before release
+exception_policy: Owner-reviewed, scoped, expiring exceptions; no automatic conformance
