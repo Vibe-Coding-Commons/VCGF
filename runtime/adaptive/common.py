@@ -52,19 +52,19 @@ def utc_now() -> datetime:
 
 def bound_object(value: Any) -> None:
     """Reject cyclic/oversized or non-JSON data before recursive libraries see it."""
-    todo = [(value, 0)]
+    pending_nodes = [(value, 0)]
     count = 0
-    while todo:
-        item, depth = todo.pop()
+    while pending_nodes:
+        item, depth = pending_nodes.pop()
         count += 1
         if depth > MAX_DEPTH or count > MAX_NODES:
             raise InputError('Input complexity limit exceeded')
         if type(item) is dict:
             if any(type(k) is not str for k in item):
                 raise InputError('JSON object keys must be strings')
-            todo.extend((x, depth + 1) for x in item.values())
+            pending_nodes.extend((x, depth + 1) for x in item.values())
         elif type(item) is list:
-            todo.extend((x, depth + 1) for x in item)
+            pending_nodes.extend((x, depth + 1) for x in item)
         elif type(item) is float and not math.isfinite(item):
             raise InputError('Non-finite numbers are forbidden')
         elif type(item) not in (str, int, float, bool, type(None)):

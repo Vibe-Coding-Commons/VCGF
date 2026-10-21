@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # VCGF UXI — Local Web Fonts, Multilingual Typography & Performance Contract
 
 **Proposal only. No font binaries are packaged or to be redistributed by this RFC.** Illustrative paths require the project team to obtain suitably licensed font assets and verify actual file availability before deployment.

@@ -1,4 +1,5 @@
 {
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
   "contract_version": "1.2.0",
   "decision_id": "ADR-5e29a68ea18390b96db2",
   "project_id": "synthetic-laravel-simple",

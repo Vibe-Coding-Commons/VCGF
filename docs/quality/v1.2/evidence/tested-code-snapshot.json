@@ -1,4 +1,5 @@
 {
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
   "scope": "candidate executable/config/example/test files only; not full repository",
   "sha256": "c7fd3460a9b6f6c78375410c9df78d1da7fb74d54ef952caf32900f3993cca5b",
   "files": {

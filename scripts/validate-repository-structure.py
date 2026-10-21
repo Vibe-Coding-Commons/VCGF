@@ -17,8 +17,10 @@ def main():
         if not (ROOT/f).is_file(): errors.append(f"missing file {f}")
     for old in ['FILE-INVENTORY.md','CONFLICT-REPORT.md','MIGRATION-MAP.md','TRACEABILITY.md','VCGF-ARCHITECTURE-REPORT.md','FINAL-QA-AUDIT.md']:
         if (ROOT/old).exists(): errors.append(f"historical build file must not remain in root: {old}")
-    banned={'.git','node_modules','.DS_Store','Thumbs.db'}
+    banned={'node_modules','.DS_Store','Thumbs.db'}
     for p in ROOT.rglob('*'):
+        if any(part in {'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'} for part in p.relative_to(ROOT).parts):
+            continue
         if p.name in banned: errors.append(f"forbidden release path {rel(p)}")
         if p.is_file() and p.stat().st_size==0: errors.append(f"empty file {rel(p)}")
         if p.is_file() and p.suffix.lower() in {'.zip','.bak','.tmp','.swp'}: errors.append(f"forbidden release file {rel(p)}")

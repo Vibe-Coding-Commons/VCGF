@@ -1,4 +1,5 @@
 {
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
   "repository": "Vibe-Coding-Commons/VCGF",
   "base_commit": "419d8331e7b78c96b946d5815fbe886068dabfe5",
   "complete_checkout": false,

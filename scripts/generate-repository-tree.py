@@ -8,7 +8,7 @@
 from vcgf_lib import *
 
 def main():
-    skip={'__pycache__','.git'}
+    skip={'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'}
     lines=[]
     def walk(path,prefix=''):
         items=[p for p in sorted(path.iterdir(),key=lambda x:(x.is_file(),x.name.lower())) if p.name not in skip]

@@ -1,11 +1,12 @@
 {
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
   "contract_version": "1.2.0",
   "project_id": "synthetic-paired-example",
   "captured_at": "2026-10-21T08:40:10.073259+00:00",
   "source_refs": [
     {
       "ref": "brief.md",
-      "sha256": "f856f06ada359678de85de7f64fd908f7332e0ad5f8db326c3809ef6cfc63863",
+      "sha256": "d370ec7563bdb3cbef348c9c2e17e94de5440c2e2f671a4d5afaec92ebe40d1a",
       "kind": "product_document",
       "confidence": "reported"
     }

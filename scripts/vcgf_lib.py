@@ -61,6 +61,9 @@ def rel(path: Path):
 def text_files():
     allowed={".md",".yaml",".yml",".json",".py",".cff",".mdc",".txt"}
     names={".gitignore",".gitattributes",".editorconfig","VERSION","LICENSE"}
+    excluded={'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'}
     for p in ROOT.rglob("*"):
+        if any(part in excluded for part in p.relative_to(ROOT).parts):
+            continue
         if p.is_file() and (p.suffix.lower() in allowed or p.name in names):
             yield p

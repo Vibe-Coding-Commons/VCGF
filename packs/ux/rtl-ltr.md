@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # VCGF UXI — Bidirectional Design System and Component Contract (AR/EN)
 
 **Status: RFC proposal.** These are proposed implementation and test conditions. They do not prove that any official VCGF adapter can enforce browser behavior in its host environment.

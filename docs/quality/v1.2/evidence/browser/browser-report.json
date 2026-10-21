@@ -1,4 +1,5 @@
 {
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami; SPDX-License-Identifier: Apache-2.0",
   "observed_at": "2026-10-21T08:45:34.675107+00:00",
   "scope": "synthetic_static_html_chromium_only",
   "browser": "144.0.7559.96",

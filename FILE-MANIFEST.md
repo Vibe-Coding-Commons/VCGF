@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **382**
+Files listed: **676**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -26,8 +26,10 @@ Files listed: **382**
 | .github/PULL_REQUEST_TEMPLATE.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.0.0 |
 | .github/workflows/release-quality-gate.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.0.0 |
 | .github/workflows/validate-adapters.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.0.0 |
+| .github/workflows/validate-adaptive.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.0.0 |
 | .github/workflows/validate-framework.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.0.0 |
 | .github/workflows/validate-links.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.0.0 |
+| .github/workflows/validate-runtime.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.0.0 |
 | .github/workflows/validate-schemas.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.0.0 |
 | .gitignore | Repository governance, release, identity, or project metadata | root | Canonical/maintained | 1.0.0 |
 | AUTHORS.md | Repository governance, release, identity, or project metadata | root | Canonical/maintained | 1.0.0 |
@@ -47,6 +49,31 @@ Files listed: **382**
 | VCGF-MANIFEST.yaml | Repository governance, release, identity, or project metadata | root | Canonical/maintained | 1.0.0 |
 | VERSION | Repository governance, release, identity, or project metadata | root | Canonical/maintained | 1.0.0 |
 | assets/brand/brand-guidelines.md | Repository governance, release, identity, or project metadata | assets | Canonical/maintained | 1.0.0 |
+| capabilities/adaptive-engineering.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/adaptive-ux.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/admin.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/api.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/audit.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/authorization.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/backup-restore.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/database.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/deletion.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/development-agent.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/email.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/fields.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/files.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/identity.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/incident.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/password-recovery.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/payment.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/privacy.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/product-ai.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/public-discovery.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/script-protection.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/sessions.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/step-up.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/strong-auth.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
+| capabilities/ux-accessibility.yaml | Repository governance, release, identity, or project metadata | capabilities | Canonical/maintained | 1.0.0 |
 | checklists/database-change/database-change.md | Operational verification checklist | checklists | Canonical/maintained | 1.0.0 |
 | checklists/pre-commit/pre-commit.md | Operational verification checklist | checklists | Canonical/maintained | 1.0.0 |
 | checklists/pre-development/pre-development.md | Operational verification checklist | checklists | Canonical/maintained | 1.0.0 |
@@ -158,7 +185,9 @@ Files listed: **382**
 | docs/adapter-model.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/adoption-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/architecture.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/contracts-v1.1.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/control-model.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/github-desktop-update.ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/implementation-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/migration-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/platform-compatibility.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
@@ -178,20 +207,162 @@ Files listed: **382**
 | docs/project-history/v1.0.0/final-release-report.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
 | docs/project-history/v1.0.0/migration-map.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
 | docs/project-history/v1.0.0/traceability.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/CONTINUATION_REPORT_AR.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/PHASE1_REPORT_AR.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/approval.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/approved-analysis.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/change-manifest.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/continuation-approval.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/continuation-change-manifest.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/continuation-test-evidence.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/decisions.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/documentation-approval.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/documentation-change-manifest.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/documentation-test-evidence.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/documentation-update.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/local-context-benchmark.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/next-change-plan.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/open-items.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/progress.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/reference-stack.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/scope-register.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/skill-forward-test.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/project-history/v1.1.0/test-evidence.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/baseline-compatibility-v1.2.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/environment-and-limitations.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evaluation-ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evaluation-en.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-benchmark.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-benchmark.log | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-browser.log | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-coverage.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-coverage.txt | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-coverage.xml | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-junit.xml | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/adaptive-tests.log | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/baseline-loader-duplicate.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/baseline-verification.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/browser/browser-report.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/browser/crm-ar-1440.png | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/browser/crm-ar-390.png | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/browser/crm-en-1440.png | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/browser/crm-en-390.png | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/candidate-tests-initial.log | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/combined-plan-example.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/engineering-smoke.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/local-structure.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/preview-baseline-tests.log | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/preview-browser.log | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/remote-attempts.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/results-summary.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/tested-code-snapshot.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/evidence/ux-smoke.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/executive-summary.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/integration-log.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/release-gates.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/scope-register.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/quality/v1.2/sources.json | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/quick-start.ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/references/owasp-asvs-5-mapping.md | External standards/reference documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/references/sources-and-standards.md | External standards/reference documentation | docs | Canonical/maintained | 1.0.0 |
+| docs/runtime-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/terminology.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/user-guide.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
 | docs/versioning-model.md | Framework explanatory documentation | docs | Canonical/maintained | 1.0.0 |
+| examples/adaptive/example-project/brief.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/example-project/discovery.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/example-project/fingerprint.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/fingerprint-enterprise.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/fingerprint-laravel.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/rtl-ltr-crm.html | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/ux-crm.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/ux-editorial.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/adaptive/ux-service.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
 | examples/crm/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
 | examples/ecommerce/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
 | examples/erp/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
 | examples/generic-web-app/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/integrations/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/integrations/backup/operations.py | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/integrations/backup/sql_engines.py | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/integrations/backup/unified.py | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/integrations/email/delivery.py | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/integrations/email/queue.py | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/integrations/requirements.txt | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/admin/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/admin/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/admin/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/api/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/api/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/api/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/authorization/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/authorization/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/authorization/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/deletion/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/deletion/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/deletion/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/dependency/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/dependency/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/dependency/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/emergency/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/emergency/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/emergency/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/login/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/login/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/login/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/migration/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/migration/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/migration/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/payment/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/payment/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/payment/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/pii/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/pii/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/pii/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/reset/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/reset/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/reset/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/upload/config.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/upload/context.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
+| examples/runtime/upload/task.json | Adoption example | examples | Canonical/maintained | 1.0.0 |
 | examples/saas/README.md | Adoption example | examples | Canonical/maintained | 1.0.0 |
 | legal/attribution.md | Legal, attribution, or trademark guidance | legal | Canonical/maintained | 1.0.0 |
 | legal/third-party-notices.md | Legal, attribution, or trademark guidance | legal | Canonical/maintained | 1.0.0 |
 | legal/trademark-policy.md | Legal, attribution, or trademark guidance | legal | Canonical/maintained | 1.0.0 |
+| packs/engineering/adaptive.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/engineering/catalog.yaml | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/engineering/release-policy.json | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/index.yaml | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-14.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-15.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-16.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-17.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-18.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-19.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-20.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-21.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-22.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-23.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-24.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-25.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-26.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-27.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-28.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-29.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-30.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-31.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-32.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-33.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-34.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-35.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-36.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-37.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-38.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/requirements/section-39.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/ux/adaptive.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/ux/catalog.yaml | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/ux/local-fonts.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
+| packs/ux/rtl-ltr.md | Repository governance, release, identity, or project metadata | packs | Canonical/maintained | 1.0.0 |
 | platforms/_adapter-template/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/_adapter-template/CAPABILITIES.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/_adapter-template/CHANGELOG.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -216,16 +387,42 @@ Files listed: **382**
 | platforms/bolt/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/bolt/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/rules/project-knowledge.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/bolt/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/bolt/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/templates/project-context.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/tests/adapter-verification.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/bolt/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/bolt/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/CAPABILITIES.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/CHANGELOG.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/CONTROL-MAPPING.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/examples/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/prompts/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/rules/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/skills/vcgf/SKILL.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/templates/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/tests/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/chatgpt/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/CAPABILITIES.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/CHANGELOG.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -233,14 +430,18 @@ Files listed: **382**
 | platforms/claude/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/claude/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/rules/CLAUDE.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/claude/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/claude/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/templates/project-context.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/tests/adapter-verification.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/claude/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/claude/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -250,15 +451,19 @@ Files listed: **382**
 | platforms/cursor/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/cursor/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/rules/AGENTS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/cursor/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/rules/vcgf.mdc | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/cursor/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/templates/project-context.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/tests/adapter-verification.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/cursor/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/cursor/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -268,14 +473,18 @@ Files listed: **382**
 | platforms/generic/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/generic/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/rules/portable-project-rules.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/generic/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/generic/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/templates/project-context.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/tests/adapter-verification.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/generic/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/generic/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -285,6 +494,7 @@ Files listed: **382**
 | platforms/lovable/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/lovable/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -292,9 +502,12 @@ Files listed: **382**
 | platforms/lovable/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/rules/AGENTS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/rules/project-knowledge.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/lovable/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/rules/workspace-knowledge.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/lovable/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/templates/project-context.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/tests/adapter-verification.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/lovable/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/lovable/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -304,14 +517,18 @@ Files listed: **382**
 | platforms/replit/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/replit/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/rules/replit.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/replit/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/replit/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/templates/project-context.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/tests/adapter-verification.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/replit/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/replit/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
@@ -321,14 +538,18 @@ Files listed: **382**
 | platforms/v0/INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/LIMITATIONS.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/v0/RUNTIME-INSTALLATION.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/rules/custom-instructions.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/v0/rules/runtime.generated.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/v0/runtime-capabilities.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/templates/project-context.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/tests/adapter-verification.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
+| platforms/v0/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | platforms/v0/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.0.0 |
 | playbooks/existing-project-hardening-plan.md | Operational execution playbook | playbooks | Canonical/maintained | 1.0.0 |
@@ -341,18 +562,62 @@ Files listed: **382**
 | profiles/high-assurance/profile.yaml | VCGF assurance profile | profiles | Canonical/maintained | 1.0.0 |
 | profiles/production/README.md | VCGF assurance profile | profiles | Canonical/maintained | 1.0.0 |
 | profiles/production/profile.yaml | VCGF assurance profile | profiles | Canonical/maintained | 1.0.0 |
+| references/source-registry.yaml | Repository governance, release, identity, or project metadata | references | Canonical/maintained | 1.0.0 |
 | requirements-dev.txt | Repository governance, release, identity, or project metadata | root | Canonical/maintained | 1.0.0 |
+| requirements-quality.txt | Repository governance, release, identity, or project metadata | root | Canonical/maintained | 1.0.0 |
+| runtime/__init__.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/__init__.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/cli.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/common.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/coordinator.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/engineering.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/release.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/schools.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/adaptive/ux.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/approval.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/bootstrap.md | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/context-policy.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/context.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/contracts.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/evidence.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/evidence_pack.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/loader.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/pack-map.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/preferences-policy.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/registry.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/resolver.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/router.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/routing-policy.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
+| runtime/scope_guard.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.0.0 |
 | schemas/adapter.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
 | schemas/conformance.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
 | schemas/control.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
 | schemas/profile.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
-| scripts/__pycache__/vcgf_lib.cpython-313.pyc | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/adapter-capabilities.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/approval.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/capability.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/common.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/context.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/evidence.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/preferences.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.1.0/route-result.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.2.0/architecture-decision.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.2.0/project-fingerprint.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.2.0/release-evidence.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.2.0/ux-decision.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| schemas/v1.2.0/ux-discovery.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.0.0 |
+| scripts/benchmark-adaptive.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/check-adapter-updates.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/generate-adapter-rules.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/generate-control-catalog.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/generate-file-manifest.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/generate-repository-tree.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/generate-runtime-registry.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/release-quality-gate.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/test-adaptive-browser.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-adapters.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-attribution.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/validate-contracts.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-controls.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-cross-references.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-documentation.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
@@ -361,10 +626,12 @@ Files listed: **382**
 | scripts/validate-placeholders.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-profiles.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-repository-structure.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/validate-runtime.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-schemas.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-vendor-neutral-core.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-version.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/validate-yaml.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
+| scripts/vcgf.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | scripts/vcgf_lib.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.0.0 |
 | spec/VCGF-CORE.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.0.0 |
 | spec/conformance.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.0.0 |
@@ -374,6 +641,8 @@ Files listed: **382**
 | spec/lifecycle.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.0.0 |
 | spec/normative-language.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.0.0 |
 | spec/risk-model.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.0.0 |
+| spec/runtime-registry.json | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.0.0 |
+| templates/adapters/runtime-rules.template.md | Reusable governance artifact | templates | Canonical/maintained | 1.0.0 |
 | templates/architecture/change-impact-analysis.md | Reusable governance artifact | templates | Canonical/maintained | 1.0.0 |
 | templates/architecture/security-decision-record.md | Reusable governance artifact | templates | Canonical/maintained | 1.0.0 |
 | templates/database/migration-review.md | Reusable governance artifact | templates | Canonical/maintained | 1.0.0 |
@@ -397,3 +666,28 @@ Files listed: **382**
 | templates/security/security-exception.md | Reusable governance artifact | templates | Canonical/maintained | 1.0.0 |
 | templates/security/threat-model.md | Reusable governance artifact | templates | Canonical/maintained | 1.0.0 |
 | templates/testing/security-test-evidence.md | Reusable governance artifact | templates | Canonical/maintained | 1.0.0 |
+| tests/adaptive/conftest.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/adaptive/test_engines.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/adaptive/test_inputs.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/adaptive/test_integration.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/adaptive/test_legacy_loader.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/adaptive/test_release.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/benchmarks/measure_context.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/contracts/test_phase1.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.0/baseline-hashes.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.0/records.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.0/schemas/adapter.schema.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.0/schemas/conformance.schema.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.0/schemas/control.schema.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.0/schemas/profile.schema.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.1/adapter-capabilities.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.1/approval.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.1/capability.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.1/context.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.1/evidence.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.1/preferences.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/fixtures/v1.1/route-result.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/scenarios/test_adapters.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/scenarios/test_gates.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/scenarios/test_integrations.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
+| tests/scenarios/test_runtime.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.0.0 |
