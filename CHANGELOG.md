@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 This project follows a Keep a Changelog-style release history and Semantic Versioning.
 
-## [Unreleased] — VCGF v1.2 Adaptive Engineering & UX
+## [1.2.0] - 2026-10-21 — Adaptive Engineering & UX (public framework release)
 
 ### Added
 - Adaptive Engineering Engine for architecture and design pattern recommendations.
@@ -28,11 +28,11 @@ This project follows a Keep a Changelog-style release history and Semantic Versi
 - Release governance and quality assurance.
 
 ### Release Status
-Integration candidate. Production acceptance remains pending full repository regression, real application integration, and outstanding release gates. Existing controls, licensing, and founder rights are preserved.
+Public framework release authorized by the owner following successful repository CI. Production admission remains BLOCKED pending target application, provider/host acceptance, independent review, and the outstanding 21 cumulative release gates. Existing controls, licensing, and founder rights are preserved. Fixes will use v1.2.1 onward.
 
 ## [Unreleased] — target 1.1.0
 
-Development checkpoint; VERSION remains 1.0.0. This is not a published or fully accepted release.
+Historical v1.1 development checkpoint: at that time VERSION remained 1.0.0; v1.1 was not published independently. Its opt-in additions ship in the public v1.2.0 framework distribution, with open production acceptance boundaries.
 
 ### Added
 

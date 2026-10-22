@@ -4,48 +4,68 @@
   "baseline": "tests/fixtures/v1.0/baseline-hashes.json (383 original paths; unchanged)",
   "v1_1_documentation_approval": "docs/project-history/v1.1.0/documentation-approval.json (unchanged)",
   "review_status": "PENDING_INDEPENDENT_REVIEW",
-  "release_status": "NOT_APPROVED_FOR_PRODUCTION",
-  "notes": "Exact candidate-level pinned allowlist. Does not change the original snapshot or historical approvals. A PASS is local compatibility only.",
+  "release_status": "PUBLIC_FRAMEWORK_RELEASE__PRODUCTION_ADMISSION_BLOCKED",
+  "notes": "Owner-authorized public v1.2.0 framework distribution; not evidence of independent review, application conformance, or production admission. Historical baseline and v1.1 approvals stay immutable.",
   "allowed_original_file_changes": {
     "CHANGELOG.md": {
-      "sha256_lf": "813f1d3330f6225c56c0d3a7ffa652914a412808a67e44c350f1fc3fe95e080b",
-      "reason": "v1.2 Unreleased candidate notes, not a production release"
+      "sha256_lf": "96cecd90fa8fe6ea4bc68c98f67071696793ad5c295f346dbccc78382a9a737b",
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "FILE-MANIFEST.md": {
-      "sha256_lf": "3c7ccb72bbdf9666e8a69e3e170a35da8dcb95d447935f3df798827437f278a6",
-      "reason": "Reproducible inventory for the integrated candidate and this bounded compatibility record"
+      "sha256_lf": "dee0f701069e1e9c7f52b5e41826c44ebe34d16c2cb81a2593d6a8770b97e321",
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "README.ar.md": {
-      "sha256_lf": "a3803cad65bffc3b11e5ff6134fe3786bd0ed9a143bb8dd5c71488c56a4ca775",
-      "reason": "v1.2 Arabic candidate notes and opt-in commands; original v1.1 record preserved"
+      "sha256_lf": "7e695e6293e470198f275606fdf2de854a557ad129f0482a5ef4f1ef1fe26a06",
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "README.md": {
-      "sha256_lf": "cf10efc092d76ab756c241a63ec8e6c2a8c7f483421daf9d9433861a4f4205d8",
-      "reason": "v1.2 English candidate notes and opt-in commands; original v1.1 record preserved"
+      "sha256_lf": "be1ae14d6ab807fafbf871d0c5650eb1e4774b5ff25230984015a5720b27aa50",
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "REPOSITORY-TREE.md": {
-      "sha256_lf": "adf4ac01ee0cb066519a0883a3cfddb82dfacff4eee888fb8862444c428bb218",
-      "reason": "Reproducible tree for the integrated candidate and this bounded compatibility record"
+      "sha256_lf": "d02c76e13affc73f54791382f540d71268aac42467757a987a2074cc7d9a63ad",
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "scripts/generate-file-manifest.py": {
-      "sha256_lf": "cb6d07fe0e5b927c44660bc3a00f4da9af7ff0337854d60a8c31bf805f13f91e",
-      "reason": "Exclude Git/internal Python caches and coverage outputs from source inventory"
+      "sha256_lf": "44cc4a15108c55caa8a9e798781506bf602738ee6010a5f3fdb48fdbfb740971",
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "scripts/generate-repository-tree.py": {
       "sha256_lf": "35e88b568c15c8df4f4f3d7a3bd95ca879da4b5ebc4285293ec4a859cf41159a",
-      "reason": "Exclude Git/internal Python caches and coverage outputs from source tree"
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "scripts/validate-repository-structure.py": {
       "sha256_lf": "3deaa39e7a236491302f02da50f6076983c6b8cb9283e42bd34634f1bba7f2d0",
-      "reason": "Exclude local Git/internal Python cache and coverage metadata from release-artifact scanning"
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "scripts/vcgf_lib.py": {
       "sha256_lf": "feb72380e7a6d86cd52b1bf7f560209b94802fd2a3f12f1a527ae833355d3607",
-      "reason": "Exclude local Git/internal Python cache and coverage metadata from text-attribution scanning"
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
     },
     "spec/control-catalog.yaml": {
-      "sha256_lf": "d1b73598708deb45a7de86431819fb5db24167bc7a30dc12706f9a06145807b4",
-      "reason": "Regenerated normative catalog; all 84 canonical controls stay preserved"
+      "sha256_lf": "7e48af44b1276c4b0a3880005f2383900f24c37cd1e48e30b2a5c7574dc42a73",
+      "reason": "Explicit v1.2.0 public distribution metadata/source; original v1.0 snapshot preserved, real production admission remains blocked"
+    },
+    "CITATION.cff": {
+      "sha256_lf": "3c1418e8c547dc08e0c50455ca70a12b63b6564e2dd59fad599eab6b3abd3792",
+      "reason": "Owner-authorized public framework v1.2.0 release metadata, version automation, and citation; production gates remain open"
+    },
+    "VCGF-MANIFEST.yaml": {
+      "sha256_lf": "2a1e6dd846630175337f0ba364933418845401e2e0f9f907b3360b9668bf0a75",
+      "reason": "Owner-authorized public framework v1.2.0 release metadata, version automation, and citation; production gates remain open"
+    },
+    "VERSION": {
+      "sha256_lf": "1e5b51cde515396a9fa762909cf8ca6584ccc564b325d2eebeea76175fe95c4d",
+      "reason": "Owner-authorized public framework v1.2.0 release metadata, version automation, and citation; production gates remain open"
+    },
+    "scripts/generate-control-catalog.py": {
+      "sha256_lf": "9f4273f970b1568c9f8973f53d1787baae3c02babb6e090a8e6406496b9758cd",
+      "reason": "Owner-authorized public framework v1.2.0 release metadata, version automation, and citation; production gates remain open"
+    },
+    "scripts/validate-version.py": {
+      "sha256_lf": "eb5f6d2c700bf978e52d523e896d5beadde15bbbf505c99101b63da1cb47558a",
+      "reason": "Owner-authorized public framework v1.2.0 release metadata, version automation, and citation; production gates remain open"
     }
   }
 }

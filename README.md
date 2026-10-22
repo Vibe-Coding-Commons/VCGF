@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 [العربية → README.ar.md](README.ar.md)
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue) ![Development](https://img.shields.io/badge/v1.1-development-orange) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Version](https://img.shields.io/badge/version-1.2.0-blue) ![Development](https://img.shields.io/badge/v1.2.0-public_release-green) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **Build faster with AI — without giving up control of security, architecture, data, and release quality.**
 
@@ -19,9 +19,9 @@ VCGF is an open, vendor-neutral governance, security, privacy, and engineering f
 
 > **Start here:** [5-minute quick start](#5-minute-quick-start) · [Choose a platform](#supported-ai-coding-platforms) · [Install VCGF](#install-vcgf) · [Daily user guide](docs/user-guide.md) · [Technical specification](spec/VCGF-CORE.md)
 
-## Current version and v1.1 development status
+## Current public release: VCGF v1.2.0
 
-**Base version: v1.0.0. Target version: v1.1.0 — unreleased development checkpoint.** `VERSION` remains `1.0.0` until acceptance is complete. The new contracts explicitly use `contract_version: 1.1.0`. This checkout contains opt-in additions; it is not a completed or published v1.1 release. The original guide below describes the v1.0 foundation; use this section and the runtime guide for the new path.
+**Official public framework release: v1.2.0 (2026-10-21).** This version includes the earlier unreleased v1.1 development checkpoint and new Adaptive Engineering and UX capabilities. The original v1.0.0 normative controls and independent v1.1 contract versions are retained. Repository CI has passed; **this is not production certification for every target application or provider**. The cumulative 21 release-admission gates remain open for real deployments. [Read the v1.2 release notes](docs/quality/v1.2/release-notes-v1.2.0.md) and [owner release decision](docs/quality/v1.2/public-release-decision.md).
 
 ### What is new, and what can you use it for?
 
