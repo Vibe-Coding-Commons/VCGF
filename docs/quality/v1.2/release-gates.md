@@ -1,7 +1,11 @@
 <!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 -->
 # إجراءات بوابات قبول الإصدار / Release acceptance procedure
 
-**الحالة الحالية: BLOCKED.** تم تنفيذ مقيم الأدلة واختباره محليًا، ولم يُعتمد إصدار رسمي. / **Current status: BLOCKED.** The evaluator is implemented and locally tested; the release is not accepted.
+**قبول الإنتاج: BLOCKED.** قرر المالك نشر إصدار عام من الشيفرة باسم v1.2.0 دون الادعاء باعتماد تطبيقات العملاء للإنتاج؛ تبقى البوابات الـ21 متطلبًا قائمًا. / **Production admission: BLOCKED.** The owner authorized public framework distribution as v1.2.0 without representing that 21 cumulative production gates passed.
+
+## 0. قرار المالك بشأن الإصدار العام / Owner public distribution decision
+
+يُسمح بتوزيع الشيفرة العامة وفق قرار المالك لعام 2026-10-21، مع الحفاظ على جميع بوابات قبول الإنتاج دون إغلاق صوري أو تنازل عن التزامات v1.1. لا يعني وصف النسخة بأنها رسمية أن التطبيقات والتكاملات في بيئات العملاء اجتازت تلك البوابات. / The owner authorized public versioned distribution; this is not technical production admission, does not waive v1.1 obligations, and does not relabel missing evidence as PASS. See [owner decision](public-release-decision.md).
 
 ## 1. الفصل بين أنواع النجاح / Separate types of success
 
@@ -85,4 +89,4 @@ CLI لا يملك مزود هوية، ولذلك لا يعطي اعتمادًا 
 
 غير المثبت: إغلاق البوابات الإحدى والعشرين على مستودع كامل ومشاريع فعلية ومضيف ومنصات مخولة. جميعها تحتفظ بحالة قبول معلقة؛ ولا تُرفع حالة النشر لمجرد نجاح الاختبارات الجزئية. / Not verified: completion of all gates on the full repository, real applications and authorized providers/hosts/platforms.
 
-**قرار النشر الحالي: BLOCKED — لا إصدار رسمي من هذه الحزمة. / Current publication decision: BLOCKED — this package is not an official release.**
+**قرار توزيع الإطار: v1.2.0 إصدار عام يقرره المالك، بينما اعتماد الإنتاج BLOCKED حتى إغلاق أدلة جميع البوابات. / Framework distribution: owner-authorized v1.2.0 public release; production admission remains BLOCKED until all required evidence is accepted.**

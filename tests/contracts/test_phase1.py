@@ -222,6 +222,8 @@ class CompatibilityTests(unittest.TestCase):
         candidate_files = candidate["allowed_original_file_changes"]
         candidate_paths = {
             "README.md", "README.ar.md", "CHANGELOG.md",
+            "VERSION", "VCGF-MANIFEST.yaml", "CITATION.cff",
+            "scripts/validate-version.py", "scripts/generate-control-catalog.py",
             "FILE-MANIFEST.md", "REPOSITORY-TREE.md", "spec/control-catalog.yaml",
             "scripts/validate-repository-structure.py", "scripts/generate-file-manifest.py",
             "scripts/vcgf_lib.py", "scripts/generate-repository-tree.py",

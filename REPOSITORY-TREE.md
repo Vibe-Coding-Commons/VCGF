@@ -269,7 +269,9 @@ VCGF/
 │   │       ├── evaluation-en.md
 │   │       ├── executive-summary.md
 │   │       ├── integration-log.md
+│   │       ├── public-release-decision.md
 │   │       ├── release-gates.md
+│   │       ├── release-notes-v1.2.0.md
 │   │       ├── scope-register.json
 │   │       └── sources.json
 │   ├── references

@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 [English → README.md](README.md)
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue) ![Development](https://img.shields.io/badge/v1.1-development-orange) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Version](https://img.shields.io/badge/version-1.2.0-blue) ![Development](https://img.shields.io/badge/v1.2.0-public_release-green) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **طوّر أسرع بالذكاء الاصطناعي — من غير ما تفقد السيطرة على الأمان والمعمارية والبيانات وجودة الإصدار.**
 
@@ -19,9 +19,9 @@ VCGF هو إطار مفتوح ومحايد تجاه المنصات يجمع **Go
 
 > **ابدأ من هنا:** [البدء خلال 5 دقائق](#البدء-خلال-5-دقائق) · [اختر منصتك](#منصات-ai-coding-المدعومة) · [تثبيت-vcgf](#تثبيت-vcgf) · [دليل الاستخدام اليومي](docs/user-guide.md) · [المواصفة التقنية](spec/VCGF-CORE.md)
 
-## الإصدار الحالي وحالة تطوير v1.1
+## الإصدار الرسمي العام VCGF v1.2.0
 
-**الإصدار الأساسي: v1.0.0. الإصدار المستهدف: v1.1.0 — نقطة تطوير غير منشورة.** يبقى `VERSION` بالقيمة `1.0.0` حتى اكتمال القبول، وتستخدم العقود الجديدة صراحة `contract_version: 1.1.0`. هذه النسخة تحتوي إضافات اختيارية ولا تمثل إصدار v1.1 نهائيًا مكتملًا. يشرح الدليل الأصلي أدناه أساس v1.0؛ ويشرح هذا القسم ودليل Runtime مسار التطوير الجديد.
+**الإصدار العام الرسمي لإطار VCGF: v1.2.0 بتاريخ 2026-10-21.** يضم تطويرات v1.1 التي لم تصدر منفردة، ومحركَي الهندسة وتجربة المستخدم التكيفيين. بقيت الضوابط الأصلية ومعرّفاتها وحقوق المؤسس والترخيص محفوظة. نجحت اختبارات المستودع على GitHub، لكن **نشر الإطار لا يعني شهادة اعتماد إنتاجي لكل تطبيق أو تكامل**؛ بوابات قبول الإنتاج الـ21 ما زالت مفتوحة وتتطلب أدلة مستقلة. راجع [ما الجديد](docs/quality/v1.2/release-notes-v1.2.0.md) و[قرار المالك](docs/quality/v1.2/public-release-decision.md).
 
 ### ما الجديد، وما استخداماته ونتائجه؟
 

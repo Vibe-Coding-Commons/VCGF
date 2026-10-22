@@ -27,13 +27,14 @@ def purpose(path):
 
 def main():
     generated={'FILE-MANIFEST.md','REPOSITORY-TREE.md','spec/control-catalog.yaml'}
+    release_version=(ROOT/'VERSION').read_text(encoding='utf-8').strip()
     rows=[]
     skip={'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'}
     for p in sorted((x for x in ROOT.rglob('*') if x.is_file() and not any(part in skip for part in x.relative_to(ROOT).parts)),key=lambda x:rel(x)):
         rp=rel(p)
         if rp=='FILE-MANIFEST.md': continue
         category=rp.split('/',1)[0] if '/' in rp else 'root'
-        rows.append((rp,purpose(p),category,'Generated' if rp in generated else 'Canonical/maintained','1.0.0'))
+        rows.append((rp,purpose(p),category,'Generated' if rp in generated else 'Canonical/maintained',release_version))
     table='\n'.join('| '+ ' | '.join(r).replace('\n',' ') +' |' for r in rows)
     hdr="<!--\nVCGF — Vibe Coding Governance Framework\nSPDX-FileCopyrightText: 2026 Eng. Hamada Sami\nSPDX-License-Identifier: Apache-2.0\nFounder & Maintainer: Eng. Hamada Sami\nEmail: i@hamada.io\nGitHub: https://github.com/Vibe-Coding-Commons\n-->\n\n"
     body=f"# File manifest\n\n> AUTO-GENERATED — DO NOT EDIT MANUALLY\n\nFiles listed: **{len(rows)}**\n\n| Path | Purpose | Category | Canonical / Generated | Version relevance |\n|---|---|---|---|---|\n{table}\n"
