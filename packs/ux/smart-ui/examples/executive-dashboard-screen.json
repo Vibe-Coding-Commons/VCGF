@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "executive-overview",
+  "screen_purpose": "نظرة تنفيذية على المؤشرات والاستثناءات مع انتقال للتفاصيل",
+  "has_ui": true,
+  "signals": [
+    "dashboard_kpi",
+    "async_feedback"
+  ],
+  "interaction_signals": [
+    "view_record",
+    "loading_state"
+  ],
+  "composition_signals": [
+    "dashboard_overview",
+    "large_screen_operations"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "desktop",
+    "large-screen"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": false,
+  "existing_capabilities": [],
+  "notes": null,
+  "risk_level": "medium",
+  "data_volume": "medium",
+  "offline_required": false,
+  "user_roles": [
+    "executive",
+    "manager"
+  ],
+  "task_frequency": "regular",
+  "information_density": "medium",
+  "viewport_priority": "large-screen-first",
+  "primary_input": "mixed",
+  "journey_signals": [],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "unknown",
+  "context_continuity": "task-scoped"
+}

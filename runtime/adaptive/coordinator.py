@@ -24,7 +24,7 @@ CONTROL_IDS = [
     'VCGF-GOV-001', 'VCGF-GOV-004', 'VCGF-GOV-005',
     'VCGF-SEC-004', 'VCGF-TEST-002', 'VCGF-TEST-003'
 ]
-PACKS = ['packs/engineering/adaptive.md', 'packs/ux/adaptive.md']
+PACKS = ['packs/engineering/adaptive.md', 'packs/ux/adaptive.md', 'packs/ux/smart-ui/README.md', 'packs/ux/smart-ui/governance/MASTER-POLICY.md']
 
 
 def source_evidence(fingerprint: dict, discovery: dict, project_root: Path,

@@ -4,6 +4,8 @@ capability_requirements:
   - packs/engineering/adaptive.md
   adaptive-ux:
   - packs/ux/adaptive.md
+  - packs/ux/smart-ui/README.md
+  - packs/ux/smart-ui/governance/MASTER-POLICY.md
   fields:
   - packs/requirements/section-14.md
   ux-accessibility:

@@ -1,0 +1,3123 @@
+{
+  "schema_version": "1.0.0",
+  "package_version": "1.0.0",
+  "target_framework": "VCGF",
+  "target_framework_version": "1.3.0",
+  "status": "final-integration-candidate",
+  "dependency_semantics": "review-relationships-not-automatic-activation",
+  "components": [
+    {
+      "id": "VCGF-UI-COMP-001",
+      "component": "DesignSystemPrimitives",
+      "title": "نظام التصميم والعناصر الأساسية",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-001-DesignSystemPrimitives.md",
+      "purpose": "توحيد لغة الواجهة وحالاتها دون فرض قالب واحد على جميع المنتجات. يصبح القرار البصري معرّفًا مركزيًا وقابلًا للاختبار، وتبقى المهمة الفعلية للمستخدم هي التي تحدد الكثافة والتخطيط.",
+      "applies_when": "ينطبق عند إنشاء أو تعديل واجهات تفاعلية متكررة أو بناء أكثر من شاشة تتشارك عناصر أساسية. في مشروع قائم يبدأ بجرد المكوّنات الموجودة وإعادة استخدامها، لا باستبدالها تلقائيًا.",
+      "not_applicable_when": "لا يفرض مكتبة CSS جديدة على خدمة API فقط، ولا يستبدل هوية معتمدة، ولا يحمّل تطبيقًا بسيطًا جميع عناصر مكتبة مؤسسية. السمات الإضافية لا تُعرض للمستخدم قبل اكتمالها.",
+      "dependencies": [],
+      "external_dependencies": [],
+      "package_ids": [
+        "SHADCN",
+        "RADIX",
+        "REACT_ARIA"
+      ],
+      "settings": [
+        {
+          "key": "theme",
+          "type": "string",
+          "default": "system",
+          "scope": "tenant/user",
+          "constraints": "السماح فقط بالسمات المكتملة والمختبرة؛ light أو dark أو system."
+        },
+        {
+          "key": "density",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "tenant/user",
+          "constraints": "comfortable أو compact أو adaptive؛ لا تخفض مساحة اللمس تحت سياسة الوصولية."
+        },
+        {
+          "key": "direction",
+          "type": "string",
+          "default": "locale",
+          "scope": "system",
+          "constraints": "مشتق من لغة الواجهة المعلنة؛ لا يحدد لغة المحتوى بنفسه."
+        },
+        {
+          "key": "motion",
+          "type": "string",
+          "default": "respect-system",
+          "scope": "system/user",
+          "constraints": "تعطيل الحركة غير الضرورية عند طلب تقليل الحركة."
+        },
+        {
+          "key": "focusStyle",
+          "type": "string",
+          "default": "visible",
+          "scope": "system",
+          "constraints": "لا يجوز إلغاء مؤشر التركيز لاعتبارات تجميلية."
+        },
+        {
+          "key": "touchTargetPx",
+          "type": "integer",
+          "default": 44,
+          "scope": "system/tenant",
+          "constraints": "هدف تصميم مفضّل وليس ادعاء أنه الحد الإلزامي العام في WCAG؛ يوثق أي استثناء."
+        },
+        {
+          "key": "tokenRevision",
+          "type": "string",
+          "default": "1",
+          "scope": "system",
+          "constraints": "إصدار مستقل للتوكنز لتتبع التغييرات وعدم تحميل قيم غير متوافقة."
+        },
+        {
+          "key": "allowTenantBranding",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "لا يسمح للمستأجر بإلغاء التباين أو حالات الخطأ أو هوية الأزرار الخطرة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-002",
+      "component": "SmartDataGrid",
+      "title": "الجداول الذكية المتقدمة",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-002-SmartDataGrid.md",
+      "purpose": "تمكين المستخدم من فحص البيانات ومقارنتها واتخاذ إجراءات على نطاق معلوم، مع الحفاظ على دقة النتائج والأداء والصلاحيات عند نمو عدد السجلات.",
+      "applies_when": "ينطبق على قوائم تشغيلية تحتاج فرزًا أو تصفية أو تخصيص أعمدة أو إجراءات على صفوف. يبدأ بجدول دلالي بسيط ثم يفعّل قدرات إضافية بحسب حجم البيانات والمهمة.",
+      "not_applicable_when": "لا يستخدم بدل صفحات القراءة أو تدفقات الموافقة التي تحتاج سياقًا قصصيًا. لا تُضاف افتراضيًا خصائص تعديل خلايا أو تجميع أو تصدير لم يطلبها نطاق العمل.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "TANSTACK_TABLE",
+        "TANSTACK_QUERY",
+        "AG_GRID"
+      ],
+      "settings": [
+        {
+          "key": "pageSize",
+          "type": "integer",
+          "default": 25,
+          "scope": "tenant/user",
+          "constraints": "خيارات 10 و25 و50 و100 ضمن حد الخادم."
+        },
+        {
+          "key": "paginationMode",
+          "type": "string",
+          "default": "server",
+          "scope": "system",
+          "constraints": "client لمجموعة كاملة صغيرة ومعلومة فقط؛ يجب التصريح بنمط البيانات."
+        },
+        {
+          "key": "selectionScope",
+          "type": "string",
+          "default": "visible-page",
+          "scope": "system/user",
+          "constraints": "اختيار جميع النتائج يحتاج إجراء صريحًا ونطاقًا مثبتًا من الخادم."
+        },
+        {
+          "key": "density",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "tenant/user",
+          "constraints": "لا يغيّر القيم أو حقوق العرض."
+        },
+        {
+          "key": "persistColumns",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "يحفظ معرفات الأعمدة وإصدار المخطط لا بيانات الصفوف."
+        },
+        {
+          "key": "allowInlineEdit",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "يتطلب عقد حفظ وتحقق وصلاحية مستقلة لكل حقل."
+        },
+        {
+          "key": "exportEnabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "إذن تصدير مستقل؛ لا يكفي إذن العرض."
+        },
+        {
+          "key": "virtualization",
+          "type": "string",
+          "default": "measured",
+          "scope": "system",
+          "constraints": "تُفعّل بعد قياس مع بديل وصولي واختبار التركيز."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-003",
+      "component": "SmartFormFields",
+      "title": "النماذج والتحقق الذكي الموحد",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-003-SmartFormFields.md",
+      "purpose": "تقليل أخطاء الإدخال وحفظ جهد المستخدم، مع فصل قواعد البيانات والأعمال عن تجميع الحقول وطريقة عرضها والتحقق المبكر داخل المتصفح.",
+      "applies_when": "ينطبق على إنشاء السجلات وتعديلها والبحث المتقدم والنماذج المشروطة. يوسع النموذج القائم ولا ينقل المشروع إلى مكتبة جديدة لمجرد التشابه البصري.",
+      "not_applicable_when": "لا يستبدل تحقق الخادم، ولا يطلب حقولًا لا يحتاجها الإجراء، ولا يتحول كل نموذج قصير إلى مولّد نماذج ديناميكي معقد.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "REACT_HOOK_FORM",
+        "ZOD",
+        "TANSTACK_FORM"
+      ],
+      "settings": [
+        {
+          "key": "validationMode",
+          "type": "string",
+          "default": "blur-then-change",
+          "scope": "system/tenant",
+          "constraints": "تحقق عند الخروج ثم عند تعديل حقل أخطأ؛ القاعدة تتكيف مع نوع الحقل."
+        },
+        {
+          "key": "showErrorSummary",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "للنماذج الطويلة أو متعددة الأخطاء؛ يربط كل خطأ بحقل."
+        },
+        {
+          "key": "preserveValuesOnError",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "لا يحفظ كلمات المرور في التخزين الدائم."
+        },
+        {
+          "key": "requiredIndicator",
+          "type": "string",
+          "default": "text-and-symbol",
+          "scope": "tenant",
+          "constraints": "التسمية متاحة ولا تعتمد على النجمة أو اللون وحدهما."
+        },
+        {
+          "key": "submitPolicy",
+          "type": "string",
+          "default": "single-inflight",
+          "scope": "system",
+          "constraints": "لا يغني عن idempotency للعمليات ذات الأثر."
+        },
+        {
+          "key": "manualInput",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "يمكن تقييده فقط عندما يستلزم نوع الحقل ذلك وببديل متاح."
+        },
+        {
+          "key": "conditionalValuePolicy",
+          "type": "string",
+          "default": "explicit-per-field",
+          "scope": "system",
+          "constraints": "يُحسم حفظ أو حذف قيمة الحقل المخفي ولا يترك ضمنيًا."
+        },
+        {
+          "key": "unsavedChangesGuard",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "مناسب للنماذج ذات التعديل؛ لا يعترض القراءة فقط."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-004",
+      "component": "AdvancedFilterBuilder",
+      "title": "البحث والفلاتر المحفوظة",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-004-AdvancedFilterBuilder.md",
+      "purpose": "جعل نطاق النتائج مفهومًا وقابلًا للتكرار والمشاركة المصرح بها، بدل مجموعة فلاتر تخفي سبب ظهور البيانات أو تغيّر معنى الاستعلام بين الشاشات.",
+      "applies_when": "ينطبق على قوائم تحتاج أكثر من معيار بحث أو طرق عرض متكررة. يدعم فلاتر بسيطة أولًا، ثم مجموعات AND وOR فقط عند الحاجة المؤكدة.",
+      "not_applicable_when": "لا يضيف محرر شروط متداخلًا إلى بحث بسيط، ولا يسمح بكتابة SQL أو أسماء أعمدة حرة، ولا يضع استعلامات حساسة تلقائيًا في عنوان الصفحة.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "TANSTACK_QUERY",
+        "NUQS",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "debounceMs",
+          "type": "integer",
+          "default": 300,
+          "scope": "system/tenant",
+          "constraints": "اقتراح قابل للقياس للبحث الخارجي؛ ليس تأخيرًا إلزاميًا للبحث المحلي."
+        },
+        {
+          "key": "applyMode",
+          "type": "string",
+          "default": "explicit",
+          "scope": "tenant/user",
+          "constraints": "live مناسب للبحث الخفيف؛ explicit للمرشحات المركبة أو المكلفة."
+        },
+        {
+          "key": "urlSync",
+          "type": "string",
+          "default": "allowlisted",
+          "scope": "system",
+          "constraints": "لا تدرج بيانات حساسة أو معرفات محمية في URL بلا سياسة."
+        },
+        {
+          "key": "savedViews",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "الحفظ الشخصي افتراضيًا؛ المشاركة تتطلب صلاحية مستقلة."
+        },
+        {
+          "key": "defaultOperator",
+          "type": "string",
+          "default": "AND",
+          "scope": "system/tenant",
+          "constraints": "تعريف صريح؛ لا تبدّل المعنى بصريًا دون تعديل الاستعلام."
+        },
+        {
+          "key": "maxDepth",
+          "type": "integer",
+          "default": 3,
+          "scope": "system/tenant",
+          "constraints": "حد اقتراحي لتعقيد الشروط يطابق حدود الخادم."
+        },
+        {
+          "key": "maxRules",
+          "type": "integer",
+          "default": 20,
+          "scope": "system/tenant",
+          "constraints": "منع الاستعلامات المفرطة؛ يُضبط حسب المجال."
+        },
+        {
+          "key": "persistSensitiveSearch",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "عدم حفظ كلمات البحث الحساسة في history أو localStorage."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-005",
+      "component": "SmartFileUploader",
+      "title": "رفع الملفات وإدارة المرفقات",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-005-SmartFileUploader.md",
+      "purpose": "إنشاء دورة حياة واضحة للمرفق من الاختيار إلى الرفع والفحص والربط بالسجل، بحيث لا تختلط نسبة نقل الملف بسلامته أو اعتماده أو حفظ المعاملة المرتبطة به.",
+      "applies_when": "ينطبق عند إرفاق وثائق أو صور أو ملفات إلى سجلات أو رسائل أو طلبات. يتوسع إلى الرفع المجزأ أو القابل للاستئناف عندما تبرر الأحجام والشبكات ذلك.",
+      "not_applicable_when": "لا يضيف محول مستندات أو مضاد فيروسات وهميًا إلى الواجهة، ولا يتيح مصادر سحابية أو روابط خارجية ما لم تعتمدها سياسات المشروع وخدماته الفعلية.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "UPPY",
+        "FILEPOND",
+        "REACT_DROPZONE"
+      ],
+      "settings": [
+        {
+          "key": "allowedTypes",
+          "type": "array",
+          "default": [],
+          "scope": "system/tenant",
+          "constraints": "قائمة سماح صريحة حسب الوحدة؛ الفارغ يعني الرفع غير مهيأ وليس السماح بكل الأنواع."
+        },
+        {
+          "key": "maxFileBytes",
+          "type": "integer",
+          "default": 0,
+          "scope": "system/tenant",
+          "constraints": "صفر يعني يتطلب إعدادًا قبل التفعيل؛ لا يفترض حدًا صالحًا لكل مشروع."
+        },
+        {
+          "key": "maxFiles",
+          "type": "integer",
+          "default": 10,
+          "scope": "system/tenant",
+          "constraints": "قيمة اقتراحية تقيد حسب قواعد العمل."
+        },
+        {
+          "key": "parallelUploads",
+          "type": "integer",
+          "default": 3,
+          "scope": "system/tenant",
+          "constraints": "حد تجريبي يطابق قدرات الخادم والشبكة."
+        },
+        {
+          "key": "resumable",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "يفعّل فقط مع دعم بروتوكول وخادم يملكان الاستئناف فعليًا."
+        },
+        {
+          "key": "scanPolicy",
+          "type": "string",
+          "default": "required",
+          "scope": "system",
+          "constraints": "لا يمكن للمستخدم تخفيف سياسة الفحص؛ يجب كشف عدم توفر الخدمة."
+        },
+        {
+          "key": "autoAttachOnUpload",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "الربط بالسجل عملية مستقلة ومفوضة بعد اعتماد المرفق."
+        },
+        {
+          "key": "temporaryRetentionHours",
+          "type": "integer",
+          "default": 24,
+          "scope": "system/tenant",
+          "constraints": "اقتراح للملفات المؤقتة؛ سياسة المنشأة والحجز القانوني تتقدم عليه."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-006",
+      "component": "DocumentPreviewer",
+      "title": "معاينة المستندات والملفات المحمية",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-006-DocumentPreviewer.md",
+      "purpose": "إتاحة قراءة الملف وفهمه داخل سياق العمل، مع الفصل بين صلاحية الوصول وقدرات واجهة العرض وحدود حماية النسخ التي لا تستطيع الواجهة ضمانها وحدها.",
+      "applies_when": "ينطبق على الوثائق والصور وPDF المدعومة في النظام. تتطلب الصيغ المكتبية الأخرى خدمة تحويل معتمدة أو عارضًا مناسبًا مثبتًا، لا افتراض دعم تلقائي.",
+      "not_applicable_when": "لا يُعد عارض PDF محرك تحرير أو توقيع أو تنقيح نهائي، ولا يعني إخفاء زر تنزيل منع استخراج البيانات من جهاز مصرح له بالعرض.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "PDFJS",
+        "REACT_PDF",
+        "RADIX"
+      ],
+      "settings": [
+        {
+          "key": "supportedPreviewTypes",
+          "type": "array",
+          "default": [
+            "application/pdf",
+            "image/png",
+            "image/jpeg"
+          ],
+          "scope": "system",
+          "constraints": "لا تُعلن صيغة قبل اختبارها والتحقق من مسار تحويلها."
+        },
+        {
+          "key": "allowDownload",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "قيمة عرض مشتقة من تفويض فعلي؛ لا تمنح أمانًا بمجرد إخفاء الزر."
+        },
+        {
+          "key": "allowPrint",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "حق مستقل يراجع وفق الوثيقة والسياق."
+        },
+        {
+          "key": "watermarkMode",
+          "type": "string",
+          "default": "policy",
+          "scope": "system/tenant",
+          "constraints": "العلامة رادع وتتبع وليست ضمان منع النسخ أو التصوير."
+        },
+        {
+          "key": "initialZoom",
+          "type": "string",
+          "default": "fit-width",
+          "scope": "tenant/user",
+          "constraints": "تفضيل عرض لا يغير محتوى الوثيقة."
+        },
+        {
+          "key": "rememberPage",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "يحفظ الموضع والمعرف فقط إذا سمحت سياسة الخصوصية."
+        },
+        {
+          "key": "rangeLoading",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "يستلزم دعم خدمة الملفات ولا يضعف تفويض طلبات الأجزاء."
+        },
+        {
+          "key": "maxConcurrentPages",
+          "type": "integer",
+          "default": 3,
+          "scope": "system",
+          "constraints": "ميزانية تجريبية للرندر تُعدل بالقياس."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-007",
+      "component": "AdaptiveOverlay",
+      "title": "النوافذ الحوارية والأدراج والقوائم العائمة",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-007-AdaptiveOverlay.md",
+      "purpose": "توفير طبقة تفاعل واضحة تستخدم Modal أو Drawer أو Popover وفق طول المهمة وخطورتها والمساحة، مع إدارة تركيز تمنع ضياع المستخدم أو احتجاز عمله.",
+      "applies_when": "ينطبق على التأكيدات والعمليات المركزة والتفاصيل الجانبية والخيارات المؤقتة. يختار النوع حسب المهمة لا بمجرد أن التصميم يحتوي صندوقًا عائمًا.",
+      "not_applicable_when": "لا توضع كل صفحة في نافذة، ولا تُكدس modals لإكمال سلسلة طويلة، ولا تُفرض مصيدة تركيز على Popover غير نمطي أو drawer غير modal دون مقتضى.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "RADIX",
+        "REACT_ARIA",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "presentation",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant",
+          "constraints": "اختيار النوع بحسب المهمة والجهاز؛ يسجل سبب الاختيار."
+        },
+        {
+          "key": "closeOnEscape",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "يغلق الطبقة العليا فقط مع احترام حماية التغييرات."
+        },
+        {
+          "key": "closeOnOutside",
+          "type": "string",
+          "default": "safe-only",
+          "scope": "system/tenant",
+          "constraints": "لا يتجاهل نموذجًا متسخًا أو عملية حساسة بصمت."
+        },
+        {
+          "key": "restoreFocus",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "إلى عنصر الفتح أو بديل منطقي إذا حذف العنصر."
+        },
+        {
+          "key": "modalBehavior",
+          "type": "string",
+          "default": "task-dependent",
+          "scope": "system",
+          "constraints": "تحديد صريح: modal يحجب الخلفية وغير modal لا يفعل."
+        },
+        {
+          "key": "maxNestedLayers",
+          "type": "integer",
+          "default": 2,
+          "scope": "system",
+          "constraints": "اقتراح لتقييد التعقيد؛ أي زيادة تتطلب تبريرًا واختبارًا."
+        },
+        {
+          "key": "mobilePresentation",
+          "type": "string",
+          "default": "sheet-or-fullscreen",
+          "scope": "system",
+          "constraints": "حسب طول المهمة ولوحة المفاتيح والمساحة الفعلية."
+        },
+        {
+          "key": "overlayStack",
+          "type": "string",
+          "default": "centralized",
+          "scope": "system",
+          "constraints": "إدارة طبقات واحدة بدل أرقام z-index عشوائية."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-008",
+      "component": "UnifiedFeedbackSystem",
+      "title": "التنبيهات وحالات النظام والإشعارات",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-008-UnifiedFeedbackSystem.md",
+      "purpose": "إخبار المستخدم بدقة بما يجري وما نجح وما فشل وما يمكنه فعله، مع الفصل بين رسالة عابرة وحالة عملية وسجل إشعار دائم.",
+      "applies_when": "ينطبق على جميع التفاعلات غير الفورية ونتائج الحفظ وحالات البيانات والإخفاقات. يضاف مركز إشعارات دائم فقط عندما يحتاج العمل الرجوع إلى أحداث محفوظة.",
+      "not_applicable_when": "لا يحل Toast محل خطأ حقل أو سجل تدقيق، ولا تستخدم إشعارات متكررة بدل إصلاح خطأ جذري، ولا يدعي نجاح النظام إذا نجح العرض المحلي فقط.",
+      "dependencies": [
+        "VCGF-UI-COMP-001"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "SONNER",
+        "TANSTACK_QUERY",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "transientDurationMs",
+          "type": "integer",
+          "default": 4000,
+          "scope": "tenant/user",
+          "constraints": "للرسائل المعلوماتية غير الحرجة القابلة للاسترجاع؛ لا ينطبق على قرار أو خطأ مهم."
+        },
+        {
+          "key": "criticalAutoDismiss",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "الأخطاء والقرارات الحرجة لا تختفي قبل فهمها أو معالجتها."
+        },
+        {
+          "key": "maxVisibleToasts",
+          "type": "integer",
+          "default": 3,
+          "scope": "tenant",
+          "constraints": "يجمع التكرار ولا يحجب الرسائل الأهم."
+        },
+        {
+          "key": "position",
+          "type": "string",
+          "default": "inline-end-bottom",
+          "scope": "tenant/user",
+          "constraints": "يتكيف مع RTL ومساحات الأزرار والهاتف."
+        },
+        {
+          "key": "announceMode",
+          "type": "string",
+          "default": "polite-default",
+          "scope": "system",
+          "constraints": "assertive للحاجة الملحة فقط؛ لا تعلن كل تحديث صغير."
+        },
+        {
+          "key": "deduplicateWindowMs",
+          "type": "integer",
+          "default": 5000,
+          "scope": "system/tenant",
+          "constraints": "يجمع الرسائل المتطابقة دون إخفاء فشل عمليات مختلفة."
+        },
+        {
+          "key": "showCorrelationId",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "معرف دعم غير سري؛ لا يعرض stack trace."
+        },
+        {
+          "key": "persistentCenter",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant",
+          "constraints": "عند تفعيله يتطلب تخزينًا وقراءة وصلاحيات من الخادم."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-009",
+      "component": "AdaptiveNavigation",
+      "title": "التنقل المتجاوب وهيكل التطبيق",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-009-AdaptiveNavigation.md",
+      "purpose": "إبقاء مكان المستخدم ومساره وخياراته مفهومة عبر الأجهزة والأدوار، مع الفصل بين قائمة التنقل وشجرة الصلاحيات والتوجيه الحقيقي للصفحات.",
+      "applies_when": "ينطبق على تطبيق متعدد الصفحات أو الأقسام، ويختار sidebar أو top navigation أو service catalog حسب المهام وتكرارها وعمقها.",
+      "not_applicable_when": "لا تفرض قائمة جانبية مؤسسية على موقع تسويقي بسيط، ولا تعتبر إخفاء الرابط حماية للمسار، ولا تحول كل تجميع قائمة إلى Treeview معقد.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "REACT_ROUTER",
+        "SHADCN",
+        "RADIX"
+      ],
+      "settings": [
+        {
+          "key": "navigationPattern",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system",
+          "constraints": "مشتق من تحليل المهمة وليس تخمين نوع الشركة."
+        },
+        {
+          "key": "sidebarState",
+          "type": "string",
+          "default": "expanded",
+          "scope": "tenant/user",
+          "constraints": "يحفظ كتفضيل عرض عند وجود sidebar."
+        },
+        {
+          "key": "showBreadcrumbs",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "للشاشات العميقة؛ لا يكرر مسارًا وهميًا."
+        },
+        {
+          "key": "menuSearch",
+          "type": "string",
+          "default": "when-large",
+          "scope": "system/tenant",
+          "constraints": "يفعّل عندما يحسن الوصول لقائمة كبيرة."
+        },
+        {
+          "key": "mobileNavigation",
+          "type": "string",
+          "default": "drawer",
+          "scope": "system",
+          "constraints": "يمكن اختيار بديل موثق بحسب عدد الأقسام وطبيعة المهمة."
+        },
+        {
+          "key": "rememberLastRoute",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant/user",
+          "constraints": "لا يعيد فتح سجل حساس تلقائيًا على جهاز مشترك."
+        },
+        {
+          "key": "preserveListContext",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "يحفظ الفلاتر والموضع ضمن نطاق الحساب والصلاحية."
+        },
+        {
+          "key": "routeAccessPolicy",
+          "type": "string",
+          "default": "server-enforced",
+          "scope": "system",
+          "constraints": "غير قابل للتخفيف من التفضيلات."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-010",
+      "component": "HierarchicalTreePicker",
+      "title": "الاختيار الهرمي والشجري",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-010-HierarchicalTreePicker.md",
+      "purpose": "تمثيل علاقات الأبناء والآباء بصورة مفهومة دون منح معنى إداري للاختيار لم يحدده نطاق العمل، مع الحفاظ على الأداء وصلاحيات الفروع.",
+      "applies_when": "ينطبق على الإدارات والمجلدات والتصنيفات والهياكل التي تكون علاقتها الهرمية ضرورية للاختيار أو الاستكشاف.",
+      "not_applicable_when": "لا يستبدل القائمة المسطحة إذا لم تكن علاقة الأب والابن مفيدة، ولا يفرض اختيار كل الأبناء عند اختيار الأب، ولا يعد التوسيع اختيارًا.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "searchable_select"
+      ],
+      "package_ids": [
+        "REACT_ARIA_TREE",
+        "MUI_TREE",
+        "RADIX"
+      ],
+      "settings": [
+        {
+          "key": "selectionMode",
+          "type": "string",
+          "default": "single",
+          "scope": "system/tenant",
+          "constraints": "single أو multiple حسب الحقل؛ لا يتغير بلا ترحيل للقيم."
+        },
+        {
+          "key": "selectionPropagation",
+          "type": "string",
+          "default": "none",
+          "scope": "system",
+          "constraints": "none افتراضيًا؛ descendants يتطلب قاعدة أعمال واضحة."
+        },
+        {
+          "key": "selectableNodeTypes",
+          "type": "array",
+          "default": [
+            "leaf"
+          ],
+          "scope": "system/tenant",
+          "constraints": "أنواع العقد المسموح اختيارها؛ يمكن دعم الفروع صراحة."
+        },
+        {
+          "key": "lazyLoading",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "للهياكل الكبيرة؛ تحميل كل شجرة صغيرة جائز بقرار موثق."
+        },
+        {
+          "key": "searchMode",
+          "type": "string",
+          "default": "authorized-paths",
+          "scope": "system",
+          "constraints": "النتائج والمسارات لا تكشف أسلافًا محجوبة."
+        },
+        {
+          "key": "showPath",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "إظهار المسار المسموح لتفريق الأسماء المتشابهة."
+        },
+        {
+          "key": "rememberExpanded",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "بمعرفات ثابتة ومحدودة بنطاق المستأجر."
+        },
+        {
+          "key": "allowReparenting",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "نقل الفروع إجراء منفصل مفوض وليس جزءًا تلقائيًا من picker."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-011",
+      "component": "SmartFormWizard",
+      "title": "النماذج متعددة المراحل",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-011-SmartFormWizard.md",
+      "purpose": "تقسيم مهمة طويلة إلى مراحل ذات معنى مع مراجعة نهائية وحفظ تقدم، دون تحويل عدد الخطوات إلى عبء أو اعتبار اكتمال مرحلة موافقة نهائية على بياناتها.",
+      "applies_when": "ينطبق عندما توجد مجموعات بيانات مترابطة أو مستندات أو مراجعة نهائية أو مسار مشروط يستفيد من التقسيم.",
+      "not_applicable_when": "لا يستخدم لنموذج قصير لمجرد المظهر، ولا يجعل التقدم البصري مصدر حالة الأعمال، ولا يحفظ معاملات جزئية نهائية دون تعريف واضح.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "REACT_HOOK_FORM",
+        "ZOD",
+        "XSTATE"
+      ],
+      "settings": [
+        {
+          "key": "navigationMode",
+          "type": "string",
+          "default": "sequential",
+          "scope": "system/tenant",
+          "constraints": "يمكن السماح بالانتقال غير الخطي بين مراحل صالحة وفق المخطط."
+        },
+        {
+          "key": "allowBack",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "دون فقد البيانات؛ المراحل المقفلة تحتاج سببًا وظيفيًا صريحًا."
+        },
+        {
+          "key": "allowSkip",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "للمراحل الاختيارية المسماة فقط."
+        },
+        {
+          "key": "validateOnNext",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "تحقق المرحلة ثم إعادة تحقق شاملة عند الإرسال النهائي."
+        },
+        {
+          "key": "reviewBeforeSubmit",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إلزامي عند أثر مهم أو بيانات تحتاج مراجعة."
+        },
+        {
+          "key": "draftMode",
+          "type": "string",
+          "default": "opt-in-server",
+          "scope": "system/tenant",
+          "constraints": "لا ينشئ حفظًا تلقائيًا على جهاز المستخدم بلا سياسة."
+        },
+        {
+          "key": "progressStyle",
+          "type": "string",
+          "default": "named-steps",
+          "scope": "tenant",
+          "constraints": "الأسماء أهم من نسبة مئوية غير حقيقية."
+        },
+        {
+          "key": "resumePolicy",
+          "type": "string",
+          "default": "revalidate",
+          "scope": "system",
+          "constraints": "عند العودة تُراجع الصلاحيات وإصدارات البيانات والمخطط."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-012",
+      "component": "PermissionAwareActions",
+      "title": "الإجراءات الحساسة والصلاحيات والتأكيد الآمن",
+      "priority": "P0",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-012-PermissionAwareActions.md",
+      "purpose": "جعل الإجراءات المتاحة وأثرها واضحين للمستخدم، مع إبقاء التفويض والتحقق من الحالة والنسخة والتنفيذ في طبقة موثوقة خارج الواجهة.",
+      "applies_when": "ينطبق على التعديل والحذف والتصدير والاعتماد والتفويض والإلغاء وأي إجراء يتغير بحسب المستخدم أو السجل أو حالته.",
+      "not_applicable_when": "ليس نظام مصادقة أو إدارة مستخدمين كاملًا، ولا يجعل CASL أو إخفاء زر بديلًا عن تحقق الخادم، ولا يطالب بتأكيد ثقيل لكل إجراء بسيط قابل للتراجع.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "RADIX",
+        "CASL",
+        "LARAVEL_AUTH"
+      ],
+      "settings": [
+        {
+          "key": "defaultDecision",
+          "type": "string",
+          "default": "deny",
+          "scope": "system",
+          "constraints": "الغياب أو عدم الحسم لا يمنح صلاحية."
+        },
+        {
+          "key": "unavailableActionDisplay",
+          "type": "string",
+          "default": "contextual",
+          "scope": "system/tenant",
+          "constraints": "إخفاء عند حساسية المعلومة؛ تعطيل مع سبب عندما لا يكشف ذلك بيانات."
+        },
+        {
+          "key": "confirmationPolicy",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system",
+          "constraints": "حسب أثر الإجراء وقابليته للتراجع وحجم النطاق."
+        },
+        {
+          "key": "stepUpPolicy",
+          "type": "string",
+          "default": "policy-driven",
+          "scope": "system",
+          "constraints": "الخادم يحدد العمليات التي تتطلب تحققًا إضافيًا؛ ليس تبديلًا بصريًا."
+        },
+        {
+          "key": "destructiveDefaultFocus",
+          "type": "string",
+          "default": "cancel",
+          "scope": "system",
+          "constraints": "الخيار الآمن مبدئيًا عند التأكيد ذي الخطر."
+        },
+        {
+          "key": "requireReason",
+          "type": "string",
+          "default": "per-action",
+          "scope": "system/tenant",
+          "constraints": "سبب إلزامي للعمليات المحددة فقط مع حد طول وتنقية."
+        },
+        {
+          "key": "idempotencyPolicy",
+          "type": "string",
+          "default": "per-command",
+          "scope": "system",
+          "constraints": "يوثق لكل أمر كيف تمنع إعادة التنفيذ غير المقصودة."
+        },
+        {
+          "key": "bulkMaxRecords",
+          "type": "integer",
+          "default": 100,
+          "scope": "system/tenant",
+          "constraints": "اقتراح للنطاق المتزامن؛ الأكبر يحتاج مهمة ومعاينة معتمدتين."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-013",
+      "component": "RichTextEditor",
+      "title": "المحرر النصي الغني والمحتوى المنظم",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-013-RichTextEditor.md",
+      "purpose": "تحرير محتوى غني يحتاج بنية وتنسيقًا دون تحويل الحقل إلى مدخل HTML غير موثوق أو ربط محتوى المؤسسة نهائيًا بمحرك تحرير واحد.",
+      "applies_when": "ينطبق على المراسلات والملاحظات الطويلة والقوالب والمحتوى الذي يحتاج عناوين أو جداول أو روابط. يختار مجموعة أدوات صغيرة تناسب نوع المستند.",
+      "not_applicable_when": "لا يستخدم بدل input قصير أو textarea كافية، ولا يعد محررًا مكتبيًا كاملًا أو نظام تعاون وتوقيع وتتبع تغييرات بمجرد تثبيت حزمة تحرير.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "TIPTAP",
+        "LEXICAL",
+        "CKEDITOR"
+      ],
+      "settings": [
+        {
+          "key": "toolbarPreset",
+          "type": "string",
+          "default": "basic",
+          "scope": "system/tenant",
+          "constraints": "مجموعات قدرات معتمدة حسب نوع المحتوى."
+        },
+        {
+          "key": "contentFormat",
+          "type": "string",
+          "default": "schema-json",
+          "scope": "system",
+          "constraints": "اختيار JSON أو HTML موثق مع schemaVersion وخطة نقل."
+        },
+        {
+          "key": "allowedNodes",
+          "type": "array",
+          "default": [
+            "paragraph",
+            "heading",
+            "list",
+            "link"
+          ],
+          "scope": "system/tenant",
+          "constraints": "قائمة سماح؛ التوسع يتطلب مراجعة المعقم والعارض."
+        },
+        {
+          "key": "pastePolicy",
+          "type": "string",
+          "default": "sanitize-preserve-allowed",
+          "scope": "system",
+          "constraints": "ينقح التنسيق والروابط ولا يثق في محتوى Word أو الويب."
+        },
+        {
+          "key": "imagePolicy",
+          "type": "string",
+          "default": "managed-attachments-only",
+          "scope": "system",
+          "constraints": "لا يسمح بروابط تتبع خارجية أو data URLs بلا حدود وسياسة."
+        },
+        {
+          "key": "maxContentBytes",
+          "type": "integer",
+          "default": 200000,
+          "scope": "system/tenant",
+          "constraints": "اقتراح يضبط حسب المجال ويُطبق على الخادم."
+        },
+        {
+          "key": "collaboration",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "لا يفعل دون خدمة تزامن وتعارض وتفويض معتمدة."
+        },
+        {
+          "key": "autosave",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "يرتبط بعقد المسودات ولا يساوي اعتماد المستند."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-014",
+      "component": "GlobalSearchCommandPalette",
+      "title": "البحث الشامل ولوحة الأوامر السريعة",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-014-GlobalSearchCommandPalette.md",
+      "purpose": "تقليل زمن الوصول إلى صفحة أو سجل أو أمر، دون خلط نتائج المعلومات بالأفعال أو فتح مسار جديد لتسريب البيانات عبر الاقتراحات والعدادات.",
+      "applies_when": "ينطبق على تطبيق متعدد الوحدات أو المستخدمين المتكررين الذين يستفيدون من اختصار الوصول. يمكن اعتماد بحث شامل بلا أوامر إذا كان التنفيذ السريع غير مطلوب.",
+      "not_applicable_when": "ليس محرك بحث دلالي أو فهرسة كاملًا بمجرد تركيب Command؛ ولا يسمح بتجاوز التأكيد والصلاحيات عند عرض أوامر حساسة.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "CMDK",
+        "SHADCN",
+        "TANSTACK_QUERY"
+      ],
+      "settings": [
+        {
+          "key": "shortcut",
+          "type": "string",
+          "default": "platform-mod-k",
+          "scope": "tenant/user",
+          "constraints": "اختصار قابل للتعطيل أو التغيير عند التعارض؛ زر ظاهر بديل."
+        },
+        {
+          "key": "debounceMs",
+          "type": "integer",
+          "default": 300,
+          "scope": "system/tenant",
+          "constraints": "للبحث الخارجي؛ يُقاس حسب المصدر."
+        },
+        {
+          "key": "minQueryLength",
+          "type": "integer",
+          "default": 2,
+          "scope": "system/tenant",
+          "constraints": "قيمة اقتراحية؛ تختلف عن أوامر ثابتة أو بحث بالكود."
+        },
+        {
+          "key": "maxResultsPerGroup",
+          "type": "integer",
+          "default": 5,
+          "scope": "system/tenant",
+          "constraints": "مع رابط عرض المزيد في سياق صحيح."
+        },
+        {
+          "key": "historyEnabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "لا تحفظ الاستعلامات أو السجلات الحساسة تلقائيًا."
+        },
+        {
+          "key": "groupOrder",
+          "type": "array",
+          "default": [
+            "pages",
+            "records",
+            "commands"
+          ],
+          "scope": "tenant/user",
+          "constraints": "ترتيب عرض لا يغير حدود التفويض."
+        },
+        {
+          "key": "allowDestructiveCommands",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "تفعيلها يستدعي تأكيدًا وعقد أمر مستقلًا."
+        },
+        {
+          "key": "fuzzyMatching",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "لا يغيّر دقة البحث بمعرف أو رمز يُطلب مطابقته تمامًا."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-015",
+      "component": "WorkflowApprovalTimeline",
+      "title": "الاعتمادات وسير العمل والخط الزمني",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-015-WorkflowApprovalTimeline.md",
+      "purpose": "توضيح الحالة الحالية والمسؤول والإجراءات الممكنة والأحداث السابقة، مع إبقاء محرك التنفيذ والحالات والاعتمادات مرجعًا في الخادم وليس الرسم أو المتصفح.",
+      "applies_when": "ينطبق على طلبات تمر بحالات واعتمادات أو تفويض ومهل محددة. يستخدم عرضًا خطيًا بسيطًا إن كان كافيًا، ومحررًا رسوميًا فقط عندما يحتاج المستخدم إلى تعريف التدفقات.",
+      "not_applicable_when": "لا يعد XState أو React Flow محرك عمليات مؤسسيًا دائمًا وموزعًا تلقائيًا، ولا يعني رسم مخطط وجود مهام ومؤقتات وتنفيذ موثوق على الخادم.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "XSTATE",
+        "REACT_FLOW",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "statusRegistry",
+          "type": "string",
+          "default": "domain-owned",
+          "scope": "system",
+          "constraints": "حالات ومعاني وانتقالات بإصدارات معتمدة."
+        },
+        {
+          "key": "reasonPolicy",
+          "type": "string",
+          "default": "per-transition",
+          "scope": "system/tenant",
+          "constraints": "إلزام سبب للرفض أو الإعادة بحسب المجال."
+        },
+        {
+          "key": "delegationEnabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "لا يفعل دون نطاق ومدة وسلطة مانح وممنوح موثقين."
+        },
+        {
+          "key": "showNextStep",
+          "type": "string",
+          "default": "when-deterministic",
+          "scope": "system",
+          "constraints": "لا تعرض توقعًا كأنه التزام عندما يتوقف على شروط لاحقة."
+        },
+        {
+          "key": "slaCalendar",
+          "type": "string",
+          "default": "tenant-business-calendar",
+          "scope": "system/tenant",
+          "constraints": "ساعات العمل والإجازات والمنطقة الزمنية من مصدر مركزي."
+        },
+        {
+          "key": "parallelApprovalMode",
+          "type": "string",
+          "default": "explicit",
+          "scope": "system",
+          "constraints": "all أو quorum أو any حسب قاعدة موثقة؛ لا يفترضها العرض."
+        },
+        {
+          "key": "optimisticApproval",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "لا تظهر الموافقة نهائية قبل إقرار التنفيذ."
+        },
+        {
+          "key": "historyVisibility",
+          "type": "string",
+          "default": "permission-scoped",
+          "scope": "system",
+          "constraints": "الملاحظات والأسماء والأحداث تخضع للحقول المصرح بها."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-016",
+      "component": "AuditHistoryViewer",
+      "title": "سجل العمليات ومقارنة الإصدارات",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-016-AuditHistoryViewer.md",
+      "purpose": "عرض دليل مفهوم على من غيّر ماذا ومتى وبأي نتيجة، دون الخلط بين شاشة تاريخ جميلة وبين سجل يمكن الاعتماد عليه أو ادعاء عدم قابلية التلاعب بلا آلية إثبات.",
+      "applies_when": "ينطبق على السجلات المهمة والتغييرات الإدارية والاعتمادات والوثائق والإعدادات، مع درجة تفصيل تتناسب مع المخاطر ومتطلبات الاحتفاظ المعتمدة.",
+      "not_applicable_when": "ليس سجل console أو analytics، ولا يخزن كلمات مرور أو رموز تحقق، ولا يتيح استعادة نسخة قديمة بمجرد عرض الفرق دون خدمة تفويض وتنفيذ.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "TANSTACK_TABLE",
+        "JSONDIFFPATCH",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "defaultOrder",
+          "type": "string",
+          "default": "newest-first",
+          "scope": "tenant/user",
+          "constraints": "الترتيب حسب وقت حدث موثوق مع كاسر تعادل ثابت."
+        },
+        {
+          "key": "pageSize",
+          "type": "integer",
+          "default": 25,
+          "scope": "tenant/user",
+          "constraints": "ضمن حد الخدمة؛ ترقيم أو cursor حسب الحجم."
+        },
+        {
+          "key": "showFieldDiff",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "فقط الحقول والنسخ المصرح بها."
+        },
+        {
+          "key": "maskSensitiveFields",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "التنقية قبل التخزين أو الإرجاع وفق التصنيف لا في CSS."
+        },
+        {
+          "key": "retentionPolicy",
+          "type": "string",
+          "default": "explicit-required",
+          "scope": "system/tenant",
+          "constraints": "لا تفترض مدة موحدة؛ يراعي الحجز القانوني وسياسة المنشأة."
+        },
+        {
+          "key": "exportAudit",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "صلاحية مستقلة وتسجيل تنزيل عند الحاجة."
+        },
+        {
+          "key": "displayTimeZone",
+          "type": "string",
+          "default": "tenant",
+          "scope": "system/user",
+          "constraints": "العرض فقط؛ اللحظة الأصلية لا تتغير."
+        },
+        {
+          "key": "integrityLabel",
+          "type": "string",
+          "default": "evidence-based",
+          "scope": "system",
+          "constraints": "لا يظهر وصف immutable أو tamper-evident بلا دليل بنية وفحص."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-017",
+      "component": "SmartNumericInput",
+      "title": "إدخال الأرقام والمبالغ والنسب والكميات",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-017-SmartNumericInput.md",
+      "purpose": "الفصل بين القيمة العددية الدقيقة وتنسيقها المحلي ووحدتها وقواعد حسابها، مع تجربة إدخال تسمح بالتصحيح دون قفز المؤشر أو تقريب مالي خفي.",
+      "applies_when": "ينطبق على المبالغ والكميات والنسب والأوزان والقياسات. لكل نوع عقد وحدات ودقة وحدود وقواعد تقريب حسب المجال وليس الإعداد الجمالي وحده.",
+      "not_applicable_when": "لا يفترض أن جميع العملات منزلتان عشريتان، ولا يستخدم float عاديًا كضمان دقة محاسبية، ولا يحول معرفًا طويلًا أو رقم هاتف إلى حقل عدد.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "REACT_NUMBER_FORMAT",
+        "DECIMALJS",
+        "REACT_ARIA"
+      ],
+      "settings": [
+        {
+          "key": "locale",
+          "type": "string",
+          "default": "tenant",
+          "scope": "system/user",
+          "constraints": "من إعداد اللغة؛ لا يحسم وحدة القيمة أو العملة."
+        },
+        {
+          "key": "numberingSystem",
+          "type": "string",
+          "default": "latn",
+          "scope": "tenant/user",
+          "constraints": "دعم arab عند اعتماد المنتج مع تطبيع الإدخال دون تغيير القيمة."
+        },
+        {
+          "key": "currency",
+          "type": "string",
+          "default": "tenant",
+          "scope": "system/tenant",
+          "constraints": "رمز عملة صريح لكل مبلغ؛ لا يفترض من اللغة وحدها."
+        },
+        {
+          "key": "decimalScale",
+          "type": "string",
+          "default": "domain-defined",
+          "scope": "system",
+          "constraints": "تعريف لكل حقل أو وحدة؛ لا تفرض منزلتين على جميع العملات والكميات."
+        },
+        {
+          "key": "roundingMode",
+          "type": "string",
+          "default": "domain-defined",
+          "scope": "system",
+          "constraints": "يحدد في عقد الحساب والخادم قبل تفعيل المعاملة المالية."
+        },
+        {
+          "key": "grouping",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "فواصل عرض فقط ويُحسم قبولها في الإدخال المحلي."
+        },
+        {
+          "key": "emptyPolicy",
+          "type": "string",
+          "default": "null-not-zero",
+          "scope": "system",
+          "constraints": "الفراغ ليس صفرًا؛ يحدد المجال null أو required."
+        },
+        {
+          "key": "allowNegative",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "قيد حقل ومجال لا تعديل بصري؛ الخادم يعيد التحقق."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-018",
+      "component": "SmartContactFields",
+      "title": "الهاتف والبريد ورموز التحقق",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-018-SmartContactFields.md",
+      "purpose": "جمع وسيلة اتصال صحيحة ومفهومة مع فصل صحة الصيغة عن التحقق من القدرة على الوصول إليها، وحماية مسار الرموز من التكرار والتسريب وإساءة الاستخدام.",
+      "applies_when": "ينطبق على حقول الهاتف والبريد، ويضاف OTP فقط عند حاجة موثقة للتحقق أو المصادقة وبربط خدمة موثوقة.",
+      "not_applicable_when": "لا يثبت رقم هاتف صحيح التنسيق هوية قانونية أو ملكية دائمة، ولا يضيف OTP تلقائيًا لكل نموذج، ولا يعتبر SMS وحده مناسبًا لكل عملية عالية المخاطر.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "searchable_select"
+      ],
+      "package_ids": [
+        "PHONE_INPUT",
+        "LIBPHONENUMBER",
+        "INPUT_OTP"
+      ],
+      "settings": [
+        {
+          "key": "defaultCountry",
+          "type": "string",
+          "default": "SA",
+          "scope": "tenant/user",
+          "constraints": "افتراضي مقترح للسوق السعودي لا استنتاج قطعي من الموقع أو اللغة."
+        },
+        {
+          "key": "phoneStorage",
+          "type": "string",
+          "default": "E.164-when-applicable",
+          "scope": "system",
+          "constraints": "الامتداد يخزن منفصلًا؛ الأرقام غير الهاتفية لها نوع مستقل."
+        },
+        {
+          "key": "countrySelection",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "قائمة دول قابلة للبحث وفق المعيار المرتبط عند الحاجة."
+        },
+        {
+          "key": "emailDomainNormalization",
+          "type": "string",
+          "default": "lowercase",
+          "scope": "system",
+          "constraints": "لا يحذف plus aliases ولا يغير local-part تعسفيًا."
+        },
+        {
+          "key": "verificationRequired",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "حسب العملية؛ لا يخلط تحقق الصيغة بإثبات الوصول."
+        },
+        {
+          "key": "otpLength",
+          "type": "integer",
+          "default": 6,
+          "scope": "system",
+          "constraints": "اقتراح واجهة فقط؛ يجب أن يطابق سياسة خدمة الرموز."
+        },
+        {
+          "key": "otpExpirySeconds",
+          "type": "integer",
+          "default": 300,
+          "scope": "system",
+          "constraints": "اقتراح يحتاج اعتمادًا حسب المخاطر؛ الخادم مصدر الوقت والصلاحية."
+        },
+        {
+          "key": "resendCooldownSeconds",
+          "type": "integer",
+          "default": 30,
+          "scope": "system",
+          "constraints": "واجهة تعكس حد الخادم ولا تمنع الإساءة وحدها."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-019",
+      "component": "DataImportExportWizard",
+      "title": "استيراد وتصدير البيانات مع المعاينة والتحقق",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-019-DataImportExportWizard.md",
+      "purpose": "نقل البيانات من وإلى النظام ضمن نطاق مفوض ومفهوم، مع اكتشاف الأخطاء قبل الأثر وتوثيق السجلات المتأثرة والنتائج الجزئية ومنع تكرار العملية.",
+      "applies_when": "ينطبق على استيراد CSV أو XLSX أو تصدير مجموعات تشغيلية، ويتوسع إلى مهام خادمية مجزأة عندما يزيد الحجم أو الأثر.",
+      "not_applicable_when": "ليس فتح ملف جدول إذنًا بتنفيذ صيغه أو وحداته البرمجية، ولا يستورد البيانات إلى الإنتاج بمجرد نجاح التحليل في المتصفح، ولا يفرض استيرادًا جزئيًا بلا موافقة سياسة.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-017"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "PAPA_PARSE",
+        "EXCELJS",
+        "LARAVEL_EXCEL"
+      ],
+      "settings": [
+        {
+          "key": "allowedFormats",
+          "type": "array",
+          "default": [
+            "csv",
+            "xlsx"
+          ],
+          "scope": "system/tenant",
+          "constraints": "قائمة سماح حقيقية للخدمات المثبتة؛ لا يدعي دعم xlsm ضمنيًا."
+        },
+        {
+          "key": "maxRows",
+          "type": "integer",
+          "default": 10000,
+          "scope": "system/tenant",
+          "constraints": "اقتراح للدفعة؛ يضبط بالحجم والموارد والخدمة."
+        },
+        {
+          "key": "previewRows",
+          "type": "integer",
+          "default": 50,
+          "scope": "system",
+          "constraints": "المعاينة عينة؛ التحقق النهائي يشمل كل الصفوف."
+        },
+        {
+          "key": "duplicatePolicy",
+          "type": "string",
+          "default": "reject",
+          "scope": "system/tenant",
+          "constraints": "reject أو skip أو update بعقد مفاتيح فريدة وصلاحيات."
+        },
+        {
+          "key": "transactionMode",
+          "type": "string",
+          "default": "explicit-required",
+          "scope": "system",
+          "constraints": "atomic أو per-row أو per-batch؛ يجب حسمه قبل التنفيذ."
+        },
+        {
+          "key": "exportScope",
+          "type": "string",
+          "default": "filtered-authorized",
+          "scope": "system",
+          "constraints": "يحدد هل الصفحة أم كل النتائج ويعيد التفويض."
+        },
+        {
+          "key": "formulaPolicy",
+          "type": "string",
+          "default": "no-execution",
+          "scope": "system",
+          "constraints": "لا ينفذ صيغًا أو روابط خارجية؛ يصدر النصوص بطريقة آمنة للهدف."
+        },
+        {
+          "key": "jobRetentionHours",
+          "type": "integer",
+          "default": 24,
+          "scope": "system/tenant",
+          "constraints": "اقتراح للملفات المؤقتة والتقارير مع مراعاة سياسة المنشأة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-020",
+      "component": "SmartDashboardWidgets",
+      "title": "لوحات المعلومات والمؤشرات والرسوم",
+      "priority": "P1",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-020-SmartDashboardWidgets.md",
+      "purpose": "عرض مؤشرات قابلة للتفسير والتتبع إلى بياناتها، لا أرقام جذابة بلا تعريف أو سياق، مع مراعاة حداثة المعلومات ونطاق الصلاحيات والاختلاف بين الصفر وعدم توفر البيانات.",
+      "applies_when": "ينطبق على صفحات متابعة تدعم قرارات تشغيلية أو تحليلية محددة. تختار المؤشرات والرسوم حسب السؤال والمستخدم لا لأن القالب يوفرها.",
+      "not_applicable_when": "لا تضيف رسومًا وهمية أو مؤشرات تجريبية إلى بيئة إنتاج، ولا تعتبر مكتبة الرسوم محرك حساب أو دليلاً على صحة KPI، ولا تستنتج علاقة سببية من رسم ارتباط.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-017"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "ECHARTS",
+        "RECHARTS",
+        "CHARTJS"
+      ],
+      "settings": [
+        {
+          "key": "defaultPeriod",
+          "type": "string",
+          "default": "domain-defined",
+          "scope": "system/tenant",
+          "constraints": "فترة ذات معنى للعمل؛ لا يفترض الشهر دائمًا."
+        },
+        {
+          "key": "refreshPolicy",
+          "type": "string",
+          "default": "explicit-or-measured",
+          "scope": "system/tenant",
+          "constraints": "لا تستخدم polling سريعًا بلا حاجة أو قياس."
+        },
+        {
+          "key": "showLastUpdated",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "وقت مصدر البيانات أو الحساب لا وقت رسم المكوّن فقط."
+        },
+        {
+          "key": "allowWidgetReorder",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "تفضيل عرض لا يغير تعريف المؤشر."
+        },
+        {
+          "key": "missingValueDisplay",
+          "type": "string",
+          "default": "unavailable",
+          "scope": "system",
+          "constraints": "غير متاح أو غير معرف لا صفر افتراضي."
+        },
+        {
+          "key": "comparisonMode",
+          "type": "string",
+          "default": "explicit-period",
+          "scope": "system/tenant",
+          "constraints": "تسمية الفترة المرجعية ونوع المقارنة."
+        },
+        {
+          "key": "drillDown",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يعمل فقط عند إمكانية شرح النطاق وإعادة التفويض."
+        },
+        {
+          "key": "dataTableAlternative",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "بديل نصي أو جدولي قابل للوصول للرسوم."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-021",
+      "component": "SmartKanbanBoard",
+      "title": "لوحات كانبان والسحب والإفلات المنضبط",
+      "priority": "P2",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-021-SmartKanbanBoard.md",
+      "purpose": "تمثيل العمل بحسب الحالات أو الأعمدة مع نقل وترتيب يمكن فهم أثرهما والتراجع عن تمثيلهما عند الرفض، دون تحويل حركة بطاقة إلى قرار أعمال غير مفوض.",
+      "applies_when": "ينطبق على مهام أو فرص أو حالات عمل يستفيد المستخدم من رؤيتها موزعة على أعمدة. يضاف السحب عندما لا يضر بالوصولية أو دقة التنفيذ.",
+      "not_applicable_when": "لا يعد نقل بطاقة اعتمادًا أو إنجازًا بحد ذاته، ولا يفرض كانبان على بيانات تحتاج مقارنة أعمدة رقمية دقيقة، ولا يستخدم السحب كوسيلة وحيدة للإجراء.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "DNDKIT",
+        "SHADCN",
+        "TANSTACK_QUERY"
+      ],
+      "settings": [
+        {
+          "key": "columnSource",
+          "type": "string",
+          "default": "workflow-or-domain",
+          "scope": "system",
+          "constraints": "أعمدة مرتبطة بمعاني حالات موثقة لا تسميات حرة فقط."
+        },
+        {
+          "key": "dragEnabled",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يتوقف للصفوف غير المفوضة مع بديل قائم."
+        },
+        {
+          "key": "keyboardMove",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "أو قائمة نقل مكافئة متاحة؛ لا يعتمد النجاح على الفأرة."
+        },
+        {
+          "key": "wipLimitMode",
+          "type": "string",
+          "default": "advisory",
+          "scope": "system/tenant",
+          "constraints": "advisory أو enforced بعقد أعمال؛ لا يلتبس التحذير بالمنع."
+        },
+        {
+          "key": "optimisticMove",
+          "type": "string",
+          "default": "reversible-low-risk",
+          "scope": "system",
+          "constraints": "الانتقالات الحساسة تنتظر الخادم ولا تبدو نهائية مسبقًا."
+        },
+        {
+          "key": "cardDensity",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "tenant/user",
+          "constraints": "تظهر المعلومات اللازمة للقرار لا زخارف بلا فائدة."
+        },
+        {
+          "key": "loadMode",
+          "type": "string",
+          "default": "per-column",
+          "scope": "system",
+          "constraints": "تحميل تدريجي مع عدادات معرفة النطاق."
+        },
+        {
+          "key": "sortPolicy",
+          "type": "string",
+          "default": "domain-or-manual",
+          "scope": "system",
+          "constraints": "السحب للترتيب لا يعمل حين يفرض الفرز الآلي معنى مختلفًا."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-022",
+      "component": "UnifiedScheduler",
+      "title": "المواعيد والموارد والجداول الزمنية",
+      "priority": "P2",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-022-UnifiedScheduler.md",
+      "purpose": "تمثيل مواعيد وحجوزات تشير إلى وقت ومعنى متفق عليهما عبر المناطق والتقاويم، مع منع التعارض في الخادم وعدم الخلط بين تفضيل عرض التاريخ وقواعد التكرار.",
+      "applies_when": "ينطبق على الاجتماعات والحجوزات والورديات والموارد عندما يحتاج المشروع عرضًا يوميًا أو أسبوعيًا أو شهريًا أو قائمة مواعيد.",
+      "not_applicable_when": "لا يفترض دعم أم القرى أو التكرار الهجري في مكتبة جدولة لمجرد دعم locale عربية، ولا يجعل اختيار وقت متاح في الشاشة ضمانًا لحجزه.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "FULLCALENDAR",
+        "REACT_BIG_CALENDAR",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "timeZone",
+          "type": "string",
+          "default": "Asia/Riyadh",
+          "scope": "system/tenant",
+          "constraints": "افتراضي مقترح للمشروعات السعودية؛ يسجل IANA zone لكل سياق لازم."
+        },
+        {
+          "key": "defaultView",
+          "type": "string",
+          "default": "week",
+          "scope": "tenant/user",
+          "constraints": "day أو week أو month أو list بحسب المهمة والجهاز."
+        },
+        {
+          "key": "slotMinutes",
+          "type": "integer",
+          "default": 30,
+          "scope": "system/tenant",
+          "constraints": "اقتراح يطابق دقة الحجز وقواعد المورد."
+        },
+        {
+          "key": "workingCalendar",
+          "type": "string",
+          "default": "tenant-defined",
+          "scope": "system/tenant",
+          "constraints": "أيام وساعات وإجازات صريحة؛ لا تفترض الأحد إلى الخميس لكل مشروع."
+        },
+        {
+          "key": "conflictPolicy",
+          "type": "string",
+          "default": "reject",
+          "scope": "system/tenant",
+          "constraints": "السماح بالتجاوز يتطلب صلاحية وسببًا وقاعدة واضحة."
+        },
+        {
+          "key": "recurrenceEnabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "التفعيل يحتاج تعريف تقويم التكرار ومنطق الاستثناءات."
+        },
+        {
+          "key": "hijriRecurrence",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "لا يفعل إلا بمحرك أم القرى وضبط محلي وعقد تكرار مختبر."
+        },
+        {
+          "key": "displayCalendar",
+          "type": "string",
+          "default": "external-calendar-policy",
+          "scope": "system/user",
+          "constraints": "يرث المعيار المرتبط دون إنشاء تحويل مستقل."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-023",
+      "component": "DraftAutosaveManager",
+      "title": "الحفظ التلقائي والمسودات والتغييرات غير المحفوظة",
+      "priority": "P2",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-023-DraftAutosaveManager.md",
+      "purpose": "حماية وقت المستخدم من انقطاع الاتصال أو الانتقال العرضي، مع تعريف صريح لما حُفظ وأين وبأي إصدار، ومنع الكتابة فوق عمل مستخدم آخر أو تخزين أسرار على الجهاز.",
+      "applies_when": "ينطبق على النماذج الطويلة والمحررات والطلبات متعددة المراحل عندما يبرر احتمال فقد العمل وجود مسودات. يظل الحفظ اليدوي كافيًا للمهام الصغيرة حسب التقييم.",
+      "not_applicable_when": "لا يدّعي الحفظ بمجرد وضع البيانات في ذاكرة أو localStorage، ولا يعد draft موافقة أو إرسالًا نهائيًا، ولا يضمن استمرار beforeunload أو الاتصال عند إغلاق المتصفح.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "TANSTACK_QUERY",
+        "REACT_HOOK_FORM",
+        "IDB"
+      ],
+      "settings": [
+        {
+          "key": "enabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "يفعّل في الحقول والمهام المعتمدة فقط بعد سياسة خصوصية واسترجاع."
+        },
+        {
+          "key": "debounceMs",
+          "type": "integer",
+          "default": 1500,
+          "scope": "system/tenant",
+          "constraints": "اقتراح للحفظ بعد سكون الكتابة؛ لا يرسل لكل ضغطة."
+        },
+        {
+          "key": "maxWaitMs",
+          "type": "integer",
+          "default": 10000,
+          "scope": "system/tenant",
+          "constraints": "حد تجريبي لمنع تأخير غير محدود أثناء كتابة متواصلة."
+        },
+        {
+          "key": "storageMode",
+          "type": "string",
+          "default": "server",
+          "scope": "system/tenant",
+          "constraints": "التخزين المحلي opt-in ومحدود التصنيف؛ ليس بديلًا صامتًا عن الخادم."
+        },
+        {
+          "key": "localSensitiveStorage",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "الأسرار والرموز وكلمات المرور ممنوعة افتراضيًا."
+        },
+        {
+          "key": "conflictPolicy",
+          "type": "string",
+          "default": "block-and-resolve",
+          "scope": "system",
+          "constraints": "لا يستخدم آخر حفظ يفوز بلا قرار مجال موثق."
+        },
+        {
+          "key": "resumePolicy",
+          "type": "string",
+          "default": "ask-and-revalidate",
+          "scope": "system/tenant",
+          "constraints": "يتحقق من الحساب والصلاحية ومخطط المسودة قبل الاستعادة."
+        },
+        {
+          "key": "retentionDays",
+          "type": "integer",
+          "default": 7,
+          "scope": "system/tenant",
+          "constraints": "اقتراح للمسودات يخضع لسياسة الجهة والحجز والقيمة التجارية."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-024",
+      "component": "AdaptiveContentPanels",
+      "title": "التبويبات والأقسام القابلة للطي واللوحات المقسمة",
+      "priority": "P2",
+      "version": "0.2.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-024-AdaptiveContentPanels.md",
+      "purpose": "تنظيم المعلومات المتوازية أو التفصيلية مع الحفاظ على حالة المستخدم وإمكانية الوصول، دون استخدام التبويبات لإخفاء بنية شاشة غير مفهومة أو أخطاء يجب علاجها.",
+      "applies_when": "ينطبق على أقسام متوازية مثل البيانات والمرفقات والسجل، أو تفاصيل يمكن كشفها تدريجيًا، أو عرض قائمة وتفاصيل بجوار بعضهما.",
+      "not_applicable_when": "لا يستخدم tabs لتدفق يجب إكماله بالتتابع، ولا accordion لإخفاء تحذير حرج، ولا split view عندما يجعل كلا الجزأين غير مقروءين.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "RADIX",
+        "REACT_ARIA",
+        "RESIZABLE_PANELS"
+      ],
+      "settings": [
+        {
+          "key": "panelPattern",
+          "type": "string",
+          "default": "task-based",
+          "scope": "system",
+          "constraints": "tabs أو accordion أو split بحسب العلاقة بين المحتوى."
+        },
+        {
+          "key": "tabActivation",
+          "type": "string",
+          "default": "manual-when-latent",
+          "scope": "system",
+          "constraints": "التفعيل التلقائي فقط إذا كان العرض فوريًا ولا يسبب انتظارًا مع كل سهم."
+        },
+        {
+          "key": "persistActivePanel",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "يحفظ المعرف ضمن السياق ولا يفتح محتوى غير مفوض."
+        },
+        {
+          "key": "urlSync",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "لأقسام مفيدة كرابط مباشر؛ لا يضع قيم نماذج حساسة في الرابط."
+        },
+        {
+          "key": "mountPolicy",
+          "type": "string",
+          "default": "preserve-data-lazy-view",
+          "scope": "system",
+          "constraints": "يمكن إزالة الرندر مع بقاء حالة النموذج في موضع مستقل."
+        },
+        {
+          "key": "allowMultipleExpanded",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "مناسب لمقارنة المحتوى؛ قد يقيّد عند تصميم معلوم."
+        },
+        {
+          "key": "resizablePanels",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "يفعّل مع حد أدنى وحالة محفوظة وبديل لوحة مفاتيح."
+        },
+        {
+          "key": "mobileFallback",
+          "type": "string",
+          "default": "contextual-single-pane",
+          "scope": "system",
+          "constraints": "قائمة ثم تفاصيل أو accordion وفق المهمة دون فقد المحتوى."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-025",
+      "component": "SmartRecordDetailView",
+      "title": "عرض السجل والتفاصيل الذكي",
+      "priority": "P0",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-025-SmartRecordDetailView.md",
+      "purpose": "عرض سجل واحد بصورة قابلة للفهم واتخاذ القرار، مع فصل القراءة عن التحرير وإظهار الحالة والمصدر والعلاقات والإجراءات المسموح بها دون تحويل كل صفحة تفاصيل إلى نموذج تحرير.",
+      "applies_when": "ينطبق على صفحات تفاصيل العملاء والطلبات والمعاملات والموظفين والأصول والمستندات وأي كيان يحتاج عرضًا غنيًا ومنظمًا قبل اتخاذ إجراء.",
+      "not_applicable_when": "لا يُستخدم بدل نموذج التحرير عند المهمة الأساسية هي الإدخال، ولا بدل جدول المقارنة عند الحاجة إلى فحص عدة سجلات جنبًا إلى جنب، ولا يكرر معلومات لا تضيف قرارًا.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-024"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "SHADCN",
+        "RADIX",
+        "REACT_ARIA"
+      ],
+      "settings": [
+        {
+          "key": "layout",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "tenant/user",
+          "constraints": "summary أو sections أو adaptive حسب كثافة السجل."
+        },
+        {
+          "key": "fieldDensity",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "tenant/user",
+          "constraints": "comfortable أو compact أو adaptive دون إخفاء القيم."
+        },
+        {
+          "key": "showEmptyFields",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant/user",
+          "constraints": "لا يخفي حقلاً يلزم لفهم غياب البيانات."
+        },
+        {
+          "key": "stickyActions",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "تُثبّت الإجراءات فقط إذا بقيت قابلة للوصول ولا تغطي المحتوى."
+        },
+        {
+          "key": "sectionNavigation",
+          "type": "string",
+          "default": "auto",
+          "scope": "tenant",
+          "constraints": "none أو anchor أو tabs أو auto بحسب طول الصفحة."
+        },
+        {
+          "key": "copyIdentifiers",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "النسخ للمعرفات المسموحة فقط ولا يكشف أسرارًا."
+        },
+        {
+          "key": "relatedPreviewLimit",
+          "type": "integer",
+          "default": 5,
+          "scope": "system/tenant",
+          "constraints": "حد أولي للعلاقات المضمنة قبل الانتقال لقائمة كاملة."
+        },
+        {
+          "key": "editMode",
+          "type": "string",
+          "default": "separate",
+          "scope": "system/tenant",
+          "constraints": "separate أو controlled-inline؛ التحرير المضمن يتطلب صلاحية وعقد حفظ مستقل."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-026",
+      "component": "SmartCollectionList",
+      "title": "القوائم والبطاقات الذكية المتجاوبة",
+      "priority": "P0",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-026-SmartCollectionList.md",
+      "purpose": "عرض مجموعات سجلات عندما تكون القراءة السريعة والسياق البصري أهم من المقارنة العمودية الصارمة، مع تبديل مسؤول بين قائمة وبطاقات دون تكرار منطق البيانات.",
+      "applies_when": "ينطبق على أدلة الأشخاص والملفات والمشاريع والطلبات والنتائج التي تحتاج ملخصًا لكل عنصر، خصوصًا على الجوال أو عندما لا تناسبها الجداول.",
+      "not_applicable_when": "لا يستبدل SmartDataGrid عندما تكون المقارنة عبر أعمدة والفرز الكثيف والتحديد واسع النطاق هي المهمة الأساسية.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-024"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "TANSTACK_QUERY",
+        "REACT_ARIA",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "viewMode",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "tenant/user",
+          "constraints": "list أو cards أو adaptive؛ لا يغير البيانات أو الفرز."
+        },
+        {
+          "key": "pageSize",
+          "type": "integer",
+          "default": 20,
+          "scope": "tenant/user",
+          "constraints": "يخضع لحد الخادم ولا يستخدم لتحميل كل السجلات."
+        },
+        {
+          "key": "paginationMode",
+          "type": "string",
+          "default": "server",
+          "scope": "system",
+          "constraints": "server أو cursor للبيانات الكبيرة؛ client لمجموعة مكتملة صغيرة فقط."
+        },
+        {
+          "key": "imagePolicy",
+          "type": "string",
+          "default": "lazy",
+          "scope": "system/tenant",
+          "constraints": "lazy أو none؛ لا تُطلب صور غير لازمة أو غير مصرح بها."
+        },
+        {
+          "key": "summaryLines",
+          "type": "integer",
+          "default": 3,
+          "scope": "tenant",
+          "constraints": "عدد أسطر الملخص قبل القص مع وسيلة للوصول للنص الكامل."
+        },
+        {
+          "key": "selectionMode",
+          "type": "string",
+          "default": "none",
+          "scope": "system/tenant",
+          "constraints": "none أو single أو multiple حسب المهمة."
+        },
+        {
+          "key": "rememberView",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "يحفظ تفضيل العرض لا بيانات النتائج."
+        },
+        {
+          "key": "infiniteScroll",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "لا يُفعّل دون بديل تنقل واضح ووصولية مناسبة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-027",
+      "component": "SmartActivityTimeline",
+      "title": "الخط الزمني للنشاط والأحداث",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-027-SmartActivityTimeline.md",
+      "purpose": "عرض تسلسل أحداث العمل للمستخدم بلغة مفهومة، مع الفصل بين النشاط التشغيلي والعرض القانوني لسجل التدقيق، وربط كل حدث بمرجعه وزمنه ومصدره.",
+      "applies_when": "ينطبق على صفحات السجلات التي تحتاج تاريخ نشاط مفهوم للمستخدم مثل إنشاء وتعديل وتعليق وإرسال واستلام وتغيير حالة.",
+      "not_applicable_when": "لا يستبدل AuditHistoryViewer كسجل تدقيق موثوق ولا WorkflowApprovalTimeline عندما تكون مراحل الموافقة هي البنية الرئيسية.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-024"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "SHADCN",
+        "REACT_ARIA",
+        "TANSTACK_QUERY"
+      ],
+      "settings": [
+        {
+          "key": "order",
+          "type": "string",
+          "default": "newest-first",
+          "scope": "tenant/user",
+          "constraints": "newest-first أو oldest-first مع إعلان واضح."
+        },
+        {
+          "key": "pageSize",
+          "type": "integer",
+          "default": 30,
+          "scope": "tenant/user",
+          "constraints": "تحميل مرحلي للأحداث."
+        },
+        {
+          "key": "grouping",
+          "type": "string",
+          "default": "day",
+          "scope": "tenant/user",
+          "constraints": "none أو day أو type؛ لا يغير التسلسل الحقيقي."
+        },
+        {
+          "key": "showSystemEvents",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant/user",
+          "constraints": "الأحداث التقنية المسموحة فقط ولا تسرب تفاصيل داخلية."
+        },
+        {
+          "key": "actorDisplay",
+          "type": "string",
+          "default": "display-name",
+          "scope": "tenant",
+          "constraints": "يحترم سياسة الأسماء والإخفاء."
+        },
+        {
+          "key": "timeDisplay",
+          "type": "string",
+          "default": "absolute-with-relative",
+          "scope": "tenant/user",
+          "constraints": "يعرض وقتًا مطلقًا عند الحاجة ولا يعتمد النسبي وحده."
+        },
+        {
+          "key": "expandMetadata",
+          "type": "boolean",
+          "default": false,
+          "scope": "user",
+          "constraints": "لا يعرض بيانات حساسة مخفية عبر metadata."
+        },
+        {
+          "key": "liveUpdates",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "التحديث المباشر لا يعيد ترتيب تركيز المستخدم بصمت."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-028",
+      "component": "SmartCollaborationThread",
+      "title": "التعليقات والمحادثات والـMentions",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-028-SmartCollaborationThread.md",
+      "purpose": "توفير نقاش مرتبط بالسجل مع ردود وإشارات ومرفقات وصلاحيات واضحة، دون تحويل التعليقات إلى قناة غير خاضعة للحوكمة أو بديل عن قرارات سير العمل.",
+      "applies_when": "ينطبق على السجلات التي تحتاج تعاونًا سياقيًا بين المستخدمين مثل المعاملات والمشاريع والمهام والوثائق.",
+      "not_applicable_when": "لا يستخدم للمحادثات العامة غير المرتبطة بسياق، ولا كبديل لرسائل النظام الرسمية أو مسار اعتماد ملزم.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-013"
+      ],
+      "external_dependencies": [
+        "searchable_select"
+      ],
+      "package_ids": [
+        "TIPTAP",
+        "TANSTACK_QUERY",
+        "REACT_ARIA"
+      ],
+      "settings": [
+        {
+          "key": "replyMode",
+          "type": "string",
+          "default": "threaded",
+          "scope": "tenant",
+          "constraints": "flat أو threaded وفق تعقيد الحوار."
+        },
+        {
+          "key": "mentionEnabled",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "نتائج mention تخضع لصلاحيات الرؤية ولا تكشف دليل المستخدمين."
+        },
+        {
+          "key": "editWindowMinutes",
+          "type": "integer",
+          "default": 15,
+          "scope": "system/tenant",
+          "constraints": "بعدها يتطلب تعديلًا موثقًا أو يمنع حسب السياسة."
+        },
+        {
+          "key": "deletePolicy",
+          "type": "string",
+          "default": "soft-with-marker",
+          "scope": "system/tenant",
+          "constraints": "الحذف لا يمحو الأثر عندما تفرض السياسة الاحتفاظ."
+        },
+        {
+          "key": "attachmentEnabled",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "يستخدم مكوّن الرفع وسياسة الفحص."
+        },
+        {
+          "key": "maxCommentBytes",
+          "type": "integer",
+          "default": 10000,
+          "scope": "system",
+          "constraints": "حد على الخادم والعميل مع حساب موحد."
+        },
+        {
+          "key": "notificationMode",
+          "type": "string",
+          "default": "mentions-and-replies",
+          "scope": "user/tenant",
+          "constraints": "يحدد الإشعارات ولا يغير صلاحية المحتوى."
+        },
+        {
+          "key": "realtime",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "فشل القناة المباشرة يتحول إلى polling أو تحديث يدوي."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-029",
+      "component": "SmartNotificationCenter",
+      "title": "مركز الإشعارات الذكي",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-029-SmartNotificationCenter.md",
+      "purpose": "تجميع الإشعارات المستمرة التي تحتاج رجوعًا أو إجراءً، مع فصلها عن رسائل toast اللحظية وإدارة القراءة والأولوية والروابط والصلاحيات بطريقة متسقة.",
+      "applies_when": "ينطبق عندما يحتاج النظام Inbox للإشعارات أو مهام تنتظر المستخدم أو أحداث ذات رابط يمكن الرجوع إليه.",
+      "not_applicable_when": "لا يحول كل نجاح حفظ إلى إشعار دائم، ولا يُستخدم كقناة وحيدة للأحداث الحرجة التي تتطلب تسليمًا خارجيًا أو التزامًا تنظيميًا.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar"
+      ],
+      "package_ids": [
+        "TANSTACK_QUERY",
+        "SHADCN",
+        "REACT_ARIA"
+      ],
+      "settings": [
+        {
+          "key": "pageSize",
+          "type": "integer",
+          "default": 30,
+          "scope": "tenant/user",
+          "constraints": "تحميل مرحلي."
+        },
+        {
+          "key": "markReadPolicy",
+          "type": "string",
+          "default": "explicit-or-open",
+          "scope": "tenant/user",
+          "constraints": "لا تعتبر مجرد مرور المؤشر قراءة."
+        },
+        {
+          "key": "grouping",
+          "type": "string",
+          "default": "type-and-date",
+          "scope": "user",
+          "constraints": "لا يخفي أولوية الحدث."
+        },
+        {
+          "key": "retentionDays",
+          "type": "integer",
+          "default": 90,
+          "scope": "system/tenant",
+          "constraints": "تخضع للسياسة القانونية ولا تعد حذفًا لسجل المصدر."
+        },
+        {
+          "key": "soundEnabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "user",
+          "constraints": "لا يُشغل صوتًا دون موافقة وإمكانية تعطيل."
+        },
+        {
+          "key": "desktopPermission",
+          "type": "string",
+          "default": "opt-in",
+          "scope": "user",
+          "constraints": "إذن المتصفح منفصل عن إعداد النظام."
+        },
+        {
+          "key": "realTime",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "له fallback ولا يفترض اتصالًا دائمًا."
+        },
+        {
+          "key": "bulkMarkRead",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "يُظهر النطاق وعدد العناصر قبل الإجراء."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-030",
+      "component": "SmartSavedViewsManager",
+      "title": "العروض المحفوظة وتفضيلات العرض",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-030-SmartSavedViewsManager.md",
+      "purpose": "حفظ مجموعات موثقة من الفلاتر والفرز والأعمدة وطريقة العرض ضمن نطاق مستخدم أو فريق، مع إصدار للمخطط يمنع كسر العروض عند تغير الحقول.",
+      "applies_when": "ينطبق على الجداول والقوائم ولوحات المتابعة والبحث المتقدم عندما يكرر المستخدم نفس منظور البيانات.",
+      "not_applicable_when": "لا يُستخدم لحفظ أسرار أو نتائج بيانات كاملة، ولا يجعل تفضيل المستخدم يتجاوز فلترًا أمنيًا أو نطاق منشأة.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_dependencies": [
+        "searchable_select"
+      ],
+      "package_ids": [
+        "NUQS",
+        "TANSTACK_QUERY",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "maxUserViews",
+          "type": "integer",
+          "default": 25,
+          "scope": "system/tenant",
+          "constraints": "حد لمنع تضخم غير منضبط."
+        },
+        {
+          "key": "sharedViews",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "المشاركة تتطلب صلاحية مستقلة."
+        },
+        {
+          "key": "defaultViewPolicy",
+          "type": "string",
+          "default": "user-over-tenant",
+          "scope": "system/tenant",
+          "constraints": "لا يتجاوز قيد الأمان."
+        },
+        {
+          "key": "urlSync",
+          "type": "string",
+          "default": "safe-only",
+          "scope": "system",
+          "constraints": "لا يضع قيمًا حساسة في URL."
+        },
+        {
+          "key": "schemaMigration",
+          "type": "string",
+          "default": "explicit",
+          "scope": "system",
+          "constraints": "يجب ترحيل أو تعطيل العرض غير المتوافق."
+        },
+        {
+          "key": "allowRename",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "يحافظ على معرف ثابت عند تغيير الاسم."
+        },
+        {
+          "key": "allowDuplicate",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "النسخة الجديدة تحصل معرفًا جديدًا."
+        },
+        {
+          "key": "scope",
+          "type": "string",
+          "default": "user",
+          "scope": "system/tenant",
+          "constraints": "user أو team أو tenant مع صلاحيات واضحة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-031",
+      "component": "SmartContextualActionBar",
+      "title": "شريط الإجراءات السياقي والجماعي",
+      "priority": "P0",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-031-SmartContextualActionBar.md",
+      "purpose": "تجميع الإجراءات الأساسية والثانوية حسب سياق السجل أو التحديد، مع ترتيب قائم على التكرار والمخاطر والصلاحية وحالة العمل بدل تشتيت الأزرار في الشاشة.",
+      "applies_when": "ينطبق على صفحات التفاصيل والقوائم والجداول عندما توجد عدة إجراءات أو عمليات جماعية تتغير حسب الحالة أو التحديد.",
+      "not_applicable_when": "لا يُنشئ toolbar لمجرد وجود زر أو زرين واضحين، ولا يخفي الإجراءات الحرجة داخل قائمة غامضة إذا كانت المهمة تتطلب ظهورها.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "SHADCN",
+        "RADIX",
+        "REACT_ARIA"
+      ],
+      "settings": [
+        {
+          "key": "primaryLimit",
+          "type": "integer",
+          "default": 3,
+          "scope": "tenant",
+          "constraints": "عدد الإجراءات الظاهرة قبل overflow."
+        },
+        {
+          "key": "overflowMode",
+          "type": "string",
+          "default": "menu",
+          "scope": "tenant",
+          "constraints": "menu أو adaptive حسب العرض."
+        },
+        {
+          "key": "bulkSelectionSummary",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "يعرض عدد ونطاق العناصر."
+        },
+        {
+          "key": "sticky",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant/user",
+          "constraints": "لا يغطي محتوى أو لوحة مفاتيح."
+        },
+        {
+          "key": "dangerPlacement",
+          "type": "string",
+          "default": "separated",
+          "scope": "system",
+          "constraints": "يفصل الإجراءات الخطرة عن المتكررة."
+        },
+        {
+          "key": "confirmPolicy",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "يفوّض لمعيار PermissionAwareActions."
+        },
+        {
+          "key": "keyboardShortcuts",
+          "type": "boolean",
+          "default": false,
+          "scope": "user/tenant",
+          "constraints": "الاختصار لا يتعارض مع المتصفح ويعلن للمستخدم."
+        },
+        {
+          "key": "mobilePresentation",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "tenant",
+          "constraints": "bottom-bar أو menu أو adaptive مع وصول كامل."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-032",
+      "component": "SmartRelationshipPicker",
+      "title": "اختيار وربط الكيانات والعلاقات",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-032-SmartRelationshipPicker.md",
+      "purpose": "اختيار كيان أو أكثر وربطه بسجل مع إظهار السياق الذي يميز الكيانات المتشابهة، ودعم البحث البعيد والقيم المحفوظة والعلاقات متعددة الأنواع دون إساءة استخدام قائمة بسيطة.",
+      "applies_when": "ينطبق على ربط عميل بمشروع أو موظف بمعاملة أو أصل بعقد أو أي علاقة تحتاج أكثر من label/value بسيط.",
+      "not_applicable_when": "لا يستخدم إذا كانت القائمة قصيرة وثابتة أو ثنائية؛ في تلك الحالات يكفي المكوّن الأبسط. البحث الداخلي يتبع Searchable Select.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "searchable_select"
+      ],
+      "package_ids": [
+        "SHADCN",
+        "REACT_ARIA",
+        "TANSTACK_QUERY"
+      ],
+      "settings": [
+        {
+          "key": "mode",
+          "type": "string",
+          "default": "single",
+          "scope": "system/tenant",
+          "constraints": "single أو multiple وفق نموذج العلاقة."
+        },
+        {
+          "key": "searchMode",
+          "type": "string",
+          "default": "server",
+          "scope": "system",
+          "constraints": "server للكيانات الكبيرة."
+        },
+        {
+          "key": "displayFields",
+          "type": "array",
+          "default": [
+            "name",
+            "code"
+          ],
+          "scope": "tenant",
+          "constraints": "قائمة حقول مسموحة ولا تكشف بيانات إضافية."
+        },
+        {
+          "key": "recentItems",
+          "type": "boolean",
+          "default": true,
+          "scope": "user/tenant",
+          "constraints": "محصورة في نفس نطاق الصلاحية."
+        },
+        {
+          "key": "favorites",
+          "type": "boolean",
+          "default": false,
+          "scope": "user/tenant",
+          "constraints": "تفضيل واجهة فقط."
+        },
+        {
+          "key": "allowCreate",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "إنشاء كيان جديد يحتاج مسارًا وصلاحية منفصلة."
+        },
+        {
+          "key": "showRelationshipType",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant",
+          "constraints": "يُفعّل فقط عند وجود أنواع علاقات فعلية."
+        },
+        {
+          "key": "resolveStoredValue",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "يعرض القيمة المخزنة حتى لو لم تكن في أول صفحة، وفق الصلاحية."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-033",
+      "component": "SmartAddressLocationFields",
+      "title": "العناوين والمواقع الجغرافية الذكية",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-033-SmartAddressLocationFields.md",
+      "purpose": "إدخال العناوين والمواقع بصورة قابلة للتعريب والتحقق والتدرج بين الدولة والمنطقة والمدينة والرمز والموقع، دون فرض نموذج عنوان واحد على كل دولة.",
+      "applies_when": "ينطبق على بيانات العملاء والمنشآت والفروع والشحن والأصول والمواقع الميدانية التي تحتاج عنوانًا منظمًا أو إحداثيات.",
+      "not_applicable_when": "لا يفرض خريطة أو GPS عندما يكفي نص عنوان، ولا يخزن عنوانًا مركبًا واحدًا إذا كانت قواعد العمل تحتاج حقوله منفصلة.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_dependencies": [
+        "searchable_select"
+      ],
+      "package_ids": [
+        "REACT_HOOK_FORM",
+        "ZOD",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "countryMode",
+          "type": "string",
+          "default": "select",
+          "scope": "tenant",
+          "constraints": "fixed أو select وفق نطاق المشروع."
+        },
+        {
+          "key": "defaultCountry",
+          "type": "string",
+          "default": "SA",
+          "scope": "tenant",
+          "constraints": "قيمة افتراضية فقط ولا تمنع الدول الأخرى إن كانت مدعومة."
+        },
+        {
+          "key": "regionRequired",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "يتغير حسب الدولة وقاعدة العمل."
+        },
+        {
+          "key": "postalCodeRequired",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant",
+          "constraints": "لا يفترض صيغة عالمية واحدة."
+        },
+        {
+          "key": "coordinatesEnabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "عند الحاجة فقط وبسياسة دقة واضحة."
+        },
+        {
+          "key": "mapEnabled",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "لا يحمّل مزود خرائط قبل الحاجة والموافقة."
+        },
+        {
+          "key": "addressLineLimit",
+          "type": "integer",
+          "default": 2,
+          "scope": "tenant",
+          "constraints": "عدد الأسطر المنفصلة قبل حقل الملاحظات."
+        },
+        {
+          "key": "normalizeOnSave",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "تطبيع محافظ لا يغيّر الاسم الأصلي أو معنى العنوان."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-034",
+      "component": "SmartTaxonomyTagPicker",
+      "title": "التصنيفات والوسوم والـTaxonomy",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-034-SmartTaxonomyTagPicker.md",
+      "purpose": "إدارة اختيار وسوم وتصنيفات مضبوطة أو حرة ضمن سياسة واضحة، مع الفصل بين taxonomy المؤسسي والوسوم الشخصية ومنع إنشاء قيم مترادفة أو غير مصرح بها.",
+      "applies_when": "ينطبق على تصنيف المستندات والسجلات والمواضيع والمهارات والمنتجات عندما تكون عدة قيم أو شجرة تصنيف أو اقتراحات جزءًا من المهمة.",
+      "not_applicable_when": "لا يستخدم بدل قائمة حالة رسمية أو علاقة كيان، ولا يسمح بإنشاء وسوم حرة عندما المجال يحتاج قاموسًا محكومًا.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_dependencies": [
+        "searchable_select"
+      ],
+      "package_ids": [
+        "SHADCN",
+        "REACT_ARIA",
+        "TANSTACK_QUERY"
+      ],
+      "settings": [
+        {
+          "key": "mode",
+          "type": "string",
+          "default": "controlled",
+          "scope": "system/tenant",
+          "constraints": "controlled أو free أو hybrid."
+        },
+        {
+          "key": "maxTags",
+          "type": "integer",
+          "default": 10,
+          "scope": "tenant",
+          "constraints": "حد حسب المجال."
+        },
+        {
+          "key": "hierarchy",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "عند taxonomy هرمي فقط."
+        },
+        {
+          "key": "allowCreate",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "الإنشاء يحتاج صلاحية وسياسة تطبيع."
+        },
+        {
+          "key": "casePolicy",
+          "type": "string",
+          "default": "preserve-normalized-search",
+          "scope": "system",
+          "constraints": "يحفظ الأصل ويطبع البحث."
+        },
+        {
+          "key": "duplicatePolicy",
+          "type": "string",
+          "default": "canonical-id",
+          "scope": "system",
+          "constraints": "منع التكرار بالمعرف لا النص فقط."
+        },
+        {
+          "key": "showCounts",
+          "type": "boolean",
+          "default": false,
+          "scope": "tenant",
+          "constraints": "لا يكشف إحصاءات محمية."
+        },
+        {
+          "key": "suggestions",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant/user",
+          "constraints": "اقتراحات ضمن نفس النطاق والصلاحية."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-035",
+      "component": "SmartRulesExpressionBuilder",
+      "title": "منشئ القواعد والشروط والتعبيرات",
+      "priority": "P1",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-035-SmartRulesExpressionBuilder.md",
+      "purpose": "تمكين المستخدم المخول من بناء شروط أعمال أو فلاتر متقدمة من حقول وعوامل وقيم مع تحقق صارم، دون السماح بنصوص تنفيذية أو استعلامات خام.",
+      "applies_when": "ينطبق على قواعد التوجيه والتنبيه والتصفية والسياسات القابلة للتهيئة عندما تكون القاعدة مكونة من شروط AND/OR مع أنواع بيانات معلومة.",
+      "not_applicable_when": "لا يستخدم كبديل عن كود أعمال معقد غير قابل للتهيئة، ولا يسمح بكتابة SQL أو JavaScript أو تعبير غير معزول من المستخدم.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_dependencies": [
+        "calendar",
+        "searchable_select"
+      ],
+      "package_ids": [
+        "REACT_HOOK_FORM",
+        "ZOD",
+        "SHADCN"
+      ],
+      "settings": [
+        {
+          "key": "maxDepth",
+          "type": "integer",
+          "default": 4,
+          "scope": "system/tenant",
+          "constraints": "عمق AND/OR محدود لمنع قواعد غير قابلة للفهم."
+        },
+        {
+          "key": "maxRules",
+          "type": "integer",
+          "default": 50,
+          "scope": "system/tenant",
+          "constraints": "حد لكل تعبير."
+        },
+        {
+          "key": "allowedOperators",
+          "type": "array",
+          "default": [
+            "eq",
+            "neq",
+            "contains",
+            "gt",
+            "lt",
+            "in"
+          ],
+          "scope": "system/tenant",
+          "constraints": "تُرشح حسب نوع الحقل."
+        },
+        {
+          "key": "previewEnabled",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "المعاينة لا تنفذ أثرًا فعليًا."
+        },
+        {
+          "key": "testMode",
+          "type": "string",
+          "default": "sample-only",
+          "scope": "system",
+          "constraints": "sample-only أو safe-query وفق البنية."
+        },
+        {
+          "key": "rawExpression",
+          "type": "boolean",
+          "default": false,
+          "scope": "system",
+          "constraints": "يمنع إدخال كود خام من الواجهة."
+        },
+        {
+          "key": "saveDraft",
+          "type": "boolean",
+          "default": true,
+          "scope": "tenant",
+          "constraints": "المسودة لا تصبح active قبل الاعتماد."
+        },
+        {
+          "key": "activationPolicy",
+          "type": "string",
+          "default": "explicit",
+          "scope": "system/tenant",
+          "constraints": "الحفظ منفصل عن التفعيل."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-COMP-036",
+      "component": "SmartSecureAuthenticationFlow",
+      "title": "تدفقات المصادقة الآمنة والـMFA والـPasskeys",
+      "priority": "P0",
+      "version": "0.3.0",
+      "status": "final-integration-candidate",
+      "path": "standards/VCGF-UI-COMP-036-SmartSecureAuthenticationFlow.md",
+      "purpose": "توحيد واجهات تسجيل الدخول والاسترداد والتحقق متعدد العوامل وPasskeys والتصعيد الأمني بطريقة لا تكشف معلومات الحساب ولا تربط الأمان بمظهر الواجهة فقط.",
+      "applies_when": "ينطبق على تطبيق يملك واجهة مصادقة أو خطوة تحقق إضافية أو إعادة مصادقة قبل إجراء حساس.",
+      "not_applicable_when": "لا ينشئ نظام هوية جديدًا إذا كان المشروع يعتمد موفر هوية مؤسسيًا؛ عندها يطبق المعيار على تجربة الربط والتحويل والرسائل والجلسة دون تكرار مزود الهوية.",
+      "dependencies": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-018"
+      ],
+      "external_dependencies": [],
+      "package_ids": [
+        "REACT_HOOK_FORM",
+        "ZOD",
+        "INPUT_OTP",
+        "LARAVEL_AUTH"
+      ],
+      "settings": [
+        {
+          "key": "identifierMode",
+          "type": "string",
+          "default": "email-or-username",
+          "scope": "system/tenant",
+          "constraints": "يحدد ما يدعمه موفر الهوية ولا يستنتج وجود الحساب."
+        },
+        {
+          "key": "mfaPolicy",
+          "type": "string",
+          "default": "policy-driven",
+          "scope": "system/tenant",
+          "constraints": "required أو optional أو risk-based وفق النظام."
+        },
+        {
+          "key": "passkeyEnabled",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يُفعّل فقط عندما يدعمه الخادم والمتصفح والسياسة."
+        },
+        {
+          "key": "recoveryMode",
+          "type": "string",
+          "default": "verified-channel",
+          "scope": "system",
+          "constraints": "لا يعتمد أسئلة معرفة ضعيفة كخيار افتراضي."
+        },
+        {
+          "key": "sessionPolicy",
+          "type": "string",
+          "default": "server-owned",
+          "scope": "system",
+          "constraints": "الخادم مرجع الجلسة والأجهزة."
+        },
+        {
+          "key": "rememberDevice",
+          "type": "boolean",
+          "default": false,
+          "scope": "system/tenant",
+          "constraints": "يتطلب جهازًا موثوقًا وسياسة مدة واضحة."
+        },
+        {
+          "key": "stepUpTimeoutMinutes",
+          "type": "integer",
+          "default": 10,
+          "scope": "system",
+          "constraints": "مدة قصيرة للإجراءات الحساسة."
+        },
+        {
+          "key": "enumerationResistance",
+          "type": "boolean",
+          "default": true,
+          "scope": "system",
+          "constraints": "رسائل الاسترداد والدخول لا تكشف وجود الحساب."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    }
+  ]
+}

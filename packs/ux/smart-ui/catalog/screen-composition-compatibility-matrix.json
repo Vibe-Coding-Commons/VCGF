@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "relations": [
+    {
+      "left": "VCGF-UI-SCR-002",
+      "right": "VCGF-UI-SCR-015",
+      "type": "alternative",
+      "severity": "review",
+      "rule": "OperationalCollection وMasterDetail قد يمثلان نفس المهمة؛ اختر MasterDetail فقط إذا كانت المراجعة المتتابعة للتفاصيل حاجة حقيقية."
+    },
+    {
+      "left": "VCGF-UI-SCR-004",
+      "right": "VCGF-UI-SCR-005",
+      "type": "alternative",
+      "severity": "review",
+      "rule": "FormTransaction وGuidedWizard بديلان غالبًا؛ لا تحوّل نموذجًا بسيطًا إلى Wizard بلا تعقيد مرحلي."
+    },
+    {
+      "left": "VCGF-UI-SCR-001",
+      "right": "VCGF-UI-SCR-011",
+      "type": "mode-boundary",
+      "severity": "review",
+      "rule": "Dashboard للمراقبة واتخاذ إجراء سريع، Analytics للتحليل العميق؛ قد يتكاملان لكن لا يخلطان الغرضين في شاشة مكتظة."
+    },
+    {
+      "left": "VCGF-UI-SCR-003",
+      "right": "VCGF-UI-SCR-008",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "ReviewApproval قد يبنى فوق سياق سجل، لكن قرار الاعتماد يجب أن يظل واضحًا ومفصولًا عن التحرير العام."
+    },
+    {
+      "left": "VCGF-UI-SCR-003",
+      "right": "VCGF-UI-SCR-009",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "DocumentWorkspace متخصص عندما يصبح المستند محور المهمة بدل السجل العام."
+    },
+    {
+      "left": "VCGF-UI-SCR-003",
+      "right": "VCGF-UI-SCR-014",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "CollaborationWorkspace متخصص عندما يصبح النشاط والنقاش محور المهمة."
+    },
+    {
+      "left": "VCGF-UI-SCR-002",
+      "right": "VCGF-UI-SCR-007",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "WorkQueue هو Collection ذات أولويات/حمل عمل ومعالجة متكررة؛ يفضّل عند وجود triage حقيقي."
+    },
+    {
+      "left": "VCGF-UI-SCR-006",
+      "right": "VCGF-UI-SCR-002",
+      "type": "mode-boundary",
+      "severity": "review",
+      "rule": "SearchDiscovery يبدأ من نية البحث عبر نطاق؛ Collection تبدأ من مجموعة تشغيلية. لا تكرر البحث والفلاتر مرتين."
+    },
+    {
+      "left": "VCGF-UI-SCR-017",
+      "right": "VCGF-UI-SCR-005",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "Import/Export قد يستخدم Wizard داخليًا لكن لا يتطلب اختيار GuidedWizard كتركيب شاشة مستقل تلقائيًا."
+    },
+    {
+      "left": "VCGF-UI-SCR-019",
+      "right": "VCGF-UI-SCR-020",
+      "type": "mode-boundary",
+      "severity": "review",
+      "rule": "MobileFocused وLargeScreen يمكن أن يدعما نفس المنتج على أجهزة مختلفة، لكن لا تدمج قواعدهما في layout واحد غير قابل للتفسير."
+    }
+  ]
+}

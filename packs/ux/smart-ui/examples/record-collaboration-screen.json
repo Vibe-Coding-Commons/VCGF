@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "example-collab",
+  "screen_id": "record-details",
+  "screen_purpose": "عرض سجل مع نشاط وتعليقات وإجراءات",
+  "has_ui": true,
+  "signals": [
+    "record_detail",
+    "activity_timeline",
+    "comments_thread",
+    "contextual_actions"
+  ],
+  "interaction_signals": [
+    "view_record",
+    "preserve_navigation_context"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "desktop",
+    "large-screen"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": "اختبار انتقائية مكونات السجل والتعاون.",
+  "risk_level": "high",
+  "data_volume": "medium",
+  "offline_required": false,
+  "composition_signals": [
+    "record_workspace"
+  ],
+  "user_roles": [
+    "case-worker"
+  ],
+  "task_frequency": "regular",
+  "information_density": "adaptive",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [
+    "list_to_detail_return"
+  ],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "return-origin",
+  "context_continuity": "task-scoped"
+}

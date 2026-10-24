@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "PROJECT_ID",
+  "screen_id": "SCREEN_ID",
+  "screen_purpose": "صف غرض الشاشة بوضوح",
+  "has_ui": true,
+  "signals": [],
+  "interaction_signals": [],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "desktop"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": null,
+  "risk_level": "medium",
+  "data_volume": "unknown",
+  "offline_required": false,
+  "composition_signals": [],
+  "user_roles": [
+    "ROLE"
+  ],
+  "task_frequency": "unknown",
+  "information_density": "adaptive",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [
+    "create_to_detail"
+  ],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "detail",
+  "context_continuity": "task-scoped"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "approval-review",
+  "screen_purpose": "مراجعة طلب ومرفقاته ثم اتخاذ قرار اعتماد موثق",
+  "has_ui": true,
+  "signals": [
+    "workflow_approval",
+    "document_preview",
+    "record_detail",
+    "permission_sensitive_actions"
+  ],
+  "interaction_signals": [
+    "confirmation_needed",
+    "step_up_required",
+    "permission_changed"
+  ],
+  "composition_signals": [
+    "review_approval_screen"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "desktop",
+    "large-screen"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": null,
+  "risk_level": "high",
+  "data_volume": "small",
+  "offline_required": false,
+  "user_roles": [
+    "reviewer",
+    "approver"
+  ],
+  "task_frequency": "regular",
+  "information_density": "medium",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [
+    "review_approve_complete",
+    "reject_revise_resubmit"
+  ],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "queue-next",
+  "context_continuity": "task-scoped"
+}

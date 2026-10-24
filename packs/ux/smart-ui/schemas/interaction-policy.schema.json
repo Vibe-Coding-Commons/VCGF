@@ -1,0 +1,1207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Assessment-only interaction policy example",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "mode": {
+      "const": "assessment-only"
+    },
+    "enabledInteractions": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "interactionDefaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "VCGF-UI-INT-001": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "postSuccessNavigation": {
+              "type": "string",
+              "description": "detail أو list أو stay وفق المهمة؛ لا يفترض المسار دون عقد.",
+              "default": "detail",
+              "minLength": 1
+            },
+            "initialStatePolicy": {
+              "type": "string",
+              "description": "مصدر القيم الافتراضية يجب أن يكون موثقًا ولا يطغى على قواعد المجال.",
+              "default": "server-defaults",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "postSuccessNavigation",
+            "initialStatePolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-002": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "editEntryMode": {
+              "type": "string",
+              "description": "explicit أو inline-controlled؛ لا تحول القراءة إلى تحرير دائم.",
+              "default": "explicit",
+              "minLength": 1
+            },
+            "refreshOnOpen": {
+              "type": "boolean",
+              "description": "يُجلب أحدث إصدار مسموح قبل بدء التعديل ما لم يوجد سبب موثق.",
+              "default": true
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "editEntryMode",
+            "refreshOnOpen",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-003": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "staleDataPolicy": {
+              "type": "string",
+              "description": "signal أو refresh أو block حسب حساسية القرار.",
+              "default": "signal",
+              "minLength": 1
+            },
+            "autoRefresh": {
+              "type": "string",
+              "description": "off أو measured أو realtime وفق طبيعة البيانات والعبء.",
+              "default": "measured",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "staleDataPolicy",
+            "autoRefresh",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-004": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "deleteMode": {
+              "type": "string",
+              "description": "soft أو hard أو archive حسب المجال؛ الواجهة لا تختاره وحدها.",
+              "default": "domain-defined",
+              "minLength": 1
+            },
+            "reasonPolicy": {
+              "type": "string",
+              "description": "none أو optional أو required وفق تصنيف الإجراء.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "deleteMode",
+            "reasonPolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-005": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "promptScope": {
+              "type": "string",
+              "description": "لا تحذر على تغييرات شكلية أو قيم عادت للأصل.",
+              "default": "meaningful-dirty",
+              "minLength": 1
+            },
+            "draftFallback": {
+              "type": "string",
+              "description": "none أو local-safe أو server-draft وفق حساسية البيانات.",
+              "default": "policy",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "promptScope",
+            "draftFallback",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-006": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "submitMode": {
+              "type": "string",
+              "description": "الإرسال فعل صريح ولا يستنتج من نجاح الحفظ إلا بعقد مجال واضح.",
+              "default": "explicit",
+              "minLength": 1
+            },
+            "successState": {
+              "type": "string",
+              "description": "لا تعرض النجاح النهائي قبل تأكيد المصدر الموثوق.",
+              "default": "server-confirmed",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "submitMode",
+            "successState",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-007": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "confirmationLevel": {
+              "type": "string",
+              "description": "none أو simple أو strong حسب الأثر وقابلية التراجع.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "destructiveDefault": {
+              "type": "string",
+              "description": "لا يكون الإجراء الأخطر هو التركيز الافتراضي دون مبرر.",
+              "default": "safe-action",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "confirmationLevel",
+            "destructiveDefault",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-008": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "emptyVariant": {
+              "type": "string",
+              "description": "first-use أو no-results أو no-data حسب السبب الحقيقي.",
+              "default": "reason-aware",
+              "minLength": 1
+            },
+            "primaryRecoveryAction": {
+              "type": "string",
+              "description": "create أو clear-filter أو help أو none حسب الصلاحية والسياق.",
+              "default": "contextual",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "emptyVariant",
+            "primaryRecoveryAction",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-009": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "loadingDelayMs": {
+              "type": "integer",
+              "description": "يمنع وميض المؤشر للعمليات القصيرة؛ يقاس حسب المنتج.",
+              "default": 150,
+              "minimum": 0
+            },
+            "progressMode": {
+              "type": "string",
+              "description": "skeleton أو spinner أو determinate حسب مدة ودرجة معرفة التقدم.",
+              "default": "duration-aware",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "loadingDelayMs",
+            "progressMode",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-010": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "retryLimit": {
+              "type": "integer",
+              "description": "حد مرجعي لا يطبق على جميع الأخطاء؛ تتوقف الإعادة حسب التصنيف.",
+              "default": 3,
+              "minimum": 0
+            },
+            "backoffPolicy": {
+              "type": "string",
+              "description": "للتلقائي فقط مع jitter وحد أقصى؛ لا يعيد أوامر خطرة بلا idempotency.",
+              "default": "bounded-exponential",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "retryLimit",
+            "backoffPolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-011": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "optimisticScope": {
+              "type": "string",
+              "description": "تُدرج الأوامر المسموحة صراحة ولا يُفترض التفاؤل لكل mutation.",
+              "default": "low-risk-only",
+              "minLength": 1
+            },
+            "rollbackMode": {
+              "type": "string",
+              "description": "تُحفظ أقل لقطة لازمة للتراجع وتزال بعد التأكيد.",
+              "default": "restore-snapshot",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "optimisticScope",
+            "rollbackMode",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-012": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "conflictStrategy": {
+              "type": "string",
+              "description": "لا تستخدم last-write-wins ضمنيًا عندما يسبب فقد بيانات.",
+              "default": "detect-and-resolve",
+              "minLength": 1
+            },
+            "mergeMode": {
+              "type": "string",
+              "description": "auto فقط لحقول يمكن إثبات استقلالها؛ غير ذلك يحتاج قرار مستخدم.",
+              "default": "field-aware",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "conflictStrategy",
+            "mergeMode",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-013": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "selectionScope": {
+              "type": "string",
+              "description": "page أو filtered-results أو explicit-ids ويظهر للمستخدم.",
+              "default": "explicit",
+              "minLength": 1
+            },
+            "maxBatchSize": {
+              "type": "integer",
+              "description": "حد افتراضي يتوافق مع الخادم؛ فوقه يتحول إلى job عند الحاجة.",
+              "default": 100,
+              "minimum": 0
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "selectionScope",
+            "maxBatchSize",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-014": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "progressTransport": {
+              "type": "string",
+              "description": "يختار وفق البنية؛ لا يفترض WebSocket.",
+              "default": "poll-or-event",
+              "minLength": 1
+            },
+            "cancelPolicy": {
+              "type": "string",
+              "description": "يعرض الإلغاء فقط إذا كان backend يدعم إيقافًا آمنًا.",
+              "default": "capability-driven",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "progressTransport",
+            "cancelPolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-015": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "offlineQueue": {
+              "type": "string",
+              "description": "لا تُصف كل أوامر الكتابة؛ تُسمح أوامر محددة قابلة للمزامنة.",
+              "default": "explicit-allowlist",
+              "minLength": 1
+            },
+            "syncPolicy": {
+              "type": "string",
+              "description": "إعادة الاتصال تعيد التحقق من الصلاحية والإصدار قبل تطبيق الأوامر.",
+              "default": "revalidate-and-resolve",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "offlineQueue",
+            "syncPolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-016": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "warningSeconds": {
+              "type": "integer",
+              "description": "إن كان النظام يستطيع التنبؤ بانتهاء الجلسة؛ لا يعرض عدادًا غير موثوق.",
+              "default": 120,
+              "minimum": 0
+            },
+            "reauthMode": {
+              "type": "string",
+              "description": "silent-refresh أو password/passkey/MFA حسب سياسة الهوية.",
+              "default": "policy-driven",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "warningSeconds",
+            "reauthMode",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-017": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "revocationBehavior": {
+              "type": "string",
+              "description": "يوقف الأوامر الجديدة ويزيل البيانات غير المسموحة دون تخريب سجل تدقيق.",
+              "default": "immediate-safe",
+              "minLength": 1
+            },
+            "refreshPolicy": {
+              "type": "string",
+              "description": "event إن توفر أو عند حدود حساسة؛ لا يفترض realtime.",
+              "default": "event-or-boundary",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "revocationBehavior",
+            "refreshPolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-018": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "assuranceLevel": {
+              "type": "string",
+              "description": "يحدد مستوى أو وسيلة مطلوبة من سياسة الهوية لا من المكوّن.",
+              "default": "policy-defined",
+              "minLength": 1
+            },
+            "gracePeriodSeconds": {
+              "type": "integer",
+              "description": "فترة إعادة استخدام المصادقة الحديثة إن سمحت السياسة والإجراء.",
+              "default": 300,
+              "minimum": 0
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "assuranceLevel",
+            "gracePeriodSeconds",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-019": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "idempotencyScope": {
+              "type": "string",
+              "description": "المفتاح مرتبط بقصد عمل واحد لا بالمستخدم عمومًا.",
+              "default": "command-intent",
+              "minLength": 1
+            },
+            "keyLifetimeSeconds": {
+              "type": "integer",
+              "description": "يعكس نافذة المصدر؛ لا يعاد استخدام المفتاح لقصد جديد.",
+              "default": 86400,
+              "minimum": 0
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "idempotencyScope",
+            "keyLifetimeSeconds",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-020": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "undoWindowSeconds": {
+              "type": "integer",
+              "description": "نافذة مرجعية قابلة للتعديل حسب أثر الفعل.",
+              "default": 10,
+              "minimum": 0
+            },
+            "undoScope": {
+              "type": "string",
+              "description": "يرتبط Undo بالعملية المحددة لا بأي عملية أحدث بشكل ملتبس.",
+              "default": "single-intent",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "undoWindowSeconds",
+            "undoScope",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-021": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "resultStateMode": {
+              "type": "string",
+              "description": "كل نتيجة ترتبط بنسخة query لمنع الاستجابة القديمة.",
+              "default": "query-versioned",
+              "minLength": 1
+            },
+            "queryPersistence": {
+              "type": "string",
+              "description": "لا تحفظ استعلامات حساسة في URL/history دون allowlist.",
+              "default": "safe-url-or-session",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "resultStateMode",
+            "queryPersistence",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-022": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "transactionBoundary": {
+              "type": "string",
+              "description": "يحدد ما يحفظ بين الخطوات وما لا يصبح نهائيًا إلا في commit.",
+              "default": "domain-defined",
+              "minLength": 1
+            },
+            "resumePolicy": {
+              "type": "string",
+              "description": "استئناف المسار يعيد التحقق من القواعد والصلاحيات المتغيرة.",
+              "default": "revalidate",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "transactionBoundary",
+            "resumePolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-023": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "recoveryPrompt": {
+              "type": "string",
+              "description": "لا يزعج المستخدم إذا كانت المسودة مساوية للحالة الحالية.",
+              "default": "when-diverged",
+              "minLength": 1
+            },
+            "draftRetentionHours": {
+              "type": "integer",
+              "description": "يتوافق مع سياسة الاحتفاظ ونوع البيانات.",
+              "default": 168,
+              "minimum": 0
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "recoveryPrompt",
+            "draftRetentionHours",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        },
+        "VCGF-UI-INT-024": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "contextScope": {
+              "type": "string",
+              "description": "يحفظ فقط الحالة التي تساعد المهمة ولا يسجل بيانات حساسة عشوائيًا.",
+              "default": "route-task",
+              "minLength": 1
+            },
+            "restorePolicy": {
+              "type": "string",
+              "description": "يتحقق من صلاحية المرشح والسجل والصفحة قبل الاستعادة.",
+              "default": "validate-then-restore",
+              "minLength": 1
+            },
+            "revalidateAuthority": {
+              "type": "boolean",
+              "description": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق.",
+              "default": true
+            },
+            "preserveContextOnFailure": {
+              "type": "boolean",
+              "description": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار.",
+              "default": true
+            },
+            "auditLevel": {
+              "type": "string",
+              "description": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "telemetryMode": {
+              "type": "string",
+              "description": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة.",
+              "default": "privacy-aware",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "contextScope",
+            "restorePolicy",
+            "revalidateAuthority",
+            "preserveContextOnFailure",
+            "auditLevel",
+            "telemetryMode"
+          ]
+        }
+      },
+      "required": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-004",
+        "VCGF-UI-INT-005",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-008",
+        "VCGF-UI-INT-009",
+        "VCGF-UI-INT-010",
+        "VCGF-UI-INT-011",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-013",
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-020",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-022",
+        "VCGF-UI-INT-023",
+        "VCGF-UI-INT-024"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "enabledInteractions",
+    "interactionDefaults"
+  ]
+}

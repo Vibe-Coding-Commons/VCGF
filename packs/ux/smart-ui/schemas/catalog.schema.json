@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Smart UI package catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "package_version": {
+      "const": "1.0.0"
+    },
+    "target_framework": {
+      "const": "VCGF"
+    },
+    "target_framework_version": {
+      "const": "1.3.0"
+    },
+    "status": {
+      "enum": [
+        "integration-candidate",
+        "final-integration-candidate"
+      ]
+    },
+    "dependency_semantics": {
+      "const": "review-relationships-not-automatic-activation"
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^VCGF-UI-COMP-[0-9]{3}$"
+          },
+          "component": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2"
+            ]
+          },
+          "version": {
+            "enum": [
+              "0.2.0",
+              "0.3.0"
+            ]
+          },
+          "status": {
+            "enum": [
+              "integration-candidate",
+              "final-integration-candidate"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "applies_when": {
+            "type": "string",
+            "minLength": 1
+          },
+          "not_applicable_when": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "VCGF-UI-COMP-001",
+                "VCGF-UI-COMP-002",
+                "VCGF-UI-COMP-003",
+                "VCGF-UI-COMP-004",
+                "VCGF-UI-COMP-005",
+                "VCGF-UI-COMP-006",
+                "VCGF-UI-COMP-007",
+                "VCGF-UI-COMP-008",
+                "VCGF-UI-COMP-009",
+                "VCGF-UI-COMP-010",
+                "VCGF-UI-COMP-011",
+                "VCGF-UI-COMP-012",
+                "VCGF-UI-COMP-013",
+                "VCGF-UI-COMP-014",
+                "VCGF-UI-COMP-015",
+                "VCGF-UI-COMP-016",
+                "VCGF-UI-COMP-017",
+                "VCGF-UI-COMP-018",
+                "VCGF-UI-COMP-019",
+                "VCGF-UI-COMP-020",
+                "VCGF-UI-COMP-021",
+                "VCGF-UI-COMP-022",
+                "VCGF-UI-COMP-023",
+                "VCGF-UI-COMP-024",
+                "VCGF-UI-COMP-025",
+                "VCGF-UI-COMP-026",
+                "VCGF-UI-COMP-027",
+                "VCGF-UI-COMP-028",
+                "VCGF-UI-COMP-029",
+                "VCGF-UI-COMP-030",
+                "VCGF-UI-COMP-031",
+                "VCGF-UI-COMP-032",
+                "VCGF-UI-COMP-033",
+                "VCGF-UI-COMP-034",
+                "VCGF-UI-COMP-035",
+                "VCGF-UI-COMP-036"
+              ]
+            }
+          },
+          "external_dependencies": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "calendar",
+                "searchable_select"
+              ]
+            }
+          },
+          "package_ids": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "SHADCN",
+                "RADIX",
+                "REACT_ARIA",
+                "TANSTACK_TABLE",
+                "TANSTACK_QUERY",
+                "AG_GRID",
+                "REACT_HOOK_FORM",
+                "ZOD",
+                "TANSTACK_FORM",
+                "NUQS",
+                "UPPY",
+                "FILEPOND",
+                "REACT_DROPZONE",
+                "PDFJS",
+                "REACT_PDF",
+                "SONNER",
+                "REACT_ROUTER",
+                "REACT_ARIA_TREE",
+                "MUI_TREE",
+                "XSTATE",
+                "CASL",
+                "LARAVEL_AUTH",
+                "TIPTAP",
+                "LEXICAL",
+                "CKEDITOR",
+                "CMDK",
+                "REACT_FLOW",
+                "JSONDIFFPATCH",
+                "REACT_NUMBER_FORMAT",
+                "DECIMALJS",
+                "PHONE_INPUT",
+                "LIBPHONENUMBER",
+                "INPUT_OTP",
+                "PAPA_PARSE",
+                "EXCELJS",
+                "LARAVEL_EXCEL",
+                "ECHARTS",
+                "RECHARTS",
+                "CHARTJS",
+                "DNDKIT",
+                "FULLCALENDAR",
+                "REACT_BIG_CALENDAR",
+                "IDB",
+                "RESIZABLE_PANELS"
+              ]
+            },
+            "minItems": 1
+          },
+          "settings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "enum": [
+                    "string",
+                    "integer",
+                    "boolean",
+                    "array"
+                  ]
+                },
+                "default": {},
+                "scope": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "constraints": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "key",
+                "type",
+                "default",
+                "scope",
+                "constraints"
+              ]
+            },
+            "minItems": 8,
+            "maxItems": 8
+          },
+          "requirement_count": {
+            "const": 12
+          },
+          "acceptance_count": {
+            "const": 12
+          }
+        },
+        "required": [
+          "id",
+          "component",
+          "title",
+          "priority",
+          "version",
+          "status",
+          "path",
+          "purpose",
+          "applies_when",
+          "not_applicable_when",
+          "dependencies",
+          "external_dependencies",
+          "package_ids",
+          "settings",
+          "requirement_count",
+          "acceptance_count"
+        ]
+      },
+      "minItems": 36,
+      "maxItems": 36
+    }
+  },
+  "required": [
+    "schema_version",
+    "package_version",
+    "target_framework",
+    "target_framework_version",
+    "status",
+    "dependency_semantics",
+    "components"
+  ]
+}

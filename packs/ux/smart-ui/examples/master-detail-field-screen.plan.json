@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "asset-inspection",
+  "selection_status": "selected",
+  "catalog_component_count": 36,
+  "interaction_pattern_count": 24,
+  "screen_composition_count": 20,
+  "journey_pattern_count": 18,
+  "selected_components": [
+    {
+      "standard_id": "VCGF-UI-COMP-002",
+      "decision": "required",
+      "matched_signals": [
+        "tabular_operational_data"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-002-SmartDataGrid.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-008",
+      "decision": "required",
+      "matched_signals": [
+        "async_feedback"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-008-UnifiedFeedbackSystem.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-025",
+      "decision": "required",
+      "matched_signals": [
+        "record_detail"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-025-SmartRecordDetailView.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-024"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    }
+  ],
+  "selected_interactions": [
+    {
+      "standard_id": "VCGF-UI-INT-003",
+      "decision": "recommended",
+      "matched_signals": [
+        "view_record"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-003-SmartViewRefreshFlow.md",
+      "review_components": [
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-015",
+      "decision": "recommended",
+      "matched_signals": [
+        "offline_required"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-015-OfflineReconnectSynchronization.md",
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-024",
+      "decision": "recommended",
+      "matched_signals": [
+        "preserve_navigation_context"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-024-NavigationContextPreservation.md",
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-030"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    }
+  ],
+  "selected_screen_compositions": [
+    {
+      "standard_id": "VCGF-UI-SCR-015",
+      "kind": "primary",
+      "decision": "required",
+      "matched_signals": [
+        "master_detail"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-015-MasterDetailExplorer.md",
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-024"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Highest explicit composition evidence; other layers remain independent."
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-019",
+      "kind": "modifier",
+      "decision": "recommended",
+      "matched_signals": [
+        "mobile_focused_task"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-019-MobileFocusedTask.md",
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Explicit adaptive modifier signal matched."
+    }
+  ],
+  "selected_journeys": [
+    {
+      "standard_id": "VCGF-UI-JRN-001",
+      "decision": "recommended",
+      "matched_signals": [
+        "list_to_detail_return"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "journeys/VCGF-UI-JRN-001-DiscoveryToDetailReturn.md",
+      "review_compositions": [
+        "VCGF-UI-SCR-006",
+        "VCGF-UI-SCR-002",
+        "VCGF-UI-SCR-003"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-030"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Explicit cross-screen journey signals matched; journey is independent of screen/component/interaction activation."
+    }
+  ],
+  "external_standards": [],
+  "compatibility_reviews": [],
+  "interaction_reviews": [],
+  "composition_reviews": [],
+  "journey_reviews": [],
+  "standards_to_load": [
+    "standards/VCGF-UI-COMP-002-SmartDataGrid.md",
+    "standards/VCGF-UI-COMP-008-UnifiedFeedbackSystem.md",
+    "standards/VCGF-UI-COMP-025-SmartRecordDetailView.md",
+    "interactions/VCGF-UI-INT-003-SmartViewRefreshFlow.md",
+    "interactions/VCGF-UI-INT-015-OfflineReconnectSynchronization.md",
+    "interactions/VCGF-UI-INT-024-NavigationContextPreservation.md",
+    "screen-compositions/VCGF-UI-SCR-015-MasterDetailExplorer.md",
+    "screen-compositions/VCGF-UI-SCR-019-MobileFocusedTask.md",
+    "journeys/VCGF-UI-JRN-001-DiscoveryToDetailReturn.md"
+  ],
+  "not_selected_component_count": 33,
+  "not_selected_interaction_count": 21,
+  "not_selected_screen_composition_count": 18,
+  "not_selected_journey_count": 17,
+  "composition_status": "selected",
+  "journey_status": "selected",
+  "orchestration": {
+    "primary_composition_id": "VCGF-UI-SCR-015",
+    "modifier_ids": [
+      "VCGF-UI-SCR-019"
+    ],
+    "density_policy": "comfortable",
+    "responsive_strategy": "mobile-primary-task",
+    "mobile_transform": "list-detail",
+    "large_screen_transform": "comparison-expansion",
+    "primary_action_limit": 1,
+    "progressive_disclosure": true,
+    "role_adaptation": "priority-only",
+    "preserve_task_context": true
+  },
+  "experience_orchestration": {
+    "entry_channel": "internal-navigation",
+    "completion_expectation": "return-origin",
+    "context_continuity": "task-scoped",
+    "selected_journey_ids": [
+      "VCGF-UI-JRN-001"
+    ],
+    "return_to_origin": "validate-then-return",
+    "deep_link_policy": "authorize-and-prerequisite-check",
+    "scope_change_policy": "invalidate-incompatible-context",
+    "runtime_evidence_required": true,
+    "cross_layer_auto_activation": false
+  },
+  "warnings": []
+}

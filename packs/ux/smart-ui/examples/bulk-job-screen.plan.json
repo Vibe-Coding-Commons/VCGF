@@ -1,0 +1,290 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "ops-bulk",
+  "screen_id": "bulk-export",
+  "selection_status": "selected",
+  "catalog_component_count": 36,
+  "interaction_pattern_count": 24,
+  "screen_composition_count": 20,
+  "journey_pattern_count": 18,
+  "selected_components": [
+    {
+      "standard_id": "VCGF-UI-COMP-002",
+      "decision": "required",
+      "matched_signals": [
+        "tabular_operational_data"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-002-SmartDataGrid.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-019",
+      "decision": "required",
+      "matched_signals": [
+        "data_export"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-019-DataImportExportWizard.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-017"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-031",
+      "decision": "required",
+      "matched_signals": [
+        "contextual_actions"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-031-SmartContextualActionBar.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    }
+  ],
+  "selected_interactions": [
+    {
+      "standard_id": "VCGF-UI-INT-007",
+      "decision": "recommended",
+      "matched_signals": [
+        "confirmation_needed"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-007-ConfirmationDecisionPattern.md",
+      "review_components": [
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-013",
+      "decision": "required",
+      "matched_signals": [
+        "bulk_action"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-013-BulkActionExecution.md",
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-019"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-014",
+      "decision": "recommended",
+      "matched_signals": [
+        "long_running_job"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-014-LongRunningOperationProgress.md",
+      "review_components": [
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-029",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-019",
+      "decision": "required",
+      "matched_signals": [
+        "idempotency_required"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-019-IdempotentSubmissionProtection.md",
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    }
+  ],
+  "selected_screen_compositions": [
+    {
+      "standard_id": "VCGF-UI-SCR-017",
+      "kind": "primary",
+      "decision": "required",
+      "matched_signals": [
+        "import_export_operation"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-017-ImportExportOperation.md",
+      "review_components": [
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-010",
+        "VCGF-UI-INT-022"
+      ],
+      "reason": "Highest explicit composition evidence; other layers remain independent."
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-020",
+      "kind": "modifier",
+      "decision": "recommended",
+      "matched_signals": [
+        "large_screen_operations"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-020-LargeScreenOperations.md",
+      "review_components": [
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-002"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-009"
+      ],
+      "reason": "Explicit adaptive modifier signal matched."
+    }
+  ],
+  "selected_journeys": [
+    {
+      "standard_id": "VCGF-UI-JRN-007",
+      "decision": "required",
+      "matched_signals": [
+        "bulk_select_act_review"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "journeys/VCGF-UI-JRN-007-BulkSelectActReview.md",
+      "review_compositions": [
+        "VCGF-UI-SCR-002",
+        "VCGF-UI-SCR-017"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-013",
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Explicit cross-screen journey signals matched; journey is independent of screen/component/interaction activation."
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-017",
+      "decision": "required",
+      "matched_signals": [
+        "long_running_leave_return"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "journeys/VCGF-UI-JRN-017-LongRunningLeaveReturn.md",
+      "review_compositions": [
+        "VCGF-UI-SCR-017",
+        "VCGF-UI-SCR-011"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-010",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Explicit cross-screen journey signals matched; journey is independent of screen/component/interaction activation."
+    }
+  ],
+  "external_standards": [],
+  "compatibility_reviews": [],
+  "interaction_reviews": [
+    {
+      "left": "VCGF-UI-INT-013",
+      "right": "VCGF-UI-INT-014",
+      "relation_type": "specialization",
+      "severity": "info",
+      "rule": "الإجراء الجماعي الكبير قد يتحول إلى Job طويل؛ لا يبقى طلبًا متزامنًا بلا حد."
+    }
+  ],
+  "composition_reviews": [],
+  "journey_reviews": [
+    {
+      "left": "VCGF-UI-JRN-007",
+      "right": "VCGF-UI-JRN-017",
+      "relation_type": "complementary",
+      "severity": "info",
+      "rule": "العملية الجماعية قد تصبح طويلة؛ ربطهما يحتاج Job contract ولا يعني تفعيلًا تلقائيًا."
+    }
+  ],
+  "standards_to_load": [
+    "standards/VCGF-UI-COMP-002-SmartDataGrid.md",
+    "standards/VCGF-UI-COMP-019-DataImportExportWizard.md",
+    "standards/VCGF-UI-COMP-031-SmartContextualActionBar.md",
+    "interactions/VCGF-UI-INT-007-ConfirmationDecisionPattern.md",
+    "interactions/VCGF-UI-INT-013-BulkActionExecution.md",
+    "interactions/VCGF-UI-INT-014-LongRunningOperationProgress.md",
+    "interactions/VCGF-UI-INT-019-IdempotentSubmissionProtection.md",
+    "screen-compositions/VCGF-UI-SCR-017-ImportExportOperation.md",
+    "screen-compositions/VCGF-UI-SCR-020-LargeScreenOperations.md",
+    "journeys/VCGF-UI-JRN-007-BulkSelectActReview.md",
+    "journeys/VCGF-UI-JRN-017-LongRunningLeaveReturn.md"
+  ],
+  "not_selected_component_count": 33,
+  "not_selected_interaction_count": 20,
+  "not_selected_screen_composition_count": 18,
+  "not_selected_journey_count": 16,
+  "composition_status": "selected",
+  "journey_status": "selected",
+  "orchestration": {
+    "primary_composition_id": "VCGF-UI-SCR-017",
+    "modifier_ids": [
+      "VCGF-UI-SCR-020"
+    ],
+    "density_policy": "compact",
+    "responsive_strategy": "large-screen-context",
+    "mobile_transform": "task-preserving-reflow",
+    "large_screen_transform": "controlled-regions",
+    "primary_action_limit": 1,
+    "progressive_disclosure": true,
+    "role_adaptation": "priority-only",
+    "preserve_task_context": true
+  },
+  "experience_orchestration": {
+    "entry_channel": "internal-navigation",
+    "completion_expectation": "return-origin",
+    "context_continuity": "task-scoped",
+    "selected_journey_ids": [
+      "VCGF-UI-JRN-007",
+      "VCGF-UI-JRN-017"
+    ],
+    "return_to_origin": "validate-then-return",
+    "deep_link_policy": "authorize-and-prerequisite-check",
+    "scope_change_policy": "invalidate-incompatible-context",
+    "runtime_evidence_required": true,
+    "cross_layer_auto_activation": false
+  },
+  "warnings": []
+}

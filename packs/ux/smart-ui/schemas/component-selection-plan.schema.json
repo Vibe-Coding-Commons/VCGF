@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Smart UI final orchestration plan",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "screen_id": {
+      "type": "string"
+    },
+    "selection_status": {
+      "enum": [
+        "no_ui",
+        "selected",
+        "needs_review"
+      ]
+    },
+    "catalog_component_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "interaction_pattern_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "screen_composition_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "journey_pattern_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "selected_components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "standard_id": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional"
+            ]
+          },
+          "matched_signals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "implementation_action": {
+            "enum": [
+              "reuse",
+              "extend",
+              "wrap",
+              "replace",
+              "build_new",
+              "verify_first"
+            ]
+          },
+          "standard_path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "standard_id",
+          "decision",
+          "matched_signals",
+          "implementation_action",
+          "standard_path",
+          "reason"
+        ]
+      }
+    },
+    "selected_interactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "standard_id": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional"
+            ]
+          },
+          "matched_signals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "implementation_action": {
+            "enum": [
+              "reuse",
+              "extend",
+              "wrap",
+              "replace",
+              "build_new",
+              "verify_first"
+            ]
+          },
+          "standard_path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "standard_id",
+          "decision",
+          "matched_signals",
+          "implementation_action",
+          "standard_path",
+          "reason"
+        ]
+      }
+    },
+    "selected_screen_compositions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "standard_id": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional"
+            ]
+          },
+          "matched_signals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "implementation_action": {
+            "enum": [
+              "reuse",
+              "extend",
+              "wrap",
+              "replace",
+              "build_new",
+              "verify_first"
+            ]
+          },
+          "standard_path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "standard_id",
+          "decision",
+          "matched_signals",
+          "implementation_action",
+          "standard_path",
+          "reason"
+        ]
+      }
+    },
+    "selected_journeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "standard_id": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional"
+            ]
+          },
+          "matched_signals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "implementation_action": {
+            "enum": [
+              "reuse",
+              "extend",
+              "wrap",
+              "replace",
+              "build_new",
+              "verify_first"
+            ]
+          },
+          "standard_path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "standard_id",
+          "decision",
+          "matched_signals",
+          "implementation_action",
+          "standard_path",
+          "reason"
+        ]
+      }
+    },
+    "external_standards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "standard_id": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional"
+            ]
+          },
+          "matched_signals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "standard_path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "standard_id",
+          "decision",
+          "matched_signals",
+          "standard_path",
+          "reason"
+        ]
+      }
+    },
+    "compatibility_reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "left": {
+            "type": "string"
+          },
+          "right": {
+            "type": "string"
+          },
+          "relation_type": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "review"
+            ]
+          },
+          "rule": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "left",
+          "right",
+          "relation_type",
+          "severity",
+          "rule"
+        ]
+      }
+    },
+    "interaction_reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "left": {
+            "type": "string"
+          },
+          "right": {
+            "type": "string"
+          },
+          "relation_type": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "review"
+            ]
+          },
+          "rule": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "left",
+          "right",
+          "relation_type",
+          "severity",
+          "rule"
+        ]
+      }
+    },
+    "composition_reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "left": {
+            "type": "string"
+          },
+          "right": {
+            "type": "string"
+          },
+          "relation_type": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "review"
+            ]
+          },
+          "rule": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "left",
+          "right",
+          "relation_type",
+          "severity",
+          "rule"
+        ]
+      }
+    },
+    "journey_reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "left": {
+            "type": "string"
+          },
+          "right": {
+            "type": "string"
+          },
+          "relation_type": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "review"
+            ]
+          },
+          "rule": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "left",
+          "right",
+          "relation_type",
+          "severity",
+          "rule"
+        ]
+      }
+    },
+    "standards_to_load": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "not_selected_component_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "not_selected_interaction_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "not_selected_screen_composition_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "not_selected_journey_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "composition_status": {
+      "enum": [
+        "no_ui",
+        "selected",
+        "needs_review",
+        "not_selected"
+      ]
+    },
+    "journey_status": {
+      "enum": [
+        "no_ui",
+        "selected",
+        "needs_review",
+        "not_selected"
+      ]
+    },
+    "orchestration": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "experience_orchestration": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "screen_id",
+    "selection_status",
+    "catalog_component_count",
+    "interaction_pattern_count",
+    "screen_composition_count",
+    "journey_pattern_count",
+    "selected_components",
+    "selected_interactions",
+    "selected_screen_compositions",
+    "selected_journeys",
+    "external_standards",
+    "compatibility_reviews",
+    "interaction_reviews",
+    "composition_reviews",
+    "journey_reviews",
+    "standards_to_load",
+    "not_selected_component_count",
+    "not_selected_interaction_count",
+    "not_selected_screen_composition_count",
+    "not_selected_journey_count",
+    "composition_status",
+    "journey_status",
+    "orchestration",
+    "experience_orchestration",
+    "warnings"
+  ]
+}

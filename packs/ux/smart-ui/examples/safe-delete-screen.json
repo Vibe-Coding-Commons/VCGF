@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "sensitive-admin",
+  "screen_id": "record-delete",
+  "screen_purpose": "حذف سجل حساس بعد تأكيد مناسب ورفع مستوى المصادقة",
+  "has_ui": true,
+  "signals": [
+    "record_detail",
+    "contextual_actions",
+    "permission_sensitive_actions"
+  ],
+  "interaction_signals": [
+    "delete_record",
+    "confirmation_needed",
+    "step_up_required"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "desktop",
+    "mobile"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": "يجب ألا يفعّل Undo لأن الحذف غير قابل للعكس في هذا المثال.",
+  "risk_level": "critical",
+  "data_volume": "small",
+  "offline_required": false,
+  "composition_signals": [
+    "record_workspace"
+  ],
+  "user_roles": [
+    "admin"
+  ],
+  "task_frequency": "regular",
+  "information_density": "adaptive",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "return-origin",
+  "context_continuity": "task-scoped"
+}

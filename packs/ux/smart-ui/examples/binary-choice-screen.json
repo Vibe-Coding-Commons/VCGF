@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "simple-settings",
+  "screen_id": "toggle-setting",
+  "screen_purpose": "تفعيل أو تعطيل خيار ثنائي فقط",
+  "has_ui": true,
+  "signals": [
+    "searchable_choice",
+    "binary_choice_only"
+  ],
+  "interaction_signals": [],
+  "languages": [
+    "ar-SA"
+  ],
+  "directions": [
+    "rtl"
+  ],
+  "devices": [
+    "mobile",
+    "desktop"
+  ],
+  "tenant_scoped": false,
+  "sensitive_data": false,
+  "existing_capabilities": [],
+  "notes": "وجود searchable_choice مع binary_choice_only يجب ألا يفعّل Searchable Select.",
+  "risk_level": "medium",
+  "data_volume": "unknown",
+  "offline_required": false,
+  "composition_signals": [],
+  "user_roles": [
+    "admin"
+  ],
+  "task_frequency": "regular",
+  "information_density": "low",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "unknown",
+  "context_continuity": "task-scoped"
+}

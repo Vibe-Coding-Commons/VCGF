@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "api-only",
+  "screen_id": "none",
+  "screen_purpose": "خدمة خلفية بلا واجهة مستخدم",
+  "has_ui": false,
+  "signals": [],
+  "interaction_signals": [],
+  "languages": [
+    "ar-SA"
+  ],
+  "directions": [
+    "rtl"
+  ],
+  "devices": [],
+  "tenant_scoped": true,
+  "sensitive_data": false,
+  "existing_capabilities": [],
+  "notes": "يجب ألا يحمل أي معيار مكوّن واجهة.",
+  "risk_level": "medium",
+  "data_volume": "unknown",
+  "offline_required": false,
+  "composition_signals": [],
+  "user_roles": [],
+  "task_frequency": "occasional",
+  "information_density": "adaptive",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "unknown",
+  "context_continuity": "task-scoped"
+}

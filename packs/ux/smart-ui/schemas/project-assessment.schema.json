@@ -1,0 +1,352 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Smart UI project assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "assessment_status": {
+      "enum": [
+        "template",
+        "draft",
+        "reviewed"
+      ]
+    },
+    "assessed_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "components": {
+      "type": "array",
+      "minItems": 36,
+      "maxItems": 36,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "component_id": {
+            "enum": [
+              "VCGF-UI-COMP-001",
+              "VCGF-UI-COMP-002",
+              "VCGF-UI-COMP-003",
+              "VCGF-UI-COMP-004",
+              "VCGF-UI-COMP-005",
+              "VCGF-UI-COMP-006",
+              "VCGF-UI-COMP-007",
+              "VCGF-UI-COMP-008",
+              "VCGF-UI-COMP-009",
+              "VCGF-UI-COMP-010",
+              "VCGF-UI-COMP-011",
+              "VCGF-UI-COMP-012",
+              "VCGF-UI-COMP-013",
+              "VCGF-UI-COMP-014",
+              "VCGF-UI-COMP-015",
+              "VCGF-UI-COMP-016",
+              "VCGF-UI-COMP-017",
+              "VCGF-UI-COMP-018",
+              "VCGF-UI-COMP-019",
+              "VCGF-UI-COMP-020",
+              "VCGF-UI-COMP-021",
+              "VCGF-UI-COMP-022",
+              "VCGF-UI-COMP-023",
+              "VCGF-UI-COMP-024",
+              "VCGF-UI-COMP-025",
+              "VCGF-UI-COMP-026",
+              "VCGF-UI-COMP-027",
+              "VCGF-UI-COMP-028",
+              "VCGF-UI-COMP-029",
+              "VCGF-UI-COMP-030",
+              "VCGF-UI-COMP-031",
+              "VCGF-UI-COMP-032",
+              "VCGF-UI-COMP-033",
+              "VCGF-UI-COMP-034",
+              "VCGF-UI-COMP-035",
+              "VCGF-UI-COMP-036"
+            ]
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional",
+              "not_applicable",
+              "unknown"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "component_id",
+          "decision",
+          "reason",
+          "evidence_refs",
+          "owner"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "decision": {
+                  "enum": [
+                    "required",
+                    "recommended",
+                    "optional",
+                    "not_applicable"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_refs": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "interactions": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "interaction_id": {
+            "enum": [
+              "VCGF-UI-INT-001",
+              "VCGF-UI-INT-002",
+              "VCGF-UI-INT-003",
+              "VCGF-UI-INT-004",
+              "VCGF-UI-INT-005",
+              "VCGF-UI-INT-006",
+              "VCGF-UI-INT-007",
+              "VCGF-UI-INT-008",
+              "VCGF-UI-INT-009",
+              "VCGF-UI-INT-010",
+              "VCGF-UI-INT-011",
+              "VCGF-UI-INT-012",
+              "VCGF-UI-INT-013",
+              "VCGF-UI-INT-014",
+              "VCGF-UI-INT-015",
+              "VCGF-UI-INT-016",
+              "VCGF-UI-INT-017",
+              "VCGF-UI-INT-018",
+              "VCGF-UI-INT-019",
+              "VCGF-UI-INT-020",
+              "VCGF-UI-INT-021",
+              "VCGF-UI-INT-022",
+              "VCGF-UI-INT-023",
+              "VCGF-UI-INT-024"
+            ]
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional",
+              "not_applicable",
+              "unknown"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "interaction_id",
+          "decision",
+          "reason",
+          "evidence_refs",
+          "owner"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "decision": {
+                  "enum": [
+                    "required",
+                    "recommended",
+                    "optional",
+                    "not_applicable"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_refs": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "screen_compositions": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "composition_id": {
+            "enum": [
+              "VCGF-UI-SCR-001",
+              "VCGF-UI-SCR-002",
+              "VCGF-UI-SCR-003",
+              "VCGF-UI-SCR-004",
+              "VCGF-UI-SCR-005",
+              "VCGF-UI-SCR-006",
+              "VCGF-UI-SCR-007",
+              "VCGF-UI-SCR-008",
+              "VCGF-UI-SCR-009",
+              "VCGF-UI-SCR-010",
+              "VCGF-UI-SCR-011",
+              "VCGF-UI-SCR-012",
+              "VCGF-UI-SCR-013",
+              "VCGF-UI-SCR-014",
+              "VCGF-UI-SCR-015",
+              "VCGF-UI-SCR-016",
+              "VCGF-UI-SCR-017",
+              "VCGF-UI-SCR-018",
+              "VCGF-UI-SCR-019",
+              "VCGF-UI-SCR-020"
+            ]
+          },
+          "decision": {
+            "enum": [
+              "required",
+              "recommended",
+              "optional",
+              "not_applicable",
+              "unknown"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "composition_id",
+          "decision",
+          "reason",
+          "evidence_refs",
+          "owner"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "decision": {
+                  "enum": [
+                    "required",
+                    "recommended",
+                    "optional",
+                    "not_applicable"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_refs": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "assessment_status",
+    "assessed_by",
+    "components",
+    "interactions",
+    "screen_compositions"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "assessment_status": {
+            "const": "reviewed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assessed_by": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Application acceptance evidence record",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "record_type": {
+      "const": "application-test"
+    },
+    "standard_kind": {
+      "enum": [
+        "component",
+        "interaction",
+        "screen-composition"
+      ]
+    },
+    "standard_id": {
+      "enum": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-006",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-010",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-013",
+        "VCGF-UI-COMP-014",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-017",
+        "VCGF-UI-COMP-018",
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-021",
+        "VCGF-UI-COMP-022",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-026",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-028",
+        "VCGF-UI-COMP-029",
+        "VCGF-UI-COMP-030",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-032",
+        "VCGF-UI-COMP-033",
+        "VCGF-UI-COMP-034",
+        "VCGF-UI-COMP-035",
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-004",
+        "VCGF-UI-INT-005",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-008",
+        "VCGF-UI-INT-009",
+        "VCGF-UI-INT-010",
+        "VCGF-UI-INT-011",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-013",
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-020",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-022",
+        "VCGF-UI-INT-023",
+        "VCGF-UI-INT-024",
+        "VCGF-UI-SCR-001",
+        "VCGF-UI-SCR-002",
+        "VCGF-UI-SCR-003",
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-005",
+        "VCGF-UI-SCR-006",
+        "VCGF-UI-SCR-007",
+        "VCGF-UI-SCR-008",
+        "VCGF-UI-SCR-009",
+        "VCGF-UI-SCR-010",
+        "VCGF-UI-SCR-011",
+        "VCGF-UI-SCR-012",
+        "VCGF-UI-SCR-013",
+        "VCGF-UI-SCR-014",
+        "VCGF-UI-SCR-015",
+        "VCGF-UI-SCR-016",
+        "VCGF-UI-SCR-017",
+        "VCGF-UI-SCR-018",
+        "VCGF-UI-SCR-019",
+        "VCGF-UI-SCR-020"
+      ]
+    },
+    "acceptance_id": {
+      "type": "string",
+      "pattern": "^VCGF-UI-(COMP|INT|SCR)-[0-9]{3}-AC[0-9]{2}$"
+    },
+    "status": {
+      "enum": [
+        "not_run",
+        "pass",
+        "fail",
+        "blocked"
+      ]
+    },
+    "executed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "environment": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_type",
+    "standard_kind",
+    "standard_id",
+    "acceptance_id",
+    "status",
+    "executed_at",
+    "environment",
+    "revision",
+    "evidence_paths",
+    "notes"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "standard_kind": {
+            "const": "component"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "standard_id": {
+            "enum": [
+              "VCGF-UI-COMP-001",
+              "VCGF-UI-COMP-002",
+              "VCGF-UI-COMP-003",
+              "VCGF-UI-COMP-004",
+              "VCGF-UI-COMP-005",
+              "VCGF-UI-COMP-006",
+              "VCGF-UI-COMP-007",
+              "VCGF-UI-COMP-008",
+              "VCGF-UI-COMP-009",
+              "VCGF-UI-COMP-010",
+              "VCGF-UI-COMP-011",
+              "VCGF-UI-COMP-012",
+              "VCGF-UI-COMP-013",
+              "VCGF-UI-COMP-014",
+              "VCGF-UI-COMP-015",
+              "VCGF-UI-COMP-016",
+              "VCGF-UI-COMP-017",
+              "VCGF-UI-COMP-018",
+              "VCGF-UI-COMP-019",
+              "VCGF-UI-COMP-020",
+              "VCGF-UI-COMP-021",
+              "VCGF-UI-COMP-022",
+              "VCGF-UI-COMP-023",
+              "VCGF-UI-COMP-024",
+              "VCGF-UI-COMP-025",
+              "VCGF-UI-COMP-026",
+              "VCGF-UI-COMP-027",
+              "VCGF-UI-COMP-028",
+              "VCGF-UI-COMP-029",
+              "VCGF-UI-COMP-030",
+              "VCGF-UI-COMP-031",
+              "VCGF-UI-COMP-032",
+              "VCGF-UI-COMP-033",
+              "VCGF-UI-COMP-034",
+              "VCGF-UI-COMP-035",
+              "VCGF-UI-COMP-036"
+            ]
+          },
+          "acceptance_id": {
+            "pattern": "^VCGF-UI-COMP-[0-9]{3}-AC[0-9]{2}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "standard_kind": {
+            "const": "interaction"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "standard_id": {
+            "enum": [
+              "VCGF-UI-INT-001",
+              "VCGF-UI-INT-002",
+              "VCGF-UI-INT-003",
+              "VCGF-UI-INT-004",
+              "VCGF-UI-INT-005",
+              "VCGF-UI-INT-006",
+              "VCGF-UI-INT-007",
+              "VCGF-UI-INT-008",
+              "VCGF-UI-INT-009",
+              "VCGF-UI-INT-010",
+              "VCGF-UI-INT-011",
+              "VCGF-UI-INT-012",
+              "VCGF-UI-INT-013",
+              "VCGF-UI-INT-014",
+              "VCGF-UI-INT-015",
+              "VCGF-UI-INT-016",
+              "VCGF-UI-INT-017",
+              "VCGF-UI-INT-018",
+              "VCGF-UI-INT-019",
+              "VCGF-UI-INT-020",
+              "VCGF-UI-INT-021",
+              "VCGF-UI-INT-022",
+              "VCGF-UI-INT-023",
+              "VCGF-UI-INT-024"
+            ]
+          },
+          "acceptance_id": {
+            "pattern": "^VCGF-UI-INT-[0-9]{3}-AC[0-9]{2}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "standard_kind": {
+            "const": "screen-composition"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "standard_id": {
+            "enum": [
+              "VCGF-UI-SCR-001",
+              "VCGF-UI-SCR-002",
+              "VCGF-UI-SCR-003",
+              "VCGF-UI-SCR-004",
+              "VCGF-UI-SCR-005",
+              "VCGF-UI-SCR-006",
+              "VCGF-UI-SCR-007",
+              "VCGF-UI-SCR-008",
+              "VCGF-UI-SCR-009",
+              "VCGF-UI-SCR-010",
+              "VCGF-UI-SCR-011",
+              "VCGF-UI-SCR-012",
+              "VCGF-UI-SCR-013",
+              "VCGF-UI-SCR-014",
+              "VCGF-UI-SCR-015",
+              "VCGF-UI-SCR-016",
+              "VCGF-UI-SCR-017",
+              "VCGF-UI-SCR-018",
+              "VCGF-UI-SCR-019",
+              "VCGF-UI-SCR-020"
+            ]
+          },
+          "acceptance_id": {
+            "pattern": "^VCGF-UI-SCR-[0-9]{3}-AC[0-9]{2}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "not_run"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "executed_at": {
+            "type": "null"
+          },
+          "evidence_paths": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "fail"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "executed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence_paths": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

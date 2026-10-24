@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "scope-switch",
+  "screen_purpose": "Switch organization scope and resume authorized work",
+  "has_ui": true,
+  "signals": [
+    "multi_section_app_navigation"
+  ],
+  "interaction_signals": [
+    "permission_change",
+    "preserve_navigation_context"
+  ],
+  "composition_signals": [
+    "settings_admin"
+  ],
+  "journey_signals": [
+    "scope_switch_resume"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "desktop"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": null,
+  "risk_level": "high",
+  "data_volume": "medium",
+  "offline_required": false,
+  "user_roles": [
+    "admin"
+  ],
+  "task_frequency": "regular",
+  "information_density": "medium",
+  "viewport_priority": "desktop-first",
+  "primary_input": "keyboard",
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "stay",
+  "context_continuity": "strict"
+}

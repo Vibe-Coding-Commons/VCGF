@@ -1,0 +1,1343 @@
+{
+  "package": "VCGF Smart UI, Interaction, Screen & Journey Standards",
+  "package_version": "1.0.0",
+  "target_framework": "VCGF 1.3.0 development",
+  "status": "final-integration-candidate",
+  "hash_algorithm": "sha256",
+  "exclusions": [
+    "SHA256SUMS.txt",
+    "manifest.json"
+  ],
+  "files": [
+    {
+      "path": "CATALOG.html",
+      "bytes": 103990,
+      "sha256": "d9373de6096df4b120be32fce1b1da803fba39a02f28a00ce52ef0a7c6800743"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 878,
+      "sha256": "381d9daaeb9e4cd6828a14c9e307b52ee7852fbc9dd8723f135f15099641327f"
+    },
+    {
+      "path": "INDEX.md",
+      "bytes": 13545,
+      "sha256": "a94d97744d81e00c7be6f899d206c20b548825065ee9f606792aec21d4072324"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 344,
+      "sha256": "a4e7507c4be8a224fea79a857259d3a29e5751faa4c5a1458de8aeff92f0449a"
+    },
+    {
+      "path": "README.ar.md",
+      "bytes": 2396,
+      "sha256": "023fd9cc147e1af161abeb7f802ca8094da611cdabfa5aac06286103e7ae5901"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2386,
+      "sha256": "eb180ec1fa70bf4cc0ed0d83234fe116ae5217d81575b33532caca18b3276f1d"
+    },
+    {
+      "path": "START-HERE-AR.md",
+      "bytes": 770,
+      "sha256": "0ddc7d8bde7e755c5f2a0bf7d6fd9230b853b4200063d0bf210b72aeb04e9468"
+    },
+    {
+      "path": "adapters/generic.md",
+      "bytes": 2373,
+      "sha256": "1cc0467fe4fbb1e33d23d78acb0d417d7c0154b6f918cec4eb061bed5e5081c5"
+    },
+    {
+      "path": "adapters/laravel-livewire.md",
+      "bytes": 2284,
+      "sha256": "305c36be3cf1d9176dab9c077b3d7bf41e3619601a36b45de390714a84a88e4f"
+    },
+    {
+      "path": "adapters/react-next-lovable.md",
+      "bytes": 2495,
+      "sha256": "0affb7000ec4e448f715f3b2190483b331091b732772326b8a6aa5da56fbb25d"
+    },
+    {
+      "path": "adapters/vanilla-legacy.md",
+      "bytes": 2327,
+      "sha256": "95b7116421066ba0a6046bcdda802c4417171f9c77d89c21dfdd6db359c2993e"
+    },
+    {
+      "path": "adapters/vue.md",
+      "bytes": 2226,
+      "sha256": "2600cbfac534ee800d6c8e5989a20a1315bba5e8f1fd446bdbe326cb33ccae83"
+    },
+    {
+      "path": "catalog/compatibility-matrix.json",
+      "bytes": 4250,
+      "sha256": "dccca5133738136953258882ccd83cc7e454b96d6cf6083f4208a6a62ae1ece6"
+    },
+    {
+      "path": "catalog/component-contracts.json",
+      "bytes": 41870,
+      "sha256": "4ada13ca4661c688607c2483c43ea0600c2fe410362a1ec1ff8bc5f6d734fabc"
+    },
+    {
+      "path": "catalog/interaction-compatibility-matrix.json",
+      "bytes": 5619,
+      "sha256": "a4351ecc9f9c1172eefd5f52469c54fbd6eb8143c34e7e5cac89955f0e1abea8"
+    },
+    {
+      "path": "catalog/interaction-contracts.json",
+      "bytes": 15288,
+      "sha256": "c04ff75695cff09c8afd6bf31042e1a4062a8bd5c10596a824ef1ee945c39998"
+    },
+    {
+      "path": "catalog/interaction-rules.json",
+      "bytes": 5677,
+      "sha256": "f2ad2b17c1d551eef7594962139f3ff72981b53e04e825a23fab2937136bab97"
+    },
+    {
+      "path": "catalog/journey-compatibility-matrix.json",
+      "bytes": 2725,
+      "sha256": "2ed52aeb72fb89879f6b2f29ce0dca7f8918af0cb3b3fdff6aa253d366358545"
+    },
+    {
+      "path": "catalog/journey-contracts.json",
+      "bytes": 11676,
+      "sha256": "350c317329f4d8dd807030fc2828539ffde1b9d7df0014298f9aeeea27bbc6c3"
+    },
+    {
+      "path": "catalog/journey-rules.json",
+      "bytes": 4620,
+      "sha256": "3cad41f0c1a82f71bf17a69c3703405e42fc9ce6a1057039bdee3de6341908cd"
+    },
+    {
+      "path": "catalog/screen-composition-compatibility-matrix.json",
+      "bytes": 3180,
+      "sha256": "612d295423a6028322b62cf37073d86c0b68f400bacc42c8154d1827aeb55b3b"
+    },
+    {
+      "path": "catalog/screen-composition-contracts.json",
+      "bytes": 13557,
+      "sha256": "a2126d859b767cbe48b9bad5d3b76b4a38ed626ed15ba958003a4fc2501381ef"
+    },
+    {
+      "path": "catalog/screen-composition-rules.json",
+      "bytes": 5142,
+      "sha256": "319b8a43393d59a50bbb08358b58cae064c5bac3a0f629c55a217560e0b8ab67"
+    },
+    {
+      "path": "catalog/selection-rules.json",
+      "bytes": 9260,
+      "sha256": "90456899e877a3b17b0b16fae208eacaba886515b5b183c2edc32909cf53f00d"
+    },
+    {
+      "path": "catalog.json",
+      "bytes": 129207,
+      "sha256": "f2b32b1439493a8000c64a13887f2ca8c7a0d74521e73c1dc81425e35ee16304"
+    },
+    {
+      "path": "config/central-settings.example.json",
+      "bytes": 12069,
+      "sha256": "301805370c0624ab84fd53ea7fe8d5692781bc4e329106afddbfb1ecc49069a3"
+    },
+    {
+      "path": "config/interaction-policy.example.json",
+      "bytes": 6306,
+      "sha256": "942b2dd54c9ac71ab28c3c86fd90a7cc9ff2ea07a7911b31765904d39dbbb871"
+    },
+    {
+      "path": "config/screen-orchestration-policy.example.json",
+      "bytes": 948,
+      "sha256": "e1212b827ab8e2708fcc9eab07a7c80e490ef74d2d79df8ae58a496f16bdaead"
+    },
+    {
+      "path": "examples/alternative-presentation-screen.json",
+      "bytes": 1147,
+      "sha256": "39909ec5fb0aa9fc34098b8a98c4d6a68350d7c90c5e742d8193ea0fda125fae"
+    },
+    {
+      "path": "examples/alternative-presentation-screen.plan.json",
+      "bytes": 5095,
+      "sha256": "e0f71f6aa5f576f462ec4a9125591f7219dd2c91da3dccea5f031b5de93b9f0d"
+    },
+    {
+      "path": "examples/approval-workspace-screen.json",
+      "bytes": 1237,
+      "sha256": "7c9398b1dae2291cf52c8aed13eb52b842f924ad4300dc3a298200eb2ed0db2c"
+    },
+    {
+      "path": "examples/approval-workspace-screen.plan.json",
+      "bytes": 8494,
+      "sha256": "cbab7a740e8326fe57c2874e560379b37c30aaa6096f0a9ead8edb019cabc88e"
+    },
+    {
+      "path": "examples/binary-choice-screen.json",
+      "bytes": 1020,
+      "sha256": "0083709099333e645836f26e848a9b00d785706aacd4bed0e23e9c0483674d89"
+    },
+    {
+      "path": "examples/binary-choice-screen.plan.json",
+      "bytes": 881,
+      "sha256": "09140e60a6d11970b67594625569d07ad8c855c6bf260355b3579d27b1d8d469"
+    },
+    {
+      "path": "examples/bulk-job-screen.json",
+      "bytes": 1311,
+      "sha256": "657f30b5f330a547f176285155fac0481b0101d71ad666f293aadf69c94c223b"
+    },
+    {
+      "path": "examples/bulk-job-screen.plan.json",
+      "bytes": 9476,
+      "sha256": "86c5f08aec5826868fb83e7e37e55640ccc1c36d6e2fade9f05db3893ecd6acb"
+    },
+    {
+      "path": "examples/document-sign-archive-journey.json",
+      "bytes": 1132,
+      "sha256": "289fed6d04d1d15124352a5c2bee88eda6491c6557fef62cf7719013bdde666d"
+    },
+    {
+      "path": "examples/document-sign-archive-journey.plan.json",
+      "bytes": 5298,
+      "sha256": "515b9c63b9a0c3a6ebf88dcefd57b23a885855f8f83c183db369affe907317fa"
+    },
+    {
+      "path": "examples/enterprise-operations-screen.json",
+      "bytes": 1807,
+      "sha256": "d6138a9225e6bb022c6c36edf1c415860fd04e5bb198cf3b9aadb7bc2d16a50a"
+    },
+    {
+      "path": "examples/enterprise-operations-screen.plan.json",
+      "bytes": 18416,
+      "sha256": "7c75bd9b812b5062edf5fd4dced4a74ddbca400aa04fed48b6dead9352d81292"
+    },
+    {
+      "path": "examples/executive-dashboard-screen.json",
+      "bytes": 1125,
+      "sha256": "caf981bf3af2451c1f67aea36b37c492fa61d0797f126552af8eb4dc0d708dca"
+    },
+    {
+      "path": "examples/executive-dashboard-screen.plan.json",
+      "bytes": 4884,
+      "sha256": "5eb79a514e8c75b64de46a3ff7fb0d771c2e77c9758ce77425f65afbec0b74f1"
+    },
+    {
+      "path": "examples/expired-session-draft-screen.json",
+      "bytes": 1163,
+      "sha256": "c085b00747312635cd94a9a93a38bbcc68a9f5cb2e60c1e792a1d957b62b4769"
+    },
+    {
+      "path": "examples/expired-session-draft-screen.plan.json",
+      "bytes": 7070,
+      "sha256": "0161add5f2c71b09a84d4442ec0bd300d5145d87530262c3e92c1490e1d8ed22"
+    },
+    {
+      "path": "examples/master-detail-field-screen.json",
+      "bytes": 1206,
+      "sha256": "6c2741f1a5925eb1e80b9b66bcef3281f9d9a160c9541af45adf6d1f35753637"
+    },
+    {
+      "path": "examples/master-detail-field-screen.plan.json",
+      "bytes": 7240,
+      "sha256": "03f80719dc9ebc6c731c945caca59cfc23555f42e482531579715906f7633c94"
+    },
+    {
+      "path": "examples/no-ui-service.json",
+      "bytes": 876,
+      "sha256": "e01ea329333695d8c8d9d108a72d554d197bda7162efcf0527dd9fb45353d4f6"
+    },
+    {
+      "path": "examples/no-ui-service.plan.json",
+      "bytes": 843,
+      "sha256": "1b02ea739c6f9aea3d45e92fa14e442380e333c8cd90da7e399fc47b079978dd"
+    },
+    {
+      "path": "examples/offline-edit-screen.json",
+      "bytes": 1265,
+      "sha256": "e7e08e92a2d2dc6f20f98d4c9d70fcf0913291636da8e6f3f76abc3ef069bd50"
+    },
+    {
+      "path": "examples/offline-edit-screen.plan.json",
+      "bytes": 9487,
+      "sha256": "93b6433ae9c2c835772d8807a80743b1374a0c41d0492386249cfbe2015259d9"
+    },
+    {
+      "path": "examples/public-self-service-journey.json",
+      "bytes": 1072,
+      "sha256": "67066c84f572b093b77225a900e2c08ac1e0b458acb0546357b0c8705df62a98"
+    },
+    {
+      "path": "examples/public-self-service-journey.plan.json",
+      "bytes": 6985,
+      "sha256": "5a59fef8d29172581d859c5ee1e486eacfc13c092aa72e61cad72f34dbc4b2c1"
+    },
+    {
+      "path": "examples/record-collaboration-screen.json",
+      "bytes": 1214,
+      "sha256": "29a749374b042a6d50acf9bae379be0ad04d1c42b4d65e69e26974f1ccb40805"
+    },
+    {
+      "path": "examples/record-collaboration-screen.plan.json",
+      "bytes": 6802,
+      "sha256": "9c7400f82d200325ddd643e1b726cbc76451b8e6b9fb7a2530c5e73044c328a3"
+    },
+    {
+      "path": "examples/reversible-action-screen.json",
+      "bytes": 1005,
+      "sha256": "b0d0d343d97ae4f040d09d291472d6399c58bcd51f0a84d09c784bc827d65a4c"
+    },
+    {
+      "path": "examples/reversible-action-screen.plan.json",
+      "bytes": 2014,
+      "sha256": "cbce74cdf3e6740acd4854b9b06d51c510ca512b2a0c27d7040f7b4716e43912"
+    },
+    {
+      "path": "examples/safe-delete-screen.json",
+      "bytes": 1222,
+      "sha256": "a699f66f04f09af3554bce379755a53e977b260e8e9dab465fc5c565756d4181"
+    },
+    {
+      "path": "examples/safe-delete-screen.plan.json",
+      "bytes": 6090,
+      "sha256": "2ab26d35b92dfc26dd623d2e842df76e67a15e7ec695b0032d3b644d9931eaa3"
+    },
+    {
+      "path": "examples/scope-switch-journey.json",
+      "bytes": 1019,
+      "sha256": "155c41dc0dbedd39c664cba8b04c42c82553f6069372466a729f12b6f4f7a39b"
+    },
+    {
+      "path": "examples/scope-switch-journey.plan.json",
+      "bytes": 3245,
+      "sha256": "0dae89a7255f09f06b1e5e4d610d7edb4f4375b17b150334ebaa2d31fa218ac5"
+    },
+    {
+      "path": "examples/secure-auth-screen.json",
+      "bytes": 1122,
+      "sha256": "0b8b8a2ce79396ffca780125ea1ad562fb79705f0396953c3eded5564802d595"
+    },
+    {
+      "path": "examples/secure-auth-screen.plan.json",
+      "bytes": 5260,
+      "sha256": "4d076237b0f41140e24f4745c4ad239b47726f999f862b7170a09c9fc55553fa"
+    },
+    {
+      "path": "examples/simple-birthdate-screen.json",
+      "bytes": 1573,
+      "sha256": "6a8164ddc3d9ee6fcde8d65520b183bf5f19ea4790a51069b6d4fda67e9667e2"
+    },
+    {
+      "path": "examples/simple-birthdate-screen.plan.json",
+      "bytes": 7798,
+      "sha256": "7811879e60e5c791f50fc258191a248c481b0fcdb2be5ea23cb6fdbb156ca365"
+    },
+    {
+      "path": "examples/simple-view-screen.json",
+      "bytes": 1011,
+      "sha256": "5c5e403ddf9766e0415bf750761f4689cc9e4daa8b1057c488d1fd84ffb9ad42"
+    },
+    {
+      "path": "examples/simple-view-screen.plan.json",
+      "bytes": 3143,
+      "sha256": "8f67ec84d32fc2ffbd4e3759bb8622e630e90e9b0ea3fa6fd2ff103d496fc664"
+    },
+    {
+      "path": "external-standards/CALENDAR-GOVERNANCE-ADDENDUM.md",
+      "bytes": 48943,
+      "sha256": "3f77b5614c7b045c8a6469573e3c16264e375f8bea08a9b08899bee716328376"
+    },
+    {
+      "path": "external-standards/ENTERPRISE-SEARCHABLE-SELECT-COMBOBOX.md",
+      "bytes": 25406,
+      "sha256": "eb9c905394ced42fe962fe588e8f70f3e0ab4585db59cd75c113b70df3136506"
+    },
+    {
+      "path": "governance/ACCESSIBILITY-RTL.md",
+      "bytes": 3928,
+      "sha256": "1b6be0cf827779baf4450c11f7010ad03eca5608920ff047c645e25a29ded935"
+    },
+    {
+      "path": "governance/ACTION-HIERARCHY-POLICY.md",
+      "bytes": 642,
+      "sha256": "e0a2506ce01f6ff67109cd7b7aea5633fcb3a6fdd186b808c268d9285efef3ee"
+    },
+    {
+      "path": "governance/ADAPTIVE-UX-ORCHESTRATION.md",
+      "bytes": 1291,
+      "sha256": "778de55c2f31a8e74ab7c2b9ec703738af220bd38f20495f567e7a325af0725f"
+    },
+    {
+      "path": "governance/CENTRAL-SETTINGS.md",
+      "bytes": 6542,
+      "sha256": "2075f20838e13358f769aed72dee9fd5bdc70976c4c07141f7c2e8f5bfbbd075"
+    },
+    {
+      "path": "governance/CHANGE-CONTROL.md",
+      "bytes": 3163,
+      "sha256": "c22b221368bafd13b32e6289d1de60e4f2c56c7b46a4e5da42aa1f77b9d41233"
+    },
+    {
+      "path": "governance/COMPONENT-COMPATIBILITY.md",
+      "bytes": 1855,
+      "sha256": "6ec9680d21597832a9762d89b8684d5c0080de4c01731cbebbe1444f866cb328"
+    },
+    {
+      "path": "governance/COMPONENT-CONTRACT.md",
+      "bytes": 5133,
+      "sha256": "d8df897784a023a0495ea50584106d7fa20bebdb3631f779b8763d34332431ce"
+    },
+    {
+      "path": "governance/COMPONENT-LIFECYCLE.md",
+      "bytes": 2867,
+      "sha256": "feb8e82e34947338c8e17b95ddd6f82c057eda6e62cb3329896625f9d172d862"
+    },
+    {
+      "path": "governance/CONTEXT-CONTINUITY-POLICY.md",
+      "bytes": 713,
+      "sha256": "b430e8cfa8adcf6e1953cc0fc395cdb45a90c566d38ddbe8483305f142e1ce46"
+    },
+    {
+      "path": "governance/DECISION-EXPLAINABILITY.md",
+      "bytes": 749,
+      "sha256": "c5237cae0788637ddc839d494c21e73a21911093f62272cd40d2484e84ea4692"
+    },
+    {
+      "path": "governance/EVIDENCE-CONFORMANCE.md",
+      "bytes": 754,
+      "sha256": "120b99f99f79449ac59d1895d0c7dfa55f1a83ab996f1196d89b614406b37140"
+    },
+    {
+      "path": "governance/EXPERIENCE-ORCHESTRATION.md",
+      "bytes": 1020,
+      "sha256": "6303d475fd13f7448e3d7f954348029b48d24d2a46239075aaf9509e9900d01b"
+    },
+    {
+      "path": "governance/EXTERNAL-STANDARDS-BINDINGS.md",
+      "bytes": 2593,
+      "sha256": "3698741b8bc34eafb37c7bed9c6aaf9aa8b4ca7f19a6e2db1dcf2f7064e82a31"
+    },
+    {
+      "path": "governance/FINAL-ADOPTION-GATE.md",
+      "bytes": 931,
+      "sha256": "230401b6c17d3a66085fe7cda09c756c682ed66fc761d800d2e260bedde9ce05"
+    },
+    {
+      "path": "governance/GOLDEN-RULES.md",
+      "bytes": 2991,
+      "sha256": "8f51c8c40a90f37b2c0175cc31ce12114751de4e267938426b59dbe162f77e8d"
+    },
+    {
+      "path": "governance/INFORMATION-ARCHITECTURE-POLICY.md",
+      "bytes": 506,
+      "sha256": "38129a37dc0ead9abf2311a436ecece77b83254b4b1125fe74dd37ce0b854daa"
+    },
+    {
+      "path": "governance/INTERACTION-COMPATIBILITY.md",
+      "bytes": 1433,
+      "sha256": "70687e82bbff2af128af84b05c459eb119d82b8d853c02865c774968c7e8d2be"
+    },
+    {
+      "path": "governance/INTERACTION-CONTRACT.md",
+      "bytes": 1541,
+      "sha256": "a60e9292960f892e113acd713ff8f9e438e8163ce511ead64ebd1ea3f35036dd"
+    },
+    {
+      "path": "governance/INTERACTION-LIFECYCLE.md",
+      "bytes": 756,
+      "sha256": "b64d5adad1b38ffa25b0367fc12233e9e9f4da1756eb733e4ad73d34586e4eb0"
+    },
+    {
+      "path": "governance/JOURNEY-CONTRACT.md",
+      "bytes": 1344,
+      "sha256": "50f4774efd48400cd07033c9c1cf0cdf93f1eb88cb11847b98216e90424048c3"
+    },
+    {
+      "path": "governance/MASTER-POLICY.md",
+      "bytes": 1950,
+      "sha256": "559f33e6e16360b31d6c193928d5fd050913c6c24a2c96307a8be1b45c21a867"
+    },
+    {
+      "path": "governance/NAVIGATION-DEEP-LINK-POLICY.md",
+      "bytes": 765,
+      "sha256": "09109f44c10657d1321ecd06adf8cf10a06144e22087c340ea6d1756b339a5b4"
+    },
+    {
+      "path": "governance/PACKAGE-SELECTION.md",
+      "bytes": 3482,
+      "sha256": "74a465eccba4cd9d13a13ffbf7d0793690fa3bfeba09b7956b7e70719d492e5e"
+    },
+    {
+      "path": "governance/PERFORMANCE-RESILIENCE.md",
+      "bytes": 3540,
+      "sha256": "9e23e98e5c2e724f968dd817f44fa2820772f61e54adb19e7f14694b671208f2"
+    },
+    {
+      "path": "governance/QUALITY-GATES.md",
+      "bytes": 1092,
+      "sha256": "e07f38326f2c85e0a89cb54edd5cb12a4d657fa0b91575788017050434fa4ca5"
+    },
+    {
+      "path": "governance/RESPONSIVE-DENSITY-POLICY.md",
+      "bytes": 640,
+      "sha256": "376f47a115411f43da2b6dc5ef142c57a43c2e1eabe14727aa7695e54d58258b"
+    },
+    {
+      "path": "governance/RETURN-TO-ORIGIN-POLICY.md",
+      "bytes": 511,
+      "sha256": "392035a547dc1ce99b40f940f1b9a3aede82289899ebf3ef395739d8d41a9f42"
+    },
+    {
+      "path": "governance/REUSE-FIRST-POLICY.md",
+      "bytes": 2717,
+      "sha256": "2c7feb4d8dbd7c4e1f3410502c6430cee0003a61345c9cae49a8fbc16d458948"
+    },
+    {
+      "path": "governance/SCREEN-COMPOSITION-CONTRACT.md",
+      "bytes": 1562,
+      "sha256": "3d9beb0d84e27457e593f27602c9929df94a0d7897e1952cbcc373d4198040f4"
+    },
+    {
+      "path": "governance/SCREEN-STATE-MODEL.md",
+      "bytes": 1061,
+      "sha256": "0ad04b39b8530f485da0724b2b3cef26e80d97216469cd2c5de1f3a2d4b5e5a7"
+    },
+    {
+      "path": "governance/SECURITY-PRIVACY.md",
+      "bytes": 3701,
+      "sha256": "343c2335255fa12e9de6294d2a4000d4e7ac59c7fd1ec30124ed9ae08802c729"
+    },
+    {
+      "path": "governance/SMART-INTERACTION-GOLDEN-RULES.md",
+      "bytes": 4368,
+      "sha256": "99a0307daa2538e5ac044d5156280378270c2c351d7c0c96666e08838a082527"
+    },
+    {
+      "path": "governance/SMART-INTERACTION-PATTERN-SELECTION.md",
+      "bytes": 3502,
+      "sha256": "ea92ed37c3fa1dd1f52980e54fd102dec72de05674935d76d6e64c603cf6e0d3"
+    },
+    {
+      "path": "governance/SMART-JOURNEY-SELECTION.md",
+      "bytes": 1077,
+      "sha256": "1ac6f82c95848a651fda7bd1ea77bba7861e8a05080223dfcd45d2bcfa82872b"
+    },
+    {
+      "path": "governance/SMART-SCREEN-COMPOSITION-SELECTION.md",
+      "bytes": 1508,
+      "sha256": "7495644ebca88fe7876a09567ea055f1c73234f9bd8850fd814b581f77e8c5ea"
+    },
+    {
+      "path": "governance/SMART-UI-COMPONENT-SELECTION.md",
+      "bytes": 9583,
+      "sha256": "d2bd7cc6b4d2e75d34a08df30cc81172b35e056eaf61f707d3844b2f1dc0b2b3"
+    },
+    {
+      "path": "integration/AGENTS.snippet.md",
+      "bytes": 513,
+      "sha256": "f9d4582934af0925c8d61e3a9a7a18e3ff36bffc2143876d134e4b0af64f540f"
+    },
+    {
+      "path": "integration/FINAL-INTEGRATION-PROMPT.md",
+      "bytes": 955,
+      "sha256": "4a815f332e2ebbe822a1179f9ddf478e67af66d74d42f26bc60919a22833f9d9"
+    },
+    {
+      "path": "integration/IMPLEMENTATION-ROADMAP.md",
+      "bytes": 666,
+      "sha256": "086baeec7ca4083deff3ff90432d57bf35baafdfd66b88ab0ac9f6c334505a9e"
+    },
+    {
+      "path": "integration/INTEGRATION-PLAN.md",
+      "bytes": 659,
+      "sha256": "bd4697759bd530653c8b8bc0ddc2016e10944ccfd12d37ee98f0ebd3e3ca0913"
+    },
+    {
+      "path": "integration/MASTER-IMPLEMENTATION-PROMPT.md",
+      "bytes": 958,
+      "sha256": "4ca557f241f5520705d60ef820e3dc1e0c15c3e16677aff7cf79a044b46f0f0e"
+    },
+    {
+      "path": "integration/MIGRATION-v0.5-to-v1.0.md",
+      "bytes": 706,
+      "sha256": "96ee8acb474774e62a88bba23cfab98ea8ae3012a81b1b2c8f1ad7871c9d191a"
+    },
+    {
+      "path": "integration/VCGF-1.3.0-FINAL-INTEGRATION-MANIFEST.md",
+      "bytes": 4288,
+      "sha256": "3c53d16201d4a1df4d27fdc95f3bf34fe570447789c65ead0ac80dab5b09916f"
+    },
+    {
+      "path": "interaction-catalog.json",
+      "bytes": 72661,
+      "sha256": "3e1b5ac35face1fd4d218b00ea1031749bdf7606288b95a590fe6d331da53e88"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-001-SmartCreateFlow.md",
+      "bytes": 34829,
+      "sha256": "e410460616c9c3f763205ea97aada4fc54387605d9ea73293cf9d35106ad822d"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-002-SmartEditFlow.md",
+      "bytes": 34096,
+      "sha256": "621c4704d1a0a6463329e2bdf68ab0f2b3067a4628eda3cd57ed7036d5ec9770"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-003-SmartViewRefreshFlow.md",
+      "bytes": 34446,
+      "sha256": "7e426b0c9fd18a934961c7bcebc92dbc18f2c92033f56e509dc6d70d1e57dfe9"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-004-SafeDeleteFlow.md",
+      "bytes": 34113,
+      "sha256": "20f2bbf317b81ddff68576d07c20fe292368828b7bf0855c9b87badd37695a12"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-005-UnsavedChangesProtection.md",
+      "bytes": 34402,
+      "sha256": "0213a74444d26d891ddd083f2dec17c6231a51d4860ecf31b2e0f8d6f5ca2cb7"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-006-SaveSubmitStateMachine.md",
+      "bytes": 34118,
+      "sha256": "879c685e2318060cb20afdab53f7a1d34d62425696d100cc0e4dba3b3d7fc5f6"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-007-ConfirmationDecisionPattern.md",
+      "bytes": 33944,
+      "sha256": "02a1a6ecd35f0c867a0497cc7b2d2e67826dda2295a2941486ffd76f618c1315"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-008-EmptyStateRecovery.md",
+      "bytes": 33676,
+      "sha256": "9f6638345034799d289b91550fc8d397c4beed40932ba94fff56a3f9bc8d4330"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-009-LoadingProgressiveDisclosure.md",
+      "bytes": 33947,
+      "sha256": "94699b03d5c1015f6dd32dcf47c518e839789bee4cf1f44620edf0936929a7e3"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-010-ErrorRetryRecovery.md",
+      "bytes": 33949,
+      "sha256": "b7e36db9e86eccec63f21d956383abcdcb84428b336329030ab075d6edd76c00"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-011-OptimisticUpdateRollback.md",
+      "bytes": 34146,
+      "sha256": "f392fc7ac32674d1a53dd31accf3d595b2724bee0b6e04bfce66963f4a917830"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-012-ConcurrencyConflictResolution.md",
+      "bytes": 33949,
+      "sha256": "7e7c84d58ab70361e4e4beaadb35eb76cfc29a2c24870557b1d2b498771b2f52"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-013-BulkActionExecution.md",
+      "bytes": 34223,
+      "sha256": "baaa40e258be936d00e208e02200fdcf2beff6618d99c45230bf2f096e13ded8"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-014-LongRunningOperationProgress.md",
+      "bytes": 33987,
+      "sha256": "ca0f382f5372d7004f978ea5d2b778c262b1eed47ad3cd047c00227b62dfbaf5"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-015-OfflineReconnectSynchronization.md",
+      "bytes": 34293,
+      "sha256": "88b823054813ccb446b37f96854bad233da6f83ad060c6456ae44fbe14871c80"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-016-SessionExpiryReauthentication.md",
+      "bytes": 34079,
+      "sha256": "bafe483661de0d881d7b3638535c0e1ae844d02321b846ce9764af2445b7b915"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-017-PermissionChangeReaction.md",
+      "bytes": 34657,
+      "sha256": "65efd9245c5d8dd6675712447ff639510f26f4472f9088aeb2292112015ed68f"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
+      "bytes": 34339,
+      "sha256": "be1c900e4dd9a7b83adb1372b7bcb7d49f51bd340355cbbadcddb9c3cc4b64b2"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-019-IdempotentSubmissionProtection.md",
+      "bytes": 33922,
+      "sha256": "f9ffd12144eebb3557c915899167bdcb80871d368f15977d1f087e09e03dac26"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-020-UndoableActionPattern.md",
+      "bytes": 33823,
+      "sha256": "675bac320915e2f71b701768ac82d76d0b04151aae5c1fbbb45218171b8b6f66"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-021-SearchFilterResultState.md",
+      "bytes": 33861,
+      "sha256": "809ab4ff039b7ee2cfeb37d7445c068c23a9f1293f3e4644b867ed8d79d503ba"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-022-MultiStepTransactionOrchestration.md",
+      "bytes": 34152,
+      "sha256": "828cc50f5b6ded7e72bf29e387db54aa0d6e0131a8aa9ee7f241a6800a4bb7a0"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-023-DraftRecoveryResume.md",
+      "bytes": 34138,
+      "sha256": "46f5ba07b136c35f7c92241902552d30137a3ad65b40de293c12dd0fad499ff4"
+    },
+    {
+      "path": "interactions/VCGF-UI-INT-024-NavigationContextPreservation.md",
+      "bytes": 34070,
+      "sha256": "c837836387e4a8c1342b64f5847436c82afacb96bc396ef8d2effe6ab8847d3c"
+    },
+    {
+      "path": "journey-catalog.json",
+      "bytes": 56802,
+      "sha256": "b5b81d50457cfed764e1dc83be1d6bc2e908df793508311073c6e01e6338c6b3"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-001-DiscoveryToDetailReturn.md",
+      "bytes": 27488,
+      "sha256": "b577bac987575d4ecb869499b42449ae396268acc60eb08d8629fd266dcb902c"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-002-CreateToDetailContinuation.md",
+      "bytes": 27463,
+      "sha256": "566059a13891e92c2aac48dcfa7c622e5c58e02668d7e3c33396189c81345d5e"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-003-DraftReviewSubmit.md",
+      "bytes": 27397,
+      "sha256": "c64f1a3dabe3c70e55ca4db22073f3e3bd7276dcf90b08ae77cd4a1797564d8d"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-004-ReviewApproveComplete.md",
+      "bytes": 27324,
+      "sha256": "e28fa41bdcd6c9243cf68b9da62ba494c0ac4051aecf684c2602fbd3a4162496"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-005-RejectReviseResubmit.md",
+      "bytes": 27379,
+      "sha256": "26c0c52450b4b10844fbd66edaf641cd566e66142ae6155b98b26e01031078bb"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-006-TaskQueueProcessNext.md",
+      "bytes": 27487,
+      "sha256": "e3e4623652b90378d8779613a2991a7dda87272efd7ae9c908a5d54cee8c593e"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-007-BulkSelectActReview.md",
+      "bytes": 27484,
+      "sha256": "3999cda2115ddafd59df2af21868db8fcd07db097a2557d15ca736310efbf884"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-008-ImportValidateMapCommit.md",
+      "bytes": 27585,
+      "sha256": "60e70e81fccf650a302d646da5c0c1a1156d255243e7722e5aa9c40fd96fee01"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-009-DocumentReviewSignArchive.md",
+      "bytes": 27422,
+      "sha256": "2c0f246685488fb5c253ffc04e903932a0834bb9212c95e7fb607e6b89390bfe"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-010-ScheduleCreateRescheduleCancel.md",
+      "bytes": 27576,
+      "sha256": "0e0ff683c4d5fbf0f73982374033ab40fe7e576ddb20333d05986eed11c6950d"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-011-PublicSubmitTrackRespond.md",
+      "bytes": 27563,
+      "sha256": "1465d953b98b22f7684deed441c67577492273a4b11923bc59a2ab853db882d8"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-012-AuthenticateRecoverReturn.md",
+      "bytes": 27426,
+      "sha256": "32610f2c7ca2a15dee47af53567a160e0c1ea990998e195f67bb1649a7a4393d"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-013-DeepLinkAuthorizeReturnToOrigin.md",
+      "bytes": 27466,
+      "sha256": "9850bd1586212151035c2d7ba52620393ca5cd9e09bf7b86236f3956ee6f364b"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-014-CompareDecideAct.md",
+      "bytes": 27260,
+      "sha256": "3ac0fa64723bf6c815d7ab6f2362b3e8f7df1c467a09cf87e4ee16a4f837de19"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-015-ScopeSwitchResume.md",
+      "bytes": 27348,
+      "sha256": "5f130fb99f119c3bd78d82fe8e753ad812a7af7a754de0ef383ece8965c48258"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-016-OfflineCaptureSyncResolve.md",
+      "bytes": 27621,
+      "sha256": "8ca2ede5f3650abe49642fec7e407180274a945e4c616650e8acb2644f571594"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-017-LongRunningLeaveReturn.md",
+      "bytes": 27476,
+      "sha256": "d7c3977219b4a04134dbf3417a8a7313dbbc4990273157498f7c99e82e7dafc0"
+    },
+    {
+      "path": "journeys/VCGF-UI-JRN-018-ConfigurePreviewPublish.md",
+      "bytes": 27324,
+      "sha256": "0622922511b65cf3f52ac5bc9b91085056e023ad7277898e1ffbf540211f5b97"
+    },
+    {
+      "path": "references/REPOSITORY-BASELINE.md",
+      "bytes": 2203,
+      "sha256": "000d7d184fcf3b6735cfb0d6bb791d7599a40ce804ce49cc05bf86aa5c6fdf93"
+    },
+    {
+      "path": "references/SOURCES.md",
+      "bytes": 15937,
+      "sha256": "0d9282515d37dae50eaca36be131b99386ae67400d8efb39436696e642985671"
+    },
+    {
+      "path": "references/package-register.json",
+      "bytes": 29028,
+      "sha256": "e9569becea310c0c3dab3c491172f555e10212a2b2cceeab087781829dfbc185"
+    },
+    {
+      "path": "references/source-register.json",
+      "bytes": 2315,
+      "sha256": "5fe435ce2a24180ca6c958533bb3a59a9e6fb86a1ac8163c36a65430dfa9709d"
+    },
+    {
+      "path": "reports/CONTENT-REVIEW.md",
+      "bytes": 1274,
+      "sha256": "f4536a281baa5a28b0fc3b48e72b31b4743417e00652100247d9a08e350b9773"
+    },
+    {
+      "path": "reports/DOCUMENTATION-VALIDATION.json",
+      "bytes": 8730,
+      "sha256": "aff1380a8341ab4271c97cc8a0b083ca6e6723b88cc2dbbc066660918f408139"
+    },
+    {
+      "path": "reports/DOCUMENTATION-VALIDATION.md",
+      "bytes": 4055,
+      "sha256": "da7fca287d5c6678599160520e4f23c9a2fab20d49f09ae5f9c1b2e777d37f5f"
+    },
+    {
+      "path": "reports/FINAL-QUALITY-SUMMARY.md",
+      "bytes": 4040,
+      "sha256": "5c400eefce30326e1073000f96db986257360578ab2cd90ff7518421f8671f38"
+    },
+    {
+      "path": "reports/SMART-SELECTION-VALIDATION.md",
+      "bytes": 1321,
+      "sha256": "2bad328b0dfee7f172635e258fd7eccd3ba1ee3b7d375133967ad38d8984cede"
+    },
+    {
+      "path": "reports/SMART-SELECTION-VALIDATION.txt",
+      "bytes": 224,
+      "sha256": "f0d5760e9a29aa8f7f4d11b1ffbc5b47164bb2827a9c33b97691aaa8cd6b68f3"
+    },
+    {
+      "path": "requirements-validation.txt",
+      "bytes": 33,
+      "sha256": "690fa118aea56dbe98f14d55e337745992cdf8f3a95b7324396ae0048c94246b"
+    },
+    {
+      "path": "schemas/catalog.schema.json",
+      "bytes": 6837,
+      "sha256": "7e78cbe81a4d485e79014be068844a17dd08a58edfd89a749dcd88ba1913c7ec"
+    },
+    {
+      "path": "schemas/central-settings.schema.json",
+      "bytes": 91965,
+      "sha256": "f76876888ea28b263031d69d96e2758b9dad131d528da4fe208bb958697c9ad2"
+    },
+    {
+      "path": "schemas/compatibility-matrix.schema.json",
+      "bytes": 1216,
+      "sha256": "9cb4dcbc97aa681d28375ca3d09157a688b4297cfed0eff2bb88d8edb3532bef"
+    },
+    {
+      "path": "schemas/component-contract.schema.json",
+      "bytes": 2972,
+      "sha256": "c0f0a856bb37bd32f0493232ff3b8a430b19ecc01d653a3fd399bb5ddf2f943b"
+    },
+    {
+      "path": "schemas/component-selection-plan.schema.json",
+      "bytes": 10670,
+      "sha256": "99f4d6e6991c6a6211589f7fc575b9c8bdfee8ee04394fa7d65dea6262c06226"
+    },
+    {
+      "path": "schemas/evidence-record.schema.json",
+      "bytes": 8148,
+      "sha256": "f89a3ffab0f7d3f4a8ed021de30f69a6c8c10465ea4487f29461945da9aacc28"
+    },
+    {
+      "path": "schemas/interaction-catalog.schema.json",
+      "bytes": 4301,
+      "sha256": "417ce7d9ccc3ff3b42e12879fd3ab949fe992043223584532035014593a38095"
+    },
+    {
+      "path": "schemas/interaction-compatibility-matrix.schema.json",
+      "bytes": 1257,
+      "sha256": "69a8cc1ff8660d0dcbb9b78a29d3f099aa1db743019fdd7b02ed6706ec691368"
+    },
+    {
+      "path": "schemas/interaction-contract.schema.json",
+      "bytes": 1752,
+      "sha256": "cd25b5073401dce197426ddad927e42948a8789a5f437e602492f65405f01a85"
+    },
+    {
+      "path": "schemas/interaction-policy.schema.json",
+      "bytes": 50970,
+      "sha256": "3097812c48301502da158fae14d726aeaa85ba924ad59209d84e8cbeb8f010b5"
+    },
+    {
+      "path": "schemas/journey-catalog.schema.json",
+      "bytes": 4208,
+      "sha256": "a6667ac606a7624a9baa9f725d4533023a5fd8c6c55c9072436aede4dafe466a"
+    },
+    {
+      "path": "schemas/journey-compatibility-matrix.schema.json",
+      "bytes": 1352,
+      "sha256": "e6a0ca87b9472bc659a3e4f067958560d67884523b6d854dd670874ef66ce7c9"
+    },
+    {
+      "path": "schemas/journey-contract.schema.json",
+      "bytes": 1847,
+      "sha256": "3beb66d8348004f7047f3f86c8000e38123d566e14cacf5934868950d2d57103"
+    },
+    {
+      "path": "schemas/project-assessment.schema.json",
+      "bytes": 8388,
+      "sha256": "030a46bf5d756f60996ce24b772a69ef723be9d822641c046c21756b1db84455"
+    },
+    {
+      "path": "schemas/screen-composition-catalog.schema.json",
+      "bytes": 4878,
+      "sha256": "a7d84b46c1fa96d858f22ea2465f62dd398adf478b471095060534518df3499e"
+    },
+    {
+      "path": "schemas/screen-composition-compatibility-matrix.schema.json",
+      "bytes": 1269,
+      "sha256": "7d68f38cb7079908e9753d58efed627d47aa84f188a5e8fd7afe8c5156a41f91"
+    },
+    {
+      "path": "schemas/screen-composition-contract.schema.json",
+      "bytes": 2214,
+      "sha256": "9e97f7ad0d16802cc9f1debe6913a9d6eb7bbcb92ec2f37e355f5d90b1ed4717"
+    },
+    {
+      "path": "schemas/screen-context.schema.json",
+      "bytes": 4746,
+      "sha256": "87cfa3e528898d7240919428104da0d0a503d3e9ccc6ef96ed03303f1e5a6244"
+    },
+    {
+      "path": "schemas/screen-orchestration-policy.schema.json",
+      "bytes": 3410,
+      "sha256": "f9bbf6d183041c55e4852a20b0e8425e169a4a2d290945606e6c815ce9897593"
+    },
+    {
+      "path": "screen-composition-catalog.json",
+      "bytes": 74271,
+      "sha256": "bb72665eef691a97091bb9e177774c3575f8c792f2287f1c61b5aca7ffcd1942"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-001-DashboardOverview.md",
+      "bytes": 15376,
+      "sha256": "34bcdf92cbe0afff954462516b66cc1be9fbfbf25b4ee511e81ad4378ebdc874"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-002-OperationalCollection.md",
+      "bytes": 15222,
+      "sha256": "a1355e56a86962af232220f9b51025d268d17fc49bafa08fdc4e94c5632e65de"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-003-RecordWorkspace.md",
+      "bytes": 15212,
+      "sha256": "af4bb92fabf2469646cd3e82fe9c5f71cc1ef65aa256fd564b942641b3557074"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-004-FormTransaction.md",
+      "bytes": 15283,
+      "sha256": "ae1eb3e56709f02c22a9e5961de750668c6478f4d7ff2485e76363ede77a4a11"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-005-GuidedWizard.md",
+      "bytes": 15093,
+      "sha256": "215bbd1d967497dac4c41ffff86e749892d0d1bd1e140886d2ebaddabc4d75c9"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-006-SearchDiscovery.md",
+      "bytes": 15145,
+      "sha256": "2a11e3ad38d3eff1b6983df24ec8d86aeeeca72f8767f41ec872ff00435304a6"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-007-WorkQueueInbox.md",
+      "bytes": 15100,
+      "sha256": "a936afab4f5c657668b6029401de0b308a961d322ae052740da3a5dc1de4e6bd"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-008-ReviewApproval.md",
+      "bytes": 15214,
+      "sha256": "0fe5f07f07f1a1630dcdf21e81eebed4f81893c16080e3d4f231aa1d363a3268"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-009-DocumentWorkspace.md",
+      "bytes": 15212,
+      "sha256": "ace80b2edc116fe2b960cc494f825ab88410999a92eb472107c6c389cf3f3938"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-010-SchedulingWorkspace.md",
+      "bytes": 15069,
+      "sha256": "ac307f3feeac0ddea6c62162a860488c8e8d31321bc24650e44c3c99bb325d5c"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-011-AnalyticsReporting.md",
+      "bytes": 15148,
+      "sha256": "3437188e3383df8b2497cf25129fa8a661ddeaf1dc059d78ddb5dc0c73939448"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-012-SettingsAdministration.md",
+      "bytes": 15080,
+      "sha256": "2a60654edf30403fe44c8c52680e02a71c612588127d5bdc5eb0be82a2116f2c"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-013-AuthenticationAccess.md",
+      "bytes": 15090,
+      "sha256": "32af18c8884d5845915886421d569bf68590c6d160a77b625149b60e2877743c"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-014-CollaborationWorkspace.md",
+      "bytes": 15109,
+      "sha256": "7c364825d836e9a06ad030b632b8d16b936ef10908828c67c89dfed50c341abd"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-015-MasterDetailExplorer.md",
+      "bytes": 14881,
+      "sha256": "9bdc8c34adcc59a3d13dcd6df7a085103de54afbddca98031cfde4fc10dd81ac"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-016-ComparisonDecision.md",
+      "bytes": 15088,
+      "sha256": "ab2f8f90071c3380d492912e8a91ef27f8be0a9017cd2d87f3b72b23dafc491f"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-017-ImportExportOperation.md",
+      "bytes": 15249,
+      "sha256": "a07371605fec29df3f73948c2c8e368325b0f752443a2165e73bd40a5dfa2eaa"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-018-PublicSelfService.md",
+      "bytes": 15207,
+      "sha256": "f87e480b78ad2af71dabcc282496c8d0c30df26e86fa779d85f7be761807f0e9"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-019-MobileFocusedTask.md",
+      "bytes": 15310,
+      "sha256": "2c36771c02f49e28fd4f32784a3978a364caed92d571c29cac96ebdd156cd689"
+    },
+    {
+      "path": "screen-compositions/VCGF-UI-SCR-020-LargeScreenOperations.md",
+      "bytes": 15316,
+      "sha256": "1a75d051bcf320e5a12393ed2b841cdbccbdf025477580dfc389d43265316fcd"
+    },
+    {
+      "path": "scripts/build_manifest.py",
+      "bytes": 1128,
+      "sha256": "cbfc52c61746bcd9b18981ed9f7c140335b307184c0fa668407bfe84b580170e"
+    },
+    {
+      "path": "scripts/report-labels.json",
+      "bytes": 1604,
+      "sha256": "8f21fe0e433e13c5757b5a9a8acbd5145e9aea19345d7bbfdaded8a6ed4a6372"
+    },
+    {
+      "path": "scripts/select_components.py",
+      "bytes": 210,
+      "sha256": "bc8e3e20b7353f77c0ed6de790967d38733e77cd92d3f053a4910159004cf54a"
+    },
+    {
+      "path": "scripts/select_smart_ui.py",
+      "bytes": 11464,
+      "sha256": "2a144118bfc6b2db15ee01614669767c64e04dfae656361a6edc370bd8f7a625"
+    },
+    {
+      "path": "scripts/validate_final.py",
+      "bytes": 21521,
+      "sha256": "6e97c48740aa9197916b3c855215670d26cd5309349c048eb14dc4faf3113eed"
+    },
+    {
+      "path": "scripts/validate_package.py",
+      "bytes": 132,
+      "sha256": "b057087ef68a105905511e9cd8efe636c538d9fb74c03b12b9c04a3c9a34cdd1"
+    },
+    {
+      "path": "scripts/validate_selection_layer.py",
+      "bytes": 140,
+      "sha256": "4d04d2fe806fa49b739f1769b4dbf32c4bdf2f52f952853681b44de3a774d4fd"
+    },
+    {
+      "path": "source-snapshots/CALENDAR-GOVERNANCE-ADDENDUM.source.txt",
+      "bytes": 39335,
+      "sha256": "c8e2f84da5e1a0d33e772a5222d7d9b93ba3c58ea012b560c24233327c02c43c"
+    },
+    {
+      "path": "source-snapshots/ENTERPRISE-SEARCHABLE-SELECT.source.txt",
+      "bytes": 25011,
+      "sha256": "032c4caf1632bd9d24f1032b4810252bb67daf434d5678d0d4ee3c32f0e46c94"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-001-DesignSystemPrimitives.md",
+      "bytes": 28139,
+      "sha256": "f89e96a940e8483bedc27a27e7a8a16621f5c8b5bcbfbc87c99dd4f9b9a9ff72"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-002-SmartDataGrid.md",
+      "bytes": 28655,
+      "sha256": "30dbd69dff729468798e2b8daf88a942cc2c0435c81b28da191f6ffdd22480b7"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-003-SmartFormFields.md",
+      "bytes": 27973,
+      "sha256": "a065f6de82d10aa654b29334d744ae7b68737d8215480f85c64d00138ecb8729"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-004-AdvancedFilterBuilder.md",
+      "bytes": 28052,
+      "sha256": "ba0d7ae2d3aa1cb378f551fb6014e0fd55731f201f81db4e4b4e6b3c5fe34fd0"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-005-SmartFileUploader.md",
+      "bytes": 27716,
+      "sha256": "3059ca6a39626b3c449debed7d797a98bb3e8d428bd0d90e30dc138317071874"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-006-DocumentPreviewer.md",
+      "bytes": 28190,
+      "sha256": "2d4297a11262d704aa5a7bd0dfc89d7edd1f8ce0e1f7bcb36976467895763987"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-007-AdaptiveOverlay.md",
+      "bytes": 27832,
+      "sha256": "ac21ffda1102bdc3cc51431433f43d7e4fbddbd32a0c5051df42cde1c99643a8"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-008-UnifiedFeedbackSystem.md",
+      "bytes": 27700,
+      "sha256": "45b7c520951a41cee4da328681074841ee7922e9c02c66179f760d4f596f697a"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-009-AdaptiveNavigation.md",
+      "bytes": 27148,
+      "sha256": "4324f2f19ab33c49c362f9b85e7ee0e209c78b8188a989a94d27c64f34130e36"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-010-HierarchicalTreePicker.md",
+      "bytes": 27818,
+      "sha256": "6fd6c5194674a2acf8ebbb688d1d8e3279a9ad2ac1e1d85e7aeb156dff7cc02f"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-011-SmartFormWizard.md",
+      "bytes": 27946,
+      "sha256": "87107df1cbc177d9454a9fa6d6d94180c11c2191ed8d84776ea4f43037ab3b5d"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-012-PermissionAwareActions.md",
+      "bytes": 27482,
+      "sha256": "fb5b92423b70a6e8547d6f28413d3c318336f2d222edc0787c79e5bb9edc2118"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-013-RichTextEditor.md",
+      "bytes": 27889,
+      "sha256": "815873556e0f248b52e8045c2bfbbc11336b0594c1aab204c26323a283b895cf"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-014-GlobalSearchCommandPalette.md",
+      "bytes": 27381,
+      "sha256": "678e33c510efcf1d1b80d17d6bc56911c05fd977cb80c768f10d6bf8913e6f5b"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-015-WorkflowApprovalTimeline.md",
+      "bytes": 28095,
+      "sha256": "ca0e5395101577f68c6fadf5d1d4d155dfaf7e534e3189eaf169d71c0e07b18e"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-016-AuditHistoryViewer.md",
+      "bytes": 28067,
+      "sha256": "0083e0b177383c936bc8721d39d7f387ced20e6417df8f6f8a9f910c6548b51d"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-017-SmartNumericInput.md",
+      "bytes": 27153,
+      "sha256": "66488befa804c5c93ece74d2bd78807a48d683a775d46c424457df95dbe759f3"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-018-SmartContactFields.md",
+      "bytes": 27994,
+      "sha256": "8fe4e71ad9ebeb8c13299d4bf4dd92f4995e24813db9d706da98abc41395daf1"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-019-DataImportExportWizard.md",
+      "bytes": 28790,
+      "sha256": "97f201d579e2fc9cb2eabea0ac189d5f25c862d1a3d8afcf79ea947c4cf21ea3"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-020-SmartDashboardWidgets.md",
+      "bytes": 27710,
+      "sha256": "c723c6e2dd845d01ed307a9b04fbda501eac6a7e5534bc76c3e740d86664ae46"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-021-SmartKanbanBoard.md",
+      "bytes": 27728,
+      "sha256": "2004749100d62e651c853cef2d15f83244be20ea19af3d3ee2320a79ac9f56cb"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-022-UnifiedScheduler.md",
+      "bytes": 28251,
+      "sha256": "a6fe51596624ee1e7858bd85b4aaf8b95dcb7b2458f58a6719d50f09b28e2b71"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-023-DraftAutosaveManager.md",
+      "bytes": 28480,
+      "sha256": "13718db89964bcea34b672f87653f6515a69f7e8117e74c2534cf1b8eb53d8b5"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-024-AdaptiveContentPanels.md",
+      "bytes": 27906,
+      "sha256": "12fa46c958dbb4a6f50a352f23dc4db5e0b2856f1736fb16782b934d28f0cc96"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-025-SmartRecordDetailView.md",
+      "bytes": 41414,
+      "sha256": "6461eeb7d88e7b494400834eda851e9466172f24ed475f8cad672e7a442a8e7d"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-026-SmartCollectionList.md",
+      "bytes": 41082,
+      "sha256": "34f483c751daeab04d6bbe281cfe321599da96f3f7edc6605ca01f3898430d42"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-027-SmartActivityTimeline.md",
+      "bytes": 40709,
+      "sha256": "262d8e514857669cbd28f81dbaef158cc568d8d06346974aed39537c5dcc0dce"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-028-SmartCollaborationThread.md",
+      "bytes": 40762,
+      "sha256": "60370305ea6d60eb4022626d50b55f5b6bf02ef8a7a02d7b415df9ef5d00cd73"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-029-SmartNotificationCenter.md",
+      "bytes": 40697,
+      "sha256": "9598882c53277cd89291fbd9782b4ff365fd8c03e56d825c3b7b88a34a4145b6"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-030-SmartSavedViewsManager.md",
+      "bytes": 40333,
+      "sha256": "e40df34e891751fea7e5819eeac727b1024b6a503ea99c337fbe09744d927951"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-031-SmartContextualActionBar.md",
+      "bytes": 40807,
+      "sha256": "e252bc6b5902d55b3715c34351342d250fd6cff2e5293f1ed3721e2b319924ab"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-032-SmartRelationshipPicker.md",
+      "bytes": 40806,
+      "sha256": "47f9b5bc9e1b7428be26c95aae185503fdb6aa084a844ce6a3fb35383a37bd21"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-033-SmartAddressLocationFields.md",
+      "bytes": 40643,
+      "sha256": "af1ba8e2758c780422ccf51c7393a817cb4dc13ff2e911f81fa5cf7be0d50c25"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-034-SmartTaxonomyTagPicker.md",
+      "bytes": 40188,
+      "sha256": "7ce388e929b8493f965c5ba20c57c841e58fa2a49c80d5032785116ba4e5526e"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-035-SmartRulesExpressionBuilder.md",
+      "bytes": 40522,
+      "sha256": "90bfcf2a487d02419765ca7e9049e85abc6ff184037d221234d273c024771232"
+    },
+    {
+      "path": "standards/VCGF-UI-COMP-036-SmartSecureAuthenticationFlow.md",
+      "bytes": 41727,
+      "sha256": "bc41f27a9797eabb1abf187b4eedd546e71ad98e4460e8fa02b6cd8dca926763"
+    },
+    {
+      "path": "templates/ADR.md",
+      "bytes": 1576,
+      "sha256": "314138fb1c11fb3266ffccd64f30c5aa20f8111c5c47b36289f46ef4a3a17ec2"
+    },
+    {
+      "path": "templates/COMPONENT-IMPLEMENTATION.md",
+      "bytes": 1903,
+      "sha256": "a7922c87a2d5e6594f153bfba30676f3377cfb2eab11d18a148d4f7bb5ebccc7"
+    },
+    {
+      "path": "templates/EXCEPTION.md",
+      "bytes": 1346,
+      "sha256": "619dd7c6e8e663fd679b402e4057352ac2db12ea6104d1b44ca1ff0b2a6159fe"
+    },
+    {
+      "path": "templates/component-selection-plan.example.json",
+      "bytes": 7640,
+      "sha256": "667ffb01c8e274c21db9ffd693a648ab174e0fd5519939ee2e63645807768983"
+    },
+    {
+      "path": "templates/evidence-record.example.json",
+      "bytes": 464,
+      "sha256": "7dd4ef76eebaec5631076b5f447b36742ebe7616e6a39fcbdad6b8b150984015"
+    },
+    {
+      "path": "templates/project-assessment.example.json",
+      "bytes": 19773,
+      "sha256": "ba786bd28b14ff9b0e8e8367221a30fb7e9e73ee4f0c6ed262c83d6c55ef631b"
+    },
+    {
+      "path": "templates/screen-context.example.json",
+      "bytes": 895,
+      "sha256": "9112bba23527700798aa9146a74d53d864cd57bc2caffd468fc55c5b9e9ebdae"
+    },
+    {
+      "path": "tests/ACCEPTANCE-MATRIX.md",
+      "bytes": 192011,
+      "sha256": "3999a7c7db1d56baf038aee687c999a5d3af2836709601683bb9208fdc809c17"
+    },
+    {
+      "path": "tests/SMART-SELECTION-TESTS.md",
+      "bytes": 1002,
+      "sha256": "2432a79337cd5956fd7ed300ae6cb28adc78d9ba94d859aad19f2f65a9245c6f"
+    },
+    {
+      "path": "tests/TEST-PLAN.md",
+      "bytes": 734,
+      "sha256": "20842746d623d77c6fbc3a6f269b2c134f739513c42711e249a1539acc8ef87f"
+    },
+    {
+      "path": "tests/interaction-traceability.json",
+      "bytes": 261432,
+      "sha256": "070646e7b1cf0cf81336635621fed9954e7fe6f8d8f20b3058c95920108267fb"
+    },
+    {
+      "path": "tests/journey-traceability.json",
+      "bytes": 58455,
+      "sha256": "c8336c5f67cbbcd85a94a0fec0b58d593f9defd36e2908cd4231d3bd024a21ab"
+    },
+    {
+      "path": "tests/screen-composition-traceability.json",
+      "bytes": 133410,
+      "sha256": "564c1f0a956955cd898846db8155c474bae08b0ac5514a98e028010da3c7e9b7"
+    },
+    {
+      "path": "tests/traceability.json",
+      "bytes": 299355,
+      "sha256": "295bfbbd42b86fbd3a43f28444dae94cbdb9aad12b41af7413c3a27f6d438d2e"
+    }
+  ]
+}

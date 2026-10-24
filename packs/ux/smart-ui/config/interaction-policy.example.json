@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0.0",
+  "mode": "assessment-only",
+  "enabledInteractions": [],
+  "interactionDefaults": {
+    "VCGF-UI-INT-001": {
+      "postSuccessNavigation": "detail",
+      "initialStatePolicy": "server-defaults",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-002": {
+      "editEntryMode": "explicit",
+      "refreshOnOpen": true,
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-003": {
+      "staleDataPolicy": "signal",
+      "autoRefresh": "measured",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-004": {
+      "deleteMode": "domain-defined",
+      "reasonPolicy": "risk-based",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-005": {
+      "promptScope": "meaningful-dirty",
+      "draftFallback": "policy",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-006": {
+      "submitMode": "explicit",
+      "successState": "server-confirmed",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-007": {
+      "confirmationLevel": "risk-based",
+      "destructiveDefault": "safe-action",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-008": {
+      "emptyVariant": "reason-aware",
+      "primaryRecoveryAction": "contextual",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-009": {
+      "loadingDelayMs": 150,
+      "progressMode": "duration-aware",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-010": {
+      "retryLimit": 3,
+      "backoffPolicy": "bounded-exponential",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-011": {
+      "optimisticScope": "low-risk-only",
+      "rollbackMode": "restore-snapshot",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-012": {
+      "conflictStrategy": "detect-and-resolve",
+      "mergeMode": "field-aware",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-013": {
+      "selectionScope": "explicit",
+      "maxBatchSize": 100,
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-014": {
+      "progressTransport": "poll-or-event",
+      "cancelPolicy": "capability-driven",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-015": {
+      "offlineQueue": "explicit-allowlist",
+      "syncPolicy": "revalidate-and-resolve",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-016": {
+      "warningSeconds": 120,
+      "reauthMode": "policy-driven",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-017": {
+      "revocationBehavior": "immediate-safe",
+      "refreshPolicy": "event-or-boundary",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-018": {
+      "assuranceLevel": "policy-defined",
+      "gracePeriodSeconds": 300,
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-019": {
+      "idempotencyScope": "command-intent",
+      "keyLifetimeSeconds": 86400,
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-020": {
+      "undoWindowSeconds": 10,
+      "undoScope": "single-intent",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-021": {
+      "resultStateMode": "query-versioned",
+      "queryPersistence": "safe-url-or-session",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-022": {
+      "transactionBoundary": "domain-defined",
+      "resumePolicy": "revalidate",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-023": {
+      "recoveryPrompt": "when-diverged",
+      "draftRetentionHours": 168,
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    },
+    "VCGF-UI-INT-024": {
+      "contextScope": "route-task",
+      "restorePolicy": "validate-then-restore",
+      "revalidateAuthority": true,
+      "preserveContextOnFailure": true,
+      "auditLevel": "risk-based",
+      "telemetryMode": "privacy-aware"
+    }
+  }
+}

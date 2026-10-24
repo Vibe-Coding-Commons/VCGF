@@ -1,0 +1,1429 @@
+{
+  "schema_version": "1.0.0",
+  "package_version": "1.0.0",
+  "target_framework": "VCGF",
+  "target_framework_version": "1.3.0",
+  "status": "final-integration-candidate",
+  "activation_semantics": "explicit-journey-signals-only; no-cross-layer-auto-activation",
+  "journeys": [
+    {
+      "id": "VCGF-UI-JRN-001",
+      "journey": "DiscoveryToDetailReturn",
+      "title": "الاكتشاف إلى التفاصيل والعودة",
+      "priority": "P1",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-001-DiscoveryToDetailReturn.md",
+      "category": "discovery",
+      "purpose": "الانتقال من بحث أو قائمة أو لوحة نتائج إلى سجل تفصيلي ثم العودة إلى موضع المستخدم وسياقه.",
+      "applies_when": "نتائج البحث والقوائم وواجهات الاستكشاف التي يفتح منها المستخدم سجلًا ثم يتوقع الرجوع إلى نفس السياق.",
+      "not_applicable_when": "لا يستخدم عندما لا توجد عودة ذات معنى إلى مصدر سابق أو عندما يكون الانتقال مقصودًا لبدء مهمة جديدة.",
+      "triggers": [
+        "search_to_detail",
+        "list_to_detail_return",
+        "result_to_record",
+        "browse_return_context"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-006",
+        "VCGF-UI-SCR-002",
+        "VCGF-UI-SCR-003"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-030"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-002",
+      "journey": "CreateToDetailContinuation",
+      "title": "الإنشاء إلى التفاصيل والاستمرار",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-002-CreateToDetailContinuation.md",
+      "category": "record-lifecycle",
+      "purpose": "إدارة رحلة إنشاء سجل ثم الانتقال إلى تفاصيله أو الاستمرار في سياق واضح دون فقد أصل المهمة.",
+      "applies_when": "عندما ينشئ المستخدم كيانًا جديدًا ثم يحتاج فتحه أو إكمال بيانات مرتبطة أو العودة إلى مصدره.",
+      "not_applicable_when": "لا ينطبق على نموذج مؤقت لا ينشئ سجلًا مستمرًا.",
+      "triggers": [
+        "create_to_detail",
+        "create_then_open",
+        "create_and_continue",
+        "new_record_completion"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-003"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-003",
+      "journey": "DraftReviewSubmit",
+      "title": "المسودة والمراجعة ثم الإرسال",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-003-DraftReviewSubmit.md",
+      "category": "draft-lifecycle",
+      "purpose": "تنظيم العمل من بدء مسودة قابلة للاستئناف إلى المراجعة النهائية ثم الإرسال الموثوق.",
+      "applies_when": "الطلبات والنماذج التي تسمح بالحفظ كمسودة قبل الإرسال أو تتطلب مراجعة المستخدم لمدخلاته.",
+      "not_applicable_when": "لا يستخدم عندما لا يوجد مفهوم مسودة أو عندما يكون الحفظ نفسه هو الإجراء النهائي.",
+      "triggers": [
+        "draft_review_submit",
+        "save_draft_then_submit",
+        "review_before_submit",
+        "resume_and_submit"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-005"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-023"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-005",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-023"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-004",
+      "journey": "ReviewApproveComplete",
+      "title": "المراجعة والاعتماد والإكمال",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-004-ReviewApproveComplete.md",
+      "category": "approval",
+      "purpose": "تنسيق انتقال عنصر العمل من المراجعة إلى قرار اعتماد ثم إغلاق أو تحويل المرحلة التالية مع دليل واضح.",
+      "applies_when": "الموافقات والاعتمادات واللجان والمراجعات التي ينتج عنها قرار رسمي أو انتقال حالة.",
+      "not_applicable_when": "لا يستخدم لعرض سجل تاريخي دون قرار قابل للتنفيذ.",
+      "triggers": [
+        "review_approve_complete",
+        "approval_journey",
+        "decision_to_complete",
+        "approve_and_close"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-008",
+        "VCGF-UI-SCR-007"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-018"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-005",
+      "journey": "RejectReviseResubmit",
+      "title": "الرفض والمراجعة وإعادة الإرسال",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-005-RejectReviseResubmit.md",
+      "category": "approval",
+      "purpose": "الحفاظ على دورة تصحيح واضحة من قرار الرفض أو الإرجاع إلى التعديل ثم إعادة الإرسال مع تتبع السبب والإصدار.",
+      "applies_when": "عمليات يمكن إرجاعها لمقدمها للتصحيح ثم تقديمها من جديد.",
+      "not_applicable_when": "لا يستخدم عندما يكون الرفض نهائيًا ولا يسمح بإعادة التقديم.",
+      "triggers": [
+        "reject_revise_resubmit",
+        "return_for_changes",
+        "resubmit_after_rejection",
+        "revision_cycle"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-008",
+        "VCGF-UI-SCR-004"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-003"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-006",
+      "journey": "TaskQueueProcessNext",
+      "title": "قائمة العمل ومعالجة العنصر التالي",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-006-TaskQueueProcessNext.md",
+      "category": "work-queue",
+      "purpose": "تمكين المستخدم من معالجة سلسلة عناصر عمل بكفاءة مع الانتقال المنضبط إلى العنصر التالي والحفاظ على الفلاتر والأولوية.",
+      "applies_when": "صناديق الوارد وقوائم المهام التشغيلية عالية التكرار.",
+      "not_applicable_when": "لا يستخدم عندما تكون المهمة الأساسية استعراض سجل واحد أو تحليل مجموعة دون معالجة متتابعة.",
+      "triggers": [
+        "queue_process_next",
+        "inbox_process_next",
+        "task_triage_loop",
+        "next_work_item"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-007"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-007",
+      "journey": "BulkSelectActReview",
+      "title": "التحديد الجماعي والتنفيذ والمراجعة",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-007-BulkSelectActReview.md",
+      "category": "bulk",
+      "purpose": "تنسيق تحديد مجموعة عناصر ثم تنفيذ إجراء جماعي ومراجعة النتائج الجزئية أو الفاشلة دون فقد سياق المجموعة.",
+      "applies_when": "عمليات جماعية على سجلات أو ملفات أو مهام.",
+      "not_applicable_when": "لا يستخدم لإجراء على عنصر واحد أو عندما لا يمكن تحديد مجموعة واضحة.",
+      "triggers": [
+        "bulk_select_act_review",
+        "bulk_operation_journey",
+        "multi_record_action",
+        "batch_review_results"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-002",
+        "VCGF-UI-SCR-017"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-013",
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-008",
+      "journey": "ImportValidateMapCommit",
+      "title": "الاستيراد والتحقق والمواءمة ثم الالتزام",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-008-ImportValidateMapCommit.md",
+      "category": "data-transfer",
+      "purpose": "إدارة رحلة استيراد البيانات من الملف إلى المعاينة والتحقق والمواءمة والالتزام ثم تقرير النتائج.",
+      "applies_when": "استيراد CSV/Excel أو أي دفعات بيانات تحتاج تحققًا قبل التأثير المستمر.",
+      "not_applicable_when": "لا يستخدم لرفع مرفق عادي لا يتحول إلى بيانات مجال.",
+      "triggers": [
+        "import_validate_commit",
+        "data_import_journey",
+        "mapping_then_import",
+        "preview_before_commit"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-017",
+        "VCGF-UI-SCR-005"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-022"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-009",
+      "journey": "DocumentReviewSignArchive",
+      "title": "مراجعة المستند والتوقيع والأرشفة",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-009-DocumentReviewSignArchive.md",
+      "category": "document-lifecycle",
+      "purpose": "تنسيق مسار مستند من الفتح والمراجعة إلى التوقيع أو الاعتماد ثم الأرشفة مع المحافظة على النسخة والأدلة.",
+      "applies_when": "المستندات الرسمية أو العقود أو محاضر الاجتماعات التي تتطلب توقيعًا أو اعتمادًا وأرشفة.",
+      "not_applicable_when": "لا يستخدم لمعاينة ملف عابر بلا دورة حياة رسمية.",
+      "triggers": [
+        "document_review_sign_archive",
+        "signing_journey",
+        "document_approval_archive",
+        "official_document_flow"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-009",
+        "VCGF-UI-SCR-008"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-006",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-016"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-019"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-010",
+      "journey": "ScheduleCreateRescheduleCancel",
+      "title": "إنشاء الموعد وإعادة الجدولة والإلغاء",
+      "priority": "P1",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-010-ScheduleCreateRescheduleCancel.md",
+      "category": "scheduling",
+      "purpose": "إدارة دورة الموعد أو الحدث من الإنشاء إلى التعديل أو إعادة الجدولة أو الإلغاء مع إشعارات واتساق زمني.",
+      "applies_when": "التقويمات والمواعيد والاجتماعات والحجوزات.",
+      "not_applicable_when": "لا يستخدم لتاريخ مجرد داخل نموذج لا يمثل حدثًا زمنيًا قابلاً لإعادة الجدولة.",
+      "triggers": [
+        "schedule_create_reschedule_cancel",
+        "appointment_lifecycle",
+        "meeting_reschedule",
+        "calendar_event_journey"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-010"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-022",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-011",
+      "journey": "PublicSubmitTrackRespond",
+      "title": "الخدمة الذاتية: إرسال وتتبع واستجابة",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-011-PublicSubmitTrackRespond.md",
+      "category": "self-service",
+      "purpose": "تنظيم رحلة المستخدم الخارجي من بدء الطلب إلى الإرسال والتتبع والاستجابة للطلبات الإضافية حتى الإغلاق.",
+      "applies_when": "بوابات العملاء والمستفيدين والخدمات العامة التي تسمح بتقديم الطلب ومتابعته.",
+      "not_applicable_when": "لا يستخدم لواجهة موظف داخلية لا تتطلب تتبعًا خارجيًا.",
+      "triggers": [
+        "public_submit_track",
+        "self_service_journey",
+        "external_request_tracking",
+        "citizen_service_flow"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-018",
+        "VCGF-UI-SCR-004"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-012",
+      "journey": "AuthenticateRecoverReturn",
+      "title": "المصادقة والاستعادة والعودة للمهمة",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-012-AuthenticateRecoverReturn.md",
+      "category": "identity",
+      "purpose": "الحفاظ على نية المستخدم أثناء تسجيل الدخول أو MFA أو استعادة الوصول ثم إعادته بأمان إلى المهمة المصرح بها.",
+      "applies_when": "عندما تعترض المصادقة أو استعادة الحساب رحلة كانت للمستخدم نية محددة قبلها.",
+      "not_applicable_when": "لا يستخدم كبديل لعقد الهوية نفسه أو لتجاوز سياسة المصادقة.",
+      "triggers": [
+        "auth_recover_return",
+        "login_then_return",
+        "reauth_return_to_task",
+        "account_recovery_journey"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-013"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-013",
+      "journey": "DeepLinkAuthorizeReturnToOrigin",
+      "title": "الرابط العميق والتحقق والعودة للأصل",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-013-DeepLinkAuthorizeReturnToOrigin.md",
+      "category": "navigation",
+      "purpose": "معالجة الروابط العميقة والإشعارات التي تفتح هدفًا محميًا، مع تحقق الصلاحية وحفظ أصل الانتقال والعودة المنطقية.",
+      "applies_when": "روابط البريد والإشعارات والروابط المباشرة إلى سجل أو مهمة.",
+      "not_applicable_when": "لا يستخدم لمسار عام بسيط لا يحتاج تحققًا أو عودة سياقية.",
+      "triggers": [
+        "deep_link_authorize_return",
+        "notification_deep_link",
+        "protected_deep_link",
+        "return_to_origin"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-003",
+        "VCGF-UI-SCR-008"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-014",
+      "journey": "CompareDecideAct",
+      "title": "المقارنة ثم القرار والتنفيذ",
+      "priority": "P1",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-014-CompareDecideAct.md",
+      "category": "decision",
+      "purpose": "تنظيم رحلة مقارنة بدائل أو إصدارات ثم اتخاذ قرار وتنفيذ إجراء موثق دون فقد سياق المقارنة.",
+      "applies_when": "المقارنات بين عروض أو نسخ أو خيارات أو سجلات قبل قرار.",
+      "not_applicable_when": "لا يستخدم عندما لا توجد بدائل حقيقية للمقارنة.",
+      "triggers": [
+        "compare_decide_act",
+        "comparison_journey",
+        "decision_after_compare",
+        "select_best_option"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-016"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-015",
+      "journey": "ScopeSwitchResume",
+      "title": "تبديل النطاق والاستئناف الآمن",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-015-ScopeSwitchResume.md",
+      "category": "scope-continuity",
+      "purpose": "إدارة تبديل الجهة أو المنشأة أو الدور أو مساحة العمل مع إعادة تقييم الصلاحيات والذاكرة المؤقتة وعدم تسرب السياق.",
+      "applies_when": "الأنظمة متعددة المستأجرين أو الأدوار التي تسمح للمستخدم بتغيير نطاق العمل.",
+      "not_applicable_when": "لا يستخدم عندما يكون النطاق ثابتًا ولا يمكن تغييره أثناء الجلسة.",
+      "triggers": [
+        "scope_switch_resume",
+        "tenant_switch",
+        "organization_switch",
+        "role_switch_journey"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-012",
+        "VCGF-UI-SCR-003"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-024",
+        "VCGF-UI-INT-010"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-016",
+      "journey": "OfflineCaptureSyncResolve",
+      "title": "الالتقاط دون اتصال والمزامنة وحل التعارض",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-016-OfflineCaptureSyncResolve.md",
+      "category": "offline",
+      "purpose": "تنسيق عمل المستخدم دون اتصال من الالتقاط المحلي إلى المزامنة ثم المصالحة أو حل التعارض عند العودة للشبكة.",
+      "applies_when": "تطبيقات ميدانية أو سيناريوهات تتطلب عملًا مستمرًا بلا اتصال.",
+      "not_applicable_when": "لا يستخدم لمجرد احتمال انقطاع عابر يمكن التعامل معه برسالة Retry.",
+      "triggers": [
+        "offline_capture_sync_resolve",
+        "offline_journey",
+        "field_sync_journey",
+        "reconnect_and_resolve"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-019"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-011",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-023"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-017",
+      "journey": "LongRunningLeaveReturn",
+      "title": "العملية الطويلة: بدء ومغادرة وعودة",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-017-LongRunningLeaveReturn.md",
+      "category": "long-running",
+      "purpose": "السماح ببدء عملية طويلة ثم مغادرة الشاشة والعودة لاحقًا لرؤية الحالة والنتيجة دون ارتباط الجلسة بطلب واحد.",
+      "applies_when": "التصدير والاستيراد والمعالجة الجماعية والتقارير الثقيلة والوظائف الخلفية.",
+      "not_applicable_when": "لا يستخدم لعملية قصيرة يمكن إكمالها ضمن تفاعل مباشر.",
+      "triggers": [
+        "long_running_leave_return",
+        "background_job_journey",
+        "start_leave_return",
+        "async_job_tracking"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-017",
+        "VCGF-UI-SCR-011"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-010",
+        "VCGF-UI-INT-024"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-JRN-018",
+      "journey": "ConfigurePreviewPublish",
+      "title": "الإعداد والمعاينة والنشر",
+      "priority": "P0",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "path": "journeys/VCGF-UI-JRN-018-ConfigurePreviewPublish.md",
+      "category": "administration",
+      "purpose": "تنظيم تغيير إعدادات مؤثرة من التحرير إلى المعاينة والتحقق ثم النشر أو السريان مع إمكانية مراجعة الأثر والتراجع حيث يسمح المجال.",
+      "applies_when": "إعدادات النظام والسياسات والقوالب والقواعد التي يتطلب تغييرها تحققًا قبل السريان.",
+      "not_applicable_when": "لا يستخدم لتفضيل شخصي بسيط غير مؤثر ولا يحتاج نشرًا.",
+      "triggers": [
+        "configure_preview_publish",
+        "admin_publish_journey",
+        "settings_preview_apply",
+        "policy_change_journey"
+      ],
+      "review_compositions": [
+        "VCGF-UI-SCR-012"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-035",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-020"
+      ],
+      "policies": [
+        {
+          "key": "entryPolicy",
+          "type": "string",
+          "default": "validated-entry",
+          "scope": "system/tenant",
+          "constraints": "تحدد طرق الدخول المقبولة ولا تسمح بتجاوز حراس المسار."
+        },
+        {
+          "key": "completionPolicy",
+          "type": "string",
+          "default": "domain-confirmed",
+          "scope": "system/tenant",
+          "constraints": "النجاح يعتمد على تأكيد المجال لا على انتقال بصري فقط."
+        },
+        {
+          "key": "returnPolicy",
+          "type": "string",
+          "default": "validated-origin",
+          "scope": "system/tenant/user",
+          "constraints": "العودة للأصل المسموح بعد إعادة التحقق، مع fallback آمن."
+        },
+        {
+          "key": "contextPreservation",
+          "type": "string",
+          "default": "task-scoped",
+          "scope": "system/tenant",
+          "constraints": "يحفظ الحد الأدنى اللازم للمهمة دون أسرار أو بيانات نطاق سابق."
+        },
+        {
+          "key": "authorizationRecheck",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "إعادة التحقق قبل الأثر المستمر والانتقال الحساس."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "قياس مراحل الرحلة دون payload أعمال كامل أو أسرار."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    }
+  ]
+}

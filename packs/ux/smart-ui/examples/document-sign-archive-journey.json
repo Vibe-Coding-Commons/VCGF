@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "document-sign",
+  "screen_purpose": "Review sign and archive official document",
+  "has_ui": true,
+  "signals": [
+    "document_preview",
+    "workflow_timeline",
+    "audit_history"
+  ],
+  "interaction_signals": [
+    "confirmation_needed",
+    "sensitive_action_step_up",
+    "idempotent_submission"
+  ],
+  "composition_signals": [
+    "document_workspace",
+    "review_approval_screen"
+  ],
+  "journey_signals": [
+    "document_review_sign_archive"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "desktop",
+    "tablet"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": null,
+  "risk_level": "critical",
+  "data_volume": "medium",
+  "offline_required": false,
+  "user_roles": [
+    "approver"
+  ],
+  "task_frequency": "regular",
+  "information_density": "high",
+  "viewport_priority": "desktop-first",
+  "primary_input": "mixed",
+  "entry_channel": "notification",
+  "completion_expectation": "return-origin",
+  "context_continuity": "strict"
+}

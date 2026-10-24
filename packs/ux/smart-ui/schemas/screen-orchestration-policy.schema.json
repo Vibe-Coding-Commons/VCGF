@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Screen Orchestration Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "policy_version": {
+      "const": "0.5.0"
+    },
+    "activation_policy": {
+      "const": "composition-selected-only"
+    },
+    "enabledCompositions": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "densityPolicy": {
+          "enum": [
+            "adaptive",
+            "comfortable",
+            "compact"
+          ]
+        },
+        "primaryActionLimit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        },
+        "progressiveDisclosure": {
+          "type": "boolean"
+        },
+        "mobileTransform": {
+          "enum": [
+            "task-preserving-reflow",
+            "list-detail",
+            "stacked-panels"
+          ]
+        },
+        "largeScreenTransform": {
+          "enum": [
+            "context-expansion",
+            "comparison-expansion",
+            "controlled-regions"
+          ]
+        },
+        "roleAdaptation": {
+          "enum": [
+            "none",
+            "priority-only",
+            "bounded-density"
+          ]
+        },
+        "maxReadableTextWidthToken": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stickyPrimaryAction": {
+          "enum": [
+            "never",
+            "task-dependent",
+            "always-when-safe"
+          ]
+        },
+        "preserveTaskContext": {
+          "type": "boolean"
+        },
+        "adaptivePersonalization": {
+          "enum": [
+            "none",
+            "bounded"
+          ]
+        },
+        "layoutDirection": {
+          "const": "logical-properties"
+        },
+        "reducedMotionRespect": {
+          "const": true
+        }
+      },
+      "required": [
+        "densityPolicy",
+        "primaryActionLimit",
+        "progressiveDisclosure",
+        "mobileTransform",
+        "largeScreenTransform",
+        "roleAdaptation",
+        "maxReadableTextWidthToken",
+        "stickyPrimaryAction",
+        "preserveTaskContext",
+        "adaptivePersonalization",
+        "layoutDirection",
+        "reducedMotionRespect"
+      ]
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "roleAdaptationCannotGrantAuthority": {
+          "const": true
+        },
+        "responsiveChangesCannotHideRequiredInformation": {
+          "const": true
+        },
+        "largeScreenCannotAutoLoadMoreSensitiveData": {
+          "const": true
+        },
+        "mobileTransformCannotChangeBusinessRules": {
+          "const": true
+        },
+        "compositionDoesNotActivateComponentsOrInteractions": {
+          "const": true
+        }
+      },
+      "required": [
+        "roleAdaptationCannotGrantAuthority",
+        "responsiveChangesCannotHideRequiredInformation",
+        "largeScreenCannotAutoLoadMoreSensitiveData",
+        "mobileTransformCannotChangeBusinessRules",
+        "compositionDoesNotActivateComponentsOrInteractions"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy_version",
+    "activation_policy",
+    "enabledCompositions",
+    "defaults",
+    "safety"
+  ]
+}

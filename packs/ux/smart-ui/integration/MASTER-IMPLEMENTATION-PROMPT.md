@@ -1,0 +1,3 @@
+# البرومبت الرئيسي لدمج VCGF Smart UI v1.0.0
+
+ادمج طبقة Smart UI النهائية المرشحة داخل تطوير VCGF 1.3.0 مع الحفاظ على Core وControl IDs والتوافق. افحص المشروع أولًا، طبّق Reuse First، واختر بصورة مستقلة Screen Composition والمكونات وأنماط التفاعل والرحلات من إشاراتها الصريحة. لا تفعل علاقة أو Dependency تلقائيًا. حمّل أقل مجموعة معايير ممكنة من `standards_to_load`. حافظ على Calendar Governance لكل تاريخ وعلى Searchable Select عند فائدة البحث فقط. لا تغيّر صلاحية أو قاعدة أعمال في الواجهة، ولا ترفع أي Acceptance إلى Pass دون Runtime Evidence. شغّل جميع بوابات المستودع بعد الدمج ولا تنشئ Tag/Release دون قرار مستقل.

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "long-form",
+  "screen_id": "application-form",
+  "screen_purpose": "نموذج طويل مع مسودة وانتهاء محتمل للجلسة",
+  "has_ui": true,
+  "signals": [
+    "form_create_edit",
+    "long_form_autosave"
+  ],
+  "interaction_signals": [
+    "unsaved_changes",
+    "session_expiry",
+    "draft_recovery"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "desktop",
+    "mobile"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": "يجب الحفاظ على العمل دون تخزين أسرار.",
+  "risk_level": "high",
+  "data_volume": "small",
+  "offline_required": false,
+  "composition_signals": [
+    "form_transaction"
+  ],
+  "user_roles": [
+    "user"
+  ],
+  "task_frequency": "regular",
+  "information_density": "adaptive",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [
+    "auth_recover_return",
+    "draft_review_submit"
+  ],
+  "entry_channel": "resume",
+  "completion_expectation": "stay",
+  "context_continuity": "task-scoped"
+}

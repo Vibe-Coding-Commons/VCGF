@@ -112,3 +112,23 @@ sources:
   mdn_css_logic: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/inset-inline-start
   webdev_fonts: https://web.dev/learn/performance/optimize-web-fonts
   webdev_vitals: https://web.dev/articles/vitals
+
+# VCGF-SMART-UI-INTEGRATION-v1.0.0
+smart_ui_layer:
+  version: 1.0.0
+  target_framework: 1.3.0
+  status: public-framework-release
+  entrypoint: packs/ux/smart-ui/README.md
+  master_policy: packs/ux/smart-ui/governance/MASTER-POLICY.md
+  selector: packs/ux/smart-ui/scripts/select_smart_ui.py
+  catalog: packs/ux/smart-ui/CATALOG.html
+  selective_loading: true
+  cross_layer_auto_activation: false
+  reuse_first: true
+  runtime_acceptance_requires_evidence: true
+  counts:
+    components: 36
+    interactions: 24
+    screen_compositions: 20
+    journeys: 18
+    bound_standards: 2

@@ -1,0 +1,1428 @@
+{
+  "schema_version": "1.0.0",
+  "package_version": "1.0.0",
+  "contracts": [
+    {
+      "standard_id": "VCGF-UI-COMP-001",
+      "component_name": "DesignSystemPrimitives",
+      "category": "foundation",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "repeated_ui_primitives",
+        "shared_design_language",
+        "new_multi_screen_ui"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-002",
+      "component_name": "SmartDataGrid",
+      "category": "data-presentation",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "tabular_operational_data",
+        "sortable_table",
+        "row_actions",
+        "column_customization"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-003",
+      "component_name": "SmartFormFields",
+      "category": "forms",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "form_create_edit",
+        "conditional_form",
+        "advanced_search_form"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-004",
+      "component_name": "AdvancedFilterBuilder",
+      "category": "filtering",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "multi_criteria_filter",
+        "saved_filters",
+        "advanced_filter_logic"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-005",
+      "component_name": "SmartFileUploader",
+      "category": "files",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "file_upload",
+        "attachments",
+        "large_resumable_upload"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-006",
+      "component_name": "DocumentPreviewer",
+      "category": "files",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "document_preview",
+        "pdf_preview",
+        "protected_file_view"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-007",
+      "component_name": "AdaptiveOverlay",
+      "category": "overlays",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "modal_dialog",
+        "drawer",
+        "popover",
+        "focused_confirmation"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-008",
+      "component_name": "UnifiedFeedbackSystem",
+      "category": "feedback",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "async_feedback",
+        "save_result_feedback",
+        "system_notifications",
+        "empty_error_loading_states"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-009",
+      "component_name": "AdaptiveNavigation",
+      "category": "navigation",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "multi_section_app_navigation",
+        "deep_navigation",
+        "responsive_app_shell"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-010",
+      "component_name": "HierarchicalTreePicker",
+      "category": "selection",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "hierarchical_selection",
+        "tree_navigation",
+        "folder_tree",
+        "org_tree"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-011",
+      "component_name": "SmartFormWizard",
+      "category": "forms",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "multi_step_form",
+        "wizard",
+        "conditional_steps",
+        "review_before_submit"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-012",
+      "component_name": "PermissionAwareActions",
+      "category": "actions-security",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "permission_sensitive_actions",
+        "delete_action",
+        "approval_action",
+        "export_permission",
+        "state_sensitive_actions"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-013",
+      "component_name": "RichTextEditor",
+      "category": "content-editing",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "rich_text",
+        "document_template_editing",
+        "long_structured_content"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-014",
+      "component_name": "GlobalSearchCommandPalette",
+      "category": "search-navigation",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "global_search",
+        "command_palette",
+        "cross_module_navigation"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-015",
+      "component_name": "WorkflowApprovalTimeline",
+      "category": "workflow",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "workflow_approval",
+        "approval_timeline",
+        "delegation",
+        "sla_workflow"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-016",
+      "component_name": "AuditHistoryViewer",
+      "category": "history-observability",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "audit_history",
+        "version_history",
+        "change_diff",
+        "administrative_change_log"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-017",
+      "component_name": "SmartNumericInput",
+      "category": "forms",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "numeric_money_quantity",
+        "percentage_input",
+        "measurement_input",
+        "accounting_amount"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-018",
+      "component_name": "SmartContactFields",
+      "category": "forms",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "phone_input",
+        "email_input",
+        "otp_verification",
+        "contact_fields"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-019",
+      "component_name": "DataImportExportWizard",
+      "category": "data-transfer",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "data_import",
+        "data_export",
+        "csv_xlsx_import",
+        "bulk_export"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-017"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-020",
+      "component_name": "SmartDashboardWidgets",
+      "category": "analytics",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "dashboard_kpi",
+        "operational_metrics",
+        "analytical_charts"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-017"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-021",
+      "component_name": "SmartKanbanBoard",
+      "category": "workflow",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P2",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "kanban",
+        "drag_state_board",
+        "pipeline_board"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-022",
+      "component_name": "UnifiedScheduler",
+      "category": "scheduling",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P2",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "scheduler",
+        "appointments",
+        "resource_booking",
+        "shift_calendar",
+        "meeting_calendar"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-023",
+      "component_name": "DraftAutosaveManager",
+      "category": "persistence",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P2",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "long_form_autosave",
+        "drafts",
+        "unsaved_work_protection",
+        "long_editor"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-024",
+      "component_name": "AdaptiveContentPanels",
+      "category": "layout",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P2",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "tabs",
+        "accordion",
+        "split_view",
+        "master_detail_panels"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-025",
+      "component_name": "SmartRecordDetailView",
+      "category": "data-presentation",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "record_detail",
+        "entity_profile",
+        "read_only_summary",
+        "master_detail_record"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-024"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-026",
+      "component_name": "SmartCollectionList",
+      "category": "data-presentation",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "collection_list",
+        "card_list",
+        "responsive_record_list",
+        "search_results_list"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-024"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-027",
+      "component_name": "SmartActivityTimeline",
+      "category": "history-observability",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "activity_timeline",
+        "record_activity",
+        "event_feed",
+        "business_event_history"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-024"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-028",
+      "component_name": "SmartCollaborationThread",
+      "category": "collaboration",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "comments_thread",
+        "collaboration",
+        "mentions",
+        "record_discussion"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-013"
+      ],
+      "external_bindings": [
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-029",
+      "component_name": "SmartNotificationCenter",
+      "category": "communication",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "notification_center",
+        "notification_inbox",
+        "persistent_notifications",
+        "task_inbox"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-030",
+      "component_name": "SmartSavedViewsManager",
+      "category": "personalization",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "saved_views",
+        "saved_filters",
+        "column_presets",
+        "user_view_preferences"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_bindings": [
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-031",
+      "component_name": "SmartContextualActionBar",
+      "category": "actions",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "contextual_actions",
+        "bulk_actions",
+        "action_toolbar",
+        "selection_actions"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-032",
+      "component_name": "SmartRelationshipPicker",
+      "category": "selection",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "relationship_picker",
+        "entity_linking",
+        "cross_entity_picker",
+        "related_record_select"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-033",
+      "component_name": "SmartAddressLocationFields",
+      "category": "forms",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "address_fields",
+        "location_fields",
+        "country_city_address",
+        "geographic_location"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_bindings": [
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-034",
+      "component_name": "SmartTaxonomyTagPicker",
+      "category": "classification",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "tag_picker",
+        "taxonomy",
+        "classification_tags",
+        "multi_tag_select"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "external_bindings": [
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-035",
+      "component_name": "SmartRulesExpressionBuilder",
+      "category": "configuration",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P1",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "rules_builder",
+        "expression_builder",
+        "conditional_logic_builder",
+        "automation_conditions"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "external_bindings": [
+        "calendar",
+        "searchable_select"
+      ],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-036",
+      "component_name": "SmartSecureAuthenticationFlow",
+      "category": "identity-security",
+      "lifecycle_state": "final-integration-candidate",
+      "criticality": "P0",
+      "activation_policy": "explicit-selected-only",
+      "discovery_signals": [
+        "login_flow",
+        "mfa",
+        "passkey",
+        "password_recovery",
+        "reauthentication",
+        "step_up_auth"
+      ],
+      "reuse_preference": [
+        "reuse",
+        "extend",
+        "wrap",
+        "replace",
+        "build_new"
+      ],
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-018"
+      ],
+      "external_bindings": [],
+      "required_evidence": [
+        "applicability-decision",
+        "reuse-fitness-or-build-rationale",
+        "requirement-traceability",
+        "accessibility-keyboard-check",
+        "rtl-ltr-responsive-check",
+        "runtime-acceptance-evidence-before-pass"
+      ],
+      "package_policy": "reuse-existing-first; add-one-fit-for-purpose-implementation-only",
+      "runtime_test_state": "not_run"
+    }
+  ]
+}

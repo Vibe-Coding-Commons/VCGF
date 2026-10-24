@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "field-ops",
+  "screen_id": "asset-edit",
+  "screen_purpose": "تعديل أصل ميداني مع استمرار محدود دون اتصال ومزامنة لاحقة",
+  "has_ui": true,
+  "signals": [
+    "form_create_edit",
+    "async_feedback"
+  ],
+  "interaction_signals": [
+    "record_edit",
+    "unsaved_changes",
+    "optimistic_update",
+    "offline_required",
+    "concurrency_conflict",
+    "error_state"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "tablet"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": false,
+  "existing_capabilities": [],
+  "notes": "اختبار حدود optimistic/offline/conflict.",
+  "risk_level": "medium",
+  "data_volume": "medium",
+  "offline_required": true,
+  "composition_signals": [
+    "form_transaction",
+    "mobile_focused_task"
+  ],
+  "user_roles": [
+    "field-operator"
+  ],
+  "task_frequency": "regular",
+  "information_density": "adaptive",
+  "viewport_priority": "mobile-first",
+  "primary_input": "touch",
+  "journey_signals": [
+    "offline_capture_sync_resolve"
+  ],
+  "entry_channel": "resume",
+  "completion_expectation": "detail",
+  "context_continuity": "task-scoped"
+}

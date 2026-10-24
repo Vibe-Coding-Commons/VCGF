@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Journey Contract Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "contracts": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "standard_id": {
+            "type": "string",
+            "pattern": "^VCGF-UI-JRN-[0-9]{3}$"
+          },
+          "kind": {
+            "const": "journey"
+          },
+          "version": {
+            "const": "1.0.0"
+          },
+          "status": {
+            "const": "final-integration-candidate"
+          },
+          "source_path": {
+            "type": "string",
+            "pattern": "^journeys/"
+          },
+          "activation": {
+            "const": "explicit-journey-signals-only"
+          },
+          "review_compositions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "review_components": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "review_interactions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "application_tests": {
+            "const": "not_run"
+          }
+        },
+        "required": [
+          "standard_id",
+          "kind",
+          "version",
+          "status",
+          "source_path",
+          "activation",
+          "review_compositions",
+          "review_components",
+          "review_interactions",
+          "application_tests"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "contracts"
+  ]
+}
