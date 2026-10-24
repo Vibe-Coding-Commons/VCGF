@@ -45,6 +45,15 @@ jobs:
       - name: Add package attribution bridge
         shell: bash
         run: |
+          python - <<'PYDOC'
+          from pathlib import Path
+          p=Path('docs/project-history/v1.3.0-smart-ui-integration.md')
+          text=p.read_text(encoding='utf-8')
+          marker='<!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 -->\n'
+          if 'SPDX-FileCopyrightText: 2026 Eng. Hamada Sami' not in text:
+              p.write_text(marker+text,encoding='utf-8')
+          PYDOC
+
           cat > packs/ux/SMART-UI-ATTRIBUTION.md <<'ATTR'
           <!--
           SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
