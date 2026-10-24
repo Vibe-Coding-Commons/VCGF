@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pytest
 
 from conftest import ROOT, NOW
-from runtime.adaptive.coordinator import CONTROL_IDS, plan
+from runtime.adaptive.coordinator import CONTROL_IDS, PACKS, plan
 from runtime.adaptive.cli import main
 from runtime.adaptive.common import InputError
 
@@ -17,7 +17,7 @@ from runtime.adaptive.common import InputError
 def test_both_engines_use_real_core_loader(case):
     fp,ux,root=case;r=plan(fp,ux,root,now=NOW)
     assert r['state']=='proposed'
-    assert len(r['loaded_context'])==len(CONTROL_IDS)+2
+    assert len(r['loaded_context'])==len(CONTROL_IDS)+len(PACKS)
     assert r['engineering']['project_id']==r['ux']['project_id']
     assert r['sources'][0]['verification']=='bytes_only'
     assert r['execution_authorized'] is False
