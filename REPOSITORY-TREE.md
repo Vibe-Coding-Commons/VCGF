@@ -276,6 +276,7 @@ VCGF/
 │   │   │   ├── scope-register.json
 │   │   │   └── sources.json
 │   │   └── v1.3
+│   │       ├── baseline-compatibility-v1.3.json
 │   │       ├── public-release-decision.md
 │   │       ├── release-checklist.md
 │   │       ├── release-notes-v1.3.0.md

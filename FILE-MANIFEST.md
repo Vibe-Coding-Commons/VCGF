@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **953**
+Files listed: **954**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -265,6 +265,7 @@ Files listed: **953**
 | docs/quality/v1.2/release-notes-v1.2.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.3.0 |
 | docs/quality/v1.2/scope-register.json | Framework explanatory documentation | docs | Canonical/maintained | 1.3.0 |
 | docs/quality/v1.2/sources.json | Framework explanatory documentation | docs | Canonical/maintained | 1.3.0 |
+| docs/quality/v1.3/baseline-compatibility-v1.3.json | Framework explanatory documentation | docs | Canonical/maintained | 1.3.0 |
 | docs/quality/v1.3/public-release-decision.md | Framework explanatory documentation | docs | Canonical/maintained | 1.3.0 |
 | docs/quality/v1.3/release-checklist.md | Framework explanatory documentation | docs | Canonical/maintained | 1.3.0 |
 | docs/quality/v1.3/release-notes-v1.3.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.3.0 |
