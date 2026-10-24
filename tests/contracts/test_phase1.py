@@ -217,10 +217,13 @@ class CompatibilityTests(unittest.TestCase):
         approval = json.loads((ROOT / "docs/project-history/v1.1.0/documentation-approval.json").read_text())
         allowed = approval["allowed_original_documentation_changes"]
         self.assertEqual(set(allowed), {"README.md", "README.ar.md", "CHANGELOG.md"})
-        # v1.2 is independently pinned. Neither frozen v1.0 hashes nor v1.1 authorization changes.
-        candidate = json.loads((ROOT / "docs/quality/v1.2/baseline-compatibility-v1.2.json").read_text())
-        candidate_files = candidate["allowed_original_file_changes"]
-        candidate_paths = {
+
+        # Release compatibility records are cumulative and immutable. v1.3 adds a
+        # narrow delta over the independently pinned v1.2 record; it never rewrites
+        # the v1.0 snapshot or the v1.1/v1.2 approvals.
+        v12 = json.loads((ROOT / "docs/quality/v1.2/baseline-compatibility-v1.2.json").read_text())
+        v12_files = v12["allowed_original_file_changes"]
+        v12_paths = {
             "README.md", "README.ar.md", "CHANGELOG.md",
             "VERSION", "VCGF-MANIFEST.yaml", "CITATION.cff",
             "scripts/validate-version.py", "scripts/generate-control-catalog.py",
@@ -228,13 +231,30 @@ class CompatibilityTests(unittest.TestCase):
             "scripts/validate-repository-structure.py", "scripts/generate-file-manifest.py",
             "scripts/vcgf_lib.py", "scripts/generate-repository-tree.py",
         }
-        self.assertEqual(candidate["candidate_version"], "1.2.0")
-        self.assertEqual(candidate["review_status"], "PENDING_INDEPENDENT_REVIEW")
-        self.assertEqual(set(candidate_files), candidate_paths)
-        self.assertTrue(candidate_paths <= set(snapshot))
-        for name in candidate_paths:
-            self.assertTrue(candidate_files[name]["reason"].strip())
-            self.assertRegex(candidate_files[name]["sha256_lf"], r"^[0-9a-f]{64}$")
+        self.assertEqual(v12["candidate_version"], "1.2.0")
+        self.assertEqual(v12["review_status"], "PENDING_INDEPENDENT_REVIEW")
+        self.assertEqual(set(v12_files), v12_paths)
+
+        v13 = json.loads((ROOT / "docs/quality/v1.3/baseline-compatibility-v1.3.json").read_text())
+        v13_files = v13["allowed_original_file_changes"]
+        v13_paths = {
+            ".gitattributes", "README.md", "README.ar.md", "CHANGELOG.md",
+            "VERSION", "VCGF-MANIFEST.yaml", "CITATION.cff",
+            "FILE-MANIFEST.md", "REPOSITORY-TREE.md", "spec/control-catalog.yaml",
+            "scripts/validate-attribution.py",
+        }
+        self.assertEqual(v13["candidate_version"], "1.3.0")
+        self.assertEqual(v13["inherits"], "docs/quality/v1.2/baseline-compatibility-v1.2.json")
+        self.assertEqual(v13["review_status"], "PENDING_INDEPENDENT_REVIEW")
+        self.assertEqual(set(v13_files), v13_paths)
+
+        cumulative = dict(v12_files)
+        cumulative.update(v13_files)
+        self.assertTrue(set(cumulative) <= set(snapshot))
+        for name, record in cumulative.items():
+            self.assertTrue(record["reason"].strip())
+            self.assertRegex(record["sha256_lf"], r"^[0-9a-f]{64}$")
+
         for name, digest in snapshot.items():
             with self.subTest(file=name):
                 # Historical Python 3.13 bytecode is not a portable source file.
@@ -242,11 +262,11 @@ class CompatibilityTests(unittest.TestCase):
                     self.assertEqual(digest, "6e5d07457cee2fc5950f2c2c709f3d6306c4a467814ff8d77ad331fc07ee30ce")
                     continue
                 observed = (ROOT / name).read_bytes()
-                if name in candidate_paths:
-                    # GitHub .gitattributes pins LF. Normalization here is EOL-only for the
-                    # ten explicitly reviewed files; every other original file is byte-exact.
+                if name in cumulative:
+                    # Repository text is pinned to LF except the frozen Smart UI
+                    # package, which is outside this v1.0 original-file snapshot.
                     actual = hashlib.sha256(observed.replace(b"\r\n", b"\n")).hexdigest()
-                    expected = candidate_files[name]["sha256_lf"]
+                    expected = cumulative[name]["sha256_lf"]
                 else:
                     actual = hashlib.sha256(observed).hexdigest()
                     expected = allowed.get(name, digest)
