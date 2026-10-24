@@ -54,6 +54,15 @@ jobs:
               p.write_text(marker+text,encoding='utf-8')
           PYDOC
 
+          python - <<'PYATTR'
+          from pathlib import Path
+          p=Path('.gitattributes')
+          text=p.read_text(encoding='utf-8')
+          rule='packs/ux/smart-ui/** -text'
+          if rule not in text.splitlines():
+              p.write_text(text.rstrip('\n')+'\n\n# Preserve frozen Smart UI package bytes exactly\n'+rule+'\n',encoding='utf-8')
+          PYATTR
+
           cat > packs/ux/SMART-UI-ATTRIBUTION.md <<'ATTR'
           <!--
           SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
@@ -190,11 +199,16 @@ jobs:
           obj=json.loads(p.read_text(encoding='utf-8'))
           obj['$comment']='SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0'
           p.write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+
+          # Release documents are maintained repository files, not frozen package bytes.
+          for md in Path('docs/quality/v1.3').glob('*.md'):
+              lines=md.read_text(encoding='utf-8').splitlines()
+              md.write_text('\n'.join(line.rstrip(' \t') for line in lines)+'\n',encoding='utf-8')
           PYEVID
           python scripts/release-quality-gate.py
-          python packs/ux/smart-ui/scripts/validate_final.py
+          python packs/ux/smart-ui/scripts/validate_final.py --verify-manifest
           python -m pytest tests/adaptive/test_smart_ui_pack.py -q
-          git diff --check
+          git diff --check -- . ':(exclude)packs/ux/smart-ui/**'
 
       - name: Commit verified release candidate
         shell: bash
@@ -202,6 +216,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --check
+          git diff --cached --check -- . ':(exclude)packs/ux/smart-ui/**'
+          python - <<'PYINDEX'
+          from pathlib import Path
+          import subprocess
+          root=Path('packs/ux/smart-ui')
+          mismatches=[]
+          for p in sorted(x for x in root.rglob('*') if x.is_file()):
+              rel=p.as_posix()
+              staged=subprocess.check_output(['git','show',':'+rel])
+              if staged != p.read_bytes():
+                  mismatches.append(rel)
+          if mismatches:
+              raise SystemExit('staged Smart UI bytes differ from verified working-tree bytes: '+', '.join(mismatches[:20]))
+          print(f'PASS staged Smart UI byte preservation: {sum(1 for p in root.rglob("*") if p.is_file())} files')
+          PYINDEX
+          python packs/ux/smart-ui/scripts/validate_final.py --verify-manifest
           git commit -m "feat(ux): integrate Smart UI and prepare VCGF v1.3.0"
           git push origin HEAD:release/v1.3.0
