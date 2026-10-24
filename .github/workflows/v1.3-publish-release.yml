@@ -1,0 +1,57 @@
+name: Publish VCGF v1.3.0
+
+on:
+  push:
+    branches:
+      - release/v1.3.0
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    env:
+      TARGET_SHA: 43c617df048b375deca33c41b8eec53bc61d179d
+      TAG: v1.3.0
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 43c617df048b375deca33c41b8eec53bc61d179d
+          fetch-depth: 0
+
+      - name: Verify official release source
+        shell: bash
+        run: |
+          test "$(cat VERSION)" = "1.3.0"
+          grep -q "^framework_version: 1.3.0$" VCGF-MANIFEST.yaml
+          grep -q "^release_status: stable$" VCGF-MANIFEST.yaml
+          test -f docs/quality/v1.3/release-notes-v1.3.0.md
+          python scripts/release-quality-gate.py
+
+      - name: Create annotated tag
+        shell: bash
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists; refusing to overwrite."
+            exit 1
+          fi
+          git config user.name "VCGF Release"
+          git config user.email "i@hamada.io"
+          git tag -a "$TAG" "$TARGET_SHA" -m "VCGF v1.3.0 — Smart UI Governance"
+          git push origin "refs/tags/$TAG"
+
+      - name: Create GitHub Release
+        shell: bash
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; refusing to overwrite."
+            exit 1
+          fi
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --title "VCGF v1.3.0 — Smart UI Governance" \
+            --notes-file docs/quality/v1.3/release-notes-v1.3.0.md
