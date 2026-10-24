@@ -1,0 +1,55 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "candidate_version": "1.3.0",
+  "inherits": "docs/quality/v1.2/baseline-compatibility-v1.2.json",
+  "baseline": "tests/fixtures/v1.0/baseline-hashes.json plus the immutable v1.2 compatibility record",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "release_status": "PUBLIC_FRAMEWORK_RELEASE__PRODUCTION_ADMISSION_BLOCKED",
+  "notes": "Owner-authorized public v1.3.0 framework distribution. This record is a cumulative delta over the immutable v1.2 compatibility record; it does not rewrite v1.0/v1.1/v1.2 history or imply target-application production admission.",
+  "allowed_original_file_changes": {
+    ".gitattributes": {
+      "sha256_lf": "8e00156f303bd9f08d9f5464ecdde9f72334137df6edab56f125d822cc0312cb",
+      "reason": "Preserve the frozen Smart UI package byte-for-byte while retaining repository-wide LF normalization elsewhere."
+    },
+    "CHANGELOG.md": {
+      "sha256_lf": "f8f10fe65ac2d051450c3a98c776e896895b9f0e4e1d81b18e2cef70ef8ced04",
+      "reason": "Document the owner-authorized v1.3.0 public framework source release and its verification boundary."
+    },
+    "CITATION.cff": {
+      "sha256_lf": "c76eb3ed2b9f734bb63e9a0d42ce0cf63dd53fca5341bc37e81014614a3c8ab4",
+      "reason": "Update framework citation version and release date to v1.3.0."
+    },
+    "FILE-MANIFEST.md": {
+      "sha256_lf": "ed9cdaeccd40e7a6d24bc166d7cdbaaecb176f0153440da76a0a99da8d3e5838",
+      "reason": "Regenerated repository manifest after the Smart UI integration and v1.3.0 metadata update."
+    },
+    "README.ar.md": {
+      "sha256_lf": "29d37e95035483709f80a40ef1ba9429277e76bf1bfea0bb4cb2376fe7afd5d0",
+      "reason": "Publish the Arabic v1.3.0 release summary and Smart UI usage boundary."
+    },
+    "README.md": {
+      "sha256_lf": "90da2d75df89d8fecb8d16c16193d703429f6f61c94d22d7c03e9cac524dd8f6",
+      "reason": "Publish the English v1.3.0 release summary and Smart UI usage boundary."
+    },
+    "REPOSITORY-TREE.md": {
+      "sha256_lf": "4cd3b84496d299ec503b4bc761fbf2e6961452bacefa4f77128e99d0aa35d032",
+      "reason": "Regenerated repository tree after adding the Smart UI pack and v1.3 release evidence."
+    },
+    "VCGF-MANIFEST.yaml": {
+      "sha256_lf": "ebc1c9fd7ad7b9eb2e9be4230443400eb4bb970b40bd3e26556bc5241371d18a",
+      "reason": "Set the official framework source distribution metadata to stable v1.3.0 dated 2026-10-24."
+    },
+    "VERSION": {
+      "sha256_lf": "64d23f858ef51b0f996e4966d4e27c0371b437e2d2787890b1f7ad22d4ec5663",
+      "reason": "Advance the backward-compatible framework minor version from 1.2.0 to 1.3.0."
+    },
+    "scripts/validate-attribution.py": {
+      "sha256_lf": "b0c7d0e06211b7e80cd12e514db63d53085e0dbfa98f6a178e8e4460ed11875b",
+      "reason": "Support an explicitly attributed immutable Smart UI package scope without weakening attribution checks for the rest of VCGF."
+    },
+    "spec/control-catalog.yaml": {
+      "sha256_lf": "fbe045fbafe1824fc8029cdaf369e9102ef590901f1ccfc528600f2bac83c6eb",
+      "reason": "Regenerated the canonical control catalog against framework version 1.3.0 while preserving all 84 Control IDs."
+    }
+  }
+}
