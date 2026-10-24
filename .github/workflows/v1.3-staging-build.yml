@@ -147,6 +147,16 @@ jobs:
           if __name__=="__main__": main()
           PY
 
+      - name: Normalize integration text endings
+        shell: bash
+        run: |
+          python - <<'PYNORM'
+          from pathlib import Path
+          for name in ['packs/ux/adaptive.md','packs/ux/catalog.yaml']:
+              p=Path(name)
+              p.write_text(p.read_text(encoding='utf-8').rstrip('\n')+'\n',encoding='utf-8')
+          PYNORM
+
       - name: Finalize v1.3.0 and run release gates
         run: python /tmp/vcgf-release/vcgf_official_release_ready/finalize_v1_3_0.py . --allow-dirty
 
