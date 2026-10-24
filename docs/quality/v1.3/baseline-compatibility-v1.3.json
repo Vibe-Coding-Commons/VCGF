@@ -20,7 +20,7 @@
       "reason": "Update framework citation version and release date to v1.3.0."
     },
     "FILE-MANIFEST.md": {
-      "sha256_lf": "ed9cdaeccd40e7a6d24bc166d7cdbaaecb176f0153440da76a0a99da8d3e5838",
+      "sha256_lf": "5259bde6abe28a9fd5cafa32ad02e676f77630488a37169945e44d822ab46c7c",
       "reason": "Regenerated repository manifest after the Smart UI integration and v1.3.0 metadata update."
     },
     "README.ar.md": {
@@ -32,7 +32,7 @@
       "reason": "Publish the English v1.3.0 release summary and Smart UI usage boundary."
     },
     "REPOSITORY-TREE.md": {
-      "sha256_lf": "4cd3b84496d299ec503b4bc761fbf2e6961452bacefa4f77128e99d0aa35d032",
+      "sha256_lf": "6e1650d81be5e85226cc8073581d46cddbde3d2c39efb2e0007ac8db3642b5be",
       "reason": "Regenerated repository tree after adding the Smart UI pack and v1.3 release evidence."
     },
     "VCGF-MANIFEST.yaml": {
