@@ -1,0 +1,397 @@
+{
+  "schema_version": "1.0.0",
+  "rule_semantics": "explicit-screen-signals-select-only; dependencies-are-review-links-not-auto-activation",
+  "component_rules": [
+    {
+      "standard_id": "VCGF-UI-COMP-001",
+      "triggers": [
+        "repeated_ui_primitives",
+        "shared_design_language",
+        "new_multi_screen_ui"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-002",
+      "triggers": [
+        "tabular_operational_data",
+        "sortable_table",
+        "row_actions",
+        "column_customization"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-003",
+      "triggers": [
+        "form_create_edit",
+        "conditional_form",
+        "advanced_search_form"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-004",
+      "triggers": [
+        "multi_criteria_filter",
+        "saved_filters",
+        "advanced_filter_logic"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-005",
+      "triggers": [
+        "file_upload",
+        "attachments",
+        "large_resumable_upload"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-006",
+      "triggers": [
+        "document_preview",
+        "pdf_preview",
+        "protected_file_view"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-007",
+      "triggers": [
+        "modal_dialog",
+        "drawer",
+        "popover",
+        "focused_confirmation"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-008",
+      "triggers": [
+        "async_feedback",
+        "save_result_feedback",
+        "system_notifications",
+        "empty_error_loading_states"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-009",
+      "triggers": [
+        "multi_section_app_navigation",
+        "deep_navigation",
+        "responsive_app_shell"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-010",
+      "triggers": [
+        "hierarchical_selection",
+        "tree_navigation",
+        "folder_tree",
+        "org_tree"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-011",
+      "triggers": [
+        "multi_step_form",
+        "wizard",
+        "conditional_steps",
+        "review_before_submit"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-012",
+      "triggers": [
+        "permission_sensitive_actions",
+        "delete_action",
+        "approval_action",
+        "export_permission",
+        "state_sensitive_actions"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-013",
+      "triggers": [
+        "rich_text",
+        "document_template_editing",
+        "long_structured_content"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-014",
+      "triggers": [
+        "global_search",
+        "command_palette",
+        "cross_module_navigation"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-015",
+      "triggers": [
+        "workflow_approval",
+        "approval_timeline",
+        "delegation",
+        "sla_workflow"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-016",
+      "triggers": [
+        "audit_history",
+        "version_history",
+        "change_diff",
+        "administrative_change_log"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-017",
+      "triggers": [
+        "numeric_money_quantity",
+        "percentage_input",
+        "measurement_input",
+        "accounting_amount"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-018",
+      "triggers": [
+        "phone_input",
+        "email_input",
+        "otp_verification",
+        "contact_fields"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-019",
+      "triggers": [
+        "data_import",
+        "data_export",
+        "csv_xlsx_import",
+        "bulk_export"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-020",
+      "triggers": [
+        "dashboard_kpi",
+        "operational_metrics",
+        "analytical_charts"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-021",
+      "triggers": [
+        "kanban",
+        "drag_state_board",
+        "pipeline_board"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-022",
+      "triggers": [
+        "scheduler",
+        "appointments",
+        "resource_booking",
+        "shift_calendar",
+        "meeting_calendar"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-023",
+      "triggers": [
+        "long_form_autosave",
+        "drafts",
+        "unsaved_work_protection",
+        "long_editor"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-024",
+      "triggers": [
+        "tabs",
+        "accordion",
+        "split_view",
+        "master_detail_panels"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-025",
+      "triggers": [
+        "record_detail",
+        "entity_profile",
+        "read_only_summary",
+        "master_detail_record"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-026",
+      "triggers": [
+        "collection_list",
+        "card_list",
+        "responsive_record_list",
+        "search_results_list"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-027",
+      "triggers": [
+        "activity_timeline",
+        "record_activity",
+        "event_feed",
+        "business_event_history"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-028",
+      "triggers": [
+        "comments_thread",
+        "collaboration",
+        "mentions",
+        "record_discussion"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-029",
+      "triggers": [
+        "notification_center",
+        "notification_inbox",
+        "persistent_notifications",
+        "task_inbox"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-030",
+      "triggers": [
+        "saved_views",
+        "saved_filters",
+        "column_presets",
+        "user_view_preferences"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-031",
+      "triggers": [
+        "contextual_actions",
+        "bulk_actions",
+        "action_toolbar",
+        "selection_actions"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-032",
+      "triggers": [
+        "relationship_picker",
+        "entity_linking",
+        "cross_entity_picker",
+        "related_record_select"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-033",
+      "triggers": [
+        "address_fields",
+        "location_fields",
+        "country_city_address",
+        "geographic_location"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-034",
+      "triggers": [
+        "tag_picker",
+        "taxonomy",
+        "classification_tags",
+        "multi_tag_select"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-035",
+      "triggers": [
+        "rules_builder",
+        "expression_builder",
+        "conditional_logic_builder",
+        "automation_conditions"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-036",
+      "triggers": [
+        "login_flow",
+        "mfa",
+        "passkey",
+        "password_recovery",
+        "reauthentication",
+        "step_up_auth"
+      ],
+      "default_decision": "required"
+    }
+  ],
+  "external_rules": [
+    {
+      "standard_id": "CALENDAR-GOVERNANCE-ADDENDUM",
+      "triggers": [
+        "date_field",
+        "date_range",
+        "date_time_field",
+        "birth_date",
+        "effective_date",
+        "scheduler",
+        "appointments",
+        "resource_booking",
+        "shift_calendar",
+        "meeting_calendar"
+      ],
+      "path": "external-standards/CALENDAR-GOVERNANCE-ADDENDUM.md",
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "UI-COMP-SEARCHABLE-SELECT",
+      "triggers": [
+        "searchable_choice",
+        "large_option_list",
+        "remote_option_search",
+        "employee_picker",
+        "customer_picker",
+        "supplier_picker",
+        "country_city_picker"
+      ],
+      "path": "external-standards/ENTERPRISE-SEARCHABLE-SELECT-COMBOBOX.md",
+      "default_decision": "required",
+      "exclude_signals": [
+        "binary_choice_only",
+        "very_short_choice_only"
+      ]
+    }
+  ]
+}

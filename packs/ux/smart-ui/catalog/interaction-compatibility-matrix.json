@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "relations": [
+    {
+      "left": "VCGF-UI-INT-001",
+      "right": "VCGF-UI-INT-006",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "إنشاء السجل قد يستخدم آلة الحفظ/الإرسال، لكن لا يفعّلها إذا كان الإنشاء أمرًا واحدًا بسيطًا."
+    },
+    {
+      "left": "VCGF-UI-INT-001",
+      "right": "VCGF-UI-INT-019",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "إذا كان الإنشاء قابلًا لإعادة الإرسال فيجب أن يحسم الخادم idempotency؛ تعطيل الزر وحده لا يكفي."
+    },
+    {
+      "left": "VCGF-UI-INT-002",
+      "right": "VCGF-UI-INT-005",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "التعديل غالبًا يحتاج حماية تغييرات غير محفوظة، لكن لا تُفعّل إذا لم توجد حالة محلية قابلة للفقد."
+    },
+    {
+      "left": "VCGF-UI-INT-002",
+      "right": "VCGF-UI-INT-012",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "عند تعديل سجل قد يتغير خارجيًا يجب تحديد مصدر version/ETag ومنع last-write-wins الصامت."
+    },
+    {
+      "left": "VCGF-UI-INT-004",
+      "right": "VCGF-UI-INT-007",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "الحذف عالي الخطورة قد يحتاج تأكيدًا؛ الحذف القابل للتراجع منخفض المخاطر قد يستخدم Undo بدل حوار ثقيل."
+    },
+    {
+      "left": "VCGF-UI-INT-004",
+      "right": "VCGF-UI-INT-020",
+      "type": "mode-boundary",
+      "severity": "review",
+      "rule": "Undo صالح فقط إذا كان الحذف أو الأرشفة قابلًا للعكس فعليًا؛ لا يعرض مع حذف نهائي."
+    },
+    {
+      "left": "VCGF-UI-INT-007",
+      "right": "VCGF-UI-INT-020",
+      "type": "alternative",
+      "severity": "review",
+      "rule": "التأكيد وUndo قد يكونان بديلين حسب قابلية التراجع؛ لا تستخدم الاثنين آليًا لكل فعل."
+    },
+    {
+      "left": "VCGF-UI-INT-009",
+      "right": "VCGF-UI-INT-014",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "العملية الطويلة تستخدم نمط تقدم خاص بدل Spinner عام فقط."
+    },
+    {
+      "left": "VCGF-UI-INT-010",
+      "right": "VCGF-UI-INT-019",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "Retry لأمر كتابة يحتاج ضمان idempotency أو reconciliation قبل إعادة الإرسال."
+    },
+    {
+      "left": "VCGF-UI-INT-011",
+      "right": "VCGF-UI-INT-012",
+      "type": "complementary",
+      "severity": "review",
+      "rule": "Optimistic UI يجب أن يعرف ماذا يفعل إذا رفض الخادم بسبب تعارض نسخة."
+    },
+    {
+      "left": "VCGF-UI-INT-011",
+      "right": "VCGF-UI-INT-015",
+      "type": "mode-boundary",
+      "severity": "review",
+      "rule": "التحديث المتفائل مع Offline Queue يحتاج مصدر حالة واحد وترتيب أوامر واضحًا."
+    },
+    {
+      "left": "VCGF-UI-INT-013",
+      "right": "VCGF-UI-INT-014",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "الإجراء الجماعي الكبير قد يتحول إلى Job طويل؛ لا يبقى طلبًا متزامنًا بلا حد."
+    },
+    {
+      "left": "VCGF-UI-INT-016",
+      "right": "VCGF-UI-INT-023",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "انتهاء الجلسة أثناء تحرير طويل قد يحتاج استعادة مسودة بعد reauthentication."
+    },
+    {
+      "left": "VCGF-UI-INT-017",
+      "right": "VCGF-UI-INT-011",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "سحب الصلاحية يلغي أي optimistic state غير مؤكد ولا يسمح للواجهة بإكماله."
+    },
+    {
+      "left": "VCGF-UI-INT-018",
+      "right": "VCGF-UI-INT-016",
+      "type": "specialization",
+      "severity": "review",
+      "rule": "Step-up يرفع مستوى المصادقة لإجراء محدد؛ انتهاء الجلسة يعيد إنشاء جلسة صالحة. لا تخلط الحالتين."
+    },
+    {
+      "left": "VCGF-UI-INT-022",
+      "right": "VCGF-UI-INT-023",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "التدفقات الطويلة متعددة الخطوات قد تحتاج استئناف Draft مع إعادة تحقق."
+    },
+    {
+      "left": "VCGF-UI-INT-005",
+      "right": "VCGF-UI-INT-024",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "حفظ سياق التنقل يجب ألا يتجاوز حارس التغييرات غير المحفوظة."
+    },
+    {
+      "left": "VCGF-UI-INT-006",
+      "right": "VCGF-UI-INT-019",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "الإرسال النهائي المتكرر يحتاج معرف قصد ثابتًا إن كان الأثر غير idempotent."
+    },
+    {
+      "left": "VCGF-UI-INT-021",
+      "right": "VCGF-UI-INT-024",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "العودة من التفاصيل إلى النتائج تستعيد query والمرشحات فقط بعد التحقق من صلاحيتها."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Journey Compatibility Matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "relation_semantics": {
+      "type": "string"
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "left": {
+            "type": "string",
+            "pattern": "^VCGF-UI-JRN-[0-9]{3}$"
+          },
+          "right": {
+            "type": "string",
+            "pattern": "^VCGF-UI-JRN-[0-9]{3}$"
+          },
+          "type": {
+            "enum": [
+              "alternative-branch",
+              "complementary",
+              "specialization",
+              "authority-boundary",
+              "scope-boundary",
+              "mode-boundary"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "review"
+            ]
+          },
+          "rule": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "left",
+          "right",
+          "type",
+          "severity",
+          "rule"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "relation_semantics",
+    "relations"
+  ]
+}

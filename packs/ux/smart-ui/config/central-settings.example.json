@@ -1,0 +1,418 @@
+{
+  "schema_version": "1.0.0",
+  "mode": "assessment-only",
+  "enabledComponents": [],
+  "profile": {
+    "name": "saudi-example-not-universal",
+    "locale": "ar-SA",
+    "supportedLocales": [
+      "ar-SA",
+      "en"
+    ],
+    "timeZone": "Asia/Riyadh"
+  },
+  "externalBindings": {
+    "calendar": {
+      "name": "CALENDAR-GOVERNANCE-ADDENDUM",
+      "status": "resolved-in-package",
+      "canonical_path": "external-standards/CALENDAR-GOVERNANCE-ADDENDUM.md",
+      "content_sha256": "3f77b5614c7b045c8a6469573e3c16264e375f8bea08a9b08899bee716328376"
+    },
+    "searchable_select": {
+      "name": "Enterprise Searchable Select & Combobox",
+      "status": "resolved-in-package",
+      "canonical_path": "external-standards/ENTERPRISE-SEARCHABLE-SELECT-COMBOBOX.md",
+      "content_sha256": "eb9c905394ced42fe962fe588e8f70f3e0ab4585db59cd75c113b70df3136506"
+    }
+  },
+  "componentDefaults": {
+    "VCGF-UI-COMP-001": {
+      "theme": "system",
+      "density": "adaptive",
+      "direction": "locale",
+      "motion": "respect-system",
+      "focusStyle": "visible",
+      "touchTargetPx": 44,
+      "tokenRevision": "1",
+      "allowTenantBranding": false
+    },
+    "VCGF-UI-COMP-002": {
+      "pageSize": 25,
+      "paginationMode": "server",
+      "selectionScope": "visible-page",
+      "density": "adaptive",
+      "persistColumns": true,
+      "allowInlineEdit": false,
+      "exportEnabled": false,
+      "virtualization": "measured"
+    },
+    "VCGF-UI-COMP-003": {
+      "validationMode": "blur-then-change",
+      "showErrorSummary": true,
+      "preserveValuesOnError": true,
+      "requiredIndicator": "text-and-symbol",
+      "submitPolicy": "single-inflight",
+      "manualInput": true,
+      "conditionalValuePolicy": "explicit-per-field",
+      "unsavedChangesGuard": true
+    },
+    "VCGF-UI-COMP-004": {
+      "debounceMs": 300,
+      "applyMode": "explicit",
+      "urlSync": "allowlisted",
+      "savedViews": true,
+      "defaultOperator": "AND",
+      "maxDepth": 3,
+      "maxRules": 20,
+      "persistSensitiveSearch": false
+    },
+    "VCGF-UI-COMP-005": {
+      "allowedTypes": [],
+      "maxFileBytes": 0,
+      "maxFiles": 10,
+      "parallelUploads": 3,
+      "resumable": false,
+      "scanPolicy": "required",
+      "autoAttachOnUpload": false,
+      "temporaryRetentionHours": 24
+    },
+    "VCGF-UI-COMP-006": {
+      "supportedPreviewTypes": [
+        "application/pdf",
+        "image/png",
+        "image/jpeg"
+      ],
+      "allowDownload": false,
+      "allowPrint": false,
+      "watermarkMode": "policy",
+      "initialZoom": "fit-width",
+      "rememberPage": true,
+      "rangeLoading": true,
+      "maxConcurrentPages": 3
+    },
+    "VCGF-UI-COMP-007": {
+      "presentation": "adaptive",
+      "closeOnEscape": true,
+      "closeOnOutside": "safe-only",
+      "restoreFocus": true,
+      "modalBehavior": "task-dependent",
+      "maxNestedLayers": 2,
+      "mobilePresentation": "sheet-or-fullscreen",
+      "overlayStack": "centralized"
+    },
+    "VCGF-UI-COMP-008": {
+      "transientDurationMs": 4000,
+      "criticalAutoDismiss": false,
+      "maxVisibleToasts": 3,
+      "position": "inline-end-bottom",
+      "announceMode": "polite-default",
+      "deduplicateWindowMs": 5000,
+      "showCorrelationId": true,
+      "persistentCenter": false
+    },
+    "VCGF-UI-COMP-009": {
+      "navigationPattern": "adaptive",
+      "sidebarState": "expanded",
+      "showBreadcrumbs": true,
+      "menuSearch": "when-large",
+      "mobileNavigation": "drawer",
+      "rememberLastRoute": false,
+      "preserveListContext": true,
+      "routeAccessPolicy": "server-enforced"
+    },
+    "VCGF-UI-COMP-010": {
+      "selectionMode": "single",
+      "selectionPropagation": "none",
+      "selectableNodeTypes": [
+        "leaf"
+      ],
+      "lazyLoading": true,
+      "searchMode": "authorized-paths",
+      "showPath": true,
+      "rememberExpanded": true,
+      "allowReparenting": false
+    },
+    "VCGF-UI-COMP-011": {
+      "navigationMode": "sequential",
+      "allowBack": true,
+      "allowSkip": false,
+      "validateOnNext": true,
+      "reviewBeforeSubmit": true,
+      "draftMode": "opt-in-server",
+      "progressStyle": "named-steps",
+      "resumePolicy": "revalidate"
+    },
+    "VCGF-UI-COMP-012": {
+      "defaultDecision": "deny",
+      "unavailableActionDisplay": "contextual",
+      "confirmationPolicy": "risk-based",
+      "stepUpPolicy": "policy-driven",
+      "destructiveDefaultFocus": "cancel",
+      "requireReason": "per-action",
+      "idempotencyPolicy": "per-command",
+      "bulkMaxRecords": 100
+    },
+    "VCGF-UI-COMP-013": {
+      "toolbarPreset": "basic",
+      "contentFormat": "schema-json",
+      "allowedNodes": [
+        "paragraph",
+        "heading",
+        "list",
+        "link"
+      ],
+      "pastePolicy": "sanitize-preserve-allowed",
+      "imagePolicy": "managed-attachments-only",
+      "maxContentBytes": 200000,
+      "collaboration": false,
+      "autosave": false
+    },
+    "VCGF-UI-COMP-014": {
+      "shortcut": "platform-mod-k",
+      "debounceMs": 300,
+      "minQueryLength": 2,
+      "maxResultsPerGroup": 5,
+      "historyEnabled": false,
+      "groupOrder": [
+        "pages",
+        "records",
+        "commands"
+      ],
+      "allowDestructiveCommands": false,
+      "fuzzyMatching": true
+    },
+    "VCGF-UI-COMP-015": {
+      "statusRegistry": "domain-owned",
+      "reasonPolicy": "per-transition",
+      "delegationEnabled": false,
+      "showNextStep": "when-deterministic",
+      "slaCalendar": "tenant-business-calendar",
+      "parallelApprovalMode": "explicit",
+      "optimisticApproval": false,
+      "historyVisibility": "permission-scoped"
+    },
+    "VCGF-UI-COMP-016": {
+      "defaultOrder": "newest-first",
+      "pageSize": 25,
+      "showFieldDiff": true,
+      "maskSensitiveFields": true,
+      "retentionPolicy": "explicit-required",
+      "exportAudit": false,
+      "displayTimeZone": "tenant",
+      "integrityLabel": "evidence-based"
+    },
+    "VCGF-UI-COMP-017": {
+      "locale": "tenant",
+      "numberingSystem": "latn",
+      "currency": "tenant",
+      "decimalScale": "domain-defined",
+      "roundingMode": "domain-defined",
+      "grouping": true,
+      "emptyPolicy": "null-not-zero",
+      "allowNegative": false
+    },
+    "VCGF-UI-COMP-018": {
+      "defaultCountry": "SA",
+      "phoneStorage": "E.164-when-applicable",
+      "countrySelection": true,
+      "emailDomainNormalization": "lowercase",
+      "verificationRequired": false,
+      "otpLength": 6,
+      "otpExpirySeconds": 300,
+      "resendCooldownSeconds": 30
+    },
+    "VCGF-UI-COMP-019": {
+      "allowedFormats": [
+        "csv",
+        "xlsx"
+      ],
+      "maxRows": 10000,
+      "previewRows": 50,
+      "duplicatePolicy": "reject",
+      "transactionMode": "explicit-required",
+      "exportScope": "filtered-authorized",
+      "formulaPolicy": "no-execution",
+      "jobRetentionHours": 24
+    },
+    "VCGF-UI-COMP-020": {
+      "defaultPeriod": "domain-defined",
+      "refreshPolicy": "explicit-or-measured",
+      "showLastUpdated": true,
+      "allowWidgetReorder": true,
+      "missingValueDisplay": "unavailable",
+      "comparisonMode": "explicit-period",
+      "drillDown": true,
+      "dataTableAlternative": true
+    },
+    "VCGF-UI-COMP-021": {
+      "columnSource": "workflow-or-domain",
+      "dragEnabled": true,
+      "keyboardMove": true,
+      "wipLimitMode": "advisory",
+      "optimisticMove": "reversible-low-risk",
+      "cardDensity": "adaptive",
+      "loadMode": "per-column",
+      "sortPolicy": "domain-or-manual"
+    },
+    "VCGF-UI-COMP-022": {
+      "timeZone": "Asia/Riyadh",
+      "defaultView": "week",
+      "slotMinutes": 30,
+      "workingCalendar": "tenant-defined",
+      "conflictPolicy": "reject",
+      "recurrenceEnabled": false,
+      "hijriRecurrence": false,
+      "displayCalendar": "external-calendar-policy"
+    },
+    "VCGF-UI-COMP-023": {
+      "enabled": false,
+      "debounceMs": 1500,
+      "maxWaitMs": 10000,
+      "storageMode": "server",
+      "localSensitiveStorage": false,
+      "conflictPolicy": "block-and-resolve",
+      "resumePolicy": "ask-and-revalidate",
+      "retentionDays": 7
+    },
+    "VCGF-UI-COMP-024": {
+      "panelPattern": "task-based",
+      "tabActivation": "manual-when-latent",
+      "persistActivePanel": true,
+      "urlSync": true,
+      "mountPolicy": "preserve-data-lazy-view",
+      "allowMultipleExpanded": true,
+      "resizablePanels": false,
+      "mobileFallback": "contextual-single-pane"
+    },
+    "VCGF-UI-COMP-025": {
+      "layout": "adaptive",
+      "fieldDensity": "adaptive",
+      "showEmptyFields": false,
+      "stickyActions": true,
+      "sectionNavigation": "auto",
+      "copyIdentifiers": true,
+      "relatedPreviewLimit": 5,
+      "editMode": "separate"
+    },
+    "VCGF-UI-COMP-026": {
+      "viewMode": "adaptive",
+      "pageSize": 20,
+      "paginationMode": "server",
+      "imagePolicy": "lazy",
+      "summaryLines": 3,
+      "selectionMode": "none",
+      "rememberView": true,
+      "infiniteScroll": false
+    },
+    "VCGF-UI-COMP-027": {
+      "order": "newest-first",
+      "pageSize": 30,
+      "grouping": "day",
+      "showSystemEvents": false,
+      "actorDisplay": "display-name",
+      "timeDisplay": "absolute-with-relative",
+      "expandMetadata": false,
+      "liveUpdates": true
+    },
+    "VCGF-UI-COMP-028": {
+      "replyMode": "threaded",
+      "mentionEnabled": true,
+      "editWindowMinutes": 15,
+      "deletePolicy": "soft-with-marker",
+      "attachmentEnabled": true,
+      "maxCommentBytes": 10000,
+      "notificationMode": "mentions-and-replies",
+      "realtime": true
+    },
+    "VCGF-UI-COMP-029": {
+      "pageSize": 30,
+      "markReadPolicy": "explicit-or-open",
+      "grouping": "type-and-date",
+      "retentionDays": 90,
+      "soundEnabled": false,
+      "desktopPermission": "opt-in",
+      "realTime": true,
+      "bulkMarkRead": true
+    },
+    "VCGF-UI-COMP-030": {
+      "maxUserViews": 25,
+      "sharedViews": false,
+      "defaultViewPolicy": "user-over-tenant",
+      "urlSync": "safe-only",
+      "schemaMigration": "explicit",
+      "allowRename": true,
+      "allowDuplicate": true,
+      "scope": "user"
+    },
+    "VCGF-UI-COMP-031": {
+      "primaryLimit": 3,
+      "overflowMode": "menu",
+      "bulkSelectionSummary": true,
+      "sticky": false,
+      "dangerPlacement": "separated",
+      "confirmPolicy": "risk-based",
+      "keyboardShortcuts": false,
+      "mobilePresentation": "adaptive"
+    },
+    "VCGF-UI-COMP-032": {
+      "mode": "single",
+      "searchMode": "server",
+      "displayFields": [
+        "name",
+        "code"
+      ],
+      "recentItems": true,
+      "favorites": false,
+      "allowCreate": false,
+      "showRelationshipType": false,
+      "resolveStoredValue": true
+    },
+    "VCGF-UI-COMP-033": {
+      "countryMode": "select",
+      "defaultCountry": "SA",
+      "regionRequired": true,
+      "postalCodeRequired": false,
+      "coordinatesEnabled": false,
+      "mapEnabled": false,
+      "addressLineLimit": 2,
+      "normalizeOnSave": true
+    },
+    "VCGF-UI-COMP-034": {
+      "mode": "controlled",
+      "maxTags": 10,
+      "hierarchy": false,
+      "allowCreate": false,
+      "casePolicy": "preserve-normalized-search",
+      "duplicatePolicy": "canonical-id",
+      "showCounts": false,
+      "suggestions": true
+    },
+    "VCGF-UI-COMP-035": {
+      "maxDepth": 4,
+      "maxRules": 50,
+      "allowedOperators": [
+        "eq",
+        "neq",
+        "contains",
+        "gt",
+        "lt",
+        "in"
+      ],
+      "previewEnabled": true,
+      "testMode": "sample-only",
+      "rawExpression": false,
+      "saveDraft": true,
+      "activationPolicy": "explicit"
+    },
+    "VCGF-UI-COMP-036": {
+      "identifierMode": "email-or-username",
+      "mfaPolicy": "policy-driven",
+      "passkeyEnabled": true,
+      "recoveryMode": "verified-channel",
+      "sessionPolicy": "server-owned",
+      "rememberDevice": false,
+      "stepUpTimeoutMinutes": 10,
+      "enumerationResistance": true
+    }
+  }
+}

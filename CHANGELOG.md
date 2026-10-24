@@ -11,6 +11,25 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 This project follows a Keep a Changelog-style release history and Semantic Versioning.
 
+## [1.3.0] - 2026-10-24 — Smart UI & Adaptive Experience Orchestration (public framework release)
+
+### Added
+- VCGF Smart UI Components & Interaction Standards v1.0.0 as a selective UX capability pack.
+- 36 Smart UI component standards with reuse-first selection and compatibility review.
+- 24 Smart Interaction Patterns for stateful create/edit/delete/save/retry/conflict/session/offline behavior.
+- 20 Screen Composition standards, including mobile-focused and large-screen modifiers.
+- 18 Journey Patterns for cross-screen flow, deep links, return-to-origin, approvals, queues, offline sync and long-running work.
+- Calendar month/year direct selection governance and centralized enterprise searchable-select binding.
+- Smart UI governance for RTL/LTR, accessibility, responsive density, action hierarchy, information architecture, context continuity, explainability and evidence.
+
+### Changed
+- Adaptive UX can selectively load the Smart UI entrypoint and master policy without activating the entire catalog.
+- Repository integration adds Smart UI traceability, schemas, tests, adapters and project-history evidence while preserving all existing Control IDs and Profiles.
+
+### Release Status
+Public framework source distribution authorized by the owner on 2026-10-24 after repository-native validation on the exact candidate. Production admission and target-application certification remain separate and BLOCKED unless their required evidence is accepted.
+
+
 ## [1.2.0] - 2026-10-21 — Adaptive Engineering & UX (public framework release)
 
 ### Added

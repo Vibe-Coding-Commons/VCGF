@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "people-app",
+  "screen_id": "person-create",
+  "screen_purpose": "إنشاء ملف شخص مع تاريخ الميلاد واختيار الدولة من قائمة كبيرة",
+  "has_ui": true,
+  "signals": [
+    "form_create_edit",
+    "birth_date",
+    "searchable_choice",
+    "country_city_picker"
+  ],
+  "interaction_signals": [
+    "record_create",
+    "unsaved_changes",
+    "save_submit",
+    "duplicate_submit_risk"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "desktop"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [
+    {
+      "standard_id": "VCGF-UI-COMP-003",
+      "candidate": "FormShell",
+      "fitness": "fit",
+      "evidence_ref": "tests/form-shell.spec"
+    },
+    {
+      "standard_id": "UI-COMP-SEARCHABLE-SELECT",
+      "candidate": "LegacySelect",
+      "fitness": "partial",
+      "evidence_ref": "tests/select-basic.spec"
+    }
+  ],
+  "notes": "مثال لاختبار التحميل الانتقائي.",
+  "risk_level": "medium",
+  "data_volume": "unknown",
+  "offline_required": false,
+  "composition_signals": [
+    "form_transaction"
+  ],
+  "user_roles": [
+    "user"
+  ],
+  "task_frequency": "regular",
+  "information_density": "low",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [
+    "create_to_detail"
+  ],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "detail",
+  "context_continuity": "task-scoped"
+}

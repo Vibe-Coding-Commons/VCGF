@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "approval-review",
+  "selection_status": "selected",
+  "catalog_component_count": 36,
+  "interaction_pattern_count": 24,
+  "screen_composition_count": 20,
+  "journey_pattern_count": 18,
+  "selected_components": [
+    {
+      "standard_id": "VCGF-UI-COMP-006",
+      "decision": "required",
+      "matched_signals": [
+        "document_preview"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-006-DocumentPreviewer.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-012",
+      "decision": "required",
+      "matched_signals": [
+        "permission_sensitive_actions"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-012-PermissionAwareActions.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-015",
+      "decision": "required",
+      "matched_signals": [
+        "workflow_approval"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-015-WorkflowApprovalTimeline.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-025",
+      "decision": "required",
+      "matched_signals": [
+        "record_detail"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-025-SmartRecordDetailView.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-024"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    }
+  ],
+  "selected_interactions": [
+    {
+      "standard_id": "VCGF-UI-INT-007",
+      "decision": "recommended",
+      "matched_signals": [
+        "confirmation_needed"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-007-ConfirmationDecisionPattern.md",
+      "review_components": [
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-017",
+      "decision": "required",
+      "matched_signals": [
+        "permission_changed"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-017-PermissionChangeReaction.md",
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-009"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-018",
+      "decision": "required",
+      "matched_signals": [
+        "step_up_required"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-007"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    }
+  ],
+  "selected_screen_compositions": [
+    {
+      "standard_id": "VCGF-UI-SCR-008",
+      "kind": "primary",
+      "decision": "required",
+      "matched_signals": [
+        "review_approval_screen"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-008-ReviewApproval.md",
+      "review_components": [
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-006",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-012"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-012"
+      ],
+      "reason": "Highest explicit composition evidence; other layers remain independent."
+    }
+  ],
+  "selected_journeys": [
+    {
+      "standard_id": "VCGF-UI-JRN-004",
+      "decision": "required",
+      "matched_signals": [
+        "review_approve_complete"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "journeys/VCGF-UI-JRN-004-ReviewApproveComplete.md",
+      "review_compositions": [
+        "VCGF-UI-SCR-008",
+        "VCGF-UI-SCR-007"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-018"
+      ],
+      "reason": "Explicit cross-screen journey signals matched; journey is independent of screen/component/interaction activation."
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-005",
+      "decision": "required",
+      "matched_signals": [
+        "reject_revise_resubmit"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "journeys/VCGF-UI-JRN-005-RejectReviseResubmit.md",
+      "review_compositions": [
+        "VCGF-UI-SCR-008",
+        "VCGF-UI-SCR-004"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-003"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Explicit cross-screen journey signals matched; journey is independent of screen/component/interaction activation."
+    }
+  ],
+  "external_standards": [],
+  "compatibility_reviews": [],
+  "interaction_reviews": [],
+  "composition_reviews": [],
+  "journey_reviews": [
+    {
+      "left": "VCGF-UI-JRN-004",
+      "right": "VCGF-UI-JRN-005",
+      "relation_type": "alternative-branch",
+      "severity": "review",
+      "rule": "الاعتماد والرفض مساران قرار متوازيان؛ يجب ألا تنفذ الواجهة الاثنين لنفس النسخة."
+    }
+  ],
+  "standards_to_load": [
+    "standards/VCGF-UI-COMP-006-DocumentPreviewer.md",
+    "standards/VCGF-UI-COMP-012-PermissionAwareActions.md",
+    "standards/VCGF-UI-COMP-015-WorkflowApprovalTimeline.md",
+    "standards/VCGF-UI-COMP-025-SmartRecordDetailView.md",
+    "interactions/VCGF-UI-INT-007-ConfirmationDecisionPattern.md",
+    "interactions/VCGF-UI-INT-017-PermissionChangeReaction.md",
+    "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
+    "screen-compositions/VCGF-UI-SCR-008-ReviewApproval.md",
+    "journeys/VCGF-UI-JRN-004-ReviewApproveComplete.md",
+    "journeys/VCGF-UI-JRN-005-RejectReviseResubmit.md"
+  ],
+  "not_selected_component_count": 32,
+  "not_selected_interaction_count": 21,
+  "not_selected_screen_composition_count": 19,
+  "not_selected_journey_count": 16,
+  "composition_status": "selected",
+  "journey_status": "needs_review",
+  "orchestration": {
+    "primary_composition_id": "VCGF-UI-SCR-008",
+    "modifier_ids": [],
+    "density_policy": "adaptive",
+    "responsive_strategy": "task-preserving-adaptive",
+    "mobile_transform": "stacked-panels",
+    "large_screen_transform": "context-expansion",
+    "primary_action_limit": 1,
+    "progressive_disclosure": true,
+    "role_adaptation": "priority-only",
+    "preserve_task_context": true
+  },
+  "experience_orchestration": {
+    "entry_channel": "internal-navigation",
+    "completion_expectation": "queue-next",
+    "context_continuity": "task-scoped",
+    "selected_journey_ids": [
+      "VCGF-UI-JRN-004",
+      "VCGF-UI-JRN-005"
+    ],
+    "return_to_origin": "validate-then-return",
+    "deep_link_policy": "authorize-and-prerequisite-check",
+    "scope_change_policy": "invalidate-incompatible-context",
+    "runtime_evidence_required": true,
+    "cross_layer_auto_activation": false
+  },
+  "warnings": []
+}

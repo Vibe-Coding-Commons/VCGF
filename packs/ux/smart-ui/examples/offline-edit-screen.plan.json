@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "field-ops",
+  "screen_id": "asset-edit",
+  "selection_status": "selected",
+  "catalog_component_count": 36,
+  "interaction_pattern_count": 24,
+  "screen_composition_count": 20,
+  "journey_pattern_count": 18,
+  "selected_components": [
+    {
+      "standard_id": "VCGF-UI-COMP-003",
+      "decision": "required",
+      "matched_signals": [
+        "form_create_edit"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-003-SmartFormFields.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    },
+    {
+      "standard_id": "VCGF-UI-COMP-008",
+      "decision": "required",
+      "matched_signals": [
+        "async_feedback"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-008-UnifiedFeedbackSystem.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    }
+  ],
+  "selected_interactions": [
+    {
+      "standard_id": "VCGF-UI-INT-002",
+      "decision": "required",
+      "matched_signals": [
+        "record_edit"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-002-SmartEditFlow.md",
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-023"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-005",
+      "decision": "required",
+      "matched_signals": [
+        "unsaved_changes"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-005-UnsavedChangesProtection.md",
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-009"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-010",
+      "decision": "required",
+      "matched_signals": [
+        "error_state"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-010-ErrorRetryRecovery.md",
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-029"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-011",
+      "decision": "recommended",
+      "matched_signals": [
+        "optimistic_update"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-011-OptimisticUpdateRollback.md",
+      "review_components": [
+        "VCGF-UI-COMP-021",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-012",
+      "decision": "required",
+      "matched_signals": [
+        "concurrency_conflict"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-012-ConcurrencyConflictResolution.md",
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-025"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-015",
+      "decision": "recommended",
+      "matched_signals": [
+        "offline_required"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-015-OfflineReconnectSynchronization.md",
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    }
+  ],
+  "selected_screen_compositions": [
+    {
+      "standard_id": "VCGF-UI-SCR-004",
+      "kind": "primary",
+      "decision": "required",
+      "matched_signals": [
+        "form_transaction"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-004-FormTransaction.md",
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-023"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-005",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-019"
+      ],
+      "reason": "Highest explicit composition evidence; other layers remain independent."
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-019",
+      "kind": "modifier",
+      "decision": "recommended",
+      "matched_signals": [
+        "mobile_focused_task"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-019-MobileFocusedTask.md",
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Explicit adaptive modifier signal matched."
+    }
+  ],
+  "selected_journeys": [
+    {
+      "standard_id": "VCGF-UI-JRN-016",
+      "decision": "required",
+      "matched_signals": [
+        "offline_capture_sync_resolve"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "journeys/VCGF-UI-JRN-016-OfflineCaptureSyncResolve.md",
+      "review_compositions": [
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-019"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-011",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-023"
+      ],
+      "reason": "Explicit cross-screen journey signals matched; journey is independent of screen/component/interaction activation."
+    }
+  ],
+  "external_standards": [],
+  "compatibility_reviews": [],
+  "interaction_reviews": [
+    {
+      "left": "VCGF-UI-INT-002",
+      "right": "VCGF-UI-INT-005",
+      "relation_type": "complementary",
+      "severity": "info",
+      "rule": "التعديل غالبًا يحتاج حماية تغييرات غير محفوظة، لكن لا تُفعّل إذا لم توجد حالة محلية قابلة للفقد."
+    },
+    {
+      "left": "VCGF-UI-INT-002",
+      "right": "VCGF-UI-INT-012",
+      "relation_type": "authority-boundary",
+      "severity": "review",
+      "rule": "عند تعديل سجل قد يتغير خارجيًا يجب تحديد مصدر version/ETag ومنع last-write-wins الصامت."
+    },
+    {
+      "left": "VCGF-UI-INT-011",
+      "right": "VCGF-UI-INT-012",
+      "relation_type": "complementary",
+      "severity": "review",
+      "rule": "Optimistic UI يجب أن يعرف ماذا يفعل إذا رفض الخادم بسبب تعارض نسخة."
+    },
+    {
+      "left": "VCGF-UI-INT-011",
+      "right": "VCGF-UI-INT-015",
+      "relation_type": "mode-boundary",
+      "severity": "review",
+      "rule": "التحديث المتفائل مع Offline Queue يحتاج مصدر حالة واحد وترتيب أوامر واضحًا."
+    }
+  ],
+  "composition_reviews": [],
+  "journey_reviews": [],
+  "standards_to_load": [
+    "standards/VCGF-UI-COMP-003-SmartFormFields.md",
+    "standards/VCGF-UI-COMP-008-UnifiedFeedbackSystem.md",
+    "interactions/VCGF-UI-INT-002-SmartEditFlow.md",
+    "interactions/VCGF-UI-INT-005-UnsavedChangesProtection.md",
+    "interactions/VCGF-UI-INT-010-ErrorRetryRecovery.md",
+    "interactions/VCGF-UI-INT-011-OptimisticUpdateRollback.md",
+    "interactions/VCGF-UI-INT-012-ConcurrencyConflictResolution.md",
+    "interactions/VCGF-UI-INT-015-OfflineReconnectSynchronization.md",
+    "screen-compositions/VCGF-UI-SCR-004-FormTransaction.md",
+    "screen-compositions/VCGF-UI-SCR-019-MobileFocusedTask.md",
+    "journeys/VCGF-UI-JRN-016-OfflineCaptureSyncResolve.md"
+  ],
+  "not_selected_component_count": 34,
+  "not_selected_interaction_count": 18,
+  "not_selected_screen_composition_count": 18,
+  "not_selected_journey_count": 17,
+  "composition_status": "selected",
+  "journey_status": "selected",
+  "orchestration": {
+    "primary_composition_id": "VCGF-UI-SCR-004",
+    "modifier_ids": [
+      "VCGF-UI-SCR-019"
+    ],
+    "density_policy": "comfortable",
+    "responsive_strategy": "mobile-primary-task",
+    "mobile_transform": "task-preserving-reflow",
+    "large_screen_transform": "context-expansion",
+    "primary_action_limit": 1,
+    "progressive_disclosure": true,
+    "role_adaptation": "priority-only",
+    "preserve_task_context": true
+  },
+  "experience_orchestration": {
+    "entry_channel": "resume",
+    "completion_expectation": "detail",
+    "context_continuity": "task-scoped",
+    "selected_journey_ids": [
+      "VCGF-UI-JRN-016"
+    ],
+    "return_to_origin": "validate-then-return",
+    "deep_link_policy": "authorize-and-prerequisite-check",
+    "scope_change_policy": "invalidate-incompatible-context",
+    "runtime_evidence_required": true,
+    "cross_layer_auto_activation": false
+  },
+  "warnings": []
+}

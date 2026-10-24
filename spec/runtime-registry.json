@@ -2107,7 +2107,9 @@
         "packs/engineering/adaptive.md"
       ],
       "adaptive-ux": [
-        "packs/ux/adaptive.md"
+        "packs/ux/adaptive.md",
+        "packs/ux/smart-ui/README.md",
+        "packs/ux/smart-ui/governance/MASTER-POLICY.md"
       ],
       "admin": [
         "packs/requirements/section-18.md",
@@ -2312,7 +2314,7 @@
       "VCGF-TEST-002"
     ]
   },
-  "policy_sha256": "ab944f338dee566901b010658d14407dcb1cad5586525092c4fb9e92f1a36211",
+  "policy_sha256": "a55fecfc5dc5f9f7fcdaa2bd2a7ceda09bd0534c60d52881dedba4875ad08dff",
   "profiles": {
     "baseline": [
       "VCGF-AI-001",
@@ -2622,7 +2624,15 @@
     },
     "packs/ux/adaptive.md": {
       "path": "packs/ux/adaptive.md",
-      "sha256": "b53074de47e98022f1798ef58c5ec80b32b691981cad9457d1470ef5f9dbfcd6"
+      "sha256": "ce90778225396bde424f1732767f6c7c1d37894743332e060998b55ef417bca2"
+    },
+    "packs/ux/smart-ui/README.md": {
+      "path": "packs/ux/smart-ui/README.md",
+      "sha256": "eb180ec1fa70bf4cc0ed0d83234fe116ae5217d81575b33532caca18b3276f1d"
+    },
+    "packs/ux/smart-ui/governance/MASTER-POLICY.md": {
+      "path": "packs/ux/smart-ui/governance/MASTER-POLICY.md",
+      "sha256": "559f33e6e16360b31d6c193928d5fd050913c6c24a2c96307a8be1b45c21a867"
     }
   },
   "version": "1.1.0"

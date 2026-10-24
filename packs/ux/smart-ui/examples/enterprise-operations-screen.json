@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "enterprise-ops",
+  "screen_id": "request-workbench",
+  "screen_purpose": "مساحة عمل للطلبات تشمل جدولًا وفلاتر ومرفقات واعتمادات وسجلًا ومؤشرات",
+  "has_ui": true,
+  "signals": [
+    "repeated_ui_primitives",
+    "tabular_operational_data",
+    "form_create_edit",
+    "multi_criteria_filter",
+    "file_upload",
+    "document_preview",
+    "async_feedback",
+    "permission_sensitive_actions",
+    "workflow_approval",
+    "audit_history",
+    "dashboard_kpi",
+    "date_range",
+    "employee_picker"
+  ],
+  "interaction_signals": [
+    "record_edit",
+    "unsaved_changes",
+    "save_submit",
+    "loading_state",
+    "error_state",
+    "concurrency_conflict",
+    "bulk_action",
+    "long_running_job",
+    "session_expiry",
+    "permission_changed",
+    "preserve_navigation_context"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "tablet",
+    "desktop",
+    "large-screen"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": "مثال مركب لا يعني أن كل مشروع مؤسسي يحتاج هذه المجموعة.",
+  "risk_level": "medium",
+  "data_volume": "unknown",
+  "offline_required": false,
+  "composition_signals": [
+    "work_queue",
+    "large_screen_operations"
+  ],
+  "user_roles": [
+    "operator",
+    "manager"
+  ],
+  "task_frequency": "high-frequency",
+  "information_density": "high",
+  "viewport_priority": "large-screen-first",
+  "primary_input": "keyboard",
+  "journey_signals": [
+    "queue_process_next"
+  ],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "queue-next",
+  "context_continuity": "task-scoped"
+}

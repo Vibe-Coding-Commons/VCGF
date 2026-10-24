@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Smart UI final screen, interaction, composition, and journey context",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "screen_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "screen_purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "has_ui": {
+      "type": "boolean"
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      },
+      "uniqueItems": true
+    },
+    "directions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "rtl",
+          "ltr"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "mobile",
+          "tablet",
+          "desktop",
+          "large-screen"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "tenant_scoped": {
+      "type": "boolean"
+    },
+    "sensitive_data": {
+      "type": "boolean"
+    },
+    "existing_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "standard_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fitness": {
+            "enum": [
+              "fit",
+              "partial",
+              "unfit",
+              "unknown"
+            ]
+          },
+          "evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "standard_id",
+          "candidate",
+          "fitness",
+          "evidence_ref"
+        ]
+      }
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "risk_level": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "data_volume": {
+      "enum": [
+        "small",
+        "medium",
+        "large",
+        "unknown"
+      ]
+    },
+    "offline_required": {
+      "type": "boolean"
+    },
+    "interaction_signals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "composition_signals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "user_roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "task_frequency": {
+      "enum": [
+        "occasional",
+        "regular",
+        "high-frequency",
+        "unknown"
+      ]
+    },
+    "information_density": {
+      "enum": [
+        "adaptive",
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "viewport_priority": {
+      "enum": [
+        "mobile-first",
+        "desktop-first",
+        "large-screen-first",
+        "balanced"
+      ]
+    },
+    "primary_input": {
+      "enum": [
+        "touch",
+        "keyboard",
+        "mixed",
+        "unknown"
+      ]
+    },
+    "journey_signals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "entry_channel": {
+      "enum": [
+        "internal-navigation",
+        "deep-link",
+        "notification",
+        "external-link",
+        "resume",
+        "unknown"
+      ]
+    },
+    "completion_expectation": {
+      "enum": [
+        "return-origin",
+        "detail",
+        "list",
+        "queue-next",
+        "stay",
+        "external",
+        "unknown"
+      ]
+    },
+    "context_continuity": {
+      "enum": [
+        "strict",
+        "task-scoped",
+        "minimal",
+        "none",
+        "unknown"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "screen_id",
+    "screen_purpose",
+    "has_ui",
+    "signals",
+    "interaction_signals",
+    "languages",
+    "directions",
+    "devices",
+    "tenant_scoped",
+    "sensitive_data",
+    "existing_capabilities",
+    "notes",
+    "composition_signals",
+    "user_roles",
+    "task_frequency",
+    "information_density",
+    "viewport_priority",
+    "primary_input",
+    "journey_signals",
+    "entry_channel",
+    "completion_expectation",
+    "context_continuity"
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "package_version": "1.0.0",
+  "status": "pass",
+  "scope": "specification-package-schema-selection-traceability-and-integrity",
+  "generated_at": "2026-10-24T00:30:17.456397+00:00",
+  "summary": {
+    "component_standards": 36,
+    "interaction_patterns": 24,
+    "screen_compositions": 20,
+    "journey_patterns": 18,
+    "bound_standards": 2,
+    "reference_settings_and_policies": 660,
+    "requirements": 1176,
+    "acceptance_scenarios": 1176,
+    "calendar_navigation_acceptance": 14,
+    "checks": 72,
+    "passed": 72,
+    "failed": 0,
+    "negative_schema_tests": 12,
+    "local_links_checked": 2449,
+    "runtime_application_tests": "not_run",
+    "manifest_verified_in_this_run": true
+  },
+  "checks": [
+    {
+      "name": "Package catalog counts",
+      "status": "pass",
+      "details": "36/24/20/18"
+    },
+    {
+      "name": "Screen composition split",
+      "status": "pass",
+      "details": "18 primary + 2 modifiers expected"
+    },
+    {
+      "name": "Unique standard IDs",
+      "status": "pass",
+      "details": "98 IDs"
+    },
+    {
+      "name": "Package metadata final candidate",
+      "status": "pass",
+      "details": "catalog package metadata"
+    },
+    {
+      "name": "Component rule coverage",
+      "status": "pass",
+      "details": "36/36"
+    },
+    {
+      "name": "Interaction rule coverage",
+      "status": "pass",
+      "details": "24/24"
+    },
+    {
+      "name": "Composition rule coverage",
+      "status": "pass",
+      "details": "20/20"
+    },
+    {
+      "name": "Journey rule coverage",
+      "status": "pass",
+      "details": "18/18"
+    },
+    {
+      "name": "External bindings exactly two",
+      "status": "pass",
+      "details": "Calendar + Searchable Select"
+    },
+    {
+      "name": "Calendar source snapshot digest",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Searchable source snapshot digest",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Calendar direct navigation: اختيار السنة مباشرة",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Calendar direct navigation: اختيار الشهر مباشرة",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Calendar direct navigation: viewDate",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Calendar direct navigation: selectedDate",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Calendar direct navigation: birthDate",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Calendar direct navigation: CAL-NAV-AC14",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Searchable Select contract: embedded, auto-focused search input",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Searchable Select contract: أول صف داخل القائمة",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Searchable Select contract: التركيز تلقائيًا",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Searchable Select contract: لا تفرض مكوّنًا معقدًا على كل اختيار",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Component document contracts",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "Interaction document contracts",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "Screen document contracts",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "Journey document contracts",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "Total requirements",
+      "status": "pass",
+      "details": "1176"
+    },
+    {
+      "name": "Total acceptance scenarios",
+      "status": "pass",
+      "details": "1176"
+    },
+    {
+      "name": "Reference settings/policies",
+      "status": "pass",
+      "details": "288+144+120+108=660"
+    },
+    {
+      "name": "Journey traceability count",
+      "status": "pass",
+      "details": "216"
+    },
+    {
+      "name": "Acceptance matrix total",
+      "status": "pass",
+      "details": "1176 rows"
+    },
+    {
+      "name": "Component catalog schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Interaction catalog schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Screen catalog schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Journey catalog schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Component contracts schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Interaction contracts schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Screen contracts schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Journey contracts schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Component compatibility schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Interaction compatibility schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Screen compatibility schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Journey compatibility schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Central settings schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Interaction policy schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Screen orchestration schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Screen context template schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Project assessment schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "Evidence record schema",
+      "status": "pass",
+      "details": "valid"
+    },
+    {
+      "name": "All example contexts validate",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "All generated plans validate",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "No-UI selects zero",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Birthdate selective component",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Birthdate journey",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Birthdate bound standards",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Enterprise remains selective",
+      "status": "pass",
+      "details": "11/11/2/1"
+    },
+    {
+      "name": "Bulk + long-running journey selection",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Bulk journey compatibility review",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Approval dual branch journeys",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Approval branch review emitted",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Scope switch journey only expected",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Document lifecycle journey",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Public self-service journey",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Component-only guard",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Interaction-only guard",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Composition-only guard",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Journey-only guard",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Interactive catalog covers all 98 core standards",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "Interactive catalog includes bound standards",
+      "status": "pass",
+      "details": ""
+    },
+    {
+      "name": "Markdown code fences balanced",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
+      "name": "Local links and anchors resolve",
+      "status": "pass",
+      "details": "2449 checked"
+    },
+    {
+      "name": "Negative schema tests",
+      "status": "pass",
+      "details": "12/12 rejected"
+    },
+    {
+      "name": "Manifest and SHA-256 integrity",
+      "status": "pass",
+      "details": "OK"
+    }
+  ],
+  "claim_boundary": "Runtime application conformance is not established by these checks."
+}

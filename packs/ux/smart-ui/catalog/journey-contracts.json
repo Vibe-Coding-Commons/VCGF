@@ -1,0 +1,416 @@
+{
+  "schema_version": "1.0.0",
+  "contracts": [
+    {
+      "standard_id": "VCGF-UI-JRN-001",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-001-DiscoveryToDetailReturn.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-006",
+        "VCGF-UI-SCR-002",
+        "VCGF-UI-SCR-003"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-030"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-002",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-002-CreateToDetailContinuation.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-003"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-003",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-003-DraftReviewSubmit.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-005"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-023"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-005",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-023"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-004",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-004-ReviewApproveComplete.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-008",
+        "VCGF-UI-SCR-007"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-018"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-005",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-005-RejectReviseResubmit.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-008",
+        "VCGF-UI-SCR-004"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-003"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-006",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-006-TaskQueueProcessNext.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-007"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-007",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-007-BulkSelectActReview.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-002",
+        "VCGF-UI-SCR-017"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-013",
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-008",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-008-ImportValidateMapCommit.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-017",
+        "VCGF-UI-SCR-005"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-022"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-009",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-009-DocumentReviewSignArchive.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-009",
+        "VCGF-UI-SCR-008"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-006",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-016"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-019"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-010",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-010-ScheduleCreateRescheduleCancel.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-010"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-022",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-011",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-011-PublicSubmitTrackRespond.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-018",
+        "VCGF-UI-SCR-004"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-012",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-012-AuthenticateRecoverReturn.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-013"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-013",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-013-DeepLinkAuthorizeReturnToOrigin.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-003",
+        "VCGF-UI-SCR-008"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-014",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-014-CompareDecideAct.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-016"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-015",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-015-ScopeSwitchResume.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-012",
+        "VCGF-UI-SCR-003"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-024",
+        "VCGF-UI-INT-010"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-016",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-016-OfflineCaptureSyncResolve.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-004",
+        "VCGF-UI-SCR-019"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-011",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-023"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-017",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-017-LongRunningLeaveReturn.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-017",
+        "VCGF-UI-SCR-011"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-010",
+        "VCGF-UI-INT-024"
+      ],
+      "application_tests": "not_run"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-018",
+      "kind": "journey",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "source_path": "journeys/VCGF-UI-JRN-018-ConfigurePreviewPublish.md",
+      "activation": "explicit-journey-signals-only",
+      "review_compositions": [
+        "VCGF-UI-SCR-012"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-035",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-020"
+      ],
+      "application_tests": "not_run"
+    }
+  ]
+}

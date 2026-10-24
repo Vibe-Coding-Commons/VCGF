@@ -1,0 +1,63 @@
+{
+  "version": "0.1.0",
+  "reviewed_on": "2026-10-23",
+  "scope": "Official documentation identity and relevant guidance; not a runtime, legal, vulnerability or full-version audit.",
+  "sources": [
+    {
+      "id": "W3C-WCAG22",
+      "title": "W3C WCAG 2.2",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "scope": "Accessibility criteria; conformance requires project evidence.",
+      "reviewed_on": "2026-10-23"
+    },
+    {
+      "id": "W3C-APG",
+      "title": "WAI-ARIA Authoring Practices patterns",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+      "scope": "Interaction patterns, not a substitute for testing.",
+      "reviewed_on": "2026-10-23"
+    },
+    {
+      "id": "W3C-DIR",
+      "title": "W3C structural direction markup",
+      "url": "https://www.w3.org/International/questions/qa-html-dir",
+      "scope": "Document and inline text direction.",
+      "reviewed_on": "2026-10-23"
+    },
+    {
+      "id": "OWASP-AUTH",
+      "title": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "scope": "Trusted-layer authorization.",
+      "reviewed_on": "2026-10-23"
+    },
+    {
+      "id": "OWASP-UPLOAD",
+      "title": "OWASP File Upload Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html",
+      "scope": "Upload validation and storage boundaries.",
+      "reviewed_on": "2026-10-23"
+    },
+    {
+      "id": "OWASP-XSS",
+      "title": "OWASP XSS Prevention Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+      "scope": "Untrusted content and rendering boundaries.",
+      "reviewed_on": "2026-10-23"
+    },
+    {
+      "id": "OWASP-LOGGING",
+      "title": "OWASP Logging Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "scope": "Logging, redaction, and data minimization.",
+      "reviewed_on": "2026-10-23"
+    },
+    {
+      "id": "PLAYWRIGHT-A11Y",
+      "title": "Playwright accessibility testing guide",
+      "url": "https://playwright.dev/docs/accessibility-testing",
+      "scope": "Automated testing support; manual checks remain required.",
+      "reviewed_on": "2026-10-23"
+    }
+  ]
+}

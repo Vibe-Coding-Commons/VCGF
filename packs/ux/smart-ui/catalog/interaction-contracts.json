@@ -1,0 +1,518 @@
+{
+  "schema_version": "1.0.0",
+  "contracts": [
+    {
+      "standard_id": "VCGF-UI-INT-001",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-023"
+      ],
+      "path": "interactions/VCGF-UI-INT-001-SmartCreateFlow.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-002",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-023"
+      ],
+      "path": "interactions/VCGF-UI-INT-002-SmartEditFlow.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-003",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-003-SmartViewRefreshFlow.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-004",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-016"
+      ],
+      "path": "interactions/VCGF-UI-INT-004-SafeDeleteFlow.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-005",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-009"
+      ],
+      "path": "interactions/VCGF-UI-INT-005-UnsavedChangesProtection.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-006",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-023"
+      ],
+      "path": "interactions/VCGF-UI-INT-006-SaveSubmitStateMachine.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-007",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-007-ConfirmationDecisionPattern.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-008",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-026",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-008-EmptyStateRecovery.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-009",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-020"
+      ],
+      "path": "interactions/VCGF-UI-INT-009-LoadingProgressiveDisclosure.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-010",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-029"
+      ],
+      "path": "interactions/VCGF-UI-INT-010-ErrorRetryRecovery.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-011",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-021",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-011-OptimisticUpdateRollback.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-012",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-025"
+      ],
+      "path": "interactions/VCGF-UI-INT-012-ConcurrencyConflictResolution.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-013",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-019"
+      ],
+      "path": "interactions/VCGF-UI-INT-013-BulkActionExecution.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-014",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-029",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-014-LongRunningOperationProgress.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-015",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-015-OfflineReconnectSynchronization.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-016",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-016-SessionExpiryReauthentication.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-017",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-009"
+      ],
+      "path": "interactions/VCGF-UI-INT-017-PermissionChangeReaction.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-018",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-007"
+      ],
+      "path": "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-019",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-008"
+      ],
+      "path": "interactions/VCGF-UI-INT-019-IdempotentSubmissionProtection.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-020",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-029"
+      ],
+      "path": "interactions/VCGF-UI-INT-020-UndoableActionPattern.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-021",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-014",
+        "VCGF-UI-COMP-030",
+        "VCGF-UI-COMP-026"
+      ],
+      "path": "interactions/VCGF-UI-INT-021-SearchFilterResultState.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-022",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-015"
+      ],
+      "path": "interactions/VCGF-UI-INT-022-MultiStepTransactionOrchestration.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-023",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-011"
+      ],
+      "path": "interactions/VCGF-UI-INT-023-DraftRecoveryResume.md"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-024",
+      "kind": "interaction-pattern",
+      "lifecycle_state": "final-integration-candidate",
+      "activation_policy": "explicit-selected-only",
+      "runtime_test_state": "not_run",
+      "evidence_required": [
+        "applicability",
+        "state-machine",
+        "authority-source",
+        "failure-recovery",
+        "accessibility",
+        "runtime-tests"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-030"
+      ],
+      "path": "interactions/VCGF-UI-INT-024-NavigationContextPreservation.md"
+    }
+  ]
+}

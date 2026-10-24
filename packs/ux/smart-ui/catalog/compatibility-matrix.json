@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0.0",
+  "relations": [
+    {
+      "left": "VCGF-UI-COMP-002",
+      "right": "VCGF-UI-COMP-026",
+      "type": "alternative",
+      "severity": "review",
+      "rule": "كلاهما يعرض مجموعة سجلات. اختر الجدول للمقارنة العمودية والعمليات الكثيفة، والقائمة/البطاقات للمسح البصري والسياق. الجمع مسموح فقط كتبديل View موثق."
+    },
+    {
+      "left": "VCGF-UI-COMP-003",
+      "right": "VCGF-UI-COMP-025",
+      "type": "mode-boundary",
+      "severity": "info",
+      "rule": "صفحة التفاصيل للقراءة لا تصبح نموذج تحرير دائمًا؛ استخدم التحرير المنفصل أو المضمن المنضبط فقط عند الحاجة."
+    },
+    {
+      "left": "VCGF-UI-COMP-008",
+      "right": "VCGF-UI-COMP-029",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "Feedback System للحالة اللحظية وNotification Center للإشعارات الدائمة. لا تخزن كل toast في المركز."
+    },
+    {
+      "left": "VCGF-UI-COMP-015",
+      "right": "VCGF-UI-COMP-027",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "Workflow Timeline يشرح مراحل الاعتماد؛ Activity Timeline يعرض نشاط الأعمال. لا تكرر الحدث نفسه بشكل يوحي بمصدرين للحقيقة."
+    },
+    {
+      "left": "VCGF-UI-COMP-016",
+      "right": "VCGF-UI-COMP-027",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "Audit History هو المرجع التدقيقي؛ Activity Timeline واجهة سياقية للمستخدم. لا تستخدم النشاط بدل سجل التدقيق."
+    },
+    {
+      "left": "VCGF-UI-COMP-004",
+      "right": "VCGF-UI-COMP-030",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "Filter Builder ينشئ شروط البحث؛ Saved Views يحفظ تعريف العرض. لا يحفظ نتائج البيانات نفسها."
+    },
+    {
+      "left": "VCGF-UI-COMP-012",
+      "right": "VCGF-UI-COMP-031",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "PermissionAwareActions يملك قواعد الإجراء؛ ContextualActionBar يملك ترتيب وعرض الإجراءات في السياق."
+    },
+    {
+      "left": "VCGF-UI-COMP-005",
+      "right": "VCGF-UI-COMP-028",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "مرفقات التعليقات تستخدم uploader وسياسة الملفات ولا تنشئ مسار رفع مستقلًا."
+    },
+    {
+      "left": "VCGF-UI-COMP-018",
+      "right": "VCGF-UI-COMP-036",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "ContactFields قد يتحقق من هاتف/بريد؛ AuthenticationFlow يملك تحديات الدخول وMFA. OTP واحد لا يساوي تدفق مصادقة كامل."
+    },
+    {
+      "left": "VCGF-UI-COMP-032",
+      "right": "UI-COMP-SEARCHABLE-SELECT",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "RelationshipPicker يضيف معنى العلاقة وسياق الكيان فوق سلوك البحث والاختيار القياسي."
+    },
+    {
+      "left": "VCGF-UI-COMP-033",
+      "right": "UI-COMP-SEARCHABLE-SELECT",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "اختيار الدولة/المنطقة/المدينة القابل للبحث يتبع Searchable Select عند ملاءمته."
+    },
+    {
+      "left": "VCGF-UI-COMP-034",
+      "right": "UI-COMP-SEARCHABLE-SELECT",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "البحث في taxonomy/وسوم محكومة يستخدم عقد Searchable Select مع قواعد التعدد والإنشاء."
+    },
+    {
+      "left": "VCGF-UI-COMP-035",
+      "right": "CALENDAR-GOVERNANCE-ADDENDUM",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "قيمة التاريخ داخل منشئ القواعد تستخدم معيار التقويم المركزي بدل input تاريخ مخصص."
+    }
+  ]
+}

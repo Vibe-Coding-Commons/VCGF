@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "example-auth",
+  "screen_id": "sign-in",
+  "screen_purpose": "تسجيل دخول ودعم MFA وPasskeys",
+  "has_ui": true,
+  "signals": [
+    "login_flow",
+    "mfa",
+    "passkey",
+    "password_recovery"
+  ],
+  "interaction_signals": [
+    "session_expiry",
+    "step_up_required"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "desktop"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": "اختبار عدم تحميل مكونات لا تخص المصادقة.",
+  "risk_level": "critical",
+  "data_volume": "small",
+  "offline_required": false,
+  "composition_signals": [
+    "authentication_access"
+  ],
+  "user_roles": [
+    "user"
+  ],
+  "task_frequency": "occasional",
+  "information_density": "low",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [
+    "auth_recover_return"
+  ],
+  "entry_channel": "deep-link",
+  "completion_expectation": "return-origin",
+  "context_continuity": "task-scoped"
+}

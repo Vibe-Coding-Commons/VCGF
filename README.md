@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 [العربية → README.ar.md](README.ar.md)
 
-![Version](https://img.shields.io/badge/version-1.2.0-blue) ![Development](https://img.shields.io/badge/v1.2.0-public_release-green) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Version](https://img.shields.io/badge/version-1.3.0-blue) ![Development](https://img.shields.io/badge/v1.3.0-public_release-green) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **Build faster with AI — without giving up control of security, architecture, data, and release quality.**
 
@@ -19,46 +19,14 @@ VCGF is an open, vendor-neutral governance, security, privacy, and engineering f
 
 > **Start here:** [5-minute quick start](#5-minute-quick-start) · [Choose a platform](#supported-ai-coding-platforms) · [Install VCGF](#install-vcgf) · [Daily user guide](docs/user-guide.md) · [Technical specification](spec/VCGF-CORE.md)
 
-## Current public release: VCGF v1.2.0
+## Current public release: VCGF v1.3.0
 
-**Official public framework release: v1.2.0 (2026-10-21).** This version includes the earlier unreleased v1.1 development checkpoint and new Adaptive Engineering and UX capabilities. The original v1.0.0 normative controls and independent v1.1 contract versions are retained. Repository CI has passed; **this is not production certification for every target application or provider**. The cumulative 21 release-admission gates remain open for real deployments. [Read the v1.2 release notes](docs/quality/v1.2/release-notes-v1.2.0.md) and [owner release decision](docs/quality/v1.2/public-release-decision.md).
+**Official public framework release: v1.3.0 (2026-10-24).** This backward-compatible minor release adds **VCGF Smart UI Components & Interaction Standards v1.0.0**: selective components, interaction patterns, screen compositions and journey orchestration. It preserves the existing normative Control IDs, Profiles, adapters, licensing and founder attribution. Repository validation applies to the framework source; **it is not production certification for every target application or provider**.
 
-### What is new, and what can you use it for?
+### Smart UI in v1.3.0
 
-| Addition | Practical use and result | Verification boundary |
-|---|---|---|
-| Task Router and typed dependency resolver | Route an inspected Login task to authentication, session and conditional recovery/email requirements; keep a color-only change focused on UX | Explicit reviewed intent; not a general natural-language classifier |
-| Selective loading and budget control | Load the relevant controls, pack requirements and references once; block or split an oversized task rather than silently omit controls | Local file and graph checks; UTF-8 byte estimates, not observed model tokens |
-| Context manifest and session handoff | Reuse known project context and refresh affected facts after source changes or expiry | Source hashes do not prove an interpretation is true |
-| Seven versioned contracts | Validate capabilities, context, routes, approvals, evidence, preferences and adapter capabilities | Structural/local checks do not authenticate an approver or prove a test ran |
-| Approval, evidence and scope gates | Reject changed/expired scope, missing artifacts and incomplete Profile coverage; show minimal/standard/audit evidence | Actual enforcement needs a trusted host identity/review adapter |
-| Executable email reference | Exercise verified TLS SMTP, an encrypted outbox and Microsoft 365 OAuth2 integration code | Local TLS was tested; live Microsoft 365 delivery remains Unverified |
-| Executable backup reference | Restore an encrypted SQLite backup with matching database rows and attachments; reject tampering and missing files | SQLite/private local storage tested; PostgreSQL/MySQL restore integration remains Unverified |
-| Generated adapter entries and ChatGPT Skill source | Adopt one compact entry per platform and inspect a repository Skill that progressively loads policy | Eight candidate adapters; local equivalence and one synthetic Skill exercise do not verify live platform behavior |
-| Reference CLI and measurements | Inspect selected controls with route/controls/explain, create a handoff and inspect evidence decisions | 36 local context measurements; full platform/model and AR/EN acceptance remains open |
+VCGF can now select the minimum relevant UI standards from explicit project/screen evidence instead of loading or building an entire component library. The four independent layers are **Screen Composition → Components → Interactions → Journeys**, governed by reuse-first, no implicit cross-layer activation, compatibility review, RTL/LTR/accessibility rules and evidence-bound acceptance.
 
-The **23 capability definitions** retain requirements from original sections **14–39**. Requirement documents are not proof that each capability has been implemented in an application. No existing Control ID, Profile membership, license or founder attribution is changed by this development work. The current documentation update changes the two READMEs and changelog explicitly; the earlier statement that all 383 original files were unchanged describes the preceding checkpoint.
-
-### Try the opt-in runtime
-
-From the project root, with Python 3.12 and `requirements-dev.txt` installed:
-
-```bash
-python scripts/vcgf.py --help
-python scripts/vcgf.py controls
-python scripts/vcgf.py explain VCGF-IAM-005
-python scripts/vcgf.py route examples/runtime/login/task.json examples/runtime/login/context.json --project-root examples/runtime/login --dry-run
-```
-
-The Login example is synthetic. Its context has an expiry: a stale/changed fact must block and be refreshed from a new inspection, not bypassed merely to obtain a passing result. `ready_to_plan` is permission to proceed to planning, not authorization to change production or deploy. For styling, use the explicit `button-color` intent after inspection; do not classify every mention of Login as an authentication change.
-
-### Evidence and remaining work
-
-The preceding development checkpoint recorded **178 passing local tests**, **14 passing legacy validators**, and **36 local context measurements**. Results are tied to their recorded files, environment and scope. Those counts do not mean the whole v1.1 release passed; new documentation validation is recorded separately.
-
-Still open: full pack acceptance, live Microsoft 365 OAuth delivery, PostgreSQL/MySQL restore and attachment consistency, trusted host enforcement, live verification of all eight platform surfaces, detailed remaining mappings, and platform/model token benchmarks. None is silently deferred. Discovery/Readiness remains separately planned and requires its own approved scope.
-
-Read [the runtime guide](docs/runtime-guide.md), [reference integrations](examples/integrations/README.md), [the development report](docs/project-history/v1.1.0/CONTINUATION_REPORT_AR.md), [recorded test evidence](docs/project-history/v1.1.0/continuation-test-evidence.json), [open items](docs/project-history/v1.1.0/open-items.json), and [the changelog](CHANGELOG.md). Platform opt-in instructions are in each adapter's `RUNTIME-INSTALLATION.md`; ChatGPT's repository Skill source is at `platforms/chatgpt/skills/vcgf/SKILL.md`.
 
 ## Table of contents
 

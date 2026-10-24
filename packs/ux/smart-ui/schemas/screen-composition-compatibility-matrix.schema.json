@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Screen Composition Compatibility Matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "left": {
+            "type": "string",
+            "pattern": "^VCGF-UI-SCR-[0-9]{3}$"
+          },
+          "right": {
+            "type": "string",
+            "pattern": "^VCGF-UI-SCR-[0-9]{3}$"
+          },
+          "type": {
+            "enum": [
+              "alternative",
+              "complementary",
+              "authority-boundary",
+              "specialization",
+              "mode-boundary"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "review"
+            ]
+          },
+          "rule": {
+            "type": "string",
+            "minLength": 10
+          }
+        },
+        "required": [
+          "left",
+          "right",
+          "type",
+          "severity",
+          "rule"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "relations"
+  ]
+}

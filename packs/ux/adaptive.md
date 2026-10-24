@@ -15,3 +15,10 @@ Local WOFF2 fonts need licensing, coverage and measured performance review.
 Variable fonts and preload are conditional. No real fonts are distributed here.
 Real browser, keyboard/touch, screen reader, task completion and target-project
 integration evidence are required before adoption; schema PASS is not WCAG PASS.
+
+<!-- VCGF-SMART-UI-INTEGRATION-v1.0.0 -->
+## Smart UI selective standards (VCGF 1.3 integration candidate)
+When Smart UI detail is relevant, use `packs/ux/smart-ui/README.md` and its master policy.
+Select screen composition, components, interaction patterns, and journeys independently from explicit evidence.
+Never activate the whole catalog or infer runtime conformance from documentation/schema validation.
+Reuse suitable project components before extending, wrapping, replacing, or building new ones.

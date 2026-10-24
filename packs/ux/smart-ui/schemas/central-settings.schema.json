@@ -1,0 +1,2447 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Assessment-only settings example contract",
+  "description": "Assessment-only settings example contract. External standard bindings are resolved inside this specification package; runtime activation remains project-specific.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "mode": {
+      "const": "assessment-only"
+    },
+    "enabledComponents": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supportedLocales": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "timeZone": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "locale",
+        "supportedLocales",
+        "timeZone"
+      ]
+    },
+    "externalBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "calendar": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "resolved-in-package"
+            },
+            "canonical_path": {
+              "const": "external-standards/CALENDAR-GOVERNANCE-ADDENDUM.md"
+            },
+            "content_sha256": {
+              "const": "3f77b5614c7b045c8a6469573e3c16264e375f8bea08a9b08899bee716328376"
+            }
+          },
+          "required": [
+            "name",
+            "status",
+            "canonical_path",
+            "content_sha256"
+          ]
+        },
+        "searchable_select": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "resolved-in-package"
+            },
+            "canonical_path": {
+              "const": "external-standards/ENTERPRISE-SEARCHABLE-SELECT-COMBOBOX.md"
+            },
+            "content_sha256": {
+              "const": "eb9c905394ced42fe962fe588e8f70f3e0ab4585db59cd75c113b70df3136506"
+            }
+          },
+          "required": [
+            "name",
+            "status",
+            "canonical_path",
+            "content_sha256"
+          ]
+        }
+      },
+      "required": [
+        "calendar",
+        "searchable_select"
+      ]
+    },
+    "componentDefaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "VCGF-UI-COMP-001": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "theme": {
+              "type": "string",
+              "description": "السماح فقط بالسمات المكتملة والمختبرة؛ light أو dark أو system.",
+              "default": "system",
+              "minLength": 1,
+              "enum": [
+                "light",
+                "dark",
+                "system"
+              ]
+            },
+            "density": {
+              "type": "string",
+              "description": "comfortable أو compact أو adaptive؛ لا تخفض مساحة اللمس تحت سياسة الوصولية.",
+              "default": "adaptive",
+              "minLength": 1,
+              "enum": [
+                "comfortable",
+                "compact",
+                "adaptive"
+              ]
+            },
+            "direction": {
+              "type": "string",
+              "description": "مشتق من لغة الواجهة المعلنة؛ لا يحدد لغة المحتوى بنفسه.",
+              "default": "locale",
+              "minLength": 1
+            },
+            "motion": {
+              "type": "string",
+              "description": "تعطيل الحركة غير الضرورية عند طلب تقليل الحركة.",
+              "default": "respect-system",
+              "minLength": 1
+            },
+            "focusStyle": {
+              "type": "string",
+              "description": "لا يجوز إلغاء مؤشر التركيز لاعتبارات تجميلية.",
+              "default": "visible",
+              "minLength": 1
+            },
+            "touchTargetPx": {
+              "type": "integer",
+              "description": "هدف تصميم مفضّل وليس ادعاء أنه الحد الإلزامي العام في WCAG؛ يوثق أي استثناء.",
+              "default": 44,
+              "minimum": 0
+            },
+            "tokenRevision": {
+              "type": "string",
+              "description": "إصدار مستقل للتوكنز لتتبع التغييرات وعدم تحميل قيم غير متوافقة.",
+              "default": "1",
+              "minLength": 1
+            },
+            "allowTenantBranding": {
+              "type": "boolean",
+              "description": "لا يسمح للمستأجر بإلغاء التباين أو حالات الخطأ أو هوية الأزرار الخطرة.",
+              "default": false
+            }
+          },
+          "required": [
+            "theme",
+            "density",
+            "direction",
+            "motion",
+            "focusStyle",
+            "touchTargetPx",
+            "tokenRevision",
+            "allowTenantBranding"
+          ]
+        },
+        "VCGF-UI-COMP-002": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "pageSize": {
+              "type": "integer",
+              "description": "خيارات 10 و25 و50 و100 ضمن حد الخادم.",
+              "default": 25,
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "paginationMode": {
+              "type": "string",
+              "description": "client لمجموعة كاملة صغيرة ومعلومة فقط؛ يجب التصريح بنمط البيانات.",
+              "default": "server",
+              "minLength": 1
+            },
+            "selectionScope": {
+              "type": "string",
+              "description": "اختيار جميع النتائج يحتاج إجراء صريحًا ونطاقًا مثبتًا من الخادم.",
+              "default": "visible-page",
+              "minLength": 1
+            },
+            "density": {
+              "type": "string",
+              "description": "لا يغيّر القيم أو حقوق العرض.",
+              "default": "adaptive",
+              "minLength": 1
+            },
+            "persistColumns": {
+              "type": "boolean",
+              "description": "يحفظ معرفات الأعمدة وإصدار المخطط لا بيانات الصفوف.",
+              "default": true
+            },
+            "allowInlineEdit": {
+              "type": "boolean",
+              "description": "يتطلب عقد حفظ وتحقق وصلاحية مستقلة لكل حقل.",
+              "default": false
+            },
+            "exportEnabled": {
+              "type": "boolean",
+              "description": "إذن تصدير مستقل؛ لا يكفي إذن العرض.",
+              "default": false
+            },
+            "virtualization": {
+              "type": "string",
+              "description": "تُفعّل بعد قياس مع بديل وصولي واختبار التركيز.",
+              "default": "measured",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "pageSize",
+            "paginationMode",
+            "selectionScope",
+            "density",
+            "persistColumns",
+            "allowInlineEdit",
+            "exportEnabled",
+            "virtualization"
+          ]
+        },
+        "VCGF-UI-COMP-003": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "validationMode": {
+              "type": "string",
+              "description": "تحقق عند الخروج ثم عند تعديل حقل أخطأ؛ القاعدة تتكيف مع نوع الحقل.",
+              "default": "blur-then-change",
+              "minLength": 1
+            },
+            "showErrorSummary": {
+              "type": "boolean",
+              "description": "للنماذج الطويلة أو متعددة الأخطاء؛ يربط كل خطأ بحقل.",
+              "default": true
+            },
+            "preserveValuesOnError": {
+              "type": "boolean",
+              "description": "لا يحفظ كلمات المرور في التخزين الدائم.",
+              "default": true
+            },
+            "requiredIndicator": {
+              "type": "string",
+              "description": "التسمية متاحة ولا تعتمد على النجمة أو اللون وحدهما.",
+              "default": "text-and-symbol",
+              "minLength": 1
+            },
+            "submitPolicy": {
+              "type": "string",
+              "description": "لا يغني عن idempotency للعمليات ذات الأثر.",
+              "default": "single-inflight",
+              "minLength": 1
+            },
+            "manualInput": {
+              "type": "boolean",
+              "description": "يمكن تقييده فقط عندما يستلزم نوع الحقل ذلك وببديل متاح.",
+              "default": true
+            },
+            "conditionalValuePolicy": {
+              "type": "string",
+              "description": "يُحسم حفظ أو حذف قيمة الحقل المخفي ولا يترك ضمنيًا.",
+              "default": "explicit-per-field",
+              "minLength": 1
+            },
+            "unsavedChangesGuard": {
+              "type": "boolean",
+              "description": "مناسب للنماذج ذات التعديل؛ لا يعترض القراءة فقط.",
+              "default": true
+            }
+          },
+          "required": [
+            "validationMode",
+            "showErrorSummary",
+            "preserveValuesOnError",
+            "requiredIndicator",
+            "submitPolicy",
+            "manualInput",
+            "conditionalValuePolicy",
+            "unsavedChangesGuard"
+          ]
+        },
+        "VCGF-UI-COMP-004": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "debounceMs": {
+              "type": "integer",
+              "description": "اقتراح قابل للقياس للبحث الخارجي؛ ليس تأخيرًا إلزاميًا للبحث المحلي.",
+              "default": 300,
+              "minimum": 0
+            },
+            "applyMode": {
+              "type": "string",
+              "description": "live مناسب للبحث الخفيف؛ explicit للمرشحات المركبة أو المكلفة.",
+              "default": "explicit",
+              "minLength": 1
+            },
+            "urlSync": {
+              "type": "string",
+              "description": "لا تدرج بيانات حساسة أو معرفات محمية في URL بلا سياسة.",
+              "default": "allowlisted",
+              "minLength": 1
+            },
+            "savedViews": {
+              "type": "boolean",
+              "description": "الحفظ الشخصي افتراضيًا؛ المشاركة تتطلب صلاحية مستقلة.",
+              "default": true
+            },
+            "defaultOperator": {
+              "type": "string",
+              "description": "تعريف صريح؛ لا تبدّل المعنى بصريًا دون تعديل الاستعلام.",
+              "default": "AND",
+              "minLength": 1
+            },
+            "maxDepth": {
+              "type": "integer",
+              "description": "حد اقتراحي لتعقيد الشروط يطابق حدود الخادم.",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 10
+            },
+            "maxRules": {
+              "type": "integer",
+              "description": "منع الاستعلامات المفرطة؛ يُضبط حسب المجال.",
+              "default": 20,
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "persistSensitiveSearch": {
+              "type": "boolean",
+              "description": "عدم حفظ كلمات البحث الحساسة في history أو localStorage.",
+              "default": false
+            }
+          },
+          "required": [
+            "debounceMs",
+            "applyMode",
+            "urlSync",
+            "savedViews",
+            "defaultOperator",
+            "maxDepth",
+            "maxRules",
+            "persistSensitiveSearch"
+          ]
+        },
+        "VCGF-UI-COMP-005": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "allowedTypes": {
+              "type": "array",
+              "description": "قائمة سماح صريحة حسب الوحدة؛ الفارغ يعني الرفع غير مهيأ وليس السماح بكل الأنواع.",
+              "default": [],
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "maxFileBytes": {
+              "type": "integer",
+              "description": "صفر يعني يتطلب إعدادًا قبل التفعيل؛ لا يفترض حدًا صالحًا لكل مشروع.",
+              "default": 0,
+              "minimum": 0
+            },
+            "maxFiles": {
+              "type": "integer",
+              "description": "قيمة اقتراحية تقيد حسب قواعد العمل.",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "parallelUploads": {
+              "type": "integer",
+              "description": "حد تجريبي يطابق قدرات الخادم والشبكة.",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 16
+            },
+            "resumable": {
+              "type": "boolean",
+              "description": "يفعّل فقط مع دعم بروتوكول وخادم يملكان الاستئناف فعليًا.",
+              "default": false
+            },
+            "scanPolicy": {
+              "type": "string",
+              "description": "لا يمكن للمستخدم تخفيف سياسة الفحص؛ يجب كشف عدم توفر الخدمة.",
+              "default": "required",
+              "minLength": 1
+            },
+            "autoAttachOnUpload": {
+              "type": "boolean",
+              "description": "الربط بالسجل عملية مستقلة ومفوضة بعد اعتماد المرفق.",
+              "default": false
+            },
+            "temporaryRetentionHours": {
+              "type": "integer",
+              "description": "اقتراح للملفات المؤقتة؛ سياسة المنشأة والحجز القانوني تتقدم عليه.",
+              "default": 24,
+              "minimum": 0
+            }
+          },
+          "required": [
+            "allowedTypes",
+            "maxFileBytes",
+            "maxFiles",
+            "parallelUploads",
+            "resumable",
+            "scanPolicy",
+            "autoAttachOnUpload",
+            "temporaryRetentionHours"
+          ]
+        },
+        "VCGF-UI-COMP-006": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "supportedPreviewTypes": {
+              "type": "array",
+              "description": "لا تُعلن صيغة قبل اختبارها والتحقق من مسار تحويلها.",
+              "default": [
+                "application/pdf",
+                "image/png",
+                "image/jpeg"
+              ],
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "allowDownload": {
+              "type": "boolean",
+              "description": "قيمة عرض مشتقة من تفويض فعلي؛ لا تمنح أمانًا بمجرد إخفاء الزر.",
+              "default": false
+            },
+            "allowPrint": {
+              "type": "boolean",
+              "description": "حق مستقل يراجع وفق الوثيقة والسياق.",
+              "default": false
+            },
+            "watermarkMode": {
+              "type": "string",
+              "description": "العلامة رادع وتتبع وليست ضمان منع النسخ أو التصوير.",
+              "default": "policy",
+              "minLength": 1
+            },
+            "initialZoom": {
+              "type": "string",
+              "description": "تفضيل عرض لا يغير محتوى الوثيقة.",
+              "default": "fit-width",
+              "minLength": 1
+            },
+            "rememberPage": {
+              "type": "boolean",
+              "description": "يحفظ الموضع والمعرف فقط إذا سمحت سياسة الخصوصية.",
+              "default": true
+            },
+            "rangeLoading": {
+              "type": "boolean",
+              "description": "يستلزم دعم خدمة الملفات ولا يضعف تفويض طلبات الأجزاء.",
+              "default": true
+            },
+            "maxConcurrentPages": {
+              "type": "integer",
+              "description": "ميزانية تجريبية للرندر تُعدل بالقياس.",
+              "default": 3,
+              "minimum": 0
+            }
+          },
+          "required": [
+            "supportedPreviewTypes",
+            "allowDownload",
+            "allowPrint",
+            "watermarkMode",
+            "initialZoom",
+            "rememberPage",
+            "rangeLoading",
+            "maxConcurrentPages"
+          ]
+        },
+        "VCGF-UI-COMP-007": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "presentation": {
+              "type": "string",
+              "description": "اختيار النوع بحسب المهمة والجهاز؛ يسجل سبب الاختيار.",
+              "default": "adaptive",
+              "minLength": 1
+            },
+            "closeOnEscape": {
+              "type": "boolean",
+              "description": "يغلق الطبقة العليا فقط مع احترام حماية التغييرات.",
+              "default": true
+            },
+            "closeOnOutside": {
+              "type": "string",
+              "description": "لا يتجاهل نموذجًا متسخًا أو عملية حساسة بصمت.",
+              "default": "safe-only",
+              "minLength": 1
+            },
+            "restoreFocus": {
+              "type": "boolean",
+              "description": "إلى عنصر الفتح أو بديل منطقي إذا حذف العنصر.",
+              "default": true
+            },
+            "modalBehavior": {
+              "type": "string",
+              "description": "تحديد صريح: modal يحجب الخلفية وغير modal لا يفعل.",
+              "default": "task-dependent",
+              "minLength": 1
+            },
+            "maxNestedLayers": {
+              "type": "integer",
+              "description": "اقتراح لتقييد التعقيد؛ أي زيادة تتطلب تبريرًا واختبارًا.",
+              "default": 2,
+              "minimum": 0
+            },
+            "mobilePresentation": {
+              "type": "string",
+              "description": "حسب طول المهمة ولوحة المفاتيح والمساحة الفعلية.",
+              "default": "sheet-or-fullscreen",
+              "minLength": 1
+            },
+            "overlayStack": {
+              "type": "string",
+              "description": "إدارة طبقات واحدة بدل أرقام z-index عشوائية.",
+              "default": "centralized",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "presentation",
+            "closeOnEscape",
+            "closeOnOutside",
+            "restoreFocus",
+            "modalBehavior",
+            "maxNestedLayers",
+            "mobilePresentation",
+            "overlayStack"
+          ]
+        },
+        "VCGF-UI-COMP-008": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "transientDurationMs": {
+              "type": "integer",
+              "description": "للرسائل المعلوماتية غير الحرجة القابلة للاسترجاع؛ لا ينطبق على قرار أو خطأ مهم.",
+              "default": 4000,
+              "minimum": 0
+            },
+            "criticalAutoDismiss": {
+              "type": "boolean",
+              "description": "الأخطاء والقرارات الحرجة لا تختفي قبل فهمها أو معالجتها.",
+              "default": false
+            },
+            "maxVisibleToasts": {
+              "type": "integer",
+              "description": "يجمع التكرار ولا يحجب الرسائل الأهم.",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 10
+            },
+            "position": {
+              "type": "string",
+              "description": "يتكيف مع RTL ومساحات الأزرار والهاتف.",
+              "default": "inline-end-bottom",
+              "minLength": 1
+            },
+            "announceMode": {
+              "type": "string",
+              "description": "assertive للحاجة الملحة فقط؛ لا تعلن كل تحديث صغير.",
+              "default": "polite-default",
+              "minLength": 1
+            },
+            "deduplicateWindowMs": {
+              "type": "integer",
+              "description": "يجمع الرسائل المتطابقة دون إخفاء فشل عمليات مختلفة.",
+              "default": 5000,
+              "minimum": 0
+            },
+            "showCorrelationId": {
+              "type": "boolean",
+              "description": "معرف دعم غير سري؛ لا يعرض stack trace.",
+              "default": true
+            },
+            "persistentCenter": {
+              "type": "boolean",
+              "description": "عند تفعيله يتطلب تخزينًا وقراءة وصلاحيات من الخادم.",
+              "default": false
+            }
+          },
+          "required": [
+            "transientDurationMs",
+            "criticalAutoDismiss",
+            "maxVisibleToasts",
+            "position",
+            "announceMode",
+            "deduplicateWindowMs",
+            "showCorrelationId",
+            "persistentCenter"
+          ]
+        },
+        "VCGF-UI-COMP-009": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "navigationPattern": {
+              "type": "string",
+              "description": "مشتق من تحليل المهمة وليس تخمين نوع الشركة.",
+              "default": "adaptive",
+              "minLength": 1
+            },
+            "sidebarState": {
+              "type": "string",
+              "description": "يحفظ كتفضيل عرض عند وجود sidebar.",
+              "default": "expanded",
+              "minLength": 1
+            },
+            "showBreadcrumbs": {
+              "type": "boolean",
+              "description": "للشاشات العميقة؛ لا يكرر مسارًا وهميًا.",
+              "default": true
+            },
+            "menuSearch": {
+              "type": "string",
+              "description": "يفعّل عندما يحسن الوصول لقائمة كبيرة.",
+              "default": "when-large",
+              "minLength": 1
+            },
+            "mobileNavigation": {
+              "type": "string",
+              "description": "يمكن اختيار بديل موثق بحسب عدد الأقسام وطبيعة المهمة.",
+              "default": "drawer",
+              "minLength": 1
+            },
+            "rememberLastRoute": {
+              "type": "boolean",
+              "description": "لا يعيد فتح سجل حساس تلقائيًا على جهاز مشترك.",
+              "default": false
+            },
+            "preserveListContext": {
+              "type": "boolean",
+              "description": "يحفظ الفلاتر والموضع ضمن نطاق الحساب والصلاحية.",
+              "default": true
+            },
+            "routeAccessPolicy": {
+              "type": "string",
+              "description": "غير قابل للتخفيف من التفضيلات.",
+              "default": "server-enforced",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "navigationPattern",
+            "sidebarState",
+            "showBreadcrumbs",
+            "menuSearch",
+            "mobileNavigation",
+            "rememberLastRoute",
+            "preserveListContext",
+            "routeAccessPolicy"
+          ]
+        },
+        "VCGF-UI-COMP-010": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "selectionMode": {
+              "type": "string",
+              "description": "single أو multiple حسب الحقل؛ لا يتغير بلا ترحيل للقيم.",
+              "default": "single",
+              "minLength": 1
+            },
+            "selectionPropagation": {
+              "type": "string",
+              "description": "none افتراضيًا؛ descendants يتطلب قاعدة أعمال واضحة.",
+              "default": "none",
+              "minLength": 1
+            },
+            "selectableNodeTypes": {
+              "type": "array",
+              "description": "أنواع العقد المسموح اختيارها؛ يمكن دعم الفروع صراحة.",
+              "default": [
+                "leaf"
+              ],
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "lazyLoading": {
+              "type": "boolean",
+              "description": "للهياكل الكبيرة؛ تحميل كل شجرة صغيرة جائز بقرار موثق.",
+              "default": true
+            },
+            "searchMode": {
+              "type": "string",
+              "description": "النتائج والمسارات لا تكشف أسلافًا محجوبة.",
+              "default": "authorized-paths",
+              "minLength": 1
+            },
+            "showPath": {
+              "type": "boolean",
+              "description": "إظهار المسار المسموح لتفريق الأسماء المتشابهة.",
+              "default": true
+            },
+            "rememberExpanded": {
+              "type": "boolean",
+              "description": "بمعرفات ثابتة ومحدودة بنطاق المستأجر.",
+              "default": true
+            },
+            "allowReparenting": {
+              "type": "boolean",
+              "description": "نقل الفروع إجراء منفصل مفوض وليس جزءًا تلقائيًا من picker.",
+              "default": false
+            }
+          },
+          "required": [
+            "selectionMode",
+            "selectionPropagation",
+            "selectableNodeTypes",
+            "lazyLoading",
+            "searchMode",
+            "showPath",
+            "rememberExpanded",
+            "allowReparenting"
+          ]
+        },
+        "VCGF-UI-COMP-011": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "navigationMode": {
+              "type": "string",
+              "description": "يمكن السماح بالانتقال غير الخطي بين مراحل صالحة وفق المخطط.",
+              "default": "sequential",
+              "minLength": 1
+            },
+            "allowBack": {
+              "type": "boolean",
+              "description": "دون فقد البيانات؛ المراحل المقفلة تحتاج سببًا وظيفيًا صريحًا.",
+              "default": true
+            },
+            "allowSkip": {
+              "type": "boolean",
+              "description": "للمراحل الاختيارية المسماة فقط.",
+              "default": false
+            },
+            "validateOnNext": {
+              "type": "boolean",
+              "description": "تحقق المرحلة ثم إعادة تحقق شاملة عند الإرسال النهائي.",
+              "default": true
+            },
+            "reviewBeforeSubmit": {
+              "type": "boolean",
+              "description": "إلزامي عند أثر مهم أو بيانات تحتاج مراجعة.",
+              "default": true
+            },
+            "draftMode": {
+              "type": "string",
+              "description": "لا ينشئ حفظًا تلقائيًا على جهاز المستخدم بلا سياسة.",
+              "default": "opt-in-server",
+              "minLength": 1
+            },
+            "progressStyle": {
+              "type": "string",
+              "description": "الأسماء أهم من نسبة مئوية غير حقيقية.",
+              "default": "named-steps",
+              "minLength": 1
+            },
+            "resumePolicy": {
+              "type": "string",
+              "description": "عند العودة تُراجع الصلاحيات وإصدارات البيانات والمخطط.",
+              "default": "revalidate",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "navigationMode",
+            "allowBack",
+            "allowSkip",
+            "validateOnNext",
+            "reviewBeforeSubmit",
+            "draftMode",
+            "progressStyle",
+            "resumePolicy"
+          ]
+        },
+        "VCGF-UI-COMP-012": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "defaultDecision": {
+              "type": "string",
+              "description": "الغياب أو عدم الحسم لا يمنح صلاحية.",
+              "default": "deny",
+              "minLength": 1
+            },
+            "unavailableActionDisplay": {
+              "type": "string",
+              "description": "إخفاء عند حساسية المعلومة؛ تعطيل مع سبب عندما لا يكشف ذلك بيانات.",
+              "default": "contextual",
+              "minLength": 1
+            },
+            "confirmationPolicy": {
+              "type": "string",
+              "description": "حسب أثر الإجراء وقابليته للتراجع وحجم النطاق.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "stepUpPolicy": {
+              "type": "string",
+              "description": "الخادم يحدد العمليات التي تتطلب تحققًا إضافيًا؛ ليس تبديلًا بصريًا.",
+              "default": "policy-driven",
+              "minLength": 1
+            },
+            "destructiveDefaultFocus": {
+              "type": "string",
+              "description": "الخيار الآمن مبدئيًا عند التأكيد ذي الخطر.",
+              "default": "cancel",
+              "minLength": 1
+            },
+            "requireReason": {
+              "type": "string",
+              "description": "سبب إلزامي للعمليات المحددة فقط مع حد طول وتنقية.",
+              "default": "per-action",
+              "minLength": 1
+            },
+            "idempotencyPolicy": {
+              "type": "string",
+              "description": "يوثق لكل أمر كيف تمنع إعادة التنفيذ غير المقصودة.",
+              "default": "per-command",
+              "minLength": 1
+            },
+            "bulkMaxRecords": {
+              "type": "integer",
+              "description": "اقتراح للنطاق المتزامن؛ الأكبر يحتاج مهمة ومعاينة معتمدتين.",
+              "default": 100,
+              "minimum": 0
+            }
+          },
+          "required": [
+            "defaultDecision",
+            "unavailableActionDisplay",
+            "confirmationPolicy",
+            "stepUpPolicy",
+            "destructiveDefaultFocus",
+            "requireReason",
+            "idempotencyPolicy",
+            "bulkMaxRecords"
+          ]
+        },
+        "VCGF-UI-COMP-013": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "toolbarPreset": {
+              "type": "string",
+              "description": "مجموعات قدرات معتمدة حسب نوع المحتوى.",
+              "default": "basic",
+              "minLength": 1
+            },
+            "contentFormat": {
+              "type": "string",
+              "description": "اختيار JSON أو HTML موثق مع schemaVersion وخطة نقل.",
+              "default": "schema-json",
+              "minLength": 1
+            },
+            "allowedNodes": {
+              "type": "array",
+              "description": "قائمة سماح؛ التوسع يتطلب مراجعة المعقم والعارض.",
+              "default": [
+                "paragraph",
+                "heading",
+                "list",
+                "link"
+              ],
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "pastePolicy": {
+              "type": "string",
+              "description": "ينقح التنسيق والروابط ولا يثق في محتوى Word أو الويب.",
+              "default": "sanitize-preserve-allowed",
+              "minLength": 1
+            },
+            "imagePolicy": {
+              "type": "string",
+              "description": "لا يسمح بروابط تتبع خارجية أو data URLs بلا حدود وسياسة.",
+              "default": "managed-attachments-only",
+              "minLength": 1
+            },
+            "maxContentBytes": {
+              "type": "integer",
+              "description": "اقتراح يضبط حسب المجال ويُطبق على الخادم.",
+              "default": 200000,
+              "minimum": 0
+            },
+            "collaboration": {
+              "type": "boolean",
+              "description": "لا يفعل دون خدمة تزامن وتعارض وتفويض معتمدة.",
+              "default": false
+            },
+            "autosave": {
+              "type": "boolean",
+              "description": "يرتبط بعقد المسودات ولا يساوي اعتماد المستند.",
+              "default": false
+            }
+          },
+          "required": [
+            "toolbarPreset",
+            "contentFormat",
+            "allowedNodes",
+            "pastePolicy",
+            "imagePolicy",
+            "maxContentBytes",
+            "collaboration",
+            "autosave"
+          ]
+        },
+        "VCGF-UI-COMP-014": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "shortcut": {
+              "type": "string",
+              "description": "اختصار قابل للتعطيل أو التغيير عند التعارض؛ زر ظاهر بديل.",
+              "default": "platform-mod-k",
+              "minLength": 1
+            },
+            "debounceMs": {
+              "type": "integer",
+              "description": "للبحث الخارجي؛ يُقاس حسب المصدر.",
+              "default": 300,
+              "minimum": 0
+            },
+            "minQueryLength": {
+              "type": "integer",
+              "description": "قيمة اقتراحية؛ تختلف عن أوامر ثابتة أو بحث بالكود.",
+              "default": 2,
+              "minimum": 0
+            },
+            "maxResultsPerGroup": {
+              "type": "integer",
+              "description": "مع رابط عرض المزيد في سياق صحيح.",
+              "default": 5,
+              "minimum": 0
+            },
+            "historyEnabled": {
+              "type": "boolean",
+              "description": "لا تحفظ الاستعلامات أو السجلات الحساسة تلقائيًا.",
+              "default": false
+            },
+            "groupOrder": {
+              "type": "array",
+              "description": "ترتيب عرض لا يغير حدود التفويض.",
+              "default": [
+                "pages",
+                "records",
+                "commands"
+              ],
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "allowDestructiveCommands": {
+              "type": "boolean",
+              "description": "تفعيلها يستدعي تأكيدًا وعقد أمر مستقلًا.",
+              "default": false
+            },
+            "fuzzyMatching": {
+              "type": "boolean",
+              "description": "لا يغيّر دقة البحث بمعرف أو رمز يُطلب مطابقته تمامًا.",
+              "default": true
+            }
+          },
+          "required": [
+            "shortcut",
+            "debounceMs",
+            "minQueryLength",
+            "maxResultsPerGroup",
+            "historyEnabled",
+            "groupOrder",
+            "allowDestructiveCommands",
+            "fuzzyMatching"
+          ]
+        },
+        "VCGF-UI-COMP-015": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "statusRegistry": {
+              "type": "string",
+              "description": "حالات ومعاني وانتقالات بإصدارات معتمدة.",
+              "default": "domain-owned",
+              "minLength": 1
+            },
+            "reasonPolicy": {
+              "type": "string",
+              "description": "إلزام سبب للرفض أو الإعادة بحسب المجال.",
+              "default": "per-transition",
+              "minLength": 1
+            },
+            "delegationEnabled": {
+              "type": "boolean",
+              "description": "لا يفعل دون نطاق ومدة وسلطة مانح وممنوح موثقين.",
+              "default": false
+            },
+            "showNextStep": {
+              "type": "string",
+              "description": "لا تعرض توقعًا كأنه التزام عندما يتوقف على شروط لاحقة.",
+              "default": "when-deterministic",
+              "minLength": 1
+            },
+            "slaCalendar": {
+              "type": "string",
+              "description": "ساعات العمل والإجازات والمنطقة الزمنية من مصدر مركزي.",
+              "default": "tenant-business-calendar",
+              "minLength": 1
+            },
+            "parallelApprovalMode": {
+              "type": "string",
+              "description": "all أو quorum أو any حسب قاعدة موثقة؛ لا يفترضها العرض.",
+              "default": "explicit",
+              "minLength": 1
+            },
+            "optimisticApproval": {
+              "type": "boolean",
+              "description": "لا تظهر الموافقة نهائية قبل إقرار التنفيذ.",
+              "default": false
+            },
+            "historyVisibility": {
+              "type": "string",
+              "description": "الملاحظات والأسماء والأحداث تخضع للحقول المصرح بها.",
+              "default": "permission-scoped",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "statusRegistry",
+            "reasonPolicy",
+            "delegationEnabled",
+            "showNextStep",
+            "slaCalendar",
+            "parallelApprovalMode",
+            "optimisticApproval",
+            "historyVisibility"
+          ]
+        },
+        "VCGF-UI-COMP-016": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "defaultOrder": {
+              "type": "string",
+              "description": "الترتيب حسب وقت حدث موثوق مع كاسر تعادل ثابت.",
+              "default": "newest-first",
+              "minLength": 1
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "ضمن حد الخدمة؛ ترقيم أو cursor حسب الحجم.",
+              "default": 25,
+              "minimum": 0
+            },
+            "showFieldDiff": {
+              "type": "boolean",
+              "description": "فقط الحقول والنسخ المصرح بها.",
+              "default": true
+            },
+            "maskSensitiveFields": {
+              "type": "boolean",
+              "description": "التنقية قبل التخزين أو الإرجاع وفق التصنيف لا في CSS.",
+              "default": true
+            },
+            "retentionPolicy": {
+              "type": "string",
+              "description": "لا تفترض مدة موحدة؛ يراعي الحجز القانوني وسياسة المنشأة.",
+              "default": "explicit-required",
+              "minLength": 1
+            },
+            "exportAudit": {
+              "type": "boolean",
+              "description": "صلاحية مستقلة وتسجيل تنزيل عند الحاجة.",
+              "default": false
+            },
+            "displayTimeZone": {
+              "type": "string",
+              "description": "العرض فقط؛ اللحظة الأصلية لا تتغير.",
+              "default": "tenant",
+              "minLength": 1
+            },
+            "integrityLabel": {
+              "type": "string",
+              "description": "لا يظهر وصف immutable أو tamper-evident بلا دليل بنية وفحص.",
+              "default": "evidence-based",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "defaultOrder",
+            "pageSize",
+            "showFieldDiff",
+            "maskSensitiveFields",
+            "retentionPolicy",
+            "exportAudit",
+            "displayTimeZone",
+            "integrityLabel"
+          ]
+        },
+        "VCGF-UI-COMP-017": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "locale": {
+              "type": "string",
+              "description": "من إعداد اللغة؛ لا يحسم وحدة القيمة أو العملة.",
+              "default": "tenant",
+              "minLength": 1
+            },
+            "numberingSystem": {
+              "type": "string",
+              "description": "دعم arab عند اعتماد المنتج مع تطبيع الإدخال دون تغيير القيمة.",
+              "default": "latn",
+              "minLength": 1
+            },
+            "currency": {
+              "type": "string",
+              "description": "رمز عملة صريح لكل مبلغ؛ لا يفترض من اللغة وحدها.",
+              "default": "tenant",
+              "minLength": 1
+            },
+            "decimalScale": {
+              "type": "string",
+              "description": "تعريف لكل حقل أو وحدة؛ لا تفرض منزلتين على جميع العملات والكميات.",
+              "default": "domain-defined",
+              "minLength": 1
+            },
+            "roundingMode": {
+              "type": "string",
+              "description": "يحدد في عقد الحساب والخادم قبل تفعيل المعاملة المالية.",
+              "default": "domain-defined",
+              "minLength": 1
+            },
+            "grouping": {
+              "type": "boolean",
+              "description": "فواصل عرض فقط ويُحسم قبولها في الإدخال المحلي.",
+              "default": true
+            },
+            "emptyPolicy": {
+              "type": "string",
+              "description": "الفراغ ليس صفرًا؛ يحدد المجال null أو required.",
+              "default": "null-not-zero",
+              "minLength": 1,
+              "enum": [
+                "null-not-zero",
+                "required"
+              ]
+            },
+            "allowNegative": {
+              "type": "boolean",
+              "description": "قيد حقل ومجال لا تعديل بصري؛ الخادم يعيد التحقق.",
+              "default": false
+            }
+          },
+          "required": [
+            "locale",
+            "numberingSystem",
+            "currency",
+            "decimalScale",
+            "roundingMode",
+            "grouping",
+            "emptyPolicy",
+            "allowNegative"
+          ]
+        },
+        "VCGF-UI-COMP-018": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "defaultCountry": {
+              "type": "string",
+              "description": "افتراضي مقترح للسوق السعودي لا استنتاج قطعي من الموقع أو اللغة.",
+              "default": "SA",
+              "minLength": 1
+            },
+            "phoneStorage": {
+              "type": "string",
+              "description": "الامتداد يخزن منفصلًا؛ الأرقام غير الهاتفية لها نوع مستقل.",
+              "default": "E.164-when-applicable",
+              "minLength": 1
+            },
+            "countrySelection": {
+              "type": "boolean",
+              "description": "قائمة دول قابلة للبحث وفق المعيار المرتبط عند الحاجة.",
+              "default": true
+            },
+            "emailDomainNormalization": {
+              "type": "string",
+              "description": "لا يحذف plus aliases ولا يغير local-part تعسفيًا.",
+              "default": "lowercase",
+              "minLength": 1
+            },
+            "verificationRequired": {
+              "type": "boolean",
+              "description": "حسب العملية؛ لا يخلط تحقق الصيغة بإثبات الوصول.",
+              "default": false
+            },
+            "otpLength": {
+              "type": "integer",
+              "description": "اقتراح واجهة فقط؛ يجب أن يطابق سياسة خدمة الرموز.",
+              "default": 6,
+              "minimum": 4,
+              "maximum": 12
+            },
+            "otpExpirySeconds": {
+              "type": "integer",
+              "description": "اقتراح يحتاج اعتمادًا حسب المخاطر؛ الخادم مصدر الوقت والصلاحية.",
+              "default": 300,
+              "minimum": 0
+            },
+            "resendCooldownSeconds": {
+              "type": "integer",
+              "description": "واجهة تعكس حد الخادم ولا تمنع الإساءة وحدها.",
+              "default": 30,
+              "minimum": 0
+            }
+          },
+          "required": [
+            "defaultCountry",
+            "phoneStorage",
+            "countrySelection",
+            "emailDomainNormalization",
+            "verificationRequired",
+            "otpLength",
+            "otpExpirySeconds",
+            "resendCooldownSeconds"
+          ]
+        },
+        "VCGF-UI-COMP-019": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "allowedFormats": {
+              "type": "array",
+              "description": "قائمة سماح حقيقية للخدمات المثبتة؛ لا يدعي دعم xlsm ضمنيًا.",
+              "default": [
+                "csv",
+                "xlsx"
+              ],
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "maxRows": {
+              "type": "integer",
+              "description": "اقتراح للدفعة؛ يضبط بالحجم والموارد والخدمة.",
+              "default": 10000,
+              "minimum": 0
+            },
+            "previewRows": {
+              "type": "integer",
+              "description": "المعاينة عينة؛ التحقق النهائي يشمل كل الصفوف.",
+              "default": 50,
+              "minimum": 0
+            },
+            "duplicatePolicy": {
+              "type": "string",
+              "description": "reject أو skip أو update بعقد مفاتيح فريدة وصلاحيات.",
+              "default": "reject",
+              "minLength": 1
+            },
+            "transactionMode": {
+              "type": "string",
+              "description": "atomic أو per-row أو per-batch؛ يجب حسمه قبل التنفيذ.",
+              "default": "explicit-required",
+              "minLength": 1
+            },
+            "exportScope": {
+              "type": "string",
+              "description": "يحدد هل الصفحة أم كل النتائج ويعيد التفويض.",
+              "default": "filtered-authorized",
+              "minLength": 1
+            },
+            "formulaPolicy": {
+              "type": "string",
+              "description": "لا ينفذ صيغًا أو روابط خارجية؛ يصدر النصوص بطريقة آمنة للهدف.",
+              "default": "no-execution",
+              "minLength": 1
+            },
+            "jobRetentionHours": {
+              "type": "integer",
+              "description": "اقتراح للملفات المؤقتة والتقارير مع مراعاة سياسة المنشأة.",
+              "default": 24,
+              "minimum": 0
+            }
+          },
+          "required": [
+            "allowedFormats",
+            "maxRows",
+            "previewRows",
+            "duplicatePolicy",
+            "transactionMode",
+            "exportScope",
+            "formulaPolicy",
+            "jobRetentionHours"
+          ]
+        },
+        "VCGF-UI-COMP-020": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "defaultPeriod": {
+              "type": "string",
+              "description": "فترة ذات معنى للعمل؛ لا يفترض الشهر دائمًا.",
+              "default": "domain-defined",
+              "minLength": 1
+            },
+            "refreshPolicy": {
+              "type": "string",
+              "description": "لا تستخدم polling سريعًا بلا حاجة أو قياس.",
+              "default": "explicit-or-measured",
+              "minLength": 1
+            },
+            "showLastUpdated": {
+              "type": "boolean",
+              "description": "وقت مصدر البيانات أو الحساب لا وقت رسم المكوّن فقط.",
+              "default": true
+            },
+            "allowWidgetReorder": {
+              "type": "boolean",
+              "description": "تفضيل عرض لا يغير تعريف المؤشر.",
+              "default": true
+            },
+            "missingValueDisplay": {
+              "type": "string",
+              "description": "غير متاح أو غير معرف لا صفر افتراضي.",
+              "default": "unavailable",
+              "minLength": 1
+            },
+            "comparisonMode": {
+              "type": "string",
+              "description": "تسمية الفترة المرجعية ونوع المقارنة.",
+              "default": "explicit-period",
+              "minLength": 1
+            },
+            "drillDown": {
+              "type": "boolean",
+              "description": "يعمل فقط عند إمكانية شرح النطاق وإعادة التفويض.",
+              "default": true
+            },
+            "dataTableAlternative": {
+              "type": "boolean",
+              "description": "بديل نصي أو جدولي قابل للوصول للرسوم.",
+              "default": true
+            }
+          },
+          "required": [
+            "defaultPeriod",
+            "refreshPolicy",
+            "showLastUpdated",
+            "allowWidgetReorder",
+            "missingValueDisplay",
+            "comparisonMode",
+            "drillDown",
+            "dataTableAlternative"
+          ]
+        },
+        "VCGF-UI-COMP-021": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "columnSource": {
+              "type": "string",
+              "description": "أعمدة مرتبطة بمعاني حالات موثقة لا تسميات حرة فقط.",
+              "default": "workflow-or-domain",
+              "minLength": 1
+            },
+            "dragEnabled": {
+              "type": "boolean",
+              "description": "يتوقف للصفوف غير المفوضة مع بديل قائم.",
+              "default": true
+            },
+            "keyboardMove": {
+              "type": "boolean",
+              "description": "أو قائمة نقل مكافئة متاحة؛ لا يعتمد النجاح على الفأرة.",
+              "default": true
+            },
+            "wipLimitMode": {
+              "type": "string",
+              "description": "advisory أو enforced بعقد أعمال؛ لا يلتبس التحذير بالمنع.",
+              "default": "advisory",
+              "minLength": 1
+            },
+            "optimisticMove": {
+              "type": "string",
+              "description": "الانتقالات الحساسة تنتظر الخادم ولا تبدو نهائية مسبقًا.",
+              "default": "reversible-low-risk",
+              "minLength": 1
+            },
+            "cardDensity": {
+              "type": "string",
+              "description": "تظهر المعلومات اللازمة للقرار لا زخارف بلا فائدة.",
+              "default": "adaptive",
+              "minLength": 1
+            },
+            "loadMode": {
+              "type": "string",
+              "description": "تحميل تدريجي مع عدادات معرفة النطاق.",
+              "default": "per-column",
+              "minLength": 1
+            },
+            "sortPolicy": {
+              "type": "string",
+              "description": "السحب للترتيب لا يعمل حين يفرض الفرز الآلي معنى مختلفًا.",
+              "default": "domain-or-manual",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "columnSource",
+            "dragEnabled",
+            "keyboardMove",
+            "wipLimitMode",
+            "optimisticMove",
+            "cardDensity",
+            "loadMode",
+            "sortPolicy"
+          ]
+        },
+        "VCGF-UI-COMP-022": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "timeZone": {
+              "type": "string",
+              "description": "افتراضي مقترح للمشروعات السعودية؛ يسجل IANA zone لكل سياق لازم.",
+              "default": "Asia/Riyadh",
+              "minLength": 1
+            },
+            "defaultView": {
+              "type": "string",
+              "description": "day أو week أو month أو list بحسب المهمة والجهاز.",
+              "default": "week",
+              "minLength": 1
+            },
+            "slotMinutes": {
+              "type": "integer",
+              "description": "اقتراح يطابق دقة الحجز وقواعد المورد.",
+              "default": 30,
+              "minimum": 1,
+              "maximum": 1440
+            },
+            "workingCalendar": {
+              "type": "string",
+              "description": "أيام وساعات وإجازات صريحة؛ لا تفترض الأحد إلى الخميس لكل مشروع.",
+              "default": "tenant-defined",
+              "minLength": 1
+            },
+            "conflictPolicy": {
+              "type": "string",
+              "description": "السماح بالتجاوز يتطلب صلاحية وسببًا وقاعدة واضحة.",
+              "default": "reject",
+              "minLength": 1
+            },
+            "recurrenceEnabled": {
+              "type": "boolean",
+              "description": "التفعيل يحتاج تعريف تقويم التكرار ومنطق الاستثناءات.",
+              "default": false
+            },
+            "hijriRecurrence": {
+              "type": "boolean",
+              "description": "لا يفعل إلا بمحرك أم القرى وضبط محلي وعقد تكرار مختبر.",
+              "default": false
+            },
+            "displayCalendar": {
+              "type": "string",
+              "description": "يرث المعيار المرتبط دون إنشاء تحويل مستقل.",
+              "default": "external-calendar-policy",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "timeZone",
+            "defaultView",
+            "slotMinutes",
+            "workingCalendar",
+            "conflictPolicy",
+            "recurrenceEnabled",
+            "hijriRecurrence",
+            "displayCalendar"
+          ]
+        },
+        "VCGF-UI-COMP-023": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "يفعّل في الحقول والمهام المعتمدة فقط بعد سياسة خصوصية واسترجاع.",
+              "default": false
+            },
+            "debounceMs": {
+              "type": "integer",
+              "description": "اقتراح للحفظ بعد سكون الكتابة؛ لا يرسل لكل ضغطة.",
+              "default": 1500,
+              "minimum": 0
+            },
+            "maxWaitMs": {
+              "type": "integer",
+              "description": "حد تجريبي لمنع تأخير غير محدود أثناء كتابة متواصلة.",
+              "default": 10000,
+              "minimum": 0
+            },
+            "storageMode": {
+              "type": "string",
+              "description": "التخزين المحلي opt-in ومحدود التصنيف؛ ليس بديلًا صامتًا عن الخادم.",
+              "default": "server",
+              "minLength": 1
+            },
+            "localSensitiveStorage": {
+              "type": "boolean",
+              "description": "الأسرار والرموز وكلمات المرور ممنوعة افتراضيًا.",
+              "default": false
+            },
+            "conflictPolicy": {
+              "type": "string",
+              "description": "لا يستخدم آخر حفظ يفوز بلا قرار مجال موثق.",
+              "default": "block-and-resolve",
+              "minLength": 1
+            },
+            "resumePolicy": {
+              "type": "string",
+              "description": "يتحقق من الحساب والصلاحية ومخطط المسودة قبل الاستعادة.",
+              "default": "ask-and-revalidate",
+              "minLength": 1
+            },
+            "retentionDays": {
+              "type": "integer",
+              "description": "اقتراح للمسودات يخضع لسياسة الجهة والحجز والقيمة التجارية.",
+              "default": 7,
+              "minimum": 0
+            }
+          },
+          "required": [
+            "enabled",
+            "debounceMs",
+            "maxWaitMs",
+            "storageMode",
+            "localSensitiveStorage",
+            "conflictPolicy",
+            "resumePolicy",
+            "retentionDays"
+          ]
+        },
+        "VCGF-UI-COMP-024": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "panelPattern": {
+              "type": "string",
+              "description": "tabs أو accordion أو split بحسب العلاقة بين المحتوى.",
+              "default": "task-based",
+              "minLength": 1
+            },
+            "tabActivation": {
+              "type": "string",
+              "description": "التفعيل التلقائي فقط إذا كان العرض فوريًا ولا يسبب انتظارًا مع كل سهم.",
+              "default": "manual-when-latent",
+              "minLength": 1
+            },
+            "persistActivePanel": {
+              "type": "boolean",
+              "description": "يحفظ المعرف ضمن السياق ولا يفتح محتوى غير مفوض.",
+              "default": true
+            },
+            "urlSync": {
+              "type": "boolean",
+              "description": "لأقسام مفيدة كرابط مباشر؛ لا يضع قيم نماذج حساسة في الرابط.",
+              "default": true
+            },
+            "mountPolicy": {
+              "type": "string",
+              "description": "يمكن إزالة الرندر مع بقاء حالة النموذج في موضع مستقل.",
+              "default": "preserve-data-lazy-view",
+              "minLength": 1
+            },
+            "allowMultipleExpanded": {
+              "type": "boolean",
+              "description": "مناسب لمقارنة المحتوى؛ قد يقيّد عند تصميم معلوم.",
+              "default": true
+            },
+            "resizablePanels": {
+              "type": "boolean",
+              "description": "يفعّل مع حد أدنى وحالة محفوظة وبديل لوحة مفاتيح.",
+              "default": false
+            },
+            "mobileFallback": {
+              "type": "string",
+              "description": "قائمة ثم تفاصيل أو accordion وفق المهمة دون فقد المحتوى.",
+              "default": "contextual-single-pane",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "panelPattern",
+            "tabActivation",
+            "persistActivePanel",
+            "urlSync",
+            "mountPolicy",
+            "allowMultipleExpanded",
+            "resizablePanels",
+            "mobileFallback"
+          ]
+        },
+        "VCGF-UI-COMP-025": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "layout": {
+              "type": "string",
+              "description": "summary أو sections أو adaptive حسب كثافة السجل.",
+              "default": "adaptive",
+              "minLength": 1
+            },
+            "fieldDensity": {
+              "type": "string",
+              "description": "comfortable أو compact أو adaptive دون إخفاء القيم.",
+              "default": "adaptive",
+              "minLength": 1
+            },
+            "showEmptyFields": {
+              "type": "boolean",
+              "description": "لا يخفي حقلاً يلزم لفهم غياب البيانات.",
+              "default": false
+            },
+            "stickyActions": {
+              "type": "boolean",
+              "description": "تُثبّت الإجراءات فقط إذا بقيت قابلة للوصول ولا تغطي المحتوى.",
+              "default": true
+            },
+            "sectionNavigation": {
+              "type": "string",
+              "description": "none أو anchor أو tabs أو auto بحسب طول الصفحة.",
+              "default": "auto",
+              "minLength": 1
+            },
+            "copyIdentifiers": {
+              "type": "boolean",
+              "description": "النسخ للمعرفات المسموحة فقط ولا يكشف أسرارًا.",
+              "default": true
+            },
+            "relatedPreviewLimit": {
+              "type": "integer",
+              "description": "حد أولي للعلاقات المضمنة قبل الانتقال لقائمة كاملة.",
+              "default": 5,
+              "minimum": 0
+            },
+            "editMode": {
+              "type": "string",
+              "description": "separate أو controlled-inline؛ التحرير المضمن يتطلب صلاحية وعقد حفظ مستقل.",
+              "default": "separate",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "layout",
+            "fieldDensity",
+            "showEmptyFields",
+            "stickyActions",
+            "sectionNavigation",
+            "copyIdentifiers",
+            "relatedPreviewLimit",
+            "editMode"
+          ]
+        },
+        "VCGF-UI-COMP-026": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "viewMode": {
+              "type": "string",
+              "description": "list أو cards أو adaptive؛ لا يغير البيانات أو الفرز.",
+              "default": "adaptive",
+              "minLength": 1
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "يخضع لحد الخادم ولا يستخدم لتحميل كل السجلات.",
+              "default": 20,
+              "minimum": 0
+            },
+            "paginationMode": {
+              "type": "string",
+              "description": "server أو cursor للبيانات الكبيرة؛ client لمجموعة مكتملة صغيرة فقط.",
+              "default": "server",
+              "minLength": 1
+            },
+            "imagePolicy": {
+              "type": "string",
+              "description": "lazy أو none؛ لا تُطلب صور غير لازمة أو غير مصرح بها.",
+              "default": "lazy",
+              "minLength": 1
+            },
+            "summaryLines": {
+              "type": "integer",
+              "description": "عدد أسطر الملخص قبل القص مع وسيلة للوصول للنص الكامل.",
+              "default": 3,
+              "minimum": 0
+            },
+            "selectionMode": {
+              "type": "string",
+              "description": "none أو single أو multiple حسب المهمة.",
+              "default": "none",
+              "minLength": 1
+            },
+            "rememberView": {
+              "type": "boolean",
+              "description": "يحفظ تفضيل العرض لا بيانات النتائج.",
+              "default": true
+            },
+            "infiniteScroll": {
+              "type": "boolean",
+              "description": "لا يُفعّل دون بديل تنقل واضح ووصولية مناسبة.",
+              "default": false
+            }
+          },
+          "required": [
+            "viewMode",
+            "pageSize",
+            "paginationMode",
+            "imagePolicy",
+            "summaryLines",
+            "selectionMode",
+            "rememberView",
+            "infiniteScroll"
+          ]
+        },
+        "VCGF-UI-COMP-027": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "order": {
+              "type": "string",
+              "description": "newest-first أو oldest-first مع إعلان واضح.",
+              "default": "newest-first",
+              "minLength": 1
+            },
+            "pageSize": {
+              "type": "integer",
+              "description": "تحميل مرحلي للأحداث.",
+              "default": 30,
+              "minimum": 0
+            },
+            "grouping": {
+              "type": "string",
+              "description": "none أو day أو type؛ لا يغير التسلسل الحقيقي.",
+              "default": "day",
+              "minLength": 1
+            },
+            "showSystemEvents": {
+              "type": "boolean",
+              "description": "الأحداث التقنية المسموحة فقط ولا تسرب تفاصيل داخلية.",
+              "default": false
+            },
+            "actorDisplay": {
+              "type": "string",
+              "description": "يحترم سياسة الأسماء والإخفاء.",
+              "default": "display-name",
+              "minLength": 1
+            },
+            "timeDisplay": {
+              "type": "string",
+              "description": "يعرض وقتًا مطلقًا عند الحاجة ولا يعتمد النسبي وحده.",
+              "default": "absolute-with-relative",
+              "minLength": 1
+            },
+            "expandMetadata": {
+              "type": "boolean",
+              "description": "لا يعرض بيانات حساسة مخفية عبر metadata.",
+              "default": false
+            },
+            "liveUpdates": {
+              "type": "boolean",
+              "description": "التحديث المباشر لا يعيد ترتيب تركيز المستخدم بصمت.",
+              "default": true
+            }
+          },
+          "required": [
+            "order",
+            "pageSize",
+            "grouping",
+            "showSystemEvents",
+            "actorDisplay",
+            "timeDisplay",
+            "expandMetadata",
+            "liveUpdates"
+          ]
+        },
+        "VCGF-UI-COMP-028": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "replyMode": {
+              "type": "string",
+              "description": "flat أو threaded وفق تعقيد الحوار.",
+              "default": "threaded",
+              "minLength": 1
+            },
+            "mentionEnabled": {
+              "type": "boolean",
+              "description": "نتائج mention تخضع لصلاحيات الرؤية ولا تكشف دليل المستخدمين.",
+              "default": true
+            },
+            "editWindowMinutes": {
+              "type": "integer",
+              "description": "بعدها يتطلب تعديلًا موثقًا أو يمنع حسب السياسة.",
+              "default": 15,
+              "minimum": 0
+            },
+            "deletePolicy": {
+              "type": "string",
+              "description": "الحذف لا يمحو الأثر عندما تفرض السياسة الاحتفاظ.",
+              "default": "soft-with-marker",
+              "minLength": 1
+            },
+            "attachmentEnabled": {
+              "type": "boolean",
+              "description": "يستخدم مكوّن الرفع وسياسة الفحص.",
+              "default": true
+            },
+            "maxCommentBytes": {
+              "type": "integer",
+              "description": "حد على الخادم والعميل مع حساب موحد.",
+              "default": 10000,
+              "minimum": 0
+            },
+            "notificationMode": {
+              "type": "string",
+              "description": "يحدد الإشعارات ولا يغير صلاحية المحتوى.",
+              "default": "mentions-and-replies",
+              "minLength": 1
+            },
+            "realtime": {
+              "type": "boolean",
+              "description": "فشل القناة المباشرة يتحول إلى polling أو تحديث يدوي.",
+              "default": true
+            }
+          },
+          "required": [
+            "replyMode",
+            "mentionEnabled",
+            "editWindowMinutes",
+            "deletePolicy",
+            "attachmentEnabled",
+            "maxCommentBytes",
+            "notificationMode",
+            "realtime"
+          ]
+        },
+        "VCGF-UI-COMP-029": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "pageSize": {
+              "type": "integer",
+              "description": "تحميل مرحلي.",
+              "default": 30,
+              "minimum": 0
+            },
+            "markReadPolicy": {
+              "type": "string",
+              "description": "لا تعتبر مجرد مرور المؤشر قراءة.",
+              "default": "explicit-or-open",
+              "minLength": 1
+            },
+            "grouping": {
+              "type": "string",
+              "description": "لا يخفي أولوية الحدث.",
+              "default": "type-and-date",
+              "minLength": 1
+            },
+            "retentionDays": {
+              "type": "integer",
+              "description": "تخضع للسياسة القانونية ولا تعد حذفًا لسجل المصدر.",
+              "default": 90,
+              "minimum": 0
+            },
+            "soundEnabled": {
+              "type": "boolean",
+              "description": "لا يُشغل صوتًا دون موافقة وإمكانية تعطيل.",
+              "default": false
+            },
+            "desktopPermission": {
+              "type": "string",
+              "description": "إذن المتصفح منفصل عن إعداد النظام.",
+              "default": "opt-in",
+              "minLength": 1
+            },
+            "realTime": {
+              "type": "boolean",
+              "description": "له fallback ولا يفترض اتصالًا دائمًا.",
+              "default": true
+            },
+            "bulkMarkRead": {
+              "type": "boolean",
+              "description": "يُظهر النطاق وعدد العناصر قبل الإجراء.",
+              "default": true
+            }
+          },
+          "required": [
+            "pageSize",
+            "markReadPolicy",
+            "grouping",
+            "retentionDays",
+            "soundEnabled",
+            "desktopPermission",
+            "realTime",
+            "bulkMarkRead"
+          ]
+        },
+        "VCGF-UI-COMP-030": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "maxUserViews": {
+              "type": "integer",
+              "description": "حد لمنع تضخم غير منضبط.",
+              "default": 25,
+              "minimum": 0
+            },
+            "sharedViews": {
+              "type": "boolean",
+              "description": "المشاركة تتطلب صلاحية مستقلة.",
+              "default": false
+            },
+            "defaultViewPolicy": {
+              "type": "string",
+              "description": "لا يتجاوز قيد الأمان.",
+              "default": "user-over-tenant",
+              "minLength": 1
+            },
+            "urlSync": {
+              "type": "string",
+              "description": "لا يضع قيمًا حساسة في URL.",
+              "default": "safe-only",
+              "minLength": 1
+            },
+            "schemaMigration": {
+              "type": "string",
+              "description": "يجب ترحيل أو تعطيل العرض غير المتوافق.",
+              "default": "explicit",
+              "minLength": 1
+            },
+            "allowRename": {
+              "type": "boolean",
+              "description": "يحافظ على معرف ثابت عند تغيير الاسم.",
+              "default": true
+            },
+            "allowDuplicate": {
+              "type": "boolean",
+              "description": "النسخة الجديدة تحصل معرفًا جديدًا.",
+              "default": true
+            },
+            "scope": {
+              "type": "string",
+              "description": "user أو team أو tenant مع صلاحيات واضحة.",
+              "default": "user",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "maxUserViews",
+            "sharedViews",
+            "defaultViewPolicy",
+            "urlSync",
+            "schemaMigration",
+            "allowRename",
+            "allowDuplicate",
+            "scope"
+          ]
+        },
+        "VCGF-UI-COMP-031": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "primaryLimit": {
+              "type": "integer",
+              "description": "عدد الإجراءات الظاهرة قبل overflow.",
+              "default": 3,
+              "minimum": 0
+            },
+            "overflowMode": {
+              "type": "string",
+              "description": "menu أو adaptive حسب العرض.",
+              "default": "menu",
+              "minLength": 1
+            },
+            "bulkSelectionSummary": {
+              "type": "boolean",
+              "description": "يعرض عدد ونطاق العناصر.",
+              "default": true
+            },
+            "sticky": {
+              "type": "boolean",
+              "description": "لا يغطي محتوى أو لوحة مفاتيح.",
+              "default": false
+            },
+            "dangerPlacement": {
+              "type": "string",
+              "description": "يفصل الإجراءات الخطرة عن المتكررة.",
+              "default": "separated",
+              "minLength": 1
+            },
+            "confirmPolicy": {
+              "type": "string",
+              "description": "يفوّض لمعيار PermissionAwareActions.",
+              "default": "risk-based",
+              "minLength": 1
+            },
+            "keyboardShortcuts": {
+              "type": "boolean",
+              "description": "الاختصار لا يتعارض مع المتصفح ويعلن للمستخدم.",
+              "default": false
+            },
+            "mobilePresentation": {
+              "type": "string",
+              "description": "bottom-bar أو menu أو adaptive مع وصول كامل.",
+              "default": "adaptive",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "primaryLimit",
+            "overflowMode",
+            "bulkSelectionSummary",
+            "sticky",
+            "dangerPlacement",
+            "confirmPolicy",
+            "keyboardShortcuts",
+            "mobilePresentation"
+          ]
+        },
+        "VCGF-UI-COMP-032": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "type": "string",
+              "description": "single أو multiple وفق نموذج العلاقة.",
+              "default": "single",
+              "minLength": 1
+            },
+            "searchMode": {
+              "type": "string",
+              "description": "server للكيانات الكبيرة.",
+              "default": "server",
+              "minLength": 1
+            },
+            "displayFields": {
+              "type": "array",
+              "description": "قائمة حقول مسموحة ولا تكشف بيانات إضافية.",
+              "default": [
+                "name",
+                "code"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "recentItems": {
+              "type": "boolean",
+              "description": "محصورة في نفس نطاق الصلاحية.",
+              "default": true
+            },
+            "favorites": {
+              "type": "boolean",
+              "description": "تفضيل واجهة فقط.",
+              "default": false
+            },
+            "allowCreate": {
+              "type": "boolean",
+              "description": "إنشاء كيان جديد يحتاج مسارًا وصلاحية منفصلة.",
+              "default": false
+            },
+            "showRelationshipType": {
+              "type": "boolean",
+              "description": "يُفعّل فقط عند وجود أنواع علاقات فعلية.",
+              "default": false
+            },
+            "resolveStoredValue": {
+              "type": "boolean",
+              "description": "يعرض القيمة المخزنة حتى لو لم تكن في أول صفحة، وفق الصلاحية.",
+              "default": true
+            }
+          },
+          "required": [
+            "mode",
+            "searchMode",
+            "displayFields",
+            "recentItems",
+            "favorites",
+            "allowCreate",
+            "showRelationshipType",
+            "resolveStoredValue"
+          ]
+        },
+        "VCGF-UI-COMP-033": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "countryMode": {
+              "type": "string",
+              "description": "fixed أو select وفق نطاق المشروع.",
+              "default": "select",
+              "minLength": 1
+            },
+            "defaultCountry": {
+              "type": "string",
+              "description": "قيمة افتراضية فقط ولا تمنع الدول الأخرى إن كانت مدعومة.",
+              "default": "SA",
+              "minLength": 1
+            },
+            "regionRequired": {
+              "type": "boolean",
+              "description": "يتغير حسب الدولة وقاعدة العمل.",
+              "default": true
+            },
+            "postalCodeRequired": {
+              "type": "boolean",
+              "description": "لا يفترض صيغة عالمية واحدة.",
+              "default": false
+            },
+            "coordinatesEnabled": {
+              "type": "boolean",
+              "description": "عند الحاجة فقط وبسياسة دقة واضحة.",
+              "default": false
+            },
+            "mapEnabled": {
+              "type": "boolean",
+              "description": "لا يحمّل مزود خرائط قبل الحاجة والموافقة.",
+              "default": false
+            },
+            "addressLineLimit": {
+              "type": "integer",
+              "description": "عدد الأسطر المنفصلة قبل حقل الملاحظات.",
+              "default": 2,
+              "minimum": 0
+            },
+            "normalizeOnSave": {
+              "type": "boolean",
+              "description": "تطبيع محافظ لا يغيّر الاسم الأصلي أو معنى العنوان.",
+              "default": true
+            }
+          },
+          "required": [
+            "countryMode",
+            "defaultCountry",
+            "regionRequired",
+            "postalCodeRequired",
+            "coordinatesEnabled",
+            "mapEnabled",
+            "addressLineLimit",
+            "normalizeOnSave"
+          ]
+        },
+        "VCGF-UI-COMP-034": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "type": "string",
+              "description": "controlled أو free أو hybrid.",
+              "default": "controlled",
+              "minLength": 1
+            },
+            "maxTags": {
+              "type": "integer",
+              "description": "حد حسب المجال.",
+              "default": 10,
+              "minimum": 0
+            },
+            "hierarchy": {
+              "type": "boolean",
+              "description": "عند taxonomy هرمي فقط.",
+              "default": false
+            },
+            "allowCreate": {
+              "type": "boolean",
+              "description": "الإنشاء يحتاج صلاحية وسياسة تطبيع.",
+              "default": false
+            },
+            "casePolicy": {
+              "type": "string",
+              "description": "يحفظ الأصل ويطبع البحث.",
+              "default": "preserve-normalized-search",
+              "minLength": 1
+            },
+            "duplicatePolicy": {
+              "type": "string",
+              "description": "منع التكرار بالمعرف لا النص فقط.",
+              "default": "canonical-id",
+              "minLength": 1
+            },
+            "showCounts": {
+              "type": "boolean",
+              "description": "لا يكشف إحصاءات محمية.",
+              "default": false
+            },
+            "suggestions": {
+              "type": "boolean",
+              "description": "اقتراحات ضمن نفس النطاق والصلاحية.",
+              "default": true
+            }
+          },
+          "required": [
+            "mode",
+            "maxTags",
+            "hierarchy",
+            "allowCreate",
+            "casePolicy",
+            "duplicatePolicy",
+            "showCounts",
+            "suggestions"
+          ]
+        },
+        "VCGF-UI-COMP-035": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "maxDepth": {
+              "type": "integer",
+              "description": "عمق AND/OR محدود لمنع قواعد غير قابلة للفهم.",
+              "default": 4,
+              "minimum": 0
+            },
+            "maxRules": {
+              "type": "integer",
+              "description": "حد لكل تعبير.",
+              "default": 50,
+              "minimum": 0
+            },
+            "allowedOperators": {
+              "type": "array",
+              "description": "تُرشح حسب نوع الحقل.",
+              "default": [
+                "eq",
+                "neq",
+                "contains",
+                "gt",
+                "lt",
+                "in"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "previewEnabled": {
+              "type": "boolean",
+              "description": "المعاينة لا تنفذ أثرًا فعليًا.",
+              "default": true
+            },
+            "testMode": {
+              "type": "string",
+              "description": "sample-only أو safe-query وفق البنية.",
+              "default": "sample-only",
+              "minLength": 1
+            },
+            "rawExpression": {
+              "type": "boolean",
+              "description": "يمنع إدخال كود خام من الواجهة.",
+              "default": false
+            },
+            "saveDraft": {
+              "type": "boolean",
+              "description": "المسودة لا تصبح active قبل الاعتماد.",
+              "default": true
+            },
+            "activationPolicy": {
+              "type": "string",
+              "description": "الحفظ منفصل عن التفعيل.",
+              "default": "explicit",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "maxDepth",
+            "maxRules",
+            "allowedOperators",
+            "previewEnabled",
+            "testMode",
+            "rawExpression",
+            "saveDraft",
+            "activationPolicy"
+          ]
+        },
+        "VCGF-UI-COMP-036": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "identifierMode": {
+              "type": "string",
+              "description": "يحدد ما يدعمه موفر الهوية ولا يستنتج وجود الحساب.",
+              "default": "email-or-username",
+              "minLength": 1
+            },
+            "mfaPolicy": {
+              "type": "string",
+              "description": "required أو optional أو risk-based وفق النظام.",
+              "default": "policy-driven",
+              "minLength": 1
+            },
+            "passkeyEnabled": {
+              "type": "boolean",
+              "description": "يُفعّل فقط عندما يدعمه الخادم والمتصفح والسياسة.",
+              "default": true
+            },
+            "recoveryMode": {
+              "type": "string",
+              "description": "لا يعتمد أسئلة معرفة ضعيفة كخيار افتراضي.",
+              "default": "verified-channel",
+              "minLength": 1
+            },
+            "sessionPolicy": {
+              "type": "string",
+              "description": "الخادم مرجع الجلسة والأجهزة.",
+              "default": "server-owned",
+              "minLength": 1
+            },
+            "rememberDevice": {
+              "type": "boolean",
+              "description": "يتطلب جهازًا موثوقًا وسياسة مدة واضحة.",
+              "default": false
+            },
+            "stepUpTimeoutMinutes": {
+              "type": "integer",
+              "description": "مدة قصيرة للإجراءات الحساسة.",
+              "default": 10,
+              "minimum": 0
+            },
+            "enumerationResistance": {
+              "type": "boolean",
+              "description": "رسائل الاسترداد والدخول لا تكشف وجود الحساب.",
+              "default": true
+            }
+          },
+          "required": [
+            "identifierMode",
+            "mfaPolicy",
+            "passkeyEnabled",
+            "recoveryMode",
+            "sessionPolicy",
+            "rememberDevice",
+            "stepUpTimeoutMinutes",
+            "enumerationResistance"
+          ]
+        }
+      },
+      "required": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-006",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-010",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-013",
+        "VCGF-UI-COMP-014",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-017",
+        "VCGF-UI-COMP-018",
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-021",
+        "VCGF-UI-COMP-022",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-026",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-028",
+        "VCGF-UI-COMP-029",
+        "VCGF-UI-COMP-030",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-032",
+        "VCGF-UI-COMP-033",
+        "VCGF-UI-COMP-034",
+        "VCGF-UI-COMP-035",
+        "VCGF-UI-COMP-036"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "enabledComponents",
+    "profile",
+    "externalBindings",
+    "componentDefaults"
+  ]
+}

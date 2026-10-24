@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0.0",
+  "rule_semantics": "explicit-composition-signals-rank-primary-select-one; modifiers-explicit-only; no-cross-layer-auto-activation",
+  "composition_rules": [
+    {
+      "standard_id": "VCGF-UI-SCR-001",
+      "kind": "primary",
+      "triggers": [
+        "dashboard_overview",
+        "executive_summary",
+        "kpi_overview"
+      ],
+      "rank": 18,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-002",
+      "kind": "primary",
+      "triggers": [
+        "collection_management",
+        "records_browse",
+        "operational_list"
+      ],
+      "rank": 17,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-003",
+      "kind": "primary",
+      "triggers": [
+        "record_workspace",
+        "record_detail_screen",
+        "entity_workspace"
+      ],
+      "rank": 16,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-004",
+      "kind": "primary",
+      "triggers": [
+        "form_transaction",
+        "create_edit_screen",
+        "data_entry_screen"
+      ],
+      "rank": 15,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-005",
+      "kind": "primary",
+      "triggers": [
+        "guided_process",
+        "multi_step_form",
+        "wizard_flow"
+      ],
+      "rank": 8,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-006",
+      "kind": "primary",
+      "triggers": [
+        "search_discovery",
+        "search_results_screen",
+        "discovery_experience"
+      ],
+      "rank": 14,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-007",
+      "kind": "primary",
+      "triggers": [
+        "work_queue",
+        "inbox_triage",
+        "task_queue"
+      ],
+      "rank": 5,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-008",
+      "kind": "primary",
+      "triggers": [
+        "review_approval_screen",
+        "approval_task",
+        "decision_review"
+      ],
+      "rank": 3,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-009",
+      "kind": "primary",
+      "triggers": [
+        "document_workspace",
+        "document_processing",
+        "document_review"
+      ],
+      "rank": 4,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-010",
+      "kind": "primary",
+      "triggers": [
+        "scheduling_workspace",
+        "calendar_planning",
+        "resource_schedule"
+      ],
+      "rank": 11,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-011",
+      "kind": "primary",
+      "triggers": [
+        "analytics_reporting",
+        "report_analysis",
+        "metric_exploration"
+      ],
+      "rank": 12,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-012",
+      "kind": "primary",
+      "triggers": [
+        "settings_administration",
+        "admin_configuration",
+        "system_settings"
+      ],
+      "rank": 6,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-013",
+      "kind": "primary",
+      "triggers": [
+        "authentication_access",
+        "sign_in_screen",
+        "account_recovery_screen"
+      ],
+      "rank": 1,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-014",
+      "kind": "primary",
+      "triggers": [
+        "collaboration_workspace",
+        "discussion_activity",
+        "team_thread"
+      ],
+      "rank": 13,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-015",
+      "kind": "primary",
+      "triggers": [
+        "master_detail",
+        "split_view",
+        "record_explorer"
+      ],
+      "rank": 9,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-016",
+      "kind": "primary",
+      "triggers": [
+        "comparison_decision",
+        "compare_items",
+        "side_by_side_review"
+      ],
+      "rank": 10,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-017",
+      "kind": "primary",
+      "triggers": [
+        "import_export_operation",
+        "data_migration_screen",
+        "bulk_transfer"
+      ],
+      "rank": 2,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-018",
+      "kind": "primary",
+      "triggers": [
+        "public_self_service",
+        "customer_portal_service",
+        "citizen_service"
+      ],
+      "rank": 7,
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-019",
+      "kind": "modifier",
+      "triggers": [
+        "mobile_focused_task",
+        "field_task",
+        "mobile_primary"
+      ],
+      "rank": 19,
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-SCR-020",
+      "kind": "modifier",
+      "triggers": [
+        "large_screen_operations",
+        "command_center",
+        "wallboard_operations"
+      ],
+      "rank": 20,
+      "default_decision": "recommended"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "content-admin",
+  "screen_id": "tag-remove",
+  "screen_purpose": "إزالة وسم قابلة للتراجع بسرعة",
+  "has_ui": true,
+  "signals": [
+    "contextual_actions"
+  ],
+  "interaction_signals": [
+    "undoable_action"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "desktop",
+    "mobile"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": false,
+  "existing_capabilities": [],
+  "notes": "يثبت أن Undo لا يفعّل Confirmation تلقائيًا.",
+  "risk_level": "low",
+  "data_volume": "small",
+  "offline_required": false,
+  "composition_signals": [],
+  "user_roles": [
+    "user"
+  ],
+  "task_frequency": "regular",
+  "information_density": "adaptive",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "unknown",
+  "context_continuity": "task-scoped"
+}

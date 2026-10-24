@@ -1,0 +1,1538 @@
+{
+  "schema_version": "1.0.0",
+  "package_version": "1.0.0",
+  "target_framework": "VCGF",
+  "target_framework_version": "1.3.0",
+  "status": "final-integration-candidate",
+  "activation_semantics": "explicit-composition-signals-only; one-primary-at-most-plus-explicit-modifiers; does-not-auto-activate-components-or-interactions",
+  "compositions": [
+    {
+      "id": "VCGF-UI-SCR-001",
+      "composition": "DashboardOverview",
+      "title": "لوحة النظرة العامة الذكية",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-001-DashboardOverview.md",
+      "purpose": "تقديم صورة موجزة وقابلة للتصرف عن الحالة الحالية والاتجاهات والاستثناءات دون تحويل الصفحة إلى مستودع رسوم ومؤشرات.",
+      "applies_when": "عندما تكون المهمة الأساسية فهم الحالة العامة أو مراقبة مؤشرات مختارة ثم الانتقال إلى التفاصيل أو الإجراء.",
+      "not_applicable_when": "لا تستخدم بدل شاشة تشغيلية عالية الكثافة أو تقرير تحليلي عميق أو قائمة سجلات تحتاج فرزًا وتحديدًا جماعيًا.",
+      "triggers": [
+        "dashboard_overview",
+        "executive_summary",
+        "kpi_overview"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-009"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-009",
+        "VCGF-UI-INT-010"
+      ],
+      "structure_summary": "ملخص رئيسي محدود، مؤشرات ذات معنى، استثناءات قابلة للتصرف، ثم روابط واضحة إلى التفاصيل.",
+      "responsive_summary": "على الهاتف تتحول الوحدات إلى تسلسل رأسي حسب الأولوية؛ على الشاشة الكبيرة لا تستخدم المساحة لإضافة مؤشرات بلا قيمة، بل لتحسين المقارنة والسياق.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-002",
+      "composition": "OperationalCollection",
+      "title": "قائمة التشغيل وإدارة السجلات",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-002-OperationalCollection.md",
+      "purpose": "تمكين المستخدم من العثور على مجموعة سجلات وتشغيلها بسرعة مع فرز وتصفية وانتقاء وإجراءات ضمن نطاق واضح.",
+      "applies_when": "عندما تكون المهمة الأساسية إدارة مجموعة سجلات أو طلبات أو عناصر عمل قابلة للبحث والتصفية.",
+      "not_applicable_when": "لا تستخدم عندما يكون الهدف قراءة سجل واحد أو تنفيذ عملية موجهة خطوة بخطوة.",
+      "triggers": [
+        "collection_management",
+        "records_browse",
+        "operational_list"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-026",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-013",
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-024"
+      ],
+      "structure_summary": "عنوان وسياق، بحث/فلاتر، تمثيل مجموعة مناسب، إجراءات فردية أو جماعية، Pagination أو تحميل تدريجي موثق.",
+      "responsive_summary": "على الهاتف يختار النظام البطاقات أو القائمة أو جدولًا مبسطًا بحسب المهمة؛ لا يضغط جدول سطح المكتب قسرًا داخل عرض ضيق.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-003",
+      "composition": "RecordWorkspace",
+      "title": "مساحة عمل السجل",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-003-RecordWorkspace.md",
+      "purpose": "جمع هوية السجل وحالته وحقوله وإجراءاته وعلاقاته المهمة في مساحة يمكن فهمها واتخاذ قرار منها.",
+      "applies_when": "عندما يكون المستخدم متمركزًا حول سجل أو معاملة واحدة ويحتاج القراءة أو الإجراء أو الانتقال إلى سياقات مرتبطة.",
+      "not_applicable_when": "لا تستخدم بدل نموذج إنشاء جديد بسيط أو قائمة سجلات.",
+      "triggers": [
+        "record_workspace",
+        "record_detail_screen",
+        "entity_workspace"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-028"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-024",
+        "VCGF-UI-INT-017"
+      ],
+      "structure_summary": "رأس هوية وحالة، حقائق أساسية، مناطق ثانوية قابلة للطي، إجراءات حسب الصلاحية، ونشاط/علاقات عند الحاجة.",
+      "responsive_summary": "على الهاتف تقدّم المعلومات الأساسية والإجراءات المهمة قبل المناطق الثانوية؛ وعلى الشاشات الواسعة يمكن استخدام تقسيم سياقي دون تشتيت.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-004",
+      "composition": "FormTransaction",
+      "title": "شاشة النموذج والمعاملة",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-004-FormTransaction.md",
+      "purpose": "تنظيم إدخال أو تعديل بيانات مع تحقق واضح وتسلسل منطقي وإجراءات حفظ/إرسال لا تربك المستخدم.",
+      "applies_when": "عندما تكون المهمة الأساسية إنشاء أو تعديل كيان أو طلب ضمن نموذج واحد قابل للإكمال دون Wizard حقيقي.",
+      "not_applicable_when": "لا تستخدم لنموذج طويل متعدد مراحل له شروط انتقال واضحة أو لتصفح بيانات فقط.",
+      "triggers": [
+        "form_transaction",
+        "create_edit_screen",
+        "data_entry_screen"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-023"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-002",
+        "VCGF-UI-INT-005",
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-019"
+      ],
+      "structure_summary": "عنوان المهمة، مجموعات حقول ذات معنى، تحقق قريب من الحقل، ملخص أخطاء عند الحاجة، شريط إجراء واضح، وحماية من فقدان العمل.",
+      "responsive_summary": "تكون الحقول عمودًا واحدًا افتراضيًا في الهاتف؛ تعدد الأعمدة على الشاشات الكبيرة يستخدم للعلاقات الطبيعية لا لحشو المساحة.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-005",
+      "composition": "GuidedWizard",
+      "title": "المسار الإرشادي متعدد الخطوات",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-005-GuidedWizard.md",
+      "purpose": "تقسيم عملية طويلة أو معقدة إلى خطوات ذات معنى مع تقدم واضح وإمكانية الاستئناف والتحقق عند حدود الخطوات.",
+      "applies_when": "عندما تتطلب المهمة مراحل متتابعة أو شروط انتقال أو بيانات كبيرة لا يناسب عرضها في نموذج واحد.",
+      "not_applicable_when": "لا تستخدم لمجرد أن النموذج طويل؛ إذا أمكن إكماله منطقيًا في صفحة واحدة فلا تضف Wizard شكليًا.",
+      "triggers": [
+        "guided_process",
+        "multi_step_form",
+        "wizard_flow"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-023"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-022",
+        "VCGF-UI-INT-023",
+        "VCGF-UI-INT-005"
+      ],
+      "structure_summary": "عنوان وهدف الخطوة، مؤشر تقدم غير مضلل، محتوى الخطوة فقط، تنقل للخلف/التالي، وحفظ مسودة حسب المخاطر.",
+      "responsive_summary": "في الهاتف يكون مؤشر التقدم مضغوطًا وقابلًا للفهم؛ لا تُعرض خريطة خطوات أفقية مزدحمة.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-006",
+      "composition": "SearchDiscovery",
+      "title": "شاشة البحث والاكتشاف",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-006-SearchDiscovery.md",
+      "purpose": "تمكين المستخدم من التعبير عن نية البحث ومراجعة النتائج وصقلها مع الحفاظ على سياق الاستعلام والتنقل.",
+      "applies_when": "عندما يكون البحث أو الاكتشاف عبر أنواع متعددة من المحتوى هو نقطة البداية الأساسية للشاشة.",
+      "not_applicable_when": "لا تستخدم بدل Searchable Select داخل حقل أو بدل فلتر بسيط لقائمة تشغيلية.",
+      "triggers": [
+        "search_discovery",
+        "search_results_screen",
+        "discovery_experience"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-014",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-026"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-009",
+        "VCGF-UI-INT-024"
+      ],
+      "structure_summary": "استعلام واضح، نطاق البحث، فلاتر قابلة للفهم، نتائج ذات مقتطفات مفيدة، حالة فراغ/تصحيح، وحفظ السياق عند العودة.",
+      "responsive_summary": "في الهاتف تُنقل الفلاتر الثانوية إلى طبقة قابلة للفتح مع إبقاء الاستعلام والنتيجة الأساسية مرئيين.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-007",
+      "composition": "WorkQueueInbox",
+      "title": "صندوق العمل وقائمة الانتظار",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-007-WorkQueueInbox.md",
+      "purpose": "دعم المستخدم الذي يعالج مهامًا متكررة ومتتابعة عبر ترتيب الأولوية والحالة والعمر والإجراء التالي.",
+      "applies_when": "عندما تكون الشاشة نقطة عمل يومية لمهام أو معاملات تنتظر معالجة المستخدم أو الفريق.",
+      "not_applicable_when": "لا تستخدم لقائمة مرجعية ساكنة أو تقارير لا تتطلب معالجة عناصر.",
+      "triggers": [
+        "work_queue",
+        "inbox_triage",
+        "task_queue"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-025"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-013",
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-024"
+      ],
+      "structure_summary": "ملخص الحمل، فلاتر محفوظة، قائمة مرتبة حسب الأولوية، معاينة سياقية اختيارية، وإجراء سريع لا يخفي أثره.",
+      "responsive_summary": "على الشاشات الكبيرة يمكن استخدام Master/Detail؛ على الهاتف ينتقل المستخدم إلى التفاصيل مع الحفاظ على موضعه وفلاتره.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-008",
+      "composition": "ReviewApproval",
+      "title": "مساحة المراجعة والاعتماد",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-008-ReviewApproval.md",
+      "purpose": "تمكين قرار مراجعة موثق عبر عرض المادة والسياق والتاريخ والإجراء والسبب دون خلط الموافقة بالتحرير.",
+      "applies_when": "عندما تكون المهمة الأساسية مراجعة طلب أو مستند أو تغيير ثم قبول/رفض/إرجاع وفق صلاحية.",
+      "not_applicable_when": "لا تستخدم كصفحة تحرير عامة أو كسجل Audit فقط.",
+      "triggers": [
+        "review_approval_screen",
+        "approval_task",
+        "decision_review"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-006",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-012"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-017",
+        "VCGF-UI-INT-012"
+      ],
+      "structure_summary": "موضوع القرار، الأدلة/المرفقات، ملخص التغييرات، تاريخ السياق، أسباب القرار، ثم إجراءات واضحة وغير متقاربة بشكل خطير.",
+      "responsive_summary": "في الهاتف تُثبّت إجراءات القرار عند الحاجة دون حجب المحتوى؛ في الشاشات الكبيرة يمكن وضع المستند والسياق جنبًا إلى جنب.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-009",
+      "composition": "DocumentWorkspace",
+      "title": "مساحة عمل المستند",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-009-DocumentWorkspace.md",
+      "purpose": "توفير قراءة ومعالجة مستند مع بياناته الوصفية ونسخه وعلاقاته وإجراءاته دون فصل السياق عن المحتوى.",
+      "applies_when": "عندما يكون المستند نفسه محور العمل: مراجعة، تصنيف، توقيع، أرشفة، أو استخراج بيانات.",
+      "not_applicable_when": "لا تستخدم عندما تكون المرفقات عنصرًا ثانويًا داخل سجل ولا تحتاج مساحة مستند كاملة.",
+      "triggers": [
+        "document_workspace",
+        "document_processing",
+        "document_review"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-006",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-016"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-018"
+      ],
+      "structure_summary": "عارض مركزي، بيانات وصفية قابلة للفهم، صفحات/نسخ عند الحاجة، إجراءات مستندية، وسياق قانوني/تدقيقي واضح.",
+      "responsive_summary": "في الهاتف يُعطى المحتوى الأولوية وتنتقل البيانات الوصفية إلى Drawer/Panel؛ الشاشة الكبيرة تستفيد من عرض ثنائي دون تصغير المستند.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-010",
+      "composition": "SchedulingWorkspace",
+      "title": "مساحة الجدولة والتقويم",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-010-SchedulingWorkspace.md",
+      "purpose": "تمكين التخطيط وفهم التعارضات وتغيير المواعيد ضمن تمثيل زمني مناسب للمهمة.",
+      "applies_when": "عندما يكون الزمن والتوزيع على يوم/أسبوع/شهر محور المهمة.",
+      "not_applicable_when": "لا تستخدم لمجرد وجود حقل تاريخ؛ حقول التاريخ تخضع لمعيار Calendar دون تحويل الشاشة إلى Scheduler.",
+      "triggers": [
+        "scheduling_workspace",
+        "calendar_planning",
+        "resource_schedule"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-022",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-012",
+        "VCGF-UI-INT-011",
+        "VCGF-UI-INT-024"
+      ],
+      "structure_summary": "مقياس زمني، موارد/فئات عند الحاجة، أحداث واضحة، تفاصيل عند الطلب، وإشارات تعارض لا تعتمد اللون وحده.",
+      "responsive_summary": "الهاتف يستخدم أجندة/يوم افتراضيًا إن كان الشهر الكامل يضر المهمة؛ الشاشة الكبيرة تسمح بعرض موارد متوازٍ عند وجود حاجة.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-011",
+      "composition": "AnalyticsReporting",
+      "title": "مساحة التحليل والتقارير",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-011-AnalyticsReporting.md",
+      "purpose": "دعم سؤال تحليلي محدد عبر مقاييس موثقة وفلاتر وسياق مقارنة وتفسير دون خلط لوحة المتابعة بالتقرير التحليلي.",
+      "applies_when": "عندما يحتاج المستخدم تحليل اتجاهات أو مقارنة فترات أو تفصيل أسباب وليس مجرد مراقبة KPI.",
+      "not_applicable_when": "لا تستخدم لتشغيل سجلات فردية أو لعرض أرقام زخرفية بلا قرار.",
+      "triggers": [
+        "analytics_reporting",
+        "report_analysis",
+        "metric_exploration"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-019"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-021",
+        "VCGF-UI-INT-009",
+        "VCGF-UI-INT-014"
+      ],
+      "structure_summary": "سؤال/نطاق، مؤشرات موثقة، تصورات مناسبة، مقارنة، جدول تفاصيل عند الحاجة، وتصدير ضمن الصلاحيات.",
+      "responsive_summary": "في الهاتف تقل التصورات المتجاورة وتُعطى الأولوية للمقياس/السؤال؛ الشاشة الكبيرة تسمح بالمقارنة لا بزيادة الضوضاء.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-012",
+      "composition": "SettingsAdministration",
+      "title": "الإعدادات والإدارة",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-012-SettingsAdministration.md",
+      "purpose": "تنظيم إعدادات النظام والجهة والصلاحيات والتكاملات بطريقة تمنع التغيير العرضي وتوضح نطاق التأثير.",
+      "applies_when": "عندما يدير المستخدم إعدادات دائمة أو سياسات أو تكاملات أو بيانات مرجعية إدارية.",
+      "not_applicable_when": "لا تستخدم لتفضيلات شخصية بسيطة يمكن وضعها في سياق قريب من المستخدم.",
+      "triggers": [
+        "settings_administration",
+        "admin_configuration",
+        "system_settings"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-016"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-006",
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-017"
+      ],
+      "structure_summary": "تنقل إعدادات واضح، نطاق System/Tenant/User ظاهر، وصف أثر الإعداد، معاينة عند الحاجة، حفظ صريح وتدقيق.",
+      "responsive_summary": "على الهاتف لا تُكدس لوحات إعدادات متعددة؛ استخدم تنقلًا هرميًا واضحًا مع Breadcrumb/Back semantics صحيحة.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-013",
+      "composition": "AuthenticationAccess",
+      "title": "شاشة المصادقة والوصول",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-013-AuthenticationAccess.md",
+      "purpose": "تقديم دخول واسترداد ومصادقة إضافية واضحة وآمنة بأقل تشتيت ممكن، مع رسائل لا تكشف معلومات حساسة.",
+      "applies_when": "عندما يكون الغرض تسجيل الدخول أو MFA أو Passkey أو استعادة الوصول أو Step-up مستقل.",
+      "not_applicable_when": "لا تستخدم كقالب عام لصفحات الحساب بعد تسجيل الدخول.",
+      "triggers": [
+        "authentication_access",
+        "sign_in_screen",
+        "account_recovery_screen"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-010"
+      ],
+      "structure_summary": "هوية موثوقة، مسار دخول أساسي، بدائل مصادقة متاحة، استرداد، رسائل خطأ متوازنة، ومؤشرات أمان غير مضللة.",
+      "responsive_summary": "يبقى التخطيط بسيطًا على كل المقاسات؛ لا تستخدم مساحات الشاشة الكبيرة لإضافة معلومات غير ضرورية أو تشتيت المصادقة.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-014",
+      "composition": "CollaborationWorkspace",
+      "title": "مساحة التعاون والنقاش",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-014-CollaborationWorkspace.md",
+      "purpose": "جمع النشاط والتعليقات والقرارات والملفات المرتبطة حول موضوع عمل واحد مع حفظ التسلسل والسياق.",
+      "applies_when": "عندما يكون التعاون المستمر والتعليقات والـmentions جزءًا أساسيًا من إنجاز المهمة.",
+      "not_applicable_when": "لا تستخدم بدل سجل التدقيق أو كدردشة عامة منفصلة عن موضوع العمل.",
+      "triggers": [
+        "collaboration_workspace",
+        "discussion_activity",
+        "team_thread"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-028",
+        "VCGF-UI-COMP-027",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-029"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-024",
+        "VCGF-UI-INT-017"
+      ],
+      "structure_summary": "موضوع واضح، نشاط زمني، Composer محكوم، مرفقات، إشارات/mentions، وحالات قراءة/متابعة عند الحاجة.",
+      "responsive_summary": "الهاتف يعطي الأولوية للتيار والتعليق؛ الشاشة الكبيرة يمكن أن تعرض سياق السجل بجانبه دون تقسيم الاهتمام إلى أعمدة كثيرة.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-015",
+      "composition": "MasterDetailExplorer",
+      "title": "المستكشف رئيسي/تفصيلي",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-015-MasterDetailExplorer.md",
+      "purpose": "تسريع التنقل بين عناصر مجموعة وتفاصيل العنصر الحالي دون فقدان الفلاتر والموضع والسياق.",
+      "applies_when": "عندما يحتاج المستخدم مراجعة عدة سجلات واحدًا تلو الآخر مع تفاصيل كافية بجانب القائمة.",
+      "not_applicable_when": "لا تستخدم على عرض ضيق كقسمين دائمين ولا عندما تكون التفاصيل معقدة وتستحق صفحة مستقلة.",
+      "triggers": [
+        "master_detail",
+        "split_view",
+        "record_explorer"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-024"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-024"
+      ],
+      "structure_summary": "قائمة/شجرة رئيسية، اختيار حالي واضح، تفاصيل سياقية، انتقال قابل للرجوع، وحفظ موضع القائمة.",
+      "responsive_summary": "تتحول على الهاتف إلى List → Detail مع Back يحفظ السياق؛ لا يبقى Split Pane قسريًا.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-016",
+      "composition": "ComparisonDecision",
+      "title": "شاشة المقارنة واتخاذ القرار",
+      "kind": "primary",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-016-ComparisonDecision.md",
+      "purpose": "مساعدة المستخدم على مقارنة بدائل على نفس المعايير دون تحيز بصري أو إخفاء اختلافات مهمة.",
+      "applies_when": "عندما تكون المهمة اختيار بديل أو مقارنة نسخ أو عروض أو خيارات متعددة وفق خصائص مشتركة.",
+      "not_applicable_when": "لا تستخدم لقائمة بسيطة أو تقرير لا يتطلب قرار مقارنة مباشر.",
+      "triggers": [
+        "comparison_decision",
+        "compare_items",
+        "side_by_side_review"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-026",
+        "VCGF-UI-COMP-031"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-007",
+        "VCGF-UI-INT-024"
+      ],
+      "structure_summary": "معايير مقارنة ثابتة، أعمدة/بطاقات بدائل، اختلافات بارزة نصيًا، سياق المصدر، وإجراء اختيار منفصل عن التصفح.",
+      "responsive_summary": "في الهاتف يتحول العرض من أعمدة متجاورة إلى مقارنة معيار-بمعيار أو تمرير مضبوط؛ لا تعتمد على تمرير أفقي ضخم.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-017",
+      "composition": "ImportExportOperation",
+      "title": "شاشة الاستيراد والتصدير",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-017-ImportExportOperation.md",
+      "purpose": "إدارة نقل بيانات واسع النطاق مع اختيار المصدر/النطاق، معاينة، تحقق، تقدم، نتيجة وأثر تدقيقي.",
+      "applies_when": "عندما ينفذ المستخدم استيرادًا أو تصديرًا أو ترحيلًا له أثر أو معالجة طويلة.",
+      "not_applicable_when": "لا تستخدم لتنزيل ملف صغير مباشر أو رفع مرفق عادي.",
+      "triggers": [
+        "import_export_operation",
+        "data_migration_screen",
+        "bulk_transfer"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-005",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-014",
+        "VCGF-UI-INT-019",
+        "VCGF-UI-INT-010",
+        "VCGF-UI-INT-022"
+      ],
+      "structure_summary": "اختيار عملية ونطاق، قالب/مصدر، معاينة وتحقيق، تأكيد، تقدم قابل للاستئناف، ملخص نجاح/فشل، وتنزيل تقرير أخطاء آمن.",
+      "responsive_summary": "الهاتف يصلح للمراقبة أو العمليات الصغيرة؛ إن كانت العملية تتطلب mapping واسعًا فيجب أن يصرح النظام بأن سطح المكتب أنسب بدل تجربة مضغوطة سيئة.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-018",
+      "composition": "PublicSelfService",
+      "title": "الخدمة الذاتية العامة",
+      "kind": "primary",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-018-PublicSelfService.md",
+      "purpose": "تمكين مستخدم غير متخصص من إكمال خدمة أو طلب بثقة مع لغة واضحة، تقدم مفهوم، تحقق، واسترداد للحالة.",
+      "applies_when": "عندما تكون الواجهة موجهة لعميل أو مواطن أو مستخدم خارجي لإكمال خدمة أو متابعة طلب.",
+      "not_applicable_when": "لا تستخدم لواجهات التشغيل الداخلية التي تفترض معرفة مجال عالية وكثافة إجراءات.",
+      "triggers": [
+        "public_self_service",
+        "customer_portal_service",
+        "citizen_service"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-018"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-001",
+        "VCGF-UI-INT-005",
+        "VCGF-UI-INT-023",
+        "VCGF-UI-INT-010"
+      ],
+      "structure_summary": "شرح الخدمة، متطلبات مسبقة، إدخال تدريجي، مساعدة في السياق، حفظ/استئناف عند الحاجة، تأكيد نهائي ورقم مرجعي.",
+      "responsive_summary": "Mobile-first عند الجمهور العام، مع لغة مباشرة وأهداف لمس واضحة؛ لا تنقل تعقيد نظام الموظفين إلى المستخدم الخارجي.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-019",
+      "composition": "MobileFocusedTask",
+      "title": "مُعدّل المهمة المحمولة المركزة",
+      "kind": "modifier",
+      "priority": "P0",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-019-MobileFocusedTask.md",
+      "purpose": "تكييف شاشة قائمة أو سجل أو نموذج لتصبح مناسبة لمهمة ميدانية/محمولة قصيرة دون إنشاء نسخة أعمال مختلفة.",
+      "applies_when": "عندما يكون الهاتف أو الجهاز اللوحي هو السطح الأساسي والمهمة تتطلب استخدامًا سريعًا أو ميدانيًا أو بيد واحدة نسبيًا.",
+      "not_applicable_when": "لا يفعّل لمجرد دعم Responsive؛ يلزم أن يكون الاستخدام المحمول أولوية حقيقية.",
+      "triggers": [
+        "mobile_focused_task",
+        "field_task",
+        "mobile_primary"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-015",
+        "VCGF-UI-INT-024"
+      ],
+      "structure_summary": "إجراء أساسي واحد واضح، معلومات ضرورية أولًا، عناصر لمس مناسبة، تقليل الحقول المتجاورة، والحفاظ على الاستمرارية عند انقطاع الشبكة إن كانت مطلوبة.",
+      "responsive_summary": "هذا المعيار نفسه هو Modifier؛ لا يغير قواعد الأعمال ولا يخفي معلومات لازمة للصلاحية أو القرار.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-SCR-020",
+      "composition": "LargeScreenOperations",
+      "title": "مُعدّل التشغيل للشاشات الكبيرة",
+      "kind": "modifier",
+      "priority": "P1",
+      "version": "0.5.0",
+      "status": "final-integration-candidate",
+      "path": "screen-compositions/VCGF-UI-SCR-020-LargeScreenOperations.md",
+      "purpose": "الاستفادة من العرض الكبير لزيادة السياق والمقارنة والإشراف دون تمديد العناصر أو إضافة كثافة بلا هدف.",
+      "applies_when": "عندما تكون الشاشات الكبيرة سطحًا فعليًا للعمل التشغيلي أو غرفة تحكم أو لوحة متابعة مشتركة.",
+      "not_applicable_when": "لا يفعّل لمجرد أن CSS يستطيع التمدد؛ يجب أن توجد مهمة تستفيد من المساحة الإضافية.",
+      "triggers": [
+        "large_screen_operations",
+        "command_center",
+        "wallboard_operations"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-002"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-003",
+        "VCGF-UI-INT-009"
+      ],
+      "structure_summary": "مناطق سياق متوازنة، مؤشرات انتباه، تفاصيل عند الطلب، كثافة قابلة للضبط، وعدم تمديد السطور والنماذج إلى عروض غير قابلة للقراءة.",
+      "responsive_summary": "يجب الحفاظ على max readable line lengths ومناطق ثابتة نسبيًا؛ الشاشة الأكبر ليست ترخيصًا لعرض كل شيء في وقت واحد.",
+      "policies": [
+        {
+          "key": "densityPolicy",
+          "type": "string",
+          "default": "adaptive",
+          "scope": "system/tenant/user",
+          "constraints": "adaptive أو comfortable أو compact ضمن حدود الوصولية ولا يغيّر صلاحيات أو بيانات."
+        },
+        {
+          "key": "primaryActionLimit",
+          "type": "integer",
+          "default": 1,
+          "scope": "system/tenant",
+          "constraints": "عدد الإجراءات الأساسية المرئية في المنطقة الواحدة؛ أي استثناء يبرر بالمهمة."
+        },
+        {
+          "key": "progressiveDisclosure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يخفي التعقيد الثانوي لا المعلومات اللازمة لاتخاذ القرار أو إكمال المهمة."
+        },
+        {
+          "key": "mobileTransform",
+          "type": "string",
+          "default": "task-preserving-reflow",
+          "scope": "system/tenant",
+          "constraints": "reflow أو list-detail أو stacked-panels حسب العقد؛ لا تصغير حرفي لسطح المكتب."
+        },
+        {
+          "key": "largeScreenTransform",
+          "type": "string",
+          "default": "context-expansion",
+          "scope": "system/tenant",
+          "constraints": "توسيع السياق أو المقارنة بدل تمديد الحقول/النص بلا حدود."
+        },
+        {
+          "key": "roleAdaptation",
+          "type": "string",
+          "default": "priority-only",
+          "scope": "system/tenant",
+          "constraints": "يغير ترتيب/إبراز المعلومات المصرح بها فقط؛ لا يمنح ولا يسحب صلاحية ولا يغير حقيقة الأعمال."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    }
+  ]
+}

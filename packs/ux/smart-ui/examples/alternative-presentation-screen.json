@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "example-presentation",
+  "screen_id": "records",
+  "screen_purpose": "نتائج يمكن عرضها كجدول أو بطاقات",
+  "has_ui": true,
+  "signals": [
+    "tabular_operational_data",
+    "collection_list"
+  ],
+  "interaction_signals": [
+    "search_results",
+    "preserve_navigation_context"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "desktop"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": false,
+  "existing_capabilities": [],
+  "notes": "يجب أن ينتج compatibility review لأن العرضين بديلان غالبًا.",
+  "risk_level": "medium",
+  "data_volume": "large",
+  "offline_required": false,
+  "composition_signals": [
+    "collection_management"
+  ],
+  "user_roles": [
+    "operator"
+  ],
+  "task_frequency": "high-frequency",
+  "information_density": "adaptive",
+  "viewport_priority": "balanced",
+  "primary_input": "mixed",
+  "journey_signals": [],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "unknown",
+  "context_continuity": "task-scoped"
+}

@@ -212,68 +212,75 @@ VCGF/
 │   │   │   ├── final-release-report.md
 │   │   │   ├── migration-map.md
 │   │   │   └── traceability.md
-│   │   └── v1.1.0
-│   │       ├── approval.md
-│   │       ├── approved-analysis.md
-│   │       ├── change-manifest.json
-│   │       ├── continuation-approval.md
-│   │       ├── continuation-change-manifest.json
-│   │       ├── continuation-test-evidence.json
-│   │       ├── CONTINUATION_REPORT_AR.md
-│   │       ├── decisions.json
-│   │       ├── documentation-approval.json
-│   │       ├── documentation-change-manifest.json
-│   │       ├── documentation-test-evidence.json
-│   │       ├── documentation-update.md
-│   │       ├── local-context-benchmark.json
-│   │       ├── next-change-plan.json
-│   │       ├── open-items.json
-│   │       ├── PHASE1_REPORT_AR.md
-│   │       ├── progress.json
-│   │       ├── reference-stack.json
-│   │       ├── scope-register.json
-│   │       ├── skill-forward-test.json
-│   │       └── test-evidence.json
+│   │   ├── v1.1.0
+│   │   │   ├── approval.md
+│   │   │   ├── approved-analysis.md
+│   │   │   ├── change-manifest.json
+│   │   │   ├── continuation-approval.md
+│   │   │   ├── continuation-change-manifest.json
+│   │   │   ├── continuation-test-evidence.json
+│   │   │   ├── CONTINUATION_REPORT_AR.md
+│   │   │   ├── decisions.json
+│   │   │   ├── documentation-approval.json
+│   │   │   ├── documentation-change-manifest.json
+│   │   │   ├── documentation-test-evidence.json
+│   │   │   ├── documentation-update.md
+│   │   │   ├── local-context-benchmark.json
+│   │   │   ├── next-change-plan.json
+│   │   │   ├── open-items.json
+│   │   │   ├── PHASE1_REPORT_AR.md
+│   │   │   ├── progress.json
+│   │   │   ├── reference-stack.json
+│   │   │   ├── scope-register.json
+│   │   │   ├── skill-forward-test.json
+│   │   │   └── test-evidence.json
+│   │   └── v1.3.0-smart-ui-integration.md
 │   ├── quality
-│   │   └── v1.2
-│   │       ├── evidence
-│   │       │   ├── browser
-│   │       │   │   ├── browser-report.json
-│   │       │   │   ├── crm-ar-1440.png
-│   │       │   │   ├── crm-ar-390.png
-│   │       │   │   ├── crm-en-1440.png
-│   │       │   │   └── crm-en-390.png
-│   │       │   ├── adaptive-benchmark.json
-│   │       │   ├── adaptive-benchmark.log
-│   │       │   ├── adaptive-browser.log
-│   │       │   ├── adaptive-coverage.json
-│   │       │   ├── adaptive-coverage.txt
-│   │       │   ├── adaptive-coverage.xml
-│   │       │   ├── adaptive-junit.xml
-│   │       │   ├── adaptive-tests.log
-│   │       │   ├── baseline-loader-duplicate.json
-│   │       │   ├── baseline-verification.json
-│   │       │   ├── candidate-tests-initial.log
-│   │       │   ├── combined-plan-example.json
-│   │       │   ├── engineering-smoke.json
-│   │       │   ├── local-structure.json
-│   │       │   ├── preview-baseline-tests.log
-│   │       │   ├── preview-browser.log
-│   │       │   ├── remote-attempts.json
-│   │       │   ├── results-summary.json
-│   │       │   ├── tested-code-snapshot.json
-│   │       │   └── ux-smoke.json
-│   │       ├── baseline-compatibility-v1.2.json
-│   │       ├── environment-and-limitations.json
-│   │       ├── evaluation-ar.md
-│   │       ├── evaluation-en.md
-│   │       ├── executive-summary.md
-│   │       ├── integration-log.md
+│   │   ├── v1.2
+│   │   │   ├── evidence
+│   │   │   │   ├── browser
+│   │   │   │   │   ├── browser-report.json
+│   │   │   │   │   ├── crm-ar-1440.png
+│   │   │   │   │   ├── crm-ar-390.png
+│   │   │   │   │   ├── crm-en-1440.png
+│   │   │   │   │   └── crm-en-390.png
+│   │   │   │   ├── adaptive-benchmark.json
+│   │   │   │   ├── adaptive-benchmark.log
+│   │   │   │   ├── adaptive-browser.log
+│   │   │   │   ├── adaptive-coverage.json
+│   │   │   │   ├── adaptive-coverage.txt
+│   │   │   │   ├── adaptive-coverage.xml
+│   │   │   │   ├── adaptive-junit.xml
+│   │   │   │   ├── adaptive-tests.log
+│   │   │   │   ├── baseline-loader-duplicate.json
+│   │   │   │   ├── baseline-verification.json
+│   │   │   │   ├── candidate-tests-initial.log
+│   │   │   │   ├── combined-plan-example.json
+│   │   │   │   ├── engineering-smoke.json
+│   │   │   │   ├── local-structure.json
+│   │   │   │   ├── preview-baseline-tests.log
+│   │   │   │   ├── preview-browser.log
+│   │   │   │   ├── remote-attempts.json
+│   │   │   │   ├── results-summary.json
+│   │   │   │   ├── tested-code-snapshot.json
+│   │   │   │   └── ux-smoke.json
+│   │   │   ├── baseline-compatibility-v1.2.json
+│   │   │   ├── environment-and-limitations.json
+│   │   │   ├── evaluation-ar.md
+│   │   │   ├── evaluation-en.md
+│   │   │   ├── executive-summary.md
+│   │   │   ├── integration-log.md
+│   │   │   ├── public-release-decision.md
+│   │   │   ├── release-gates.md
+│   │   │   ├── release-notes-v1.2.0.md
+│   │   │   ├── scope-register.json
+│   │   │   └── sources.json
+│   │   └── v1.3
+│   │       ├── baseline-compatibility-v1.3.json
 │   │       ├── public-release-decision.md
-│   │       ├── release-gates.md
-│   │       ├── release-notes-v1.2.0.md
-│   │       ├── scope-register.json
-│   │       └── sources.json
+│   │       ├── release-checklist.md
+│   │       ├── release-notes-v1.3.0.md
+│   │       └── release-validation-local.json
 │   ├── references
 │   │   ├── owasp-asvs-5-mapping.md
 │   │   └── sources-and-standards.md
@@ -410,10 +417,298 @@ VCGF/
 │   │   ├── section-38.md
 │   │   └── section-39.md
 │   ├── ux
+│   │   ├── smart-ui
+│   │   │   ├── adapters
+│   │   │   │   ├── generic.md
+│   │   │   │   ├── laravel-livewire.md
+│   │   │   │   ├── react-next-lovable.md
+│   │   │   │   ├── vanilla-legacy.md
+│   │   │   │   └── vue.md
+│   │   │   ├── catalog
+│   │   │   │   ├── compatibility-matrix.json
+│   │   │   │   ├── component-contracts.json
+│   │   │   │   ├── interaction-compatibility-matrix.json
+│   │   │   │   ├── interaction-contracts.json
+│   │   │   │   ├── interaction-rules.json
+│   │   │   │   ├── journey-compatibility-matrix.json
+│   │   │   │   ├── journey-contracts.json
+│   │   │   │   ├── journey-rules.json
+│   │   │   │   ├── screen-composition-compatibility-matrix.json
+│   │   │   │   ├── screen-composition-contracts.json
+│   │   │   │   ├── screen-composition-rules.json
+│   │   │   │   └── selection-rules.json
+│   │   │   ├── config
+│   │   │   │   ├── central-settings.example.json
+│   │   │   │   ├── interaction-policy.example.json
+│   │   │   │   └── screen-orchestration-policy.example.json
+│   │   │   ├── examples
+│   │   │   │   ├── alternative-presentation-screen.json
+│   │   │   │   ├── alternative-presentation-screen.plan.json
+│   │   │   │   ├── approval-workspace-screen.json
+│   │   │   │   ├── approval-workspace-screen.plan.json
+│   │   │   │   ├── binary-choice-screen.json
+│   │   │   │   ├── binary-choice-screen.plan.json
+│   │   │   │   ├── bulk-job-screen.json
+│   │   │   │   ├── bulk-job-screen.plan.json
+│   │   │   │   ├── document-sign-archive-journey.json
+│   │   │   │   ├── document-sign-archive-journey.plan.json
+│   │   │   │   ├── enterprise-operations-screen.json
+│   │   │   │   ├── enterprise-operations-screen.plan.json
+│   │   │   │   ├── executive-dashboard-screen.json
+│   │   │   │   ├── executive-dashboard-screen.plan.json
+│   │   │   │   ├── expired-session-draft-screen.json
+│   │   │   │   ├── expired-session-draft-screen.plan.json
+│   │   │   │   ├── master-detail-field-screen.json
+│   │   │   │   ├── master-detail-field-screen.plan.json
+│   │   │   │   ├── no-ui-service.json
+│   │   │   │   ├── no-ui-service.plan.json
+│   │   │   │   ├── offline-edit-screen.json
+│   │   │   │   ├── offline-edit-screen.plan.json
+│   │   │   │   ├── public-self-service-journey.json
+│   │   │   │   ├── public-self-service-journey.plan.json
+│   │   │   │   ├── record-collaboration-screen.json
+│   │   │   │   ├── record-collaboration-screen.plan.json
+│   │   │   │   ├── reversible-action-screen.json
+│   │   │   │   ├── reversible-action-screen.plan.json
+│   │   │   │   ├── safe-delete-screen.json
+│   │   │   │   ├── safe-delete-screen.plan.json
+│   │   │   │   ├── scope-switch-journey.json
+│   │   │   │   ├── scope-switch-journey.plan.json
+│   │   │   │   ├── secure-auth-screen.json
+│   │   │   │   ├── secure-auth-screen.plan.json
+│   │   │   │   ├── simple-birthdate-screen.json
+│   │   │   │   ├── simple-birthdate-screen.plan.json
+│   │   │   │   ├── simple-view-screen.json
+│   │   │   │   └── simple-view-screen.plan.json
+│   │   │   ├── external-standards
+│   │   │   │   ├── CALENDAR-GOVERNANCE-ADDENDUM.md
+│   │   │   │   └── ENTERPRISE-SEARCHABLE-SELECT-COMBOBOX.md
+│   │   │   ├── governance
+│   │   │   │   ├── ACCESSIBILITY-RTL.md
+│   │   │   │   ├── ACTION-HIERARCHY-POLICY.md
+│   │   │   │   ├── ADAPTIVE-UX-ORCHESTRATION.md
+│   │   │   │   ├── CENTRAL-SETTINGS.md
+│   │   │   │   ├── CHANGE-CONTROL.md
+│   │   │   │   ├── COMPONENT-COMPATIBILITY.md
+│   │   │   │   ├── COMPONENT-CONTRACT.md
+│   │   │   │   ├── COMPONENT-LIFECYCLE.md
+│   │   │   │   ├── CONTEXT-CONTINUITY-POLICY.md
+│   │   │   │   ├── DECISION-EXPLAINABILITY.md
+│   │   │   │   ├── EVIDENCE-CONFORMANCE.md
+│   │   │   │   ├── EXPERIENCE-ORCHESTRATION.md
+│   │   │   │   ├── EXTERNAL-STANDARDS-BINDINGS.md
+│   │   │   │   ├── FINAL-ADOPTION-GATE.md
+│   │   │   │   ├── GOLDEN-RULES.md
+│   │   │   │   ├── INFORMATION-ARCHITECTURE-POLICY.md
+│   │   │   │   ├── INTERACTION-COMPATIBILITY.md
+│   │   │   │   ├── INTERACTION-CONTRACT.md
+│   │   │   │   ├── INTERACTION-LIFECYCLE.md
+│   │   │   │   ├── JOURNEY-CONTRACT.md
+│   │   │   │   ├── MASTER-POLICY.md
+│   │   │   │   ├── NAVIGATION-DEEP-LINK-POLICY.md
+│   │   │   │   ├── PACKAGE-SELECTION.md
+│   │   │   │   ├── PERFORMANCE-RESILIENCE.md
+│   │   │   │   ├── QUALITY-GATES.md
+│   │   │   │   ├── RESPONSIVE-DENSITY-POLICY.md
+│   │   │   │   ├── RETURN-TO-ORIGIN-POLICY.md
+│   │   │   │   ├── REUSE-FIRST-POLICY.md
+│   │   │   │   ├── SCREEN-COMPOSITION-CONTRACT.md
+│   │   │   │   ├── SCREEN-STATE-MODEL.md
+│   │   │   │   ├── SECURITY-PRIVACY.md
+│   │   │   │   ├── SMART-INTERACTION-GOLDEN-RULES.md
+│   │   │   │   ├── SMART-INTERACTION-PATTERN-SELECTION.md
+│   │   │   │   ├── SMART-JOURNEY-SELECTION.md
+│   │   │   │   ├── SMART-SCREEN-COMPOSITION-SELECTION.md
+│   │   │   │   └── SMART-UI-COMPONENT-SELECTION.md
+│   │   │   ├── integration
+│   │   │   │   ├── AGENTS.snippet.md
+│   │   │   │   ├── FINAL-INTEGRATION-PROMPT.md
+│   │   │   │   ├── IMPLEMENTATION-ROADMAP.md
+│   │   │   │   ├── INTEGRATION-PLAN.md
+│   │   │   │   ├── MASTER-IMPLEMENTATION-PROMPT.md
+│   │   │   │   ├── MIGRATION-v0.5-to-v1.0.md
+│   │   │   │   └── VCGF-1.3.0-FINAL-INTEGRATION-MANIFEST.md
+│   │   │   ├── interactions
+│   │   │   │   ├── VCGF-UI-INT-001-SmartCreateFlow.md
+│   │   │   │   ├── VCGF-UI-INT-002-SmartEditFlow.md
+│   │   │   │   ├── VCGF-UI-INT-003-SmartViewRefreshFlow.md
+│   │   │   │   ├── VCGF-UI-INT-004-SafeDeleteFlow.md
+│   │   │   │   ├── VCGF-UI-INT-005-UnsavedChangesProtection.md
+│   │   │   │   ├── VCGF-UI-INT-006-SaveSubmitStateMachine.md
+│   │   │   │   ├── VCGF-UI-INT-007-ConfirmationDecisionPattern.md
+│   │   │   │   ├── VCGF-UI-INT-008-EmptyStateRecovery.md
+│   │   │   │   ├── VCGF-UI-INT-009-LoadingProgressiveDisclosure.md
+│   │   │   │   ├── VCGF-UI-INT-010-ErrorRetryRecovery.md
+│   │   │   │   ├── VCGF-UI-INT-011-OptimisticUpdateRollback.md
+│   │   │   │   ├── VCGF-UI-INT-012-ConcurrencyConflictResolution.md
+│   │   │   │   ├── VCGF-UI-INT-013-BulkActionExecution.md
+│   │   │   │   ├── VCGF-UI-INT-014-LongRunningOperationProgress.md
+│   │   │   │   ├── VCGF-UI-INT-015-OfflineReconnectSynchronization.md
+│   │   │   │   ├── VCGF-UI-INT-016-SessionExpiryReauthentication.md
+│   │   │   │   ├── VCGF-UI-INT-017-PermissionChangeReaction.md
+│   │   │   │   ├── VCGF-UI-INT-018-SensitiveActionStepUp.md
+│   │   │   │   ├── VCGF-UI-INT-019-IdempotentSubmissionProtection.md
+│   │   │   │   ├── VCGF-UI-INT-020-UndoableActionPattern.md
+│   │   │   │   ├── VCGF-UI-INT-021-SearchFilterResultState.md
+│   │   │   │   ├── VCGF-UI-INT-022-MultiStepTransactionOrchestration.md
+│   │   │   │   ├── VCGF-UI-INT-023-DraftRecoveryResume.md
+│   │   │   │   └── VCGF-UI-INT-024-NavigationContextPreservation.md
+│   │   │   ├── journeys
+│   │   │   │   ├── VCGF-UI-JRN-001-DiscoveryToDetailReturn.md
+│   │   │   │   ├── VCGF-UI-JRN-002-CreateToDetailContinuation.md
+│   │   │   │   ├── VCGF-UI-JRN-003-DraftReviewSubmit.md
+│   │   │   │   ├── VCGF-UI-JRN-004-ReviewApproveComplete.md
+│   │   │   │   ├── VCGF-UI-JRN-005-RejectReviseResubmit.md
+│   │   │   │   ├── VCGF-UI-JRN-006-TaskQueueProcessNext.md
+│   │   │   │   ├── VCGF-UI-JRN-007-BulkSelectActReview.md
+│   │   │   │   ├── VCGF-UI-JRN-008-ImportValidateMapCommit.md
+│   │   │   │   ├── VCGF-UI-JRN-009-DocumentReviewSignArchive.md
+│   │   │   │   ├── VCGF-UI-JRN-010-ScheduleCreateRescheduleCancel.md
+│   │   │   │   ├── VCGF-UI-JRN-011-PublicSubmitTrackRespond.md
+│   │   │   │   ├── VCGF-UI-JRN-012-AuthenticateRecoverReturn.md
+│   │   │   │   ├── VCGF-UI-JRN-013-DeepLinkAuthorizeReturnToOrigin.md
+│   │   │   │   ├── VCGF-UI-JRN-014-CompareDecideAct.md
+│   │   │   │   ├── VCGF-UI-JRN-015-ScopeSwitchResume.md
+│   │   │   │   ├── VCGF-UI-JRN-016-OfflineCaptureSyncResolve.md
+│   │   │   │   ├── VCGF-UI-JRN-017-LongRunningLeaveReturn.md
+│   │   │   │   └── VCGF-UI-JRN-018-ConfigurePreviewPublish.md
+│   │   │   ├── references
+│   │   │   │   ├── package-register.json
+│   │   │   │   ├── REPOSITORY-BASELINE.md
+│   │   │   │   ├── source-register.json
+│   │   │   │   └── SOURCES.md
+│   │   │   ├── reports
+│   │   │   │   ├── CONTENT-REVIEW.md
+│   │   │   │   ├── DOCUMENTATION-VALIDATION.json
+│   │   │   │   ├── DOCUMENTATION-VALIDATION.md
+│   │   │   │   ├── FINAL-QUALITY-SUMMARY.md
+│   │   │   │   ├── SMART-SELECTION-VALIDATION.md
+│   │   │   │   └── SMART-SELECTION-VALIDATION.txt
+│   │   │   ├── schemas
+│   │   │   │   ├── catalog.schema.json
+│   │   │   │   ├── central-settings.schema.json
+│   │   │   │   ├── compatibility-matrix.schema.json
+│   │   │   │   ├── component-contract.schema.json
+│   │   │   │   ├── component-selection-plan.schema.json
+│   │   │   │   ├── evidence-record.schema.json
+│   │   │   │   ├── interaction-catalog.schema.json
+│   │   │   │   ├── interaction-compatibility-matrix.schema.json
+│   │   │   │   ├── interaction-contract.schema.json
+│   │   │   │   ├── interaction-policy.schema.json
+│   │   │   │   ├── journey-catalog.schema.json
+│   │   │   │   ├── journey-compatibility-matrix.schema.json
+│   │   │   │   ├── journey-contract.schema.json
+│   │   │   │   ├── project-assessment.schema.json
+│   │   │   │   ├── screen-composition-catalog.schema.json
+│   │   │   │   ├── screen-composition-compatibility-matrix.schema.json
+│   │   │   │   ├── screen-composition-contract.schema.json
+│   │   │   │   ├── screen-context.schema.json
+│   │   │   │   └── screen-orchestration-policy.schema.json
+│   │   │   ├── screen-compositions
+│   │   │   │   ├── VCGF-UI-SCR-001-DashboardOverview.md
+│   │   │   │   ├── VCGF-UI-SCR-002-OperationalCollection.md
+│   │   │   │   ├── VCGF-UI-SCR-003-RecordWorkspace.md
+│   │   │   │   ├── VCGF-UI-SCR-004-FormTransaction.md
+│   │   │   │   ├── VCGF-UI-SCR-005-GuidedWizard.md
+│   │   │   │   ├── VCGF-UI-SCR-006-SearchDiscovery.md
+│   │   │   │   ├── VCGF-UI-SCR-007-WorkQueueInbox.md
+│   │   │   │   ├── VCGF-UI-SCR-008-ReviewApproval.md
+│   │   │   │   ├── VCGF-UI-SCR-009-DocumentWorkspace.md
+│   │   │   │   ├── VCGF-UI-SCR-010-SchedulingWorkspace.md
+│   │   │   │   ├── VCGF-UI-SCR-011-AnalyticsReporting.md
+│   │   │   │   ├── VCGF-UI-SCR-012-SettingsAdministration.md
+│   │   │   │   ├── VCGF-UI-SCR-013-AuthenticationAccess.md
+│   │   │   │   ├── VCGF-UI-SCR-014-CollaborationWorkspace.md
+│   │   │   │   ├── VCGF-UI-SCR-015-MasterDetailExplorer.md
+│   │   │   │   ├── VCGF-UI-SCR-016-ComparisonDecision.md
+│   │   │   │   ├── VCGF-UI-SCR-017-ImportExportOperation.md
+│   │   │   │   ├── VCGF-UI-SCR-018-PublicSelfService.md
+│   │   │   │   ├── VCGF-UI-SCR-019-MobileFocusedTask.md
+│   │   │   │   └── VCGF-UI-SCR-020-LargeScreenOperations.md
+│   │   │   ├── scripts
+│   │   │   │   ├── build_manifest.py
+│   │   │   │   ├── report-labels.json
+│   │   │   │   ├── select_components.py
+│   │   │   │   ├── select_smart_ui.py
+│   │   │   │   ├── validate_final.py
+│   │   │   │   ├── validate_package.py
+│   │   │   │   └── validate_selection_layer.py
+│   │   │   ├── source-snapshots
+│   │   │   │   ├── CALENDAR-GOVERNANCE-ADDENDUM.source.txt
+│   │   │   │   └── ENTERPRISE-SEARCHABLE-SELECT.source.txt
+│   │   │   ├── standards
+│   │   │   │   ├── VCGF-UI-COMP-001-DesignSystemPrimitives.md
+│   │   │   │   ├── VCGF-UI-COMP-002-SmartDataGrid.md
+│   │   │   │   ├── VCGF-UI-COMP-003-SmartFormFields.md
+│   │   │   │   ├── VCGF-UI-COMP-004-AdvancedFilterBuilder.md
+│   │   │   │   ├── VCGF-UI-COMP-005-SmartFileUploader.md
+│   │   │   │   ├── VCGF-UI-COMP-006-DocumentPreviewer.md
+│   │   │   │   ├── VCGF-UI-COMP-007-AdaptiveOverlay.md
+│   │   │   │   ├── VCGF-UI-COMP-008-UnifiedFeedbackSystem.md
+│   │   │   │   ├── VCGF-UI-COMP-009-AdaptiveNavigation.md
+│   │   │   │   ├── VCGF-UI-COMP-010-HierarchicalTreePicker.md
+│   │   │   │   ├── VCGF-UI-COMP-011-SmartFormWizard.md
+│   │   │   │   ├── VCGF-UI-COMP-012-PermissionAwareActions.md
+│   │   │   │   ├── VCGF-UI-COMP-013-RichTextEditor.md
+│   │   │   │   ├── VCGF-UI-COMP-014-GlobalSearchCommandPalette.md
+│   │   │   │   ├── VCGF-UI-COMP-015-WorkflowApprovalTimeline.md
+│   │   │   │   ├── VCGF-UI-COMP-016-AuditHistoryViewer.md
+│   │   │   │   ├── VCGF-UI-COMP-017-SmartNumericInput.md
+│   │   │   │   ├── VCGF-UI-COMP-018-SmartContactFields.md
+│   │   │   │   ├── VCGF-UI-COMP-019-DataImportExportWizard.md
+│   │   │   │   ├── VCGF-UI-COMP-020-SmartDashboardWidgets.md
+│   │   │   │   ├── VCGF-UI-COMP-021-SmartKanbanBoard.md
+│   │   │   │   ├── VCGF-UI-COMP-022-UnifiedScheduler.md
+│   │   │   │   ├── VCGF-UI-COMP-023-DraftAutosaveManager.md
+│   │   │   │   ├── VCGF-UI-COMP-024-AdaptiveContentPanels.md
+│   │   │   │   ├── VCGF-UI-COMP-025-SmartRecordDetailView.md
+│   │   │   │   ├── VCGF-UI-COMP-026-SmartCollectionList.md
+│   │   │   │   ├── VCGF-UI-COMP-027-SmartActivityTimeline.md
+│   │   │   │   ├── VCGF-UI-COMP-028-SmartCollaborationThread.md
+│   │   │   │   ├── VCGF-UI-COMP-029-SmartNotificationCenter.md
+│   │   │   │   ├── VCGF-UI-COMP-030-SmartSavedViewsManager.md
+│   │   │   │   ├── VCGF-UI-COMP-031-SmartContextualActionBar.md
+│   │   │   │   ├── VCGF-UI-COMP-032-SmartRelationshipPicker.md
+│   │   │   │   ├── VCGF-UI-COMP-033-SmartAddressLocationFields.md
+│   │   │   │   ├── VCGF-UI-COMP-034-SmartTaxonomyTagPicker.md
+│   │   │   │   ├── VCGF-UI-COMP-035-SmartRulesExpressionBuilder.md
+│   │   │   │   └── VCGF-UI-COMP-036-SmartSecureAuthenticationFlow.md
+│   │   │   ├── templates
+│   │   │   │   ├── ADR.md
+│   │   │   │   ├── COMPONENT-IMPLEMENTATION.md
+│   │   │   │   ├── component-selection-plan.example.json
+│   │   │   │   ├── evidence-record.example.json
+│   │   │   │   ├── EXCEPTION.md
+│   │   │   │   ├── project-assessment.example.json
+│   │   │   │   └── screen-context.example.json
+│   │   │   ├── tests
+│   │   │   │   ├── ACCEPTANCE-MATRIX.md
+│   │   │   │   ├── interaction-traceability.json
+│   │   │   │   ├── journey-traceability.json
+│   │   │   │   ├── screen-composition-traceability.json
+│   │   │   │   ├── SMART-SELECTION-TESTS.md
+│   │   │   │   ├── TEST-PLAN.md
+│   │   │   │   └── traceability.json
+│   │   │   ├── CATALOG.html
+│   │   │   ├── catalog.json
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── INDEX.md
+│   │   │   ├── interaction-catalog.json
+│   │   │   ├── journey-catalog.json
+│   │   │   ├── LICENSE
+│   │   │   ├── manifest.json
+│   │   │   ├── NOTICE.md
+│   │   │   ├── README.ar.md
+│   │   │   ├── README.md
+│   │   │   ├── requirements-validation.txt
+│   │   │   ├── screen-composition-catalog.json
+│   │   │   ├── SHA256SUMS.txt
+│   │   │   └── START-HERE-AR.md
 │   │   ├── adaptive.md
 │   │   ├── catalog.yaml
 │   │   ├── local-fonts.md
-│   │   └── rtl-ltr.md
+│   │   ├── rtl-ltr.md
+│   │   └── SMART-UI-ATTRIBUTION.md
 │   └── index.yaml
 ├── platforms
 │   ├── _adapter-template
@@ -820,7 +1115,8 @@ VCGF/
 │   │   ├── test_inputs.py
 │   │   ├── test_integration.py
 │   │   ├── test_legacy_loader.py
-│   │   └── test_release.py
+│   │   ├── test_release.py
+│   │   └── test_smart_ui_pack.py
 │   ├── benchmarks
 │   │   └── measure_context.py
 │   ├── contracts

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VCGF Screen Composition Contracts",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "contracts": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "standard_id": {
+            "type": "string",
+            "pattern": "^VCGF-UI-SCR-[0-9]{3}$"
+          },
+          "kind": {
+            "const": "screen-composition"
+          },
+          "composition_kind": {
+            "enum": [
+              "primary",
+              "modifier"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "status": {
+            "const": "final-integration-candidate"
+          },
+          "activation_policy": {
+            "const": "explicit-selected-only"
+          },
+          "selection_evidence_required": {
+            "const": true
+          },
+          "review_only_components": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^VCGF-UI-COMP-[0-9]{3}$"
+            }
+          },
+          "review_only_interactions": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^VCGF-UI-INT-[0-9]{3}$"
+            }
+          },
+          "runtime_tests": {
+            "const": "not_run"
+          },
+          "replacement_policy": {
+            "type": "string",
+            "minLength": 10
+          }
+        },
+        "required": [
+          "standard_id",
+          "kind",
+          "composition_kind",
+          "version",
+          "status",
+          "activation_policy",
+          "selection_evidence_required",
+          "review_only_components",
+          "review_only_interactions",
+          "runtime_tests",
+          "replacement_policy"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "contracts"
+  ]
+}

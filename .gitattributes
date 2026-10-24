@@ -13,3 +13,6 @@
 *.json text eol=lf
 *.py text eol=lf
 LICENSE text eol=lf
+
+# Preserve frozen Smart UI package bytes exactly
+packs/ux/smart-ui/** -text

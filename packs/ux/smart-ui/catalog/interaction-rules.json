@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0.0",
+  "rule_semantics": "explicit-interaction-signals-select-only; patterns-and-components-are-independent-selective-layers",
+  "interaction_rules": [
+    {
+      "standard_id": "VCGF-UI-INT-001",
+      "triggers": [
+        "record_create",
+        "new_entity_flow",
+        "create_form",
+        "new_request"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-002",
+      "triggers": [
+        "record_edit",
+        "edit_form",
+        "inline_edit",
+        "update_entity"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-003",
+      "triggers": [
+        "view_record",
+        "read_only_view",
+        "stale_data_possible",
+        "refreshable_detail"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-004",
+      "triggers": [
+        "delete_record",
+        "destructive_action",
+        "archive_irreversible",
+        "remove_relation"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-005",
+      "triggers": [
+        "unsaved_changes",
+        "dirty_form",
+        "navigation_with_edits",
+        "local_work_at_risk"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-006",
+      "triggers": [
+        "save_submit",
+        "draft_and_submit",
+        "explicit_save",
+        "submit_workflow"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-007",
+      "triggers": [
+        "confirmation_needed",
+        "high_impact_choice",
+        "irreversible_choice",
+        "commit_decision"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-008",
+      "triggers": [
+        "empty_state",
+        "no_records",
+        "no_results",
+        "first_use_empty"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-009",
+      "triggers": [
+        "loading_state",
+        "async_fetch",
+        "async_action",
+        "deferred_content"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-010",
+      "triggers": [
+        "error_state",
+        "retryable_failure",
+        "network_failure",
+        "recoverable_error"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-011",
+      "triggers": [
+        "optimistic_update",
+        "instant_toggle",
+        "reversible_low_risk_action",
+        "optimistic_move"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-012",
+      "triggers": [
+        "concurrency_conflict",
+        "etag_conflict",
+        "version_conflict",
+        "simultaneous_edit"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-013",
+      "triggers": [
+        "bulk_action",
+        "multi_record_command",
+        "select_all_results",
+        "batch_operation"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-014",
+      "triggers": [
+        "long_running_job",
+        "background_job",
+        "large_export_job",
+        "processing_queue"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-015",
+      "triggers": [
+        "offline_required",
+        "offline_edit",
+        "reconnect_sync",
+        "queued_offline_command"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-016",
+      "triggers": [
+        "session_expiry",
+        "token_expiry",
+        "reauth_required",
+        "session_timeout"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-017",
+      "triggers": [
+        "permission_changed",
+        "role_changed",
+        "tenant_switched",
+        "authorization_refresh"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-018",
+      "triggers": [
+        "step_up_required",
+        "sensitive_action",
+        "high_assurance_action",
+        "recent_auth_required"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-019",
+      "triggers": [
+        "duplicate_submit_risk",
+        "idempotency_required",
+        "payment_like_command",
+        "retryable_write"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-020",
+      "triggers": [
+        "undoable_action",
+        "reversible_action",
+        "soft_delete",
+        "reversible_move"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-021",
+      "triggers": [
+        "search_results",
+        "filter_results",
+        "query_state",
+        "faceted_search"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-022",
+      "triggers": [
+        "multi_step_transaction",
+        "wizard_flow",
+        "multi_stage_form",
+        "guided_process"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-023",
+      "triggers": [
+        "draft_recovery",
+        "resume_draft",
+        "autosave_resume",
+        "interrupted_work"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-INT-024",
+      "triggers": [
+        "preserve_navigation_context",
+        "back_to_list",
+        "master_detail_navigation",
+        "return_to_results"
+      ],
+      "default_decision": "recommended"
+    }
+  ]
+}

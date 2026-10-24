@@ -1,0 +1,1699 @@
+{
+  "schema_version": "1.0.0",
+  "package_version": "1.0.0",
+  "target_framework": "VCGF",
+  "target_framework_version": "1.3.0",
+  "status": "final-integration-candidate",
+  "activation_semantics": "explicit-interaction-signals-only; patterns-do-not-auto-activate-components-or-other-patterns",
+  "patterns": [
+    {
+      "id": "VCGF-UI-INT-001",
+      "pattern": "SmartCreateFlow",
+      "title": "تدفق إنشاء السجل الذكي",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-001-SmartCreateFlow.md",
+      "category": "record-lifecycle",
+      "purpose": "تنظيم إنشاء سجل جديد من بدء الإدخال حتى نجاح الحفظ والانتقال التالي، مع منع الحالات المزدوجة أو السجلات الجزئية غير المقصودة.",
+      "applies_when": "شاشات إنشاء السجلات والطلبات والمعاملات والكيانات التي تنشئ هوية أو أثرًا مستمرًا جديدًا.",
+      "not_applicable_when": "لا ينطبق على فلاتر البحث أو النماذج المؤقتة التي لا تنشئ سجلًا ولا على الإجراءات عديمة الحالة.",
+      "triggers": [
+        "record_create",
+        "new_entity_flow",
+        "create_form",
+        "new_request"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-023"
+      ],
+      "settings": [
+        {
+          "key": "postSuccessNavigation",
+          "type": "string",
+          "default": "detail",
+          "scope": "system/tenant",
+          "constraints": "detail أو list أو stay وفق المهمة؛ لا يفترض المسار دون عقد."
+        },
+        {
+          "key": "initialStatePolicy",
+          "type": "string",
+          "default": "server-defaults",
+          "scope": "system/tenant",
+          "constraints": "مصدر القيم الافتراضية يجب أن يكون موثقًا ولا يطغى على قواعد المجال."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-002",
+      "pattern": "SmartEditFlow",
+      "title": "تدفق تعديل السجل الذكي",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-002-SmartEditFlow.md",
+      "category": "record-lifecycle",
+      "purpose": "إدارة تعديل سجل قائم مع نسخة أساس معروفة، وحفظ آمن، وإعادة تحقق من الصلاحية والإصدار قبل اعتماد التغيير.",
+      "applies_when": "شاشات تعديل السجلات أو التحرير المضمن الذي يغيّر بيانات مستمرة.",
+      "not_applicable_when": "لا ينطبق على قراءة فقط أو تفضيلات عرض محلية لا تؤثر في بيانات الأعمال.",
+      "triggers": [
+        "record_edit",
+        "edit_form",
+        "inline_edit",
+        "update_entity"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-023"
+      ],
+      "settings": [
+        {
+          "key": "editEntryMode",
+          "type": "string",
+          "default": "explicit",
+          "scope": "system/tenant",
+          "constraints": "explicit أو inline-controlled؛ لا تحول القراءة إلى تحرير دائم."
+        },
+        {
+          "key": "refreshOnOpen",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يُجلب أحدث إصدار مسموح قبل بدء التعديل ما لم يوجد سبب موثق."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-003",
+      "pattern": "SmartViewRefreshFlow",
+      "title": "عرض السجل والتحديث والبيانات القديمة",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-003-SmartViewRefreshFlow.md",
+      "category": "record-lifecycle",
+      "purpose": "تحديد كيفية عرض بيانات القراءة، كشف قدمها، تحديثها، والحفاظ على سياق المستخدم عندما تصل نسخة أحدث.",
+      "applies_when": "صفحات التفاصيل ولوحات القراءة والقوائم التي قد تبقى مفتوحة بينما تتغير البيانات من مصدر آخر.",
+      "not_applicable_when": "لا ينطبق على محتوى ثابت أو بيانات لا تتغير أثناء الجلسة وفق عقد موثق.",
+      "triggers": [
+        "view_record",
+        "read_only_view",
+        "stale_data_possible",
+        "refreshable_detail"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "staleDataPolicy",
+          "type": "string",
+          "default": "signal",
+          "scope": "system/tenant",
+          "constraints": "signal أو refresh أو block حسب حساسية القرار."
+        },
+        {
+          "key": "autoRefresh",
+          "type": "string",
+          "default": "measured",
+          "scope": "system/tenant",
+          "constraints": "off أو measured أو realtime وفق طبيعة البيانات والعبء."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-004",
+      "pattern": "SafeDeleteFlow",
+      "title": "تدفق الحذف الآمن",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-004-SafeDeleteFlow.md",
+      "category": "destructive-actions",
+      "purpose": "حماية عمليات الحذف أو الإزالة ذات الأثر من التنفيذ العرضي أو غير المصرح، مع توضيح النطاق وقابلية الاسترجاع.",
+      "applies_when": "الحذف النهائي، الإلغاء، إزالة العلاقات، الأرشفة غير القابلة للعكس أو أي إجراء تدميري مماثل.",
+      "not_applicable_when": "لا يطبق على إخفاء بصري محلي أو إزالة اختيار لم يُحفظ.",
+      "triggers": [
+        "delete_record",
+        "destructive_action",
+        "archive_irreversible",
+        "remove_relation"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-016"
+      ],
+      "settings": [
+        {
+          "key": "deleteMode",
+          "type": "string",
+          "default": "domain-defined",
+          "scope": "system/tenant",
+          "constraints": "soft أو hard أو archive حسب المجال؛ الواجهة لا تختاره وحدها."
+        },
+        {
+          "key": "reasonPolicy",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو optional أو required وفق تصنيف الإجراء."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-005",
+      "pattern": "UnsavedChangesProtection",
+      "title": "حماية التغييرات غير المحفوظة",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-005-UnsavedChangesProtection.md",
+      "category": "editing-safety",
+      "purpose": "منع فقد عمل المستخدم عند مغادرة سياق يحمل تغييرات محلية، دون إغراقه بتحذيرات غير ضرورية.",
+      "applies_when": "النماذج والمحررات والخطوات التي يمكن أن تحتوي تغييرات لم تُحفظ بعد.",
+      "not_applicable_when": "لا ينطبق إذا لم توجد حالة محلية قابلة للفقد أو كان الحفظ فوريًا وموثوقًا ومؤكدًا.",
+      "triggers": [
+        "unsaved_changes",
+        "dirty_form",
+        "navigation_with_edits",
+        "local_work_at_risk"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-009"
+      ],
+      "settings": [
+        {
+          "key": "promptScope",
+          "type": "string",
+          "default": "meaningful-dirty",
+          "scope": "system/tenant",
+          "constraints": "لا تحذر على تغييرات شكلية أو قيم عادت للأصل."
+        },
+        {
+          "key": "draftFallback",
+          "type": "string",
+          "default": "policy",
+          "scope": "system/tenant",
+          "constraints": "none أو local-safe أو server-draft وفق حساسية البيانات."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-006",
+      "pattern": "SaveSubmitStateMachine",
+      "title": "آلة حالات الحفظ والإرسال",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-006-SaveSubmitStateMachine.md",
+      "category": "editing-safety",
+      "purpose": "فصل حفظ البيانات عن إرسالها أو اعتمادها، ومنع الحالات الملتبسة بين Draft وSaved وSubmitted وFailed.",
+      "applies_when": "النماذج التي تحتوي حفظًا، إرسالًا، اعتمادًا، أو أكثر من أثر نهائي.",
+      "not_applicable_when": "لا يلزم إذا كان الإجراء قراءة فقط أو أمرًا لحظيًا واحدًا بلا حالة تحرير.",
+      "triggers": [
+        "save_submit",
+        "draft_and_submit",
+        "explicit_save",
+        "submit_workflow"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-015",
+        "VCGF-UI-COMP-023"
+      ],
+      "settings": [
+        {
+          "key": "submitMode",
+          "type": "string",
+          "default": "explicit",
+          "scope": "system/tenant",
+          "constraints": "الإرسال فعل صريح ولا يستنتج من نجاح الحفظ إلا بعقد مجال واضح."
+        },
+        {
+          "key": "successState",
+          "type": "string",
+          "default": "server-confirmed",
+          "scope": "system/tenant",
+          "constraints": "لا تعرض النجاح النهائي قبل تأكيد المصدر الموثوق."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-007",
+      "pattern": "ConfirmationDecisionPattern",
+      "title": "نمط التأكيد واتخاذ القرار",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-007-ConfirmationDecisionPattern.md",
+      "category": "decision-safety",
+      "purpose": "استخدام التأكيد عندما يقلل خطر خطأ حقيقي، مع نص يشرح القرار والأثر بدل حوارات عامة متكررة.",
+      "applies_when": "القرارات ذات أثر مهم أو غير قابل للعكس أو التي تغير نطاقًا واسعًا.",
+      "not_applicable_when": "لا يستخدم لكل زر عادي أو إجراء قابل للتراجع بسهولة؛ كثرة التأكيد تقلل الانتباه.",
+      "triggers": [
+        "confirmation_needed",
+        "high_impact_choice",
+        "irreversible_choice",
+        "commit_decision"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "confirmationLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو simple أو strong حسب الأثر وقابلية التراجع."
+        },
+        {
+          "key": "destructiveDefault",
+          "type": "string",
+          "default": "safe-action",
+          "scope": "system/tenant",
+          "constraints": "لا يكون الإجراء الأخطر هو التركيز الافتراضي دون مبرر."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-008",
+      "pattern": "EmptyStateRecovery",
+      "title": "حالة الفراغ والتعافي",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-008-EmptyStateRecovery.md",
+      "category": "system-states",
+      "purpose": "تمييز أسباب غياب المحتوى وتقديم الإجراء المناسب بدل شاشة فارغة أو رسالة واحدة لكل الحالات.",
+      "applies_when": "القوائم والبحث ولوحات المعلومات والأقسام التي يمكن أن لا تحتوي بيانات.",
+      "not_applicable_when": "لا تستخدم كبديل لخطأ تحميل أو منع صلاحية أو حالة Loading.",
+      "triggers": [
+        "empty_state",
+        "no_records",
+        "no_results",
+        "first_use_empty"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-020",
+        "VCGF-UI-COMP-026",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "emptyVariant",
+          "type": "string",
+          "default": "reason-aware",
+          "scope": "system/tenant",
+          "constraints": "first-use أو no-results أو no-data حسب السبب الحقيقي."
+        },
+        {
+          "key": "primaryRecoveryAction",
+          "type": "string",
+          "default": "contextual",
+          "scope": "system/tenant",
+          "constraints": "create أو clear-filter أو help أو none حسب الصلاحية والسياق."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-009",
+      "pattern": "LoadingProgressiveDisclosure",
+      "title": "التحميل والإفصاح التدريجي",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-009-LoadingProgressiveDisclosure.md",
+      "category": "system-states",
+      "purpose": "إظهار الانشغال بطريقة متناسبة مع زمن العملية ومنع الواجهات الميتة أو الوميض أو المؤشرات غير الصادقة.",
+      "applies_when": "أي عملية غير فورية تحتاج انتظار بيانات أو تنفيذ أمر.",
+      "not_applicable_when": "لا تضف spinner لعمليات فورية محلية لا يلاحظها المستخدم.",
+      "triggers": [
+        "loading_state",
+        "async_fetch",
+        "async_action",
+        "deferred_content"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-020"
+      ],
+      "settings": [
+        {
+          "key": "loadingDelayMs",
+          "type": "integer",
+          "default": 150,
+          "scope": "system/tenant",
+          "constraints": "يمنع وميض المؤشر للعمليات القصيرة؛ يقاس حسب المنتج."
+        },
+        {
+          "key": "progressMode",
+          "type": "string",
+          "default": "duration-aware",
+          "scope": "system/tenant",
+          "constraints": "skeleton أو spinner أو determinate حسب مدة ودرجة معرفة التقدم."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-010",
+      "pattern": "ErrorRetryRecovery",
+      "title": "الخطأ وإعادة المحاولة والتعافي",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-010-ErrorRetryRecovery.md",
+      "category": "system-states",
+      "purpose": "توفير تعافٍ واضح من أخطاء الشبكة والخادم والتحقق، مع تجنب إعادة محاولات خطرة أو غير محدودة.",
+      "applies_when": "العمليات القابلة للفشل والتي يملك المستخدم أو النظام مسارًا آمنًا للتعافي منها.",
+      "not_applicable_when": "لا تستخدم Retry أعمى لخطأ صلاحية أو تحقق أو عملية غير idempotent دون حماية.",
+      "triggers": [
+        "error_state",
+        "retryable_failure",
+        "network_failure",
+        "recoverable_error"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-029"
+      ],
+      "settings": [
+        {
+          "key": "retryLimit",
+          "type": "integer",
+          "default": 3,
+          "scope": "system/tenant",
+          "constraints": "حد مرجعي لا يطبق على جميع الأخطاء؛ تتوقف الإعادة حسب التصنيف."
+        },
+        {
+          "key": "backoffPolicy",
+          "type": "string",
+          "default": "bounded-exponential",
+          "scope": "system/tenant",
+          "constraints": "للتلقائي فقط مع jitter وحد أقصى؛ لا يعيد أوامر خطرة بلا idempotency."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-011",
+      "pattern": "OptimisticUpdateRollback",
+      "title": "التحديث المتفائل والتراجع",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-011-OptimisticUpdateRollback.md",
+      "category": "concurrency",
+      "purpose": "تسريع الاستجابة المرئية لعمليات منخفضة المخاطر مع إمكانية تراجع صحيحة إذا رفض المصدر التغيير.",
+      "applies_when": "تغييرات قصيرة ومنخفضة المخاطر يمكن تمثيلها محليًا وعكسها بشكل موثوق.",
+      "not_applicable_when": "لا يستخدم للمدفوعات أو الاعتمادات أو الحذف النهائي أو العمليات التي يصعب عكسها أو تتطلب نتيجة خادم قبل العرض.",
+      "triggers": [
+        "optimistic_update",
+        "instant_toggle",
+        "reversible_low_risk_action",
+        "optimistic_move"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-021",
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "optimisticScope",
+          "type": "string",
+          "default": "low-risk-only",
+          "scope": "system/tenant",
+          "constraints": "تُدرج الأوامر المسموحة صراحة ولا يُفترض التفاؤل لكل mutation."
+        },
+        {
+          "key": "rollbackMode",
+          "type": "string",
+          "default": "restore-snapshot",
+          "scope": "system/tenant",
+          "constraints": "تُحفظ أقل لقطة لازمة للتراجع وتزال بعد التأكيد."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-012",
+      "pattern": "ConcurrencyConflictResolution",
+      "title": "حل تعارضات التزامن",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-012-ConcurrencyConflictResolution.md",
+      "category": "concurrency",
+      "purpose": "منع الكتابة فوق تغييرات مستخدم أو عملية أخرى بصمت، وتوفير مسار مقارنة ودمج أو إعادة تحميل.",
+      "applies_when": "السجلات القابلة للتحرير المتزامن أو التي تعتمد version/ETag أو قد تتغير بين القراءة والحفظ.",
+      "not_applicable_when": "لا يلزم لبيانات غير قابلة للتغيير المتزامن وفق ضمان مصدر موثق.",
+      "triggers": [
+        "concurrency_conflict",
+        "etag_conflict",
+        "version_conflict",
+        "simultaneous_edit"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-016",
+        "VCGF-UI-COMP-025"
+      ],
+      "settings": [
+        {
+          "key": "conflictStrategy",
+          "type": "string",
+          "default": "detect-and-resolve",
+          "scope": "system/tenant",
+          "constraints": "لا تستخدم last-write-wins ضمنيًا عندما يسبب فقد بيانات."
+        },
+        {
+          "key": "mergeMode",
+          "type": "string",
+          "default": "field-aware",
+          "scope": "system/tenant",
+          "constraints": "auto فقط لحقول يمكن إثبات استقلالها؛ غير ذلك يحتاج قرار مستخدم."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-013",
+      "pattern": "BulkActionExecution",
+      "title": "تنفيذ الإجراءات الجماعية",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-013-BulkActionExecution.md",
+      "category": "bulk-operations",
+      "purpose": "إدارة اختيار نطاق متعدد وتنفيذ أمر على مجموعة سجلات مع وضوح النطاق والصلاحيات والنتائج الجزئية.",
+      "applies_when": "الجداول والقوائم التي تسمح بإجراءات على أكثر من سجل.",
+      "not_applicable_when": "لا ينطبق على اختيار بصري متعدد لا يرسل أمرًا أو على إجراء سجل واحد.",
+      "triggers": [
+        "bulk_action",
+        "multi_record_command",
+        "select_all_results",
+        "batch_operation"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-002",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-019"
+      ],
+      "settings": [
+        {
+          "key": "selectionScope",
+          "type": "string",
+          "default": "explicit",
+          "scope": "system/tenant",
+          "constraints": "page أو filtered-results أو explicit-ids ويظهر للمستخدم."
+        },
+        {
+          "key": "maxBatchSize",
+          "type": "integer",
+          "default": 100,
+          "scope": "system/tenant",
+          "constraints": "حد افتراضي يتوافق مع الخادم؛ فوقه يتحول إلى job عند الحاجة."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-014",
+      "pattern": "LongRunningOperationProgress",
+      "title": "تقدم العمليات طويلة التنفيذ",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-014-LongRunningOperationProgress.md",
+      "category": "bulk-operations",
+      "purpose": "إدارة العمليات التي تتجاوز دورة طلب تفاعلي قصيرة، مع حالة قابلة للاستئناف ومعلومات تقدم ونتيجة نهائية.",
+      "applies_when": "التصدير الكبير والاستيراد والمعالجة الجماعية والتقارير أو الوظائف التي قد تستغرق ثواني طويلة أو دقائق.",
+      "not_applicable_when": "لا يحول كل API request إلى Job إذا كان زمنه تفاعليًا ومحدودًا.",
+      "triggers": [
+        "long_running_job",
+        "background_job",
+        "large_export_job",
+        "processing_queue"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-019",
+        "VCGF-UI-COMP-029",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "progressTransport",
+          "type": "string",
+          "default": "poll-or-event",
+          "scope": "system/tenant",
+          "constraints": "يختار وفق البنية؛ لا يفترض WebSocket."
+        },
+        {
+          "key": "cancelPolicy",
+          "type": "string",
+          "default": "capability-driven",
+          "scope": "system/tenant",
+          "constraints": "يعرض الإلغاء فقط إذا كان backend يدعم إيقافًا آمنًا."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-015",
+      "pattern": "OfflineReconnectSynchronization",
+      "title": "العمل دون اتصال وإعادة المزامنة",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-015-OfflineReconnectSynchronization.md",
+      "category": "connectivity",
+      "purpose": "تنظيم ما يجوز فعله عند فقد الشبكة وكيف تُحفظ الأوامر محليًا وتُعاد مزامنتها دون تكرار أو تعارض.",
+      "applies_when": "تطبيقات أو شاشات تتطلب استمرارًا فعليًا أثناء الانقطاع أو شبكات غير مستقرة.",
+      "not_applicable_when": "لا يفعّل لمجرد أن المتصفح قد يفقد الشبكة؛ يحتاج متطلب Offline صريح ونموذج بيانات قابل للمزامنة.",
+      "triggers": [
+        "offline_required",
+        "offline_edit",
+        "reconnect_sync",
+        "queued_offline_command"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "offlineQueue",
+          "type": "string",
+          "default": "explicit-allowlist",
+          "scope": "system/tenant",
+          "constraints": "لا تُصف كل أوامر الكتابة؛ تُسمح أوامر محددة قابلة للمزامنة."
+        },
+        {
+          "key": "syncPolicy",
+          "type": "string",
+          "default": "revalidate-and-resolve",
+          "scope": "system/tenant",
+          "constraints": "إعادة الاتصال تعيد التحقق من الصلاحية والإصدار قبل تطبيق الأوامر."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-016",
+      "pattern": "SessionExpiryReauthentication",
+      "title": "انتهاء الجلسة وإعادة المصادقة",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-016-SessionExpiryReauthentication.md",
+      "category": "identity-continuity",
+      "purpose": "حماية العمل والسياق عند انتهاء جلسة المستخدم، مع إعادة مصادقة آمنة دون ادعاء أن الطلبات السابقة نجحت.",
+      "applies_when": "التطبيقات التي تنتهي جلساتها أو رموزها أثناء عمل المستخدم.",
+      "not_applicable_when": "لا ينطبق على واجهات عامة بلا جلسة مستخدم.",
+      "triggers": [
+        "session_expiry",
+        "token_expiry",
+        "reauth_required",
+        "session_timeout"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "warningSeconds",
+          "type": "integer",
+          "default": 120,
+          "scope": "system/tenant",
+          "constraints": "إن كان النظام يستطيع التنبؤ بانتهاء الجلسة؛ لا يعرض عدادًا غير موثوق."
+        },
+        {
+          "key": "reauthMode",
+          "type": "string",
+          "default": "policy-driven",
+          "scope": "system/tenant",
+          "constraints": "silent-refresh أو password/passkey/MFA حسب سياسة الهوية."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-017",
+      "pattern": "PermissionChangeReaction",
+      "title": "التفاعل مع تغير الصلاحيات أثناء الجلسة",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-017-PermissionChangeReaction.md",
+      "category": "identity-continuity",
+      "purpose": "إعادة تقييم الواجهة والبيانات عندما يتغير الدور أو النطاق أو التفويض أثناء بقاء المستخدم داخل الشاشة.",
+      "applies_when": "الأنظمة المؤسسية متعددة الأدوار أو الجهات التي يمكن أن تتغير الصلاحيات فيها أثناء الجلسة.",
+      "not_applicable_when": "لا يضيف polling للصلاحيات إذا كانت السياسة تضمن ثباتها حتى إعادة الدخول؛ يجب توثيق الضمان.",
+      "triggers": [
+        "permission_changed",
+        "role_changed",
+        "tenant_switched",
+        "authorization_refresh"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-009"
+      ],
+      "settings": [
+        {
+          "key": "revocationBehavior",
+          "type": "string",
+          "default": "immediate-safe",
+          "scope": "system/tenant",
+          "constraints": "يوقف الأوامر الجديدة ويزيل البيانات غير المسموحة دون تخريب سجل تدقيق."
+        },
+        {
+          "key": "refreshPolicy",
+          "type": "string",
+          "default": "event-or-boundary",
+          "scope": "system/tenant",
+          "constraints": "event إن توفر أو عند حدود حساسة؛ لا يفترض realtime."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-018",
+      "pattern": "SensitiveActionStepUp",
+      "title": "التحقق الإضافي للإجراءات الحساسة",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
+      "category": "identity-continuity",
+      "purpose": "طلب مستوى مصادقة أعلى فقط عند إجراء حساس يتطلبه الخطر، مع الحفاظ على المهمة وعدم تحويل كل جلسة إلى MFA متكرر.",
+      "applies_when": "التحويلات الحساسة، التوقيع، تغيير أمان، كشف أسرار، حذف نهائي أو إجراءات تحددها السياسة.",
+      "not_applicable_when": "لا يطلب Step-up لكل إجراء عادي أو كبديل عن صلاحية أساسية مفقودة.",
+      "triggers": [
+        "step_up_required",
+        "sensitive_action",
+        "high_assurance_action",
+        "recent_auth_required"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-007"
+      ],
+      "settings": [
+        {
+          "key": "assuranceLevel",
+          "type": "string",
+          "default": "policy-defined",
+          "scope": "system/tenant",
+          "constraints": "يحدد مستوى أو وسيلة مطلوبة من سياسة الهوية لا من المكوّن."
+        },
+        {
+          "key": "gracePeriodSeconds",
+          "type": "integer",
+          "default": 300,
+          "scope": "system/tenant",
+          "constraints": "فترة إعادة استخدام المصادقة الحديثة إن سمحت السياسة والإجراء."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-019",
+      "pattern": "IdempotentSubmissionProtection",
+      "title": "حماية الإرسال من التكرار",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-019-IdempotentSubmissionProtection.md",
+      "category": "command-safety",
+      "purpose": "ضمان أن إعادة إرسال نفس القصد لا تنتج أثرًا مكررًا عند النقر المزدوج أو Retry أو انقطاع الاتصال.",
+      "applies_when": "إنشاءات وأوامر كتابة ذات أثر يجب ألا تتكرر لنفس القصد.",
+      "not_applicable_when": "لا يلزم للأوامر التي هي idempotent بطبيعتها وبعقد مثبت، لكنه يمكن أن يوثق الضمان.",
+      "triggers": [
+        "duplicate_submit_risk",
+        "idempotency_required",
+        "payment_like_command",
+        "retryable_write"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-008"
+      ],
+      "settings": [
+        {
+          "key": "idempotencyScope",
+          "type": "string",
+          "default": "command-intent",
+          "scope": "system/tenant",
+          "constraints": "المفتاح مرتبط بقصد عمل واحد لا بالمستخدم عمومًا."
+        },
+        {
+          "key": "keyLifetimeSeconds",
+          "type": "integer",
+          "default": 86400,
+          "scope": "system/tenant",
+          "constraints": "يعكس نافذة المصدر؛ لا يعاد استخدام المفتاح لقصد جديد."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-020",
+      "pattern": "UndoableActionPattern",
+      "title": "نمط التراجع عن الإجراء",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-020-UndoableActionPattern.md",
+      "category": "command-safety",
+      "purpose": "توفير Undo حقيقي للأفعال القابلة للعكس ضمن نافذة واضحة بدل استخدام Confirmation لكل فعل بسيط.",
+      "applies_when": "الإجراءات القابلة للعكس بشكل موثوق مثل إزالة وسم أو أرشفة قابلة للاسترجاع أو نقل منخفض المخاطر.",
+      "not_applicable_when": "لا يعد بالتراجع في حذف نهائي أو أثر خارجي لا يمكن عكسه بثبات.",
+      "triggers": [
+        "undoable_action",
+        "reversible_action",
+        "soft_delete",
+        "reversible_move"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-031",
+        "VCGF-UI-COMP-029"
+      ],
+      "settings": [
+        {
+          "key": "undoWindowSeconds",
+          "type": "integer",
+          "default": 10,
+          "scope": "system/tenant",
+          "constraints": "نافذة مرجعية قابلة للتعديل حسب أثر الفعل."
+        },
+        {
+          "key": "undoScope",
+          "type": "string",
+          "default": "single-intent",
+          "scope": "system/tenant",
+          "constraints": "يرتبط Undo بالعملية المحددة لا بأي عملية أحدث بشكل ملتبس."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-021",
+      "pattern": "SearchFilterResultState",
+      "title": "حالة البحث والمرشحات والنتائج",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-021-SearchFilterResultState.md",
+      "category": "navigation-state",
+      "purpose": "حفظ العلاقة الصحيحة بين الاستعلام والمرشحات والنتائج والتنقل، ومنع عرض نتائج طلب قديم أو فقد سياق العودة.",
+      "applies_when": "البحث، القوائم المرشحة، صفحات النتائج والـFacets.",
+      "not_applicable_when": "لا يلزم لصفحات ثابتة بلا استعلام أو مرشحات.",
+      "triggers": [
+        "search_results",
+        "filter_results",
+        "query_state",
+        "faceted_search"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-004",
+        "VCGF-UI-COMP-014",
+        "VCGF-UI-COMP-030",
+        "VCGF-UI-COMP-026"
+      ],
+      "settings": [
+        {
+          "key": "resultStateMode",
+          "type": "string",
+          "default": "query-versioned",
+          "scope": "system/tenant",
+          "constraints": "كل نتيجة ترتبط بنسخة query لمنع الاستجابة القديمة."
+        },
+        {
+          "key": "queryPersistence",
+          "type": "string",
+          "default": "safe-url-or-session",
+          "scope": "system/tenant",
+          "constraints": "لا تحفظ استعلامات حساسة في URL/history دون allowlist."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-022",
+      "pattern": "MultiStepTransactionOrchestration",
+      "title": "تنسيق المعاملة متعددة الخطوات",
+      "priority": "P0",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-022-MultiStepTransactionOrchestration.md",
+      "category": "navigation-state",
+      "purpose": "تنسيق تدفق متعدد الخطوات مع حدود تحقق وحفظ ومراجعة واضحة، دون افتراض أن كل Wizard معاملة ذرية.",
+      "applies_when": "التسجيلات الطويلة والطلبات متعددة الأقسام والعمليات التي تحتاج خطوات مترابطة.",
+      "not_applicable_when": "لا يقسم نموذجًا قصيرًا إلى خطوات لمجرد الشكل.",
+      "triggers": [
+        "multi_step_transaction",
+        "wizard_flow",
+        "multi_stage_form",
+        "guided_process"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-011",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-015"
+      ],
+      "settings": [
+        {
+          "key": "transactionBoundary",
+          "type": "string",
+          "default": "domain-defined",
+          "scope": "system/tenant",
+          "constraints": "يحدد ما يحفظ بين الخطوات وما لا يصبح نهائيًا إلا في commit."
+        },
+        {
+          "key": "resumePolicy",
+          "type": "string",
+          "default": "revalidate",
+          "scope": "system/tenant",
+          "constraints": "استئناف المسار يعيد التحقق من القواعد والصلاحيات المتغيرة."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-023",
+      "pattern": "DraftRecoveryResume",
+      "title": "استعادة المسودة واستئناف العمل",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-023-DraftRecoveryResume.md",
+      "category": "continuity",
+      "purpose": "اكتشاف مسودة سابقة واستعادتها أو تجاهلها بأمان مع إعادة التحقق من البيانات الحساسة والقواعد الحالية.",
+      "applies_when": "المحررات والنماذج الطويلة التي تحفظ مسودات محلية أو على الخادم.",
+      "not_applicable_when": "لا ينطبق إذا لم توجد مسودة أو إذا كانت السياسة تمنع حفظ المحتوى محليًا أو مؤقتًا.",
+      "triggers": [
+        "draft_recovery",
+        "resume_draft",
+        "autosave_resume",
+        "interrupted_work"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-011"
+      ],
+      "settings": [
+        {
+          "key": "recoveryPrompt",
+          "type": "string",
+          "default": "when-diverged",
+          "scope": "system/tenant",
+          "constraints": "لا يزعج المستخدم إذا كانت المسودة مساوية للحالة الحالية."
+        },
+        {
+          "key": "draftRetentionHours",
+          "type": "integer",
+          "default": 168,
+          "scope": "system/tenant",
+          "constraints": "يتوافق مع سياسة الاحتفاظ ونوع البيانات."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    },
+    {
+      "id": "VCGF-UI-INT-024",
+      "pattern": "NavigationContextPreservation",
+      "title": "حفظ سياق التنقل والعودة",
+      "priority": "P1",
+      "version": "0.4.0",
+      "status": "final-integration-candidate",
+      "path": "interactions/VCGF-UI-INT-024-NavigationContextPreservation.md",
+      "category": "continuity",
+      "purpose": "الحفاظ على المكان والمرشحات والتبويب والصفحة والتمرير عند الانتقال بين قائمة وتفاصيل أو خطوات مرتبطة.",
+      "applies_when": "تجارب Master-Detail، نتائج البحث، الجداول، القوائم، ولوحات متعددة السياقات.",
+      "not_applicable_when": "لا يحتاج لصفحة وحيدة أو انتقال مقصود أن يبدأ بسياق جديد.",
+      "triggers": [
+        "preserve_navigation_context",
+        "back_to_list",
+        "master_detail_navigation",
+        "return_to_results"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-009",
+        "VCGF-UI-COMP-024",
+        "VCGF-UI-COMP-025",
+        "VCGF-UI-COMP-030"
+      ],
+      "settings": [
+        {
+          "key": "contextScope",
+          "type": "string",
+          "default": "route-task",
+          "scope": "system/tenant",
+          "constraints": "يحفظ فقط الحالة التي تساعد المهمة ولا يسجل بيانات حساسة عشوائيًا."
+        },
+        {
+          "key": "restorePolicy",
+          "type": "string",
+          "default": "validate-then-restore",
+          "scope": "system/tenant",
+          "constraints": "يتحقق من صلاحية المرشح والسجل والصفحة قبل الاستعادة."
+        },
+        {
+          "key": "revalidateAuthority",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "قبل أي أثر مستمر أو انتقال حساس تعاد مراجعة السلطة والصلاحية من المصدر الموثوق."
+        },
+        {
+          "key": "preserveContextOnFailure",
+          "type": "boolean",
+          "default": true,
+          "scope": "system/tenant",
+          "constraints": "يحافظ على سياق المستخدم ومدخلاته المسموح بها عند الخطأ، دون تخزين أسرار."
+        },
+        {
+          "key": "auditLevel",
+          "type": "string",
+          "default": "risk-based",
+          "scope": "system/tenant",
+          "constraints": "none أو minimal أو risk-based أو full حسب نوع الإجراء وسياسة التدقيق."
+        },
+        {
+          "key": "telemetryMode",
+          "type": "string",
+          "default": "privacy-aware",
+          "scope": "system/tenant",
+          "constraints": "تقاس الحالات والأزمنة دون إرسال محتوى حساس أو معرفات غير لازمة."
+        }
+      ],
+      "requirement_count": 12,
+      "acceptance_count": 12
+    }
+  ]
+}

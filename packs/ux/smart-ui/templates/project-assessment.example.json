@@ -1,0 +1,572 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": null,
+  "assessment_status": "template",
+  "assessed_by": null,
+  "components": [
+    {
+      "component_id": "VCGF-UI-COMP-001",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-002",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-003",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-004",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-005",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-006",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-007",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-008",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-009",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-010",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-011",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-012",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-013",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-014",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-015",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-016",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-017",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-018",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-019",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-020",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-021",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-022",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-023",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-024",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-025",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-026",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-027",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-028",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-029",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-030",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-031",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-032",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-033",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-034",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-035",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "component_id": "VCGF-UI-COMP-036",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    }
+  ],
+  "interactions": [
+    {
+      "interaction_id": "VCGF-UI-INT-001",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-002",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-003",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-004",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-005",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-006",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-007",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-008",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-009",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-010",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-011",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-012",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-013",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-014",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-015",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-016",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-017",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-018",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-019",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-020",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-021",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-022",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-023",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "interaction_id": "VCGF-UI-INT-024",
+      "decision": "unknown",
+      "reason": "قالب غير مطبق على مشروع؛ يلزم دليل فعلي لتحديد الانطباق.",
+      "evidence_refs": [],
+      "owner": null
+    }
+  ],
+  "screen_compositions": [
+    {
+      "composition_id": "VCGF-UI-SCR-001",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-002",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-003",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-004",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-005",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-006",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-007",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-008",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-009",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-010",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-011",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-012",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-013",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-014",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-015",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-016",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-017",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-018",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-019",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    },
+    {
+      "composition_id": "VCGF-UI-SCR-020",
+      "decision": "unknown",
+      "reason": "لم يتم تقييم انطباق تركيب الشاشة بعد.",
+      "evidence_refs": [],
+      "owner": null
+    }
+  ]
+}

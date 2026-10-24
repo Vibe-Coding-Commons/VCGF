@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "example-auth",
+  "screen_id": "sign-in",
+  "selection_status": "selected",
+  "catalog_component_count": 36,
+  "interaction_pattern_count": 24,
+  "screen_composition_count": 20,
+  "journey_pattern_count": 18,
+  "selected_components": [
+    {
+      "standard_id": "VCGF-UI-COMP-036",
+      "decision": "required",
+      "matched_signals": [
+        "login_flow",
+        "mfa",
+        "passkey",
+        "password_recovery"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "standards/VCGF-UI-COMP-036-SmartSecureAuthenticationFlow.md",
+      "review_relationships": [
+        "VCGF-UI-COMP-001",
+        "VCGF-UI-COMP-003",
+        "VCGF-UI-COMP-007",
+        "VCGF-UI-COMP-008",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-018"
+      ],
+      "reason": "Explicit component capability signals matched; relationships are review-only."
+    }
+  ],
+  "selected_interactions": [
+    {
+      "standard_id": "VCGF-UI-INT-016",
+      "decision": "required",
+      "matched_signals": [
+        "session_expiry"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-016-SessionExpiryReauthentication.md",
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-023",
+        "VCGF-UI-COMP-008"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    },
+    {
+      "standard_id": "VCGF-UI-INT-018",
+      "decision": "required",
+      "matched_signals": [
+        "step_up_required"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-012",
+        "VCGF-UI-COMP-007"
+      ],
+      "reason": "Explicit interaction-state/risk signals matched; no cross-layer auto-activation."
+    }
+  ],
+  "selected_screen_compositions": [
+    {
+      "standard_id": "VCGF-UI-SCR-013",
+      "kind": "primary",
+      "decision": "required",
+      "matched_signals": [
+        "authentication_access"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "screen-compositions/VCGF-UI-SCR-013-AuthenticationAccess.md",
+      "review_components": [
+        "VCGF-UI-COMP-036",
+        "VCGF-UI-COMP-008"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-010"
+      ],
+      "reason": "Highest explicit composition evidence; other layers remain independent."
+    }
+  ],
+  "selected_journeys": [
+    {
+      "standard_id": "VCGF-UI-JRN-012",
+      "decision": "required",
+      "matched_signals": [
+        "auth_recover_return"
+      ],
+      "implementation_action": "build_new",
+      "standard_path": "journeys/VCGF-UI-JRN-012-AuthenticateRecoverReturn.md",
+      "review_compositions": [
+        "VCGF-UI-SCR-013"
+      ],
+      "review_components": [
+        "VCGF-UI-COMP-036"
+      ],
+      "review_interactions": [
+        "VCGF-UI-INT-016",
+        "VCGF-UI-INT-018",
+        "VCGF-UI-INT-024"
+      ],
+      "reason": "Explicit cross-screen journey signals matched; journey is independent of screen/component/interaction activation."
+    }
+  ],
+  "external_standards": [],
+  "compatibility_reviews": [],
+  "interaction_reviews": [
+    {
+      "left": "VCGF-UI-INT-018",
+      "right": "VCGF-UI-INT-016",
+      "relation_type": "specialization",
+      "severity": "review",
+      "rule": "Step-up يرفع مستوى المصادقة لإجراء محدد؛ انتهاء الجلسة يعيد إنشاء جلسة صالحة. لا تخلط الحالتين."
+    }
+  ],
+  "composition_reviews": [],
+  "journey_reviews": [],
+  "standards_to_load": [
+    "standards/VCGF-UI-COMP-036-SmartSecureAuthenticationFlow.md",
+    "interactions/VCGF-UI-INT-016-SessionExpiryReauthentication.md",
+    "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
+    "screen-compositions/VCGF-UI-SCR-013-AuthenticationAccess.md",
+    "journeys/VCGF-UI-JRN-012-AuthenticateRecoverReturn.md"
+  ],
+  "not_selected_component_count": 35,
+  "not_selected_interaction_count": 22,
+  "not_selected_screen_composition_count": 19,
+  "not_selected_journey_count": 17,
+  "composition_status": "selected",
+  "journey_status": "selected",
+  "orchestration": {
+    "primary_composition_id": "VCGF-UI-SCR-013",
+    "modifier_ids": [],
+    "density_policy": "comfortable",
+    "responsive_strategy": "task-preserving-adaptive",
+    "mobile_transform": "task-preserving-reflow",
+    "large_screen_transform": "context-expansion",
+    "primary_action_limit": 1,
+    "progressive_disclosure": true,
+    "role_adaptation": "priority-only",
+    "preserve_task_context": true
+  },
+  "experience_orchestration": {
+    "entry_channel": "deep-link",
+    "completion_expectation": "return-origin",
+    "context_continuity": "task-scoped",
+    "selected_journey_ids": [
+      "VCGF-UI-JRN-012"
+    ],
+    "return_to_origin": "validate-then-return",
+    "deep_link_policy": "authorize-and-prerequisite-check",
+    "scope_change_policy": "invalidate-incompatible-context",
+    "runtime_evidence_required": true,
+    "cross_layer_auto_activation": false
+  },
+  "warnings": []
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "relation_semantics": "review-only; never-auto-activate",
+  "relations": [
+    {
+      "left": "VCGF-UI-JRN-003",
+      "right": "VCGF-UI-JRN-005",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "إعادة التقديم بعد الرفض قد تستأنف من مسودة، لكن لا تفرض إحدى الرحلتين الأخرى."
+    },
+    {
+      "left": "VCGF-UI-JRN-004",
+      "right": "VCGF-UI-JRN-005",
+      "type": "alternative-branch",
+      "severity": "review",
+      "rule": "الاعتماد والرفض مساران قرار متوازيان؛ يجب ألا تنفذ الواجهة الاثنين لنفس النسخة."
+    },
+    {
+      "left": "VCGF-UI-JRN-006",
+      "right": "VCGF-UI-JRN-001",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "معالجة قائمة العمل تخصص لرحلة قائمة→تفاصيل عند وجود next-item semantics."
+    },
+    {
+      "left": "VCGF-UI-JRN-007",
+      "right": "VCGF-UI-JRN-017",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "العملية الجماعية قد تصبح طويلة؛ ربطهما يحتاج Job contract ولا يعني تفعيلًا تلقائيًا."
+    },
+    {
+      "left": "VCGF-UI-JRN-009",
+      "right": "VCGF-UI-JRN-016",
+      "type": "authority-boundary",
+      "severity": "review",
+      "rule": "التوقيع الرسمي دون اتصال يحتاج سياسة صريحة؛ لا تفترض السماح به من وجود offline."
+    },
+    {
+      "left": "VCGF-UI-JRN-012",
+      "right": "VCGF-UI-JRN-013",
+      "type": "complementary",
+      "severity": "info",
+      "rule": "Deep link قد يمر بالمصادقة ثم يعود إلى intent بعد إعادة التحقق."
+    },
+    {
+      "left": "VCGF-UI-JRN-013",
+      "right": "VCGF-UI-JRN-015",
+      "type": "scope-boundary",
+      "severity": "review",
+      "rule": "العودة للرابط بعد تبديل النطاق يجب أن تعيد التحقق من tenant/role ولا تحمل origin غير صالح."
+    },
+    {
+      "left": "VCGF-UI-JRN-016",
+      "right": "VCGF-UI-JRN-002",
+      "type": "mode-boundary",
+      "severity": "review",
+      "rule": "إنشاء سجل دون اتصال يحتاج هوية مؤقتة ومصالحة؛ لا يعامل كإنشاء online عادي."
+    },
+    {
+      "left": "VCGF-UI-JRN-018",
+      "right": "VCGF-UI-JRN-003",
+      "type": "specialization",
+      "severity": "info",
+      "rule": "إعدادات Draft/Preview/Publish قد تستخدم مسودة، لكن نشر السياسة يظل عقدًا إداريًا مستقلًا."
+    }
+  ]
+}

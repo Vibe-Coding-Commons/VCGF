@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "ops-bulk",
+  "screen_id": "bulk-export",
+  "screen_purpose": "اختيار نتائج متعددة وتنفيذ معالجة طويلة",
+  "has_ui": true,
+  "signals": [
+    "tabular_operational_data",
+    "contextual_actions",
+    "data_export"
+  ],
+  "interaction_signals": [
+    "bulk_action",
+    "long_running_job",
+    "confirmation_needed",
+    "idempotency_required"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "desktop",
+    "large-screen"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": "مثال على انتقال bulk إلى background job.",
+  "risk_level": "high",
+  "data_volume": "large",
+  "offline_required": false,
+  "composition_signals": [
+    "import_export_operation",
+    "large_screen_operations"
+  ],
+  "user_roles": [
+    "operator",
+    "admin"
+  ],
+  "task_frequency": "high-frequency",
+  "information_density": "high",
+  "viewport_priority": "large-screen-first",
+  "primary_input": "keyboard",
+  "journey_signals": [
+    "bulk_select_act_review",
+    "long_running_leave_return"
+  ],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "return-origin",
+  "context_continuity": "task-scoped"
+}

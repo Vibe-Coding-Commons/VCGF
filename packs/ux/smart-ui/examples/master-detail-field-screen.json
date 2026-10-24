@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "asset-inspection",
+  "screen_purpose": "مراجعة أصول متعددة ومعلومات كل أصل أثناء عمل ميداني",
+  "has_ui": true,
+  "signals": [
+    "tabular_operational_data",
+    "record_detail",
+    "async_feedback"
+  ],
+  "interaction_signals": [
+    "view_record",
+    "preserve_navigation_context",
+    "offline_required"
+  ],
+  "composition_signals": [
+    "master_detail",
+    "mobile_focused_task"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "tablet",
+    "desktop"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": false,
+  "existing_capabilities": [],
+  "notes": null,
+  "risk_level": "medium",
+  "data_volume": "medium",
+  "offline_required": true,
+  "user_roles": [
+    "field-operator"
+  ],
+  "task_frequency": "high-frequency",
+  "information_density": "medium",
+  "viewport_priority": "mobile-first",
+  "primary_input": "touch",
+  "journey_signals": [
+    "list_to_detail_return"
+  ],
+  "entry_channel": "internal-navigation",
+  "completion_expectation": "return-origin",
+  "context_continuity": "task-scoped"
+}

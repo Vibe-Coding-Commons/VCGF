@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "demo",
+  "screen_id": "public-request",
+  "screen_purpose": "Submit and track public request",
+  "has_ui": true,
+  "signals": [
+    "form_create_edit",
+    "system_notifications"
+  ],
+  "interaction_signals": [
+    "record_create",
+    "save_submit",
+    "navigation_with_edits"
+  ],
+  "composition_signals": [
+    "public_self_service",
+    "mobile_focused_task"
+  ],
+  "journey_signals": [
+    "public_submit_track"
+  ],
+  "languages": [
+    "ar-SA",
+    "en"
+  ],
+  "directions": [
+    "rtl",
+    "ltr"
+  ],
+  "devices": [
+    "mobile",
+    "desktop"
+  ],
+  "tenant_scoped": true,
+  "sensitive_data": true,
+  "existing_capabilities": [],
+  "notes": null,
+  "risk_level": "medium",
+  "data_volume": "small",
+  "offline_required": false,
+  "user_roles": [
+    "external-user"
+  ],
+  "task_frequency": "occasional",
+  "information_density": "low",
+  "viewport_priority": "mobile-first",
+  "primary_input": "mixed",
+  "entry_channel": "external-link",
+  "completion_expectation": "detail",
+  "context_continuity": "strict"
+}

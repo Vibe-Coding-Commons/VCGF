@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0.0",
+  "rule_semantics": "explicit-journey-signals-select-only; journeys-do-not-auto-activate-screens-components-or-interactions",
+  "journey_rules": [
+    {
+      "standard_id": "VCGF-UI-JRN-001",
+      "triggers": [
+        "search_to_detail",
+        "list_to_detail_return",
+        "result_to_record",
+        "browse_return_context"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-002",
+      "triggers": [
+        "create_to_detail",
+        "create_then_open",
+        "create_and_continue",
+        "new_record_completion"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-003",
+      "triggers": [
+        "draft_review_submit",
+        "save_draft_then_submit",
+        "review_before_submit",
+        "resume_and_submit"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-004",
+      "triggers": [
+        "review_approve_complete",
+        "approval_journey",
+        "decision_to_complete",
+        "approve_and_close"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-005",
+      "triggers": [
+        "reject_revise_resubmit",
+        "return_for_changes",
+        "resubmit_after_rejection",
+        "revision_cycle"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-006",
+      "triggers": [
+        "queue_process_next",
+        "inbox_process_next",
+        "task_triage_loop",
+        "next_work_item"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-007",
+      "triggers": [
+        "bulk_select_act_review",
+        "bulk_operation_journey",
+        "multi_record_action",
+        "batch_review_results"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-008",
+      "triggers": [
+        "import_validate_commit",
+        "data_import_journey",
+        "mapping_then_import",
+        "preview_before_commit"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-009",
+      "triggers": [
+        "document_review_sign_archive",
+        "signing_journey",
+        "document_approval_archive",
+        "official_document_flow"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-010",
+      "triggers": [
+        "schedule_create_reschedule_cancel",
+        "appointment_lifecycle",
+        "meeting_reschedule",
+        "calendar_event_journey"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-011",
+      "triggers": [
+        "public_submit_track",
+        "self_service_journey",
+        "external_request_tracking",
+        "citizen_service_flow"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-012",
+      "triggers": [
+        "auth_recover_return",
+        "login_then_return",
+        "reauth_return_to_task",
+        "account_recovery_journey"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-013",
+      "triggers": [
+        "deep_link_authorize_return",
+        "notification_deep_link",
+        "protected_deep_link",
+        "return_to_origin"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-014",
+      "triggers": [
+        "compare_decide_act",
+        "comparison_journey",
+        "decision_after_compare",
+        "select_best_option"
+      ],
+      "default_decision": "recommended"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-015",
+      "triggers": [
+        "scope_switch_resume",
+        "tenant_switch",
+        "organization_switch",
+        "role_switch_journey"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-016",
+      "triggers": [
+        "offline_capture_sync_resolve",
+        "offline_journey",
+        "field_sync_journey",
+        "reconnect_and_resolve"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-017",
+      "triggers": [
+        "long_running_leave_return",
+        "background_job_journey",
+        "start_leave_return",
+        "async_job_tracking"
+      ],
+      "default_decision": "required"
+    },
+    {
+      "standard_id": "VCGF-UI-JRN-018",
+      "triggers": [
+        "configure_preview_publish",
+        "admin_publish_journey",
+        "settings_preview_apply",
+        "policy_change_journey"
+      ],
+      "default_decision": "required"
+    }
+  ]
+}
