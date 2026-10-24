@@ -169,10 +169,32 @@ jobs:
           if text.count(old) != 1:
               raise SystemExit('unexpected CITATION finalizer anchor')
           p.write_text(text.replace(old,new,1),encoding='utf-8')
+
+          checklist=Path('/tmp/vcgf-release/vcgf_official_release_ready/OFFICIAL-RELEASE-CHECKLIST.md')
+          ctext=checklist.read_text(encoding='utf-8')
+          cmark='<!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 -->\n'
+          if 'SPDX-FileCopyrightText: 2026 Eng. Hamada Sami' not in ctext:
+              checklist.write_text(cmark+ctext,encoding='utf-8')
           PYFIX
 
       - name: Finalize v1.3.0 and run release gates
         run: python /tmp/vcgf-release/vcgf_official_release_ready/finalize_v1_3_0.py . --allow-dirty
+
+      - name: Bind final release evidence and re-run committed-state gates
+        shell: bash
+        run: |
+          python - <<'PYEVID'
+          from pathlib import Path
+          import json
+          p=Path('docs/quality/v1.3/release-validation-local.json')
+          obj=json.loads(p.read_text(encoding='utf-8'))
+          obj['$comment']='SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0'
+          p.write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+          PYEVID
+          python scripts/release-quality-gate.py
+          python packs/ux/smart-ui/scripts/validate_final.py
+          python -m pytest tests/adaptive/test_smart_ui_pack.py -q
+          git diff --check
 
       - name: Commit verified release candidate
         shell: bash
