@@ -7,12 +7,12 @@
 
 from pathlib import Path
 import yaml
-from vcgf_lib import ROOT, rel, fail_if, parse_frontmatter, control_files
+from vcgf_lib import ROOT, rel, fail_if, parse_frontmatter, control_files, all_files
 
 
 def main():
     errors=[]
-    for p in sorted(list(ROOT.rglob('*.yaml')) + list(ROOT.rglob('*.yml')) + list(ROOT.rglob('*.cff'))):
+    for p in (q for q in all_files() if q.suffix.lower() in {'.yaml','.yml','.cff'}):
         try:
             with p.open(encoding='utf-8') as f:
                 yaml.safe_load(f)

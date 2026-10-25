@@ -10,14 +10,15 @@ import subprocess, sys
 from vcgf_lib import ROOT
 
 GENERATORS=['generate-control-catalog.py','generate-repository-tree.py','generate-file-manifest.py']
-VALIDATORS=['validate-controls.py','validate-profiles.py','validate-adapters.py','validate-schemas.py','validate-yaml.py','validate-license.py','validate-cross-references.py','validate-vendor-neutral-core.py','validate-internal-links.py','validate-attribution.py','validate-placeholders.py','validate-version.py','validate-documentation.py','validate-repository-structure.py']
+VALIDATORS=['validate-controls.py','validate-profiles.py','validate-adapters.py','validate-schemas.py','validate-yaml.py','validate-license.py','validate-cross-references.py','validate-vendor-neutral-core.py','validate-internal-links.py','validate-attribution.py','validate-placeholders.py','validate-version.py','validate-documentation.py','validate-repository-structure.py','validate-package-integrity.py']
 
-def run(name):
-    p=subprocess.run([sys.executable,str(ROOT/'scripts'/name)],cwd=ROOT)
+def run(name,*extra):
+    p=subprocess.run([sys.executable,str(ROOT/'scripts'/name),*extra],cwd=ROOT)
     if p.returncode: raise SystemExit(p.returncode)
 
 def main():
-    for s in GENERATORS: run(s)
+    # Read-only gate: generated files are compared, never rewritten; regenerate deliberately when they are stale.
+    for s in GENERATORS: run(s,'--check')
     for s in VALIDATORS: run(s)
     print('PASS release-quality-gate')
 if __name__=='__main__': main()

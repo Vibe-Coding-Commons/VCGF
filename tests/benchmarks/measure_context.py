@@ -7,13 +7,14 @@ from datetime import datetime,timezone
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from runtime.router import route
 from runtime.contracts import ROOT
+if hasattr(sys.stdout,'reconfigure'):sys.stdout.reconfigure(encoding='utf-8')
 
 
 def main():
     baseline=sum(p.stat().st_size for p in (ROOT/'controls').rglob('*.md') if p.name!='README.md')
     rows=[]
     for directory in sorted((ROOT/'examples/runtime').iterdir()):
-        task=json.loads((directory/'task.json').read_text())['record'];context=json.loads((directory/'context.json').read_text())['record']
+        task=json.loads((directory/'task.json').read_text(encoding='utf-8'))['record'];context=json.loads((directory/'context.json').read_text(encoding='utf-8'))['record']
         # Fixed fixture clock: measures routing, not freshness on a user's live project.
         now=datetime.fromisoformat(context['facts'][0]['observed_at'])
         for repeat in range(3):

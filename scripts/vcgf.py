@@ -4,10 +4,11 @@
 import argparse,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+if hasattr(sys.stdout,'reconfigure'):sys.stdout.reconfigure(encoding='utf-8')
 
 
 def read(path):
-    value=json.loads(Path(path).read_text())
+    value=json.loads(Path(path).read_text(encoding='utf-8'))
     return value['record'] if isinstance(value,dict) and set(value)<= {'$comment','synthetic','record'} and 'record' in value else value
 
 
