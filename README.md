@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 [العربية → README.ar.md](README.ar.md)
 
-![Version](https://img.shields.io/badge/version-1.3.1-blue) ![Development](https://img.shields.io/badge/v1.3.1-release_candidate-orange) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.0-blue) ![Development](https://img.shields.io/badge/v1.4.0-development-orange) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **Build faster with AI — without giving up control of security, architecture, data, and release quality.**
 
@@ -23,7 +23,7 @@ VCGF is an open, vendor-neutral governance, security, privacy, and engineering f
 
 **Official public framework release: v1.3.0 (2026-10-24).** This backward-compatible minor release adds **VCGF Smart UI Components & Interaction Standards v1.0.0**: selective components, interaction patterns, screen compositions and journey orchestration. It preserves the existing normative Control IDs, Profiles, adapters, licensing and founder attribution. Repository validation applies to the framework source; **it is not production certification for every target application or provider**.
 
-**Repository version 1.3.1 — release candidate (prepared locally; not published, not signed, not independently reviewed).** It contains integrity and governance hardening only; see [docs/quality/v1.3/release-notes-v1.3.1.md](docs/quality/v1.3/release-notes-v1.3.1.md).
+**Repository version 1.4.0 — development (Phase 1 architecture and governance, prepared locally on `develop/v1.4.0`; not released, not published, not signed, not independently reviewed).** It adds the canonical applicability matrix and the Task Router profile layer, the user-experience control domain (VCGF-UX-001..004), verifiable acceptance tests for every control and governed Smart UI selection; see [docs/quality/v1.4/release-notes-v1.4.0.md](docs/quality/v1.4/release-notes-v1.4.0.md). The 1.3.1 release candidate is documented in [docs/quality/v1.3/release-notes-v1.3.1.md](docs/quality/v1.3/release-notes-v1.3.1.md).
 
 ### Smart UI in v1.3.0
 

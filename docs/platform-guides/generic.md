@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Using VCGF with Generic
 
-**Adapter:** `generic` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.3.1 · **Status:** stable  
+**Adapter:** `generic` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.4.0 · **Status:** stable  
 **Platform surface:** Portable AI-assisted development workflow  
 **Official verification source:** VCGF itself (reference adapter)  
 **Last verified:** 2026-10-02

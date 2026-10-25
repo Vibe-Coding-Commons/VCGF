@@ -9,7 +9,7 @@ from vcgf_lib import *
 
 SEMVER=re.compile(r'(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)')
 COMPAT=re.compile(r'^>=(\d+\.\d+\.\d+) <(\d+\.\d+\.\d+)$')
-RELEASE_STATUSES={'stable','release-candidate'}
+RELEASE_STATUSES={'stable','release-candidate','development'}  # development: unreleased work on a develop branch; release workflows refuse it
 CANDIDATE_STATUSES={'experimental','candidate'}
 LEGACY_VERSION_CLAIM=re.compile(r'VERSION remains \d+\.\d+\.\d+')
 

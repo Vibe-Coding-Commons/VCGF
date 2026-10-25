@@ -105,6 +105,7 @@ jobs:
       - name: Run read-only gate
         run: |
           set -euo pipefail
+          grep -Eq '^release_status: (stable|release-candidate)$' VCGF-MANIFEST.yaml || { echo '::error::release_status must be stable or release-candidate; a development tree is never drafted as a release'; exit 1; }
           python scripts/release-quality-gate.py
           python scripts/validate-package-integrity.py
           git diff --exit-code -- spec/control-catalog.yaml REPOSITORY-TREE.md FILE-MANIFEST.md

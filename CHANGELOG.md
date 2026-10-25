@@ -11,6 +11,23 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 This project follows a Keep a Changelog-style release history and Semantic Versioning.
 
+## [1.4.0] - Unreleased — Phase 1 architecture and governance (development — not released, not published, not signed)
+
+### Added
+- `spec/applicability-matrix.yaml`: canonical, machine-readable applicability for every control (trigger capabilities, always, load point, rationale). `scripts/validate-applicability.py` enforces that every non-deprecated control is reachable by the Task Router for the high-assurance profile from at least one intent, that the capability floor is never hidden and that no trigger names a capability no intent can select.
+- Task Router profile layer (additive, monotonic): a control required by the confirmed profile joins the route when one of its trigger capabilities is selected for the task. For the same task baseline ⊆ production ⊆ high-assurance, the capability floor never shrinks and no profile loads a control unrelated to the task (`capability_id: profile-layer`, source `spec/applicability-matrix.yaml`).
+- Capabilities `release`, `operations`, `exception` and `governance-change`; intents `release`, `backup`, `email`, `exception` and `governance-change` (routing policy 1.2.0). VCGF-REL-001 joins the minimum task-governance controls. The 19 controls no intent could reach before (VCGF-AI-007, ARCH-002, ARCH-005, AUDIT-003, DATA-003/004/005, DB-003/004, GOV-003/006, OPS-001/004/005, REL-001/002/004, SECR-002, TEST-004) are now reachable.
+- User-experience control domain: VCGF-UX-001 Accessibility Conformance (MUST), VCGF-UX-002 Localization and Bidirectional Text (MUST), VCGF-UX-003 Interaction State Integrity (SHOULD), VCGF-UX-004 Responsive Strategy and Density (SHOULD). Production requires UX-001/002, high-assurance all four, baseline lists them as optional (profile_version 1.1.0). Control contract 1.4.0 superset under `schemas/v1.4.0/`; the frozen v1.0 schema is byte-identical and still validates every v1.0 control.
+- `spec/acceptance/<domain>.yaml`: verifiable acceptance tests for all 88 controls (criterion, method, negative path, evidence type, automation hook), enforced by `scripts/validate-acceptance.py` and exposed by `vcgf.py acceptance <control-id>`.
+- Governed Smart UI selection: `runtime/ui_select.py`, `runtime/ui-bindings.yaml`, contract `ui-selection` 1.1.0 and `vcgf.py ui-select <route> <screen-context>`. Smart UI layers load only for the user-experience controls present in the route, hash-pinned by the frozen package manifest, confined to the package directory and budgeted; standards selected by signals but not governed by a control in the route are reported as deferred and never loaded.
+- Tests `tests/scenarios/test_profile_layer.py` and `tests/scenarios/test_ui_select.py`; fixtures `tests/fixtures/v1.1/screen-context.json` and `ui-selection.json`.
+
+### Changed
+- `runtime/contracts.py` caches the known-control set by catalog content instead of re-parsing the catalog on every contract validation (registry build about 1.2 s → about 0.2 s on the reference machine).
+- Adapter control mappings carry UNVERIFIED rows for the four user-experience controls; platform behaviour for UI governance is not claimed.
+- `scripts/validate-version.py` accepts `release_status: development` for develop branches; the release workflow refuses it.
+- Cumulative compatibility record `docs/quality/v1.4/baseline-compatibility-v1.4.json` (inherits v1.3.1). All 84 v1.0 controls, their identifiers, the frozen v1.0 schemas, licence and attribution are unchanged.
+
 ## [1.3.1] - 2026-10-24 — Integrity and governance hardening (release candidate — not published, not signed)
 
 ### Security

@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Using VCGF with Bolt
 
-**Adapter:** `bolt` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.3.1 · **Status:** stable  
+**Adapter:** `bolt` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.4.0 · **Status:** stable  
 **Platform surface:** Bolt web project agent  
 **Official verification source:** https://support.bolt.new/settings/project-settings  
 **Last verified:** 2026-10-02
@@ -111,7 +111,7 @@ After changing persistent rules or project context, start a fresh session/conver
 ### First message to send to the AI
 
 ```text
-Before making changes, use the project Knowledge and current code as context. Confirm VCGF 1.3.1, the selected profile, the Bolt adapter, relevant controls, impact areas, and any approval gate. Do not implement yet.
+Before making changes, use the project Knowledge and current code as context. Confirm VCGF 1.4.0, the selected profile, the Bolt adapter, relevant controls, impact areas, and any approval gate. Do not implement yet.
 ```
 
 A healthy response should identify the framework/profile/adapter, summarize what it needs to inspect, identify likely risk areas, and **not** jump directly into a sensitive implementation.

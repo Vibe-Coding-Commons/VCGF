@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Using VCGF with Lovable
 
-**Adapter:** `lovable` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.3.1 · **Status:** stable  
+**Adapter:** `lovable` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.4.0 · **Status:** stable  
 **Platform surface:** Lovable web application builder and project repository context  
 **Official verification source:** https://docs.lovable.dev/features/knowledge  
 **Last verified:** 2026-10-02
@@ -113,7 +113,7 @@ After changing persistent rules or project context, start a fresh session/conver
 ### First message to send to the AI
 
 ```text
-Before making changes, read the active Workspace Knowledge, Project Knowledge, root AGENTS.md if present, and the existing project code. Confirm VCGF 1.3.1, the selected profile, the Lovable adapter, the controls relevant to this task, and any approval gate. Do not modify code yet.
+Before making changes, read the active Workspace Knowledge, Project Knowledge, root AGENTS.md if present, and the existing project code. Confirm VCGF 1.4.0, the selected profile, the Lovable adapter, the controls relevant to this task, and any approval gate. Do not modify code yet.
 ```
 
 A healthy response should identify the framework/profile/adapter, summarize what it needs to inspect, identify likely risk areas, and **not** jump directly into a sensitive implementation.
