@@ -21,7 +21,9 @@ GitHub: https://github.com/Vibe-Coding-Commons
 | Acceptance | verification text only | `spec/acceptance/<domain>.yaml`: verifiable tests (criterion, method, negative path, evidence, automation) for all 88 controls, validated and exposed by the CLI |
 | User experience | advisory packs | normative controls VCGF-UX-001..004 bound to profiles and to the Smart UI standards |
 | Smart UI | frozen package reachable only through two pack-map documents | governed `ui-select`: layers load only for the user-experience controls in the route, hash-pinned, confined, budgeted; deferred standards are named, never loaded |
-| Performance | registry build about 1.2 s (catalog re-parsed per contract validation) | about 0.2 s (content-keyed cache) |
+| Performance | registry build about 1.2 s (catalog re-parsed per contract validation) | about 0.2 s (content-keyed cache); registry cached per process, second route about 50 ms |
+| Context size (Phase 2) | full control Markdown per route; one route per intent; bytes compared with a token limit | derived control cards and shared clauses (about 37 percent of the control bytes) in lean/standard mode, full controls in deep mode; multi-intent routes; delta loading with hash invalidation; estimated tokens enforced with bytes reported |
+| Tool output (Phase 2) | loaded text inline by default | hash-pinned references by default, `--full` for text; Smart UI requirement cards for lean/standard routes |
 
 ## Compatibility
 
@@ -30,6 +32,8 @@ GitHub: https://github.com/Vibe-Coding-Commons
 - Profile `required_controls` of 1.0.0 are preserved; the UX controls are appended (profile_version 1.1.0).
 - Routing policy 1.2.0 adds intents and capabilities; existing intents keep their capabilities. VCGF-REL-001 is now a minimum control for every route.
 - Cumulative compatibility record: `docs/quality/v1.4/baseline-compatibility-v1.4.json` (inherits v1.3.1).
+
+Phase 2 benchmark (same 16 scenarios on the Phase 1 tree and the Phase 2 tree, identical selected control sets per scenario): see the Phase 2 report outside the source tree; bytes measured, tokens estimated, observed tokens not available.
 
 ## Verification performed locally
 

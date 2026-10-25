@@ -21,11 +21,17 @@ This project follows a Keep a Changelog-style release history and Semantic Versi
 - `spec/acceptance/<domain>.yaml`: verifiable acceptance tests for all 88 controls (criterion, method, negative path, evidence type, automation hook), enforced by `scripts/validate-acceptance.py` and exposed by `vcgf.py acceptance <control-id>`.
 - Governed Smart UI selection: `runtime/ui_select.py`, `runtime/ui-bindings.yaml`, contract `ui-selection` 1.1.0 and `vcgf.py ui-select <route> <screen-context>`. Smart UI layers load only for the user-experience controls present in the route, hash-pinned by the frozen package manifest, confined to the package directory and budgeted; standards selected by signals but not governed by a control in the route are reported as deferred and never loaded.
 - Tests `tests/scenarios/test_profile_layer.py` and `tests/scenarios/test_ui_select.py`; fixtures `tests/fixtures/v1.1/screen-context.json` and `ui-selection.json`.
+- Phase 2 (token efficiency and context optimisation): derived control cards `spec/control-cards/` with shared `common-clauses.md` (`scripts/generate-control-cards.py --check` in the gate); `lean`/`standard` routes load cards, `deep` routes load full controls (`context_detail`); the loader strips attribution comments from served Markdown.
+- Multi-intent routing (`intents` on the task: union of capabilities, highest risk, one route) and delta loading (`loaded_context`: only unseen or changed items are sent; `reused_tokens`, `reused_context`; stale hashes are re-sent); registry cached per process while no canonical source changes.
+- `runtime/tokens.py`: bytes measured, tokens estimated by a documented heuristic, observed only with an explicit `VCGF_TOKENIZER`; budgets enforced on tokens with `cost_bytes` reported; `ui-select` serves Smart UI requirement cards for lean/standard routes (`served_bytes`) and full standards for deep routes.
+- CLI prints hash-pinned references by default (`--full` inlines text); `vcgf.py acceptance all` summarises definitions with execution state (always `not_executed` here).
+- Acceptance tests follow the binding interpretation rules (`spec/acceptance/README.md`): numeric thresholds are documented `parameters`, SHOULD is never tested as MUST, requirement sources are ranked; `tests/scenarios/test_applicability_triggers.py` and `tests/scenarios/test_context_efficiency.py`.
 
 ### Changed
 - `runtime/contracts.py` caches the known-control set by catalog content instead of re-parsing the catalog on every contract validation (registry build about 1.2 s → about 0.2 s on the reference machine).
 - Adapter control mappings carry UNVERIFIED rows for the four user-experience controls; platform behaviour for UI governance is not claimed.
 - `scripts/validate-version.py` accepts `release_status: development` for develop branches; the release workflow refuses it.
+- Budget semantics: `limit_tokens` is now compared with estimated tokens of the served text instead of raw bytes (the declared contract); routes that were blocked only by the four-fold byte over-count now fit. Coverage is unchanged: a budget still blocks, never drops controls.
 - Cumulative compatibility record `docs/quality/v1.4/baseline-compatibility-v1.4.json` (inherits v1.3.1). All 84 v1.0 controls, their identifiers, the frozen v1.0 schemas, licence and attribution are unchanged.
 
 ## [1.3.1] - 2026-10-24 — Integrity and governance hardening (release candidate — not published, not signed)
