@@ -1,0 +1,44 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+#
+# Operational binding between the frozen Smart UI package (packs/ux/smart-ui, hash-pinned by its manifest.json) and
+# the VCGF engine. The Task Router decides which user-experience controls apply (profile layer + applicability
+# matrix); the governed selector (runtime/ui_select.py, `vcgf.py ui-select`) then loads Smart UI standards ONLY for
+# layers whose governing control is in the route, and only the standards the screen context explicitly signals.
+# Nothing here is permanent context: the pack itself is never loaded wholesale.
+bindings_version: 1.0.0
+package_root: packs/ux/smart-ui
+manifest: manifest.json
+selector: scripts/select_smart_ui.py
+screen_context_schema: schemas/screen-context.schema.json
+acceptance_file: spec/acceptance/user-experience.yaml
+# A layer is loadable when at least one of its governing controls is in the route; otherwise its selected standards
+# are reported as deferred with the missing control named, never loaded.
+layers:
+  components:
+    plan_key: selected_components
+    governing_controls: [VCGF-UX-001]
+  interactions:
+    plan_key: selected_interactions
+    governing_controls: [VCGF-UX-003]
+  screen-compositions:
+    plan_key: selected_screen_compositions
+    governing_controls: [VCGF-UX-004]
+  journeys:
+    plan_key: selected_journeys
+    governing_controls: [VCGF-UX-003]
+external_standards:
+  CALENDAR-GOVERNANCE-ADDENDUM:
+    governing_controls: [VCGF-UX-002]
+  UI-COMP-SEARCHABLE-SELECT:
+    governing_controls: [VCGF-UX-001]
+# Governance documents loaded per user-experience control present in the route (small, control-specific set).
+governance_documents:
+  VCGF-UX-001: [governance/ACCESSIBILITY-RTL.md]
+  VCGF-UX-002: [governance/ACCESSIBILITY-RTL.md]
+  VCGF-UX-003: [governance/SCREEN-STATE-MODEL.md, governance/SMART-INTERACTION-GOLDEN-RULES.md]
+  VCGF-UX-004: [governance/RESPONSIVE-DENSITY-POLICY.md, governance/ADAPTIVE-UX-ORCHESTRATION.md]

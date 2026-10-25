@@ -24,6 +24,8 @@ def main():
     from runtime.context import handoff
     from runtime.evidence import evaluate
     from runtime.evidence_pack import present
+    from runtime.ui_select import select_ui
+    from runtime.acceptance import acceptance_tests
 
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='cmd',required=True)
     r=sub.add_parser('route');r.add_argument('task');r.add_argument('context');r.add_argument('--project-root',required=True);r.add_argument('--dry-run',action='store_true');r.add_argument('--quiet',action='store_true');r.add_argument('--presentation',choices=['beginner','expert'],default='expert')
@@ -31,6 +33,8 @@ def main():
     sub.add_parser('controls')
     e=sub.add_parser('explain');e.add_argument('control_id');e.add_argument('--route-file')
     h=sub.add_parser('handoff');h.add_argument('context');h.add_argument('route_file')
+    u=sub.add_parser('ui-select',help='governed Smart UI selection bound to a route');u.add_argument('route_file');u.add_argument('screen_context');u.add_argument('--budget',type=int);u.add_argument('--quiet',action='store_true')
+    a=sub.add_parser('acceptance',help='acceptance tests defined for a control');a.add_argument('control_id')
     for name in ['evidence','release-check']:
         e=sub.add_parser(name);e.add_argument('record');e.add_argument('expected');e.add_argument('--artifact-root',required=True)
         e.add_argument('--mode',choices=['minimal','standard','audit'],default='standard')
@@ -47,6 +51,10 @@ def main():
             registry=build_registry();result={'control':registry['controls'][args.control_id]}
             if args.route_file:result['reasons']=[x for x in read(args.route_file)['reasons'] if x['control_id']==args.control_id]
         elif args.cmd=='handoff':result=handoff(read(args.context),read(args.route_file))
+        elif args.cmd=='ui-select':
+            result=select_ui(read(args.route_file),read(args.screen_context),args.budget);code=1 if result['selection']['blockers'] else 0
+            if args.quiet:result.pop('active_context');result.pop('selection_plan')
+        elif args.cmd=='acceptance':result=acceptance_tests(args.control_id);code=0 if result['tests'] else 1
         else:
             record=read(args.record);result=evaluate(record,args.artifact_root,read(args.expected));code=1 if result['status']!='PASS' else 0
             if not validate_contract('evidence',record):result=present(record,result,args.mode)
