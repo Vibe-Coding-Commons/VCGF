@@ -12,7 +12,8 @@ def entries(tmp_path):
 
 def test_same_digest_deduplicates(tmp_path, entries):
     out=load(tmp_path,entries*2,100)
-    assert len(out['items'])==1 and out['cost_tokens']==9
+    # bytes are measured; cost_tokens is the documented estimate (9 ASCII characters -> 3 tokens)
+    assert len(out['items'])==1 and out['cost_bytes']==9 and out['cost_tokens']==3
 
 def test_conflicting_digest_rejected(tmp_path,entries):
     with pytest.raises(ValueError,match='conflicting hashes'):
@@ -25,7 +26,7 @@ def test_stale_digest_rejected(tmp_path,entries):
 
 def test_over_budget_never_drops_controls_silently(tmp_path,entries):
     out=load(tmp_path,entries,1)
-    assert out['blocked'] and not out['items'] and out['cost_tokens']==9
+    assert out['blocked'] and not out['items'] and out['cost_bytes']==9 and out['cost_tokens']==3
 
 @pytest.mark.parametrize('budget',[True,0,-1,1.5,'100'])
 def test_invalid_budget_rejected(tmp_path,entries,budget):

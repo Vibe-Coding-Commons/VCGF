@@ -11,7 +11,7 @@ from .registry import build_registry
 def route(task, context, project_root, now=None, root=ROOT):
     registry = build_registry(root)
     policy = registry['policy']
-    if set(task) - {'task_id','intent','classification_confirmed','profile','profile_confirmed','mode','budget','inspection','overlay_add_controls','overlay_remove_controls','risk_signals'}:
+    if set(task) - {'task_id','intent','classification_confirmed','profile','profile_confirmed','mode','budget','inspection','overlay_add_controls','overlay_remove_controls','risk_signals','intents','loaded_context'}:
         raise ValueError('unknown task field')
     for required in ['task_id','intent','classification_confirmed','profile','profile_confirmed','mode','budget','inspection']:
         if required not in task:
@@ -25,6 +25,13 @@ def route(task, context, project_root, now=None, root=ROOT):
     intent = policy['intents'].get(task['intent']) if isinstance(task['intent'],str) else None
     if intent is None:
         raise ValueError('unrecognized task intent: explicit reviewed classification required')
+    # Multi-intent routing: one route for a task spanning several reviewed intents (union of capabilities, highest risk),
+    # instead of one route per intent that re-sends the shared context each time.
+    extra=task.get('intents',[])
+    if not isinstance(extra,list) or any(not isinstance(x,str) or x not in policy['intents'] for x in extra):
+        raise ValueError('unrecognized additional intent: explicit reviewed classification required')
+    intents=[task['intent']]+[x for x in dict.fromkeys(extra) if x!=task['intent']]
+    ranks_risk={'LOW':0,'MEDIUM':1,'HIGH':2,'CRITICAL':3}
     facts, invalid = context_facts(context, project_root, now)
     blockers=[]
     inspection=task['inspection']
@@ -39,7 +46,7 @@ def route(task, context, project_root, now=None, root=ROOT):
     # runtime/bootstrap.md §4: "Agent safeguards apply even to a plain static website." VCGF runs under a
     # development agent by definition, so development-agent is always requested; the self-attested
     # context.development_agent flags are contract-validated but never change capability selection (V13-116).
-    requested=list(intent['capabilities'])+['development-agent']
+    requested=list(dict.fromkeys(c for name in intents for c in policy['intents'][name]['capabilities']))+['development-agent']
     if context['product_ai']['uses_agent'] or context['product_ai']['uses_llm']:
         requested.append('product-ai')
     try:
@@ -61,7 +68,7 @@ def route(task, context, project_root, now=None, root=ROOT):
         if cid not in registry['controls']:
             raise ValueError('unknown overlay control')
         reasons[cid]={'control_id':cid,'capability_id':'overlay','source':'explicit task overlay','reason':'additive requirement'}
-    risk=intent['risk']
+    risk=max((policy['intents'][name]['risk'] for name in intents),key=ranks_risk.__getitem__)
     signals=task.get('risk_signals',[])
     if not isinstance(signals,list) or any(s not in ['destructive','production-secrets','security-disablement','high-impact-payment','sensitive-data','privileged','irreversible','unknown-impact'] for s in signals):
         raise ValueError('invalid risk signals')
@@ -95,11 +102,17 @@ def route(task, context, project_root, now=None, root=ROOT):
         hits=sorted(set(triggers.get('capabilities') or [])&set(selected))
         if triggers.get('always') or hits:
             reasons[cid]={'control_id':cid,'capability_id':'profile-layer','source':'spec/applicability-matrix.yaml','reason':f"required by profile {task['profile']}; applicable via {', '.join(hits) if hits else 'every task'}"}
-    records=[registry['bootstrap']]+[registry['controls'][cid] for cid in sorted(reasons)]
+    # Context detail: lean/standard load the derived control cards plus the shared clauses; deep loads the full control text.
+    detail='full' if task['mode']=='deep' else 'card'
+    records=[registry['bootstrap']]+([registry['common_clauses']] if detail=='card' else [])
+    records+=[registry['cards'][cid] if detail=='card' else registry['controls'][cid] for cid in sorted(reasons)]
     for mapping in registry['pack_map'].values():
         for cap in sorted(selected):
             records.extend(registry['resources'][path] for path in mapping.get(cap,[]))
-    loaded=load(root,records,task['budget'])
+    already=task.get('loaded_context',[])
+    if not isinstance(already,list):
+        raise ValueError('loaded_context must be a list of {path, sha256}')
+    loaded=load(root,records,task['budget'],already_loaded=already)
     if loaded['blocked']:
         blockers.append('budget exceeded: split task or explicitly raise budget; never drop required controls')
     result={'contract_version':'1.1.0','task_id':task['task_id'],'input_sha256':digest(task),
@@ -107,11 +120,11 @@ def route(task, context, project_root, now=None, root=ROOT):
             'risk':risk,'profile':task['profile'],'profile_selection':'user_confirmed' if task['profile_confirmed'] else 'proposed',
             'mode':task['mode'],'decision':'blocked' if blockers else 'ready_to_plan','selected_control_ids':sorted(reasons),
             'loaded_control_ids':[] if blockers else sorted(reasons),'excluded':[], 'reasons':[reasons[k] for k in sorted(reasons)],
-            'blockers':blockers,'budget':{'limit_tokens':task['budget'],'cost_tokens':loaded['cost_tokens'],
+            'blockers':blockers,'budget':{'limit_tokens':task['budget'],'cost_tokens':loaded['cost_tokens'],'cost_bytes':loaded['cost_bytes'],'reused_tokens':loaded['reused_tokens'],
                                        'measurement':loaded['measurement'],'method':loaded['method'],'overflow_policy':'split_raise_or_block'},
-            'inspection':inspection,'approval_required':risk in ['HIGH','CRITICAL']}
+            'inspection':inspection,'approval_required':risk in ['HIGH','CRITICAL'],'context_detail':detail,'intents':intents}
     errors=validate_contract('route-result',result)
     if errors:
         raise ValueError('; '.join(errors))
-    return {'route':result,'active_context':loaded['items'] if not blockers else [],'capabilities':list(selected),
+    return {'route':result,'active_context':loaded['items'] if not blockers else [],'reused_context':loaded['reused'] if not blockers else [],'capabilities':list(selected),
             'invalid_facts':invalid,'recommended_profile':recommended,'handoff_required':True}

@@ -141,6 +141,16 @@
           ],
           "minimum": 0
         },
+        "cost_bytes": {
+          "description": "UTF-8 bytes of the text sent now (measured). Optional for 1.1.0 records.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "reused_tokens": {
+          "description": "Tokens of items the caller already held (delta loading); not sent again. Optional for 1.1.0 records.",
+          "type": "integer",
+          "minimum": 0
+        },
         "measurement": {
           "enum": [
             "observed",
@@ -185,6 +195,21 @@
     },
     "approval_required": {
       "type": "boolean"
+    },
+    "intents": {
+      "description": "Every reviewed intent the route covers (the task intent first). Optional for 1.1.0 records.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/id"
+      }
+    },
+    "context_detail": {
+      "description": "card: derived control cards plus common clauses (lean/standard); full: complete control Markdown (deep). Optional for 1.1.0 records.",
+      "enum": [
+        "card",
+        "full"
+      ]
     }
   },
   "required": [
