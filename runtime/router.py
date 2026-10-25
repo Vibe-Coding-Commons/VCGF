@@ -16,13 +16,13 @@ def route(task, context, project_root, now=None, root=ROOT):
     for required in ['task_id','intent','classification_confirmed','profile','profile_confirmed','mode','budget','inspection']:
         if required not in task:
             raise ValueError('missing task field: ' + required)
-    if task['mode'] not in ['lean','standard','deep'] or task['profile'] not in registry['profiles']:
+    if not isinstance(task['mode'],str) or not isinstance(task['profile'],str) or task['mode'] not in ['lean','standard','deep'] or task['profile'] not in registry['profiles']:
         raise ValueError('invalid mode/profile')
     if not isinstance(task['task_id'],str) or not task['task_id']:
         raise ValueError('missing task identifier')
     if type(task['classification_confirmed']) is not bool or type(task['profile_confirmed']) is not bool:
         raise ValueError('confirmation must be boolean')
-    intent = policy['intents'].get(task['intent'])
+    intent = policy['intents'].get(task['intent']) if isinstance(task['intent'],str) else None
     if intent is None:
         raise ValueError('unrecognized task intent: explicit reviewed classification required')
     facts, invalid = context_facts(context, project_root, now)
@@ -36,9 +36,10 @@ def route(task, context, project_root, now=None, root=ROOT):
         blockers.append('task classification must be confirmed after inspection')
     if not task['profile_confirmed']:
         blockers.append('profile selection requires confirmation')
-    requested=list(intent['capabilities'])
-    if context['development_agent']['uses_tools'] or context['development_agent']['uses_external_content']:
-        requested.append('development-agent')
+    # runtime/bootstrap.md §4: "Agent safeguards apply even to a plain static website." VCGF runs under a
+    # development agent by definition, so development-agent is always requested; the self-attested
+    # context.development_agent flags are contract-validated but never change capability selection (V13-116).
+    requested=list(intent['capabilities'])+['development-agent']
     if context['product_ai']['uses_agent'] or context['product_ai']['uses_llm']:
         requested.append('product-ai')
     try:
