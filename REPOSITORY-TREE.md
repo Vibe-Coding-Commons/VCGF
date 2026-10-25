@@ -48,15 +48,19 @@ VCGF/
 │   ├── deletion.yaml
 │   ├── development-agent.yaml
 │   ├── email.yaml
+│   ├── exception.yaml
 │   ├── fields.yaml
 │   ├── files.yaml
+│   ├── governance-change.yaml
 │   ├── identity.yaml
 │   ├── incident.yaml
+│   ├── operations.yaml
 │   ├── password-recovery.yaml
 │   ├── payment.yaml
 │   ├── privacy.yaml
 │   ├── product-ai.yaml
 │   ├── public-discovery.yaml
+│   ├── release.yaml
 │   ├── script-protection.yaml
 │   ├── sessions.yaml
 │   ├── step-up.yaml
@@ -188,14 +192,20 @@ VCGF/
 │   │   ├── vcgf-sec-004-trusted-layer-input-validation.md
 │   │   ├── vcgf-sec-005-output-encoding-and-sanitization.md
 │   │   └── vcgf-sec-006-secure-defaults-and-fail-closed-behavior.md
-│   └── testing
+│   ├── testing
+│   │   ├── README.md
+│   │   ├── vcgf-test-001-authorization-negative-testing.md
+│   │   ├── vcgf-test-002-secure-code-review.md
+│   │   ├── vcgf-test-003-security-regression-review.md
+│   │   ├── vcgf-test-004-security-test-strategy.md
+│   │   ├── vcgf-test-005-validation-and-injection-testing.md
+│   │   └── vcgf-test-006-recovery-flow-testing.md
+│   └── user-experience
 │       ├── README.md
-│       ├── vcgf-test-001-authorization-negative-testing.md
-│       ├── vcgf-test-002-secure-code-review.md
-│       ├── vcgf-test-003-security-regression-review.md
-│       ├── vcgf-test-004-security-test-strategy.md
-│       ├── vcgf-test-005-validation-and-injection-testing.md
-│       └── vcgf-test-006-recovery-flow-testing.md
+│       ├── vcgf-ux-001-accessibility-conformance.md
+│       ├── vcgf-ux-002-localization-and-bidirectional-text.md
+│       ├── vcgf-ux-003-interaction-state-integrity.md
+│       └── vcgf-ux-004-responsive-strategy-and-density.md
 ├── docs
 │   ├── platform-guides
 │   │   ├── bolt.md
@@ -237,7 +247,8 @@ VCGF/
 │   │   │   ├── scope-register.json
 │   │   │   ├── skill-forward-test.json
 │   │   │   └── test-evidence.json
-│   │   └── v1.3.0-smart-ui-integration.md
+│   │   ├── v1.3.0-smart-ui-integration.md
+│   │   └── v1.4.0-phase1-architecture-governance.md
 │   ├── quality
 │   │   ├── v1.2
 │   │   │   ├── evidence
@@ -278,15 +289,18 @@ VCGF/
 │   │   │   ├── release-notes-v1.2.0.md
 │   │   │   ├── scope-register.json
 │   │   │   └── sources.json
-│   │   └── v1.3
-│   │       ├── baseline-compatibility-v1.3.1.json
-│   │       ├── baseline-compatibility-v1.3.json
-│   │       ├── public-release-decision.md
-│   │       ├── release-checklist-v1.3.1.md
-│   │       ├── release-checklist.md
-│   │       ├── release-notes-v1.3.0.md
-│   │       ├── release-notes-v1.3.1.md
-│   │       └── release-validation-local.json
+│   │   ├── v1.3
+│   │   │   ├── baseline-compatibility-v1.3.1.json
+│   │   │   ├── baseline-compatibility-v1.3.json
+│   │   │   ├── public-release-decision.md
+│   │   │   ├── release-checklist-v1.3.1.md
+│   │   │   ├── release-checklist.md
+│   │   │   ├── release-notes-v1.3.0.md
+│   │   │   ├── release-notes-v1.3.1.md
+│   │   │   └── release-validation-local.json
+│   │   └── v1.4
+│   │       ├── baseline-compatibility-v1.4.json
+│   │       └── release-notes-v1.4.0.md
 │   ├── references
 │   │   ├── owasp-asvs-5-mapping.md
 │   │   └── sources-and-standards.md
@@ -1008,6 +1022,7 @@ VCGF/
 │   │   ├── schools.py
 │   │   └── ux.py
 │   ├── __init__.py
+│   ├── acceptance.py
 │   ├── approval.py
 │   ├── bootstrap.md
 │   ├── context-policy.yaml
@@ -1022,7 +1037,9 @@ VCGF/
 │   ├── resolver.py
 │   ├── router.py
 │   ├── routing-policy.yaml
-│   └── scope_guard.py
+│   ├── scope_guard.py
+│   ├── ui-bindings.yaml
+│   └── ui_select.py
 ├── schemas
 │   ├── v1.1.0
 │   │   ├── adapter-capabilities.schema.json
@@ -1032,13 +1049,16 @@ VCGF/
 │   │   ├── context.schema.json
 │   │   ├── evidence.schema.json
 │   │   ├── preferences.schema.json
-│   │   └── route-result.schema.json
+│   │   ├── route-result.schema.json
+│   │   └── ui-selection.schema.json
 │   ├── v1.2.0
 │   │   ├── architecture-decision.schema.json
 │   │   ├── project-fingerprint.schema.json
 │   │   ├── release-evidence.schema.json
 │   │   ├── ux-decision.schema.json
 │   │   └── ux-discovery.schema.json
+│   ├── v1.4.0
+│   │   └── control.schema.json
 │   ├── adapter.schema.json
 │   ├── conformance.schema.json
 │   ├── control.schema.json
@@ -1054,7 +1074,9 @@ VCGF/
 │   ├── generate-sbom.py
 │   ├── release-quality-gate.py
 │   ├── test-adaptive-browser.py
+│   ├── validate-acceptance.py
 │   ├── validate-adapters.py
+│   ├── validate-applicability.py
 │   ├── validate-attribution.py
 │   ├── validate-contracts.py
 │   ├── validate-controls.py
@@ -1074,6 +1096,27 @@ VCGF/
 │   ├── vcgf.py
 │   └── vcgf_lib.py
 ├── spec
+│   ├── acceptance
+│   │   ├── ai-governance.yaml
+│   │   ├── api.yaml
+│   │   ├── architecture.yaml
+│   │   ├── data-protection.yaml
+│   │   ├── database.yaml
+│   │   ├── dependencies.yaml
+│   │   ├── file-handling.yaml
+│   │   ├── governance.yaml
+│   │   ├── identity-access.yaml
+│   │   ├── incident-response.yaml
+│   │   ├── logging-auditing.yaml
+│   │   ├── operations.yaml
+│   │   ├── privacy.yaml
+│   │   ├── README.md
+│   │   ├── release.yaml
+│   │   ├── secrets.yaml
+│   │   ├── security.yaml
+│   │   ├── testing.yaml
+│   │   └── user-experience.yaml
+│   ├── applicability-matrix.yaml
 │   ├── conformance.md
 │   ├── control-catalog.yaml
 │   ├── evidence-model.md
@@ -1145,12 +1188,16 @@ VCGF/
 │   │       ├── context.json
 │   │       ├── evidence.json
 │   │       ├── preferences.json
-│   │       └── route-result.json
+│   │       ├── route-result.json
+│   │       ├── screen-context.json
+│   │       └── ui-selection.json
 │   └── scenarios
 │       ├── test_adapters.py
 │       ├── test_gates.py
 │       ├── test_integrations.py
-│       └── test_runtime.py
+│       ├── test_profile_layer.py
+│       ├── test_runtime.py
+│       └── test_ui_select.py
 ├── .editorconfig
 ├── .gitattributes
 ├── .gitignore

@@ -1,8 +1,886 @@
 {
   "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "applicability": {
+    "VCGF-AI-001": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-AI-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-AI-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-AI-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-AI-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-AI-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-AI-007": {
+      "load_point": "route",
+      "rationale": "An agent must never weaken a security control as a workaround; applies whenever an AI agent executes a task (development-agent is always requested).",
+      "triggers": {
+        "capabilities": [
+          "development-agent",
+          "governance-change"
+        ]
+      }
+    },
+    "VCGF-AI-008": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent",
+          "product-ai"
+        ]
+      }
+    },
+    "VCGF-AI-009": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-API-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api"
+        ]
+      }
+    },
+    "VCGF-API-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "payment"
+        ]
+      }
+    },
+    "VCGF-API-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api"
+        ]
+      }
+    },
+    "VCGF-API-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api",
+          "payment",
+          "sessions"
+        ]
+      }
+    },
+    "VCGF-API-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api",
+          "email"
+        ]
+      }
+    },
+    "VCGF-ARCH-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "authorization"
+        ]
+      }
+    },
+    "VCGF-ARCH-002": {
+      "load_point": "route",
+      "rationale": "Security-sensitive decisions cross a trust boundary whenever a task touches APIs, identity, authorization, data, files, payments or server-side integrations.",
+      "triggers": {
+        "capabilities": [
+          "api",
+          "identity",
+          "authorization",
+          "admin",
+          "files",
+          "database",
+          "payment",
+          "product-ai",
+          "email",
+          "sessions",
+          "strong-auth",
+          "step-up",
+          "password-recovery"
+        ]
+      }
+    },
+    "VCGF-ARCH-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-ARCH-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-ARCH-005": {
+      "load_point": "route",
+      "rationale": "Threat modeling is required for HIGH or CRITICAL changes; the trust-boundary-bearing capabilities make it applicable through the profile layer, and deep mode adds it for every task.",
+      "triggers": {
+        "capabilities": [
+          "identity",
+          "authorization",
+          "admin",
+          "payment",
+          "database",
+          "api",
+          "files",
+          "product-ai",
+          "deletion",
+          "incident",
+          "release",
+          "privacy",
+          "strong-auth",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-AUDIT-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "audit"
+        ]
+      }
+    },
+    "VCGF-AUDIT-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "audit"
+        ]
+      }
+    },
+    "VCGF-AUDIT-003": {
+      "load_point": "route",
+      "rationale": "Protecting audit records matters wherever audit trails are in scope.",
+      "triggers": {
+        "capabilities": [
+          "audit"
+        ]
+      }
+    },
+    "VCGF-DATA-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-DATA-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-DATA-003": {
+      "load_point": "route",
+      "rationale": "Field-level encryption applies to personal, payment and backed-up sensitive data.",
+      "triggers": {
+        "capabilities": [
+          "privacy",
+          "payment",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-DATA-004": {
+      "load_point": "route",
+      "rationale": "Key management applies wherever encryption keys, tokens or signing material are introduced or rotated.",
+      "triggers": {
+        "capabilities": [
+          "privacy",
+          "payment",
+          "backup-restore",
+          "email",
+          "strong-auth"
+        ]
+      }
+    },
+    "VCGF-DATA-005": {
+      "load_point": "route",
+      "rationale": "Searchable encrypted data is a privacy design concern.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-DATA-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "email",
+          "payment",
+          "sessions"
+        ]
+      }
+    },
+    "VCGF-DB-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database"
+        ]
+      }
+    },
+    "VCGF-DB-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database",
+          "fields"
+        ]
+      }
+    },
+    "VCGF-DB-003": {
+      "load_point": "route",
+      "rationale": "Database encryption applies to schema, storage and backup work involving sensitive data.",
+      "triggers": {
+        "capabilities": [
+          "database",
+          "privacy",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-DB-004": {
+      "load_point": "route",
+      "rationale": "Row-level authorization must be tested whenever authorization or data-layer policies change.",
+      "triggers": {
+        "capabilities": [
+          "authorization",
+          "admin",
+          "database"
+        ]
+      }
+    },
+    "VCGF-DB-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database"
+        ]
+      }
+    },
+    "VCGF-DB-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database"
+        ]
+      }
+    },
+    "VCGF-DEP-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-DEP-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-DEP-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-DEP-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-FILE-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "files"
+        ]
+      }
+    },
+    "VCGF-FILE-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "files"
+        ]
+      }
+    },
+    "VCGF-GOV-001": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-GOV-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.",
+      "triggers": {
+        "capabilities": [
+          "admin",
+          "deletion",
+          "exception",
+          "governance-change"
+        ]
+      }
+    },
+    "VCGF-GOV-003": {
+      "load_point": "route",
+      "rationale": "Loaded when a task requests or reviews a security exception.",
+      "triggers": {
+        "capabilities": [
+          "exception"
+        ]
+      }
+    },
+    "VCGF-GOV-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "exception"
+        ]
+      }
+    },
+    "VCGF-GOV-005": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-GOV-006": {
+      "load_point": "route",
+      "rationale": "Loaded when a task changes governance definitions, adapters or policy text in the project.",
+      "triggers": {
+        "capabilities": [
+          "governance-change"
+        ]
+      }
+    },
+    "VCGF-IAM-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IAM-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IAM-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "admin",
+          "sessions",
+          "step-up",
+          "strong-auth"
+        ]
+      }
+    },
+    "VCGF-IAM-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IAM-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "password-recovery",
+          "strong-auth"
+        ]
+      }
+    },
+    "VCGF-IAM-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "admin",
+          "step-up"
+        ]
+      }
+    },
+    "VCGF-IAM-007": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "authorization",
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IR-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident"
+        ]
+      }
+    },
+    "VCGF-IR-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident"
+        ]
+      }
+    },
+    "VCGF-IR-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident"
+        ]
+      }
+    },
+    "VCGF-OPS-001": {
+      "load_point": "route",
+      "rationale": "Environment separation applies to releases, migrations, incidents, backups and destructive operations.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "database",
+          "incident",
+          "backup-restore",
+          "deletion",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-OPS-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-OPS-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-OPS-004": {
+      "load_point": "route",
+      "rationale": "Configuration drift control applies to release and incident work and to governance configuration changes.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "incident",
+          "governance-change",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-OPS-005": {
+      "load_point": "route",
+      "rationale": "Security monitoring applies to releases, incidents and the surfaces that generate security events.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "incident",
+          "api",
+          "identity",
+          "payment",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-PRIV-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "audit",
+          "email"
+        ]
+      }
+    },
+    "VCGF-PRIV-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-PRIV-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-PRIV-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "deletion",
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-REL-001": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-REL-002": {
+      "load_point": "route",
+      "rationale": "Pre-release security gate applies to release tasks.",
+      "triggers": {
+        "capabilities": [
+          "release"
+        ]
+      }
+    },
+    "VCGF-REL-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk CRITICAL.",
+      "triggers": {
+        "capabilities": [
+          "backup-restore",
+          "incident"
+        ]
+      }
+    },
+    "VCGF-REL-004": {
+      "load_point": "route",
+      "rationale": "Post-release monitoring applies to release tasks.",
+      "triggers": {
+        "capabilities": [
+          "release"
+        ]
+      }
+    },
+    "VCGF-REL-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-SEC-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "files"
+        ]
+      }
+    },
+    "VCGF-SEC-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux",
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.",
+      "triggers": {
+        "router_policy": [
+          "risk-high-critical"
+        ]
+      }
+    },
+    "VCGF-SECR-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "email",
+          "product-ai",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-SECR-002": {
+      "load_point": "route",
+      "rationale": "Secret rotation and compromise response apply to incidents and to tasks introducing credentials or keys.",
+      "triggers": {
+        "capabilities": [
+          "incident",
+          "identity",
+          "strong-auth",
+          "payment",
+          "email",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-TEST-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "authorization"
+        ]
+      }
+    },
+    "VCGF-TEST-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL, deep mode, standard/deep mode.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux",
+          "public-discovery",
+          "ux-accessibility"
+        ]
+      }
+    },
+    "VCGF-TEST-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for deep mode.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux"
+        ]
+      }
+    },
+    "VCGF-TEST-004": {
+      "load_point": "route",
+      "rationale": "A security test strategy is required before release and when the engineering approach is designed.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-TEST-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-TEST-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "password-recovery"
+        ]
+      }
+    },
+    "VCGF-UX-001": {
+      "load_point": "route",
+      "rationale": "Accessibility conformance applies to every user-facing interface task.",
+      "triggers": {
+        "capabilities": [
+          "ux-accessibility",
+          "adaptive-ux",
+          "public-discovery"
+        ]
+      }
+    },
+    "VCGF-UX-002": {
+      "load_point": "route",
+      "rationale": "Localization and bidirectional text apply to every user-facing interface task in multilingual or RTL products.",
+      "triggers": {
+        "capabilities": [
+          "ux-accessibility",
+          "adaptive-ux",
+          "public-discovery"
+        ]
+      }
+    },
+    "VCGF-UX-003": {
+      "load_point": "route",
+      "rationale": "Interaction-state integrity applies to interactive screens and forms.",
+      "triggers": {
+        "capabilities": [
+          "ux-accessibility",
+          "adaptive-ux",
+          "fields"
+        ]
+      }
+    },
+    "VCGF-UX-004": {
+      "load_point": "route",
+      "rationale": "Responsive strategy and density apply when screens are composed or redesigned.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux",
+          "ux-accessibility"
+        ]
+      }
+    }
+  },
   "bootstrap": {
     "path": "runtime/bootstrap.md",
-    "sha256": "6c26de581009499e33ee4625bd06035ab60a4d7725fdc9bcb749b6e16d15ff54"
+    "sha256": "2dd1484c1e6f5446e441455323b0dd04af76b34cd84821de4045bec14d4cca77"
   },
   "capabilities": [
     {
@@ -375,6 +1253,30 @@
       "applies_to": [
         "application"
       ],
+      "capability_id": "exception",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-GOV-003",
+        "VCGF-GOV-002",
+        "VCGF-GOV-004"
+      ],
+      "dependencies": [],
+      "description": "Requesting, approving or reviewing a security exception to a normative control",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
       "capability_id": "fields",
       "contract_version": "1.1.0",
       "control_ids": [
@@ -426,6 +1328,31 @@
         }
       ],
       "description": "Master sections [36, 37, 38, 39]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "governance-change",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-GOV-006",
+        "VCGF-AI-007",
+        "VCGF-GOV-002",
+        "VCGF-OPS-004"
+      ],
+      "dependencies": [],
+      "description": "Changing governance definitions, adapter rules or policy text inside a project",
       "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
       "owner": "Eng. Hamada Sami",
       "required_evidence": [
@@ -533,6 +1460,31 @@
         }
       ],
       "description": "Master sections [34, 35]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "operations",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-OPS-001",
+        "VCGF-OPS-002",
+        "VCGF-OPS-004",
+        "VCGF-OPS-005"
+      ],
+      "dependencies": [],
+      "description": "Operational safety across environments: separation, drift control, monitoring and production protection",
       "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
       "owner": "Eng. Hamada Sami",
       "required_evidence": [
@@ -717,6 +1669,40 @@
       ],
       "dependencies": [],
       "description": "Master sections [27]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "release",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-REL-001",
+        "VCGF-REL-002",
+        "VCGF-REL-004",
+        "VCGF-REL-005",
+        "VCGF-TEST-004"
+      ],
+      "dependencies": [
+        {
+          "reason": "release requires evaluation of operations",
+          "relation": "requires",
+          "targets": [
+            "operations"
+          ]
+        }
+      ],
+      "description": "Release readiness: pre-release gate, test strategy, artifact integrity and post-release monitoring",
       "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
       "owner": "Eng. Hamada Sami",
       "required_evidence": [
@@ -2076,6 +3062,60 @@
       "sha256": "971ebb7f465835a9add24f44412bcc7ffc34cc7f247edde84cde77540f57a574",
       "status": "normative",
       "title": "Recovery Flow Testing"
+    },
+    "VCGF-UX-001": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-001",
+      "path": "controls/user-experience/vcgf-ux-001-accessibility-conformance.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "64b8db3300fd9dbef3d314b06e9c1dbf67cd507c349c0b1416fdeeedc12fd7f8",
+      "status": "normative",
+      "title": "Accessibility Conformance"
+    },
+    "VCGF-UX-002": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-002",
+      "path": "controls/user-experience/vcgf-ux-002-localization-and-bidirectional-text.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "ce88b4b94dd6dc8289024ff96367a241df54b4e6e31fb9f498af3bc2a4082d69",
+      "status": "normative",
+      "title": "Localization and Bidirectional Text"
+    },
+    "VCGF-UX-003": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-003",
+      "path": "controls/user-experience/vcgf-ux-003-interaction-state-integrity.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "b16e74bc07ae0e5941f2cd6cf7607cf18e17884af9c3a83466d4b296f9c9c675",
+      "status": "normative",
+      "title": "Interaction State Integrity"
+    },
+    "VCGF-UX-004": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-004",
+      "path": "controls/user-experience/vcgf-ux-004-responsive-strategy-and-density.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "ec0c9343a89c3c065dc08017094a03aaeffd1387ab767456493268fc576f9c16",
+      "status": "normative",
+      "title": "Responsive Strategy and Density"
     }
   },
   "pack_map": {
@@ -2222,6 +3262,12 @@
         ],
         "risk": "HIGH"
       },
+      "backup": {
+        "capabilities": [
+          "backup-restore"
+        ],
+        "risk": "HIGH"
+      },
       "button-color": {
         "capabilities": [
           "ux-accessibility"
@@ -2247,11 +3293,29 @@
         ],
         "risk": "MEDIUM"
       },
+      "email": {
+        "capabilities": [
+          "email"
+        ],
+        "risk": "MEDIUM"
+      },
       "emergency": {
         "capabilities": [
           "incident"
         ],
         "risk": "CRITICAL"
+      },
+      "exception": {
+        "capabilities": [
+          "exception"
+        ],
+        "risk": "HIGH"
+      },
+      "governance-change": {
+        "capabilities": [
+          "governance-change"
+        ],
+        "risk": "HIGH"
       },
       "login": {
         "capabilities": [
@@ -2291,6 +3355,13 @@
         ],
         "risk": "LOW"
       },
+      "release": {
+        "capabilities": [
+          "release",
+          "operations"
+        ],
+        "risk": "HIGH"
+      },
       "reset": {
         "capabilities": [
           "password-recovery"
@@ -2307,14 +3378,15 @@
     "minimum_controls": [
       "VCGF-AI-001",
       "VCGF-GOV-001",
-      "VCGF-GOV-005"
+      "VCGF-GOV-005",
+      "VCGF-REL-001"
     ],
-    "policy_version": "1.1.0",
+    "policy_version": "1.2.0",
     "standard_review_controls": [
       "VCGF-TEST-002"
     ]
   },
-  "policy_sha256": "a22fec11a05c640c74cf6070b5a3791b63ee06955a1946d1f4327c74015ba2ae",
+  "policy_sha256": "68d0ca4e6af3ea4a40a10959cc82ca407d1a4e49fe1096fe238e96a54bd5b8c6",
   "profiles": {
     "baseline": [
       "VCGF-AI-001",
@@ -2427,7 +3499,11 @@
       "VCGF-TEST-003",
       "VCGF-TEST-004",
       "VCGF-TEST-005",
-      "VCGF-TEST-006"
+      "VCGF-TEST-006",
+      "VCGF-UX-001",
+      "VCGF-UX-002",
+      "VCGF-UX-003",
+      "VCGF-UX-004"
     ],
     "production": [
       "VCGF-AI-001",
@@ -2506,7 +3582,9 @@
       "VCGF-TEST-003",
       "VCGF-TEST-004",
       "VCGF-TEST-005",
-      "VCGF-TEST-006"
+      "VCGF-TEST-006",
+      "VCGF-UX-001",
+      "VCGF-UX-002"
     ]
   },
   "resources": {

@@ -257,9 +257,19 @@ class CompatibilityTests(unittest.TestCase):
         self.assertEqual(v131["review_status"], "PENDING_INDEPENDENT_REVIEW")
         self.assertTrue(v131_files, "v1.3.1 record must list its changed original files")
 
+        # v1.4 is the locally developed Phase 1 architecture and governance delta (develop/v1.4.0).
+        # It inherits v1.3.1, never rewrites earlier records, and is neither a release nor a publication.
+        v14 = json.loads((ROOT / "docs/quality/v1.4/baseline-compatibility-v1.4.json").read_text(encoding="utf-8"))
+        v14_files = v14["allowed_original_file_changes"]
+        self.assertEqual(v14["candidate_version"], "1.4.0")
+        self.assertEqual(v14["inherits"], "docs/quality/v1.3/baseline-compatibility-v1.3.1.json")
+        self.assertEqual(v14["review_status"], "PENDING_INDEPENDENT_REVIEW")
+        self.assertTrue(v14_files, "v1.4 record must list its changed original files")
+
         cumulative = dict(v12_files)
         cumulative.update(v13_files)
         cumulative.update(v131_files)
+        cumulative.update(v14_files)
         self.assertTrue(set(cumulative) <= set(snapshot))
         for name, record in cumulative.items():
             self.assertTrue(record["reason"].strip())

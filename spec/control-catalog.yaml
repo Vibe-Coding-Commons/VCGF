@@ -7,9 +7,9 @@
 # AUTO-GENERATED — DO NOT EDIT MANUALLY
 
 catalog_version: 1.0.0
-framework_version: 1.3.1
+framework_version: 1.4.0
 source: Control Markdown front matter
-control_count: 84
+control_count: 88
 controls:
 - id: VCGF-AI-001
   domain: ai-governance
@@ -869,3 +869,41 @@ controls:
   - high-assurance
   - production
   path: controls/testing/vcgf-test-006-recovery-flow-testing.md
+- id: VCGF-UX-001
+  domain: user-experience
+  title: Accessibility Conformance
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.4.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/user-experience/vcgf-ux-001-accessibility-conformance.md
+- id: VCGF-UX-002
+  domain: user-experience
+  title: Localization and Bidirectional Text
+  status: normative
+  requirement_level: MUST
+  framework_version_introduced: 1.4.0
+  profiles:
+  - high-assurance
+  - production
+  path: controls/user-experience/vcgf-ux-002-localization-and-bidirectional-text.md
+- id: VCGF-UX-003
+  domain: user-experience
+  title: Interaction State Integrity
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.4.0
+  profiles:
+  - high-assurance
+  path: controls/user-experience/vcgf-ux-003-interaction-state-integrity.md
+- id: VCGF-UX-004
+  domain: user-experience
+  title: Responsive Strategy and Density
+  status: normative
+  requirement_level: SHOULD
+  framework_version_introduced: 1.4.0
+  profiles:
+  - high-assurance
+  path: controls/user-experience/vcgf-ux-004-responsive-strategy-and-density.md

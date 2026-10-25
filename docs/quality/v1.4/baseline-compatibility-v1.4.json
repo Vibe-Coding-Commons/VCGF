@@ -1,0 +1,143 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "candidate_version": "1.4.0",
+  "inherits": "docs/quality/v1.3/baseline-compatibility-v1.3.1.json",
+  "baseline": "tests/fixtures/v1.0/baseline-hashes.json plus the immutable v1.2, v1.3 and v1.3.1 compatibility records",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "release_status": "DEVELOPMENT__NOT_RELEASED__NOT_PUBLISHED__NOT_SIGNED",
+  "notes": "Phase 1 architecture and governance work prepared locally on develop/v1.4.0: canonical applicability matrix, additive profile layer in the Task Router, user-experience control domain, acceptance tests for every control and governed Smart UI selection. This record is a cumulative delta over the immutable v1.2, v1.3 and v1.3.1 records; it does not rewrite earlier history, does not modify tag v1.3.0 or the release/v1.3.1 branch, and does not imply publication, signature, independent review or production admission. All 84 v1.0 controls, their identifiers and the frozen v1.0 schemas are unchanged.",
+  "allowed_original_file_changes": {
+    ".github/workflows/validate-framework.yml": {
+      "sha256_lf": "39ecdf39db348327857895c57da27952665387fd3e93f0d05ed729dae14373ca",
+      "reason": "CI runs the new applicability and acceptance validators."
+    },
+    "CHANGELOG.md": {
+      "sha256_lf": "d48a8d521e32082ac19e28c465dfdaeda1ed0bb23c6195d039f6fb9bbfc60a44",
+      "reason": "Document the unreleased 1.4.0 Phase 1 changes (applicability matrix, profile layer, acceptance tests, governed Smart UI selection)."
+    },
+    "CITATION.cff": {
+      "sha256_lf": "d3975bf8cc28774954d6eebfead0de81c582ac83cc558d3a88f592ce50b701ce",
+      "reason": "Citation version/date for the 1.4.0 development version."
+    },
+    "FILE-MANIFEST.md": {
+      "sha256_lf": "1075dc0530cb67dd323f964c7f392a754f9362fe222bc33bc02f11978b7762f4",
+      "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
+    },
+    "README.ar.md": {
+      "sha256_lf": "ae213b8f519c4ad34422e46aef8a4f1cfe2ada70211e75417f2fa659bfefa7bc",
+      "reason": "Arabic equivalent of the README version badge and Phase 1 section."
+    },
+    "README.md": {
+      "sha256_lf": "c6234f75e3e64c3ab2a4138f2aa714fadc4697f473573b8db261bc71080a9e40",
+      "reason": "Version badge and a short section on the applicability matrix, profile layer, acceptance tests and governed Smart UI selection."
+    },
+    "REPOSITORY-TREE.md": {
+      "sha256_lf": "72ba4f9b992672f6db55e6a8eafbbac3b49f3aeaa8b4653261317a1b3eca8a50",
+      "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
+    },
+    "VCGF-MANIFEST.yaml": {
+      "sha256_lf": "40239a4ee254d3ea6b8cd8709fc1721ce7be14394595d980e98cfcfae9415c04",
+      "reason": "framework_version 1.4.0, release_status development, user-experience domain, control schema 1.4.0 and ui-selection contract declared."
+    },
+    "VERSION": {
+      "sha256_lf": "78b591400c56b7b67b8cb3b2b8a8e65e9093897f02ce0878e6b5405c68620fa7",
+      "reason": "Development version 1.4.0 (Phase 1 architecture and governance work on develop/v1.4.0); not released, not published, not signed."
+    },
+    "docs/platform-guides/bolt.md": {
+      "sha256_lf": "c6fcea39e64c299cc3354f52b096e91d60639f0a7dab305f9227aebe68262838",
+      "reason": "Framework version line updated to the 1.4.0 development version (validate-version identity rule); guidance unchanged."
+    },
+    "docs/platform-guides/claude.md": {
+      "sha256_lf": "9e42dc37d5e21428f4c466bcca5656cd36848b7e823aa9e00db429fa6989af2b",
+      "reason": "Framework version line updated to the 1.4.0 development version (validate-version identity rule); guidance unchanged."
+    },
+    "docs/platform-guides/cursor.md": {
+      "sha256_lf": "dcd4aee3c0377b70f183d89ea01e1226a570ac939e4ffe80cd9c7c08b6ab203d",
+      "reason": "Framework version line updated to the 1.4.0 development version (validate-version identity rule); guidance unchanged."
+    },
+    "docs/platform-guides/generic.md": {
+      "sha256_lf": "6ed3407e5ef0605c5f753dc359826111c7a563cf2f7d71d53c3139abb8460a93",
+      "reason": "Framework version line updated to the 1.4.0 development version (validate-version identity rule); guidance unchanged."
+    },
+    "docs/platform-guides/lovable.md": {
+      "sha256_lf": "7ad780507757bed32da9d4ad11a206f79018491132dd00490b27dfcac9292225",
+      "reason": "Framework version line updated to the 1.4.0 development version (validate-version identity rule); guidance unchanged."
+    },
+    "docs/platform-guides/replit.md": {
+      "sha256_lf": "043d83afa9b3b25605d9f89f104df27d4bda4ec281608cfbcb1a0ba8982be471",
+      "reason": "Framework version line updated to the 1.4.0 development version (validate-version identity rule); guidance unchanged."
+    },
+    "docs/platform-guides/v0.md": {
+      "sha256_lf": "288e07bee663d7cdd10771ff83e6551f3787f36dc77a304427c336dd471b88fd",
+      "reason": "Framework version line updated to the 1.4.0 development version (validate-version identity rule); guidance unchanged."
+    },
+    "platforms/_adapter-template/control-mapping.yaml": {
+      "sha256_lf": "b6433ced6125ec4dad87a8435fbe16d7e8d1aba7c6c517c39f81b18914d8b6f7",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/bolt/control-mapping.yaml": {
+      "sha256_lf": "3e9521107d373603159332aa5725356955411478d34c3196ea6b4f657e12ed6e",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/claude/control-mapping.yaml": {
+      "sha256_lf": "98f8ce8130269516010bbc1f53d73a97c7828f2e216df8b8087dc85f8011e278",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/cursor/control-mapping.yaml": {
+      "sha256_lf": "22a0c4d6a95251fd1d72f03ae118cfb99fead8a1caa845e7196a1bc31d01c71f",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/generic/control-mapping.yaml": {
+      "sha256_lf": "93fa0597ddafd0787e478f77442fe078e06f5cbeb6f16882c7fb7fef31f848e0",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/lovable/control-mapping.yaml": {
+      "sha256_lf": "1f61ee1c5f2326096841d147481f031e9517432029ae329448df142b8eb54945",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/replit/control-mapping.yaml": {
+      "sha256_lf": "af3061b5b98a8b6ce45ab3322f3d8cdf303ce620c663e8444e4b08ceaa5823cc",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/v0/control-mapping.yaml": {
+      "sha256_lf": "689423009db56ceaeb6a1061b40a7c26d36762b849ccee7cb69507541578d7c1",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "profiles/baseline/profile.yaml": {
+      "sha256_lf": "7b397a28421a2c9afff74e29a09daa65dada567e1670a5aaf0d4b2c6f471c98d",
+      "reason": "profile_version 1.1.0; user-experience controls listed as optional (baseline keeps its 25 required controls)."
+    },
+    "profiles/high-assurance/profile.yaml": {
+      "sha256_lf": "ba2fd2baffaf0bf63b115809755fb7df9b89d414f34e7d81bbe7873d7e7bc6b7",
+      "reason": "profile_version 1.1.0; all four user-experience controls required; the 84 v1.0 required controls unchanged."
+    },
+    "profiles/production/profile.yaml": {
+      "sha256_lf": "e109cae286615f7a2b0434287628b55f208c4752958aa0c9159613e8f2639d21",
+      "reason": "profile_version 1.1.0; VCGF-UX-001 and VCGF-UX-002 required, VCGF-UX-003/004 optional; the 77 v1.0 required controls unchanged."
+    },
+    "scripts/release-quality-gate.py": {
+      "sha256_lf": "4f8c65b6d79f49ef4efdea3041cbad229dcf90db33a8e3c61be1e001b46806b3",
+      "reason": "Gate runs the new applicability and acceptance validators."
+    },
+    "scripts/validate-controls.py": {
+      "sha256_lf": "d4ea6be86a9a5eea11322c666281fe0c092479ba6fd426ac06c2fe5ac63aed9f",
+      "reason": "Validates every control against the 1.4.0 superset schema and every v1.0 control against the frozen v1.0 schema; the 84 immutable v1.0 controls are asserted explicitly instead of a fixed total."
+    },
+    "scripts/validate-cross-references.py": {
+      "sha256_lf": "ff851fca66ef3682142380ef6d02efa1d2885047394d3a5b48d73fcee37f2af5",
+      "reason": "Control-id regex accepts the UX prefix so references to user-experience controls are checked like every other control."
+    },
+    "scripts/validate-version.py": {
+      "sha256_lf": "1f6360dc2dcfa2e034dd101c45b2980f4de0efe42d402490de8c7828cd22711e",
+      "reason": "release_status development accepted for development versions; release workflows still require release-candidate or stable."
+    },
+    "scripts/vcgf_lib.py": {
+      "sha256_lf": "cb280255b53ca3e80aa66e52a7c4a13a9866b81e37b0c9275b30223e95bfe794",
+      "reason": "DOMAINS gains user-experience (new control domain introduced in 1.4.0)."
+    },
+    "spec/control-catalog.yaml": {
+      "sha256_lf": "47870af36814fbf8dccef11cf79a5adeaac8db771046946d0878800c84d46770",
+      "reason": "Regenerated: framework_version 1.4.0 and the four user-experience controls appended; the 84 v1.0 controls unchanged."
+    }
+  }
+}
