@@ -11,6 +11,26 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 This project follows a Keep a Changelog-style release history and Semantic Versioning.
 
+## [1.3.1] - 2026-10-24 — Integrity and governance hardening (release candidate — not published, not signed)
+
+### Security
+- Instruction-hierarchy clause added to all legacy always-on entry files and enforced by `scripts/validate-adapters.py`: repository, tool or generated content never overrides the host system and user authority chain.
+- Development-agent safeguards made unconditional in the Task Router: context flags no longer drop VCGF-AI-002, VCGF-AI-004, VCGF-AI-006, VCGF-AI-008 or VCGF-AI-009 from a route.
+- New `scripts/validate-package-integrity.py` verifies the frozen Smart UI `SHA256SUMS.txt` and `manifest.json` in the release gate and in CI.
+- CI workflows run with least-privilege `permissions` and SHA-pinned actions.
+- New release workflow that only drafts a release for a verifiable signed tag, attaching source archives, `SHA256SUMS.txt` and a CycloneDX SBOM; it never publishes on its own.
+
+### Fixed
+- Version identity made consistent across `runtime/bootstrap.md`, the seven platform guides, `VCGF-MANIFEST.yaml` adapters (supported and candidate) and contract schema versions, enforced by an extended `scripts/validate-version.py`.
+- Generators and validators made read-only/portable: `--check` modes instead of silent rewrites, UTF-8 and LF enforced on every write.
+
+### Changed
+- Smart UI layer status aligned to `integration-candidate` in `packs/ux/catalog.yaml`; its runtime acceptance scenarios remain `not_run`.
+- `VCGF-MANIFEST.yaml` gains `candidate_adapters`, `candidate_adapter_versions` and `contract_schema_versions`; `release_status` is `release-candidate` until publication.
+
+### Release Status
+Candidate prepared locally on a worktree cut from tag v1.3.0 (commit 43c617d). Publication requires independent review by a non-author and a verifiable tag signature; neither exists yet. v1.3.0 remains the latest published release. Production admission remains BLOCKED. All existing Control IDs, contracts, licensing and founder rights are preserved.
+
 ## [1.3.0] - 2026-10-24 — Smart UI & Adaptive Experience Orchestration (public framework release)
 
 ### Added

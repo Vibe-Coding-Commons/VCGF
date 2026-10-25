@@ -18,4 +18,4 @@ Opt-in runtime policy. The reference Router and gates are local tools; this text
 
 ## Phase boundary
 
-The local Router, resolver, loader and evidence/approval gates are opt-in implementations. Host authentication, platform execution and external integration acceptance remain separate. This file alone does not install permissions, deploy or certify anything. Current project VERSION remains 1.0.0 until release acceptance.
+The local Router, resolver, loader and evidence/approval gates are opt-in implementations. Host authentication, platform execution and external integration acceptance remain separate. This file alone does not install permissions, deploy or certify anything. The repository VERSION file is the only authoritative framework version; this bootstrap never changes or asserts it.

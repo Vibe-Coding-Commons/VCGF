@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Using VCGF with Replit
 
-**Adapter:** `replit` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.0.0 · **Status:** stable  
+**Adapter:** `replit` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.3.1 · **Status:** stable  
 **Platform surface:** Replit Agent project  
 **Official verification source:** https://docs.replit.com/features/project-setup/replit-dot-md  
 **Last verified:** 2026-10-02
@@ -111,7 +111,7 @@ After changing persistent rules or project context, start a fresh session/conver
 ### First message to send to the AI
 
 ```text
-Read the root replit.md and inspect the existing project before changing anything. Confirm VCGF 1.0.0, the selected profile, the Replit adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
+Read the root replit.md and inspect the existing project before changing anything. Confirm VCGF 1.3.1, the selected profile, the Replit adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
 ```
 
 A healthy response should identify the framework/profile/adapter, summarize what it needs to inspect, identify likely risk areas, and **not** jump directly into a sensitive implementation.

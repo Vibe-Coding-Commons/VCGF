@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 [English → README.md](README.md)
 
-![Version](https://img.shields.io/badge/version-1.3.0-blue) ![Development](https://img.shields.io/badge/v1.3.0-public_release-green) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Version](https://img.shields.io/badge/version-1.3.1-blue) ![Development](https://img.shields.io/badge/v1.3.1-release_candidate-orange) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **طوّر أسرع بالذكاء الاصطناعي — من غير ما تفقد السيطرة على الأمان والمعمارية والبيانات وجودة الإصدار.**
 
@@ -23,9 +23,11 @@ VCGF هو إطار مفتوح ومحايد تجاه المنصات يجمع **Go
 
 **الإصدار الرسمي العام: v1.3.0 (2026-10-24).** يضيف هذا الإصدار المتوافق مع سلسلة v1 طبقة **VCGF Smart UI Components & Interaction Standards v1.0.0** لاختيار المكونات وأنماط التفاعل وتركيب الشاشات ورحلات المستخدم بشكل انتقائي حسب الدليل والسياق، مع الحفاظ على Control IDs والـProfiles والـAdapters والترخيص وحقوق المؤسس. نجاح فحوص المستودع يخص توزيع الإطار ولا يعني اعتماد كل تطبيق عميل للإنتاج.
 
+**نسخة المستودع 1.3.1 — مرشح إصدار (أُعدّ محليًا؛ غير منشور، غير موقّع، ولم يُراجَع من طرف مستقل).** يقتصر على تحصين السلامة والحوكمة فقط؛ راجع [docs/quality/v1.3/release-notes-v1.3.1.md](docs/quality/v1.3/release-notes-v1.3.1.md).
+
 ### Smart UI في v1.3.0
 
-أصبح VCGF يختار أقل مجموعة صحيحة من المعايير بدل تحميل أو إنشاء المكتبة كاملة. الطبقات الأربع مستقلة: **Screen Composition → Components → Interactions → Journeys**، مع Reuse-First ومنع التفعيل التلقائي بين الطبقات ومراجعة التوافق ودعم RTL/LTR والإتاحة والأدلة.
+أصبح VCGF يختار أقل مجموعة صحيحة من المعايير بدل تحميل أو إنشاء المكتبة كاملة. الطبقات الأربع مستقلة: **Screen Composition → Components → Interactions → Journeys**، مع Reuse-First ومنع التفعيل التلقائي بين الطبقات ومراجعة التوافق ودعم RTL/LTR والإتاحة والأدلة. تُشحَن طبقة Smart UI كمواصفة مرشّحة للتكامل قابلة للتحميل الانتقائي (الطبقة v1.0.0)؛ ولم تُنفَّذ سيناريوهات القبول التشغيلي الخاصة بها.
 
 
 ## المحتويات

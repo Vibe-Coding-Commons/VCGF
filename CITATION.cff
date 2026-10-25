@@ -15,7 +15,7 @@ authors:
   - family-names: Sami
     given-names: Hamada
     email: i@hamada.io
-version: 1.3.0
+version: 1.3.1
 date-released: 2026-10-24
 license: Apache-2.0
 repository-code: https://github.com/Vibe-Coding-Commons/VCGF

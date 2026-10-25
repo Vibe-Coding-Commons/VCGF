@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Using VCGF with Cursor
 
-**Adapter:** `cursor` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.0.0 · **Status:** stable  
+**Adapter:** `cursor` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.3.1 · **Status:** stable  
 **Platform surface:** Cursor Agent / IDE project rules  
 **Official verification source:** https://cursor.com/docs/rules  
 **Last verified:** 2026-10-02
@@ -112,7 +112,7 @@ After changing persistent rules or project context, start a fresh session/conver
 ### First message to send to the AI
 
 ```text
-Read the active VCGF project rule under .cursor/rules and/or AGENTS.md, then inspect the relevant code. Confirm VCGF 1.0.0, the selected profile, the Cursor adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
+Read the active VCGF project rule under .cursor/rules and/or AGENTS.md, then inspect the relevant code. Confirm VCGF 1.3.1, the selected profile, the Cursor adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
 ```
 
 A healthy response should identify the framework/profile/adapter, summarize what it needs to inspect, identify likely risk areas, and **not** jump directly into a sensitive implementation.
@@ -133,7 +133,7 @@ Add admin access to the application.
 
 The AI should not blindly edit code. It should first inspect the existing authorization model, identify affected routes/data/API/database layers, assess access-control risk, explain its plan, and request approval if the proposed change crosses a VCGF approval gate.
 
-**Platform-specific verification:** Ask Cursor Agent which project rules are active, then ask it to identify VCGF 1.0.0, the chosen profile, relevant controls, and approval gates before implementation.
+**Platform-specific verification:** Ask Cursor Agent which project rules are active, then ask it to identify VCGF 1.3.1, the chosen profile, relevant controls, and approval gates before implementation.
 
 ## Step 10 — Make your first request
 

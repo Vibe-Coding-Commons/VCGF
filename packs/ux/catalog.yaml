@@ -117,7 +117,8 @@ sources:
 smart_ui_layer:
   version: 1.0.0
   target_framework: 1.3.0
-  status: public-framework-release
+  # Shipped selectively as a specification candidate; runtime acceptance scenarios are not_run (see packs/ux/smart-ui/governance/FINAL-ADOPTION-GATE.md).
+  status: integration-candidate
   entrypoint: packs/ux/smart-ui/README.md
   master_policy: packs/ux/smart-ui/governance/MASTER-POLICY.md
   selector: packs/ux/smart-ui/scripts/select_smart_ui.py
