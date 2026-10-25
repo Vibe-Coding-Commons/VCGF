@@ -12,7 +12,7 @@ import re, json, yaml, subprocess
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED_DIRS = {'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'}
 ALLOWED_MAPPING = {"NATIVE","CONFIGURABLE","PROMPT-ENFORCED","EXTERNAL","PARTIAL","UNSUPPORTED","NOT-APPLICABLE","UNVERIFIED"}
-DOMAINS = {"governance","ai-governance","architecture","security","identity-access","data-protection","privacy","database","api","secrets","dependencies","file-handling","logging-auditing","testing","release","operations","incident-response"}
+DOMAINS = {"governance","ai-governance","architecture","security","identity-access","data-protection","privacy","database","api","secrets","dependencies","file-handling","logging-auditing","testing","release","operations","incident-response","user-experience"}
 PROFILE_IDS = {"baseline","production","high-assurance"}
 ADAPTER_IDS = {"generic","lovable","claude","bolt","v0","replit","cursor"}
 

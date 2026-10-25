@@ -6,7 +6,7 @@
 # GitHub: https://github.com/Vibe-Coding-Commons
 
 profile_id: production
-profile_version: 1.0.0
+profile_version: 1.1.0
 framework_compatibility: '>=1.0.0 <2.0.0'
 assurance: production
 description: VCGF profile for production applications handling real users, business
@@ -89,6 +89,8 @@ required_controls:
 - VCGF-TEST-004
 - VCGF-TEST-005
 - VCGF-TEST-006
+- VCGF-UX-001
+- VCGF-UX-002
 optional_controls:
 - VCGF-AI-009
 - VCGF-ARCH-004
@@ -97,6 +99,8 @@ optional_controls:
 - VCGF-DEP-002
 - VCGF-OPS-004
 - VCGF-REL-004
+- VCGF-UX-003
+- VCGF-UX-004
 evidence_requirements:
 - Automated test or equivalent reproducible evidence for required security controls.
 - Release-gate evidence, threat model, dependency inventory, and operational monitoring
