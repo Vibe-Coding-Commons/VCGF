@@ -1,11 +1,12 @@
 # SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
 # SPDX-License-Identifier: Apache-2.0
 # Founder & Maintainer: Eng. Hamada Sami
-policy_version: 1.1.0
+policy_version: 1.2.0
 minimum_controls:
 - VCGF-AI-001
 - VCGF-GOV-001
 - VCGF-GOV-005
+- VCGF-REL-001
 standard_review_controls:
 - VCGF-TEST-002
 deep_review_controls:
@@ -80,4 +81,25 @@ intents:
     - adaptive-engineering
     - adaptive-ux
     risk: MEDIUM
+  release:
+    capabilities:
+    - release
+    - operations
+    risk: HIGH
+  backup:
+    capabilities:
+    - backup-restore
+    risk: HIGH
+  email:
+    capabilities:
+    - email
+    risk: MEDIUM
+  exception:
+    capabilities:
+    - exception
+    risk: HIGH
+  governance-change:
+    capabilities:
+    - governance-change
+    risk: HIGH
 full_framework_loading: false

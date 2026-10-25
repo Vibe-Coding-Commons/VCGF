@@ -23,7 +23,7 @@ from referencing import Registry, Resource
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = ROOT / "schemas" / "v1.1.0"
 NAMES = frozenset({"capability", "context", "route-result", "approval", "evidence",
-                   "preferences", "adapter-capabilities"})
+                   "preferences", "adapter-capabilities", "ui-selection"})
 FORMATS = FormatChecker()
 
 
@@ -65,6 +65,12 @@ def _checked_schemas(sources):
     return documents, registry
 
 
+@lru_cache(maxsize=4)
+def _known_controls(catalog_bytes):
+    # Content-keyed: a regenerated catalog invalidates the cache; avoids re-parsing 25 KB of YAML per validation.
+    return frozenset(row["id"] for row in yaml.safe_load(catalog_bytes.decode("utf-8"))["controls"])
+
+
 def _date(value):
     return datetime.fromisoformat(value.upper().replace("Z", "+00:00"))
 
@@ -79,8 +85,7 @@ def validate_contract(name: str, record: object) -> list[str]:
     if errors:
         return errors
     # Schema acceptance above guarantees the shapes accessed below.
-    catalog = yaml.safe_load((ROOT / "spec" / "control-catalog.yaml").read_text(encoding="utf-8"))
-    known_controls = {row["id"] for row in catalog["controls"]}
+    known_controls = _known_controls((ROOT / "spec" / "control-catalog.yaml").read_bytes())
     control_lists = {"control_ids", "required_control_ids", "selected_control_ids", "loaded_control_ids"}
 
     def walk(value, path="$"):

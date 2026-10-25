@@ -85,6 +85,16 @@ def route(task, context, project_root, now=None, root=ROOT):
     elif task['mode']=='standard':
         for cid in policy['standard_review_controls']:
             reasons.setdefault(cid,{'control_id':cid,'capability_id':'standard-review','source':'routing-policy.yaml','reason':'additional standard review'})
+    # Profile layer (additive, monotonic): a control required by the confirmed profile joins the route when one of its
+    # applicability triggers is among the selected capabilities. The capability floor above never shrinks, so
+    # baseline <= production <= high-assurance for the same task and no profile loads a control unrelated to the task.
+    matrix=registry['applicability']
+    for cid in registry['profiles'][task['profile']]:
+        if cid in reasons or cid not in matrix: continue
+        triggers=matrix[cid].get('triggers') or {}
+        hits=sorted(set(triggers.get('capabilities') or [])&set(selected))
+        if triggers.get('always') or hits:
+            reasons[cid]={'control_id':cid,'capability_id':'profile-layer','source':'spec/applicability-matrix.yaml','reason':f"required by profile {task['profile']}; applicable via {', '.join(hits) if hits else 'every task'}"}
     records=[registry['bootstrap']]+[registry['controls'][cid] for cid in sorted(reasons)]
     for mapping in registry['pack_map'].values():
         for cap in sorted(selected):

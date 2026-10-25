@@ -21,6 +21,7 @@ def build_registry(root=ROOT):
     bootstrap = {'path': 'runtime/bootstrap.md', 'sha256': hashlib.sha256((root/'runtime/bootstrap.md').read_bytes()).hexdigest()}
     policy = yaml.safe_load((root/'runtime/routing-policy.yaml').read_text(encoding='utf-8'))
     pack_map = yaml.safe_load((root/'runtime/pack-map.yaml').read_text(encoding='utf-8'))
+    applicability = yaml.safe_load((root/'spec/applicability-matrix.yaml').read_text(encoding='utf-8'))
     resources = {}
     for mapping in pack_map.values():
         for paths in mapping.values():
@@ -28,6 +29,6 @@ def build_registry(root=ROOT):
                 resources[path] = {'path': path, 'sha256': hashlib.sha256(confined(root,path).read_bytes()).hexdigest()}
     result = {'$comment': 'SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0', 'version': '1.1.0', 'controls': controls, 'capabilities': capabilities,
               'profiles': profiles, 'bootstrap': bootstrap, 'policy': policy,
-              'pack_map': pack_map, 'resources': resources}
+              'pack_map': pack_map, 'resources': resources, 'applicability': applicability['controls']}
     result['policy_sha256'] = digest(result)
     return result

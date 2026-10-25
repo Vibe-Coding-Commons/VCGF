@@ -1,0 +1,476 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+#
+# Canonical applicability matrix: which task context makes a control applicable, and where it is loaded.
+# Control Markdown stays the normative text; this file adds machine-readable applicability only.
+# The Task Router uses it for the profile layer: a control required by the confirmed profile is added to a route
+# when one of its trigger capabilities is selected for the task (or when always: true). Capability control_ids
+# remain the profile-independent floor. scripts/validate-applicability.py enforces that every non-deprecated
+# control is reachable for the high-assurance profile from at least one intent.
+matrix_version: 1.0.0
+load_points: [route]
+controls:
+  VCGF-AI-001:
+    load_point: route
+    triggers:
+      always: true
+    rationale: Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).
+  VCGF-AI-002:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering, development-agent]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AI-003:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AI-004:
+    load_point: route
+    triggers:
+      capabilities: [development-agent]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AI-005:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AI-006:
+    load_point: route
+    triggers:
+      capabilities: [development-agent]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AI-007:
+    load_point: route
+    triggers:
+      capabilities: [development-agent, governance-change]
+    rationale: An agent must never weaken a security control as a workaround; applies whenever an AI agent executes a task (development-agent is always requested).
+  VCGF-AI-008:
+    load_point: route
+    triggers:
+      capabilities: [development-agent, product-ai]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AI-009:
+    load_point: route
+    triggers:
+      capabilities: [development-agent]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-API-001:
+    load_point: route
+    triggers:
+      capabilities: [api]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-API-002:
+    load_point: route
+    triggers:
+      capabilities: [payment]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-API-003:
+    load_point: route
+    triggers:
+      capabilities: [api]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-API-004:
+    load_point: route
+    triggers:
+      capabilities: [api, payment, sessions]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-API-005:
+    load_point: route
+    triggers:
+      capabilities: [api, email]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-ARCH-001:
+    load_point: route
+    triggers:
+      capabilities: [authorization]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-ARCH-002:
+    load_point: route
+    triggers:
+      capabilities: [api, identity, authorization, admin, files, database, payment, product-ai, email, sessions, strong-auth, step-up, password-recovery]
+    rationale: Security-sensitive decisions cross a trust boundary whenever a task touches APIs, identity, authorization, data, files, payments or server-side integrations.
+  VCGF-ARCH-003:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-ARCH-004:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-ARCH-005:
+    load_point: route
+    triggers:
+      capabilities: [identity, authorization, admin, payment, database, api, files, product-ai, deletion, incident, release, privacy, strong-auth, backup-restore]
+    rationale: Threat modeling is required for HIGH or CRITICAL changes; the trust-boundary-bearing capabilities make it applicable through the profile layer, and deep mode adds it for every task.
+  VCGF-AUDIT-001:
+    load_point: route
+    triggers:
+      capabilities: [audit]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AUDIT-002:
+    load_point: route
+    triggers:
+      capabilities: [audit]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-AUDIT-003:
+    load_point: route
+    triggers:
+      capabilities: [audit]
+    rationale: Protecting audit records matters wherever audit trails are in scope.
+  VCGF-DATA-001:
+    load_point: route
+    triggers:
+      capabilities: [backup-restore]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DATA-002:
+    load_point: route
+    triggers:
+      capabilities: [privacy]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DATA-003:
+    load_point: route
+    triggers:
+      capabilities: [privacy, payment, backup-restore]
+    rationale: Field-level encryption applies to personal, payment and backed-up sensitive data.
+  VCGF-DATA-004:
+    load_point: route
+    triggers:
+      capabilities: [privacy, payment, backup-restore, email, strong-auth]
+    rationale: Key management applies wherever encryption keys, tokens or signing material are introduced or rotated.
+  VCGF-DATA-005:
+    load_point: route
+    triggers:
+      capabilities: [privacy]
+    rationale: Searchable encrypted data is a privacy design concern.
+  VCGF-DATA-006:
+    load_point: route
+    triggers:
+      capabilities: [email, payment, sessions]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DB-001:
+    load_point: route
+    triggers:
+      capabilities: [database]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DB-002:
+    load_point: route
+    triggers:
+      capabilities: [database, fields]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DB-003:
+    load_point: route
+    triggers:
+      capabilities: [database, privacy, backup-restore]
+    rationale: Database encryption applies to schema, storage and backup work involving sensitive data.
+  VCGF-DB-004:
+    load_point: route
+    triggers:
+      capabilities: [authorization, admin, database]
+    rationale: Row-level authorization must be tested whenever authorization or data-layer policies change.
+  VCGF-DB-005:
+    load_point: route
+    triggers:
+      capabilities: [database]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DB-006:
+    load_point: route
+    triggers:
+      capabilities: [database]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DEP-001:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering, script-protection]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DEP-002:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering, script-protection]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DEP-003:
+    load_point: route
+    triggers:
+      capabilities: [script-protection]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-DEP-004:
+    load_point: route
+    triggers:
+      capabilities: [script-protection]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-FILE-001:
+    load_point: route
+    triggers:
+      capabilities: [files]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-FILE-002:
+    load_point: route
+    triggers:
+      capabilities: [files]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-GOV-001:
+    load_point: route
+    triggers:
+      always: true
+    rationale: Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).
+  VCGF-GOV-002:
+    load_point: route
+    triggers:
+      capabilities: [admin, deletion, exception, governance-change]
+    rationale: Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.
+  VCGF-GOV-003:
+    load_point: route
+    triggers:
+      capabilities: [exception]
+    rationale: Loaded when a task requests or reviews a security exception.
+  VCGF-GOV-004:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-engineering, exception]
+    rationale: Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.
+  VCGF-GOV-005:
+    load_point: route
+    triggers:
+      always: true
+    rationale: Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).
+  VCGF-GOV-006:
+    load_point: route
+    triggers:
+      capabilities: [governance-change]
+    rationale: Loaded when a task changes governance definitions, adapters or policy text in the project.
+  VCGF-IAM-001:
+    load_point: route
+    triggers:
+      capabilities: [identity]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IAM-002:
+    load_point: route
+    triggers:
+      capabilities: [identity]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IAM-003:
+    load_point: route
+    triggers:
+      capabilities: [admin, sessions, step-up, strong-auth]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IAM-004:
+    load_point: route
+    triggers:
+      capabilities: [identity]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IAM-005:
+    load_point: route
+    triggers:
+      capabilities: [password-recovery, strong-auth]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IAM-006:
+    load_point: route
+    triggers:
+      capabilities: [admin, step-up]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IAM-007:
+    load_point: route
+    triggers:
+      capabilities: [authorization, identity]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IR-001:
+    load_point: route
+    triggers:
+      capabilities: [incident]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IR-002:
+    load_point: route
+    triggers:
+      capabilities: [incident]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-IR-003:
+    load_point: route
+    triggers:
+      capabilities: [incident]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-OPS-001:
+    load_point: route
+    triggers:
+      capabilities: [release, database, incident, backup-restore, deletion, operations]
+    rationale: Environment separation applies to releases, migrations, incidents, backups and destructive operations.
+  VCGF-OPS-002:
+    load_point: route
+    triggers:
+      capabilities: [incident, operations]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-OPS-003:
+    load_point: route
+    triggers:
+      capabilities: [backup-restore]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-OPS-004:
+    load_point: route
+    triggers:
+      capabilities: [release, incident, governance-change, operations]
+    rationale: Configuration drift control applies to release and incident work and to governance configuration changes.
+  VCGF-OPS-005:
+    load_point: route
+    triggers:
+      capabilities: [release, incident, api, identity, payment, operations]
+    rationale: Security monitoring applies to releases, incidents and the surfaces that generate security events.
+  VCGF-PRIV-001:
+    load_point: route
+    triggers:
+      capabilities: [audit, email]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-PRIV-002:
+    load_point: route
+    triggers:
+      capabilities: [privacy]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-PRIV-003:
+    load_point: route
+    triggers:
+      capabilities: [privacy]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-PRIV-004:
+    load_point: route
+    triggers:
+      capabilities: [deletion, privacy]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-REL-001:
+    load_point: route
+    triggers:
+      always: true
+    rationale: Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).
+  VCGF-REL-002:
+    load_point: route
+    triggers:
+      capabilities: [release]
+    rationale: Pre-release security gate applies to release tasks.
+  VCGF-REL-003:
+    load_point: route
+    triggers:
+      capabilities: [backup-restore, incident]
+    rationale: Loaded through the capabilities that map to it; also added by the router for risk CRITICAL.
+  VCGF-REL-004:
+    load_point: route
+    triggers:
+      capabilities: [release]
+    rationale: Post-release monitoring applies to release tasks.
+  VCGF-REL-005:
+    load_point: route
+    triggers:
+      capabilities: [release, script-protection]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-SEC-001:
+    load_point: route
+    triggers:
+      capabilities: [fields]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-SEC-002:
+    load_point: route
+    triggers:
+      capabilities: [files]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-SEC-003:
+    load_point: route
+    triggers:
+      capabilities: [fields]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-SEC-004:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-ux, fields]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-SEC-005:
+    load_point: route
+    triggers:
+      capabilities: [fields]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-SEC-006:
+    load_point: route
+    triggers:
+      router_policy: [risk-high-critical]
+    rationale: Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.
+  VCGF-SECR-001:
+    load_point: route
+    triggers:
+      capabilities: [email, product-ai, script-protection]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-SECR-002:
+    load_point: route
+    triggers:
+      capabilities: [incident, identity, strong-auth, payment, email, backup-restore]
+    rationale: Secret rotation and compromise response apply to incidents and to tasks introducing credentials or keys.
+  VCGF-TEST-001:
+    load_point: route
+    triggers:
+      capabilities: [authorization]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-TEST-002:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-ux, public-discovery, ux-accessibility]
+    rationale: Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL, deep mode, standard/deep mode.
+  VCGF-TEST-003:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-ux]
+    rationale: Loaded through the capabilities that map to it; also added by the router for deep mode.
+  VCGF-TEST-004:
+    load_point: route
+    triggers:
+      capabilities: [release, adaptive-engineering]
+    rationale: A security test strategy is required before release and when the engineering approach is designed.
+  VCGF-TEST-005:
+    load_point: route
+    triggers:
+      capabilities: [fields]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-TEST-006:
+    load_point: route
+    triggers:
+      capabilities: [password-recovery]
+    rationale: Loaded through the capabilities that map to it.
+  VCGF-UX-001:
+    load_point: route
+    triggers:
+      capabilities: [ux-accessibility, adaptive-ux, public-discovery]
+    rationale: Accessibility conformance applies to every user-facing interface task.
+  VCGF-UX-002:
+    load_point: route
+    triggers:
+      capabilities: [ux-accessibility, adaptive-ux, public-discovery]
+    rationale: Localization and bidirectional text apply to every user-facing interface task in multilingual or RTL products.
+  VCGF-UX-003:
+    load_point: route
+    triggers:
+      capabilities: [ux-accessibility, adaptive-ux, fields]
+    rationale: Interaction-state integrity applies to interactive screens and forms.
+  VCGF-UX-004:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-ux, ux-accessibility]
+    rationale: Responsive strategy and density apply when screens are composed or redesigned.
+  VCGF-UX-001:
+    load_point: route
+    triggers:
+      capabilities: [ux-accessibility, adaptive-ux, public-discovery]
+    rationale: Accessibility conformance applies to every user-facing interface task.
+  VCGF-UX-002:
+    load_point: route
+    triggers:
+      capabilities: [ux-accessibility, adaptive-ux, public-discovery]
+    rationale: Localization and bidirectional text apply to every user-facing interface task in multilingual or RTL products.
+  VCGF-UX-003:
+    load_point: route
+    triggers:
+      capabilities: [ux-accessibility, adaptive-ux, fields]
+    rationale: Interaction-state integrity applies to interactive screens and forms.
+  VCGF-UX-004:
+    load_point: route
+    triggers:
+      capabilities: [adaptive-ux, ux-accessibility]
+    rationale: Responsive strategy and density apply when screens are composed or redesigned.
