@@ -12,7 +12,7 @@
       "reason": "CI runs the new applicability and acceptance validators."
     },
     "CHANGELOG.md": {
-      "sha256_lf": "d48a8d521e32082ac19e28c465dfdaeda1ed0bb23c6195d039f6fb9bbfc60a44",
+      "sha256_lf": "899d4b038ae8a1c6bfa8fbe2ee957b6b3456ed506b9884fec707411c0414a36f",
       "reason": "Document the unreleased 1.4.0 Phase 1 changes (applicability matrix, profile layer, acceptance tests, governed Smart UI selection)."
     },
     "CITATION.cff": {
@@ -20,7 +20,7 @@
       "reason": "Citation version/date for the 1.4.0 development version."
     },
     "FILE-MANIFEST.md": {
-      "sha256_lf": "1075dc0530cb67dd323f964c7f392a754f9362fe222bc33bc02f11978b7762f4",
+      "sha256_lf": "d72d0fa240fd1eede0fefb4a76d6c72e69f1012b6c47ef6133550fda5f44aca3",
       "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
     },
     "README.ar.md": {
@@ -32,7 +32,7 @@
       "reason": "Version badge and a short section on the applicability matrix, profile layer, acceptance tests and governed Smart UI selection."
     },
     "REPOSITORY-TREE.md": {
-      "sha256_lf": "72ba4f9b992672f6db55e6a8eafbbac3b49f3aeaa8b4653261317a1b3eca8a50",
+      "sha256_lf": "13ac460f426adf4d9eb2b2446f609e95025a8df7038c506d69c98cf1ddc8bae5",
       "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
     },
     "VCGF-MANIFEST.yaml": {
@@ -116,8 +116,8 @@
       "reason": "profile_version 1.1.0; VCGF-UX-001 and VCGF-UX-002 required, VCGF-UX-003/004 optional; the 77 v1.0 required controls unchanged."
     },
     "scripts/release-quality-gate.py": {
-      "sha256_lf": "4f8c65b6d79f49ef4efdea3041cbad229dcf90db33a8e3c61be1e001b46806b3",
-      "reason": "Gate runs the new applicability and acceptance validators."
+      "sha256_lf": "a263e979785579b338359ce8b908ac253b5ff20c2cbc7acb997b77eacb7591c7",
+      "reason": "Gate runs the new applicability and acceptance validators and verifies the derived control cards (generate-control-cards --check)."
     },
     "scripts/validate-controls.py": {
       "sha256_lf": "d4ea6be86a9a5eea11322c666281fe0c092479ba6fd426ac06c2fe5ac63aed9f",

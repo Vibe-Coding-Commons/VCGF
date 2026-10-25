@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **1004**
+Files listed: **1099**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -241,6 +241,7 @@ Files listed: **1004**
 | docs/project-history/v1.1.0/test-evidence.json | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/project-history/v1.3.0-smart-ui-integration.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/project-history/v1.4.0-phase1-architecture-governance.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
+| docs/project-history/v1.4.0-phase2-token-efficiency.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/baseline-compatibility-v1.2.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/environment-and-limitations.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/evaluation-ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
@@ -884,6 +885,7 @@ Files listed: **1004**
 | runtime/router.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/routing-policy.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/scope_guard.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
+| runtime/tokens.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/ui-bindings.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/ui_select.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | schemas/adapter.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
@@ -908,6 +910,7 @@ Files listed: **1004**
 | scripts/benchmark-adaptive.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/check-adapter-updates.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/generate-adapter-rules.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/generate-control-cards.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/generate-control-catalog.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/generate-file-manifest.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/generate-repository-tree.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
@@ -958,6 +961,96 @@ Files listed: **1004**
 | spec/acceptance/user-experience.yaml | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/applicability-matrix.yaml | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/conformance.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/README.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-006.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-007.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-008.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AI-009.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-API-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-API-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-API-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-API-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-API-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-ARCH-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-ARCH-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-ARCH-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-ARCH-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-ARCH-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AUDIT-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AUDIT-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-AUDIT-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DATA-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DATA-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DATA-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DATA-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DATA-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DATA-006.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DB-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DB-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DB-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DB-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DB-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DB-006.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DEP-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DEP-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DEP-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-DEP-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-FILE-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-FILE-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-GOV-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-GOV-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-GOV-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-GOV-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-GOV-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-GOV-006.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IAM-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IAM-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IAM-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IAM-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IAM-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IAM-006.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IAM-007.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IR-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IR-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-IR-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-OPS-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-OPS-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-OPS-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-OPS-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-OPS-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-PRIV-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-PRIV-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-PRIV-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-PRIV-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-REL-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-REL-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-REL-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-REL-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-REL-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SEC-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SEC-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SEC-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SEC-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SEC-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SEC-006.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SECR-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-SECR-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-TEST-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-TEST-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-TEST-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-TEST-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-TEST-005.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-TEST-006.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-UX-001.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-UX-002.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-UX-003.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/VCGF-UX-004.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/control-cards/common-clauses.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/control-catalog.yaml | Repository governance, release, identity, or project metadata | spec | Generated | 1.4.0 |
 | spec/evidence-model.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/exception-management.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
@@ -1014,6 +1107,8 @@ Files listed: **1004**
 | tests/fixtures/v1.1/screen-context.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/fixtures/v1.1/ui-selection.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_adapters.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
+| tests/scenarios/test_applicability_triggers.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
+| tests/scenarios/test_context_efficiency.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_gates.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_integrations.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_profile_layer.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |

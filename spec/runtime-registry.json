@@ -1868,6 +1868,364 @@
       ]
     }
   ],
+  "cards": {
+    "VCGF-AI-001": {
+      "path": "spec/control-cards/VCGF-AI-001.md",
+      "sha256": "b847e99da0fe6b0f786ec6ae83757c48692cfa5250ff269e3c950734f3f32e0c"
+    },
+    "VCGF-AI-002": {
+      "path": "spec/control-cards/VCGF-AI-002.md",
+      "sha256": "b4569718363975290a7430b086abefc4820a3648f785d9b76df23760625775f3"
+    },
+    "VCGF-AI-003": {
+      "path": "spec/control-cards/VCGF-AI-003.md",
+      "sha256": "54b3362f9b9f14aceb9f93ed22b4dcd2ed55178f883c0f676b380631a700d360"
+    },
+    "VCGF-AI-004": {
+      "path": "spec/control-cards/VCGF-AI-004.md",
+      "sha256": "54ae0035098a5eacf8a76c31f7c85da7c14a198b7ce87ea6dffcb452cf58721d"
+    },
+    "VCGF-AI-005": {
+      "path": "spec/control-cards/VCGF-AI-005.md",
+      "sha256": "79bc9dbbecb82924d3c8b87b229afeb44bb62840dbf20926c05e0b788a832480"
+    },
+    "VCGF-AI-006": {
+      "path": "spec/control-cards/VCGF-AI-006.md",
+      "sha256": "7390de9998c70393b17cedb11d4b6b470b83534c3177851c153aaa676dfd98fb"
+    },
+    "VCGF-AI-007": {
+      "path": "spec/control-cards/VCGF-AI-007.md",
+      "sha256": "15d408f3b81b17cdb2adaf55f7762c125cd2379f08f982f69e03f5cab305d053"
+    },
+    "VCGF-AI-008": {
+      "path": "spec/control-cards/VCGF-AI-008.md",
+      "sha256": "a9164a34fea38673908cbd4bbe79e16110643a986066913353730fc8658c4298"
+    },
+    "VCGF-AI-009": {
+      "path": "spec/control-cards/VCGF-AI-009.md",
+      "sha256": "35ec4f2a63a7dc571ed53e02a6822a83ac5b8dcc33848c7862be6d1772625d27"
+    },
+    "VCGF-API-001": {
+      "path": "spec/control-cards/VCGF-API-001.md",
+      "sha256": "3d7870b7da6b6a324e97c73be86e0400a3dd237448bf6c58f11d11273681409b"
+    },
+    "VCGF-API-002": {
+      "path": "spec/control-cards/VCGF-API-002.md",
+      "sha256": "4fd52c07a9be2fdbf840d086db6cebfa0fbc8e4f15c4914fc21cb8d90d24714f"
+    },
+    "VCGF-API-003": {
+      "path": "spec/control-cards/VCGF-API-003.md",
+      "sha256": "eb62f7ec31aebd4b3668f37406052e5ea121a234982b2be0b848f47d95605286"
+    },
+    "VCGF-API-004": {
+      "path": "spec/control-cards/VCGF-API-004.md",
+      "sha256": "65277e85f9617708f9fa9edc8cd041e00dab76c87c0f7154e35b64a77904ebab"
+    },
+    "VCGF-API-005": {
+      "path": "spec/control-cards/VCGF-API-005.md",
+      "sha256": "fefaed92d74cf1210e3a7e6aaa714fab099bcf5a78e9e2a2a532a7545c9e41b3"
+    },
+    "VCGF-ARCH-001": {
+      "path": "spec/control-cards/VCGF-ARCH-001.md",
+      "sha256": "f0a90ad557d30a4a342dfbba9a203f05913b7ccbdcd05ab31386117411909b16"
+    },
+    "VCGF-ARCH-002": {
+      "path": "spec/control-cards/VCGF-ARCH-002.md",
+      "sha256": "78653f493dbf3dcb934b9c02efa7d17a5f94a8ca777be8380b40d2882c8b5f94"
+    },
+    "VCGF-ARCH-003": {
+      "path": "spec/control-cards/VCGF-ARCH-003.md",
+      "sha256": "808270e16345f4d52ace7ea1d91a42ccaeb7353f640176277cbff3ef1ff6f10d"
+    },
+    "VCGF-ARCH-004": {
+      "path": "spec/control-cards/VCGF-ARCH-004.md",
+      "sha256": "8d512ac8d6caaabba875a160a800e6f649561276d02870854d552ac9c1ce0606"
+    },
+    "VCGF-ARCH-005": {
+      "path": "spec/control-cards/VCGF-ARCH-005.md",
+      "sha256": "bf258ce055f6b5908f6a1925f4f9af4b6f4bfd8f66dd7bcd0aa7cc989a90fc2c"
+    },
+    "VCGF-AUDIT-001": {
+      "path": "spec/control-cards/VCGF-AUDIT-001.md",
+      "sha256": "f3994d0a2b08f0677b43bc426bdb38e58fea6890016c6d858c5bec8842949573"
+    },
+    "VCGF-AUDIT-002": {
+      "path": "spec/control-cards/VCGF-AUDIT-002.md",
+      "sha256": "aa75275440a03652d118f03c6a80940486b1ec446aa81c1cc1410ebe9a66d152"
+    },
+    "VCGF-AUDIT-003": {
+      "path": "spec/control-cards/VCGF-AUDIT-003.md",
+      "sha256": "a48be8921ecd77a8271bb60f3dde9c806e08f542f5957ef6d54247e660e0f4ce"
+    },
+    "VCGF-DATA-001": {
+      "path": "spec/control-cards/VCGF-DATA-001.md",
+      "sha256": "9bce490c66bb17ab0afdc3c301b8ee93b3a5b8c67239b00a623852cd3d513167"
+    },
+    "VCGF-DATA-002": {
+      "path": "spec/control-cards/VCGF-DATA-002.md",
+      "sha256": "a1bc2c58630e15b78329bae2b18ab6b3c55b138425adfa8db4ecd3c0e306ceb2"
+    },
+    "VCGF-DATA-003": {
+      "path": "spec/control-cards/VCGF-DATA-003.md",
+      "sha256": "46b5c188ad385cae76e97dda1a0a3285f7b068e2ab1022285b2191c830bf0dc6"
+    },
+    "VCGF-DATA-004": {
+      "path": "spec/control-cards/VCGF-DATA-004.md",
+      "sha256": "48f11fe3e96a8fc20ce27e9df5efd2359e7bc580c2d10435577f7cefec107a1b"
+    },
+    "VCGF-DATA-005": {
+      "path": "spec/control-cards/VCGF-DATA-005.md",
+      "sha256": "9cf6c264f5c74f59310c388adbe1c5a6548dcec5ad43886f999714c6f6c7e5fe"
+    },
+    "VCGF-DATA-006": {
+      "path": "spec/control-cards/VCGF-DATA-006.md",
+      "sha256": "4e4d85352f493cf7b3c128378ec219111d0e7638a03b1e4a4ef52be94d9a9232"
+    },
+    "VCGF-DB-001": {
+      "path": "spec/control-cards/VCGF-DB-001.md",
+      "sha256": "149bdd743dcfd284a6153e8e18e405df20332a4ba50ded81db56736b49003153"
+    },
+    "VCGF-DB-002": {
+      "path": "spec/control-cards/VCGF-DB-002.md",
+      "sha256": "8ce68247800d086ea80cdfbdfa6cd6cc46bc68f32e78b4f2871acd1ba5500a22"
+    },
+    "VCGF-DB-003": {
+      "path": "spec/control-cards/VCGF-DB-003.md",
+      "sha256": "c506d043cc59c50ecac6b18aa91e266429bac7b63588d924e7b777a00a247888"
+    },
+    "VCGF-DB-004": {
+      "path": "spec/control-cards/VCGF-DB-004.md",
+      "sha256": "36e0656c950d26cfb8c7156e7d5a0c32d4afacc735f6e2a4eb66458dba6fdc56"
+    },
+    "VCGF-DB-005": {
+      "path": "spec/control-cards/VCGF-DB-005.md",
+      "sha256": "d232c6fd77137e760d1155de36e358666227a7d8016114fdedd78a6cff8d2ffe"
+    },
+    "VCGF-DB-006": {
+      "path": "spec/control-cards/VCGF-DB-006.md",
+      "sha256": "231d55704a6715cb49069157eef77019bbe75504839f5a771d78d1a812ea2d97"
+    },
+    "VCGF-DEP-001": {
+      "path": "spec/control-cards/VCGF-DEP-001.md",
+      "sha256": "e95653e2e79011882ccd0aa62c970d6501b55126fa755842bed1b16b3c13b74f"
+    },
+    "VCGF-DEP-002": {
+      "path": "spec/control-cards/VCGF-DEP-002.md",
+      "sha256": "fd70333373ab4f2586c07ee59633a6cbded31ddeaf7476e8e039b503e168c2b9"
+    },
+    "VCGF-DEP-003": {
+      "path": "spec/control-cards/VCGF-DEP-003.md",
+      "sha256": "7c9edd15dbab45a2b4184e014529e8e5aa918d46e1c39b95a4768d5df093275e"
+    },
+    "VCGF-DEP-004": {
+      "path": "spec/control-cards/VCGF-DEP-004.md",
+      "sha256": "04793b489e84b58558c6dab7da834adba684b0c1a9344537eb26f8da5159f541"
+    },
+    "VCGF-FILE-001": {
+      "path": "spec/control-cards/VCGF-FILE-001.md",
+      "sha256": "2ffb7e250cead2b61550efe75771642c97577e1b3c2c0c7d65ed738529892a5a"
+    },
+    "VCGF-FILE-002": {
+      "path": "spec/control-cards/VCGF-FILE-002.md",
+      "sha256": "c8270977e927ba63f2625330d6cf94c236280b0f8613c9f77800b075af7694fc"
+    },
+    "VCGF-GOV-001": {
+      "path": "spec/control-cards/VCGF-GOV-001.md",
+      "sha256": "8e57454da402d2a8884a99cddf4941664cb583cb37b26ee5e456e259039d14ab"
+    },
+    "VCGF-GOV-002": {
+      "path": "spec/control-cards/VCGF-GOV-002.md",
+      "sha256": "2b2bfa55b21e13ae2aa4c863f430e479f362794d2804c7971143eec69d283476"
+    },
+    "VCGF-GOV-003": {
+      "path": "spec/control-cards/VCGF-GOV-003.md",
+      "sha256": "707a0864030e83b6321961ebae0f71fbaf228de7819709a5f49d28d21d1a8bc4"
+    },
+    "VCGF-GOV-004": {
+      "path": "spec/control-cards/VCGF-GOV-004.md",
+      "sha256": "cdb3e8d71e2b22ffe500922fe7e55ab0493f5979ea57121ce307a96ea30e882a"
+    },
+    "VCGF-GOV-005": {
+      "path": "spec/control-cards/VCGF-GOV-005.md",
+      "sha256": "239aa9c1247fe426bed0f2ea2a0aea31cd29f517e1f3ef56a6d1d0c679c4fc9d"
+    },
+    "VCGF-GOV-006": {
+      "path": "spec/control-cards/VCGF-GOV-006.md",
+      "sha256": "32ec7de452ba957a57bf913f92fb230ad6515b6542ba0c447908044a1c147324"
+    },
+    "VCGF-IAM-001": {
+      "path": "spec/control-cards/VCGF-IAM-001.md",
+      "sha256": "34fd392644b05cfa9f54375671e8ce69d0b9f7422280dae1a2e3b8c36afe584c"
+    },
+    "VCGF-IAM-002": {
+      "path": "spec/control-cards/VCGF-IAM-002.md",
+      "sha256": "b09b4acbcfd402a374891d69f2f37b4ef8173c9ad7b971a7cac7041bb7a5b171"
+    },
+    "VCGF-IAM-003": {
+      "path": "spec/control-cards/VCGF-IAM-003.md",
+      "sha256": "0356ca68fe3873b42cbf327720d23f17d286d737f72632a72041f3a61b6ffa51"
+    },
+    "VCGF-IAM-004": {
+      "path": "spec/control-cards/VCGF-IAM-004.md",
+      "sha256": "9430ec685abec204c5a762be4fa3e6f053bc2000071d319a444577fd20aa31d9"
+    },
+    "VCGF-IAM-005": {
+      "path": "spec/control-cards/VCGF-IAM-005.md",
+      "sha256": "a7bf4eb39f5e2814e34eb081ad66d7ec1c06ff6e273403dd67a39a414dce2ad5"
+    },
+    "VCGF-IAM-006": {
+      "path": "spec/control-cards/VCGF-IAM-006.md",
+      "sha256": "6819fc06ea2c2025cc84106c53caf702d810ac432181ded78e5d47c017d0b827"
+    },
+    "VCGF-IAM-007": {
+      "path": "spec/control-cards/VCGF-IAM-007.md",
+      "sha256": "eb47d4855c08512c8a1a6a70fb980466fd0f1058a46018d136547f8e80f59f3f"
+    },
+    "VCGF-IR-001": {
+      "path": "spec/control-cards/VCGF-IR-001.md",
+      "sha256": "2890f9b58a277a8b9771687aba19982b317119af3a4938a7b2c525c79170b615"
+    },
+    "VCGF-IR-002": {
+      "path": "spec/control-cards/VCGF-IR-002.md",
+      "sha256": "eb7c019f966bf4dd661e6d64f022ff0ad3b8b4caf44f478130dc560987944d57"
+    },
+    "VCGF-IR-003": {
+      "path": "spec/control-cards/VCGF-IR-003.md",
+      "sha256": "2175fbda3e40ca5f111b71e92178436332ea84d1e20428a66d8cdd3fb7e7b00d"
+    },
+    "VCGF-OPS-001": {
+      "path": "spec/control-cards/VCGF-OPS-001.md",
+      "sha256": "690635afda433864b834530124bd45b0004154562c0514df8b985921cc2793db"
+    },
+    "VCGF-OPS-002": {
+      "path": "spec/control-cards/VCGF-OPS-002.md",
+      "sha256": "87253e33386eb7703de895fe023f4c3fd2eff720920b6ebe79db526178367d99"
+    },
+    "VCGF-OPS-003": {
+      "path": "spec/control-cards/VCGF-OPS-003.md",
+      "sha256": "e3c2e1a0c2f504925cd9e4e9aa67387501adb2f31b62bf38872700d47538d09b"
+    },
+    "VCGF-OPS-004": {
+      "path": "spec/control-cards/VCGF-OPS-004.md",
+      "sha256": "5451ffa759174b8634bf1fd92e6b431d9e1509a8be038945f636bea7eb0386cc"
+    },
+    "VCGF-OPS-005": {
+      "path": "spec/control-cards/VCGF-OPS-005.md",
+      "sha256": "e3909cd0e07216e1758e9c35de00bb9293b8df5b75048035c42e6306ec87fdd9"
+    },
+    "VCGF-PRIV-001": {
+      "path": "spec/control-cards/VCGF-PRIV-001.md",
+      "sha256": "784a41b51d327c616a4a88b03e434f38e65557fb9d0b518b55ddca7bb66c3003"
+    },
+    "VCGF-PRIV-002": {
+      "path": "spec/control-cards/VCGF-PRIV-002.md",
+      "sha256": "f5a2ca30d210f5a86e1b703860d488f5e8308997c8c5055a3bc6df37316048cb"
+    },
+    "VCGF-PRIV-003": {
+      "path": "spec/control-cards/VCGF-PRIV-003.md",
+      "sha256": "ef1023bf446e04af63a7cfb11a8e1742e90bbc9cb92dfa0cbce1156ee4841de1"
+    },
+    "VCGF-PRIV-004": {
+      "path": "spec/control-cards/VCGF-PRIV-004.md",
+      "sha256": "f712957d7a74b459fd5e71d9857a04392963d6f91351f777b930b893d67a37ca"
+    },
+    "VCGF-REL-001": {
+      "path": "spec/control-cards/VCGF-REL-001.md",
+      "sha256": "133465e2bea545850961ac7e2bf3839b1f3cdb3762bfc54fd8a000d3ae2d045f"
+    },
+    "VCGF-REL-002": {
+      "path": "spec/control-cards/VCGF-REL-002.md",
+      "sha256": "7208106a65bca209471d66f313ca7b026dc5699f6e654bba1559b23b882dccf7"
+    },
+    "VCGF-REL-003": {
+      "path": "spec/control-cards/VCGF-REL-003.md",
+      "sha256": "0a9e973d5c651ed14ef01e4f7a966fdf63958ab25af5800973909042df7a4986"
+    },
+    "VCGF-REL-004": {
+      "path": "spec/control-cards/VCGF-REL-004.md",
+      "sha256": "832d41ca0c7657c4dcc16b7278ab94fcb0f692d1a315d3894e8643a0b80034c8"
+    },
+    "VCGF-REL-005": {
+      "path": "spec/control-cards/VCGF-REL-005.md",
+      "sha256": "739e9c6035a0623fcea59acb7e14f5e8260962ead1dcdb274c30fb370414d9ea"
+    },
+    "VCGF-SEC-001": {
+      "path": "spec/control-cards/VCGF-SEC-001.md",
+      "sha256": "e6276d61b9d7b648d10b09a41da81db6c499533ac4fa186227e895bae3bcdc16"
+    },
+    "VCGF-SEC-002": {
+      "path": "spec/control-cards/VCGF-SEC-002.md",
+      "sha256": "9ecc2259ddf3a8ed54f0a715f4533f58e12981cb1631ddf730272be69ddae888"
+    },
+    "VCGF-SEC-003": {
+      "path": "spec/control-cards/VCGF-SEC-003.md",
+      "sha256": "0de947edb1730f834a7d95f81d4f3619a4f24a34702b26e8696274c90e75e04e"
+    },
+    "VCGF-SEC-004": {
+      "path": "spec/control-cards/VCGF-SEC-004.md",
+      "sha256": "9f8a1d475fa3158e0f55fc89685aecd53df2600300653dffc8256f8cacae50d1"
+    },
+    "VCGF-SEC-005": {
+      "path": "spec/control-cards/VCGF-SEC-005.md",
+      "sha256": "c1c7f4ba5c1d4667f1a7cc8cf21e5b646d4e2df8ab0738eed14aad2d41a3acc3"
+    },
+    "VCGF-SEC-006": {
+      "path": "spec/control-cards/VCGF-SEC-006.md",
+      "sha256": "22ad82a3042acda9c892145955219ade858e91ccffbfa891d3915d17025afe89"
+    },
+    "VCGF-SECR-001": {
+      "path": "spec/control-cards/VCGF-SECR-001.md",
+      "sha256": "aadf7bd539706fdcdca9cb43f0f24191bd4b2078795edf832f5c28c79719dd8d"
+    },
+    "VCGF-SECR-002": {
+      "path": "spec/control-cards/VCGF-SECR-002.md",
+      "sha256": "9d507df51c8bbf3f92be5ea603246138196c1713909e8b8fb093334d2f6d7336"
+    },
+    "VCGF-TEST-001": {
+      "path": "spec/control-cards/VCGF-TEST-001.md",
+      "sha256": "65acb795e668cc0773e9982a1f405df026d354e069657186ef5f3d953aab0afb"
+    },
+    "VCGF-TEST-002": {
+      "path": "spec/control-cards/VCGF-TEST-002.md",
+      "sha256": "08748afb25b4522064c045d3fa44620121b3cab2c58c5c80d74e784b37dd51a0"
+    },
+    "VCGF-TEST-003": {
+      "path": "spec/control-cards/VCGF-TEST-003.md",
+      "sha256": "f5fff23222a5a4414db247179846a6a28d5aacd8afbf3df3b10dab019f45125c"
+    },
+    "VCGF-TEST-004": {
+      "path": "spec/control-cards/VCGF-TEST-004.md",
+      "sha256": "e72e9580c1d17fd25d1eaf7ff2c6a757553908a3482a353e427b6fa2269272ee"
+    },
+    "VCGF-TEST-005": {
+      "path": "spec/control-cards/VCGF-TEST-005.md",
+      "sha256": "91ed5d4280ba9ec2fa01cc5336894279bf49c6578883bbe3d531701375cbb503"
+    },
+    "VCGF-TEST-006": {
+      "path": "spec/control-cards/VCGF-TEST-006.md",
+      "sha256": "79c19bd94bd504a7bd0b4b9b9e0c76b24b1e993a205f0ae745ab8b95fcab8eb7"
+    },
+    "VCGF-UX-001": {
+      "path": "spec/control-cards/VCGF-UX-001.md",
+      "sha256": "f0f66a2c1601d09e03d0e196e579f8ce007341f8b2558dfe373f07d34ddfbd59"
+    },
+    "VCGF-UX-002": {
+      "path": "spec/control-cards/VCGF-UX-002.md",
+      "sha256": "a31c67fb45d778937238c28eaf105d408498ecfd7adc10fdcb79b1483577697d"
+    },
+    "VCGF-UX-003": {
+      "path": "spec/control-cards/VCGF-UX-003.md",
+      "sha256": "ce8dfa5febdedc157d415c1d6f10e58dd90ac75a35907973c9c42b69aab9694e"
+    },
+    "VCGF-UX-004": {
+      "path": "spec/control-cards/VCGF-UX-004.md",
+      "sha256": "108b13507a69aa03dac36f0a40b5e37ae54b6c3473818023a751608552cf129d"
+    }
+  },
+  "common_clauses": {
+    "path": "spec/control-cards/common-clauses.md",
+    "sha256": "9cc60fd0868c496a68136dc1cc8c852cc1fe3c2880319f0f5f8904df07595bb1"
+  },
   "controls": {
     "VCGF-AI-001": {
       "domain": "ai-governance",
@@ -3386,7 +3744,7 @@
       "VCGF-TEST-002"
     ]
   },
-  "policy_sha256": "68d0ca4e6af3ea4a40a10959cc82ca407d1a4e49fe1096fe238e96a54bd5b8c6",
+  "policy_sha256": "527209e4d21d79eea5eb715737dbb71cb1e4720181d009252214a7198cc10cb1",
   "profiles": {
     "baseline": [
       "VCGF-AI-001",

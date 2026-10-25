@@ -248,7 +248,8 @@ VCGF/
 │   │   │   ├── skill-forward-test.json
 │   │   │   └── test-evidence.json
 │   │   ├── v1.3.0-smart-ui-integration.md
-│   │   └── v1.4.0-phase1-architecture-governance.md
+│   │   ├── v1.4.0-phase1-architecture-governance.md
+│   │   └── v1.4.0-phase2-token-efficiency.md
 │   ├── quality
 │   │   ├── v1.2
 │   │   │   ├── evidence
@@ -1038,6 +1039,7 @@ VCGF/
 │   ├── router.py
 │   ├── routing-policy.yaml
 │   ├── scope_guard.py
+│   ├── tokens.py
 │   ├── ui-bindings.yaml
 │   └── ui_select.py
 ├── schemas
@@ -1067,6 +1069,7 @@ VCGF/
 │   ├── benchmark-adaptive.py
 │   ├── check-adapter-updates.py
 │   ├── generate-adapter-rules.py
+│   ├── generate-control-cards.py
 │   ├── generate-control-catalog.py
 │   ├── generate-file-manifest.py
 │   ├── generate-repository-tree.py
@@ -1116,6 +1119,97 @@ VCGF/
 │   │   ├── security.yaml
 │   │   ├── testing.yaml
 │   │   └── user-experience.yaml
+│   ├── control-cards
+│   │   ├── common-clauses.md
+│   │   ├── README.md
+│   │   ├── VCGF-AI-001.md
+│   │   ├── VCGF-AI-002.md
+│   │   ├── VCGF-AI-003.md
+│   │   ├── VCGF-AI-004.md
+│   │   ├── VCGF-AI-005.md
+│   │   ├── VCGF-AI-006.md
+│   │   ├── VCGF-AI-007.md
+│   │   ├── VCGF-AI-008.md
+│   │   ├── VCGF-AI-009.md
+│   │   ├── VCGF-API-001.md
+│   │   ├── VCGF-API-002.md
+│   │   ├── VCGF-API-003.md
+│   │   ├── VCGF-API-004.md
+│   │   ├── VCGF-API-005.md
+│   │   ├── VCGF-ARCH-001.md
+│   │   ├── VCGF-ARCH-002.md
+│   │   ├── VCGF-ARCH-003.md
+│   │   ├── VCGF-ARCH-004.md
+│   │   ├── VCGF-ARCH-005.md
+│   │   ├── VCGF-AUDIT-001.md
+│   │   ├── VCGF-AUDIT-002.md
+│   │   ├── VCGF-AUDIT-003.md
+│   │   ├── VCGF-DATA-001.md
+│   │   ├── VCGF-DATA-002.md
+│   │   ├── VCGF-DATA-003.md
+│   │   ├── VCGF-DATA-004.md
+│   │   ├── VCGF-DATA-005.md
+│   │   ├── VCGF-DATA-006.md
+│   │   ├── VCGF-DB-001.md
+│   │   ├── VCGF-DB-002.md
+│   │   ├── VCGF-DB-003.md
+│   │   ├── VCGF-DB-004.md
+│   │   ├── VCGF-DB-005.md
+│   │   ├── VCGF-DB-006.md
+│   │   ├── VCGF-DEP-001.md
+│   │   ├── VCGF-DEP-002.md
+│   │   ├── VCGF-DEP-003.md
+│   │   ├── VCGF-DEP-004.md
+│   │   ├── VCGF-FILE-001.md
+│   │   ├── VCGF-FILE-002.md
+│   │   ├── VCGF-GOV-001.md
+│   │   ├── VCGF-GOV-002.md
+│   │   ├── VCGF-GOV-003.md
+│   │   ├── VCGF-GOV-004.md
+│   │   ├── VCGF-GOV-005.md
+│   │   ├── VCGF-GOV-006.md
+│   │   ├── VCGF-IAM-001.md
+│   │   ├── VCGF-IAM-002.md
+│   │   ├── VCGF-IAM-003.md
+│   │   ├── VCGF-IAM-004.md
+│   │   ├── VCGF-IAM-005.md
+│   │   ├── VCGF-IAM-006.md
+│   │   ├── VCGF-IAM-007.md
+│   │   ├── VCGF-IR-001.md
+│   │   ├── VCGF-IR-002.md
+│   │   ├── VCGF-IR-003.md
+│   │   ├── VCGF-OPS-001.md
+│   │   ├── VCGF-OPS-002.md
+│   │   ├── VCGF-OPS-003.md
+│   │   ├── VCGF-OPS-004.md
+│   │   ├── VCGF-OPS-005.md
+│   │   ├── VCGF-PRIV-001.md
+│   │   ├── VCGF-PRIV-002.md
+│   │   ├── VCGF-PRIV-003.md
+│   │   ├── VCGF-PRIV-004.md
+│   │   ├── VCGF-REL-001.md
+│   │   ├── VCGF-REL-002.md
+│   │   ├── VCGF-REL-003.md
+│   │   ├── VCGF-REL-004.md
+│   │   ├── VCGF-REL-005.md
+│   │   ├── VCGF-SEC-001.md
+│   │   ├── VCGF-SEC-002.md
+│   │   ├── VCGF-SEC-003.md
+│   │   ├── VCGF-SEC-004.md
+│   │   ├── VCGF-SEC-005.md
+│   │   ├── VCGF-SEC-006.md
+│   │   ├── VCGF-SECR-001.md
+│   │   ├── VCGF-SECR-002.md
+│   │   ├── VCGF-TEST-001.md
+│   │   ├── VCGF-TEST-002.md
+│   │   ├── VCGF-TEST-003.md
+│   │   ├── VCGF-TEST-004.md
+│   │   ├── VCGF-TEST-005.md
+│   │   ├── VCGF-TEST-006.md
+│   │   ├── VCGF-UX-001.md
+│   │   ├── VCGF-UX-002.md
+│   │   ├── VCGF-UX-003.md
+│   │   └── VCGF-UX-004.md
 │   ├── applicability-matrix.yaml
 │   ├── conformance.md
 │   ├── control-catalog.yaml
@@ -1193,6 +1287,8 @@ VCGF/
 │   │       └── ui-selection.json
 │   └── scenarios
 │       ├── test_adapters.py
+│       ├── test_applicability_triggers.py
+│       ├── test_context_efficiency.py
 │       ├── test_gates.py
 │       ├── test_integrations.py
 │       ├── test_profile_layer.py
