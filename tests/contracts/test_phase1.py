@@ -248,8 +248,18 @@ class CompatibilityTests(unittest.TestCase):
         self.assertEqual(v13["review_status"], "PENDING_INDEPENDENT_REVIEW")
         self.assertEqual(set(v13_files), v13_paths)
 
+        # v1.3.1 is a locally prepared hardening candidate: a further cumulative delta.
+        # It inherits v1.3, never rewrites earlier records, and is not a publication.
+        v131 = json.loads((ROOT / "docs/quality/v1.3/baseline-compatibility-v1.3.1.json").read_text(encoding="utf-8"))
+        v131_files = v131["allowed_original_file_changes"]
+        self.assertEqual(v131["candidate_version"], "1.3.1")
+        self.assertEqual(v131["inherits"], "docs/quality/v1.3/baseline-compatibility-v1.3.json")
+        self.assertEqual(v131["review_status"], "PENDING_INDEPENDENT_REVIEW")
+        self.assertTrue(v131_files, "v1.3.1 record must list its changed original files")
+
         cumulative = dict(v12_files)
         cumulative.update(v13_files)
+        cumulative.update(v131_files)
         self.assertTrue(set(cumulative) <= set(snapshot))
         for name, record in cumulative.items():
             self.assertTrue(record["reason"].strip())

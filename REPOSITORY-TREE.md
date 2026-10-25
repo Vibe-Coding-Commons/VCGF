@@ -20,8 +20,11 @@ VCGF/
 │   │   ├── config.yml
 │   │   ├── control-proposal.md
 │   │   └── documentation-issue.md
+│   ├── release-keys
+│   │   └── README.md
 │   ├── workflows
 │   │   ├── release-quality-gate.yml
+│   │   ├── release.yml
 │   │   ├── validate-adapters.yml
 │   │   ├── validate-adaptive.yml
 │   │   ├── validate-framework.yml
@@ -276,10 +279,13 @@ VCGF/
 │   │   │   ├── scope-register.json
 │   │   │   └── sources.json
 │   │   └── v1.3
+│   │       ├── baseline-compatibility-v1.3.1.json
 │   │       ├── baseline-compatibility-v1.3.json
 │   │       ├── public-release-decision.md
+│   │       ├── release-checklist-v1.3.1.md
 │   │       ├── release-checklist.md
 │   │       ├── release-notes-v1.3.0.md
+│   │       ├── release-notes-v1.3.1.md
 │   │       └── release-validation-local.json
 │   ├── references
 │   │   ├── owasp-asvs-5-mapping.md
@@ -1045,6 +1051,7 @@ VCGF/
 │   ├── generate-file-manifest.py
 │   ├── generate-repository-tree.py
 │   ├── generate-runtime-registry.py
+│   ├── generate-sbom.py
 │   ├── release-quality-gate.py
 │   ├── test-adaptive-browser.py
 │   ├── validate-adapters.py
@@ -1055,6 +1062,7 @@ VCGF/
 │   ├── validate-documentation.py
 │   ├── validate-internal-links.py
 │   ├── validate-license.py
+│   ├── validate-package-integrity.py
 │   ├── validate-placeholders.py
 │   ├── validate-profiles.py
 │   ├── validate-repository-structure.py

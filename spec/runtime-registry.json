@@ -2,7 +2,7 @@
   "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
   "bootstrap": {
     "path": "runtime/bootstrap.md",
-    "sha256": "096d2f9db07bc6c71fda7097b253bad1a92ba4a3f8ffb1ff2341d13dbf8f2108"
+    "sha256": "6c26de581009499e33ee4625bd06035ab60a4d7725fdc9bcb749b6e16d15ff54"
   },
   "capabilities": [
     {
@@ -2314,7 +2314,7 @@
       "VCGF-TEST-002"
     ]
   },
-  "policy_sha256": "a55fecfc5dc5f9f7fcdaa2bd2a7ceda09bd0534c60d52881dedba4875ad08dff",
+  "policy_sha256": "a22fec11a05c640c74cf6070b5a3791b63ee06955a1946d1f4327c74015ba2ae",
   "profiles": {
     "baseline": [
       "VCGF-AI-001",
