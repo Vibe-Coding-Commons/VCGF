@@ -36,6 +36,13 @@
         "$ref": "common.schema.json#/$defs/control_id"
       }
     },
+    "context_detail": {
+      "description": "card: requirement cards of the selected standards (lean/standard routes); full: complete standards (deep routes).",
+      "enum": [
+        "card",
+        "full"
+      ]
+    },
     "package": {
       "type": "object",
       "additionalProperties": false,
@@ -188,8 +195,15 @@
           "type": "integer",
           "minimum": 0
         },
+        "cost_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
         "measurement": {
-          "const": "estimated"
+          "enum": [
+            "estimated",
+            "observed"
+          ]
         },
         "method": {
           "$ref": "common.schema.json#/$defs/text"
@@ -268,6 +282,11 @@
           "$ref": "common.schema.json#/$defs/digest"
         },
         "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "served_bytes": {
+          "description": "UTF-8 bytes actually served (card or full text); bytes is the pinned source size.",
           "type": "integer",
           "minimum": 0
         },

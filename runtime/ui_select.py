@@ -25,7 +25,28 @@ from .context import digest
 from .contracts import FORMATS, ROOT, validate_contract, _offline_only
 from .loader import confined, load
 
-BUDGET_METHOD = 'UTF-8 byte upper estimate of the loaded Smart UI standards; not a tokenizer measurement'
+from .tokens import count
+
+# Section headings kept in a Smart UI requirement card (scope, binding requirements, state/stage contracts, discovery
+# signals, acceptance). Settings tables, package candidates, prompts and delivery guides stay in the full standard.
+CARD_HEADINGS = ('الهدف ونطاق', 'المتطلبات', 'القبول', 'عقد الحالة', 'إشارات الاكتشاف', 'عقد المراحل')
+
+
+def smart_card(text):
+    """Deterministic requirement card of a Smart UI standard; the full text is returned when no known section is found."""
+    parts = text.split('\n## ')
+    title = next((line for line in parts[0].splitlines() if line.startswith('# ')), '').strip()
+    kept = ['## ' + part.strip() for part in parts[1:] if any(k in part.partition('\n')[0] for k in CARD_HEADINGS)]
+    if not kept:
+        return text
+    return (title + '\n' if title else '') + '\n'.join(kept) + '\n'
+
+
+def _serve(item, detail, card_paths):
+    if detail == 'card' and item['path'] in card_paths:
+        text = smart_card(item['text']); measured = count(text)
+        return {**item, 'text': text, 'bytes': measured['bytes'], 'tokens': measured['tokens'], 'served': 'card'}
+    return {**item, 'served': 'full'}
 
 
 def bindings(root=ROOT):
@@ -83,6 +104,7 @@ def select_ui(route_result, screen_context, budget=None, root=ROOT):
     if type(budget) is not int:
         raise ValueError('budget must be an integer')
     profile = route_result['profile']
+    detail = 'full' if route_result.get('mode') == 'deep' else 'card'  # requirement cards unless the route is a deep review
     blockers, warnings, standards, deferred, documents = [], [], [], [], []
     layers = {}
     for name, layer in binding['layers'].items():
@@ -152,30 +174,37 @@ def select_ui(route_result, screen_context, budget=None, root=ROOT):
     deferred.sort(key=lambda s: (s['layer'], s['standard_id']))
     documents.sort(key=lambda d: d['path'])
     records = [{'path': s['path'], 'sha256': s['sha256']} for s in standards] + [{'path': d['path'], 'sha256': d['sha256']} for d in documents]
-    active, cost = [], 0
+    active, cost, cost_bytes = [], 0, 0
+    measurement, method = count('')['measurement'], count('')['method']
     if records:
         if budget <= 0:
-            cost = sum(s['bytes'] for s in standards) + sum(d['bytes'] for d in documents)
+            cost_bytes = sum(s['bytes'] for s in standards) + sum(d['bytes'] for d in documents)
+            cost = sum(count(confined(pack, r['path']).read_text(encoding='utf-8'))['tokens'] for r in records)
             blockers.append('no remaining task budget for Smart UI standards: split the task or explicitly raise the budget; never drop governing controls')
         else:
-            loaded = load(pack, records, budget)
-            cost = loaded['cost_tokens']
-            if loaded['blocked']:
+            loaded = load(pack, records, 10 ** 12)  # pinned, confined read; the budget is applied to the served text below
+            card_paths = {s['path'] for s in standards if s['layer'] != 'external-standards'}
+            served = [_serve(item, detail, card_paths) for item in loaded['items']]
+            cost, cost_bytes = sum(x['tokens'] for x in served), sum(x['bytes'] for x in served)
+            served_bytes = {x['path']: x['bytes'] for x in served}
+            for s in standards:
+                s['served_bytes'] = served_bytes.get(s['path'], s['bytes'])
+            if cost > budget:
                 blockers.append('budget exceeded: Smart UI standards not loaded; split the task or explicitly raise the budget; never drop governing controls')
             else:
-                active = loaded['items']
+                active = served
     if blockers:
         status = 'blocked'
     index = acceptance_index(root)
     acceptance = {cid: sorted(t['id'] for t in index[cid]['tests']) for cid in ux_controls if cid in index}
     result = {'contract_version': '1.1.0', 'task_id': route_result['task_id'], 'route_sha256': digest(route_result),
               'input_sha256': digest({'route': route_result, 'screen_context': screen_context, 'budget': budget}),
-              'profile': profile, 'status': status, 'ux_controls_in_route': ux_controls,
+              'profile': profile, 'status': status, 'ux_controls_in_route': ux_controls, 'context_detail': detail,
               'package': {'path': binding['package_root'], 'version': manifest['package_version'], 'status': manifest['status'],
                           'manifest_sha256': hashlib.sha256(manifest_bytes).hexdigest()},
               'layers': layers, 'standards': standards, 'deferred_standards': deferred, 'governance_documents': documents,
               'acceptance_tests': acceptance,
-              'budget': {'limit_tokens': max(budget, 0), 'cost_tokens': cost, 'measurement': 'estimated', 'method': BUDGET_METHOD},
+              'budget': {'limit_tokens': max(budget, 0), 'cost_tokens': cost, 'cost_bytes': cost_bytes, 'measurement': measurement, 'method': method},
               'blockers': blockers, 'warnings': warnings, 'selection_plan_sha256': digest(plan) if plan is not None else None}
     errors = validate_contract('ui-selection', result)
     if errors:

@@ -1,17 +1,18 @@
 {
-  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Synthetic governed Smart UI selection (production profile: components and calendar loaded, other layers deferred)",
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Synthetic governed Smart UI selection (production profile: components and calendar loaded as requirement cards, other layers deferred)",
   "synthetic": true,
   "record": {
     "contract_version": "1.1.0",
     "task_id": "synthetic-ui",
-    "route_sha256": "5bc675bf8152426c7aa31204a1c447936616c0b3e4f73551a8313f0041195fdf",
-    "input_sha256": "f7a5de525d2ff7176b4e2629be7ee7e4c133a318c9bcaec73e88e4f990a2dccd",
+    "route_sha256": "f32f2428ad3df5b6d876f6deee141f6357806153afc96ecfc2ffe3ace00cb6bd",
+    "input_sha256": "7004181b3024f22e5a5cab21f5716544c4d0d491655ff5b6809670a3457b00d1",
     "profile": "production",
     "status": "selected",
     "ux_controls_in_route": [
       "VCGF-UX-001",
       "VCGF-UX-002"
     ],
+    "context_detail": "card",
     "package": {
       "path": "packs/ux/smart-ui",
       "version": "1.0.0",
@@ -67,7 +68,8 @@
         "decision": "required",
         "matched_signals": [
           "repeated_ui_primitives"
-        ]
+        ],
+        "served_bytes": 14076
       },
       {
         "standard_id": "CALENDAR-GOVERNANCE-ADDENDUM",
@@ -81,7 +83,8 @@
         "decision": "required",
         "matched_signals": [
           "date_field"
-        ]
+        ],
+        "served_bytes": 48943
       }
     ],
     "deferred_standards": [
@@ -157,10 +160,11 @@
       ]
     },
     "budget": {
-      "limit_tokens": 9956871,
-      "cost_tokens": 81010,
+      "limit_tokens": 9993887,
+      "cost_tokens": 20049,
+      "cost_bytes": 66947,
       "measurement": "estimated",
-      "method": "UTF-8 byte upper estimate of the loaded Smart UI standards; not a tokenizer measurement"
+      "method": "estimated: ASCII characters / 4.0 + non-ASCII characters / 1.6; not a tokenizer measurement"
     },
     "blockers": [],
     "warnings": [],

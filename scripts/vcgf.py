@@ -7,6 +7,11 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 if hasattr(sys.stdout,'reconfigure'):sys.stdout.reconfigure(encoding='utf-8')
 
 
+def references(items):
+    # Default CLI output: hash-pinned references the agent reads itself (the files are in the repository); --full inlines the text.
+    return [{k:item[k] for k in ('path','sha256','bytes','tokens','served') if k in item} for item in items]
+
+
 def read(path):
     value=json.loads(Path(path).read_text(encoding='utf-8'))
     return value['record'] if isinstance(value,dict) and set(value)<= {'$comment','synthetic','record'} and 'record' in value else value
@@ -25,16 +30,16 @@ def main():
     from runtime.evidence import evaluate
     from runtime.evidence_pack import present
     from runtime.ui_select import select_ui
-    from runtime.acceptance import acceptance_tests
+    from runtime.acceptance import acceptance_tests,acceptance_summary
 
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='cmd',required=True)
-    r=sub.add_parser('route');r.add_argument('task');r.add_argument('context');r.add_argument('--project-root',required=True);r.add_argument('--dry-run',action='store_true');r.add_argument('--quiet',action='store_true');r.add_argument('--presentation',choices=['beginner','expert'],default='expert')
+    r=sub.add_parser('route');r.add_argument('task');r.add_argument('context');r.add_argument('--project-root',required=True);r.add_argument('--dry-run',action='store_true');r.add_argument('--quiet',action='store_true');r.add_argument('--full',action='store_true',help='print loaded text inline (default: hash-pinned references only)');r.add_argument('--presentation',choices=['beginner','expert'],default='expert')
     v=sub.add_parser('validate');v.add_argument('contract',choices=sorted(NAMES));v.add_argument('file')
     sub.add_parser('controls')
     e=sub.add_parser('explain');e.add_argument('control_id');e.add_argument('--route-file')
     h=sub.add_parser('handoff');h.add_argument('context');h.add_argument('route_file')
-    u=sub.add_parser('ui-select',help='governed Smart UI selection bound to a route');u.add_argument('route_file');u.add_argument('screen_context');u.add_argument('--budget',type=int);u.add_argument('--quiet',action='store_true')
-    a=sub.add_parser('acceptance',help='acceptance tests defined for a control');a.add_argument('control_id')
+    u=sub.add_parser('ui-select',help='governed Smart UI selection bound to a route');u.add_argument('route_file');u.add_argument('screen_context');u.add_argument('--budget',type=int);u.add_argument('--quiet',action='store_true');u.add_argument('--full',action='store_true',help='print loaded standards inline (default: references only)')
+    a=sub.add_parser('acceptance',help='acceptance tests defined for a control, or a summary with: all');a.add_argument('control_id')
     for name in ['evidence','release-check']:
         e=sub.add_parser(name);e.add_argument('record');e.add_argument('expected');e.add_argument('--artifact-root',required=True)
         e.add_argument('--mode',choices=['minimal','standard','audit'],default='standard')
@@ -42,7 +47,8 @@ def main():
     try:
         if args.cmd=='route':
             result=route(read(args.task),read(args.context),args.project_root);code=1 if result['route']['blockers'] else 0
-            if args.quiet:result.pop('active_context')
+            if args.quiet:result.pop('active_context');result.pop('reused_context',None)
+            elif not args.full:result['active_context']=references(result['active_context'])
             if args.presentation=='beginner':result['help']='Resolve blockers, inspect selected controls, plan; ready_to_plan does not authorize execution.'
         elif args.cmd=='validate':
             errors=validate_contract(args.contract,read(args.file));result={'accepted':not errors,'errors':errors,'claim':'structural/local coherence only'};code=bool(errors)
@@ -54,7 +60,10 @@ def main():
         elif args.cmd=='ui-select':
             result=select_ui(read(args.route_file),read(args.screen_context),args.budget);code=1 if result['selection']['blockers'] else 0
             if args.quiet:result.pop('active_context');result.pop('selection_plan')
-        elif args.cmd=='acceptance':result=acceptance_tests(args.control_id);code=0 if result['tests'] else 1
+            elif not args.full:result['active_context']=references(result['active_context'])
+        elif args.cmd=='acceptance':
+            if args.control_id=='all':result=acceptance_summary();code=0
+            else:result=acceptance_tests(args.control_id);code=0 if result['tests'] else 1
         else:
             record=read(args.record);result=evaluate(record,args.artifact_root,read(args.expected));code=1 if result['status']!='PASS' else 0
             if not validate_contract('evidence',record):result=present(record,result,args.mode)
