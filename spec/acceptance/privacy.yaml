@@ -7,283 +7,284 @@ domain: privacy
 controls:
   VCGF-PRIV-001:
     tests:
-      - id: VCGF-PRIV-001-AT01
-        type: automated
-        criterion: >-
-          Performing a login, a password reset, an MFA enrolment, a token refresh and a failing API request with a
-          canary value in each sensitive field leaves no plaintext password, password hash, session cookie, access
-          or refresh token, API secret key, encryption key, full reset token or URL, or MFA secret in any log sink,
-          error report, analytics or telemetry event, or in any request URL captured by the proxy.
-        method: >-
-          An integration test seeds a distinct canary in each field, drives the five flows through a capturing
-          proxy, then searches every configured log, error, analytics and telemetry sink and the captured URLs for
-          each canary and fails on any hit.
-        negative_path: true
-        evidence: [test-result, log-sample]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_log_redaction_canaries (per project)
-      - id: VCGF-PRIV-001-AT02
-        type: automated
-        criterion: >-
-          Authorization and Cookie headers, fields on the known-secret list and personal identifiers (email, phone,
-          national identifier) are replaced by the shared logging formatter before serialisation, every log call
-          reaches a sink only through that formatter (a search for logger construction or raw sink writes outside
-          the formatter module returns none), and request logs carry request ID, actor ID, tenant ID, resource ID
-          and event type instead of full request or response payloads.
-        method: >-
-          A unit test passes a fixture event with each sensitive header and field through the formatter and asserts
-          the redacted output; a lint or grep job searches the code base for logger construction outside the
-          formatter module; a reviewer samples request log lines for the five identifiers and the absence of
-          payload bodies.
-        negative_path: false
-        evidence: [test-result, code-review]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_central_redaction (per project)
-      - id: VCGF-PRIV-001-AT03
-        type: automated
-        criterion: >-
-          Every audit event records actor, action, resource, time, result, tenant or context and correlation ID,
-          an update or delete of an existing audit entry attempted with the application runtime role is denied by
-          the audit store, whose permission grants that role append only, and a read of the audit store by a
-          principal without the audit-reader role is denied.
-        method: >-
-          An integration test triggers a set of audited actions, asserts the seven fields on each entry, then
-          attempts an update and a delete with the runtime role and a read with an unprivileged principal and
-          asserts each denial.
-        negative_path: true
-        evidence: [test-result, configuration-record]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_audit_log_integrity (per project)
-      - id: VCGF-PRIV-001-AT04
-        type: automated
-        criterion: >-
-          An exception that carries a canary bearer token in its request headers and a canary email address in its
-          request body arrives at the third-party error tracking endpoint with both values scrubbed by the
-          before-send hook, and the scrub list covers headers, cookies, body fields and user identifiers.
-        method: >-
-          An integration test points the error client at a mock endpoint, raises the exception during a request
-          holding the canaries, and inspects the received payload for the canaries and for the scrubbed markers.
-        negative_path: true
-        evidence: [test-result]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_error_tool_scrubbing (per project)
+    - id: VCGF-PRIV-001-AT01
+      type: automated
+      criterion: >-
+        Performing a login, a password reset, an MFA enrolment, a token refresh and a failing API request with a
+        canary value in each sensitive field leaves no plaintext password, password hash, session cookie, access
+        or refresh token, API secret key, encryption key, full reset token or URL, or MFA secret in any log sink,
+        error report, analytics or telemetry event, or in any request URL captured by the proxy.
+      method: >-
+        An integration test seeds a distinct canary in each field, drives the five flows through a capturing proxy,
+        then searches every configured log, error, analytics and telemetry sink and the captured URLs for each canary
+        and fails on any hit.
+      negative_path: true
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_log_redaction_canaries (per project)
+    - id: VCGF-PRIV-001-AT02
+      type: automated
+      criterion: >-
+        Authorization and Cookie headers, fields on the known-secret list and personal identifiers (email, phone,
+        national identifier) are replaced by the shared logging formatter before serialisation, every log call reaches
+        a sink only through that formatter (a search for logger construction or raw sink writes outside the formatter
+        module returns none), and request logs carry request ID, actor ID, tenant ID, resource ID and event type
+        instead of full request or response payloads.
+      method: >-
+        A unit test passes a fixture event with each sensitive header and field through the formatter and asserts
+        the redacted output; a lint or grep job searches the code base for logger construction outside the formatter
+        module; a reviewer samples request log lines for the five identifiers and the absence of payload bodies.
+      negative_path: false
+      evidence: [test-result, code-review]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_central_redaction (per project)
+    - id: VCGF-PRIV-001-AT03
+      type: automated
+      criterion: >-
+        Every audit event records actor, action, resource, time, result, tenant or context and correlation ID, an
+        update or delete of an existing audit entry attempted with the application runtime role is denied by the
+        audit store, whose permission grants that role append only, and a read of the audit store by a principal
+        without the audit-reader role is denied.
+      method: >-
+        An integration test triggers a set of audited actions, asserts the seven fields on each entry, then attempts
+        an update and a delete with the runtime role and a read with an unprivileged principal and asserts each
+        denial.
+      negative_path: true
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_audit_log_integrity (per project)
+    - id: VCGF-PRIV-001-AT04
+      type: automated
+      criterion: >-
+        An exception that carries a canary bearer token in its request headers and a canary email address in its
+        request body arrives at the third-party error tracking endpoint with both values scrubbed by the before-send
+        hook, and the scrub list covers headers, cookies, body fields and user identifiers.
+      method: >-
+        An integration test points the error client at a mock endpoint, raises the exception during a request holding
+        the canaries, and inspects the received payload for the canaries and for the scrubbed markers.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_error_tool_scrubbing (per project)
   VCGF-PRIV-002:
     tests:
-      - id: VCGF-PRIV-002-AT01
-        type: review
-        criterion: >-
-          Each personal field in the inventory documents purpose, business or legal need, owner, retention, who can
-          access it, whether it must be searchable, whether it must be exportable and its protection level, carries
-          one of the classifications Public, Internal, Confidential or Restricted, and every government identifier,
-          passport identifier, bank detail, authentication or recovery secret, health or HR record and private
-          cryptographic material is classified Restricted.
-        method: >-
-          A reviewer walks the inventory field by field, checks the eight documented attributes and the
-          classification value, and lists any Restricted-category field carrying a lower classification.
-        negative_path: false
-        evidence: [inventory, code-review]
-        automation:
-          kind: script
-          reference: scripts/check_pii_inventory (per project)
-      - id: VCGF-PRIV-002-AT02
-        type: automated
-        criterion: >-
-          A user of one tenant requesting a personal record of another tenant by direct identifier through the API,
-          the search endpoint and the export path receives not-found or a denial on each path, and the denial is
-          produced by the trusted layer (database row-level policy or server-side tenant guard) rather than by
-          client-side filtering, so that replaying the raw request without any client-supplied filter is still
-          rejected.
-        method: >-
-          An integration test creates records in two tenants, requests tenant B records as a tenant A user on each
-          path, then replays the raw requests without client-supplied filters and, where row-level policies exist,
-          runs the same query through the tenant A database connection with the application filter disabled.
-        negative_path: true
-        evidence: [test-result, configuration-record]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_tenant_isolation_pii (per project)
-      - id: VCGF-PRIV-002-AT03
-        type: automated
-        criterion: >-
-          Restricted identifiers (government identifier, bank account, payment card) render masked to the
-          documented masking pattern (for example only the last four characters visible) in every list and detail
-          view until an authorized reveal action that writes an audit entry, and no page URL, query string,
-          analytics event or Referer header carries a personal identifier during a full run of the critical
-          journeys.
-        method: >-
-          An end-to-end test asserts the masked rendering and the audit entry after reveal on each view that shows
-          a Restricted field, and a capturing proxy run searches URLs, analytics payloads and Referer headers for the
-          seeded personal values.
-        negative_path: false
-        evidence: [test-result, screenshot]
-        automation:
-          kind: ci
-          reference: e2e/privacy/masked-fields.spec (per project)
-      - id: VCGF-PRIV-002-AT04
-        type: automated
-        criterion: >-
-          Every read of a Restricted personal field by a human user produces an access audit entry with actor,
-          field, record identifier, purpose and time, and 100 sampled reads through the user interface and the API
-          correspond to exactly 100 audit entries with matching identifiers.
-        method: >-
-          An integration test performs 100 reads across the two paths with known actors and records, then queries
-          the access audit and matches each entry to its read.
-        negative_path: false
-        evidence: [test-result, log-sample]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_restricted_field_access_audit (per project)
-      - id: VCGF-PRIV-002-AT05
-        type: automated
-        criterion: >-
-          A principal who may read a record but lacks the field-level permission for one of its Restricted fields
-          receives that record through the API and the user interface with the field absent or masked, the
-          server-side decryption of the field is not invoked for that request, and granting the field permission
-          alone makes the plaintext appear without any change to the encryption configuration.
-        method: >-
-          An integration test reads the record as a principal without and then with the field permission while
-          observing the decryption call trace, and compares the two responses and the rendered views.
-        negative_path: true
-        evidence: [test-result, code-review]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_field_level_authorization (per project)
+    - id: VCGF-PRIV-002-AT01
+      type: review
+      criterion: >-
+        Each personal field in the inventory documents purpose, business or legal need, owner, retention, who can
+        access it, whether it must be searchable, whether it must be exportable and its protection level, carries
+        one of the classifications Public, Internal, Confidential or Restricted, and every government identifier,
+        passport identifier, bank detail, authentication or recovery secret, health or HR record and private cryptographic
+        material is classified Restricted.
+      method: >-
+        A reviewer walks the inventory field by field, checks the eight documented attributes and the classification
+        value, and lists any Restricted-category field carrying a lower classification.
+      negative_path: false
+      evidence: [inventory, code-review]
+      automation:
+        kind: script
+        reference: scripts/check_pii_inventory (per project)
+    - id: VCGF-PRIV-002-AT02
+      type: automated
+      criterion: >-
+        A user of one tenant requesting a personal record of another tenant by direct identifier through the API,
+        the search endpoint and the export path receives not-found or a denial on each path, and the denial is produced
+        by the trusted layer (database row-level policy or server-side tenant guard) rather than by client-side
+        filtering, so that replaying the raw request without any client-supplied filter is still rejected.
+      method: >-
+        An integration test creates records in two tenants, requests tenant B records as a tenant A user on each
+        path, then replays the raw requests without client-supplied filters and, where row-level policies exist,
+        runs the same query through the tenant A database connection with the application filter disabled.
+      negative_path: true
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_tenant_isolation_pii (per project)
+    - id: VCGF-PRIV-002-AT03
+      type: automated
+      criterion: >-
+        Restricted identifiers (government identifier, bank account, payment card) render masked to the documented
+        masking pattern (for example only the last four characters visible) in every list and detail view until
+        an authorized reveal action that writes an audit entry, and no page URL, query string, analytics event or
+        Referer header carries a personal identifier during a full run of the critical journeys.
+      method: >-
+        An end-to-end test asserts the masked rendering and the audit entry after reveal on each view that shows
+        a Restricted field, and a capturing proxy run searches URLs, analytics payloads and Referer headers for
+        the seeded personal values.
+      negative_path: false
+      evidence: [test-result, screenshot]
+      automation:
+        kind: ci
+        reference: e2e/privacy/masked-fields.spec (per project)
+    - id: VCGF-PRIV-002-AT04
+      type: automated
+      criterion: >-
+        Every read of a Restricted personal field by a human user produces an access audit entry with actor, field,
+        record identifier, purpose and time, and audit_sample_size (default 100) sampled reads through the user
+        interface and the API correspond to exactly audit_sample_size audit entries with matching identifiers.
+      method: >-
+        An integration test performs audit_sample_size reads across the two paths with known actors and records,
+        then queries the access audit and matches each entry to its read.
+      negative_path: false
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_restricted_field_access_audit (per project)
+      parameters:
+      - name: audit_sample_size
+        default: 100
+        unit: reads
+        source: test design parameter (sample size); not stated by VCGF-PRIV-002
+        rationale: Large enough to catch a dropped or duplicated audit write; adjustable.
+    - id: VCGF-PRIV-002-AT05
+      type: automated
+      criterion: >-
+        A principal who may read a record but lacks the field-level permission for one of its Restricted fields
+        receives that record through the API and the user interface with the field absent or masked, the server-side
+        decryption of the field is not invoked for that request, and granting the field permission alone makes the
+        plaintext appear without any change to the encryption configuration.
+      method: >-
+        An integration test reads the record as a principal without and then with the field permission while observing
+        the decryption call trace, and compares the two responses and the rendered views.
+      negative_path: true
+      evidence: [test-result, code-review]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_field_level_authorization (per project)
   VCGF-PRIV-003:
     tests:
-      - id: VCGF-PRIV-003-AT01
-        type: review
-        criterion: >-
-          For each category of personal data collected, the purpose register names the defined application purpose,
-          the lawful or business justification, the access population, the retention need and whether a less
-          sensitive substitute was evaluated, and no entry justifies a field as reserved for future use or leaves
-          the purpose blank.
-        method: >-
-          A reviewer compares the register with the fields actually collected by forms and APIs, checks the five
-          attributes per category and searches the justifications for future-use wording or blanks.
-        negative_path: false
-        evidence: [inventory, threat-model]
-        automation:
-          kind: none
-      - id: VCGF-PRIV-003-AT02
-        type: automated
-        criterion: >-
-          Submitting a registration or profile request that carries personal fields absent from the purpose
-          register (for example date of birth, gender or national identifier) is rejected or has those fields
-          discarded by server-side validation, and the persisted record contains only the fields named in the
-          register.
-        method: >-
-          An integration test posts the request with the extra fields, asserts the validation rejection or the
-          absence of the extra fields in storage, posts a conforming request and compares the persisted columns
-          with the register.
-        negative_path: true
-        evidence: [test-result]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_minimal_collection_schema (per project)
-      - id: VCGF-PRIV-003-AT03
-        type: automated
-        criterion: >-
-          Personal data reaches AI model prompts, analytics events, URLs, logs and exports only for the fields whose
-          register entry explicitly permits that destination; after a run of the critical journeys with canary
-          personal values, the canaries appear in the permitted destinations only.
-        method: >-
-          An end-to-end run seeds canaries per field, captures the prompt payloads, analytics events, proxy URLs, log
-          sinks and generated exports, and compares each canary hit against the register's destination list.
-        negative_path: false
-        evidence: [test-result, log-sample]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_pii_destinations (per project)
-      - id: VCGF-PRIV-003-AT04
-        type: automated
-        criterion: >-
-          Each API endpoint returning personal data exposes only the fields on its response allow-list derived from
-          the consuming screen's purpose, and a snapshot of every such endpoint response contains no personal field
-          outside that allow-list, including on list and search endpoints.
-        method: >-
-          A contract test calls each endpoint with seeded records, diffs the response keys against the endpoint
-          allow-list and fails on any additional personal field.
-        negative_path: false
-        evidence: [test-result, code-review]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_response_field_allowlist (per project)
+    - id: VCGF-PRIV-003-AT01
+      type: review
+      criterion: >-
+        For each category of personal data collected, the purpose register names the defined application purpose,
+        the lawful or business justification, the access population, the retention need and whether a less sensitive
+        substitute was evaluated, and no entry justifies a field as reserved for future use or leaves the purpose
+        blank.
+      method: >-
+        A reviewer compares the register with the fields actually collected by forms and APIs, checks the five attributes
+        per category and searches the justifications for future-use wording or blanks.
+      negative_path: false
+      evidence: [inventory, threat-model]
+      automation:
+        kind: none
+    - id: VCGF-PRIV-003-AT02
+      type: automated
+      criterion: >-
+        Submitting a registration or profile request that carries personal fields absent from the purpose register
+        (for example date of birth, gender or national identifier) is rejected or has those fields discarded by
+        server-side validation, and the persisted record contains only the fields named in the register.
+      method: >-
+        An integration test posts the request with the extra fields, asserts the validation rejection or the absence
+        of the extra fields in storage, posts a conforming request and compares the persisted columns with the register.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_minimal_collection_schema (per project)
+    - id: VCGF-PRIV-003-AT03
+      type: automated
+      criterion: >-
+        Personal data reaches AI model prompts, analytics events, URLs, logs and exports only for the fields whose
+        register entry explicitly permits that destination; after a run of the critical journeys with canary personal
+        values, the canaries appear in the permitted destinations only.
+      method: >-
+        An end-to-end run seeds canaries per field, captures the prompt payloads, analytics events, proxy URLs,
+        log sinks and generated exports, and compares each canary hit against the register's destination list.
+      negative_path: false
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_pii_destinations (per project)
+    - id: VCGF-PRIV-003-AT04
+      type: automated
+      criterion: >-
+        Each API endpoint returning personal data exposes only the fields on its response allow-list derived from
+        the consuming screen's purpose, and a snapshot of every such endpoint response contains no personal field
+        outside that allow-list, including on list and search endpoints.
+      method: >-
+        A contract test calls each endpoint with seeded records, diffs the response keys against the endpoint allow-list
+        and fails on any additional personal field.
+      negative_path: false
+      evidence: [test-result, code-review]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_response_field_allowlist (per project)
   VCGF-PRIV-004:
     requirement_sources: [S29]
     tests:
-      - id: VCGF-PRIV-004-AT01
-        type: review
-        criterion: >-
-          The lifecycle record for each personal, confidential or regulated data category states the retention
-          period, the archival trigger, the deletion method, the backup-expiry window, the legal-hold behaviour, the
-          moment at which data becomes inaccessible in active systems and the moment at which residual copies in
-          backups expire, and no entry describes deletion as instantaneous where backups or immutable retention exist.
-        method: >-
-          A reviewer checks the seven attributes per category against the backup retention configuration and the
-          storage immutability settings and flags any instantaneous-deletion claim that those settings contradict.
-        negative_path: false
-        evidence: [configuration-record, inventory]
-        automation:
-          kind: none
-      - id: VCGF-PRIV-004-AT02
-        type: automated
-        criterion: >-
-          Executing the deletion workflow for one data subject removes or anonymises the primary record, its derived
-          data, cache entries, search index documents, attachments, generated exports and replica copies no later
-          than the documented moment at which data becomes inaccessible in active systems, and a probe by subject
-          identifier in each of those stores returns nothing afterwards.
-        method: >-
-          An integration test creates a subject with data in every store, runs the deletion workflow, waits until
-          the documented inaccessibility moment and queries each store by the subject identifier.
-        negative_path: false
-        evidence: [test-result, log-sample]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_subject_deletion_workflow (per project)
-      - id: VCGF-PRIV-004-AT03
-        type: automated
-        criterion: >-
-          A deletion request or a retention-expiry run against a record under an active legal hold leaves the record
-          intact and writes a refusal entry naming the hold identifier, and the same record is deleted on the next
-          run after the hold is released.
-        method: >-
-          An integration test places a hold, triggers both the deletion request and the retention job, asserts the
-          record and the refusal entry, releases the hold and reruns the job.
-        negative_path: true
-        evidence: [test-result, log-sample]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_legal_hold_blocks_deletion (per project)
-      - id: VCGF-PRIV-004-AT04
-        type: automated
-        criterion: >-
-          Backup storage holds no backup older than the documented backup-expiry window, and restoring a backup
-          taken before a recorded subject deletion applies the documented post-restore purge or tombstone procedure
-          so that the deleted subject does not reappear in the active store after the restore.
-        method: >-
-          A CI job lists backup objects and compares their ages with the window; an integration test deletes a
-          subject, restores an earlier backup into a test environment and probes the active store for the subject.
-        negative_path: false
-        evidence: [test-result, configuration-record]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_backup_expiry_and_tombstones (per project)
-      - id: VCGF-PRIV-004-AT05
-        type: automated
-        criterion: >-
-          After the scheduled lifecycle job runs, every record of a category whose archival trigger has fired is
-          absent from active-system queries and present in the archive tier, every archived record whose retention
-          period has elapsed has been removed by the deletion method stated in the lifecycle record, and the job
-          log names the rule applied to each record.
-        method: >-
-          An integration test seeds records on both sides of the archival trigger and of the retention period, runs
-          the lifecycle job, queries the active and archive stores for each record and reads the job log.
-        negative_path: false
-        evidence: [test-result, log-sample]
-        automation:
-          kind: ci
-          reference: tests/privacy/test_archival_and_retention_expiry (per project)
+    - id: VCGF-PRIV-004-AT01
+      type: review
+      criterion: >-
+        The lifecycle record for each personal, confidential or regulated data category states the retention period,
+        the archival trigger, the deletion method, the backup-expiry window, the legal-hold behaviour, the moment
+        at which data becomes inaccessible in active systems and the moment at which residual copies in backups
+        expire, and no entry describes deletion as instantaneous where backups or immutable retention exist.
+      method: >-
+        A reviewer checks the seven attributes per category against the backup retention configuration and the storage
+        immutability settings and flags any instantaneous-deletion claim that those settings contradict.
+      negative_path: false
+      evidence: [configuration-record, inventory]
+      automation:
+        kind: none
+    - id: VCGF-PRIV-004-AT02
+      type: automated
+      criterion: >-
+        Executing the deletion workflow for one data subject removes or anonymises the primary record, its derived
+        data, cache entries, search index documents, attachments, generated exports and replica copies no later
+        than the documented moment at which data becomes inaccessible in active systems, and a probe by subject
+        identifier in each of those stores returns nothing afterwards.
+      method: >-
+        An integration test creates a subject with data in every store, runs the deletion workflow, waits until
+        the documented inaccessibility moment and queries each store by the subject identifier.
+      negative_path: false
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_subject_deletion_workflow (per project)
+    - id: VCGF-PRIV-004-AT03
+      type: automated
+      criterion: >-
+        A deletion request or a retention-expiry run against a record under an active legal hold leaves the record
+        intact and writes a refusal entry naming the hold identifier, and the same record is deleted on the next
+        run after the hold is released.
+      method: >-
+        An integration test places a hold, triggers both the deletion request and the retention job, asserts the
+        record and the refusal entry, releases the hold and reruns the job.
+      negative_path: true
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_legal_hold_blocks_deletion (per project)
+    - id: VCGF-PRIV-004-AT04
+      type: automated
+      criterion: >-
+        Backup storage holds no backup older than the documented backup-expiry window, and restoring a backup taken
+        before a recorded subject deletion applies the documented post-restore purge or tombstone procedure so that
+        the deleted subject does not reappear in the active store after the restore.
+      method: >-
+        A CI job lists backup objects and compares their ages with the window; an integration test deletes a subject,
+        restores an earlier backup into a test environment and probes the active store for the subject.
+      negative_path: false
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_backup_expiry_and_tombstones (per project)
+    - id: VCGF-PRIV-004-AT05
+      type: automated
+      criterion: >-
+        After the scheduled lifecycle job runs, every record of a category whose archival trigger has fired is absent
+        from active-system queries and present in the archive tier, every archived record whose retention period
+        has elapsed has been removed by the deletion method stated in the lifecycle record, and the job log names
+        the rule applied to each record.
+      method: >-
+        An integration test seeds records on both sides of the archival trigger and of the retention period, runs
+        the lifecycle job, queries the active and archive stores for each record and reads the job log.
+      negative_path: false
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/privacy/test_archival_and_retention_expiry (per project)

@@ -47,6 +47,23 @@ controls:
 6. `requirement_sources` entries must be known pack sections (`S14`…`S39` from `packs/index.yaml`) or Smart UI standard IDs (`VCGF-UI-COMP-###`, `VCGF-UI-INT-###`, `VCGF-UI-SCR-###`, `VCGF-UI-JRN-###`, or the two bound standards `CALENDAR-GOVERNANCE-ADDENDUM`, `UI-COMP-SEARCHABLE-SELECT`).
 7. User-experience controls must reference at least one Smart UI standard.
 
+## Binding interpretation rules (2026-10-25)
+
+1. **Numeric thresholds are not VCGF requirements.** A number in a criterion (a key length, a validity period, a sample size, a protocol version) is a configurable default or a proposed test parameter. It is declared under `parameters` with its `source` (an approved standard, a control guidance line or an explicit test-design choice) and its `rationale`, and the criterion refers to it as "the configured <name> (default …)". The validator rejects an embedded threshold without a documented parameter. A project may change a default through its own policy; it may not treat the default as original control text.
+2. **Normative strength is preserved.** A test never turns SHOULD into MUST: for a SHOULD-level control the criterion may not use MUST, and tests of recommendations check that the recommendation was deliberately adopted or declined with a recorded decision and compensating controls. Mandatory requirements, recommendations and optional improvements stay distinguishable.
+3. **Requirement sources rank in this order:** the approved controls and governing policy (`controls/`, `spec/`, `runtime/routing-policy.yaml`), then the approved contracts and schemas (`schemas/`), then approved reference specifications (`docs/references/`, the requirement packs `packs/requirements/`, the Smart UI standards), then guidance documents. When sources conflict, the test records the conflict and takes the conservative reading that does not weaken security and does not change the original requirement.
+4. **Defined is not executed.** Every entry here is an acceptance *definition*. Its execution state is `not_executed` until a target project records a result against it; manual tests without a recorded result remain unverified. `vcgf.py acceptance <control-id>` reports the definition count, the executor and the evidence type per test, and an execution state that is always `not_executed` inside this repository.
+
+```yaml
+      - id: VCGF-IAM-005-AT02
+        parameters:
+          - name: reset_token_min_entropy_bits
+            default: 128
+            unit: bits
+            source: VCGF-IAM-005 guidance ("at least 128 bits unpredictable entropy")
+            rationale: Makes "high-entropy" testable; projects may raise it, never lower it below the guidance value.
+```
+
 ## What these tests are and are not
 
 They define **what a project must demonstrate**, with a method and evidence type, so that an evidence record can cite them (`evidence_refs`). They do not execute inside this repository; executing them is the target project's responsibility, and the VCGF evidence gate records whether they passed, failed or were not run.

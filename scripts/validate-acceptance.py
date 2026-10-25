@@ -14,6 +14,10 @@ AUTOMATION={'none','script','validator','hook','ci'}
 NEGATIVE_DOMAINS={'security','identity-access','data-protection','database','api','file-handling','secrets','privacy'}
 GENERIC=re.compile(r'^(inspect implementation and configuration|at least one reproducible artifact|apply when the project or change contains|review the change)',re.I)
 TEST_ID=re.compile(r'^(VCGF-[A-Z]+-\d{3})-AT(\d{2})$')
+PARAM_KEYS={'name','default','unit','source','rationale'}
+NAME=re.compile(r'^[a-z][a-z0-9_]{2,63}$')
+# Phrases that usually encode a numeric threshold inside a criterion (bits, lengths, durations, sample sizes, versions).
+THRESHOLD=re.compile(r'\b(at least|at most|minimum of|maximum of|within|below|above|every|per)\s+(one|two|three|\d[\d,.]*)\s*(year|month|week|day|hour|minute|second|character|bit|byte|iteration|attempt|account|sample|request|percent|%)s?\b|\b(TLS|SSL)\s*v?\d\.\d\b|\bmax-age\b|\b\d{2,}[- ]bit\b',re.I)
 UI_ID=re.compile(r'^(VCGF-UI-(COMP|INT|SCR|JRN)-\d{3}|CALENDAR-GOVERNANCE-ADDENDUM|UI-COMP-SEARCHABLE-SELECT)$')
 
 
@@ -64,6 +68,17 @@ def main():
                 crit=' '.join(str(t.get('criterion') or '').split())
                 if len(crit)<60: errors.append(f'{rp}: {tid}: criterion too short or missing (min 60 characters)')
                 if GENERIC.match(crit): errors.append(f'{rp}: {tid}: criterion is generic template text')
+                # Normative strength is never raised by a test: SHOULD-level controls get no MUST wording.
+                if catalog[cid].get('requirement_level')!='MUST' and re.search(r'\bMUST\b',crit): errors.append(f'{rp}: {tid}: criterion uses MUST for a {catalog[cid].get("requirement_level")} control')
+                # Numeric thresholds are configurable test parameters with a documented source, not VCGF requirements.
+                params=t.get('parameters') or []
+                if not isinstance(params,list): errors.append(f'{rp}: {tid}: parameters must be a list'); params=[]
+                for prm in params:
+                    if not isinstance(prm,dict) or set(prm)-PARAM_KEYS or not {'name','default','source','rationale'}<=set(prm): errors.append(f'{rp}: {tid}: parameter must define name, default, source, rationale (optional unit)'); continue
+                    if not NAME.match(str(prm['name'])): errors.append(f'{rp}: {tid}: parameter name {prm["name"]!r} must be snake_case')
+                    if not str(prm['source']).strip() or not str(prm['rationale']).strip(): errors.append(f'{rp}: {tid}: parameter {prm["name"]} needs a non-empty source and rationale')
+                    if str(prm['name']) not in crit and str(prm['name']) not in ' '.join(str(t.get('method') or '').split()): errors.append(f'{rp}: {tid}: parameter {prm["name"]} is not referenced by the criterion or method')
+                if THRESHOLD.search(crit) and not params: errors.append(f'{rp}: {tid}: criterion embeds a numeric threshold without a documented parameter (see README: thresholds are configurable defaults, not requirements)')
                 key=crit.lower()
                 if key in criteria and criteria[key][0]!=cid: errors.append(f'{rp}: {tid}: criterion duplicates {criteria[key][1]}')
                 criteria.setdefault(key,(cid,tid))
