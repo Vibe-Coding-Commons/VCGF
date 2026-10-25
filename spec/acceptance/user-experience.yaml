@@ -1,0 +1,241 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the user-experience controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: user-experience
+controls:
+  VCGF-UX-001:
+    requirement_sources: [S15, VCGF-UI-COMP-001, VCGF-UI-INT-009, VCGF-UI-INT-010]
+    tests:
+      - id: VCGF-UX-001-AT01
+        type: automated
+        criterion: >-
+          An automated WCAG 2.2 AA scan of every changed screen reports zero violations of serious or critical
+          impact, and every reported violation of lower impact is either fixed or recorded with a justification.
+        method: >-
+          Run the accessibility scanner in the end-to-end suite against each changed route in its default, error
+          and loaded states; fail the pipeline on any serious or critical violation; export the report as evidence.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: e2e/accessibility/*.spec (per project)
+      - id: VCGF-UX-001-AT02
+        type: manual
+        criterion: >-
+          Using the keyboard only, every interactive element of each critical journey (authentication, recovery,
+          consent, approval, checkout or the product equivalents) is reachable in a logical order, shows a visible
+          focus indicator, is operable with Enter or Space, and no focus trap occurs in dialogs or menus.
+        method: >-
+          A tester walks each critical journey without a pointer, recording the tab order, the focus visibility and
+          the operability of each control, and attempts to leave every dialog and menu with Escape and Tab.
+        negative_path: false
+        evidence: [manual-verification]
+        automation:
+          kind: none
+      - id: VCGF-UX-001-AT03
+        type: automated
+        criterion: >-
+          At a 320 CSS pixel viewport width and at 200 percent zoom, each changed screen requires no horizontal
+          scrolling for its primary task and loses no content or function compared with the 1280 pixel layout.
+        method: >-
+          A visual or DOM regression test renders each changed screen at 320 pixels and at 200 percent zoom and
+          asserts the absence of horizontal overflow and the presence of every required element or an alternative path.
+        negative_path: false
+        evidence: [test-result, screenshot]
+        automation:
+          kind: ci
+          reference: e2e/accessibility/reflow.spec (per project)
+      - id: VCGF-UX-001-AT04
+        type: manual
+        criterion: >-
+          Loading, error, empty and success status messages on each changed screen are announced by a screen
+          reader without moving focus, and the same information is conveyed by text rather than by color alone.
+        method: >-
+          A tester triggers each state with a screen reader active, confirms the announcement and the absence of a
+          focus move, and reviews the state rendering with a monochrome display filter.
+        negative_path: false
+        evidence: [manual-verification]
+        automation:
+          kind: none
+  VCGF-UX-002:
+    requirement_sources: [S15, CALENDAR-GOVERNANCE-ADDENDUM, VCGF-UI-COMP-001]
+    tests:
+      - id: VCGF-UX-002-AT01
+        type: automated
+        criterion: >-
+          Switching the interface to the right-to-left language sets the document and differing-language blocks to
+          the correct lang and dir attributes, mirrors the layout through logical properties, mirrors only
+          reading-direction icons, and leaves brand marks, numerals and phone handset icons unmirrored.
+        method: >-
+          A snapshot test renders each changed screen in both languages and asserts the attributes, the mirrored
+          inline-start and inline-end positions, and an icon mirroring allow-list and deny-list.
+        negative_path: false
+        evidence: [test-result, screenshot]
+        automation:
+          kind: ci
+          reference: e2e/i18n/direction.spec (per project)
+      - id: VCGF-UX-002-AT02
+        type: automated
+        criterion: >-
+          Stored canonical values (ISO 8601 instants with offsets, decimal amounts, Gregorian system-of-record
+          dates) are byte-identical before and after changing the display locale and switching between the
+          Gregorian and Hijri display calendars.
+        method: >-
+          A unit test stores a set of values, renders them in each locale and calendar through the shared
+          formatting engine, and compares the persisted records against the originals.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/i18n/test_canonical_values (per project)
+      - id: VCGF-UX-002-AT03
+        type: automated
+        criterion: >-
+          Identifiers, codes, phone numbers, email addresses and user-supplied names embedded in right-to-left
+          text render in isolated bidirectional runs so that their character order is unchanged.
+        method: >-
+          A DOM test asserts a bdi element or an isolating unicode-bidi style on each such field and compares the
+          rendered character sequence with the stored value.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: e2e/i18n/bidi-isolation.spec (per project)
+      - id: VCGF-UX-002-AT04
+        type: manual
+        criterion: >-
+          The longest translated strings of each changed screen, including those at least 30 percent longer than
+          the source language, neither truncate nor overlap at 320 and 1280 CSS pixel widths in both languages.
+        method: >-
+          A tester loads the pseudo-locale or the longest translation set and inspects each changed screen at both
+          widths in both directions, recording any truncation or overlap.
+        negative_path: false
+        evidence: [manual-verification, screenshot]
+        automation:
+          kind: none
+  VCGF-UX-003:
+    requirement_sources: [VCGF-UI-INT-005, VCGF-UI-INT-006, VCGF-UI-INT-007, VCGF-UI-INT-012, VCGF-UI-INT-016, VCGF-UI-INT-019]
+    tests:
+      - id: VCGF-UX-003-AT01
+        type: automated
+        criterion: >-
+          Submitting a create, payment or approval command twice in rapid succession, or replaying the request with
+          the same idempotency key, produces exactly one record or transaction on the trusted layer.
+        method: >-
+          An integration test triggers a double click and a replayed request and counts the resulting records and
+          transactions in the trusted store.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/interaction/test_idempotent_submit (per project)
+      - id: VCGF-UX-003-AT02
+        type: automated
+        criterion: >-
+          Navigating away, refreshing or switching the language while a form holds unsaved changes raises the
+          unsaved-changes guard, and the entered values are still present after the user cancels.
+        method: >-
+          An end-to-end test edits a field, triggers each of the three events, cancels the guard and asserts the
+          field values.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: e2e/interaction/unsaved-changes.spec (per project)
+      - id: VCGF-UX-003-AT03
+        type: automated
+        criterion: >-
+          Saving a record whose version or entity tag is stale is rejected by the trusted layer with a conflict
+          response, and the interface presents both versions without merging automatically.
+        method: >-
+          An integration test updates a record from a second session, then saves from the first session and
+          asserts the conflict response and the rendered conflict view.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/interaction/test_concurrent_edit (per project)
+      - id: VCGF-UX-003-AT04
+        type: automated
+        criterion: >-
+          A destructive action is executed on the trusted layer only after a confirmation that names the object and
+          the effect, the confirmation defaults to the safe choice, and the trusted layer rejects the action without
+          authorization even when the client sends a confirmed request.
+        method: >-
+          An integration test inspects the confirmation content and default focus, then replays the confirmed
+          request without the required authorization and asserts the rejection.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/interaction/test_destructive_confirmation (per project)
+      - id: VCGF-UX-003-AT05
+        type: manual
+        criterion: >-
+          Under throttled network conditions each changed screen renders its loading, empty, error and success
+          states with text, and the completion message appears only after the trusted-layer response arrives.
+        method: >-
+          A tester throttles the network, exercises each state and compares the moment of the completion message
+          with the response timestamp in the network log.
+        negative_path: false
+        evidence: [manual-verification, log-sample]
+        automation:
+          kind: none
+  VCGF-UX-004:
+    requirement_sources: [VCGF-UI-SCR-019, VCGF-UI-SCR-020, VCGF-UI-SCR-001]
+    tests:
+      - id: VCGF-UX-004-AT01
+        type: review
+        criterion: >-
+          A screen-class strategy record exists for each changed screen naming the primary devices, input modality,
+          task frequency, density policy and responsive strategy, and it matches the orchestration block produced by
+          the governed Smart UI selection for that screen.
+        method: >-
+          A reviewer compares the strategy record with the orchestration output of the ui-select command for the
+          screen context and confirms that the values agree or that a deviation is justified.
+        negative_path: false
+        evidence: [code-review, configuration-record]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py ui-select
+      - id: VCGF-UX-004-AT02
+        type: automated
+        criterion: >-
+          At 320, 390, 768, 1280 and 1920 CSS pixel widths every required column, field and action of each changed
+          screen remains reachable through the layout or an explicit alternative path, and the primary task needs no
+          horizontal scrolling.
+        method: >-
+          A visual or DOM regression test renders each changed screen at the five widths and asserts the presence of
+          each required element or its alternative path and the absence of horizontal overflow.
+        negative_path: false
+        evidence: [test-result, screenshot]
+        automation:
+          kind: ci
+          reference: e2e/responsive/breakpoints.spec (per project)
+      - id: VCGF-UX-004-AT03
+        type: automated
+        criterion: >-
+          On screens declared for touch input every pointer target measures at least 24 by 24 CSS pixels and every
+          primary action at least 44 by 44 CSS pixels, with declared exceptions listed in the strategy record.
+        method: >-
+          A computed-style test measures the bounding boxes of interactive elements on touch-declared screens and
+          compares them with the thresholds and the exception list.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: e2e/responsive/target-size.spec (per project)
+      - id: VCGF-UX-004-AT04
+        type: manual
+        criterion: >-
+          On large screens each changed screen uses the additional width for context such as details or comparison
+          rather than stretching a single column, and shows at most one primary action per view.
+        method: >-
+          A tester reviews each changed screen at 1920 CSS pixels, records how the extra width is used and counts the
+          primary actions per view.
+        negative_path: false
+        evidence: [manual-verification, screenshot]
+        automation:
+          kind: none

@@ -1,0 +1,284 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the operations controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: operations
+controls:
+  VCGF-OPS-001:
+    tests:
+      - id: VCGF-OPS-001-AT01
+        type: automated
+        criterion: >-
+          No credential configured for the development, test or staging environment (database URL, API key,
+          signing key, service identity) authenticates against a production resource, and the secret fingerprints
+          of the four environments share no value.
+        method: >-
+          A controlled test presents each lower-environment credential to the production database, object store
+          and identity provider and expects an authentication failure; a script compares hashed secret values across
+          environments and fails on any overlap.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/environments/test_credential_isolation (per project)
+      - id: VCGF-OPS-001-AT02
+        type: automated
+        criterion: >-
+          A production deployment attempted with the development or staging deployment identity is refused with
+          an authorization error by the deployment platform and the refusal is written to the audit log with the
+          identity and target named.
+        method: >-
+          The deployment command is run against the production target with the staging identity in a dry-run or
+          sandboxed mode; the test asserts the denial response and the matching audit log entry.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/environments/test_deploy_authority (per project)
+      - id: VCGF-OPS-001-AT03
+        type: automated
+        criterion: >-
+          Every column classified as personal data in the development, test and staging databases holds only
+          synthetic or masked values (for example email addresses in the reserved test domain and no real
+          identifiers), or an approved exception record names the data, the protection controls and an expiry date.
+        method: >-
+          A masking verification script samples each classified personal-data column in each lower environment,
+          checks the masking patterns, and reconciles any unmasked column with the exception register.
+        negative_path: false
+        evidence: [security-scan, approval-record]
+        automation:
+          kind: script
+          reference: scripts/verify-masking (per project)
+      - id: VCGF-OPS-001-AT04
+        type: review
+        criterion: >-
+          The environment inventory lists for each of development, test, staging and production the secret store
+          scope, the reachable data sources and the roles holding deployment authority, and no role with
+          production deployment authority is also used for day-to-day development work.
+        method: >-
+          A reviewer compares the inventory with the exported role and policy configuration of the platform and the
+          secret store, and flags any role that appears both as a developer role and as a production deployer.
+        negative_path: false
+        evidence: [inventory, configuration-record]
+        automation:
+          kind: none
+  VCGF-OPS-002:
+    tests:
+      - id: VCGF-OPS-002-AT01
+        type: automated
+        criterion: >-
+          A direct push to the production release branch, a pull request without an approving review from a
+          non-author, and a pull request with a failing required status check are each rejected by branch
+          protection, including when attempted by a repository administrator.
+        method: >-
+          A test user and an administrator attempt each of the three operations; the test asserts the rejection
+          and exports the branch protection configuration as the configuration record.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/governance/test_branch_protection (per project)
+      - id: VCGF-OPS-002-AT02
+        type: automated
+        criterion: >-
+          Each change to production configuration, secrets, infrastructure or data made outside the application
+          (direct database writes, console edits, bulk imports) produces an audit entry naming an individual human
+          or workload identity, the changed object, the before and after version identifiers or row counts and the
+          timestamp, and a change attempted through a shared or anonymous identity is denied.
+        method: >-
+          A configuration value and a production table row are changed through the approved path and the audit
+          entry fields are asserted; the same changes are attempted with a shared account and the denial is
+          asserted.
+        negative_path: true
+        evidence: [log-sample, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/governance/test_change_attribution (per project)
+      - id: VCGF-OPS-002-AT03
+        type: automated
+        criterion: >-
+          Critical production operations (secret rotation, schema change, bulk data deletion or export,
+          infrastructure teardown, role or permission change) execute only after a second authorized person's
+          approval is recorded, and the same operation submitted with the requester's approval alone is refused.
+        method: >-
+          A critical operation is submitted with a single approval and the refusal is asserted; it is resubmitted
+          with a second approver and the execution and the stored approval record are asserted.
+        negative_path: true
+        evidence: [approval-record, test-result]
+        automation:
+          kind: ci
+          reference: tests/governance/test_elevated_approval (per project)
+      - id: VCGF-OPS-002-AT04
+        type: review
+        criterion: >-
+          The production deployment identity holds no permission to read secrets other than its own, delete data
+          stores or change roles and policies, and production deployments use a reversible strategy (blue-green,
+          canary or versioned artifacts with the previous version retained).
+        method: >-
+          A reviewer inspects the exported policy of the deployment identity against the list of forbidden
+          permissions and reads the deployment configuration for the strategy and retained-version setting.
+        negative_path: false
+        evidence: [configuration-record, code-review]
+        automation:
+          kind: none
+  VCGF-OPS-003:
+    requirement_sources: [S29, S30, S31, S32, S34, S38, S39]
+    tests:
+      - id: VCGF-OPS-003-AT01
+        type: automated
+        criterion: >-
+          A restore test runs at least once per the interval set by the recovery objective and before each major
+          release, restores the most recent backup set (database and attachments) into an isolated environment,
+          and the restored data passes row counts per table, referential integrity and attachment checksum checks
+          within the recovery time objective with data age within the recovery point objective.
+        method: >-
+          A scheduled restore job writes a report with the timing and the check results; the pipeline fails when
+          the newest successful restore report is older than the interval or any check in it failed.
+        negative_path: false
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/backup/test_restore_drill (per project)
+      - id: VCGF-OPS-003-AT02
+        type: automated
+        criterion: >-
+          Backup artifacts are encrypted at rest and stored where the application runtime identity and the primary
+          database credentials cannot delete or overwrite them: a delete or overwrite attempt with the production
+          application identity is refused and a backup file opened without the backup key is unintelligible.
+        method: >-
+          A test attempts to delete and to overwrite a backup object with the application identity and asserts the
+          refusal; it then attempts to parse a backup file without the decryption key and asserts failure.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/backup/test_backup_protection (per project)
+      - id: VCGF-OPS-003-AT03
+        type: automated
+        criterion: >-
+          The backup owner is alerted when the newest backup is older than the recovery point objective, when a
+          scheduled backup job fails, or when the produced file is zero bytes or fails its checksum.
+        method: >-
+          A test skips one scheduled run, forces a job failure and plants a zero-byte and a checksum-mismatched
+          file in turn, and asserts the alert to the owner for each condition.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/backup/test_backup_freshness_alert (per project)
+      - id: VCGF-OPS-003-AT04
+        type: review
+        criterion: >-
+          The recovery runbook states the recovery point and recovery time objectives per data store, the backup
+          set composition (database, attachments, configuration), the restore order, the key custodian and the
+          date and result of the last restore test, and that test is not older than the defined interval.
+        method: >-
+          A reviewer reads the runbook and the latest restore report and checks the date against the interval.
+        negative_path: false
+        evidence: [manual-verification, configuration-record]
+        automation:
+          kind: none
+  VCGF-OPS-004:
+    tests:
+      - id: VCGF-OPS-004-AT01
+        type: automated
+        criterion: >-
+          An out-of-band change to a production security setting (storage bucket made publicly readable, network
+          rule widened, MFA enforcement disabled, database role granted, secret access policy changed, deployment
+          pipeline permission or approval rule relaxed) made outside the versioned configuration path is reported
+          as drift within the configured detection interval with the changed attribute and the actor identity.
+        method: >-
+          A controlled change of each category is made in a production-like environment outside the versioned
+          path, and the test measures the time to the drift report and asserts its attribute and actor fields.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/drift/test_out_of_band_detection (per project)
+      - id: VCGF-OPS-004-AT02
+        type: automated
+        criterion: >-
+          The declared identity, network, storage, database, secret and deployment configuration is held in version
+          control and a scheduled comparison with the live production state reports zero differences that are not
+          linked to an approved change record.
+        method: >-
+          The infrastructure plan or diff tool runs read-only against production on schedule; the pipeline parses
+          the differences and fails on any that lacks a linked approved change record.
+        negative_path: false
+        evidence: [configuration-record, test-result]
+        automation:
+          kind: ci
+          reference: ci/drift-detection.yml (per project)
+      - id: VCGF-OPS-004-AT03
+        type: review
+        criterion: >-
+          Every drift alert in the last review period was either reverted to the declared state or adopted into
+          version control with an approval record within the response time set by the drift policy.
+        method: >-
+          A reviewer samples the drift alerts of the period and traces each to a revert commit or an approved
+          adoption change, comparing the resolution time with the policy.
+        negative_path: false
+        evidence: [log-sample, approval-record]
+        automation:
+          kind: none
+  VCGF-OPS-005:
+    tests:
+      - id: VCGF-OPS-005-AT01
+        type: automated
+        criterion: >-
+          Each synthetic security event (failed logins for one account and from one source beyond the lockout
+          threshold, authorization denials for one principal beyond the defined count, a privileged role grant, use
+          of a revoked API key, API requests from one key beyond the rate limit, repeated file uploads rejected by
+          validation) raises its alert within the configured latency with the event type and the affected principal
+          named.
+        method: >-
+          A test harness triggers each event in staging, polls the alerting system until the latency elapses and
+          asserts the alert type, the principal and the arrival time.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/monitoring/test_security_alert_coverage (per project)
+      - id: VCGF-OPS-005-AT02
+        type: automated
+        criterion: >-
+          Stopping the audit log pipeline, disabling the rate-limit or web application firewall layer, or
+          corrupting the checksum of a protected configuration file raises a security-control degradation alert to
+          the security owner while the application health checks remain green.
+        method: >-
+          Each degradation is induced in staging in turn; the test asserts the alert to the security owner and
+          that the health endpoint still reports healthy, proving the alert does not depend on application failure.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/monitoring/test_control_degradation_alerts (per project)
+      - id: VCGF-OPS-005-AT03
+        type: review
+        criterion: >-
+          Every rule in the security alert catalog has a named owner, a severity, a routing destination, a
+          suppression or deduplication rule and a linked response playbook, and every referenced owner exists in
+          the on-call roster and every referenced playbook file exists.
+        method: >-
+          A validator over the alert catalog checks the required fields on each rule and resolves owners against
+          the roster and playbooks against the repository.
+        negative_path: false
+        evidence: [configuration-record]
+        automation:
+          kind: validator
+          reference: tests/monitoring/test_alert_catalog_schema (per project)
+      - id: VCGF-OPS-005-AT04
+        type: automated
+        criterion: >-
+          A sample of security event payloads and alert messages contains zero secret patterns and only the
+          personal data fields on the monitoring allow-list (for example a hashed user identifier rather than an
+          email address).
+        method: >-
+          A redaction scan runs over a sample of security events and alert messages with the secret patterns and
+          the classified personal-data field names and fails on any match outside the allow-list.
+        negative_path: false
+        evidence: [log-sample, security-scan]
+        automation:
+          kind: ci
+          reference: tests/logging/test_security_event_redaction (per project)

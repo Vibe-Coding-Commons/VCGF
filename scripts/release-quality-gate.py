@@ -10,7 +10,7 @@ import subprocess, sys
 from vcgf_lib import ROOT
 
 GENERATORS=['generate-control-catalog.py','generate-repository-tree.py','generate-file-manifest.py']
-VALIDATORS=['validate-controls.py','validate-profiles.py','validate-adapters.py','validate-schemas.py','validate-yaml.py','validate-license.py','validate-cross-references.py','validate-vendor-neutral-core.py','validate-internal-links.py','validate-attribution.py','validate-placeholders.py','validate-version.py','validate-documentation.py','validate-repository-structure.py','validate-package-integrity.py']
+VALIDATORS=['validate-controls.py','validate-profiles.py','validate-adapters.py','validate-schemas.py','validate-yaml.py','validate-license.py','validate-cross-references.py','validate-vendor-neutral-core.py','validate-internal-links.py','validate-attribution.py','validate-placeholders.py','validate-version.py','validate-documentation.py','validate-repository-structure.py','validate-package-integrity.py','validate-applicability.py','validate-acceptance.py']
 
 def run(name,*extra):
     p=subprocess.run([sys.executable,str(ROOT/'scripts'/name),*extra],cwd=ROOT)

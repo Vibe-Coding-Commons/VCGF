@@ -1,0 +1,352 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the api controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: api
+controls:
+  VCGF-API-001:
+    requirement_sources: [S14]
+    tests:
+      - id: VCGF-API-001-AT01
+        type: automated
+        criterion: >-
+          A generated inventory of every externally callable route, server function, RPC, resolver and webhook
+          handler is complete against the deployed router, every entry not marked public returns an unauthenticated
+          response to an anonymous call and a forbidden response to an authenticated session lacking the role or
+          tenant recorded for that entry, and every entry marked public carries a recorded justification.
+        method: >-
+          A test generates the inventory from the router and function registry, diffs it against the committed
+          inventory, calls each non-public entry without credentials and with a session of the wrong role or
+          tenant, and checks the justification field of each public entry.
+        negative_path: true
+        evidence: [test-result, inventory]
+        automation:
+          kind: ci
+          reference: tests/api/test_endpoint_inventory_coverage (per project)
+      - id: VCGF-API-001-AT02
+        type: automated
+        criterion: >-
+          Create and update requests to privileged models that include role, tenant identifier, owner identifier,
+          price, balance or administrative flags leave those fields unchanged in storage, and every response of the
+          changed endpoints conforms to its explicit response schema so that no credential hash, internal flag or
+          another user's field is returned.
+        method: >-
+          An integration test sends payloads with the extra fields and reads the persisted record, and a contract
+          test validates each response body against the declared response schema with additional properties
+          forbidden.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/api/test_mass_assignment_and_response_schema (per project)
+      - id: VCGF-API-001-AT03
+        type: automated
+        criterion: >-
+          A body larger than the configured size limit is refused with a 413 response before parsing, a payload
+          that violates the request schema is refused with a 400 or 422 response naming the field but no stack trace,
+          query text, file path or internal host name, a forced internal exception yields a generic error with a
+          correlation identifier whose detail appears only in server logs, and each handler aborts at the
+          configured timeout.
+        method: >-
+          An integration test sends oversized, malformed and schema-violating payloads, injects an exception
+          through a test hook, inspects the response bodies for leaked internals, correlates the identifier with
+          the log entry, and measures a handler stalled by a slow dependency.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/api/test_request_limits_and_safe_errors (per project)
+      - id: VCGF-API-001-AT04
+        type: automated
+        criterion: >-
+          Query, path and body parameters containing SQL, NoSQL, command and template injection payloads are
+          refused or treated as literal values, returning zero rows beyond the caller's authorised set, and static
+          analysis finds no query built by string concatenation of request input in the changed server code.
+        method: >-
+          An integration test replays an injection payload corpus against each parameter of the changed endpoints
+          and counts the rows and side effects, and the static analysis rule for concatenated queries runs in the
+          pipeline.
+        negative_path: true
+        evidence: [test-result, security-scan]
+        automation:
+          kind: ci
+          reference: tests/api/test_injection_resistance (per project)
+      - id: VCGF-API-001-AT05
+        type: review
+        criterion: >-
+          Every use of the service or administrative database client sits in server-only code after an explicit
+          application authorisation check, user-scoped or row-level-security-scoped access is used wherever the
+          operation permits it, and the service credential is absent from client bundles and client-exposed
+          configuration.
+        method: >-
+          A reviewer traces each privileged client instantiation to the preceding authorisation check and records
+          why a user-scoped client could not be used, and a bundle scan searches the client artifacts for the
+          service credential.
+        negative_path: false
+        evidence: [code-review, security-scan]
+        automation:
+          kind: script
+          reference: scripts/scan-privileged-client-usage (per project)
+  VCGF-API-002:
+    tests:
+      - id: VCGF-API-002-AT01
+        type: automated
+        criterion: >-
+          An order, quote or entitlement request whose client-supplied price, discount, tax, total, balance, credit,
+          quota or entitlement value differs from the server-derived value is refused or persisted with the
+          server-computed value, so the stored total equals the server computation to the smallest currency unit
+          and never equals the client's value, and a client-supplied role, ownership or tenant value on the same
+          request is replaced by the value derived from the authenticated identity.
+        method: >-
+          An integration test submits requests with manipulated monetary, entitlement, role, owner and tenant
+          fields, reads the persisted values and compares them with an independent computation from the catalogue
+          and rules and with the authenticated identity.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/logic/test_server_side_recalculation (per project)
+      - id: VCGF-API-002-AT02
+        type: automated
+        criterion: >-
+          Every state transition absent from the committed transition table, including skipping an approval step,
+          reopening a cancelled or completed record and approving one's own request, is refused with a conflict or
+          forbidden response and leaves the stored state and its timestamp unchanged.
+        method: >-
+          A test derives the set of invalid state pairs from the transition table, attempts each through the
+          endpoint and the server function, and reads the stored state afterwards.
+        negative_path: true
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/logic/test_state_machine_transitions (per project)
+      - id: VCGF-API-002-AT03
+        type: automated
+        criterion: >-
+          Twenty concurrent requests that each try to spend the same balance, redeem the same voucher or claim the
+          last inventory unit produce exactly the permitted number of successes, and the invariants (balance not
+          negative, voucher used once, stock not negative) hold in the database afterwards.
+        method: >-
+          A concurrency test launches the requests simultaneously against the trusted layer, counts successful
+          responses, and asserts the invariants directly in the database.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/logic/test_concurrency_invariants (per project)
+      - id: VCGF-API-002-AT04
+        type: automated
+        criterion: >-
+          Retrying a payment, order, approval, email send, voucher issue or provisioning request with the same
+          idempotency key within the retention window returns the original result and produces exactly one charge,
+          message, voucher or resource, and a replayed request with a stale or reused signed payload is refused.
+        method: >-
+          An integration test repeats each request with the same key and as a raw network retry, counts the side
+          effects in the trusted store and the provider sandbox, and replays a previously captured signed payload.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/logic/test_idempotent_retries (per project)
+  VCGF-API-003:
+    tests:
+      - id: VCGF-API-003-AT01
+        type: review
+        criterion: >-
+          A rate-limit register names every endpoint of the abuse-sensitive classes present in the route inventory
+          (login, password reset, signup, OTP and MFA, search, AI generation, upload, export, webhooks, email and
+          SMS, invitations, expensive reports, payments, public APIs) with its subject key, window, burst limit,
+          sustained limit, response behaviour, internal exceptions and monitoring hook, and no endpoint of those
+          classes is missing from it.
+        method: >-
+          A reviewer joins the route inventory with the register, lists endpoints of the named classes that lack
+          an entry, and checks that each entry fills every field with a concrete value.
+        negative_path: false
+        evidence: [configuration-record, inventory]
+        automation:
+          kind: none
+      - id: VCGF-API-003-AT02
+        type: automated
+        criterion: >-
+          For each registered endpoint, the request that exceeds the burst limit within the window receives the
+          documented limit response (a 429 with Retry-After or a challenge) while the preceding requests succeed,
+          the sustained limit is enforced over the longer window, and requests from a different subject key are
+          unaffected.
+        method: >-
+          An integration test reads the register, sends burst-plus-one requests per subject, continues to the
+          sustained window, and verifies a second subject in parallel.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/abuse/test_rate_limit_enforcement (per project)
+      - id: VCGF-API-003-AT03
+        type: automated
+        criterion: >-
+          Where the application runs more than one instance, with at least two instances behind the load balancer
+          the request that exceeds the burst limit is refused even when the earlier requests were served by
+          different instances, proving that the enforcement state is shared rather than kept per instance.
+        method: >-
+          An integration test runs against a multi-instance deployment, records the serving instance of each
+          request from response headers, and asserts the refusal at the aggregate threshold.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/abuse/test_shared_limit_state (per project)
+      - id: VCGF-API-003-AT04
+        type: automated
+        criterion: >-
+          An upload beyond the maximum size is refused before any storage write, more than the configured number
+          of concurrent AI generation, export or report jobs per tenant are queued or refused rather than executed,
+          and a tenant reaching its daily AI, email or SMS quota is refused with no call to the provider and a
+          monitoring event is emitted.
+        method: >-
+          An integration test streams an oversized upload and checks storage, launches jobs above the concurrency
+          ceiling and counts running jobs, exhausts a quota and inspects the provider sandbox and the monitoring
+          sink.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/abuse/test_size_concurrency_and_quota (per project)
+  VCGF-API-004:
+    tests:
+      - id: VCGF-API-004-AT01
+        type: automated
+        criterion: >-
+          A server-side URL fetch given loopback, link-local, private-range, cloud-metadata, IPv6 loopback, a host
+          that resolves to a private address, a redirect to a private address, a non-HTTP scheme or a port outside
+          the allow-list is refused before any connection, responses are aborted beyond the configured size and
+          timeout, and the outbound request carries no internal credential header.
+        method: >-
+          An integration test points the fetch feature at each destination class through a controlled DNS and
+          redirect harness, observes connections at the network layer, and inspects the outbound headers.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/api/test_ssrf_destination_guard (per project)
+      - id: VCGF-API-004-AT02
+        type: automated
+        criterion: >-
+          Every cookie-authenticated state-changing endpoint refuses a cross-site request that lacks the framework
+          CSRF token or presents a mismatched token or Origin with a forbidden response and no state change, the
+          session cookie sets SameSite Lax or Strict, and every CSRF exemption in the change carries a recorded
+          justification that is not an integration fix.
+        method: >-
+          An integration test replays each state-changing request from a foreign origin without and with a
+          mismatched token, reads the stored state, inspects the cookie attributes, and a code check lists routes
+          with CSRF exemptions.
+        negative_path: true
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/api/test_csrf_protection (per project)
+      - id: VCGF-API-004-AT03
+        type: automated
+        criterion: >-
+          A preflight or actual request from an origin outside the exact allow-list, including the null origin and
+          a subdomain or scheme variant of a trusted origin, receives no Access-Control-Allow-Origin header, the
+          Origin value is never reflected, a wildcard is never combined with Access-Control-Allow-Credentials, and
+          a request from a trusted origin without a valid session is still refused by authentication.
+        method: >-
+          An integration test sends requests with trusted, variant, null and arbitrary origins to the changed
+          endpoints, inspects the CORS response headers, and sends an unauthenticated request from a trusted origin.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/api/test_cors_exact_origins (per project)
+      - id: VCGF-API-004-AT04
+        type: automated
+        criterion: >-
+          A webhook delivery with an invalid signature, a valid signature over a modified body, a timestamp outside
+          the replay window, an already processed event identifier, an unknown event type or a schema-violating
+          payload is refused and processed zero times, a correct URL without a signature is refused, and a valid
+          delivery repeated twice produces one state change.
+        method: >-
+          An integration test crafts each delivery variant with the provider's signing scheme over the raw bytes,
+          posts it to the webhook endpoint, and counts the resulting state changes and processed-event records.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/api/test_webhook_signature_and_replay (per project)
+  VCGF-API-005:
+    tests:
+      - id: VCGF-API-005-AT01
+        type: review
+        criterion: >-
+          Each third-party provider has an inventory entry naming its purpose, the server-side secret store holding
+          its credential, the granted scopes against the minimum needed, the last rotation date, the revocation
+          procedure and the personal or sensitive fields sent, credentials unused for the documented period are
+          revoked, and no private provider credential appears in client bundles or public configuration.
+        method: >-
+          A reviewer compares the inventory with the provider consoles and the secret store, checks rotation and
+          revocation dates, and a bundle scan searches the client artifacts and public configuration for provider
+          credentials.
+        negative_path: false
+        evidence: [inventory, configuration-record, security-scan]
+        automation:
+          kind: script
+          reference: scripts/scan-provider-credentials (per project)
+      - id: VCGF-API-005-AT02
+        type: automated
+        criterion: >-
+          An inbound callback or event from a provider whose signature is invalid or whose payload fails the schema
+          is refused, and a correctly signed payload whose amount, status or identifier differs from the provider's
+          authoritative record retrieved through the provider API does not update business state.
+        method: >-
+          An integration test posts tampered and schema-violating payloads, then a signed payload with values that
+          contradict the provider sandbox record, and reads the business state afterwards.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/integrations/test_inbound_payload_trust (per project)
+      - id: VCGF-API-005-AT03
+        type: automated
+        criterion: >-
+          When the provider answers with a server error, a malformed response or no response within the configured
+          deadline, the business transaction is rolled back or marked pending with a compensation record so that
+          no confirmed order exists without its charge and no charge without its order, and a retry reuses the same
+          idempotency key so that at most one charge is created.
+        method: >-
+          An integration test injects each failure mode through a provider stub, inspects the transaction state and
+          compensation records, and counts the charges in the provider sandbox after retries.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/integrations/test_provider_failure_consistency (per project)
+      - id: VCGF-API-005-AT04
+        type: automated
+        criterion: >-
+          The OAuth or OIDC callback refuses a redirect URI that differs from the registered exact value by path,
+          port, subdomain or scheme, a response with a missing or mismatched state, and an identity token with a
+          mismatched nonce, invalid signature, wrong audience or wrong issuer, while all token verification is
+          performed by the named protocol library rather than project code.
+        method: >-
+          An integration test drives the callback with each manipulated parameter and token against a stub
+          provider, and a code review confirms that verification calls the library.
+        negative_path: true
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/integrations/test_oauth_callback_protections (per project)
+      - id: VCGF-API-005-AT05
+        type: automated
+        criterion: >-
+          For every outbound provider call in the change, the transmitted fields are a subset of those listed in the
+          documented third-party sharing record, and no personal or sensitive field outside that record leaves
+          the application.
+        method: >-
+          An integration test routes provider calls through a recording proxy, extracts the transmitted field names
+          and compares them with the sharing record for that provider.
+        negative_path: false
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/integrations/test_outbound_data_minimisation (per project)

@@ -1,0 +1,220 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the logging-auditing controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: logging-auditing
+controls:
+  VCGF-AUDIT-001:
+    tests:
+      - id: VCGF-AUDIT-001-AT01
+        type: automated
+        criterion: >-
+          Triggering an unhandled exception, a database error, a missing file, an upstream timeout and a
+          validation failure through the public API returns a body that contains no stack trace, SQL fragment,
+          filesystem path, secret value, internal hostname or debug dump; every body carries a correlation
+          identifier, and only the validation failure names the offending fields and rules.
+        method: >-
+          An integration test provokes each error class with fault injection, scans the response body and headers
+          with patterns for each forbidden artifact and asserts the presence of the correlation identifier.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/errors/test_error_response_sanitisation (per project)
+      - id: VCGF-AUDIT-001-AT02
+        type: automated
+        criterion: >-
+          For each error provoked through the public API the trusted server log holds an entry carrying the same
+          correlation identifier as the response together with the operation name, a safe resource identifier and
+          the actor and tenant identifiers where permitted, so the failure can be traced without the response
+          disclosing it.
+        method: >-
+          The same integration test reads the server log after each provoked error and asserts the matching
+          correlation identifier and the required fields of the entry.
+        negative_path: false
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/errors/test_diagnostic_log_entry (per project)
+      - id: VCGF-AUDIT-001-AT03
+        type: automated
+        criterion: >-
+          The log output of the full test run, including sign-in, token refresh, password reset and payment
+          flows seeded with canary passwords, tokens, API keys and card numbers, contains zero occurrences of
+          any canary value and no personal data beyond the permitted identifier fields.
+        method: >-
+          A pipeline step scans all log streams produced by the test run with the canary values and personal-data
+          patterns and fails on any match.
+        negative_path: false
+        evidence: [test-result, log-sample, security-scan]
+        automation:
+          kind: ci
+          reference: tests/logging/test_no_secrets_in_logs (per project)
+      - id: VCGF-AUDIT-001-AT04
+        type: automated
+        criterion: >-
+          Each security event (authentication failures crossing the repeat threshold, reset initiation and
+          completion, an MFA change, a role change, a permission denial, an administrative action, a key or
+          security-configuration change, a suspicious export or download, a session revocation) produces a
+          security log record carrying the event type, actor, correlation identifier, timestamp and outcome.
+        method: >-
+          An integration test triggers each listed event once, asserts that at least one matching security log
+          record exists and checks its fields.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/logging/test_security_events (per project)
+      - id: VCGF-AUDIT-001-AT05
+        type: review
+        criterion: >-
+          The production configuration disables debug mode and verbose error pages, and the error handler maps
+          every unhandled exception to the generic response template with a correlation identifier.
+        method: >-
+          A reviewer inspects the production configuration and the global error handler and confirms the
+          debug flags, the template and the correlation identifier propagation.
+        negative_path: false
+        evidence: [configuration-record, code-review]
+        automation:
+          kind: none
+  VCGF-AUDIT-002:
+    requirement_sources: [S17, S33]
+    tests:
+      - id: VCGF-AUDIT-002-AT01
+        type: automated
+        criterion: >-
+          Every action in the project's audit scope (administrative actions, approvals, permission and role
+          changes, recovery completion, data exports, critical business actions) produces an audit record with
+          actor identity, action, resource identifier, timestamp, result and correlation context, written by the
+          trusted layer rather than supplied by the client.
+        method: >-
+          An integration test performs each in-scope action once, queries the audit store and asserts that a
+          record exists for the action with the presence and format of each field, and that the client request
+          contained no audit payload.
+        negative_path: false
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/audit/test_audit_record_fields (per project)
+      - id: VCGF-AUDIT-002-AT02
+        type: automated
+        criterion: >-
+          A denied permission change, a rejected approval and a failed export each produce an audit record whose
+          result is denied or failed, and the recorded actor is derived from the server-side session even when
+          the client omits or forges actor fields in the request.
+        method: >-
+          An integration test performs each action without the required right and with forged actor fields,
+          then asserts the audit record result and the actor value against the authenticated session.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/audit/test_denied_actions_audited (per project)
+      - id: VCGF-AUDIT-002-AT03
+        type: automated
+        criterion: >-
+          Audit records for a seeded set of in-scope actions contain only the fields on the audit schema
+          allow-list and none of the canary passwords, tokens, secret values or unnecessary personal data used in
+          the actions.
+        method: >-
+          A test exports the audit records produced by the seeded actions, compares the field set with the
+          allow-list and scans the values for canary secrets and personal-data patterns.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/audit/test_audit_payload_minimisation (per project)
+      - id: VCGF-AUDIT-002-AT04
+        type: review
+        criterion: >-
+          The audit scope document lists every administrative, approval, permission, recovery, data-export and
+          critical business action rated high or critical in the project risk assessment, maps each to an audit
+          event type and to a test identifier, and records a risk-based justification for each such action left
+          out of scope.
+        method: >-
+          A reviewer compares the risk assessment with the audit scope document and the test inventory and
+          confirms a mapping or a justification for each rated action.
+        negative_path: false
+        evidence: [threat-model, inventory, code-review]
+        automation:
+          kind: none
+      - id: VCGF-AUDIT-002-AT05
+        type: automated
+        criterion: >-
+          While the audit writer is unavailable, each in-scope action either fails closed with no state change on
+          the trusted layer, or completes and raises a monitoring alert naming the audit trail gap within the
+          interval set in the audit scope document, so that no in-scope action completes without attributable
+          evidence or a recorded gap.
+        method: >-
+          A test blocks the audit writer in an isolated environment, performs each in-scope action, and asserts
+          for every action either the failed-closed response and unchanged state or the alert and its delivery
+          time against the configured interval.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/audit/test_audit_writer_unavailable (per project)
+  VCGF-AUDIT-003:
+    tests:
+      - id: VCGF-AUDIT-003-AT01
+        type: automated
+        criterion: >-
+          An update or delete of a critical audit record attempted with the application runtime identity, and
+          through every application API and administrative screen, is refused and leaves the record byte-identical,
+          while appending a new audit record through the trusted layer still succeeds.
+        method: >-
+          An integration test connects with the application runtime identity, attempts each modifying statement
+          and API or screen action against a seeded critical record, compares the record before and after each
+          attempt, and then appends a record to confirm the write path is intact.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/audit/test_unauthorized_modification_refused (per project)
+      - id: VCGF-AUDIT-003-AT02
+        type: automated
+        criterion: >-
+          Modifying one field of a critical audit record or removing one record out of band with a privileged
+          database or storage connection is either refused by the store (append-only storage, retention lock) or
+          detected by the integrity verification or monitoring, which names the affected record and raises an
+          alert within the interval set in the threat model.
+        method: >-
+          A test tampers with a record in an isolated copy of the audit store, records whether the store refused
+          the change, otherwise runs the integrity verification or monitoring and asserts the reported record and
+          the alert time.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/audit/test_out_of_band_tamper_detection (per project)
+      - id: VCGF-AUDIT-003-AT03
+        type: review
+        criterion: >-
+          The threat model names the mechanisms chosen to protect critical audit records (access separation,
+          append-oriented storage, retention controls, monitoring, integrity mechanisms), the configuration record
+          lists every identity able to alter or purge the audit store and none of them is the application runtime
+          or application-administrator identity, and the retention period during which records are kept is stated.
+        method: >-
+          A reviewer compares the threat model with the role grants, the retention or object-lock configuration
+          and the access list and confirms the separation and the stated retention period.
+        negative_path: false
+        evidence: [threat-model, configuration-record]
+        automation:
+          kind: none
+      - id: VCGF-AUDIT-003-AT04
+        type: automated
+        criterion: >-
+          Running the purge or retention job under the designated retention identity removes only critical audit
+          records older than the retention period stated in the configuration record and leaves every younger
+          record in place, and running the same job under the application runtime or application-administrator
+          identity is refused and removes nothing.
+        method: >-
+          A test seeds critical records on both sides of the retention boundary in an isolated copy of the audit
+          store, runs the purge job under the designated retention identity and under each application identity,
+          and compares the surviving records with the expected set after each run.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/audit/test_retention_purge_boundary (per project)

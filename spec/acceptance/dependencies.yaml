@@ -1,0 +1,233 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the dependencies controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: dependencies
+controls:
+  VCGF-DEP-001:
+    tests:
+      - id: VCGF-DEP-001-AT01
+        type: automated
+        criterion: >-
+          Every dependency name newly added to a manifest resolves to a package in the configured registry with at
+          least one published release, a change adding a name that does not resolve fails the dependency gate, and
+          a name within an edit distance of two from a more popular package of a different name is blocked until a
+          reviewer explicitly acknowledges it in the change.
+        method: >-
+          A CI script diffs the manifest against the base branch, queries registry metadata for each added name and
+          applies the typosquat heuristic; the test adds a non-existent package in a fixture change and asserts the
+          gate fails, then adds a near-named package and asserts the gate blocks until the acknowledgement is present.
+        negative_path: true
+        evidence: [test-result, security-scan]
+        automation:
+          kind: ci
+          reference: ci/dependencies/verify-new-packages (per project)
+      - id: VCGF-DEP-001-AT02
+        type: review
+        criterion: >-
+          Each dependency added or upgraded in the change has a justification record stating the need, why existing
+          platform or library functionality is insufficient, the maintenance signals (last release date, open
+          advisories, maintainer count), the install scripts and runtime permissions it requires, the attack surface
+          it adds, and a reviewer sign-off.
+        method: >-
+          A reviewer reconciles the manifest and lockfile diff with the justification records and confirms each
+          record names the same package and version that was added.
+        negative_path: false
+        evidence: [code-review, approval-record]
+        automation:
+          kind: none
+      - id: VCGF-DEP-001-AT03
+        type: automated
+        criterion: >-
+          Every package in the change that runs an install, postinstall or build-time script during installation is
+          named in a reviewed install-script allow-list with the script's purpose recorded, and the install gate
+          fails when a fixture package carrying a postinstall script that is not on the allow-list is added to the
+          manifest.
+        method: >-
+          The CI install step detects packages with lifecycle scripts (for example by installing with scripts
+          disabled and diffing against the allow-list, or by scanning the resolved packages' manifests) and fails
+          on an unlisted one; the test adds an unlisted fixture package with a postinstall hook and asserts the
+          failure, then adds it to the allow-list with a review note and asserts the gate passes.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: ci/dependencies/install-scripts-policy (per project)
+      - id: VCGF-DEP-001-AT04
+        type: review
+        criterion: >-
+          Deployment tokens and build secrets live in the CI secret store scoped to the publishing job and are not
+          exposed to pull-request builds from forks, release artifacts are produced only by the protected pipeline,
+          and the release branch requires the dependency gates and at least one approving review before merge.
+        method: >-
+          A reviewer inspects the CI secret scopes, the fork build policy, the artifact publishing job and the
+          branch protection settings, and records the values.
+        negative_path: false
+        evidence: [configuration-record]
+        automation:
+          kind: none
+      - id: VCGF-DEP-001-AT05
+        type: automated
+        criterion: >-
+          Each dependency added in the change is pinned in the committed lockfile with an exact version and an
+          integrity hash, or the justification record states why locking is not practical for that ecosystem, and
+          a change that adds a manifest entry without the corresponding lockfile entry fails the dependency gate.
+        method: >-
+          A CI script matches every added manifest entry against the lockfile diff and the justification records;
+          the test adds a manifest entry without updating the lockfile and asserts the gate fails, then adds the
+          lockfile entry and asserts it passes.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: ci/dependencies/added-dependency-locked (per project)
+  VCGF-DEP-002:
+    tests:
+      - id: VCGF-DEP-002-AT01
+        type: automated
+        criterion: >-
+          Every package manifest in the repository has a committed lockfile (or the ecosystem's equivalent pinning
+          record, such as a checksum database or vendored tree) in sync with it, a frozen install from that record
+          succeeds without modifying it, and two clean installs produce identical resolved dependency trees.
+        method: >-
+          The CI job runs the ecosystem's frozen install command, asserts the lockfile or pinning record is
+          unchanged in the working tree, then dumps the resolved tree from two clean installs and compares them.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: ci/dependencies/lockfile-sync (per project)
+      - id: VCGF-DEP-002-AT02
+        type: automated
+        criterion: >-
+          A change that deletes or regenerates a lockfile, or that changes resolved versions not explained by a
+          direct dependency change in the manifest, fails the lockfile consistency check unless the change is
+          labelled as a dependency upgrade.
+        method: >-
+          A CI script compares the manifest diff with the lockfile diff and the change labels; the test submits a
+          fixture change that regenerates the lockfile during an unrelated feature and asserts the failure.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: ci/dependencies/lockfile-churn-guard (per project)
+      - id: VCGF-DEP-002-AT03
+        type: review
+        criterion: >-
+          Each major-version upgrade of a dependency ships in a change containing only that upgrade and the code
+          adaptations it requires, with the consulted changelog or migration notes referenced in the change
+          description.
+        method: >-
+          A reviewer inspects the composition of the change set and confirms no unrelated feature files are
+          modified and the migration notes are referenced.
+        negative_path: false
+        evidence: [code-review]
+        automation:
+          kind: none
+  VCGF-DEP-003:
+    tests:
+      - id: VCGF-DEP-003-AT01
+        type: automated
+        criterion: >-
+          A vulnerability scan of the resolved production dependency set runs on every change and on a recurring
+          schedule (at least weekly, or the shorter interval set by the project's risk profile), and a build whose
+          production dependencies carry a critical or high severity advisory with no accepted triage record fails.
+        method: >-
+          The CI job runs the scanner against the lockfile, and the test pins a fixture package version with a
+          known critical advisory and asserts the pipeline fails until a triage record is added.
+        negative_path: true
+        evidence: [security-scan, test-result]
+        automation:
+          kind: ci
+          reference: ci/dependencies/vulnerability-scan (per project)
+      - id: VCGF-DEP-003-AT02
+        type: review
+        criterion: >-
+          Every advisory finding not fixed before release has a triage record stating reachability, exploitability
+          in the deployment context, compensating controls, upgrade impact and the release-blocking decision,
+          approved by the risk owner with an expiry date and a review date, and no open finding is covered only by
+          an expired record.
+        method: >-
+          A reviewer compares the scanner output with the triage records and confirms each open finding has a
+          complete, approved and unexpired record.
+        negative_path: false
+        evidence: [approval-record, security-scan]
+        automation:
+          kind: none
+      - id: VCGF-DEP-003-AT03
+        type: review
+        criterion: >-
+          The scanner configuration committed to the repository encodes the release-blocking severity thresholds and
+          limits the scope to production dependency groups, the scan report records that scope, and the scan is a
+          required status check on the release branch.
+        method: >-
+          A reviewer reads the scanner configuration and the branch protection settings and confirms the thresholds
+          and scope against the latest scan report.
+        negative_path: false
+        evidence: [configuration-record, security-scan]
+        automation:
+          kind: none
+  VCGF-DEP-004:
+    tests:
+      - id: VCGF-DEP-004-AT01
+        type: automated
+        criterion: >-
+          For each release a machine-readable software bill of materials in CycloneDX or SPDX format is generated
+          from the lockfile or build metadata in the same pipeline run as the artifact, every component records
+          name, version, a package URL naming its source registry and its direct or transitive relationship, and
+          regenerating it from the same lockfile yields an identical document.
+        method: >-
+          The CI job generates the document twice, validates it against the format schema, asserts each component
+          carries a package URL and a dependency graph entry, and diffs the two outputs.
+        negative_path: false
+        evidence: [inventory, test-result]
+        automation:
+          kind: ci
+          reference: ci/release/generate-sbom (per project; scripts/generate-sbom.py is the VCGF reference implementation)
+      - id: VCGF-DEP-004-AT02
+        type: automated
+        criterion: >-
+          Every component in the software bill of materials matches an entry in the lockfile and every lockfile
+          entry appears in the bill of materials, and an installed or vendored package absent from the lockfile or a
+          lockfile entry not pinned to an exact version fails the inventory gate.
+        method: >-
+          A CI script reconciles the generated inventory with the lockfile in both directions; the test vendors a
+          package outside the lockfile and adds a range specifier and asserts both are reported and the gate fails.
+        negative_path: true
+        evidence: [inventory, test-result]
+        automation:
+          kind: ci
+          reference: ci/release/sbom-lockfile-reconcile (per project)
+      - id: VCGF-DEP-004-AT03
+        type: review
+        criterion: >-
+          The release record links the shipped artifact's digest to the digest of its software bill of materials,
+          through a release checksum entry or a signed provenance attestation, so that a reviewer can resolve the
+          artifact to the exact inventory of components it shipped with.
+        method: >-
+          A reviewer recomputes the artifact digest and the inventory digest, confirms both match the release record
+          or attestation, and verifies the signature with the publishing key where an attestation is used.
+        negative_path: false
+        evidence: [release-checksum, inventory]
+        automation:
+          kind: ci
+          reference: ci/release/attach-sbom-attestation (per project)
+      - id: VCGF-DEP-004-AT04
+        type: automated
+        criterion: >-
+          Every package added in the change, whether introduced by a human or an AI agent, has a provenance record
+          naming its source registry, the publish date of the version and the verifying reviewer, and the change is
+          rejected before merge when a lockfile entry's integrity hash differs from the registry's published hash
+          for that version or when a package resolves to a URL, path or mirror outside the configured registries
+          without a review note.
+        method: >-
+          A CI script compares each added lockfile entry's integrity hash and resolved source with registry
+          metadata and checks the provenance record fields; the test alters one hash in a fixture lockfile and
+          points another entry at an unlisted mirror and asserts both are rejected, then restores them and asserts
+          the gate passes.
+        negative_path: true
+        evidence: [test-result, inventory]
+        automation:
+          kind: ci
+          reference: ci/dependencies/provenance-check (per project)

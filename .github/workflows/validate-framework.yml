@@ -34,3 +34,5 @@ jobs:
       - run: python scripts/validate-documentation.py
       - run: python scripts/validate-repository-structure.py
       - run: python scripts/validate-package-integrity.py
+      - run: python scripts/validate-applicability.py
+      - run: python scripts/validate-acceptance.py

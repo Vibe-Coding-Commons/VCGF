@@ -1,0 +1,458 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the database controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: database
+controls:
+  VCGF-DB-001:
+    requirement_sources: [S35]
+    tests:
+      - id: VCGF-DB-001-AT01
+        type: review
+        criterion: >-
+          Every schema or data migration in the change has a migration review record that addresses each of the
+          seven inspection areas (compatibility, integrity, authorization, rollback, data loss, locking and
+          operational risk) and lists the affected schema objects, constraints, relationships, indexes, row-level
+          policies, grants, views, functions or triggers, application references and reports or exports.
+        method: >-
+          A reviewer reads each migration file side by side with its review record, confirms that every affected
+          object named in the migration appears in the record, and that each of the seven areas carries a finding
+          or an explicit "not affected" statement.
+        negative_path: false
+        evidence: [migration-review]
+        automation:
+          kind: none
+      - id: VCGF-DB-001-AT02
+        type: automated
+        criterion: >-
+          A pending migration containing DROP TABLE, TRUNCATE, a destructive table or column rename, removal of a
+          row-level policy, a grant that exposes private data to a public or anonymous role, or a statement that
+          drops or permanently disables an integrity constraint fails the migration gate unless an approval record
+          citing that migration identifier exists.
+        method: >-
+          A CI lint parses the pending migration files for the prohibited statement classes and looks up approval
+          records by migration identifier; the test commits a fixture migration with DROP TABLE and no approval and
+          asserts the pipeline fails, then adds the approval record and asserts it passes.
+        negative_path: true
+        evidence: [test-result, approval-record]
+        automation:
+          kind: ci
+          reference: tests/migrations/test_destructive_statement_gate (per project)
+      - id: VCGF-DB-001-AT03
+        type: automated
+        criterion: >-
+          A migration that adds NOT NULL, CHECK, UNIQUE or foreign-key constraints to a populated table is preceded
+          in the migration order by a backfill step that makes every existing row satisfy the constraint, and
+          applying the full pending set to a production-shaped snapshot completes with zero constraint violations
+          and per-table row counts equal to the pre-run counts except for the row changes a data migration declares
+          in its review record.
+        method: >-
+          The CI job restores a seeded snapshot, records row counts per table, confirms from the migration ordering
+          that each constraint-adding migration on a populated table follows its backfill step, applies the pending
+          migrations in order, asserts no statement fails and compares the row counts after the run with the
+          pre-run counts and the declared row changes.
+        negative_path: false
+        evidence: [test-result, migration-review]
+        automation:
+          kind: ci
+          reference: tests/migrations/test_backfill_before_constraint (per project)
+      - id: VCGF-DB-001-AT04
+        type: automated
+        criterion: >-
+          Every migration in the release has a rollback or forward-fix plan recorded before release, and for each
+          one the down step restores the schema to the previous version (schema dump identical to the pre-upgrade
+          dump) or the documented forward-fix migration applies cleanly on the migrated snapshot.
+        method: >-
+          The CI job asserts that each pending migration is referenced by a rollback or forward-fix entry in the
+          release record, runs upgrade then downgrade and diffs the schema dump against the pre-upgrade dump, or
+          applies the forward-fix migration where no down step is declared.
+        negative_path: false
+        evidence: [test-result, migration-review]
+        automation:
+          kind: ci
+          reference: tests/migrations/test_rollback_roundtrip (per project)
+      - id: VCGF-DB-001-AT05
+        type: automated
+        criterion: >-
+          Executing a pending migration classified as destructive, bulk data update or major schema change against
+          a production-class database is refused by the migration gate when no verified backup newer than the
+          configured freshness window is recorded, and proceeds once a verified backup reference is recorded.
+        method: >-
+          An integration test runs the deployment pipeline with the backup registry empty or holding only a backup
+          older than the freshness window and asserts the migration step is skipped with a blocking error, then
+          records a verified backup and asserts the same migration executes.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/migrations/test_backup_required_before_destructive_migration (per project)
+      - id: VCGF-DB-001-AT06
+        type: automated
+        criterion: >-
+          Applying each pending migration to the production-shaped snapshot under a concurrent read-and-write load
+          holds an exclusive lock on any populated table for no longer than the configured threshold, and every
+          statement that would exceed it (for example a blocking index build or a full table rewrite) is either
+          replaced by the engine's online or staged equivalent or scheduled in a maintenance window named in the
+          migration review record.
+        method: >-
+          The CI job starts a load generator against the snapshot, applies the migrations while sampling the lock
+          catalog, asserts the longest exclusive lock duration against the threshold, and a reviewer confirms that
+          each statement flagged above the threshold is rewritten as an online or staged change or carries a
+          maintenance window in the review record.
+        negative_path: false
+        evidence: [test-result, migration-review]
+        automation:
+          kind: ci
+          reference: tests/migrations/test_lock_duration_under_load (per project)
+  VCGF-DB-002:
+    tests:
+      - id: VCGF-DB-002-AT01
+        type: automated
+        criterion: >-
+          Inserting a duplicate primary key, a child row that references a missing parent, a duplicate value for a
+          declared unique business key, a NULL in a required column and an out-of-range value in a CHECK-constrained
+          column are each rejected by the database itself with a constraint violation, and the table row count is
+          unchanged afterwards.
+        method: >-
+          An integration test issues each invalid write directly over the database connection, bypassing
+          application validation, asserts the constraint-violation error class and compares row counts before and
+          after.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/database/test_constraint_enforcement (per project)
+      - id: VCGF-DB-002-AT02
+        type: automated
+        criterion: >-
+          Every column holding a monetary amount, price, balance, fee or tax is declared with an exact decimal or
+          numeric type with an explicit scale, and no float, double or real column exists for such fields anywhere
+          in the schema.
+        method: >-
+          A schema-introspection test selects the columns tagged as monetary in the data dictionary or matching
+          the monetary naming vocabulary and asserts their declared types and scale.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/database/test_money_column_types (per project)
+      - id: VCGF-DB-002-AT03
+        type: automated
+        criterion: >-
+          In every table under strict tenant isolation, inserting or updating a child row whose tenant identifier
+          differs from its parent row's tenant identifier is rejected at the database layer by a composite foreign
+          key or an equivalent constraint or trigger.
+        method: >-
+          An integration test creates a parent in tenant A, attempts to attach a child carrying tenant B's
+          identifier over a direct connection and asserts the rejection and the absence of the row.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/database/test_tenant_relationship_integrity (per project)
+      - id: VCGF-DB-002-AT04
+        type: review
+        criterion: >-
+          Where soft delete is used, a design record defines uniqueness among non-deleted rows, exclusion of
+          soft-deleted rows from default queries and authorization scopes, the retention period, the restore
+          procedure and the treatment in reports and exports, and the schema contains the matching partial unique
+          index or equivalent.
+        method: >-
+          A reviewer compares the design record with the schema definition and the default query scopes, and
+          executes a re-insert of a soft-deleted unique value to confirm the declared uniqueness behaviour.
+        negative_path: false
+        evidence: [code-review, configuration-record]
+        automation:
+          kind: none
+      - id: VCGF-DB-002-AT05
+        type: automated
+        criterion: >-
+          Every cross-row invariant that cannot be declared as a constraint (for example a ledger balance equal to
+          the sum of its entries or an order total equal to the sum of its lines) is listed in the invariant
+          register with the transaction boundary or trigger that maintains it, and the consistency query recorded
+          for it returns zero violating rows against the seeded database after the full integration suite has run.
+        method: >-
+          A CI step runs after the integration suite, executes each consistency query from the register against
+          the test database and fails on any returned row; a reviewer confirms that each register entry names the
+          code path or trigger that writes the invariant inside one transaction.
+        negative_path: false
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/database/test_invariant_consistency_queries (per project)
+  VCGF-DB-003:
+    tests:
+      - id: VCGF-DB-003-AT01
+        type: review
+        criterion: >-
+          Every field-encryption code path uses an approved authenticated encryption mode (AES-GCM,
+          ChaCha20-Poly1305 or an equivalent AEAD) with a unique nonce per record, a key-ownership record names the
+          owning team, the KMS or vault key identifier and the rotation schedule for each data encryption key, and no
+          master key material is hardcoded or committed.
+        method: >-
+          A reviewer inspects the cryptographic call sites and the key-ownership record, and a secret scan over
+          the repository history and configuration is attached showing zero key-material findings.
+        negative_path: false
+        evidence: [code-review, configuration-record, security-scan]
+        automation:
+          kind: ci
+          reference: security/secret-scan (per project)
+      - id: VCGF-DB-003-AT02
+        type: automated
+        criterion: >-
+          Flipping one byte of a stored ciphertext or its authentication tag makes decryption fail with an
+          integrity error and no partial plaintext, while a record encrypted under key version N still decrypts
+          after rotation to version N+1 because its stored key_version metadata selects the correct key.
+        method: >-
+          An integration test writes an encrypted field, tampers the stored bytes and asserts the failure, then
+          rotates the key, asserts the old record decrypts and that a newly written record carries version N+1.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/crypto/test_field_encryption_roundtrip (per project)
+      - id: VCGF-DB-003-AT03
+        type: automated
+        criterion: >-
+          Reading a Restricted encrypted field through the trusted layer as a principal without the field's read
+          permission returns a masked value or an authorization error and never the plaintext, the raw database
+          row contains only the ciphertext, key version and optional lookup hash with no plaintext column, and,
+          where the field's classification requires access auditing, the authorized read writes an audit event
+          naming the principal, the field and the time.
+        method: >-
+          An integration test requests the field as an unauthorized and an authorized principal, inspects the raw
+          row over a direct connection and asserts that the plaintext value appears in no column, and reads the
+          audit log for the event of the authorized read when the classification requires it.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/crypto/test_decrypt_after_authorization (per project)
+      - id: VCGF-DB-003-AT04
+        type: automated
+        criterion: >-
+          For every encrypted field with an exact-lookup requirement the stored lookup hash equals a keyed HMAC over
+          the documented normalized representation using a key distinct from the data encryption key, and an
+          unsalted SHA-256 of the normalized value does not match the stored hash.
+        method: >-
+          A unit test computes the HMAC with the lookup key and a plain SHA-256 of the same normalized value,
+          compares both with the stored hash, and asserts that two differently formatted inputs normalize to the
+          same hash.
+        negative_path: false
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/crypto/test_blind_index (per project)
+      - id: VCGF-DB-003-AT05
+        type: review
+        criterion: >-
+          Encryption at rest is enabled on every database instance, replica and backup target that stores
+          Restricted fields, and a key backup and recovery plan records, for each data encryption key, where the
+          key material is backed up outside the database backup, who can restore it and the verified recovery
+          procedure that decrypts a restored backup after a key-store loss.
+        method: >-
+          A reviewer reads the provider or database configuration for the at-rest encryption setting on each
+          instance and backup target and compares the key backup and recovery plan with the key-ownership record,
+          confirming that every data encryption key is covered.
+        negative_path: false
+        evidence: [configuration-record, code-review]
+        automation:
+          kind: none
+  VCGF-DB-004:
+    tests:
+      - id: VCGF-DB-004-AT01
+        type: automated
+        criterion: >-
+          For every table protected by row-level security, SELECT, INSERT, UPDATE and DELETE executed as anonymous,
+          owner, non-owner, tenant A member, tenant B member and privileged admin produce exactly the allow or deny
+          result declared in the checked-in policy matrix, with the non-owner and tenant B contexts receiving zero
+          rows of the owner's or tenant A's private data.
+        method: >-
+          An integration test opens one database session per context with the corresponding claims, runs the four
+          statement types against each protected table and compares the observed results cell by cell with the
+          policy matrix file.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/rls/test_policy_matrix (per project)
+      - id: VCGF-DB-004-AT02
+        type: automated
+        criterion: >-
+          An INSERT or UPDATE submitted through the public interface with the owner_id or tenant_id payload field
+          set to another user's or tenant's identifier is rejected or rewritten by the trusted layer, so that no row
+          is created or modified under a foreign owner or tenant.
+        method: >-
+          An integration test authenticates as user A in tenant A, sends spoofed owner and tenant identifiers in
+          create and update requests, and asserts the response and the ownership columns of the affected rows.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/rls/test_owner_tenant_spoofing (per project)
+      - id: VCGF-DB-004-AT03
+        type: automated
+        criterion: >-
+          Every security-definer function, view and server-side privileged query that bypasses row-level security
+          re-applies the caller's owner or tenant scope, so invoking each one as a tenant A member returns zero rows
+          belonging to tenant B.
+        method: >-
+          The test enumerates security-definer functions and views from the database catalog, invokes each as a
+          tenant A session with tenant B data present, and asserts no cross-tenant rows in the result.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/rls/test_privileged_function_scope (per project)
+      - id: VCGF-DB-004-AT04
+        type: review
+        criterion: >-
+          The service-role or secret database key is referenced only in server-side code and the secret store, is
+          absent from built client bundles, public environment files and browser network traffic, and every server
+          call site that uses it performs an authorization check before issuing the query.
+        method: >-
+          A reviewer walks each server call site of the privileged key, and a scan of the built client assets,
+          environment templates and a recorded browser session is attached showing zero occurrences of the key.
+        negative_path: false
+        evidence: [code-review, security-scan]
+        automation:
+          kind: ci
+          reference: tests/rls/test_service_key_not_in_client_bundle (per project)
+  VCGF-DB-005:
+    tests:
+      - id: VCGF-DB-005-AT01
+        type: automated
+        criterion: >-
+          Replaying an injection corpus (quote-and-OR tautologies, stacked statements, UNION SELECT, comment
+          terminators and time-based payloads) through every user-controllable search, filter, pagination and
+          identifier parameter returns no additional rows and none belonging to another owner or tenant, modifies
+          no data and produces no database syntax error that exposes query structure.
+        method: >-
+          A parametrized integration test sends each payload to each query entry point as a tenant A user with
+          tenant B data present, compares the result set and table row counts with a clean baseline, and asserts
+          that error responses contain no SQL fragment.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/database/test_sql_injection_corpus (per project)
+      - id: VCGF-DB-005-AT02
+        type: automated
+        criterion: >-
+          Static analysis of the repository reports zero SQL statements built by string concatenation, formatting
+          or template interpolation that include a variable, including every owner, tenant or role predicate used
+          for authorization, outside the files listed in the raw SQL review register.
+        method: >-
+          A SQL-injection rule set (for example semgrep or bandit B608 class rules) runs in CI on every change with
+          the register as its allow-list and fails the pipeline on any new finding.
+        negative_path: false
+        evidence: [security-scan]
+        automation:
+          kind: ci
+          reference: security/sast/sql-injection-rules (per project)
+      - id: VCGF-DB-005-AT03
+        type: automated
+        criterion: >-
+          A sort column, sort direction, table or column name that is not a key of the server-side allow-list map
+          is rejected with a validation error or replaced by the default, and the SQL captured at the driver contains
+          only identifiers taken from that hardcoded map.
+        method: >-
+          An integration test requests sort values such as a sensitive column name and a value with a statement
+          terminator, asserts the response, and inspects the SQL captured by a driver-level logger.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/database/test_dynamic_identifier_allowlist (per project)
+      - id: VCGF-DB-005-AT04
+        type: review
+        criterion: >-
+          The runtime database role holds only the data-manipulation privileges the application needs on its
+          schema, with no schema-changing (CREATE, ALTER, DROP) or superuser rights, is distinct from the migration
+          and admin role unless the architecture record justifies a shared role, and every raw SQL statement and
+          stored procedure containing dynamic SQL appears in the raw SQL review register with a reviewer sign-off.
+        method: >-
+          A reviewer queries the role privileges from the database catalog, compares the runtime and migration role
+          names in the deployment configuration or reads the justification in the architecture record, and
+          reconciles the register with a search for raw SQL and dynamic SQL in procedures.
+        negative_path: false
+        evidence: [configuration-record, code-review]
+        automation:
+          kind: ci
+          reference: tests/database/test_runtime_role_privileges (per project)
+  VCGF-DB-006:
+    tests:
+      - id: VCGF-DB-006-AT01
+        type: automated
+        criterion: >-
+          Fifty concurrent requests that each try to consume the same one-time token, approve the same pending item
+          or decrement the same inventory line with a stock of one yield exactly one success and forty-nine
+          rejections, and the stored state shows the token used once, one approval and a stock of zero, never
+          negative.
+        method: >-
+          A concurrency test releases the requests from a barrier, counts success and rejection responses and reads
+          the final rows from the database.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/concurrency/test_single_winner_races (per project)
+      - id: VCGF-DB-006-AT02
+        type: automated
+        criterion: >-
+          A multi-step operation writing to two or more tables, such as a debit with its credit or an order with
+          its inventory and audit rows, runs in one transaction so that a failure injected after the first write
+          leaves zero partial rows and keeps the balance or stock invariant unchanged.
+        method: >-
+          A fault-injection test raises an exception or drops the connection between the writes, then asserts the
+          row counts of every involved table and recomputes the invariant.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/concurrency/test_atomic_multistep_rollback (per project)
+      - id: VCGF-DB-006-AT03
+        type: automated
+        criterion: >-
+          Replaying a state-changing request with the same idempotency key or client operation identifier within
+          the retention window returns the original result and creates no second record, charge or quota
+          deduction, while the same payload under a new key creates a new record.
+        method: >-
+          An integration test sends the request twice with one key and once with a new key, then asserts the
+          record count, the quota counter and the identifiers in the three responses.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/concurrency/test_idempotency_key_replay (per project)
+      - id: VCGF-DB-006-AT04
+        type: automated
+        criterion: >-
+          Twenty concurrent read-modify-write updates that each add a distinct amount to the same balance row, or
+          consume quota from the same counter, leave a final value equal to the exact sum of all applied amounts,
+          and any update that lost the race is either retried through a row lock or rejected by the version column
+          with a conflict rather than silently overwriting a sibling write.
+        method: >-
+          A concurrency test releases the updates from a barrier, records each response as applied or conflicted,
+          reads the final row and asserts that the final value equals the sum of the applied amounts and that no
+          amount was lost.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/concurrency/test_lost_update_prevention (per project)
+      - id: VCGF-DB-006-AT05
+        type: review
+        criterion: >-
+          A register lists every race-sensitive transition in the change (approvals, balances, inventory, one-time
+          tokens, quota consumption, duplicate submissions) with the mechanism chosen for it, such as a row lock,
+          optimistic version column, unique constraint, serializable isolation or idempotency key, and the test that
+          exercises that mechanism.
+        method: >-
+          A reviewer traces each write path in the diff, confirms it appears in the register with a mechanism and a
+          named test, and opens the test to confirm it exercises the listed mechanism.
+        negative_path: false
+        evidence: [code-review, threat-model]
+        automation:
+          kind: none

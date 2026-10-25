@@ -1,0 +1,315 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the architecture controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: architecture
+controls:
+  VCGF-ARCH-001:
+    tests:
+      - id: VCGF-ARCH-001-AT01
+        type: automated
+        criterion: >-
+          Authenticated as a member of Tenant A, every read, list, search, update and delete request against each
+          tenant-scoped resource of Tenant B (by direct identifier and by filter) returns a not-found or forbidden
+          response, zero Tenant B records appear in any response body, and Tenant B's rows are byte-identical
+          before and after the attempts.
+        method: >-
+          An integration test seeds two tenants, iterates every tenant-scoped resource type and operation with
+          Tenant A credentials against Tenant B identifiers, asserts the status codes and empty result sets, and
+          compares a checksum of Tenant B's rows before and after.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/tenancy/test_cross_tenant_access (per project)
+      - id: VCGF-ARCH-001-AT02
+        type: automated
+        criterion: >-
+          Tenant identity is taken from the authenticated membership on the trusted layer: a request that supplies a
+          tenant identifier for a tenant the caller does not belong to in a header, path, query string or body is
+          rejected or served with the caller's own tenant scope, and never returns or writes the other tenant's data.
+        method: >-
+          An integration test sends requests with a forged tenant identifier in each carrier position and asserts
+          the rejection or the own-tenant scoping of the result and the absence of writes to the foreign tenant.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/tenancy/test_tenant_from_membership (per project)
+      - id: VCGF-ARCH-001-AT03
+        type: automated
+        criterion: >-
+          Every table holding tenant-scoped data carries an explicit tenant relationship column constrained to the
+          tenants table, every private query path applies the tenant predicate (through an enabled row-level policy
+          where the database offers one, otherwise through the mandatory scope of the data-access layer) so that a
+          query issued under Tenant A's context with no caller-supplied tenant filter returns zero Tenant B rows, and
+          no foreign key links rows of different tenants unless listed in the approved cross-tenant design.
+        method: >-
+          A schema test lists the tables flagged tenant-scoped, asserts the tenant column and constraint for each and
+          the policy or data-access guard that scopes it, issues an unfiltered query for each table under Tenant A's
+          context and asserts zero Tenant B rows, and checks every foreign-key pair against the approved cross-tenant
+          list.
+        negative_path: true
+        evidence: [test-result, migration-review]
+        automation:
+          kind: ci
+          reference: tests/tenancy/test_rls_policies (per project)
+      - id: VCGF-ARCH-001-AT04
+        type: automated
+        criterion: >-
+          Background jobs, caches and storage enforce tenant scope: a job enqueued with Tenant A context processes no
+          Tenant B record, a cache lookup for Tenant B's object under Tenant A's key misses, and a request for a
+          storage object under Tenant B's tenant-scoped path with Tenant A's credentials is denied.
+        method: >-
+          An integration test enqueues a job and inspects the processed record set, reads cache keys for the tenant
+          prefix and attempts a cross-tenant read, and requests a Tenant B storage path with Tenant A credentials,
+          asserting the denial.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/tenancy/test_jobs_cache_storage_scope (per project)
+  VCGF-ARCH-002:
+    tests:
+      - id: VCGF-ARCH-002-AT01
+        type: automated
+        criterion: >-
+          A request whose client-supplied role, permission list or token claim has been elevated (role=admin in the
+          body, a re-signed or unsigned token, an added scope) is denied by the trusted layer for every privileged
+          endpoint, because the authorization decision reads the role from the server-side session or membership.
+        method: >-
+          An integration test replays each privileged endpoint with the elevated client fields and tampered tokens
+          from a non-privileged account and asserts a forbidden response and no state change.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_server_side_authorization (per project)
+      - id: VCGF-ARCH-002-AT02
+        type: automated
+        criterion: >-
+          Client-supplied price, total, discount, quantity limit or status fields never become the stored value: an
+          order or payment submitted with a tampered amount is persisted with the server-computed amount or rejected,
+          and a direct transition to a protected state (for example paid, approved, verified) without the
+          server-side event is refused.
+        method: >-
+          An integration test submits tampered monetary fields and direct state transitions and compares the
+          persisted record with the server-side computation and the state machine's allowed transitions.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_untrusted_client_values (per project)
+      - id: VCGF-ARCH-002-AT03
+        type: automated
+        criterion: >-
+          Ownership is derived from the authenticated subject: updating or deleting a resource while supplying another
+          user's owner or user identifier in the path or payload returns a forbidden or not-found response and leaves
+          the resource unchanged.
+        method: >-
+          An integration test creates resources for two users, attempts cross-owner update and delete from each
+          account with the other's identifier, and asserts the response and an unchanged record.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_ownership_enforcement (per project)
+      - id: VCGF-ARCH-002-AT04
+        type: review
+        criterion: >-
+          An inventory of security-sensitive decisions (authorization checks, price and total computation, state
+          transitions, ownership checks, quota and rate decisions) names a trusted-layer enforcement point for each,
+          and zero decisions are enforced only in client code.
+        method: >-
+          A reviewer builds or updates the decision inventory from the change, locates each enforcement point in
+          server, service or database code, and marks any client-only decision as a finding.
+        negative_path: false
+        evidence: [inventory, code-review]
+        automation:
+          kind: none
+  VCGF-ARCH-003:
+    tests:
+      - id: VCGF-ARCH-003-AT01
+        type: automated
+        criterion: >-
+          A behaviour-modifying task in an existing project is routed to ready_to_plan only when its inspection block
+          has completed true and a non-empty evidence_ref pointing to the inspection record; without them the route
+          is blocked with "targeted inspection required", loaded_control_ids is empty and the router exits with
+          code 1.
+        method: >-
+          Run the VCGF router with the project's task record before and after the inspection record is produced and
+          assert the decision, blocker, loaded_control_ids and exit code in both results.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py route
+      - id: VCGF-ARCH-003-AT02
+        type: review
+        criterion: >-
+          The inspection record for each behaviour change names the inspected code paths, schema objects, existing
+          tests, public interfaces and documented business rules relevant to the change, and its timestamp precedes
+          the first implementation commit.
+        method: >-
+          A reviewer verifies that every named item exists in the repository at the base commit, that the list
+          covers the modules touched by the diff, and compares the record timestamp with the commit history.
+        negative_path: false
+        evidence: [code-review]
+        automation:
+          kind: hook
+          reference: hooks/pre-merge/inspection-record (per project)
+      - id: VCGF-ARCH-003-AT03
+        type: automated
+        criterion: >-
+          The existing test suite at the base commit passes against the changed build with no existing test deleted,
+          skipped or weakened, and any assertion changed in an existing test is listed in the change record with the
+          business-rule reason for the change.
+        method: >-
+          The pipeline runs the base-commit test suite against the candidate, diffs the test directory for deletions,
+          skips and assertion changes, and fails when such a change is not listed in the change record.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/governance/test_existing_suite_preserved (per project)
+      - id: VCGF-ARCH-003-AT04
+        type: review
+        criterion: >-
+          The change introduces no duplicate of an existing concept (a second table, model, enumeration, endpoint or
+          service for an entity that already exists) and, where the inspected implementation conflicts with an
+          approved specification or documented business rule, the change record contains a conflict entry naming both
+          sources and the owner's decision instead of silently choosing one.
+        method: >-
+          A reviewer compares new entities in the diff with the existing domain inventory and reads the conflict
+          entries, confirming each divergence found during inspection is recorded with a decision and an owner.
+        negative_path: false
+        evidence: [code-review, inventory, approval-record]
+        automation:
+          kind: none
+  VCGF-ARCH-004:
+    tests:
+      - id: VCGF-ARCH-004-AT01
+        type: automated
+        criterion: >-
+          Presentation modules (components, pages, templates, view models) import no database or ORM client, no
+          migration module and no privileged credential loader, and perform no authorization decision beyond
+          showing or hiding elements; the dependency-boundary lint reports zero violations across the presentation
+          layer.
+        method: >-
+          A static dependency rule set declares the allowed imports per layer and runs in the pipeline; the suite
+          includes a fixture component importing the database client and asserts the rule reports it.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/architecture/test_layer_boundaries (per project)
+      - id: VCGF-ARCH-004-AT02
+        type: automated
+        criterion: >-
+          The built client or presentation bundle contains no privileged credential (service keys, database
+          connection strings, administrative tokens, signing secrets): a secret scan with the project's patterns and
+          the known fixture secrets yields zero matches in the bundle.
+        method: >-
+          The pipeline builds the client bundle, runs the secret scanner over the output and additionally searches
+          for the test environment's known privileged values, failing on any match; the suite plants a fixture
+          credential in a component build and asserts that the scan fails.
+        negative_path: true
+        evidence: [security-scan, test-result]
+        automation:
+          kind: ci
+          reference: tests/architecture/test_bundle_secret_scan (per project)
+      - id: VCGF-ARCH-004-AT03
+        type: review
+        criterion: >-
+          Every irreversible business decision (payment capture, deletion, approval, finalisation) and every
+          migration step has an implementation in a service or persistence module with its own tests, and the
+          presentation layer only invokes that implementation through its interface.
+        method: >-
+          A reviewer lists the irreversible decisions and migrations touched by the change, locates the non-UI
+          implementation and its tests for each, and marks any decision implemented only in a UI handler.
+        negative_path: false
+        evidence: [code-review]
+        automation:
+          kind: none
+      - id: VCGF-ARCH-004-AT04
+        type: automated
+        criterion: >-
+          External integrations are reached only through the integration layer: vendor SDK and HTTP client imports
+          for payment, email, storage or identity providers occur in integration adapter modules only, and business
+          logic modules reference the adapter interface, with zero direct vendor imports outside the integration
+          layer.
+        method: >-
+          A static check lists vendor SDK import paths and asserts that every importing module lies under the
+          integration layer directory; the suite includes a fixture service importing a vendor SDK directly and
+          asserts the failure.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/architecture/test_integration_boundaries (per project)
+  VCGF-ARCH-005:
+    tests:
+      - id: VCGF-ARCH-005-AT01
+        type: review
+        criterion: >-
+          The project threat model names, specifically for this system, its protected assets, entry points,
+          identities and trust boundaries, data flows, attacker capabilities, abuse cases, threats to
+          confidentiality, integrity, availability, privacy and authorization, the security assumptions its
+          mitigations rely on, the mitigations, residual risk and an owner, with no section left as a placeholder
+          or as unmodified template text.
+        method: >-
+          A reviewer checks each of these elements against the system's actual components, data stores and external
+          parties, confirms that every entry point class present in the system (web UI, API, webhooks, uploads,
+          admin, background jobs, external URLs, AI tools) appears in the model, and rejects sections that are
+          generic or empty.
+        negative_path: false
+        evidence: [threat-model, code-review]
+        automation:
+          kind: ci
+          reference: tests/security/test_threat_model_sections (per project)
+      - id: VCGF-ARCH-005-AT02
+        type: automated
+        criterion: >-
+          A change whose VCGF route result reports risk HIGH or CRITICAL (any intent classified HIGH or CRITICAL in
+          the routing policy, any risk signal such as destructive or production-secrets, or a production
+          environment) carries a threat-model delta listing the new or changed assets, trust boundaries, threat
+          actors, abuse cases, security assumptions and mitigations, created before implementation, and the pipeline
+          blocks the merge of such a change without the delta.
+        method: >-
+          Run the VCGF router on the task record to obtain the risk level, then run the pipeline check that requires
+          the threat-model delta for HIGH and CRITICAL risk; submit a fixture migration change without a delta and
+          assert the block, and a fixture button-color change in a non-production context and assert that no delta is
+          demanded.
+        negative_path: true
+        evidence: [threat-model, test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_threat_model_delta_required (per project)
+      - id: VCGF-ARCH-005-AT03
+        type: automated
+        criterion: >-
+          Every abuse case in the threat model is traced to at least one automated negative test identifier or to a
+          mitigation with linked evidence, and the traceability check reports zero abuse cases without a link and
+          zero links to tests that do not exist in the suite.
+        method: >-
+          A test parses the abuse-case table, resolves each referenced test identifier against the collected test
+          suite and each mitigation against the evidence record, and fails on unresolved or missing links.
+        negative_path: true
+        evidence: [test-result, threat-model]
+        automation:
+          kind: ci
+          reference: tests/security/test_abuse_case_traceability (per project)
+      - id: VCGF-ARCH-005-AT04
+        type: review
+        criterion: >-
+          The threat model's last-reviewed date is not older than the most recent merged change to authentication,
+          authorization, sensitive data handling, infrastructure, integrations or trust boundaries, and every residual
+          risk entry names an owner.
+        method: >-
+          A reviewer compares the model's review date with the merge dates of changes in those categories from the
+          change log, and reads each residual risk entry for its owner.
+        negative_path: false
+        evidence: [threat-model, approval-record]
+        automation:
+          kind: none

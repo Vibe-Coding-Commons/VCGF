@@ -1,0 +1,533 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the security controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: security
+controls:
+  VCGF-SEC-001:
+    requirement_sources: [S14]
+    tests:
+      - id: VCGF-SEC-001-AT01
+        type: review
+        criterion: >-
+          Every security-sensitive or business-critical field handled by the change (as applicable: email, phone,
+          person name, username, password, national or passport identifier, date of birth, money, quantity,
+          percentage, role, tenant and owner identifiers, URL and redirect URL, rich text, file, enum or status,
+          search, filter, sort, JSON payload, OTP or PIN, reset token) has a field contract that states its type,
+          maximum length, format, range, allowed values and cross-field constraints, and each contract is
+          implemented by a named validator on the trusted layer rather than only in the client.
+        method: >-
+          A reviewer lists the critical fields touched by the change, compares each against the field contract
+          record and the trusted-layer validator source, and records any field whose contract or validator is
+          missing or weaker than the Critical Field Validation Matrix baseline.
+        negative_path: false
+        evidence: [code-review, inventory]
+        automation:
+          kind: none
+      - id: VCGF-SEC-001-AT02
+        type: automated
+        criterion: >-
+          For each critical field, a direct trusted-layer request carrying a value of the wrong type, a string one
+          character longer than the declared maximum, a value outside the declared range (a negative quantity, a
+          percentage above 100, a money amount with more decimals than the currency allows, a date of birth in the
+          future), a malformed format, a value outside the allowlist, or a cross-field violation (an end date
+          before its start date) is rejected with a validation error and leaves no persisted record.
+        method: >-
+          A parameterized integration test sends each boundary and invalid value straight to the API without the
+          client, asserts the 4xx validation response and the field reference in it, and queries the store to
+          confirm that nothing was written.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/validation/test_critical_field_boundaries (per project)
+      - id: VCGF-SEC-001-AT03
+        type: automated
+        criterion: >-
+          A request that submits a role, tenant identifier, owner identifier, discount percentage or order total
+          different from the value the trusted layer derives from the authenticated context or recalculates
+          server-side is rejected or has the submitted value discarded, and the persisted record carries only the
+          server-derived role, tenant, owner, discount and total.
+        method: >-
+          An integration test authenticates as a low-privilege user of one tenant, submits elevated role values,
+          foreign tenant and owner identifiers and a tampered total, and compares the stored record with the
+          server-derived values.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/validation/test_server_controlled_fields (per project)
+      - id: VCGF-SEC-001-AT04
+        type: automated
+        criterion: >-
+          A passphrase of at least 64 characters is accepted and later authenticates only in full (its 63-character
+          prefix fails), a password present on the configured common or breached list is rejected at registration
+          and at change, and the submitted password value appears in no log line, error response or persisted
+          field other than the password hash.
+        method: >-
+          An integration test registers with a long passphrase, attempts login with the full value and a truncated
+          value, submits a known breached password, and scans the captured logs, responses and database row for
+          the plaintext values.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/validation/test_password_rules (per project)
+      - id: VCGF-SEC-001-AT05
+        type: automated
+        criterion: >-
+          OTP and PIN fields accept only the exact declared format, lock or back off after the configured number
+          of failed attempts, and expire after the configured lifetime, and reset tokens carry at least 128 bits
+          of entropy from a cryptographic generator, are stored only as a hash, are rejected on second use and are
+          rejected after expiry.
+        method: >-
+          An integration test submits malformed and repeated wrong OTP values until the limit, replays a consumed
+          reset token, advances the clock past expiry, and inspects the token store for plaintext tokens and the
+          generator for its entropy source and length.
+        negative_path: true
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/validation/test_otp_and_reset_tokens (per project)
+  VCGF-SEC-002:
+    requirement_sources: [S36]
+    tests:
+      - id: VCGF-SEC-002-AT01
+        type: automated
+        criterion: >-
+          An upload is rejected and leaves no object in the storage destination when it exceeds the declared
+          maximum size, carries an extension outside the allowlist, declares a MIME type that disagrees with its
+          extension, has a magic signature that disagrees with its declared type (an executable renamed to .png),
+          fails the expected format structure check, exceeds the per-user upload count or rate limit, or comes from
+          a principal not authorized to upload to the target destination; each check rejects on its own with the
+          other checks passing.
+        method: >-
+          An integration test submits one crafted file per check, each valid in every other respect, asserts the
+          4xx response for each, and confirms that the storage destination holds no new object and the quota
+          counter is unchanged after the rejected uploads.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/files/test_upload_validation (per project)
+      - id: VCGF-SEC-002-AT02
+        type: automated
+        criterion: >-
+          A stored upload is saved under a server-generated random object name inside the designated storage
+          destination, which lies outside every path the web server executes or serves as code; the original
+          filename (including ../, encoded separators, null bytes, reserved device names and overlong Unicode)
+          never forms part of the object key or path; and the stored file is served back with the content type
+          established by the validation step rather than the client-declared one.
+        method: >-
+          An integration test uploads files with hostile original names and a mismatched client content type,
+          lists the storage destination to compare the object keys with the submitted names, confirms that no
+          object exists outside the destination, and fetches each stored file asserting the Content-Type header.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/files/test_stored_object_naming (per project)
+      - id: VCGF-SEC-002-AT03
+        type: automated
+        criterion: >-
+          A server-side fetch of a user-supplied URL is refused when the URL uses a scheme other than HTTPS or the
+          explicit allowed schemes, when the host extracted by the standard URL parser (so that
+          https://allowed.example@169.254.169.254/ and decimal or octal spellings of 127.0.0.1 are checked against
+          their real host, not a hand-parsed prefix) resolves to a loopback, private, link-local or cloud-metadata
+          address (including 169.254.169.254 and a hostname whose DNS answer is a private address), when a redirect
+          leads from an allowed host to a blocked destination, when the redirect count or port is outside the
+          limit, or when the response exceeds the maximum size or the timeout, and the outbound request never
+          carries internal credentials.
+        method: >-
+          An integration test runs a local redirector and a DNS stub, submits each blocked destination, each
+          parser-confusion spelling and each redirect chain, asserts the refusal before the connection is made, and
+          inspects the captured outbound request for forwarded headers, size cutoff and timeout.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/files/test_ssrf_controls (per project)
+      - id: VCGF-SEC-002-AT04
+        type: automated
+        criterion: >-
+          A user-supplied URL rendered as a link is shown as inert text or removed when its scheme is javascript,
+          data, vbscript or file, and a redirect parameter whose destination is not on the exact allowlist or is not
+          a safe relative path (including protocol-relative //evil.example and backslash variants) is replaced by
+          the default landing page.
+        method: >-
+          A rendering test stores URLs with each hostile scheme and asserts the rendered DOM, and an integration
+          test submits each open-redirect variant to every redirect parameter and asserts the resulting location.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/files/test_url_rendering_and_redirects (per project)
+      - id: VCGF-SEC-002-AT05
+        type: review
+        criterion: >-
+          Uploads classified as higher risk (documents, archives, images processed server-side, anything parsed by
+          a native library) pass through malware scanning or quarantine before they become available, and every
+          parsing library in the upload path runs a version with no known unpatched vulnerability in the dependency
+          scan report (or a recorded exception) and runs under memory, time and decompression-ratio limits.
+        method: >-
+          A reviewer reads the upload pipeline configuration and the dependency scan report, confirms the scan or
+          quarantine step for each higher-risk type, and records the version status and the resource limits applied
+          to each parser.
+        negative_path: false
+        evidence: [configuration-record, security-scan]
+        automation:
+          kind: ci
+          reference: ci/dependency-scan (per project)
+      - id: VCGF-SEC-002-AT06
+        type: review
+        criterion: >-
+          Each server-side fetch feature either restricts destinations to an explicit host allowlist or routes its
+          outbound requests through a controlled egress point (proxy or network policy), and where the fetch
+          feature's design record declares both infeasible it states the reason and names the DNS-resolution and
+          private-range blocking exercised by the SSRF test as the compensating control.
+        method: >-
+          A reviewer reads the outbound HTTP client configuration, the network or proxy policy and the design record
+          of each fetch feature, and records which of the two controls applies or the documented infeasibility.
+        negative_path: false
+        evidence: [configuration-record, code-review]
+        automation:
+          kind: none
+  VCGF-SEC-003:
+    tests:
+      - id: VCGF-SEC-003-AT01
+        type: automated
+        criterion: >-
+          Injection payloads (a single quote with OR 1=1 and a comment marker, a UNION SELECT, a stacked statement,
+          a NoSQL operator object such as {"$gt": ""}, and a sort or column name outside the allowlist) sent to
+          every search, filter, sort and identifier parameter are either rejected by validation (the allowlist
+          violations and the operator object) or reach the database only as bound parameter values, so the
+          statement log contains no statement whose text includes the payload and a payload accepted as data
+          returns the same result set as a harmless literal of the same length.
+        method: >-
+          An integration test replays the payload corpus against each query-backed endpoint with statement logging
+          enabled, compares the logged statements with the parameterized form, and asserts the response for the
+          allowlist violations.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_query_injection (per project)
+      - id: VCGF-SEC-003-AT02
+        type: review
+        criterion: >-
+          A static analysis rule set that flags string-built SQL or NoSQL queries, shell invocation with a
+          concatenated command string, eval or new Function or dynamic template compilation with non-literal input,
+          user-controlled template names, and raw writes of request data into response headers reports zero
+          unsuppressed findings on the change, and every suppression names the justification and the compensating
+          control.
+        method: >-
+          The pipeline runs the configured SAST or lint rules on each change and a reviewer reads every suppression
+          added in the change against the source location.
+        negative_path: false
+        evidence: [security-scan, code-review]
+        automation:
+          kind: ci
+          reference: ci/sast-injection-rules (per project)
+      - id: VCGF-SEC-003-AT03
+        type: automated
+        criterion: >-
+          Every process launch uses a fixed executable with an argument array and allowlisted arguments so that a
+          filename argument of "; id" or "$(id)" or "| whoami" is passed literally and no command runs, and a path
+          input containing ../, URL-encoded or backslash separators or an absolute path is rejected because its
+          canonical form falls outside the allowed root.
+        method: >-
+          An integration test passes each shell metacharacter payload to the process-launching feature while
+          monitoring child processes, and submits each traversal payload to every path-accepting endpoint asserting
+          rejection and the untouched state of files outside the root.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_command_and_path_injection (per project)
+      - id: VCGF-SEC-003-AT04
+        type: automated
+        criterion: >-
+          A value containing CR or LF destined for a response header is rejected and no second header appears, a
+          CSV or spreadsheet export neutralizes user-controlled cells beginning with =, +, -, @, tab or carriage
+          return so they open as text, an XML document carrying a DOCTYPE with an external entity is rejected by
+          the parser without disclosing the referenced resource, where LDAP or XPath queries exist a filter value
+          of *)(objectClass=*) or ' or '1'='1 is escaped or rejected so the query matches no additional entry, and
+          a user-supplied template expression or template name ({{7*7}} or ${7*7}) is rendered as its literal text
+          rather than evaluated to 49.
+        method: >-
+          An integration test sets each payload through the relevant input, inspects the raw response headers, the
+          exported cells, the XML parser result, the LDAP or XPath match count and the rendered template output,
+          and asserts that the entity target was never read, no extra entry matched and no expression was
+          evaluated.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_header_csv_xml_template_injection (per project)
+      - id: VCGF-SEC-003-AT05
+        type: automated
+        criterion: >-
+          Where the product uses an LLM or agent, a user message or a retrieved document that instructs the model
+          to call a tool outside the allowlist, to perform a destructive or high-impact action without confirmation,
+          to reveal system or developer instructions, or to disregard the security policy results in no tool call
+          outside the allowlist, no side effect without the confirmation step, no disclosure of the instructions or
+          secrets, and server-side rejection of tool arguments that fail validation.
+        method: >-
+          An integration test injects the instruction corpus through the user channel and the retrieval channel,
+          records every tool invocation and its arguments at the server-side tool gateway, and asserts the gateway
+          decisions and the response content.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_prompt_injection (per project)
+      - id: VCGF-SEC-003-AT06
+        type: review
+        criterion: >-
+          The database role the application uses at runtime holds only data-manipulation privileges on its own
+          schema (no superuser, DDL, file read or write, or cross-schema grant), and every call site that runs an
+          external program uses a process API that does not invoke a shell, so an injected statement or argument
+          cannot reach beyond the application's own data or spawn a shell.
+        method: >-
+          A reviewer dumps the grants of the runtime database role from the database and compares them with the
+          least-privilege baseline, then searches the codebase for shell-invoking calls (shell=True, exec or system
+          with a string, popen) and confirms each hit is replaced or justified.
+        negative_path: false
+        evidence: [configuration-record, code-review]
+        automation:
+          kind: none
+  VCGF-SEC-004:
+    requirement_sources: [S14]
+    tests:
+      - id: VCGF-SEC-004-AT01
+        type: review
+        criterion: >-
+          Every ingress crossing a trust boundary in the change (HTTP requests, webhooks, queue or event messages,
+          file imports, third-party API responses, environment and configuration values) is listed with the
+          trusted-layer component that parses and validates it, and no listed ingress reaches authorization,
+          business logic, persistence, an interpreter or an outbound request through a path that skips that
+          component.
+        method: >-
+          A reviewer builds the ingress list from the threat model and the routing or handler registration, traces
+          each handler to its parser and validator, and records any direct use of raw input.
+        negative_path: false
+        evidence: [threat-model, code-review]
+        automation:
+          kind: none
+      - id: VCGF-SEC-004-AT02
+        type: automated
+        criterion: >-
+          Each request that the client-side validation would block (wrong type, over-length, out-of-range, malformed
+          format, disallowed value) is rejected with the same validation outcome when replayed directly against the
+          trusted layer with the client removed, and the rejected request produces zero database writes, zero
+          outbound requests and zero interpreter invocations in the instrumentation trace.
+        method: >-
+          An integration test derives the invalid cases from the client validation rules, sends them through an
+          API client with instrumentation on the database, HTTP client and process launcher, and asserts the
+          response and the empty trace.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/validation/test_trusted_layer_authority (per project)
+      - id: VCGF-SEC-004-AT03
+        type: automated
+        criterion: >-
+          Security-sensitive endpoints reject a payload that contains an unexpected field (is_admin, role,
+          tenant_id, password_hash, verified) without persisting any of it, or carry a recorded exception where
+          rejection is impractical; and every external string has a declared maximum length enforced before the
+          value is logged in full, parsed further, persisted or forwarded, so that an over-length body or field is
+          refused in no more time than a valid request of the maximum size takes.
+        method: >-
+          An integration test adds each unexpected field to otherwise valid requests and checks the stored record,
+          then sends over-length strings of increasing size and asserts the refusal, the truncated or absent log
+          entry and a response time no greater than that of the maximum-size valid request.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/validation/test_unknown_fields_and_length_caps (per project)
+      - id: VCGF-SEC-004-AT04
+        type: automated
+        criterion: >-
+          Malformed input (truncated JSON, a date such as 2024-02-30, a number such as 1e309 or NaN, an unexpected
+          encoding) returns a 4xx response whose body contains no stack trace, SQL text, secret, internal path or
+          hostname; a money field with a floating-point representation is rejected in favor of the decimal form; a
+          date-time without an offset is handled exactly as the documented timezone rule states (rejected or
+          assigned the documented zone); and a password, token, signature or opaque identifier that differs from
+          the stored one only by Unicode normalization is rejected.
+        method: >-
+          An integration test sends each malformed value and scans the responses with a pattern set for stack
+          frames, SQL keywords, path separators and hostnames, submits an offset-less date-time and compares the
+          outcome with the documented rule, then submits NFKC-normalized variants of a valid password, token and
+          identifier and asserts the rejection.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/validation/test_fail_closed_parsing (per project)
+      - id: VCGF-SEC-004-AT05
+        type: automated
+        criterion: >-
+          A syntactically valid identifier (a well-formed UUID or integer) that refers to a record outside the
+          caller's tenant or ownership scope, submitted as a path, query or body parameter to each read, update and
+          delete endpoint of the change that accepts an identifier, passes parsing but is denied by the
+          authorization step with a 403 or 404 response, and the referenced record is neither returned, modified
+          nor deleted, so a valid identifier is never treated as authorization.
+        method: >-
+          An integration test enumerates the identifier-accepting endpoints, authenticates as a user of one tenant,
+          submits well-formed identifiers of another tenant's records to each, and asserts the denial response, the
+          unchanged record and the absence of the record's fields from the response body.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/validation/test_identifier_is_not_authorization (per project)
+  VCGF-SEC-005:
+    tests:
+      - id: VCGF-SEC-005-AT01
+        type: automated
+        criterion: >-
+          A stored canary value containing angle brackets, double and single quotes, an ampersand, a javascript
+          scheme and a CSS expression is rendered in the HTML body, an HTML attribute, a URL component, an inline
+          JavaScript data block and a CSS value, and in each context the value appears encoded for that exact
+          context while a headless browser with Content Security Policy disabled records no script execution.
+        method: >-
+          An end-to-end test stores the canary, loads each page that renders it with CSP headers stripped, asserts
+          the context-specific encoded form in the DOM or source and listens for the canary's execution marker.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: e2e/security/output-encoding.spec (per project)
+      - id: VCGF-SEC-005-AT02
+        type: automated
+        criterion: >-
+          Rich HTML input containing script elements, event handler attributes, javascript and data URLs in href
+          and src, iframe, object and svg elements, and the mutation vectors of the sanitizer's published test
+          corpus is reduced by the maintained allowlist sanitizer to allowed tags and attributes only, and the
+          sanitized output is inserted into the page without any subsequent string concatenation or replacement.
+        method: >-
+          A unit test runs the vector corpus through the sanitizer and compares the output with the allowlist, and
+          a code review traces the sanitizer output to the rendering sink to confirm no intermediate mutation.
+        negative_path: true
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/security/test_html_sanitizer (per project)
+      - id: VCGF-SEC-005-AT03
+        type: review
+        criterion: >-
+          Every raw HTML sink in the codebase (dangerouslySetInnerHTML, innerHTML or outerHTML assignment,
+          document.write, v-html, safe or raw template filters, mark_safe or Markup constructors) is enumerated by
+          the lint rule, and each occurrence either consumes sanitizer output directly or is accompanied by a
+          documented justification naming the trusted source, with zero unjustified occurrences.
+        method: >-
+          The pipeline lint rule fails on an unannotated sink and a reviewer reads each justification against the
+          data source feeding the sink.
+        negative_path: false
+        evidence: [security-scan, code-review]
+        automation:
+          kind: ci
+          reference: ci/lint-raw-html-sinks (per project)
+      - id: VCGF-SEC-005-AT04
+        type: automated
+        criterion: >-
+          CSV and spreadsheet exports neutralize every user-controlled cell beginning with =, +, -, @, tab or
+          carriage return so a spreadsheet program treats it as text, and user-supplied link destinations are
+          emitted only when their scheme is in the allowed set, with redirect destinations validated against the
+          allowlist before the redirect response is written.
+        method: >-
+          An integration test exports records containing formula-leading values and parses the file with a
+          spreadsheet library to assert the cell type, renders links with each disallowed scheme and asserts the
+          inert output, and requests each redirect endpoint with an off-allowlist destination asserting that the
+          Location header never points to it.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_export_and_link_encoding (per project)
+      - id: VCGF-SEC-005-AT05
+        type: automated
+        criterion: >-
+          A request carrying a bearer token, a password field, an API key, a session cookie and a card number
+          produces application, access and error log entries, including those written by the validation-error and
+          unhandled-exception paths, in which none of these values appears in full, as any run of eight or more
+          consecutive characters, or in URL-encoded, base64 or HTML-escaped form, and each such field is either
+          absent from the entry or replaced by a fixed redaction marker.
+        method: >-
+          An integration test sends the request with known marker values, forces a validation error and an
+          unhandled exception, scans every captured log stream for the markers, their eight-character substrings
+          and their encoded forms, and asserts the redaction marker or the absence of each field.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_log_redaction (per project)
+  VCGF-SEC-006:
+    tests:
+      - id: VCGF-SEC-006-AT01
+        type: automated
+        criterion: >-
+          Starting the service with a required security setting absent or invalid (no token signing key, an empty
+          or malformed origin allowlist, no encryption key, an unreadable policy file, an unparseable TLS setting)
+          makes the process refuse to start or respond to every protected operation with a denial, and never
+          substitutes a permissive default such as a wildcard origin, a built-in development key, disabled
+          authentication or plaintext transport.
+        method: >-
+          A startup test launches the service once per missing or corrupted setting, asserts the exit status or
+          the denial response on protected routes, and inspects the effective configuration dump for permissive
+          values.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/security/test_missing_configuration_fails_closed (per project)
+      - id: VCGF-SEC-006-AT02
+        type: automated
+        criterion: >-
+          A request with no credential, an expired credential, a credential with an invalid signature, a principal
+          whose role is unknown to the policy, or a route that has no explicit authorization rule receives a deny
+          response and the protected resource shows no read or write, so the default for an unmapped identity or
+          an unannotated route is deny rather than allow.
+        method: >-
+          An integration test enumerates every registered route except those on the explicit public allowlist,
+          sends each identity condition to it, asserts the 401 or 403 response and checks the audit trail and data
+          store for any effect.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_default_deny (per project)
+      - id: VCGF-SEC-006-AT03
+        type: automated
+        criterion: >-
+          When the validation schema cannot be loaded, the validator raises an unexpected error, or a security
+          dependency (policy engine, rate limiter, secrets manager, identity provider) is unreachable or times out,
+          the security-relevant operation is denied and recorded, and no request is admitted on the assumption that
+          the unavailable check would have passed.
+        method: >-
+          A fault-injection test disables or delays each dependency in turn, replays otherwise valid requests to
+          protected operations, and asserts the denial, the log entry and the absence of side effects.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_dependency_outage_fails_closed (per project)
+      - id: VCGF-SEC-006-AT04
+        type: review
+        criterion: >-
+          The production configuration defaults have debug and verbose error modes off, transport security
+          required, cookies marked Secure, HttpOnly and SameSite, directory listing and default credentials absent,
+          and every new permission, feature flag and integration created in the change defaults to off or to the
+          least privilege, with each convenience trade-off recorded as an approved, time-bounded exception naming
+          its compensating control.
+        method: >-
+          A reviewer compares the committed configuration defaults and the change diff against the secure-defaults
+          checklist and the exception register, recording any default that is permissive without an exception
+          record.
+        negative_path: false
+        evidence: [configuration-record, approval-record, code-review]
+        automation:
+          kind: none

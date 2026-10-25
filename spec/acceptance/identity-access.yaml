@@ -1,0 +1,565 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the identity-access controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: identity-access
+controls:
+  VCGF-IAM-001:
+    requirement_sources: [S17, S20]
+    tests:
+      - id: VCGF-IAM-001-AT01
+        type: automated
+        criterion: >-
+          A failed login for an existing account and a login attempt for a non-existent account, and likewise an
+          invitation or recovery lookup for a known and an unknown address, return the same status code, a
+          byte-identical body and median response times within 10 percent of each other over 100 samples per case.
+        method: >-
+          An integration test issues 100 requests per case against the login, invitation lookup and recovery
+          endpoints, compares status codes and bodies, and compares the median and 95th percentile timings.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_login_enumeration (per project)
+      - id: VCGF-IAM-001-AT02
+        type: automated
+        criterion: >-
+          Rotating the source address, device fingerprint and API key across 20 clients while targeting one account
+          still triggers the per-account throttle at the documented failure threshold, and a single source hitting
+          the login endpoint across 20 different accounts triggers the per-source and per-endpoint limits, so that
+          no single layer (and never the IP address alone) is the only protection.
+        method: >-
+          An integration test drives failed logins through a harness that varies the source, device and key
+          dimensions independently, records the attempt number at which each layer starts refusing or challenging,
+          and compares it with the configured thresholds for the account, source, device, endpoint and tenant keys.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/security/test_layered_rate_limits (per project)
+      - id: VCGF-IAM-001-AT03
+        type: automated
+        criterion: >-
+          After an attacker exhausts the failure threshold against a victim account, the account is never
+          permanently locked: the legitimate owner signs in with the correct credential once the progressive delay
+          or risk challenge is satisfied, each successive failed burst lengthens the delay, and an abuse alert is
+          emitted for the burst.
+        method: >-
+          An integration test fires a failed-login burst, then signs in as the owner after the delay window and
+          after completing the risk challenge, asserts success, measures the growth of the delay across repeated
+          bursts, and checks that an alert event was emitted.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_progressive_throttle_no_lockout (per project)
+      - id: VCGF-IAM-001-AT04
+        type: automated
+        criterion: >-
+          One source attempting logins against 50 distinct accounts within the documented window, and a
+          password-only login whose correct password appears in the breached or common password list, each trigger
+          the documented credential-stuffing defence on the trusted layer (refusal, step-up or anti-automation
+          challenge, or anomaly alert), and neither pattern completes a login without that defence being applied.
+        method: >-
+          An integration test replays a 50-account credential list from one source and signs in to an account
+          seeded with a listed password, asserts the refusal, challenge or alert event for each pattern, and
+          compares the observed behaviour with the documented credential-stuffing defence.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_credential_stuffing_defence (per project)
+      - id: VCGF-IAM-001-AT05
+        type: automated
+        criterion: >-
+          Security log entries written for failed logins, throttle hits, risk challenges and recovery requests
+          record the abuse signal (attempt counter, outcome, endpoint, source class) and contain no password, token
+          or other credential value and no personal data beyond the account identifier and the source class.
+        method: >-
+          An integration test drives failed logins, a throttle hit and a recovery request using distinctive
+          40-character marker credentials, then scans the application and security log sinks for the markers and
+          for fields other than the permitted identifiers.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_abuse_log_hygiene (per project)
+  VCGF-IAM-002:
+    requirement_sources: [S16, S19, S20]
+    tests:
+      - id: VCGF-IAM-002-AT01
+        type: automated
+        criterion: >-
+          Every authentication endpoint (login, token refresh, session exchange, social callback) refuses or
+          redirects a plaintext HTTP request without processing the submitted credential and without issuing any
+          session cookie or token, and every HTTPS authentication response carries a Strict-Transport-Security
+          header with a non-zero max-age.
+        method: >-
+          An integration test posts valid credentials over plain HTTP to each authentication endpoint and asserts
+          the absence of Set-Cookie and token fields, then inspects the headers of the HTTPS responses.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/auth/test_transport_security (per project)
+      - id: VCGF-IAM-002-AT02
+        type: review
+        criterion: >-
+          Password verification, session token issuance and token signature validation are delegated to one named,
+          maintained authentication provider or framework module recorded with its version, and the change contains
+          no custom hashing, token signing, session serialisation or comparison routine for credentials.
+        method: >-
+          A reviewer lists the authentication dependencies with versions, traces each login and session code path
+          to the provider or framework call, and searches the diff for hand-written cryptographic or comparison
+          code on credentials.
+        negative_path: false
+        evidence: [code-review, inventory]
+        automation:
+          kind: none
+      - id: VCGF-IAM-002-AT03
+        type: automated
+        criterion: >-
+          A request carrying a session token with a modified signature, an expired token, a token issued to another
+          user, or a client-supplied user identifier header or body field that differs from the session identity is
+          answered with an unauthenticated or forbidden response, and any record touched by an accepted request is
+          attributed to the identity verified on the server, never to the client-supplied identifier.
+        method: >-
+          An integration test sends each tampered token variant and a mismatched identifier alongside a valid
+          session, asserts the response codes, and reads the stored owner of the records created in the accepted case.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/auth/test_server_side_identity (per project)
+      - id: VCGF-IAM-002-AT04
+        type: automated
+        criterion: >-
+          Password change, MFA change, recovery email or phone change, export of highly sensitive data, destructive
+          administrative actions and issuance of privileged credentials are refused with a step-up requirement when
+          the session's last authentication is older than the documented recent-authentication window, and each
+          succeeds only after re-authentication within that window.
+        method: >-
+          An integration test advances the clock past the window, attempts each sensitive action and asserts the
+          step-up response, then re-authenticates and repeats the action asserting success.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/auth/test_reauthentication_window (per project)
+      - id: VCGF-IAM-002-AT05
+        type: automated
+        criterion: >-
+          A session or token is issued only by the trusted layer after the credential is verified there: a login
+          request with an invalid credential issues no session, a session value constructed on the client is
+          refused on the next request, and a freshly authenticated ordinary user requesting a resource outside
+          their authorisation receives a forbidden response, so a successful login grants no unrestricted access.
+        method: >-
+          An integration test submits an invalid credential and asserts the absence of session issuance, forges a
+          session value client-side and replays it, then logs in as an ordinary user and requests an
+          administrative resource and another user's object.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/auth/test_session_issuance_and_authz_boundary (per project)
+  VCGF-IAM-003:
+    requirement_sources: [S19, S20, S22, S24]
+    tests:
+      - id: VCGF-IAM-003-AT01
+        type: automated
+        criterion: >-
+          An account holding an administrator, privileged operator or finance and payment role cannot obtain a
+          privileged session with the password alone: every privileged route and server function answers an
+          MFA-required response until a second factor is verified, and a phishing-resistant or TOTP factor is
+          accepted while a factor replayed from a previous login is refused.
+        method: >-
+          An integration test signs in with each privileged role using only the password, requests privileged
+          routes, completes the second factor, repeats the requests, and replays the earlier factor response.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/auth/test_mfa_enforcement (per project)
+      - id: VCGF-IAM-003-AT02
+        type: automated
+        criterion: >-
+          Every Set-Cookie header that carries the session identifier sets Secure, HttpOnly and SameSite Lax or
+          Strict, scopes the cookie to the application host and path, and sets a lifetime no longer than the
+          documented absolute timeout for the session class.
+        method: >-
+          An integration test parses the Set-Cookie headers emitted at login, refresh and privilege elevation and
+          compares each attribute with the documented session policy.
+        negative_path: false
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/auth/test_session_cookie_attributes (per project)
+      - id: VCGF-IAM-003-AT03
+        type: automated
+        criterion: >-
+          The session identifier changes on authentication and again on privilege elevation, the pre-authentication
+          identifier is refused afterwards, and a session idle beyond the documented idle timeout, older than the
+          documented absolute timeout, or a privileged session older than the shorter privileged timeout is refused
+          on its next request with remember-me behaving as documented.
+        method: >-
+          An integration test records identifiers before and after login and elevation, replays the old ones, then
+          advances the clock past each timeout and asserts the refusal while comparing the values with the policy
+          record.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/auth/test_session_rotation_and_timeouts (per project)
+      - id: VCGF-IAM-003-AT04
+        type: automated
+        criterion: >-
+          After logout, logout-all, a completed password reset, an administrative security revocation and a refresh
+          token revocation, the previously valid session and refresh tokens of the account are refused on the next
+          request, immediately for a single session store and within the documented propagation bound for
+          distributed stores.
+        method: >-
+          An integration test opens several sessions, triggers each event in turn and replays every earlier token,
+          measuring the time until refusal.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/auth/test_session_revocation_events (per project)
+      - id: VCGF-IAM-003-AT05
+        type: automated
+        criterion: >-
+          TOTP seeds and recovery codes are generated by the platform cryptographic random source, recovery codes
+          are stored only as hashes and TOTP seeds only encrypted, neither value appears in logs, and a recovery
+          code accepted once is refused on every later attempt.
+        method: >-
+          A unit test inspects the generator call and the persisted representation, a log scan searches for
+          generated values, and an integration test redeems a recovery code twice.
+        negative_path: true
+        evidence: [test-result, code-review, log-sample]
+        automation:
+          kind: ci
+          reference: tests/auth/test_mfa_secret_handling (per project)
+  VCGF-IAM-004:
+    tests:
+      - id: VCGF-IAM-004-AT01
+        type: automated
+        criterion: >-
+          Every stored credential of newly created and migrated accounts is an Argon2id, scrypt, bcrypt or
+          PBKDF2-HMAC-SHA-256 hash whose encoded cost parameters are at or above the documented minimum, or the
+          account is delegated to the managed identity provider with no local credential column, and no column
+          holds a reversible encryption of the password.
+        method: >-
+          An integration test creates accounts, reads the credential storage directly, parses the hash prefix and
+          parameters, and compares them with the documented minimum; a migration review confirms the same for
+          migrated accounts.
+        negative_path: false
+        evidence: [test-result, migration-review]
+        automation:
+          kind: ci
+          reference: tests/auth/test_password_hash_format (per project)
+      - id: VCGF-IAM-004-AT02
+        type: automated
+        criterion: >-
+          A registration, a successful login, a failed login and a password change performed with distinctive
+          40-character marker passwords leave zero occurrences of any marker in application logs, error reports,
+          request traces, the database dump and the latest backup.
+        method: >-
+          An integration test performs the four operations with unique markers, then searches the log sinks, the
+          error tracker payloads, the database dump and the backup archive for the markers.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/auth/test_password_never_persisted_in_clear (per project)
+      - id: VCGF-IAM-004-AT03
+        type: automated
+        criterion: >-
+          A 14-character password is refused for password-only authentication where the 15-character default
+          applies (or the documented alternative threshold is enforced), a 64-character passphrase containing
+          spaces and non-ASCII characters is accepted, pasted and verified on login without truncation so that
+          changing only its last character fails login, and the documented maximum length is at least 64 characters.
+        method: >-
+          An integration test submits passwords at the boundaries, logs in with the full passphrase and with its
+          last character altered, pastes into the password field in the end-to-end suite, and compares the limits
+          with the documented policy.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/auth/test_password_length_policy (per project)
+      - id: VCGF-IAM-004-AT04
+        type: automated
+        criterion: >-
+          A password present in the common or breached list is refused at registration, change and reset with a
+          message that does not reveal the list source, the check transmits at most a hash prefix (or none) outside
+          the server so the full password or full hash never leaves it, and no arbitrary composition rule
+          (mandatory symbol or digit) is the primary refusal reason.
+        method: >-
+          An integration test submits listed and unlisted passwords, records the outbound requests of the check
+          through a recording proxy, and inspects the validation rules for composition requirements.
+        negative_path: true
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/auth/test_breached_password_check (per project)
+      - id: VCGF-IAM-004-AT05
+        type: review
+        criterion: >-
+          A configuration record names the hashing algorithm and cost parameters together with their last review
+          date and the documented review interval, states that no periodic password rotation is forced without a
+          compromise or policy reason, and, where a pepper is used, shows it held in the secret or key system
+          outside the password database together with a compromise-handling procedure.
+        method: >-
+          A reviewer compares the record with the deployed configuration and the secret-manager entry, and checks
+          the account settings for a forced rotation interval.
+        negative_path: false
+        evidence: [configuration-record, code-review]
+        automation:
+          kind: none
+  VCGF-IAM-005:
+    requirement_sources: [S17, S19]
+    tests:
+      - id: VCGF-IAM-005-AT01
+        type: automated
+        criterion: >-
+          Requesting a password reset for an unknown and a known account returns byte-identical responses and
+          response times within 10 percent of each other over 50 samples, the per-target and per-source limits
+          refuse further requests at the documented threshold, and 20 reset requests against one account do not
+          lock the owner out of logging in.
+        method: >-
+          An integration test issues 50 reset requests for each case and compares bodies, status codes and timing,
+          then floods one account and asserts both the limit response and a successful owner login afterwards.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_password_reset.py::test_enumeration_resistance (per project)
+      - id: VCGF-IAM-005-AT02
+        type: automated
+        criterion: >-
+          Reset tokens carry at least 128 bits of entropy from the cryptographic random source, are stored only as a
+          hash or HMAC, expire at the documented lifetime (framework default 15 to 30 minutes) so that use after
+          expiry is refused, are accepted exactly once, cannot set the password of a user other than the one they were
+          issued to, and are invalidated when a newer request supersedes them.
+        method: >-
+          An integration test inspects the token generator and stored representation, then exercises expiry,
+          second use, cross-user use and supersession and asserts each refusal.
+        negative_path: true
+        evidence: [test-result, code-review]
+        automation:
+          kind: ci
+          reference: tests/security/test_reset_token_properties (per project)
+      - id: VCGF-IAM-005-AT03
+        type: automated
+        criterion: >-
+          The emailed reset link uses HTTPS and the configured trusted origin even when the request carries a
+          forged Host or X-Forwarded-Host header, the reset page sends a Referrer-Policy that withholds the URL,
+          loads no third-party script or analytics unless a documented exception exists, refuses a post-reset
+          redirect target outside the allow-list, and the full token or URL appears nowhere in server logs.
+        method: >-
+          An integration test requests resets with forged host headers and captures the outbound mail, loads the
+          reset page and inspects headers and script sources, attempts an external redirect target, and scans
+          the logs for the token.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/security/test_reset_link_origin (per project)
+      - id: VCGF-IAM-005-AT04
+        type: automated
+        criterion: >-
+          Completing a reset invalidates every pre-existing session and refresh token of the account (unless a
+          documented risk-based exception exists) and all outstanding reset tokens, does not sign the user in by
+          itself, leaves MFA enabled, requires the new
+          password to be entered twice in the interactive flow and to pass the normal password policy, and sends a
+          notification to the trusted channel that contains neither the password nor any token.
+        method: >-
+          An integration test opens sessions, completes a reset, replays the old sessions and tokens, inspects
+          the response for session issuance and the MFA state, and reads the captured notification.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_post_reset_state (per project)
+      - id: VCGF-IAM-005-AT05
+        type: review
+        criterion: >-
+          Changing the recovery email or phone requires step-up authentication and notifies the previous channel,
+          MFA recovery runs through a separate flow based on backup codes, existing factors or verified support
+          rather than the password reset, and no flow permits security-question answers alone to reset a password.
+        method: >-
+          A reviewer traces the recovery-factor change and MFA recovery code paths, then a tester attempts the
+          change without step-up and attempts a reset with only security-question answers, recording both refusals.
+        negative_path: true
+        evidence: [code-review, manual-verification]
+        automation:
+          kind: none
+      - id: VCGF-IAM-005-AT06
+        type: automated
+        criterion: >-
+          The suspected-compromise review for an account lists its active sessions, recovery channels, MFA
+          methods, API tokens, trusted devices and recent security events, and an authenticator invalidated from
+          that review (session, API token or trusted device) is refused on its next use.
+        method: >-
+          An integration test provisions each authenticator type for an account, opens the compromise review and
+          compares the listing with the provisioned set, then invalidates each authenticator and replays it.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/security/test_compromise_review_invalidation (per project)
+  VCGF-IAM-006:
+    requirement_sources: [S18, S19]
+    tests:
+      - id: VCGF-IAM-006-AT01
+        type: automated
+        criterion: >-
+          A request from an ordinary user that carries admin=true, role=admin or an equivalent privilege flag in the
+          body, query string, header, cookie, local storage or a modified client token is denied on every
+          administrative route and server function, and the response contains no administrative data.
+        method: >-
+          An integration test enumerates the administrative routes and functions from the route inventory and
+          calls each with every injected claim location using an ordinary user session, asserting the denial and
+          an empty or generic body.
+        negative_path: true
+        evidence: [test-result, inventory]
+        automation:
+          kind: ci
+          reference: tests/admin/test_client_privilege_claims_ignored (per project)
+      - id: VCGF-IAM-006-AT02
+        type: automated
+        criterion: >-
+          User deletion, role elevation, Restricted-data export, RLS or security policy changes, MFA reset for
+          another user, key rotation, backup restore and bulk deletion each enforce the step-up or confirmation
+          requirement documented for that action, none of the destructive ones (user deletion, bulk deletion,
+          backup restore, key rotation) executes without an explicit confirmation naming the target, and bulk
+          deletion without an explicit scope is refused even by an administrator with a fresh step-up.
+        method: >-
+          An integration test attempts each action with an administrator session lacking the documented step-up,
+          with step-up but without confirmation, and with both, and attempts an unscoped bulk deletion.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/admin/test_high_risk_action_step_up (per project)
+      - id: VCGF-IAM-006-AT03
+        type: automated
+        criterion: >-
+          Every attempted privileged action, whether allowed or denied, produces an append-only audit record naming
+          the individual actor, timestamp, action, target object, outcome and origin, written in the same
+          transaction or through guaranteed delivery, that contains no secret or credential value and cannot be
+          altered or deleted through the application.
+        method: >-
+          An integration test performs allowed and denied privileged actions, reads the audit store, verifies the
+          fields and the absence of secrets, and attempts to modify or delete the record through every exposed
+          interface.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/admin/test_privileged_action_audit (per project)
+      - id: VCGF-IAM-006-AT04
+        type: automated
+        criterion: >-
+          Privileges obtained through the elevation flow expire after the documented elevation lifetime, a
+          privileged request after expiry is denied until re-elevation, and separation of duties holds where
+          configured so that the administrator who requests a role elevation cannot approve it.
+        method: >-
+          An integration test elevates a session, advances the clock past the lifetime, repeats a privileged
+          request, and attempts to approve an elevation requested by the same account.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/admin/test_short_lived_elevation (per project)
+      - id: VCGF-IAM-006-AT05
+        type: review
+        criterion: >-
+          An inventory maps each administrative role to the minimum permissions it needs, every privileged account
+          is individually named with MFA enforced and no shared administrator account exists, and a scan of the
+          delivered client bundles and client-exposed configuration finds no administrative or service credential.
+        method: >-
+          A reviewer compares the role inventory with the granted permissions and the account list, and a bundle
+          scan searches the client artifacts for service-role keys, administrative tokens and bypass credentials.
+        negative_path: false
+        evidence: [inventory, code-review, security-scan]
+        automation:
+          kind: script
+          reference: scripts/scan-client-bundle-secrets (per project)
+  VCGF-IAM-007:
+    tests:
+      - id: VCGF-IAM-007-AT01
+        type: automated
+        criterion: >-
+          For every protected resource type, a user requesting another user's or another tenant's object, or an
+          object whose state, assignment or sensitivity attribute excludes the caller, by its valid identifier
+          through read, update, delete, list filter, search, batch, export and direct server function calls
+          receives a forbidden or not-found response containing none of the object's fields.
+        method: >-
+          An integration test seeds objects for two users in two tenants and in excluding states or assignments,
+          enumerates the protected resource types from the route inventory, and calls every access path with the
+          other user's session.
+        negative_path: true
+        evidence: [test-result, inventory]
+        automation:
+          kind: ci
+          reference: tests/authz/test_object_level_authorization (per project)
+      - id: VCGF-IAM-007-AT02
+        type: automated
+        criterion: >-
+          A request whose body, query string or headers carry a role, user identifier, tenant identifier, owner
+          identifier or permission flag different from the authenticated identity is either rejected or processed
+          with the server-derived values, so the stored record's owner and tenant always equal those of the
+          verified session.
+        method: >-
+          An integration test sends create and update requests with conflicting client-supplied security context
+          and reads the persisted owner, tenant and role attributes.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/authz/test_trusted_security_context (per project)
+      - id: VCGF-IAM-007-AT03
+        type: automated
+        criterion: >-
+          Row-level security is enabled on every private or tenant-scoped table of an exposed database, and
+          connecting with the anonymous and authenticated roles returns or affects only the caller's rows for
+          select, insert, update and delete while a cross-tenant statement affects zero rows; the privileged
+          bypass credential is absent from client bundles and client-exposed configuration.
+        method: >-
+          A database test connects with each exposed role and runs the allow and deny matrix per table and
+          operation, a schema check lists tables without row-level security, and a bundle scan searches for the
+          bypass credential.
+        negative_path: true
+        evidence: [test-result, migration-review, security-scan]
+        automation:
+          kind: ci
+          reference: tests/db/test_rls_allow_deny_matrix (per project)
+      - id: VCGF-IAM-007-AT04
+        type: review
+        criterion: >-
+          A documented matrix of role to resource to read, create, update, delete and special actions exists, every
+          protected route and server function in the change maps to a cell of that matrix, and every view and
+          security-definer function that can bypass row-level security is listed with a reviewed justification.
+        method: >-
+          A reviewer walks the routes and functions of the change against the matrix, lists the bypassing views
+          and functions from the schema, and records the mapping and justifications.
+        negative_path: false
+        evidence: [code-review, configuration-record]
+        automation:
+          kind: none
+      - id: VCGF-IAM-007-AT05
+        type: automated
+        criterion: >-
+          For every action hidden or disabled in the interface for a role, directly issuing the underlying request
+          with that role's session is denied by the trusted layer, so hiding the control is never the only
+          enforcement.
+        method: >-
+          An end-to-end test collects the actions hidden for each role, replays their underlying requests with
+          that role's session, and asserts the denial and the absence of a state change.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: e2e/authz/hidden-actions-denied.spec (per project)
