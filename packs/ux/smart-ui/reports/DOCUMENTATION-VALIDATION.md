@@ -65,6 +65,7 @@
 | Evidence record schema | pass | valid |
 | All example contexts validate | pass | OK |
 | All generated plans validate | pass | OK |
+| Stored example plans match generated plans | pass | OK |
 | No-UI selects zero | pass |  |
 | Birthdate selective component | pass |  |
 | Birthdate journey | pass |  |
@@ -86,4 +87,3 @@
 | Markdown code fences balanced | pass | OK |
 | Local links and anchors resolve | pass | 2449 checked |
 | Negative schema tests | pass | 12/12 rejected |
-| Manifest and SHA-256 integrity | pass | OK |
