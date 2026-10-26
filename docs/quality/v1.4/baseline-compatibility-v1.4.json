@@ -5,35 +5,35 @@
   "baseline": "tests/fixtures/v1.0/baseline-hashes.json plus the immutable v1.2, v1.3 and v1.3.1 compatibility records",
   "review_status": "PENDING_INDEPENDENT_REVIEW",
   "release_status": "DEVELOPMENT__NOT_RELEASED__NOT_PUBLISHED__NOT_SIGNED",
-  "notes": "Phase 1 architecture and governance work prepared locally on develop/v1.4.0: canonical applicability matrix, additive profile layer in the Task Router, user-experience control domain, acceptance tests for every control and governed Smart UI selection. This record is a cumulative delta over the immutable v1.2, v1.3 and v1.3.1 records; it does not rewrite earlier history, does not modify tag v1.3.0 or the release/v1.3.1 branch, and does not imply publication, signature, independent review or production admission. All 84 v1.0 controls, their identifiers and the frozen v1.0 schemas are unchanged.",
+  "notes": "Phase 1 architecture and governance work prepared locally on develop/v1.4.0: canonical applicability matrix, additive profile layer in the Task Router, user-experience control domain, acceptance tests for every control and governed Smart UI selection. This record is a cumulative delta over the immutable v1.2, v1.3 and v1.3.1 records; it does not rewrite earlier history, does not modify tag v1.3.0 or the release/v1.3.1 branch, and does not imply publication, signature, independent review or production admission. All 84 v1.0 controls, their identifiers and the frozen v1.0 schemas are unchanged. Documentation addendum (2026-10-26): only README.md, README.ar.md, CHANGELOG.md, REPOSITORY-TREE.md and FILE-MANIFEST.md original-file hash entries refreshed after verified documentation edits; immutable historical baselines and 84 controls remain unchanged. The docs/user-guide.md wording correction is not a v1.0 original-file delta.",
   "allowed_original_file_changes": {
     ".github/workflows/validate-framework.yml": {
       "sha256_lf": "f12aa19a5708440a32b7138313933e2e5311a6f639039d031f5020fdfbd18d4e",
       "reason": "CI runs the new applicability and acceptance validators."
     },
     "CHANGELOG.md": {
-      "sha256_lf": "a42421a75ce020dcb1bdfb933788b2fd32fcdf720a80bbaefe2693f71464ba59",
-      "reason": "Document the unreleased 1.4.0 Phase 1 changes (applicability matrix, profile layer, acceptance tests, governed Smart UI selection)."
+      "sha256_lf": "0b6849ecff59110b9c934594e97524f097e6ac107ba262c0f19aac2557870a2e",
+      "reason": "Documented v1.4.0 controls, routing, Smart UI, acceptance, efficiency, compatibility, CI, and accurate release status in full bilingual documentation."
     },
     "CITATION.cff": {
       "sha256_lf": "98a3cf3aebb10e826ea041d3906e57b37c21af6dfba10ea5c58e060a1783ef8d",
       "reason": "Citation version/date for the 1.4.0 development version."
     },
     "FILE-MANIFEST.md": {
-      "sha256_lf": "a25ffd3cb7e49d6e4c7ba7c9beed52dcf2bc1e316fc3b1bdd7ab1b732e1c97f3",
-      "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
+      "sha256_lf": "df319a90be2eb14482c9d583c574b0c7ca303751f9d8c75223208ccf16913a4d",
+      "reason": "Regenerated deterministically for added bilingual release documentation and signer public key, with original historical baselines unchanged."
     },
     "README.ar.md": {
-      "sha256_lf": "26dc2c6be4415ee57d0c470ed1c5048e3035dbcc1be046df81d0d9629673fcf3",
-      "reason": "Arabic equivalent of the README version badge and Phase 1 section."
+      "sha256_lf": "7dd969df23777f32ee3295442783f1ddf2c2a40137880dcce801d1abc51ec609",
+      "reason": "Documented v1.4.0 controls, routing, Smart UI, acceptance, efficiency, compatibility, CI, and accurate release status in full bilingual documentation."
     },
     "README.md": {
-      "sha256_lf": "20e85506ef656acd5560893ea7ab7ba095eb2f6b0f5cd7380ae0462802d3ee34",
-      "reason": "Version badge and a short section on the applicability matrix, profile layer, acceptance tests and governed Smart UI selection."
+      "sha256_lf": "f915d8b9d68afe899895d43d1fbae30cd4db7f805765b3694ad14c872d808e23",
+      "reason": "Documented v1.4.0 controls, routing, Smart UI, acceptance, efficiency, compatibility, CI, and accurate release status in full bilingual documentation."
     },
     "REPOSITORY-TREE.md": {
-      "sha256_lf": "19fd26d97927a34ac6806737ce8ca36c6d8e269d68b5dba2083c2d3e45b59361",
-      "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
+      "sha256_lf": "45bad31c9c21db866eb5c2a27e50f7d61df594170e28c60d75ec49ef02af2e52",
+      "reason": "Regenerated deterministically for added bilingual release documentation and signer public key, with original historical baselines unchanged."
     },
     "VCGF-MANIFEST.yaml": {
       "sha256_lf": "8495a02e4bba752b029452f7ead3cfe4dc717a27c767d5a34c0f06d7e81b5777",
