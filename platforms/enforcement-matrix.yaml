@@ -26,7 +26,7 @@ mechanisms:
     reference: .github/workflows/tests.yml
     exercised_by: .github/workflows/release-quality-gate.yml, .github/workflows/tests.yml
   agent-hook:
-    description: Platform hook that intercepts a tool call before a sensitive effect (edit or delete of canonical governance files, destructive shell commands) and blocks it unless a scoped allowance is present.
+    description: Platform hook that intercepts a tool call before a sensitive effect (edit or delete of canonical governance files, destructive shell commands) and blocks it unless an approval record (action governance-change, approved, unexpired, naming the resources) is presented; environment flags alone never unlock. Without a host-held identity adapter the record is tamper-evident, not tamper-proof, so this is a process control and no adapter is rated above configurable for it.
     reference: scripts/hooks/guard-governance-files.py
     exercised_by: tests/scenarios/test_enforcement.py
   platform-permissions:
@@ -95,8 +95,8 @@ adapters:
     platform-permissions: unverified
     review-gate: available
 protected_paths:
-  # Canonical governance files: an agent hook or pre-commit hook blocks changes to them unless VCGF_ALLOW_GOVERNANCE_CHANGE
-  # names the task (explicit, auditable allowance) — VCGF-GOV-006 governance change control, VCGF-AI-007 no weakening.
+  # Canonical governance files: an agent hook or pre-commit hook blocks changes to them unless VCGF_GOVERNANCE_APPROVAL
+  # points to a covering approval record — VCGF-GOV-006 governance change control, VCGF-AI-007 no weakening, VCGF-GOV-002 approval.
   - controls/
   - profiles/
   - schemas/

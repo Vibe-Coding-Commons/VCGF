@@ -10,7 +10,8 @@ the fast validators on the staged tree.
 
 Install (per clone, never automatically): copy or symlink this file to .git/hooks/pre-commit, or configure
 `git config core.hooksPath scripts/hooks` after reviewing the scripts. Exit 1 blocks the commit.
-Allowance: VCGF_ALLOW_GOVERNANCE_CHANGE=<task id> in the environment of the commit (explicit and auditable).
+Allowance: VCGF_GOVERNANCE_APPROVAL=<path to an approval record> (action governance-change, approved, unexpired, naming
+the staged governance paths in resources). A bare environment flag never unlocks the commit.
 """
 import os
 import subprocess
@@ -34,12 +35,13 @@ def main():
     import importlib.util
     spec = importlib.util.spec_from_file_location('guard', ROOT / 'scripts' / 'hooks' / 'guard-governance-files.py')
     guard = importlib.util.module_from_spec(spec); spec.loader.exec_module(guard)
-    prefixes = guard.protected_paths(); allowance = os.environ.get('VCGF_ALLOW_GOVERNANCE_CHANGE', '').strip()
+    prefixes = guard.protected_paths(); approval_path = os.environ.get('VCGF_GOVERNANCE_APPROVAL', '').strip()
     hits = [p for p in staged_paths() if guard.is_protected(p, prefixes)]
-    if hits and not allowance:
-        print('pre-commit: canonical governance files changed without VCGF_ALLOW_GOVERNANCE_CHANGE=<task id>:'); print('\n'.join('  ' + h for h in hits)); return 1
     if hits:
-        print(f'pre-commit: governance change allowed for task {allowance}: {len(hits)} file(s)')
+        decision = guard.decide({'tool_name': 'Write', 'tool_input': {'file_path': hits[0]}}, prefixes, approval_path)
+        if decision['decision'] == 'block' or guard.covers(guard.load_approval(approval_path)[0] or {'resources': []}, hits):
+            print('pre-commit: canonical governance files changed without a covering approval record (VCGF_GOVERNANCE_APPROVAL):'); print('\n'.join('  ' + h for h in hits)); print(decision['reason']); return 1
+        print(f'pre-commit: governance change covered by approval record: {len(hits)} file(s)')
     failed = []
     for name in FAST_VALIDATORS:
         run = subprocess.run([sys.executable, '-B', str(ROOT / 'scripts' / name)], cwd=ROOT, capture_output=True, text=True)

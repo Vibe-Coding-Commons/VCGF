@@ -1,5 +1,5 @@
 {
-  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | EXAMPLE, status configurable/unverified: a Claude Code settings fragment that runs the VCGF governance guard before file edits and shell commands and denies destructive git operations through the platform permission list. Merge into the project .claude/settings.json after review; nothing here was exercised against the live platform inside this repository.",
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | EXAMPLE, status configurable/unverified: a Claude Code settings fragment that runs the VCGF governance guard before file edits and shell commands (allowance only through an approval record named by VCGF_GOVERNANCE_APPROVAL, never an environment flag) and denies destructive git operations through the platform permission list. Merge into the project .claude/settings.json after review; nothing here was exercised against the live platform inside this repository.",
   "permissions": {
     "deny": [
       "Bash(git push --force*)",
