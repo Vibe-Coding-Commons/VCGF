@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
 # SPDX-License-Identifier: Apache-2.0
 """Chromium checks for a synthetic static reference, not target-product acceptance."""
+import os
 import argparse
 import json
 from datetime import datetime, timezone
@@ -20,7 +21,7 @@ def check(name, passed):
 
 with sync_playwright() as pw:
     browser = pw.chromium.launch(headless=True, executable_path=a.browser,
-                                args=['--no-sandbox', '--disable-dev-shm-usage'])
+                                args=(['--no-sandbox', '--disable-dev-shm-usage'] if os.environ.get('VCGF_BROWSER_NO_SANDBOX') == '1' else []))  # sandbox on by default; opt out only in constrained CI containers
     version = browser.version
     for width in [320, 390, 768, 1280, 1440, 1920]:
         for language in ['ar', 'en']:

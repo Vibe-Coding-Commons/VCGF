@@ -760,3 +760,35 @@ mappings:
   source_claim: null
   last_verified: '2026-10-02'
   notes: Unverified ChatGPT surface; preserve canonical Control requirement.
+- control_id: VCGF-UX-001
+  status: UNVERIFIED
+  enforcement: Target-project UI implementation and testing; not a platform capability.
+  implementation: Apply the user-experience control through the project's UI framework and the selectively loaded Smart UI standards (ui-select).
+  evidence: Accessibility, locale, state-matrix or responsive test records as defined in spec/acceptance/user-experience.yaml.
+  source_claim: null
+  last_verified: '2026-10-25'
+  notes: Introduced in VCGF 1.4.0; platform surface behaviour for UI governance is unverified.
+- control_id: VCGF-UX-002
+  status: UNVERIFIED
+  enforcement: Target-project UI implementation and testing; not a platform capability.
+  implementation: Apply the user-experience control through the project's UI framework and the selectively loaded Smart UI standards (ui-select).
+  evidence: Accessibility, locale, state-matrix or responsive test records as defined in spec/acceptance/user-experience.yaml.
+  source_claim: null
+  last_verified: '2026-10-25'
+  notes: Introduced in VCGF 1.4.0; platform surface behaviour for UI governance is unverified.
+- control_id: VCGF-UX-003
+  status: UNVERIFIED
+  enforcement: Target-project UI implementation and testing; not a platform capability.
+  implementation: Apply the user-experience control through the project's UI framework and the selectively loaded Smart UI standards (ui-select).
+  evidence: Accessibility, locale, state-matrix or responsive test records as defined in spec/acceptance/user-experience.yaml.
+  source_claim: null
+  last_verified: '2026-10-25'
+  notes: Introduced in VCGF 1.4.0; platform surface behaviour for UI governance is unverified.
+- control_id: VCGF-UX-004
+  status: UNVERIFIED
+  enforcement: Target-project UI implementation and testing; not a platform capability.
+  implementation: Apply the user-experience control through the project's UI framework and the selectively loaded Smart UI standards (ui-select).
+  evidence: Accessibility, locale, state-matrix or responsive test records as defined in spec/acceptance/user-experience.yaml.
+  source_claim: null
+  last_verified: '2026-10-25'
+  notes: Introduced in VCGF 1.4.0; platform surface behaviour for UI governance is unverified.

@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Using VCGF with Replit
 
-**Adapter:** `replit` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.0.0 · **Status:** stable  
+**Adapter:** `replit` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.4.0 · **Status:** stable  
 **Platform surface:** Replit Agent project  
 **Official verification source:** https://docs.replit.com/features/project-setup/replit-dot-md  
 **Last verified:** 2026-10-02
@@ -111,7 +111,7 @@ After changing persistent rules or project context, start a fresh session/conver
 ### First message to send to the AI
 
 ```text
-Read the root replit.md and inspect the existing project before changing anything. Confirm VCGF 1.0.0, the selected profile, the Replit adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
+Read the root replit.md and inspect the existing project before changing anything. Confirm VCGF 1.4.0, the selected profile, the Replit adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
 ```
 
 A healthy response should identify the framework/profile/adapter, summarize what it needs to inspect, identify likely risk areas, and **not** jump directly into a sensitive implementation.
@@ -290,3 +290,7 @@ Read [`../../platforms/replit/LIMITATIONS.md`](../../platforms/replit/LIMITATION
 - Choose the appropriate [profile](../../profiles/).
 - Use the [pre-development checklist](../../checklists/pre-development/pre-development.md).
 - For technical detail, open the [VCGF Core specification](../../spec/VCGF-CORE.md) and [control catalog](../../spec/control-catalog.yaml).
+
+## Enforcement and selective context (1.4.0)
+
+What this platform can enforce deterministically is recorded with an honest status in `platforms/enforcement-matrix.yaml` (validators, pre-commit hook, CI gate, agent hook, platform permissions, review gate); prompt text alone enforces nothing. Load context through `scripts/vcgf.py route` (derived control cards, delta loading) and `ui-select` for Smart UI standards; never load `controls/` or the Smart UI package wholesale. Reference hooks live in `scripts/hooks/`; a Claude Code settings example (configurable, not exercised against the live platform) is in `platforms/claude/hooks/`.

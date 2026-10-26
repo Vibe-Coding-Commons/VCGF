@@ -1,0 +1,44 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Synthetic acceptance results for VCGF-UX-004 (fixture-only; evidence digests are placeholders replaced by the tests)",
+  "synthetic": true,
+  "record": {
+    "contract_version": "1.1.0",
+    "project_id": "synthetic-project",
+    "profile": "high-assurance",
+    "code_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "recorded_at": "2026-10-03T12:00:00Z",
+    "valid_until": "2026-10-10T12:00:00Z",
+    "results": [
+      {
+        "test_id": "VCGF-UX-004-AT01",
+        "status": "PASS",
+        "executor": {"kind": "review", "reference": "screen-class strategy review 2026-10-03"},
+        "executed_at": "2026-10-03T11:00:00Z",
+        "evidence": [{"artifact_id": "strategy-record", "reference": "strategy.json", "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}],
+        "reviewer": {"subject": "ux-lead", "role": "design review"}
+      },
+      {
+        "test_id": "VCGF-UX-004-AT02",
+        "status": "PASS",
+        "executor": {"kind": "ci", "reference": "e2e/responsive/breakpoints.spec"},
+        "executed_at": "2026-10-03T11:10:00Z",
+        "evidence": [{"artifact_id": "breakpoints-report", "reference": "breakpoints.json", "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}]
+      },
+      {
+        "test_id": "VCGF-UX-004-AT03",
+        "status": "PASS",
+        "executor": {"kind": "ci", "reference": "e2e/responsive/target-size.spec"},
+        "executed_at": "2026-10-03T11:12:00Z",
+        "evidence": [{"artifact_id": "target-size-report", "reference": "targets.json", "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}]
+      },
+      {
+        "test_id": "VCGF-UX-004-AT04",
+        "status": "PASS",
+        "executor": {"kind": "manual", "reference": "large-screen walkthrough"},
+        "executed_at": "2026-10-03T11:30:00Z",
+        "evidence": [{"artifact_id": "large-screen-shots", "reference": "large-screen.json", "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}],
+        "reviewer": {"subject": "qa-reviewer", "role": "manual verification"}
+      }
+    ]
+  }
+}

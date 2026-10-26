@@ -1,0 +1,179 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "candidate_version": "1.3.1",
+  "inherits": "docs/quality/v1.3/baseline-compatibility-v1.3.json",
+  "baseline": "tests/fixtures/v1.0/baseline-hashes.json plus the immutable v1.2 and v1.3 compatibility records",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "release_status": "RELEASE_CANDIDATE__NOT_PUBLISHED__NOT_SIGNED",
+  "notes": "Locally prepared v1.3.1 hardening candidate (instruction-file integrity, agent-safeguard enforcement, frozen-package integrity verification, version identity, read-only validators, CI hardening). This record is a cumulative delta over the immutable v1.2 and v1.3 records; it does not rewrite v1.0/v1.1/v1.2/v1.3 history, does not modify tag v1.3.0 and does not imply publication, signature, independent review or production admission.",
+  "allowed_original_file_changes": {
+    ".github/workflows/release-quality-gate.yml": {
+      "sha256_lf": "023302e7b580ef4fd0319c7173d9e17bf8fcf0820aa14731adbd49fa39d97044",
+      "reason": "Least-privilege permissions, SHA-pinned actions, persist-credentials false, tag trigger."
+    },
+    ".github/workflows/validate-adapters.yml": {
+      "sha256_lf": "4b8b9c99ff4cd79eaa61bd73ba7f0b1a2ab6fd41bea94faa0053ac17c2d10867",
+      "reason": "Least-privilege permissions, SHA-pinned actions."
+    },
+    ".github/workflows/validate-framework.yml": {
+      "sha256_lf": "c273e42af101463d64a97ee5af33ac62a76f14c716961135be777bbc0f9fad3c",
+      "reason": "Least-privilege permissions, SHA-pinned actions, package-integrity step."
+    },
+    ".github/workflows/validate-links.yml": {
+      "sha256_lf": "32cc327fe28f768f0fc4799d8e9cdda33469b61fc0bf95fd0847cb90da26b99b",
+      "reason": "Least-privilege permissions, SHA-pinned actions."
+    },
+    ".github/workflows/validate-schemas.yml": {
+      "sha256_lf": "e7163f66ef7c0f60df015d764154340280ff5bd75dd1d43e44a51f0d5f8fc943",
+      "reason": "Least-privilege permissions, SHA-pinned actions."
+    },
+    "CHANGELOG.md": {
+      "sha256_lf": "883325841b316b0b1b1376b7e297db31d320e24f1242b694d2c813f980258d65",
+      "reason": "Document the 1.3.1 release-candidate hardening and its unpublished status."
+    },
+    "CITATION.cff": {
+      "sha256_lf": "405b3be6420abed20a27904be70f0c89119b9e173c385ecab1bbf9b384c9914b",
+      "reason": "Citation version/date for the 1.3.1 candidate."
+    },
+    "FILE-MANIFEST.md": {
+      "sha256_lf": "b0a6430336b1a35d5dad63f24afa0e7b37d9bb4bab1efb4869520e25beb8a431",
+      "reason": "Regenerated from tracked files after adding scripts, workflows and release documents."
+    },
+    "README.ar.md": {
+      "sha256_lf": "e30152b660e09c756f27a15bd2e5dfa8a8e80449d6834aeda24e463fc35e6615",
+      "reason": "Arabic equivalent of the README identity and status changes."
+    },
+    "README.md": {
+      "sha256_lf": "056774e02223f186a1a2f6ddfaf33d051742e869fed0d40070d5bf95bd0303b8",
+      "reason": "Version badges, candidate status paragraph and Smart UI integration-candidate clarification."
+    },
+    "REPOSITORY-TREE.md": {
+      "sha256_lf": "215e62bd3af15d92da38bcbcd82fcaec7497bfcad2689488f4a1035f802fdbef",
+      "reason": "Regenerated from tracked files after adding scripts, workflows and release documents."
+    },
+    "VCGF-MANIFEST.yaml": {
+      "sha256_lf": "88809421af87a8d1a496237c9f9c6ab3ef09096682fbdb1c0fb1b1d442bb6218",
+      "reason": "framework_version 1.3.1, release_status release-candidate, candidate_adapters (chatgpt) and contract_schema_versions declared so validate-version can enforce identity consistency."
+    },
+    "VERSION": {
+      "sha256_lf": "10e2e117b01523891ca271a615ae36e9d5e52348fd7d642f66727602c1b8dcbe",
+      "reason": "Release candidate 1.3.1 (integrity and governance hardening); not published or signed."
+    },
+    "docs/platform-guides/bolt.md": {
+      "sha256_lf": "38bed2ba1b53f215418a7d2dada0266adb345e491c43c767b83a0801ea7510d4",
+      "reason": "Framework version line corrected (VCGF 1.3.1)."
+    },
+    "docs/platform-guides/claude.md": {
+      "sha256_lf": "eb07e7f932268dc55efda70b928d3da0ca15d3b361190a9eb648610e31ab2f0c",
+      "reason": "Framework version line corrected (VCGF 1.3.1)."
+    },
+    "docs/platform-guides/cursor.md": {
+      "sha256_lf": "e50f548f2985d5de427668bc4effbaa1eec1290bdb97fa13d78f18562b325409",
+      "reason": "Framework version line corrected (VCGF 1.3.1)."
+    },
+    "docs/platform-guides/generic.md": {
+      "sha256_lf": "339048186656b0b65c883291f08665b9c301f9491c9318f8623529de7f6f9b2d",
+      "reason": "Framework version line corrected (VCGF 1.3.1)."
+    },
+    "docs/platform-guides/lovable.md": {
+      "sha256_lf": "108989289682d19e9a033708d740476252dfe65a44f275a8d2af4ce6398b259e",
+      "reason": "Framework version line corrected (VCGF 1.3.1)."
+    },
+    "docs/platform-guides/replit.md": {
+      "sha256_lf": "cbfd133c0cac64aa85fe33fa46ffbb2e120c0c4ad85e7a7effcbe7443bf3a69e",
+      "reason": "Framework version line corrected (VCGF 1.3.1)."
+    },
+    "docs/platform-guides/v0.md": {
+      "sha256_lf": "16377ace4d7ffe352c779bd100817912fed966367bedd7a1bf081c6e0722c059",
+      "reason": "Framework version line corrected (VCGF 1.3.1)."
+    },
+    "platforms/bolt/rules/project-knowledge.md": {
+      "sha256_lf": "e7d09972f49cd0372bb224d5f1efe339199dc4cf1083239431148dee6781e52a",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/claude/rules/CLAUDE.md": {
+      "sha256_lf": "8f82eb5ffdcfe0bf583ad145271dbe8824f814d304a2380c4a9c604c3e0f3908",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/cursor/rules/AGENTS.md": {
+      "sha256_lf": "8b5bd52ccef5caabc52d3a58a3cfb33ec148ddc5d9be0ce5cc22c085a1bf8bee",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/cursor/rules/vcgf.mdc": {
+      "sha256_lf": "219cb5155333492d811c0c299fdb3f6c54bab28245b56bba7eced9834210659e",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/generic/rules/portable-project-rules.md": {
+      "sha256_lf": "8b5bd52ccef5caabc52d3a58a3cfb33ec148ddc5d9be0ce5cc22c085a1bf8bee",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/lovable/rules/AGENTS.md": {
+      "sha256_lf": "8b5bd52ccef5caabc52d3a58a3cfb33ec148ddc5d9be0ce5cc22c085a1bf8bee",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/lovable/rules/project-knowledge.md": {
+      "sha256_lf": "d46d19a29aac139baccb1d47e8e75eb1561c1eb6112e9e9ba06c454140f179cf",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/lovable/rules/workspace-knowledge.md": {
+      "sha256_lf": "6b8f1a8881c72fe4d7ee707cf50ab8260eef46944472f0a2d7337b219f7ba810",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/replit/rules/replit.md": {
+      "sha256_lf": "3c29b36b72066f0ee48fccb071588b9e960251445d1fb51afdefbd2d63448195",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "platforms/v0/rules/custom-instructions.md": {
+      "sha256_lf": "27f2832c72b4f15d3b3507010e6c526a097b37141f8266dc5853f427c3dc54e9",
+      "reason": "Instruction-hierarchy and no-weakening clauses added to the legacy entry (compatible clarification)."
+    },
+    "scripts/generate-control-catalog.py": {
+      "sha256_lf": "1f895ecb52c377ffd70d10431da35a849b9673889fa23a1aedbd895cb5990863",
+      "reason": "--check mode; UTF-8/LF writes."
+    },
+    "scripts/generate-file-manifest.py": {
+      "sha256_lf": "702ff88a62dbc4381103513aedc73ffb63202f42d0280714035790855fbb7b41",
+      "reason": "--check mode; tracked files only; UTF-8/LF writes."
+    },
+    "scripts/generate-repository-tree.py": {
+      "sha256_lf": "906f425cb62deff907e352216251352b018565fffa000957c02df41383711d94",
+      "reason": "--check mode; tracked files only; UTF-8/LF writes."
+    },
+    "scripts/release-quality-gate.py": {
+      "sha256_lf": "395c9f48c564d6f068067ed3f098d7664582fbdc2997fe070975bac1e93b89e7",
+      "reason": "Gate runs generators in --check mode (read-only) and the new package-integrity validator."
+    },
+    "scripts/validate-adapters.py": {
+      "sha256_lf": "dd14c9299b7165357e4a10b64124fcdf94d71fe772a9c698877042d04368543f",
+      "reason": "Deterministic check that every legacy entry file carries the mandatory clauses, including the instruction-hierarchy clause."
+    },
+    "scripts/validate-internal-links.py": {
+      "sha256_lf": "6e7ca19956e335bdec4dce7f935098baae3a6f80e2bc025fb2f859fd22c45647",
+      "reason": "Enumerates tracked Markdown files (deterministic) instead of the filesystem."
+    },
+    "scripts/validate-repository-structure.py": {
+      "sha256_lf": "8dda96a12c0d02070836a63a8b9bfb6de70494380c1bcfb8fc5e62c9a88eb8fb",
+      "reason": "Enumerates tracked files (deterministic) instead of the filesystem."
+    },
+    "scripts/validate-vendor-neutral-core.py": {
+      "sha256_lf": "39d903e429ce135b468999d67ccc4549294e651045b91bb5dbdec9fda95c8946",
+      "reason": "Enumerates tracked Core files (deterministic) instead of the filesystem."
+    },
+    "scripts/validate-version.py": {
+      "sha256_lf": "bc410207356b8ef1461cb616b2f3eb4195fb9ce9c5d1bbd6e88f6743680aee09",
+      "reason": "Extended identity checks: bootstrap, platform guides, README badges, changelog heading, release notes, manifest adapters and contract schema versions."
+    },
+    "scripts/validate-yaml.py": {
+      "sha256_lf": "503f8c86e307b8af51fda492bbad00889d57f54d5e997cb6c2936a3610fe0aed",
+      "reason": "Enumerates tracked files (deterministic) instead of the filesystem."
+    },
+    "scripts/vcgf_lib.py": {
+      "sha256_lf": "e29e1ac7a3589a03445f4bebf88445f0f2165bf8a291c3ea1f953dd3e4cb4d27",
+      "reason": "Deterministic tracked-file enumeration (git ls-files with filesystem fallback) so untracked local files cannot change validator or manifest results."
+    },
+    "spec/control-catalog.yaml": {
+      "sha256_lf": "d854bb0fb816417313cbe7f4117b58f94776a89ab900ee23a64d05a20749ec69",
+      "reason": "Regenerated: framework_version 1.3.1; controls unchanged."
+    }
+  }
+}

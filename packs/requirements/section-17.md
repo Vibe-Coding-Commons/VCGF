@@ -1,6 +1,21 @@
 <!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
 
-# 17. Password Reset Security  يجب أن يتضمن Password Reset عند انطباقه:  - Token عشوائي قوي. - Single-use. - Expiration. - Secure Storage. - User Enumeration Protection. - Rate Limiting. - Session Revocation المناسب بعد تغيير كلمة المرور. - User Notification. - Audit.  ---  
+# 17. Password Reset Security
+
+يجب أن يتضمن Password Reset عند انطباقه:
+
+- Token عشوائي قوي.
+- Single-use.
+- Expiration.
+- Secure Storage.
+- User Enumeration Protection.
+- Rate Limiting.
+- Session Revocation المناسب بعد تغيير كلمة المرور.
+- User Notification.
+- Audit.  ---
+
+Source units: `S17.001` – `S17.010` (packs/index.yaml)
+
 
 ## Verification boundary
 

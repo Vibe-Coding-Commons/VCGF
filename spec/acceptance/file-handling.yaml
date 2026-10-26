@@ -1,0 +1,171 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the file-handling controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: file-handling
+controls:
+  VCGF-FILE-001:
+    requirement_sources: [S36, S37]
+    tests:
+    - id: VCGF-FILE-001-AT01
+      type: automated
+      criterion: >-
+        An upload whose extension is outside the allowlist, whose declared MIME type disagrees with its content
+        signature (for example an executable or HTML document renamed to .png), or whose size exceeds the configured
+        limit by one byte is rejected by the trusted layer with a client error and no object is written to storage.
+      method: >-
+        An integration test posts each malformed fixture, asserts the status code and error body, and lists the
+        storage location before and after to confirm no new object.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/files/test_upload_validation (per project)
+    - id: VCGF-FILE-001-AT02
+      type: automated
+      criterion: >-
+        An upload without a valid session or by a principal lacking upload permission on the target resource is
+        denied, the first upload beyond the configured per-window rate limit is throttled with a rate-limit response,
+        and the first upload beyond the configured per-user or per-resource file count limit is rejected while the
+        uploads within the limits succeed.
+      method: >-
+        An integration test attempts an anonymous upload, an upload by an unauthorized user, a burst exceeding the
+        rate limit and one upload above the count limit, and asserts each response and the storage state.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/files/test_upload_authz_and_rate_limit (per project)
+    - id: VCGF-FILE-001-AT03
+      type: automated
+      criterion: >-
+        A file uploaded with a traversal name such as ../../etc/passwd or a script-bearing name is stored under
+        a server-generated key with no user-supplied path segment, the original name is kept only as display metadata,
+        and metadata fields exceeding the declared length or character set are rejected.
+      method: >-
+        An integration test uploads fixtures with traversal and script-bearing names and oversized metadata, then
+        reads the stored key and metadata record and asserts the key pattern and the rejection.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/files/test_server_generated_storage_key (per project)
+    - id: VCGF-FILE-001-AT04
+      type: automated
+      criterion: >-
+        Serving an uploaded file returns a Content-Type derived from the validated content rather than the client-supplied
+        value, X-Content-Type-Options nosniff, and an attachment disposition or sandboxed origin for HTML, SVG,
+        XML and other script-capable types, so a script embedded in an uploaded HTML or SVG file never executes
+        in the application origin.
+      method: >-
+        An end-to-end test uploads HTML and SVG fixtures containing a script, fetches them through the download
+        path, asserts the response headers and confirms in the browser that the script did not run.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: e2e/files/served-content-headers.spec (per project)
+    - id: VCGF-FILE-001-AT05
+      type: automated
+      criterion: >-
+        A higher-risk upload carrying the EICAR test signature is quarantined and never becomes downloadable, and
+        a pathological image or archive fixture is aborted by the processing job within the configured CPU, memory
+        and time limits without affecting other uploads.
+      method: >-
+        An integration test uploads the EICAR fixture and a decompression-bomb fixture, asserts the quarantine status
+        and the absence of a download URL, and asserts the processing job terminated within the limit while a concurrent
+        benign upload completed.
+      negative_path: true
+      evidence: [test-result, security-scan]
+      automation:
+        kind: ci
+        reference: tests/files/test_malware_scan_and_processing_limits (per project)
+    - id: VCGF-FILE-001-AT06
+      type: review
+      criterion: >-
+        The upload bucket or container has public access blocked at the provider level, the image, document and
+        archive parsing libraries are at versions without open advisories, risky parsers run in an isolated process
+        or sandbox with configured CPU, memory and time limits, and no change in the release makes a bucket public
+        to resolve an access error.
+      method: >-
+        A reviewer inspects the storage access policy, the dependency scan result for the parser libraries, the
+        processing job configuration and the infrastructure diff of the release.
+      negative_path: false
+      evidence: [configuration-record, security-scan]
+      automation:
+        kind: none
+  VCGF-FILE-002:
+    requirement_sources: [S36, S37]
+    tests:
+    - id: VCGF-FILE-002-AT01
+      type: automated
+      criterion: >-
+        A file holding user-specific data uploaded with no explicit visibility setting is stored as private, and
+        requesting it by its storage key or direct URL without a session, or with a session of another user or tenant
+        who was not granted access, returns an authentication or authorization error (or a non-confirming not-found)
+        and zero bytes of file content, while the owner's authenticated request through the download path returns
+        the complete file.
+      method: >-
+        An integration test uploads a file as user A without setting a visibility flag, reads its stored visibility,
+        requests it anonymously, as user B and as a member of another tenant and asserts the status code and an
+        empty body, then requests it as user A and compares the returned bytes with the uploaded fixture.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/files/test_private_file_access_denied (per project)
+    - id: VCGF-FILE-002-AT02
+      type: automated
+      criterion: >-
+        A time-limited signed download URL is rejected after its configured lifetime (no longer than the value recorded
+        in the storage configuration), when any character of its signature is altered, and when it is presented
+        for a different object key than the one signed.
+      method: >-
+        An integration test issues a signed URL, advances the clock past expiry, tampers the signature and substitutes
+        the key, and asserts each request is rejected while the untouched URL succeeds within its lifetime.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/files/test_signed_url_scope_and_expiry (per project)
+    - id: VCGF-FILE-002-AT03
+      type: automated
+      criterion: >-
+        Storage keys of newly uploaded private files are cryptographically random identifiers carrying at least
+        the configured storage_key_min_entropy_bits (default 122, the random bits of a UUID version 4) of randomness,
+        contain no display name, sequential counter or user identifier, and the display name is stored separately
+        in the file metadata record.
+      method: >-
+        A unit test uploads several files with the same display name and owner, asserts the keys are distinct, match
+        the identifier pattern and contain neither the display name nor the owner identifier, and reads the display
+        name from the metadata record.
+      negative_path: false
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/files/test_unpredictable_storage_keys (per project)
+      parameters:
+      - name: storage_key_min_entropy_bits
+        default: 122
+        unit: bits
+        source: >-
+          IETF RFC 9562 (UUID version 4 carries 122 random bits); VCGF-FILE-002 requires unpredictable storage identifiers
+          without a figure
+        rationale: >-
+          Quantifies "unpredictable" at the entropy of the most common identifier format; adjustable upward.
+    - id: VCGF-FILE-002-AT04
+      type: review
+      criterion: >-
+        Every bucket, container or directory holding non-public files blocks public listing and anonymous object
+        reads at the provider level, infrastructure code creates new storage locations as private without per-object
+        overrides, and a policy check fails when any bucket or object grants read access to all users or anonymous
+        principals.
+      method: >-
+        A reviewer inspects the infrastructure code and the provider access policies, and the attached policy scan
+        output lists zero public grants.
+      negative_path: false
+      evidence: [configuration-record, security-scan]
+      automation:
+        kind: ci
+        reference: infra/policy/storage-private-by-default (per project)

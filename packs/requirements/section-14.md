@@ -1,6 +1,34 @@
 <!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
 
-# 14. Field Validation & Data Contract Governance  لا يكفي أن يقول VCGF للـAI:  > اعمل Validation.  كل حقل يتم إنشاؤه أو تعديله يجب أن يمتلك **Field Contract** يحدد عند الحاجة:  - Type. - Required / Optional. - Min / Max. - Length. - Allowlist / Enum. - Format. - Normalization. - Uniqueness. - Cross-field Rules. - Business Rules. - PII Classification. - Masking. - Encryption. - Retention. - Error Message.  ### مبادئ التنفيذ  - Client Validation لتحسين تجربة المستخدم. - Server Validation هو المرجع الأمني. - استخدام Database Constraints المناسبة. - رفض الحقول غير المتوقعة لمنع Mass Assignment. - استخدام Parameterized Queries. - إضافة Negative Tests. - إضافة Fuzz Tests للحقول الحساسة.  ---  
+# 14. Field Validation & Data Contract Governance
+
+لا يكفي أن يقول VCGF للـAI:  > اعمل Validation.  كل حقل يتم إنشاؤه أو تعديله يجب أن يمتلك **Field Contract** يحدد عند الحاجة:
+
+- Type.
+- Required / Optional.
+- Min / Max.
+- Length.
+- Allowlist / Enum.
+- Format.
+- Normalization.
+- Uniqueness.
+- Cross-field Rules.
+- Business Rules.
+- PII Classification.
+- Masking.
+- Encryption.
+- Retention.
+- Error Message.  ### مبادئ التنفيذ
+- Client Validation لتحسين تجربة المستخدم.
+- Server Validation هو المرجع الأمني.
+- استخدام Database Constraints المناسبة.
+- رفض الحقول غير المتوقعة لمنع Mass Assignment.
+- استخدام Parameterized Queries.
+- إضافة Negative Tests.
+- إضافة Fuzz Tests للحقول الحساسة.  ---
+
+Source units: `S14.001` – `S14.026` (packs/index.yaml)
+
 
 ## Verification boundary
 

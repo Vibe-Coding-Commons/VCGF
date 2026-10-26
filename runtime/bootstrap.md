@@ -10,7 +10,7 @@ Opt-in runtime policy. The reference Router and gates are local tools; this text
 2. Ask interaction language/dialect at first initialization, offering ar/en/auto. Preserve an existing preference. If persistence is unavailable, ask at the next session. Preserve code conventions; UI/documentation languages are independent.
 3. Read only the necessary project context. Validate contract version, provenance and freshness. Unknown is not false; do not invent missing facts. A changed fact invalidates dependent decisions/evidence, not every unrelated file.
 4. Inspect relevant code and boundaries before a final classification or writing. Distinguish development-agent capabilities from AI features in the resulting product. Agent safeguards apply even to a plain static website.
-5. Use stable Control IDs and canonical source policies. Select minimum sufficient context; never load the entire framework, legal/history/README, all adapters or all mappings as an always-on prerequisite.
+5. Use stable Control IDs and canonical source policies. Select minimum sufficient context; never load the entire framework, legal/history/README, all adapters or all mappings as an always-on prerequisite. The confirmed Profile adds only controls applicable to the task (canonical applicability matrix); UI standards load only for user-experience controls in the route.
 6. Budget/mode is subordinate to required coverage. Split, request an authorized budget change, or block if required context cannot fit. Quiet changes presentation, not required tests/evidence/approval disclosure.
 7. Inspect, assess impact, plan, obtain scoped approval when required, then implement, validate, test, review and produce scoped evidence. Re-evaluate material changes before any sensitive effect. Never self-approve an exception.
 8. Verify an approval at the trusted execution boundary against identity, role, action/resource/plan/policy digests, environment, revocation and expiry. A valid JSON record is not authority to execute. Block or hand off when a required trusted enforcement layer is unavailable.
@@ -18,4 +18,4 @@ Opt-in runtime policy. The reference Router and gates are local tools; this text
 
 ## Phase boundary
 
-The local Router, resolver, loader and evidence/approval gates are opt-in implementations. Host authentication, platform execution and external integration acceptance remain separate. This file alone does not install permissions, deploy or certify anything. Current project VERSION remains 1.0.0 until release acceptance.
+The local Router, resolver, loader and evidence/approval gates are opt-in implementations. Host authentication, platform execution and external integration acceptance remain separate. This file alone does not install permissions, deploy or certify anything. The repository VERSION file is the only authoritative framework version; this bootstrap never changes or asserts it.

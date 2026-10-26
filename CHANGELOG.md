@@ -11,6 +11,54 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 This project follows a Keep a Changelog-style release history and Semantic Versioning.
 
+## [1.4.0] - 2026-10-26 — Architecture, governance, context efficiency, verification and enforcement (release candidate — prepared locally, not published, not signed)
+
+### Added
+- `spec/applicability-matrix.yaml`: canonical, machine-readable applicability for every control (trigger capabilities, always, load point, rationale). `scripts/validate-applicability.py` enforces that every non-deprecated control is reachable by the Task Router for the high-assurance profile from at least one intent, that the capability floor is never hidden and that no trigger names a capability no intent can select.
+- Task Router profile layer (additive, monotonic): a control required by the confirmed profile joins the route when one of its trigger capabilities is selected for the task. For the same task baseline ⊆ production ⊆ high-assurance, the capability floor never shrinks and no profile loads a control unrelated to the task (`capability_id: profile-layer`, source `spec/applicability-matrix.yaml`).
+- Capabilities `release`, `operations`, `exception` and `governance-change`; intents `release`, `backup`, `email`, `exception` and `governance-change` (routing policy 1.2.0). VCGF-REL-001 joins the minimum task-governance controls. The 19 controls no intent could reach before (VCGF-AI-007, ARCH-002, ARCH-005, AUDIT-003, DATA-003/004/005, DB-003/004, GOV-003/006, OPS-001/004/005, REL-001/002/004, SECR-002, TEST-004) are now reachable.
+- User-experience control domain: VCGF-UX-001 Accessibility Conformance (MUST), VCGF-UX-002 Localization and Bidirectional Text (MUST), VCGF-UX-003 Interaction State Integrity (SHOULD), VCGF-UX-004 Responsive Strategy and Density (SHOULD). Production requires UX-001/002, high-assurance all four, baseline lists them as optional (profile_version 1.1.0). Control contract 1.4.0 superset under `schemas/v1.4.0/`; the frozen v1.0 schema is byte-identical and still validates every v1.0 control.
+- `spec/acceptance/<domain>.yaml`: verifiable acceptance tests for all 88 controls (criterion, method, negative path, evidence type, automation hook), enforced by `scripts/validate-acceptance.py` and exposed by `vcgf.py acceptance <control-id>`.
+- Governed Smart UI selection: `runtime/ui_select.py`, `runtime/ui-bindings.yaml`, contract `ui-selection` 1.1.0 and `vcgf.py ui-select <route> <screen-context>`. Smart UI layers load only for the user-experience controls present in the route, hash-pinned by the frozen package manifest, confined to the package directory and budgeted; standards selected by signals but not governed by a control in the route are reported as deferred and never loaded.
+- Tests `tests/scenarios/test_profile_layer.py` and `tests/scenarios/test_ui_select.py`; fixtures `tests/fixtures/v1.1/screen-context.json` and `ui-selection.json`.
+- Phase 2 (token efficiency and context optimisation): derived control cards `spec/control-cards/` with shared `common-clauses.md` (`scripts/generate-control-cards.py --check` in the gate); `lean`/`standard` routes load cards, `deep` routes load full controls (`context_detail`); the loader strips attribution comments from served Markdown.
+- Multi-intent routing (`intents` on the task: union of capabilities, highest risk, one route) and delta loading (`loaded_context`: only unseen or changed items are sent; `reused_tokens`, `reused_context`; stale hashes are re-sent); registry cached per process while no canonical source changes.
+- `runtime/tokens.py`: bytes measured, tokens estimated by a documented heuristic, observed only with an explicit `VCGF_TOKENIZER`; budgets enforced on tokens with `cost_bytes` reported; `ui-select` serves Smart UI requirement cards for lean/standard routes (`served_bytes`) and full standards for deep routes.
+- CLI prints hash-pinned references by default (`--full` inlines text); `vcgf.py acceptance all` summarises definitions with execution state (always `not_executed` here).
+- Acceptance tests follow the binding interpretation rules (`spec/acceptance/README.md`): numeric thresholds are documented `parameters`, SHOULD is never tested as MUST, requirement sources are ranked; `tests/scenarios/test_applicability_triggers.py` and `tests/scenarios/test_context_efficiency.py`.
+- Phase 3 (verification, enforcement, portability): `scripts/validate-control-cards.py` proves every card plus its cited common clauses carries the control's normative text verbatim (References now in the cards); `budget_unit` (`tokens` default, `bytes` legacy) with explicit `legacy_byte_comparison` disclosure and `scripts/migrate-task-budget.py`; `loaded_context` hardening (shape, hash format, root confinement, size cap, `loaded_context_policy_sha256` fingerprint forcing a full reload); Smart UI external standards served as requirement cards; advisory `model_guidance` per route and `runtime/model-guidance.md`.
+- Executable self-acceptance: `tests/acceptance/test_self_acceptance.py` implements the acceptance definitions whose system under test is VCGF itself; `scripts/run-self-acceptance.py` records `docs/quality/v1.4/self-acceptance-results.json` (`--check` in CI) and `vcgf.py acceptance` reports scope `framework_self` for them while target-project definitions stay `not_executed` with their verification kind.
+- Automated enforcement: `platforms/enforcement-matrix.yaml` (six mechanisms per adapter, honest statuses), `scripts/hooks/guard-governance-files.py` and `scripts/hooks/pre-commit-vcgf.py`, `platforms/claude/hooks/settings.example.json` (configurable, unverified against the live platform), `scripts/validate-enforcement.py`, `tests/scenarios/test_enforcement.py`.
+- Portability and CI: symlink tests skip without the Windows privilege, the Linux-only integration module skips where `fcntl` is absent, `.github/workflows/tests.yml` runs the full suite on Ubuntu and Windows; legacy always-on entry files carry a one-line attribution header.
+- Final consolidation: compliance evaluator for target projects (`runtime/compliance.py`, contract `acceptance-results` 1.1.0, `vcgf.py compliance`: applicable controls from a route or profile, recorded PASS/FAIL/SKIP/NOT_TESTED results, hash-verified evidence, reviewer for human tests, freshness and code binding; definitions never count as passed); governance guard allowance only through an approval record (`VCGF_GOVERNANCE_APPROVAL`), never an environment flag; Smart UI signal inference from route intents and screen facts (explicit and inferred recorded), package denylist and controls-govern precedence; `spec/operational-control-map.yaml` with `validate-operational-map.py` (35 operational files traced to controls, no tracking parameters in packs); `validate-dependencies.py`, Dependabot and a supply-chain workflow (pip-audit, SBOM artifact, CodeQL); `scripts/record-release-validation.py` binds local validation to commit, OS, Python and dependency versions; `route --as-of` and a recorded `--dry-run`; the backup example bounds the payload before decryption; the browser smoke test keeps the sandbox on by default; requirement packs reflowed into bullets with source-unit anchors where their structure allowed it.
+
+### Changed
+- `runtime/contracts.py` caches the known-control set by catalog content instead of re-parsing the catalog on every contract validation (registry build about 1.2 s → about 0.2 s on the reference machine).
+- Adapter control mappings carry UNVERIFIED rows for the four user-experience controls; platform behaviour for UI governance is not claimed.
+- `scripts/validate-version.py` accepts `release_status: development` for develop branches; the release workflow refuses it.
+- Budget semantics: `limit_tokens` is now compared with estimated tokens of the served text instead of raw bytes (the declared contract); routes that were blocked only by the four-fold byte over-count now fit. Coverage is unchanged: a budget still blocks, never drops controls.
+- Cumulative compatibility record `docs/quality/v1.4/baseline-compatibility-v1.4.json` (inherits v1.3.1). All 84 v1.0 controls, their identifiers, the frozen v1.0 schemas, licence and attribution are unchanged.
+
+## [1.3.1] - 2026-10-24 — Integrity and governance hardening (release candidate — not published, not signed)
+
+### Security
+- Instruction-hierarchy clause added to all legacy always-on entry files and enforced by `scripts/validate-adapters.py`: repository, tool or generated content never overrides the host system and user authority chain.
+- Development-agent safeguards made unconditional in the Task Router: context flags no longer drop VCGF-AI-002, VCGF-AI-004, VCGF-AI-006, VCGF-AI-008 or VCGF-AI-009 from a route.
+- New `scripts/validate-package-integrity.py` verifies the frozen Smart UI `SHA256SUMS.txt` and `manifest.json` in the release gate and in CI.
+- CI workflows run with least-privilege `permissions` and SHA-pinned actions.
+- New release workflow that only drafts a release for a verifiable signed tag, attaching source archives, `SHA256SUMS.txt` and a CycloneDX SBOM; it never publishes on its own.
+
+### Fixed
+- Version identity made consistent across `runtime/bootstrap.md`, the seven platform guides, `VCGF-MANIFEST.yaml` adapters (supported and candidate) and contract schema versions, enforced by an extended `scripts/validate-version.py`.
+- Generators and validators made read-only/portable: `--check` modes instead of silent rewrites, UTF-8 and LF enforced on every write.
+
+### Changed
+- Smart UI layer status aligned to `integration-candidate` in `packs/ux/catalog.yaml`; its runtime acceptance scenarios remain `not_run`.
+- `VCGF-MANIFEST.yaml` gains `candidate_adapters`, `candidate_adapter_versions` and `contract_schema_versions`; `release_status` is `release-candidate` until publication.
+
+### Release Status
+Candidate prepared locally on a worktree cut from tag v1.3.0 (commit 43c617d). Publication requires independent review by a non-author and a verifiable tag signature; neither exists yet. v1.3.0 remains the latest published release. Production admission remains BLOCKED. All existing Control IDs, contracts, licensing and founder rights are preserved.
+
 ## [1.3.0] - 2026-10-24 — Smart UI & Adaptive Experience Orchestration (public framework release)
 
 ### Added

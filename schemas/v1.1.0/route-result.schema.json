@@ -141,6 +141,38 @@
           ],
           "minimum": 0
         },
+        "cost_bytes": {
+          "description": "UTF-8 bytes of the text sent now (measured). Optional for 1.1.0 records.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "reused_tokens": {
+          "description": "Tokens of items the caller already held (delta loading); not sent again. Optional for 1.1.0 records.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "unit": {
+          "description": "Quantity compared with limit_tokens: tokens (1.4.0 default, estimated or observed) or bytes (pre-1.4 legacy comparison kept on request). Optional for 1.1.0 records.",
+          "enum": [
+            "tokens",
+            "bytes"
+          ]
+        },
+        "declared_unit": {
+          "description": "The budget_unit the task declared, or null when the task relied on the default.",
+          "enum": [
+            "tokens",
+            "bytes",
+            null
+          ]
+        },
+        "legacy_byte_comparison": {
+          "description": "Whether the pre-1.4 byte comparison would have blocked this route; surfaced so a changed outcome is never silent.",
+          "enum": [
+            "would_block",
+            "consistent"
+          ]
+        },
         "measurement": {
           "enum": [
             "observed",
@@ -185,6 +217,21 @@
     },
     "approval_required": {
       "type": "boolean"
+    },
+    "intents": {
+      "description": "Every reviewed intent the route covers (the task intent first). Optional for 1.1.0 records.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/id"
+      }
+    },
+    "context_detail": {
+      "description": "card: derived control cards plus common clauses (lean/standard); full: complete control Markdown (deep). Optional for 1.1.0 records.",
+      "enum": [
+        "card",
+        "full"
+      ]
     }
   },
   "required": [

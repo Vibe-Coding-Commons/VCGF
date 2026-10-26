@@ -1,0 +1,28 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+contract_version: 1.1.0
+capability_id: release
+description: 'Release readiness: pre-release gate, test strategy, artifact integrity
+  and post-release monitoring'
+owner: Eng. Hamada Sami
+applies_to:
+- application
+applicability:
+  conditions: []
+  unknown_policy: block_or_request_fact
+control_ids:
+- VCGF-REL-001
+- VCGF-REL-002
+- VCGF-REL-004
+- VCGF-REL-005
+- VCGF-TEST-004
+dependencies:
+- relation: requires
+  targets:
+  - operations
+  reason: release requires evaluation of operations
+required_evidence:
+- positive and negative tests scoped to capability
+- implementation and environment reference
+exception_policy: Explicit owner-approved, expiring exception; no automatic compliance

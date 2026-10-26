@@ -102,7 +102,8 @@ def main():
     for a,b,n in mappings:validate_schema(a,b,n)
     # all contexts and generated plans
     cv=Draft202012Validator(load('schemas/screen-context.schema.json'));pv=Draft202012Validator(load('schemas/component-selection-plan.schema.json'))
-    ctx_errors=[];plan_errors=[];plans={}
+    # read-only: stored plans are compared against generated plans, never rewritten (no CRLF/mutation side effects)
+    ctx_errors=[];plan_errors=[];plan_mismatches=[];plans={}
     for p in sorted((ROOT/'examples').glob('*.json')):
         if p.name.endswith('.plan.json'):continue
         d=json.loads(p.read_text(encoding='utf-8'));e=list(cv.iter_errors(d))
@@ -110,9 +111,12 @@ def main():
         plan=run_context('examples/'+p.name);plans[p.stem]=plan
         pe=list(pv.iter_errors(plan))
         if pe:plan_errors.append(p.name+': '+pe[0].message)
-        pp=p.with_name(p.stem+'.plan.json');pp.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        pp=p.with_name(p.stem+'.plan.json');expected=json.dumps(plan,ensure_ascii=False,indent=2)+'\n'
+        stored=pp.read_text(encoding='utf-8').replace('\r\n','\n') if pp.is_file() else None
+        if stored!=expected:plan_mismatches.append('examples/'+pp.name+(' (missing)' if stored is None else ''))
     add('All example contexts validate',not ctx_errors,'OK' if not ctx_errors else '; '.join(ctx_errors[:6]))
     add('All generated plans validate',not plan_errors,'OK' if not plan_errors else '; '.join(plan_errors[:6]))
+    add('Stored example plans match generated plans',not plan_mismatches,'OK' if not plan_mismatches else '; '.join(plan_mismatches))
     # selection assertions
     no=plans['no-ui-service'];add('No-UI selects zero',not(no['selected_components'] or no['selected_interactions'] or no['selected_screen_compositions'] or no['selected_journeys'] or no['external_standards']))
     birth=plans['simple-birthdate-screen'];add('Birthdate selective component',[x['standard_id'] for x in birth['selected_components']]==['VCGF-UI-COMP-003']);add('Birthdate journey',[x['standard_id'] for x in birth['selected_journeys']]==['VCGF-UI-JRN-002']);add('Birthdate bound standards',{x['standard_id'] for x in birth['external_standards']}=={'CALENDAR-GOVERNANCE-ADDENDUM','UI-COMP-SEARCHABLE-SELECT'})
@@ -126,7 +130,7 @@ def main():
     base={'schema_version':'1.0.0','project_id':'guard','screen_id':'guard','screen_purpose':'guard','has_ui':True,'signals':[],'interaction_signals':[],'composition_signals':[],'journey_signals':[],'languages':['en'],'directions':['ltr'],'devices':['desktop'],'tenant_scoped':False,'sensitive_data':False,'existing_capabilities':[],'notes':None,'risk_level':'low','data_volume':'small','offline_required':False,'user_roles':['operator'],'task_frequency':'regular','information_density':'adaptive','viewport_priority':'desktop-first','primary_input':'keyboard','entry_channel':'internal-navigation','completion_expectation':'unknown','context_continuity':'task-scoped'}
     def inline(mod):
         d=copy.deepcopy(base);mod(d)
-        with tempfile.NamedTemporaryFile('w',suffix='.json',encoding='utf-8',delete=False) as f:json.dump(d,f);name=f.name
+        with tempfile.NamedTemporaryFile('w',suffix='.json',encoding='utf-8',newline='\n',delete=False) as f:json.dump(d,f);name=f.name
         try:return json.loads(subprocess.check_output([sys.executable,str(ROOT/'scripts/select_smart_ui.py'),name],text=True,encoding='utf-8'))
         finally:Path(name).unlink(missing_ok=True)
     p=inline(lambda d:d['signals'].append('tabular_operational_data'));add('Component-only guard',len(p['selected_components'])==1 and not p['selected_interactions'] and not p['selected_screen_compositions'] and not p['selected_journeys'])
@@ -174,7 +178,7 @@ def main():
         else:
             man=load('manifest.json');entries=man['files'];allowed={'manifest.json','SHA256SUMS.txt'}
             actual={str(p.relative_to(ROOT)).replace('\\','/') for p in ROOT.rglob('*') if p.is_file() and '__pycache__' not in p.parts};recorded={e['path'] for e in entries}
-            if recorded!=actual-allowed:issues.append('file set mismatch')
+            if recorded!=actual-allowed:issues.append('file set mismatch: missing from tree '+(', '.join(sorted(recorded-(actual-allowed))) or '-')+'; unlisted in manifest '+(', '.join(sorted((actual-allowed)-recorded)) or '-'))
             for e in entries:
                 p=ROOT/e['path']
                 if not p.is_file() or p.stat().st_size!=e['bytes'] or sha(p)!=e['sha256']:issues.append('content '+e['path'])
@@ -184,17 +188,17 @@ def main():
             if set(sums)!=recorded|{'manifest.json'}:issues.append('checksum set mismatch')
             for rel,dig in sums.items():
                 if not (ROOT/rel).is_file() or sha(rel)!=dig:issues.append('checksum '+rel)
-        add('Manifest and SHA-256 integrity',not issues,'OK' if not issues else '; '.join(issues[:8]))
+        add('Manifest and SHA-256 integrity',not issues,'OK' if not issues else '; '.join(issues))
     passed=sum(x['status']=='pass' for x in CHECKS);failed=len(CHECKS)-passed
     summary={'component_standards':36,'interaction_patterns':24,'screen_compositions':20,'journey_patterns':18,'bound_standards':2,'reference_settings_and_policies':660,'requirements':1176,'acceptance_scenarios':1176,'calendar_navigation_acceptance':14,'checks':len(CHECKS),'passed':passed,'failed':failed,'negative_schema_tests':neg,'local_links_checked':link_count,'runtime_application_tests':'not_run','manifest_verified_in_this_run':args.verify_manifest}
     ok=failed==0
     if args.write_report:
         (ROOT/'reports').mkdir(exist_ok=True)
         report={'package_version':'1.0.0','status':'pass' if ok else 'fail','scope':'specification-package-schema-selection-traceability-and-integrity','generated_at':datetime.now(timezone.utc).isoformat(),'summary':summary,'checks':CHECKS,'claim_boundary':'Runtime application conformance is not established by these checks.'}
-        (ROOT/'reports/DOCUMENTATION-VALIDATION.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        (ROOT/'reports/DOCUMENTATION-VALIDATION.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
         lines=['# فحص VCGF Smart UI v1.0.0','',f'**{"PASS" if ok else "FAIL"}**','',f'- Components: 36','- Interactions: 24','- Screen Compositions: 20','- Journeys: 18','- Requirements / Acceptance: 1176 / 1176',f'- Checks: {passed}/{len(CHECKS)}',f'- Local links: {link_count}',f'- Negative schema tests: {neg}/{neg if not negfail else neg-len(negfail)} rejected','', '> الفحص يثبت سلامة الحزمة والمخططات والاختيار والتتبع فقط. Runtime tests للتطبيقات تبقى `not_run`.','', '| الفحص | الحالة | التفاصيل |','|---|---|---|']
         for c in CHECKS:lines.append('| '+c['name'].replace('|','/')+' | '+c['status']+' | '+c['details'].replace('|','/').replace('\n',' ')+' |')
-        (ROOT/'reports/DOCUMENTATION-VALIDATION.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+        (ROOT/'reports/DOCUMENTATION-VALIDATION.md').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
     for c in CHECKS:print(f"[{c['status'].upper()}] {c['name']}: {c['details']}")
     print(json.dumps(summary,ensure_ascii=False))
     return 0 if ok else 1

@@ -72,6 +72,15 @@ class RuntimeTests(unittest.TestCase):
         paths={i['path'] for i in x['active_context']};self.assertIn('packs/requirements/section-15.md',paths);self.assertNotIn('packs/requirements/section-21.md',paths);self.assertNotIn('packs/requirements/section-27.md',paths)
     def test_agent_separate_from_product(self):
         self.task['intent']='button-color';x=self.runroute();self.assertIn('development-agent',x['capabilities']);self.assertNotIn('product-ai',x['capabilities'])
+    def test_agent_safeguards_not_droppable_by_context(self):
+        full=self.runroute();ctx=copy.deepcopy(self.context);ctx['development_agent']['uses_tools']=False;ctx['development_agent']['uses_external_content']=False
+        x=route(self.task,ctx,self.project,NOW);self.assertIn('development-agent',x['capabilities']);self.assertIn('VCGF-AI-008',x['route']['selected_control_ids'])
+        self.assertEqual(x['route']['decision'],'ready_to_plan');self.assertEqual(x['route']['selected_control_ids'],full['route']['selected_control_ids'])
+    def test_non_string_profile_or_intent_rejected(self):
+        for field,value in [('profile',[]),('intent',{}),('mode',{})]:
+            with self.subTest(field=field):
+                task=dict(self.task);task[field]=value
+                with self.assertRaises(ValueError):route(task,self.context,self.project,NOW)
     def test_changed_source_blocks_dependent_task(self):
         (self.project/'config.json').write_text('changed');self.assertEqual(self.runroute()['route']['decision'],'blocked')
     def test_changed_unrelated_fact_does_not_block_color(self):
@@ -114,7 +123,10 @@ class LoaderTests(unittest.TestCase):
         with self.assertRaises(ValueError):confined(ROOT,'/etc/passwd')
     def test_symlink(self):
         with tempfile.TemporaryDirectory() as d:
-            (Path(d)/'link').symlink_to('/etc/passwd')
+            try:
+                (Path(d)/'link').symlink_to('/etc/passwd')
+            except (OSError, NotImplementedError) as exc:  # Windows without the symlink privilege
+                self.skipTest(f'symlinks unavailable here: {exc}')
             with self.assertRaises(ValueError):confined(d,'link')
     def test_hash_mismatch(self):
         with self.assertRaises(ValueError):load(ROOT,[{'path':'runtime/bootstrap.md','sha256':'0'*64}],99999)

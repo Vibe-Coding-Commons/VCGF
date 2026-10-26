@@ -14,7 +14,7 @@
     },
     "control_id": {
       "type": "string",
-      "pattern": "^VCGF-(GOV|AI|ARCH|SEC|IAM|DATA|PRIV|DB|API|SECR|DEP|FILE|AUDIT|TEST|REL|OPS|IR)-[0-9]{3}$"
+      "pattern": "^VCGF-(GOV|AI|ARCH|SEC|IAM|DATA|PRIV|DB|API|SECR|DEP|FILE|AUDIT|TEST|REL|OPS|IR|UX)-[0-9]{3}$"
     },
     "digest": {
       "type": "string",

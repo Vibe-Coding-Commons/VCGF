@@ -1,0 +1,325 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the release controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: release
+controls:
+  VCGF-REL-001:
+    tests:
+      - id: VCGF-REL-001-AT01
+        type: automated
+        criterion: >-
+          A change cannot be marked complete or merged while any of the build, type-check, lint or test jobs for
+          its final revision is missing, pending or failing, and a revision pushed with a deliberately failing
+          lint or type error keeps the merge control disabled until a passing revision replaces it.
+        method: >-
+          CI configuration review confirms the required status checks on the integration branch; a test pull
+          request introduces a lint error and a type error, and the reviewer records that the merge control stays
+          disabled and becomes available only after the fix revision passes every required check.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: ci/required-checks.yml (per project)
+      - id: VCGF-REL-001-AT02
+        type: automated
+        criterion: >-
+          Every change that touches an authorization-sensitive or tenant-scoped handler ships with at least one
+          allowed-path test, one denied-path test and, where tenant data is involved, one cross-tenant isolation
+          test that run against the server-side enforcement layer and pass before the change is declared done.
+        method: >-
+          A coverage rule maps changed handlers to the required test categories; the pipeline fails when a changed
+          sensitive handler lacks an allowed, denied or cross-tenant test, and the test report is attached to the
+          change record.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/authz/test_allowed_denied_matrix (per project)
+      - id: VCGF-REL-001-AT03
+        type: review
+        criterion: >-
+          The completion record of each change lists a disposition for every Definition of Done item (no unrelated
+          file changes, authoritative server-side validation, error paths tested, sensitive data exposure reviewed,
+          logs reviewed for secrets and personal data, database, row-level security and storage reviewed, rate
+          limiting considered for abuse-prone endpoints, security scan findings dispositioned, regression test added
+          for the defect fixed, rollback path named for risky changes), and no item is blank or marked not
+          applicable without a stated reason.
+        method: >-
+          A reviewer compares the diff file list with the record, confirms each item has a disposition that matches
+          the diff (for example a migration in the diff requires a database review entry and a bug fix requires a
+          regression test entry), and rejects the change when a not-applicable item lacks a reason.
+        negative_path: false
+        evidence: [code-review, approval-record]
+        automation:
+          kind: none
+      - id: VCGF-REL-001-AT04
+        type: automated
+        criterion: >-
+          For changes that touch authentication, encryption, admin, recovery or payment code, the preserved test
+          evidence is bound to the commit SHA it ran against and its artifact hashes match the stored artifacts;
+          a record bound to a different commit or whose artifact bytes were altered is rejected and the change
+          cannot be declared done.
+        method: >-
+          The evidence evaluator is run against the change's evidence record with the expected code SHA; the
+          reviewer repeats the run with a record pointing at another commit and with one artifact byte modified,
+          and confirms both runs end in FAIL with the changed-binding or changed-artifact error named.
+        negative_path: true
+        evidence: [test-result, approval-record]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py evidence
+  VCGF-REL-002:
+    requirement_sources: [S28]
+    tests:
+      - id: VCGF-REL-002-AT01
+        type: automated
+        criterion: >-
+          The production release pipeline exits non-zero and creates no deployment when the release revision carries
+          an open Critical security finding, a failing denied-path authorization test in the required suite, a
+          verified secret detected by the secret scan, or a pending migration classified as destructive (drop,
+          truncate or column removal without an approved expand-contract plan).
+        method: >-
+          A release-candidate branch is seeded in turn with a Critical finding, a denied-path authorization test
+          forced to fail, a test secret pattern and a drop-table migration; each pipeline run is observed to stop at
+          the gate stage with the blocking condition named and no production deployment record created.
+        negative_path: true
+        evidence: [test-result, security-scan]
+        automation:
+          kind: ci
+          reference: ci/release-gate.yml (per project)
+      - id: VCGF-REL-002-AT02
+        type: automated
+        criterion: >-
+          The release readiness evaluator returns BLOCKED with the corresponding blocker named, never PASS, when a
+          required gate of the release policy is missing or not passed, when the record's candidate commit differs
+          from the expected commit SHA, when the record is future-dated, expired or valid for more than seven days,
+          or when a cited artifact's SHA-256 no longer matches its bytes.
+        method: >-
+          The evaluator is run with the expected candidate SHA against the untampered record (whose only admissible
+          blocker in the public CLI is the trusted host review one) and against four tampered copies (one gate set
+          to failed, a different candidate commit, a validity window longer than seven days, one artifact byte
+          changed); each tampered run must list the matching blocker.
+        negative_path: true
+        evidence: [test-result, release-checksum]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py release-readiness
+      - id: VCGF-REL-002-AT03
+        type: review
+        criterion: >-
+          Every High finding still open at release time is either fixed in the release revision or covered by an
+          exception record that names the control, the risk owner, a compensating control, the approver and an
+          expiry date, and an exception that is expired, open-ended or pending approval does not satisfy the gate.
+        method: >-
+          The reviewer reconciles the security scan's High findings with the exception register and the release
+          diff; the evidence evaluator is run with an expired exception referenced to confirm it reports the
+          exception as expired or revoked and the covered control as unverified.
+        negative_path: true
+        evidence: [approval-record, security-scan]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py evidence
+      - id: VCGF-REL-002-AT04
+        type: review
+        criterion: >-
+          The gate record for the release carries a reviewer and a disposition for each checklist area (identity
+          including MFA for privileged access and session invalidation, authorization including tenant isolation
+          and admin audit, validation and injection, data protection, API limits and errors, supply chain,
+          negative authorization tests, migration plan, rollback or forward-fix plan, monitoring, incident owner),
+          and the named incident owner appears in the current on-call roster.
+        method: >-
+          A reviewer walks the completed release evidence template, confirms no area is empty, and checks the
+          incident owner against the on-call roster at release time.
+        negative_path: false
+        evidence: [approval-record, manual-verification]
+        automation:
+          kind: none
+  VCGF-REL-003:
+    requirement_sources: [S35, S34, S29]
+    tests:
+      - id: VCGF-REL-003-AT01
+        type: review
+        criterion: >-
+          Each release classified high-risk carries a recovery plan that states, for code, configuration, schema
+          and operational state (queues, caches, feature flags, scheduled jobs), the exact recovery action, the
+          role that executes it and the expected time to recover, and every surface touched by the release diff
+          has a corresponding entry.
+        method: >-
+          The reviewer lists the surfaces touched by the diff (artifacts, configuration files, migrations,
+          infrastructure, job definitions) and confirms each has a recovery action in the plan; a high-risk release
+          whose plan omits a touched surface is not approved.
+        negative_path: false
+        evidence: [approval-record, code-review]
+        automation:
+          kind: none
+      - id: VCGF-REL-003-AT02
+        type: automated
+        criterion: >-
+          After a deliberately failed post-deployment validation in staging, executing the documented rollback
+          restores the previous build identifier and configuration version, returns the operational state named in
+          the plan to its pre-release values (feature flags, scheduled jobs, queued work drained or replayed, cache
+          keys introduced by the release invalidated), and the health checks and smoke suite pass within the
+          recovery time stated in the plan.
+        method: >-
+          A pipeline job deploys the candidate, fails the post-deploy validation on purpose, triggers the documented
+          rollback, asserts the reported build identifier, configuration version, flag values and job schedule equal
+          the previous release, runs the smoke suite and records the elapsed time against the plan's recovery time.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: ci/rollback-rehearsal.yml (per project)
+      - id: VCGF-REL-003-AT03
+        type: automated
+        criterion: >-
+          For every migration marked irreversible (drop, rename, type narrowing or data backfill) a pre-migration
+          backup or snapshot is taken automatically before the migration executes, its restoration into a scratch
+          database reproduces the pre-migration row counts and table checksums, and the deployment aborts before
+          the migration when the backup step fails.
+        method: >-
+          An integration test runs the migration pipeline with the backup step forced to fail and asserts that the
+          migration did not execute; a second run with a working backup restores the snapshot into a scratch
+          database and compares row counts and checksums with the pre-migration capture.
+        negative_path: true
+        evidence: [test-result, migration-review]
+        automation:
+          kind: ci
+          reference: tests/migrations/test_pre_migration_backup (per project)
+      - id: VCGF-REL-003-AT04
+        type: automated
+        criterion: >-
+          Where the recovery plan names expand-contract or staged rollout as the measure for a schema change, no
+          single release both adds the replacement and removes a schema element still read by the previous
+          application version, and the previous build runs its smoke suite against the expanded schema without
+          errors so that it can be redeployed while the new schema is live.
+        method: >-
+          Migration review inspects the release's migrations for same-release add-and-remove pairs; a compatibility
+          job deploys the previous build against a database migrated to the new schema and runs the smoke suite.
+        negative_path: false
+        evidence: [migration-review, test-result]
+        automation:
+          kind: ci
+          reference: tests/migrations/test_backward_compatible_schema (per project)
+  VCGF-REL-004:
+    tests:
+      - id: VCGF-REL-004-AT01
+        type: automated
+        criterion: >-
+          Alert rules or dashboards defined as configuration exist for the error rate, authentication failure
+          count, authorization denial count, at least one security signal of the changed feature (for example
+          rate-limit or input-validation rejections), p95 latency and at least one critical business transaction of
+          the changed feature, each with a numeric threshold and a comparison with the pre-release baseline for the
+          observation window stated in the release plan.
+        method: >-
+          A configuration test parses the monitoring rules and asserts a rule with a threshold exists for each
+          required signal name; the reviewer confirms the security signal and the business transaction metric match
+          the changed feature.
+        negative_path: false
+        evidence: [configuration-record, test-result]
+        automation:
+          kind: ci
+          reference: tests/monitoring/test_release_signal_rules (per project)
+      - id: VCGF-REL-004-AT02
+        type: automated
+        criterion: >-
+          A synthetic burst of failed logins and forbidden requests against the staging deployment of the release
+          raises the authentication-failure and authorization-denial alerts to the named response owner within the
+          configured alert delay, and each alert payload carries the release identifier.
+        method: >-
+          A post-deploy test fires the configured number of failed logins and forbidden requests, polls the alert
+          destination until the delay elapses, and asserts the owner, the release identifier and the alert type in
+          the payload.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/monitoring/test_post_release_alerts (per project)
+      - id: VCGF-REL-004-AT03
+        type: automated
+        criterion: >-
+          Log and metric samples emitted by the released build during the smoke suite contain zero secret
+          patterns (API keys, bearer tokens, passwords, connection strings) and no personal data fields outside
+          the monitoring allow-list.
+        method: >-
+          A redaction scan runs over the smoke-suite log and metric samples with the secret patterns and the
+          project's classified personal-data field names and fails on any match outside the allow-list.
+        negative_path: false
+        evidence: [log-sample, security-scan]
+        automation:
+          kind: ci
+          reference: tests/logging/test_release_log_redaction (per project)
+      - id: VCGF-REL-004-AT04
+        type: review
+        criterion: >-
+          The release record names the response owner for the observation window, the escalation path and the
+          rollback decision criteria as numeric thresholds (for example error rate above the baseline by a stated
+          percentage for a stated duration), and the owner is on the on-call roster for that window.
+        method: >-
+          A reviewer reads the monitoring plan field of the release evidence and checks the owner and window against
+          the on-call roster.
+        negative_path: false
+        evidence: [approval-record]
+        automation:
+          kind: none
+  VCGF-REL-005:
+    tests:
+      - id: VCGF-REL-005-AT01
+        type: automated
+        criterion: >-
+          The source revision recorded for each production artifact resolves to a commit on the protected release
+          branch with a completed review approval, and the SHA-256 checksum or immutable digest recorded in the
+          release evidence equals the checksum of the artifact bytes actually deployed.
+        method: >-
+          A pipeline step computes the checksum of the deployed artifact and compares it with the release evidence,
+          and queries the source control system for the review state and branch membership of the recorded commit.
+        negative_path: false
+        evidence: [release-checksum, approval-record]
+        automation:
+          kind: ci
+          reference: ci/provenance-check.yml (per project)
+      - id: VCGF-REL-005-AT02
+        type: automated
+        criterion: >-
+          Replacing the approved artifact bytes after gate approval, even under the same file name and version
+          label, makes the release evidence check return FAIL with that artifact reported as changed, the
+          deployment step does not run, and deployment becomes possible only after the release gate is re-run
+          against the new bytes and a fresh evidence record is produced.
+        method: >-
+          After the evidence record is produced, one byte of the artifact is altered; the release check evaluator
+          and the deployment step are run and the reviewer confirms the changed-artifact error, the absence of a
+          deployment, and that a subsequent deployment required a new gate run and record.
+        negative_path: true
+        evidence: [test-result, release-checksum]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py release-check
+      - id: VCGF-REL-005-AT03
+        type: review
+        criterion: >-
+          The release evidence record names the build workflow run identifier, the hash of the locked dependency
+          manifest or SBOM, and the result of each test and security gate, and each value is reproduced from the
+          CI system for the recorded source revision.
+        method: >-
+          A reviewer opens the referenced CI run, recomputes the lockfile or SBOM hash from the recorded revision
+          and compares the gate results with the record.
+        negative_path: false
+        evidence: [release-checksum, configuration-record]
+        automation:
+          kind: ci
+          reference: ci/release-evidence.yml (per project)
+      - id: VCGF-REL-005-AT04
+        type: automated
+        criterion: >-
+          Under the high-assurance profile the deployment verification step rejects an unsigned artifact, an
+          artifact signed by a key outside the trusted build identity, and an attestation whose source revision
+          differs from the recorded commit.
+        method: >-
+          The verification step is run against three prepared artifacts (unsigned, wrong key, mismatched
+          attestation) and each run must end in rejection with the reason logged.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/release/test_signature_verification (per project)

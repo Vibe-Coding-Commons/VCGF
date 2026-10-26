@@ -1,0 +1,554 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the data-protection controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: data-protection
+controls:
+  VCGF-DATA-001:
+    requirement_sources: [S29, S32, S33, S34]
+    tests:
+    - id: VCGF-DATA-001-AT01
+      type: automated
+      criterion: >-
+        Every backup artifact produced by the scheduled and the manual backup job is encrypted before it is written
+        to backup storage, its metadata manifest records the checksum, compression and encryption fields, and a
+        byte search of the stored object for ten known plaintext values from the source database finds none of them.
+      method: >-
+        An integration test runs both backup jobs against a seeded database, reads the manifest, recomputes the
+        checksum, and scans the stored object for the seeded canary values and for table or column names.
+      negative_path: false
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/backup/test_backup_encryption (per project)
+    - id: VCGF-DATA-001-AT02
+      type: automated
+      criterion: >-
+        The identity used by the backup job is distinct from the application runtime database credentials, and a
+        list, read or delete request against the backup storage location made with the application runtime identity
+        is denied by the storage layer.
+      method: >-
+        An integration test compares the credential identifiers of the backup job and the runtime, then issues list,
+        get and delete calls to the backup location with the runtime identity and asserts the denial.
+      negative_path: true
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/backup/test_backup_credential_separation (per project)
+    - id: VCGF-DATA-001-AT03
+      type: automated
+      criterion: >-
+        A sensitive export requested by a principal outside the authorized scope is rejected by the server and no
+        export file is created, while a permitted export is generated server-side into private storage, contains
+        only rows within the requesting principal's scope, and raises an audit event naming actor, scope, export
+        identifier and time.
+      method: >-
+        An integration test requests the export with an out-of-scope and an in-scope principal, asserts the rejection
+        and the absence of a file, compares the rows of the permitted export with the principal's scope, and reads
+        the audit event.
+      negative_path: true
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/export/test_sensitive_export_authorization (per project)
+    - id: VCGF-DATA-001-AT04
+      type: automated
+      criterion: >-
+        A generated sensitive export is reachable only through a short-lived signed link that stops working after
+        its configured expiry, the unsigned storage path and a guessed or incremented export identifier return not-found
+        or a denial, and no export is addressable by a permanent public URL.
+      method: >-
+        An integration test fetches the signed link before and after advancing the clock past the configured expiry,
+        then probes the unsigned storage path and neighbouring export identifiers and asserts the not-found or denial
+        responses.
+      negative_path: true
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/export/test_export_delivery_links (per project)
+    - id: VCGF-DATA-001-AT05
+      type: automated
+      criterion: >-
+        Cell values in CSV and spreadsheet exports that begin with an equals sign, plus, minus, at sign, tab or
+        carriage return are neutralised by prefixing or quoting so that a spreadsheet application opening the file
+        does not evaluate them as formulas or external references.
+      method: >-
+        A unit test exports fixture rows containing each hostile prefix and a DDE payload and asserts the escaped
+        form in the written file; a reviewer opens the file in a spreadsheet application and confirms no evaluation.
+      negative_path: true
+      evidence: [test-result, manual-verification]
+      automation:
+        kind: ci
+        reference: tests/export/test_formula_injection (per project)
+    - id: VCGF-DATA-001-AT06
+      type: manual
+      criterion: >-
+        Restoring a production backup requires re-authentication, an authorization check, a pre-restore backup and
+        a recorded human approval, writes a restore log entry with the verification result, a restore attempted
+        without the approval record is refused, a restore whose verification fails leaves the pre-restore state
+        in place and is logged as failed, and the restore drill stages data only in an environment with production-equivalent
+        access control.
+      method: >-
+        An operator performs a restore drill following the runbook, attempts the restore once without approval,
+        once with a corrupted backup and once with a valid one, and collects the refusal, the failure log entry,
+        the approval record, the restore log and the environment access configuration.
+      negative_path: true
+      evidence: [manual-verification, approval-record, log-sample]
+      automation:
+        kind: none
+    - id: VCGF-DATA-001-AT07
+      type: automated
+      criterion: >-
+        Downloading a backup file through the administrative interface requires the operator to re-authenticate
+        and pass an authorization check, is served through a short-lived download authorization that stops working
+        after its expiry, writes an audit event naming the operator and the backup identifier, and the backup object
+        is unreachable at any permanent or unauthenticated URL.
+      method: >-
+        An integration test requests the download with a stale session and with a re-authenticated authorized operator,
+        asserts the re-authentication challenge, the audit event and the expiry of the download authorization, and
+        fetches the storage path without the authorization.
+      negative_path: true
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/backup/test_backup_download_authorization (per project)
+    - id: VCGF-DATA-001-AT08
+      type: automated
+      criterion: >-
+        After the retention job runs, backup storage holds no backup older than the retention period documented
+        for its classification, generated export files are deleted from private storage once their expiry has passed,
+        and each purge is recorded with the object identifier and the retention rule applied.
+      method: >-
+        A CI job seeds backup and export objects with ages on both sides of their retention periods, runs the retention
+        job, lists both storage locations and reads the purge log.
+      negative_path: false
+      evidence: [test-result, log-sample, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/backup/test_backup_export_retention (per project)
+  VCGF-DATA-002:
+    requirement_sources: [S14]
+    tests:
+    - id: VCGF-DATA-002-AT01
+      type: review
+      criterion: >-
+        The data inventory lists every persistent field with its category, classification, purpose, source, owner,
+        retention period, deletion behaviour, backup behaviour, encryption requirement, logging rule and export
+        rule, and no field classified Confidential or Restricted carries an indefinite retention without a recorded
+        justification.
+      method: >-
+        A reviewer reconciles the inventory against the current schema and migrations, checks that none of the eleven
+        attributes is blank for any field, and lists every indefinite retention entry with its justification.
+      negative_path: false
+      evidence: [inventory, code-review]
+      automation:
+        kind: script
+        reference: scripts/check_data_inventory (per project)
+    - id: VCGF-DATA-002-AT02
+      type: automated
+      criterion: >-
+        Every persistent column or collection field introduced by the migrations of a change has a matching data
+        inventory entry with classification and retention: the inventory coverage check reports a fixture migration
+        that adds an unregistered column as failing, and reports the same migration as passing once the entry is
+        added.
+      method: >-
+        A CI test applies a fixture migration that introduces an unregistered column, asserts the coverage check
+        fails, adds the inventory entry with classification and retention and asserts the check passes.
+      negative_path: true
+      evidence: [test-result, migration-review]
+      automation:
+        kind: ci
+        reference: tests/data_governance/test_inventory_coverage (per project)
+    - id: VCGF-DATA-002-AT03
+      type: automated
+      criterion: >-
+        After the scheduled retention job runs, records whose retention period has elapsed are deleted or anonymised
+        in the primary database, read replicas, search indexes, object storage, caches, generated exports and the
+        application log stores that hold the record identifier, a probe for each record identifier in every one
+        of those stores returns no match, and records whose retention has not elapsed are unchanged.
+      method: >-
+        An integration test seeds records with expired and unexpired retention dates, runs the retention job, and
+        queries each store, including the log store, by identifier for both sets.
+      negative_path: false
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/data_governance/test_retention_job (per project)
+    - id: VCGF-DATA-002-AT04
+      type: review
+      criterion: >-
+        Where backups cannot delete individual records immediately, a documented procedure (deletion tombstones
+        or a post-restore purge) prevents records deleted from active stores from being restored into active use,
+        and a test restore of a backup taken before a known deletion shows the record absent or re-purged.
+      method: >-
+        A reviewer reads the procedure, then inspects the log of a test restore performed after a known deletion
+        and confirms the record is absent from the restored active store.
+      negative_path: false
+      evidence: [configuration-record, manual-verification]
+      automation:
+        kind: none
+    - id: VCGF-DATA-002-AT05
+      type: automated
+      criterion: >-
+        Development, demo and test databases, seeds and fixtures contain no production personal data: a scan for
+        production email domains, phone numbers and identifier formats returns zero hits, and the copy path from
+        production to any non-production environment is blocked or anonymises the data in flight.
+      method: >-
+        A CI job scans fixtures and the non-production database dump with the identifier patterns, and an integration
+        test runs the production-to-staging copy and asserts that the sampled personal fields differ from their
+        production values.
+      negative_path: true
+      evidence: [security-scan, test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/data_governance/test_no_production_pii_in_fixtures (per project)
+  VCGF-DATA-003:
+    tests:
+    - id: VCGF-DATA-003-AT01
+      type: automated
+      criterion: >-
+        Every Restricted recoverable field that the threat model marks for protection beyond storage-layer encryption
+        is stored as ciphertext produced by AES-256-GCM or ChaCha20-Poly1305 from an established cryptographic library,
+        and the persisted record carries the algorithm version, key version, nonce and authentication tag alongside
+        the ciphertext.
+      method: >-
+        An integration test writes fixture values, reads the raw storage row, asserts the plaintext is absent and
+        the metadata fields are present; a code review confirms the library and the absence of custom primitives.
+      negative_path: false
+      evidence: [test-result, code-review]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_field_encryption_format (per project)
+    - id: VCGF-DATA-003-AT02
+      type: automated
+      criterion: >-
+        Altering any byte of a stored ciphertext or its authentication tag, and, where associated data is bound,
+        changing the tenant identifier, record type or field identifier supplied at decryption, makes decryption
+        fail with an authentication error, and no partial plaintext is returned, persisted or written to a log.
+      method: >-
+        A unit test flips one byte in each component in turn and swaps the associated data, calls the decryption
+        path and asserts the error type, the empty result and the absence of plaintext fragments in the captured
+        log output.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_ciphertext_tamper_detection (per project)
+    - id: VCGF-DATA-003-AT03
+      type: automated
+      criterion: >-
+        Encrypting the same plaintext N times under one data encryption key, where N is the configured nonce_sample_size
+        (default 1000), yields N distinct nonces and N distinct ciphertexts, and no Restricted field uses a deterministic
+        encryption mode without an approved exception referenced in the inventory.
+      method: >-
+        A unit test encrypts a fixed value in a loop and asserts set sizes; a static check lists the encryption
+        mode declared for each Restricted field and compares deterministic entries against the exception register.
+      negative_path: false
+      evidence: [test-result, code-review]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_nonce_uniqueness (per project)
+      parameters:
+      - name: nonce_sample_size
+        default: 1000
+        unit: encryptions
+        source: test design parameter (statistical sample); not stated by VCGF-DATA-003
+        rationale: A sample large enough to expose a repeated or counter-reset nonce; projects may raise it.
+    - id: VCGF-DATA-003-AT04
+      type: automated
+      criterion: >-
+        A request for a Restricted field by a principal lacking field-level authorization returns a masked or absent
+        value without invoking the decryption routine (decryption counter or call trace unchanged), an authorized
+        request decrypts only in trusted server-side code, and the client bundle contains no field encryption key
+        or decryption routine.
+      method: >-
+        An integration test issues both requests while observing the decryption metric or call trace, and a build
+        check scans the client bundle for key material and the decryption routine name.
+      negative_path: true
+      evidence: [test-result, security-scan]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_decrypt_after_authorization (per project)
+    - id: VCGF-DATA-003-AT05
+      type: automated
+      criterion: >-
+        Ciphertext written under key version N remains readable after key version N+1 is activated, new writes carry
+        version N+1, and the controlled re-encryption migration converts every version N record so that a count
+        of version N ciphertexts reaches zero before version N is retired.
+      method: >-
+        An integration test writes records, activates a new key version, reads the old records, writes new ones,
+        runs the re-encryption migration and counts records per key version.
+      negative_path: false
+      evidence: [test-result, migration-review]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_key_version_rotation (per project)
+    - id: VCGF-DATA-003-AT06
+      type: review
+      criterion: >-
+        The field-encryption design record names, for each Restricted recoverable field, either the threat-model
+        finding that requires protection beyond storage-layer encryption or the reason the field is left to storage-layer
+        encryption, shows that the data encryption key is stored only wrapped by a key encryption key held in a
+        KMS, HSM, key vault or secrets manager and never in plaintext in the business database, and shows that development,
+        staging and production reference different data encryption keys.
+      method: >-
+        A reviewer reads the design record and the threat model, confirms each Restricted recoverable field has
+        a decision with a stated reason, inspects the key storage configuration and the business schema for plaintext
+        key columns, and compares the key references of the three environments.
+      negative_path: false
+      evidence: [threat-model, configuration-record, code-review]
+      automation:
+        kind: none
+  VCGF-DATA-004:
+    tests:
+    - id: VCGF-DATA-004-AT01
+      type: review
+      criterion: >-
+        A key lifecycle record exists for each key (data encryption, key encryption, HMAC index, token signing,
+        password pepper) naming its generation source as a CSPRNG or KMS, its storage in a KMS, HSM, key vault or
+        secrets manager rather than in the business database or the application repository, the permitted services,
+        the access logging destination, the rotation schedule, the compromise response owner, and the activation,
+        deactivation and destruction steps.
+      method: >-
+        A reviewer checks the record against the deployed key store configuration and confirms that each of the
+        nine lifecycle stages is filled for every key, that no key is derived from a project name or phrase, and
+        that no key column exists in the business schema.
+      negative_path: false
+      evidence: [configuration-record, inventory]
+      automation:
+        kind: none
+    - id: VCGF-DATA-004-AT02
+      type: automated
+      criterion: >-
+        Secret scanning of the full repository history and of the built client bundle finds no cryptographic key
+        material, and a commit that introduces a key-shaped string is blocked by the pre-commit hook and by the
+        pipeline scan.
+      method: >-
+        The CI secret scanner runs over history and build output; a test commits a fixture key on a throwaway branch
+        and asserts the hook rejection and the failing pipeline job.
+      negative_path: true
+      evidence: [security-scan, test-result]
+      automation:
+        kind: hook
+        reference: pre-commit secret-scan hook and CI secret scan job (per project)
+    - id: VCGF-DATA-004-AT03
+      type: automated
+      criterion: >-
+        A decrypt or sign request on each key from a principal outside its permitted-services list is denied by
+        the key store, and both the denial and each successful use appear in the key access log with caller identity,
+        key version and timestamp.
+      method: >-
+        An integration test calls the key store from an allowed and a disallowed service identity and reads back
+        the access log entries for both calls.
+      negative_path: true
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/kms/test_key_access_policy (per project)
+    - id: VCGF-DATA-004-AT04
+      type: automated
+      criterion: >-
+        The password pepper, the HMAC lookup key, the token signing key and the data encryption key resolve to four
+        different key identifiers with different material, and the key identifiers used by development, staging
+        and production are pairwise distinct.
+      method: >-
+        A configuration test resolves each key reference per environment, compares identifiers and material fingerprints
+        across purposes and across environments, and fails on any match.
+      negative_path: false
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/kms/test_key_separation (per project)
+    - id: VCGF-DATA-004-AT05
+      type: manual
+      criterion: >-
+        A compromise drill on a data encryption key completes within the documented response time: a new key version
+        is issued, writes under the old version stop, the affected records are identified and re-encrypted, access
+        of the compromised principal is revoked, and the evidence (old key version, access log extract, record counts)
+        is preserved in the incident record.
+      method: >-
+        The response owner runs the drill from the compromise runbook, timestamps each step, and files the incident
+        record with the access log extract and the before and after counts per key version.
+      negative_path: true
+      evidence: [manual-verification, approval-record, log-sample]
+      automation:
+        kind: none
+    - id: VCGF-DATA-004-AT06
+      type: automated
+      criterion: >-
+        For every key in the lifecycle record the newest key version in the key store is younger than the documented
+        rotation interval, and running the scheduled rotation procedure creates a new key version that becomes the
+        default for new operations while a ciphertext or signature produced under the previous version still decrypts
+        or verifies.
+      method: >-
+        A scheduled check compares each key's latest version timestamp with its rotation interval; an integration
+        test triggers the rotation procedure in a non-production key store and exercises the old and the new version.
+      negative_path: false
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/kms/test_scheduled_rotation (per project)
+    - id: VCGF-DATA-004-AT07
+      type: manual
+      criterion: >-
+        Executing the documented key recovery procedure against a key version that was deliberately disabled or
+        scheduled for deletion in a non-production key store restores that version within the configured recovery
+        window, a ciphertext written under it decrypts again afterwards, and the approval the procedure requires
+        is on record.
+      method: >-
+        An operator disables a key version, runs the recovery runbook, timestamps the restoration, decrypts a prepared
+        ciphertext and files the approval record with the key store audit extract.
+      negative_path: true
+      evidence: [manual-verification, approval-record, log-sample]
+      automation:
+        kind: none
+  VCGF-DATA-005:
+    tests:
+    - id: VCGF-DATA-005-AT01
+      type: automated
+      criterion: >-
+        Exact-match lookup over each encrypted low-entropy personal field (national identifier, phone number, email
+        address) is served by a keyed blind index or an equivalent keyed construction whose key identifier differs
+        from the field encryption key, and the stored index value for a known plaintext equals none of the unsalted
+        MD5, SHA-1 or SHA-256 digests of that plaintext or of its normalised form.
+      method: >-
+        A unit test computes the raw digests of a fixture value and compares them with the stored index value; a
+        configuration check compares the index key and encryption key identifiers.
+      negative_path: false
+      evidence: [test-result, code-review]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_blind_index_keyed (per project)
+    - id: VCGF-DATA-005-AT02
+      type: automated
+      criterion: >-
+        Index values are computed only after the normalisation steps declared in the field policy (for example case
+        folding and whitespace trimming) and each index row stores the index scheme version, so that two inputs
+        differing only in declared-normalised characters match and a scheme change migrates by version.
+      method: >-
+        A unit test indexes variants of one value that differ in case and whitespace, asserts equal index values
+        for declared normalisations and different values otherwise, and checks the version column on each row.
+      negative_path: false
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_blind_index_policy (per project)
+    - id: VCGF-DATA-005-AT03
+      type: automated
+      criterion: >-
+        Calling the lookup endpoint over an enumeration-sensitive field without the lookup permission is denied,
+        and exceeding the documented per-principal lookup limit by one request within its window is throttled with
+        a rate-limit response and an audit event naming the principal and the field.
+      method: >-
+        An integration test calls the endpoint without the permission, then sends one request more than the documented
+        limit with an authorized principal, and asserts the denial, the throttle response and the audit event.
+      negative_path: true
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/crypto/test_blind_index_lookup_abuse (per project)
+    - id: VCGF-DATA-005-AT04
+      type: review
+      criterion: >-
+        The design record for each blind index names the keyed construction used, the identifier of the index key
+        and its separation from the field encryption key, the explicit normalisation policy of the field, the current
+        index scheme version, the lookup authorization and rate limit applied, and states that the index leaks equality
+        information between records.
+      method: >-
+        A reviewer reads the design record for each indexed field and confirms the construction, the key separation,
+        the normalisation policy, the scheme version, the authorization and rate-limit mapping and the equality-leakage
+        statement.
+      negative_path: false
+      evidence: [threat-model, code-review]
+      automation:
+        kind: none
+  VCGF-DATA-006:
+    tests:
+    - id: VCGF-DATA-006-AT01
+      type: automated
+      criterion: >-
+        Each externally reachable endpoint refuses or redirects a plaintext HTTP connection and refuses a TLS handshake
+        below the configured tls_min_version (default 1.2) before accepting any request body, and every HTTPS response
+        carries a Strict-Transport-Security header whose max-age is at least the configured hsts_min_max_age_seconds
+        (default 31536000, one year).
+      method: >-
+        An integration test opens plaintext and downgraded TLS connections to each endpoint from the inventory,
+        asserts the refusal or redirect before the body is sent, and inspects the response headers.
+      negative_path: true
+      evidence: [test-result, security-scan]
+      automation:
+        kind: ci
+        reference: tests/transport/test_tls_enforcement (per project)
+      parameters:
+      - name: tls_min_version
+        default: '1.2'
+        source: >-
+          NIST SP 800-52 Rev. 2 and IETF RFC 8996 (TLS 1.0 and 1.1 deprecated); the control requires protected transport
+          without naming a version
+        rationale: >-
+          Makes a current protocol decidable; a project may require 1.3 only and never lowers the default without
+          an exception.
+      - name: hsts_min_max_age_seconds
+        default: 31536000
+        unit: seconds
+        source: >-
+          IETF RFC 6797 (Strict-Transport-Security max-age directive); one year is common deployment guidance, not
+          a VCGF requirement
+        rationale: >-
+          Prevents a token HSTS header with a trivial lifetime from passing; adjustable per project policy.
+    - id: VCGF-DATA-006-AT02
+      type: automated
+      criterion: >-
+        Outbound connections from the application to its database, cache, message broker and third-party APIs verify
+        the peer certificate chain and host name, a peer presenting a self-signed or host-mismatched certificate
+        is rejected, and no client configuration flag disables certificate verification.
+      method: >-
+        An integration test points each client at a test peer with an untrusted and a mismatched certificate and
+        asserts the connection failure; a configuration scan searches for verification-disabling settings.
+      negative_path: true
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/transport/test_peer_verification (per project)
+    - id: VCGF-DATA-006-AT03
+      type: automated
+      criterion: >-
+        During a full run of the critical journeys no request issued by the client or the server carries a session
+        token, API key, password reset token or personal identifier in a URL path, query string or Referer header,
+        as shown by zero canary hits in the capturing proxy log.
+      method: >-
+        An end-to-end run through a capturing proxy with canary values seeded in each sensitive field, followed
+        by a search of the captured URLs and Referer headers for the canaries.
+      negative_path: false
+      evidence: [test-result, log-sample]
+      automation:
+        kind: ci
+        reference: tests/transport/test_no_secrets_in_urls (per project)
+    - id: VCGF-DATA-006-AT04
+      type: review
+      criterion: >-
+        A TLS configuration scan of every public endpoint reports only authenticated encryption cipher suites, forward
+        secrecy on every negotiated suite, no RC4, 3DES or export suites, and a certificate chain valid for every
+        served host name.
+      method: >-
+        A reviewer runs the TLS scanner against each public endpoint and compares the cipher suite list, key exchange
+        and certificate results against the allowed configuration.
+      negative_path: false
+      evidence: [security-scan, configuration-record]
+      automation:
+        kind: script
+        reference: ci/security/tls_scan job (per project)
+    - id: VCGF-DATA-006-AT05
+      type: automated
+      criterion: >-
+        Every cookie that carries a session identifier or an authentication token is issued with the Secure attribute,
+        and a request presenting such a cookie over a plaintext connection is rejected rather than authenticated.
+      method: >-
+        An integration test inspects the Set-Cookie headers of the login and token refresh responses and replays
+        the session cookie over plaintext HTTP, asserting the rejection.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/transport/test_secure_cookie_attribute (per project)

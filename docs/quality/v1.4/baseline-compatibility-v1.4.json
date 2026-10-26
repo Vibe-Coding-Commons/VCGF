@@ -1,0 +1,187 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "candidate_version": "1.4.0",
+  "inherits": "docs/quality/v1.3/baseline-compatibility-v1.3.1.json",
+  "baseline": "tests/fixtures/v1.0/baseline-hashes.json plus the immutable v1.2, v1.3 and v1.3.1 compatibility records",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "release_status": "DEVELOPMENT__NOT_RELEASED__NOT_PUBLISHED__NOT_SIGNED",
+  "notes": "Phase 1 architecture and governance work prepared locally on develop/v1.4.0: canonical applicability matrix, additive profile layer in the Task Router, user-experience control domain, acceptance tests for every control and governed Smart UI selection. This record is a cumulative delta over the immutable v1.2, v1.3 and v1.3.1 records; it does not rewrite earlier history, does not modify tag v1.3.0 or the release/v1.3.1 branch, and does not imply publication, signature, independent review or production admission. All 84 v1.0 controls, their identifiers and the frozen v1.0 schemas are unchanged.",
+  "allowed_original_file_changes": {
+    ".github/workflows/validate-framework.yml": {
+      "sha256_lf": "f12aa19a5708440a32b7138313933e2e5311a6f639039d031f5020fdfbd18d4e",
+      "reason": "CI runs the new applicability and acceptance validators."
+    },
+    "CHANGELOG.md": {
+      "sha256_lf": "a42421a75ce020dcb1bdfb933788b2fd32fcdf720a80bbaefe2693f71464ba59",
+      "reason": "Document the unreleased 1.4.0 Phase 1 changes (applicability matrix, profile layer, acceptance tests, governed Smart UI selection)."
+    },
+    "CITATION.cff": {
+      "sha256_lf": "98a3cf3aebb10e826ea041d3906e57b37c21af6dfba10ea5c58e060a1783ef8d",
+      "reason": "Citation version/date for the 1.4.0 development version."
+    },
+    "FILE-MANIFEST.md": {
+      "sha256_lf": "a25ffd3cb7e49d6e4c7ba7c9beed52dcf2bc1e316fc3b1bdd7ab1b732e1c97f3",
+      "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
+    },
+    "README.ar.md": {
+      "sha256_lf": "26dc2c6be4415ee57d0c470ed1c5048e3035dbcc1be046df81d0d9629673fcf3",
+      "reason": "Arabic equivalent of the README version badge and Phase 1 section."
+    },
+    "README.md": {
+      "sha256_lf": "20e85506ef656acd5560893ea7ab7ba095eb2f6b0f5cd7380ae0462802d3ee34",
+      "reason": "Version badge and a short section on the applicability matrix, profile layer, acceptance tests and governed Smart UI selection."
+    },
+    "REPOSITORY-TREE.md": {
+      "sha256_lf": "19fd26d97927a34ac6806737ce8ca36c6d8e269d68b5dba2083c2d3e45b59361",
+      "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
+    },
+    "VCGF-MANIFEST.yaml": {
+      "sha256_lf": "8495a02e4bba752b029452f7ead3cfe4dc717a27c767d5a34c0f06d7e81b5777",
+      "reason": "framework_version 1.4.0, release_status release-candidate, user-experience domain, control schema 1.4.0, ui-selection and acceptance-results contracts declared."
+    },
+    "VERSION": {
+      "sha256_lf": "78b591400c56b7b67b8cb3b2b8a8e65e9093897f02ce0878e6b5405c68620fa7",
+      "reason": "1.4.0 release candidate prepared locally on develop/v1.4.0; not released, not published, not signed."
+    },
+    "docs/platform-guides/README.md": {
+      "sha256_lf": "f6fa0e7c05c3165bb6a9a2eae6ce1138e9d6946852598712639dc17a21372243",
+      "reason": "Enforcement and selective context section appended (enforcement matrix, hooks, cards, ui-select); index content otherwise unchanged."
+    },
+    "docs/platform-guides/bolt.md": {
+      "sha256_lf": "dc9364083410481f2e2607c960590c7ab3a3fd45cf0436caa61749598a8e0c66",
+      "reason": "Framework version line updated to 1.4.0 and a short Enforcement and selective context section added (enforcement matrix, hooks, cards, ui-select); guidance otherwise unchanged."
+    },
+    "docs/platform-guides/claude.md": {
+      "sha256_lf": "01c35ddf7e7a452528833ead0e60676a84e64b1d07ce241042e0f990a77c58ee",
+      "reason": "Framework version line updated to 1.4.0 and a short Enforcement and selective context section added (enforcement matrix, hooks, cards, ui-select); guidance otherwise unchanged."
+    },
+    "docs/platform-guides/cursor.md": {
+      "sha256_lf": "187340918d732bec613c9e3545be97535354dd29b7a50a845ad8a817746f478e",
+      "reason": "Framework version line updated to 1.4.0 and a short Enforcement and selective context section added (enforcement matrix, hooks, cards, ui-select); guidance otherwise unchanged."
+    },
+    "docs/platform-guides/generic.md": {
+      "sha256_lf": "5d55145c719f742ca658a759d06219486a0b37e32bb41a46b4b646a4acc86658",
+      "reason": "Framework version line updated to 1.4.0 and a short Enforcement and selective context section added (enforcement matrix, hooks, cards, ui-select); guidance otherwise unchanged."
+    },
+    "docs/platform-guides/lovable.md": {
+      "sha256_lf": "1de598df48bc520c7e3d5600d2985b872b9f783e203a2ca07ecee6496a4309ad",
+      "reason": "Framework version line updated to 1.4.0 and a short Enforcement and selective context section added (enforcement matrix, hooks, cards, ui-select); guidance otherwise unchanged."
+    },
+    "docs/platform-guides/replit.md": {
+      "sha256_lf": "9c272074996405109fe3e98f1e6d27f09ee7f6b35e34e7a8c8b297ce2220cb13",
+      "reason": "Framework version line updated to 1.4.0 and a short Enforcement and selective context section added (enforcement matrix, hooks, cards, ui-select); guidance otherwise unchanged."
+    },
+    "docs/platform-guides/v0.md": {
+      "sha256_lf": "a462be8f4a68d01d38837a821b5f4696d9b039d55ec3b3d2abbf6798bf3287da",
+      "reason": "Framework version line updated to 1.4.0 and a short Enforcement and selective context section added (enforcement matrix, hooks, cards, ui-select); guidance otherwise unchanged."
+    },
+    "platforms/_adapter-template/control-mapping.yaml": {
+      "sha256_lf": "b6433ced6125ec4dad87a8435fbe16d7e8d1aba7c6c517c39f81b18914d8b6f7",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/bolt/control-mapping.yaml": {
+      "sha256_lf": "3e9521107d373603159332aa5725356955411478d34c3196ea6b4f657e12ed6e",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/bolt/rules/project-knowledge.md": {
+      "sha256_lf": "ac496c46be03ba26b5c55dade2533729580cbd6b40f114329f47d84f1a622dd3",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/claude/control-mapping.yaml": {
+      "sha256_lf": "98f8ce8130269516010bbc1f53d73a97c7828f2e216df8b8087dc85f8011e278",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/claude/rules/CLAUDE.md": {
+      "sha256_lf": "0c442aea1f07cbfa19897bd16bf42d17f1eb50505340084b9c1d50f49a541dbf",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/cursor/control-mapping.yaml": {
+      "sha256_lf": "22a0c4d6a95251fd1d72f03ae118cfb99fead8a1caa845e7196a1bc31d01c71f",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/cursor/rules/AGENTS.md": {
+      "sha256_lf": "d400e64df14844f2ea348142bf358365a1d3ac7203fc95a7fb43d006e8eedee9",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/cursor/rules/vcgf.mdc": {
+      "sha256_lf": "0bc4b23cc62a1497f4c8265ab2ce8ad4f1f3af53b21d951d908c22e0e12f509f",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/generic/control-mapping.yaml": {
+      "sha256_lf": "93fa0597ddafd0787e478f77442fe078e06f5cbeb6f16882c7fb7fef31f848e0",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/generic/rules/portable-project-rules.md": {
+      "sha256_lf": "d400e64df14844f2ea348142bf358365a1d3ac7203fc95a7fb43d006e8eedee9",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/lovable/control-mapping.yaml": {
+      "sha256_lf": "1f61ee1c5f2326096841d147481f031e9517432029ae329448df142b8eb54945",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/lovable/rules/AGENTS.md": {
+      "sha256_lf": "d400e64df14844f2ea348142bf358365a1d3ac7203fc95a7fb43d006e8eedee9",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/lovable/rules/project-knowledge.md": {
+      "sha256_lf": "474b10ac51a13261fb86a4677983bec78902c37848332c9843fadc260e95b25f",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/lovable/rules/workspace-knowledge.md": {
+      "sha256_lf": "72b6d9db790ae4942c6df5a8aabc0777a7dbae3c6cb6be9cea5adae7a925924a",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/replit/control-mapping.yaml": {
+      "sha256_lf": "af3061b5b98a8b6ce45ab3322f3d8cdf303ce620c663e8444e4b08ceaa5823cc",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/replit/rules/replit.md": {
+      "sha256_lf": "76c9aceac335889f4fc114e2727d4be22710601870a0e835e9c5ca5ec36be7e0",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "platforms/v0/control-mapping.yaml": {
+      "sha256_lf": "689423009db56ceaeb6a1061b40a7c26d36762b849ccee7cb69507541578d7c1",
+      "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/v0/rules/custom-instructions.md": {
+      "sha256_lf": "dc6714854d9813f719f0edd086506d65cef2bc88ce3a6f7e89b57e953d8a755f",
+      "reason": "One-line attribution header (bytes saved, maintainer phone number removed) and the controls sentence now points at the router and derived control cards instead of the whole controls/ directory; mandatory clauses unchanged and validated."
+    },
+    "profiles/baseline/profile.yaml": {
+      "sha256_lf": "7b397a28421a2c9afff74e29a09daa65dada567e1670a5aaf0d4b2c6f471c98d",
+      "reason": "profile_version 1.1.0; user-experience controls listed as optional (baseline keeps its 25 required controls)."
+    },
+    "profiles/high-assurance/profile.yaml": {
+      "sha256_lf": "ba2fd2baffaf0bf63b115809755fb7df9b89d414f34e7d81bbe7873d7e7bc6b7",
+      "reason": "profile_version 1.1.0; all four user-experience controls required; the 84 v1.0 required controls unchanged."
+    },
+    "profiles/production/profile.yaml": {
+      "sha256_lf": "e109cae286615f7a2b0434287628b55f208c4752958aa0c9159613e8f2639d21",
+      "reason": "profile_version 1.1.0; VCGF-UX-001 and VCGF-UX-002 required, VCGF-UX-003/004 optional; the 77 v1.0 required controls unchanged."
+    },
+    "scripts/release-quality-gate.py": {
+      "sha256_lf": "883729866f13f9965f4ef5d4261f5be90ad4a1758db26030ae5e643d22c0e1f7",
+      "reason": "Gate runs the new applicability, acceptance, control-card fidelity and enforcement validators and verifies the derived control cards (generate-control-cards --check)."
+    },
+    "scripts/validate-controls.py": {
+      "sha256_lf": "d4ea6be86a9a5eea11322c666281fe0c092479ba6fd426ac06c2fe5ac63aed9f",
+      "reason": "Validates every control against the 1.4.0 superset schema and every v1.0 control against the frozen v1.0 schema; the 84 immutable v1.0 controls are asserted explicitly instead of a fixed total."
+    },
+    "scripts/validate-cross-references.py": {
+      "sha256_lf": "ff851fca66ef3682142380ef6d02efa1d2885047394d3a5b48d73fcee37f2af5",
+      "reason": "Control-id regex accepts the UX prefix so references to user-experience controls are checked like every other control."
+    },
+    "scripts/validate-version.py": {
+      "sha256_lf": "1f6360dc2dcfa2e034dd101c45b2980f4de0efe42d402490de8c7828cd22711e",
+      "reason": "release_status development accepted for development versions; release workflows still require release-candidate or stable."
+    },
+    "scripts/vcgf_lib.py": {
+      "sha256_lf": "cb280255b53ca3e80aa66e52a7c4a13a9866b81e37b0c9275b30223e95bfe794",
+      "reason": "DOMAINS gains user-experience (new control domain introduced in 1.4.0)."
+    },
+    "spec/control-catalog.yaml": {
+      "sha256_lf": "47870af36814fbf8dccef11cf79a5adeaac8db771046946d0878800c84d46770",
+      "reason": "Regenerated: framework_version 1.4.0 and the four user-experience controls appended; the 84 v1.0 controls unchanged."
+    }
+  }
+}

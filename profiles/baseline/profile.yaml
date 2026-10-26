@@ -6,7 +6,7 @@
 # GitHub: https://github.com/Vibe-Coding-Commons
 
 profile_id: baseline
-profile_version: 1.0.0
+profile_version: 1.1.0
 framework_compatibility: '>=1.0.0 <2.0.0'
 assurance: baseline
 description: Minimum VCGF governance for prototypes and low-risk applications.
@@ -96,6 +96,10 @@ optional_controls:
 - VCGF-TEST-004
 - VCGF-TEST-005
 - VCGF-TEST-006
+- VCGF-UX-001
+- VCGF-UX-002
+- VCGF-UX-003
+- VCGF-UX-004
 evidence_requirements:
 - Implementation or review evidence for every required MUST/MUST NOT control.
 - Negative-test evidence for authentication, authorization, validation, and injection

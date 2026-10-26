@@ -11,20 +11,27 @@ from .registry import build_registry
 def route(task, context, project_root, now=None, root=ROOT):
     registry = build_registry(root)
     policy = registry['policy']
-    if set(task) - {'task_id','intent','classification_confirmed','profile','profile_confirmed','mode','budget','inspection','overlay_add_controls','overlay_remove_controls','risk_signals'}:
+    if set(task) - {'task_id','intent','classification_confirmed','profile','profile_confirmed','mode','budget','inspection','overlay_add_controls','overlay_remove_controls','risk_signals','intents','loaded_context','loaded_context_policy_sha256','budget_unit'}:
         raise ValueError('unknown task field')
     for required in ['task_id','intent','classification_confirmed','profile','profile_confirmed','mode','budget','inspection']:
         if required not in task:
             raise ValueError('missing task field: ' + required)
-    if task['mode'] not in ['lean','standard','deep'] or task['profile'] not in registry['profiles']:
+    if not isinstance(task['mode'],str) or not isinstance(task['profile'],str) or task['mode'] not in ['lean','standard','deep'] or task['profile'] not in registry['profiles']:
         raise ValueError('invalid mode/profile')
     if not isinstance(task['task_id'],str) or not task['task_id']:
         raise ValueError('missing task identifier')
     if type(task['classification_confirmed']) is not bool or type(task['profile_confirmed']) is not bool:
         raise ValueError('confirmation must be boolean')
-    intent = policy['intents'].get(task['intent'])
+    intent = policy['intents'].get(task['intent']) if isinstance(task['intent'],str) else None
     if intent is None:
         raise ValueError('unrecognized task intent: explicit reviewed classification required')
+    # Multi-intent routing: one route for a task spanning several reviewed intents (union of capabilities, highest risk),
+    # instead of one route per intent that re-sends the shared context each time.
+    extra=task.get('intents',[])
+    if not isinstance(extra,list) or any(not isinstance(x,str) or x not in policy['intents'] for x in extra):
+        raise ValueError('unrecognized additional intent: explicit reviewed classification required')
+    intents=[task['intent']]+[x for x in dict.fromkeys(extra) if x!=task['intent']]
+    ranks_risk={'LOW':0,'MEDIUM':1,'HIGH':2,'CRITICAL':3}
     facts, invalid = context_facts(context, project_root, now)
     blockers=[]
     inspection=task['inspection']
@@ -36,9 +43,10 @@ def route(task, context, project_root, now=None, root=ROOT):
         blockers.append('task classification must be confirmed after inspection')
     if not task['profile_confirmed']:
         blockers.append('profile selection requires confirmation')
-    requested=list(intent['capabilities'])
-    if context['development_agent']['uses_tools'] or context['development_agent']['uses_external_content']:
-        requested.append('development-agent')
+    # runtime/bootstrap.md §4: "Agent safeguards apply even to a plain static website." VCGF runs under a
+    # development agent by definition, so development-agent is always requested; the self-attested
+    # context.development_agent flags are contract-validated but never change capability selection (V13-116).
+    requested=list(dict.fromkeys(c for name in intents for c in policy['intents'][name]['capabilities']))+['development-agent']
     if context['product_ai']['uses_agent'] or context['product_ai']['uses_llm']:
         requested.append('product-ai')
     try:
@@ -60,7 +68,7 @@ def route(task, context, project_root, now=None, root=ROOT):
         if cid not in registry['controls']:
             raise ValueError('unknown overlay control')
         reasons[cid]={'control_id':cid,'capability_id':'overlay','source':'explicit task overlay','reason':'additive requirement'}
-    risk=intent['risk']
+    risk=max((policy['intents'][name]['risk'] for name in intents),key=ranks_risk.__getitem__)
     signals=task.get('risk_signals',[])
     if not isinstance(signals,list) or any(s not in ['destructive','production-secrets','security-disablement','high-impact-payment','sensitive-data','privileged','irreversible','unknown-impact'] for s in signals):
         raise ValueError('invalid risk signals')
@@ -84,11 +92,37 @@ def route(task, context, project_root, now=None, root=ROOT):
     elif task['mode']=='standard':
         for cid in policy['standard_review_controls']:
             reasons.setdefault(cid,{'control_id':cid,'capability_id':'standard-review','source':'routing-policy.yaml','reason':'additional standard review'})
-    records=[registry['bootstrap']]+[registry['controls'][cid] for cid in sorted(reasons)]
+    # Profile layer (additive, monotonic): a control required by the confirmed profile joins the route when one of its
+    # applicability triggers is among the selected capabilities. The capability floor above never shrinks, so
+    # baseline <= production <= high-assurance for the same task and no profile loads a control unrelated to the task.
+    matrix=registry['applicability']
+    for cid in registry['profiles'][task['profile']]:
+        if cid in reasons or cid not in matrix: continue
+        triggers=matrix[cid].get('triggers') or {}
+        hits=sorted(set(triggers.get('capabilities') or [])&set(selected))
+        if triggers.get('always') or hits:
+            reasons[cid]={'control_id':cid,'capability_id':'profile-layer','source':'spec/applicability-matrix.yaml','reason':f"required by profile {task['profile']}; applicable via {', '.join(hits) if hits else 'every task'}"}
+    # Context detail: lean/standard load the derived control cards plus the shared clauses; deep loads the full control text.
+    detail='full' if task['mode']=='deep' else 'card'
+    records=[registry['bootstrap']]+([registry['common_clauses']] if detail=='card' else [])
+    records+=[registry['cards'][cid] if detail=='card' else registry['controls'][cid] for cid in sorted(reasons)]
     for mapping in registry['pack_map'].values():
         for cap in sorted(selected):
             records.extend(registry['resources'][path] for path in mapping.get(cap,[]))
-    loaded=load(root,records,task['budget'])
+    already=task.get('loaded_context',[])
+    if not isinstance(already,list):
+        raise ValueError('loaded_context must be a list of {path, sha256}')
+    warnings=[]
+    fingerprint=task.get('loaded_context_policy_sha256')
+    if fingerprint is not None and fingerprint!=registry['policy_sha256']:
+        # The caller loaded its context under another policy/registry: nothing held is reused (full reload), explicitly.
+        already=[]; warnings.append('loaded_context ignored: policy fingerprint changed since the context was loaded; full context re-sent')
+    unit=task.get('budget_unit','tokens')
+    if unit not in ('tokens','bytes'):
+        raise ValueError('budget_unit must be tokens or bytes')
+    loaded=load(root,records,task['budget'],already_loaded=already,unit=unit)
+    if 'budget_unit' not in task and loaded['legacy_byte_comparison']=='would_block' and not loaded['blocked']:
+        warnings.append('budget compared in estimated tokens (1.4.0 default); the pre-1.4 byte comparison would have blocked this route. Declare budget_unit: tokens to confirm, or budget_unit: bytes to keep the legacy comparison (scripts/migrate-task-budget.py).')
     if loaded['blocked']:
         blockers.append('budget exceeded: split task or explicitly raise budget; never drop required controls')
     result={'contract_version':'1.1.0','task_id':task['task_id'],'input_sha256':digest(task),
@@ -96,11 +130,16 @@ def route(task, context, project_root, now=None, root=ROOT):
             'risk':risk,'profile':task['profile'],'profile_selection':'user_confirmed' if task['profile_confirmed'] else 'proposed',
             'mode':task['mode'],'decision':'blocked' if blockers else 'ready_to_plan','selected_control_ids':sorted(reasons),
             'loaded_control_ids':[] if blockers else sorted(reasons),'excluded':[], 'reasons':[reasons[k] for k in sorted(reasons)],
-            'blockers':blockers,'budget':{'limit_tokens':task['budget'],'cost_tokens':loaded['cost_tokens'],
+            'blockers':blockers,'budget':{'limit_tokens':task['budget'],'cost_tokens':loaded['cost_tokens'],'cost_bytes':loaded['cost_bytes'],'reused_tokens':loaded['reused_tokens'],'unit':unit,'declared_unit':task.get('budget_unit'),'legacy_byte_comparison':loaded['legacy_byte_comparison'],
                                        'measurement':loaded['measurement'],'method':loaded['method'],'overflow_policy':'split_raise_or_block'},
-            'inspection':inspection,'approval_required':risk in ['HIGH','CRITICAL']}
+            'inspection':inspection,'approval_required':risk in ['HIGH','CRITICAL'],'context_detail':detail,'intents':intents}
     errors=validate_contract('route-result',result)
     if errors:
         raise ValueError('; '.join(errors))
-    return {'route':result,'active_context':loaded['items'] if not blockers else [],'capabilities':list(selected),
+    # Model/effort guidance is advisory and outside the contract: higher risk or deep review asks for more reasoning effort;
+    # the stable prefix (bootstrap + common clauses) is identical across routes so a caller can keep it cached.
+    effort='high' if risk in ['HIGH','CRITICAL'] or task['mode']=='deep' else ('standard' if risk=='MEDIUM' else 'low')
+    guidance={'reasoning_effort':effort,'basis':f"risk {risk}, mode {task['mode']}",'stable_prefix':[r['path'] for r in records[:2] if r['path'] in ('runtime/bootstrap.md','spec/control-cards/common-clauses.md')],
+              'claim':'advisory; does not change selected controls or approvals'}
+    return {'route':result,'active_context':loaded['items'] if not blockers else [],'reused_context':loaded['reused'] if not blockers else [],'capabilities':list(selected),'warnings':warnings,'model_guidance':guidance,
             'invalid_facts':invalid,'recommended_profile':recommended,'handoff_required':True}

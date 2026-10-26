@@ -10,7 +10,7 @@ from vcgf_lib import *
 
 def main():
     known=set(control_index()); errors=[]
-    pattern=re.compile(r'VCGF-(?:GOV|AI|ARCH|SEC|IAM|DATA|PRIV|DB|API|SECR|DEP|FILE|AUDIT|TEST|REL|OPS|IR)-\d{3}')
+    pattern=re.compile(r'VCGF-(?:GOV|AI|ARCH|SEC|IAM|DATA|PRIV|DB|API|SECR|DEP|FILE|AUDIT|TEST|REL|OPS|IR|UX)-\d{3}')
     for p in text_files():
         rp=rel(p)
         if rp.startswith('docs/project-history/') or rp=='LICENSE': continue

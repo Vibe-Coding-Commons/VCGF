@@ -2,7 +2,7 @@
   "package_version": "1.0.0",
   "status": "pass",
   "scope": "specification-package-schema-selection-traceability-and-integrity",
-  "generated_at": "2026-10-24T00:30:17.456397+00:00",
+  "generated_at": "2026-10-25T09:07:05.174811+00:00",
   "summary": {
     "component_standards": 36,
     "interaction_patterns": 24,
@@ -19,7 +19,7 @@
     "negative_schema_tests": 12,
     "local_links_checked": 2449,
     "runtime_application_tests": "not_run",
-    "manifest_verified_in_this_run": true
+    "manifest_verified_in_this_run": false
   },
   "checks": [
     {
@@ -273,6 +273,11 @@
       "details": "OK"
     },
     {
+      "name": "Stored example plans match generated plans",
+      "status": "pass",
+      "details": "OK"
+    },
+    {
       "name": "No-UI selects zero",
       "status": "pass",
       "details": ""
@@ -376,11 +381,6 @@
       "name": "Negative schema tests",
       "status": "pass",
       "details": "12/12 rejected"
-    },
-    {
-      "name": "Manifest and SHA-256 integrity",
-      "status": "pass",
-      "details": "OK"
     }
   ],
   "claim_boundary": "Runtime application conformance is not established by these checks."

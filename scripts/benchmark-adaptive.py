@@ -19,8 +19,8 @@ from runtime.adaptive.coordinator import plan
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',required=True);p.add_argument('--iterations',type=int,default=100);a=p.parse_args()
 if not 10<=a.iterations<=1000: p.error('iterations must be 10..1000')
 now=datetime.now(timezone.utc)
-fp=json.loads((ROOT/'examples/adaptive/fingerprint-laravel.json').read_text())
-ux=json.loads((ROOT/'examples/adaptive/ux-crm.json').read_text())
+fp=json.loads((ROOT/'examples/adaptive/fingerprint-laravel.json').read_text(encoding='utf-8'))
+ux=json.loads((ROOT/'examples/adaptive/ux-crm.json').read_text(encoding='utf-8'))
 with tempfile.TemporaryDirectory() as root:
     source=b'Synthetic bounded benchmark product brief. Not a live application.\n'
     Path(root,'brief.md').write_bytes(source);h=hashlib.sha256(source).hexdigest()
@@ -45,4 +45,4 @@ with tempfile.TemporaryDirectory() as root:
       'threaded_elapsed_seconds':round(elapsed,3),'threaded_blocked':sum(r['state']=='blocked' for r in results),
       'deterministic_thread_results':len({json.dumps(r,sort_keys=True) for r in results})==1,
       'no_production_slo_claim':True,'fixture_bytes':len(source),'raw_warm_ms':samples}
-Path(a.output).write_text(json.dumps(report,indent=2),encoding='utf-8');print(json.dumps({k:v for k,v in report.items() if k!='raw_warm_ms'},indent=2))
+Path(a.output).write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n');print(json.dumps({k:v for k,v in report.items() if k!='raw_warm_ms'},indent=2))

@@ -1,6 +1,17 @@
 <!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
 
-# 34. Restore Capability  القاعدة الأساسية:  > **Backup بدون Restore مُختبر ليس كافيًا.**  يجب دعم:  ```text Backup Verify Restore Test Restore ```  مع:  - Restore Verification. - Restore Logs. - Failed Restore Handling. - Pre-Restore Backup. - Human Approval في Production.  ويجب دعم تقييم:  ```text RPO RTO ```  كمتطلبات اختيارية للمشاريع:  ```text Production High-Assurance ```  ---  
+# 34. Restore Capability
+
+القاعدة الأساسية:  > **Backup بدون Restore مُختبر ليس كافيًا.**  يجب دعم:  ```text Backup Verify Restore Test Restore ```  مع:
+
+- Restore Verification.
+- Restore Logs.
+- Failed Restore Handling.
+- Pre-Restore Backup.
+- Human Approval في Production.  ويجب دعم تقييم:  ```text RPO RTO ```  كمتطلبات اختيارية للمشاريع:  ```text Production High-Assurance ```  ---
+
+Source units: `S34.001` – `S34.014` (packs/index.yaml)
+
 
 ## Verification boundary
 

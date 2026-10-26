@@ -1,6 +1,16 @@
 <!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
 
-# 25. Device-Bound Session  في **High-Assurance Mode** يمكن دعم تقنيات Device-Bound Session عندما تكون متاحة ومدعومة.  من الأمثلة المذكورة:  **Device Bound Session Credentials في Chrome**  والتي تربط استمرار الجلسة بمفتاح تشفيري خاص بالجهاز.  لكنها تقنية حديثة، لذلك:  - لا تُفرض على جميع المتصفحات. - تستخدم عند توفر الدعم. - يوجد Graceful Degradation. - تستخدم Risk-Based Session Binding عند عدم توفرها.  مرجع:  [Chrome for Developers — Device Bound Session Credentials](https://developer.chrome.com/docs/web-platform/device-bound-session-credentials?hl=ar&utm_source=chatgpt.com)  ---  
+# 25. Device-Bound Session
+
+في **High-Assurance Mode** يمكن دعم تقنيات Device-Bound Session عندما تكون متاحة ومدعومة.  من الأمثلة المذكورة:  **Device Bound Session Credentials في Chrome**  والتي تربط استمرار الجلسة بمفتاح تشفيري خاص بالجهاز.  لكنها تقنية حديثة، لذلك:
+
+- لا تُفرض على جميع المتصفحات.
+- تستخدم عند توفر الدعم.
+- يوجد Graceful Degradation.
+- تستخدم Risk-Based Session Binding عند عدم توفرها.  مرجع:  [Chrome for Developers — Device Bound Session Credentials](https://developer.chrome.com/docs/web-platform/device-bound-session-credentials?hl=ar)  ---
+
+Source units: `S25.001` – `S25.011` (packs/index.yaml)
+
 
 ## Verification boundary
 

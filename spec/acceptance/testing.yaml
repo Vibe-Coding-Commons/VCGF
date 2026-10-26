@@ -1,0 +1,389 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the testing controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: testing
+controls:
+  VCGF-TEST-001:
+    tests:
+    - id: VCGF-TEST-001-AT01
+      type: automated
+      criterion: >-
+        For every protected feature the suite executes the full actor matrix (anonymous, owner, non-owner, same-tenant
+        user, cross-tenant user, privileged) against read, create, update, delete and each special action: every
+        cell marked Deny returns a denial from the trusted layer with none of the protected records in the response
+        and an unchanged store, and every cell marked Expected or Explicit succeeds for the owner, same-tenant and
+        privileged actors so that a denial is never the result of a broken feature.
+      method: >-
+        An integration test derives the actor matrix from the protected-feature inventory, issues each actor-action
+        pair directly against the trusted layer, asserts the denial status and the absence of protected records
+        for Deny cells, compares the store before and after each denied call, and asserts success for the allowed
+        cells.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/authz/test_access_matrix (per project)
+    - id: VCGF-TEST-001-AT02
+      type: automated
+      criterion: >-
+        A request whose user_id or tenant_id in the body, query or path is rewritten to another principal, or whose
+        object identifier is a guessed sequential or neighbouring value, is rejected by the trusted layer and neither
+        discloses nor modifies the other principal's record.
+      method: >-
+        An integration test signs in as user A, replays A's valid requests with B's identifiers and with incremented
+        object identifiers, bypassing the user interface, and asserts the rejection and the unchanged state of B's
+        records.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/authz/test_identifier_manipulation (per project)
+    - id: VCGF-TEST-001-AT03
+      type: automated
+      criterion: >-
+        Bulk endpoints, exports, storage object URLs and privileged server functions are part of the negative matrix:
+        a cross-tenant bulk read or export returns zero records of the other tenant, a storage URL for another tenant's
+        object is denied or unresolvable, a privileged server function called by a non-privileged actor is refused,
+        and the same function called by a privileged actor leaves an audit record of the call.
+      method: >-
+        An integration test seeds two tenants, calls each bulk, export, storage and privileged entry point as the
+        wrong tenant and as a non-privileged user, counts foreign records in the responses and the status of each
+        storage and function call, then calls each privileged function as a privileged actor and queries the audit
+        store for the record.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/authz/test_bulk_export_storage_privileged (per project)
+    - id: VCGF-TEST-001-AT04
+      type: review
+      criterion: >-
+        Every protected route, server function and storage path in the project inventory maps to at least one allowed-access
+        test and one denied-access test, including an object-level and a tenant-level denial where the feature holds
+        owned or tenant-scoped data, and the coverage report lists no protected feature with only positive tests.
+      method: >-
+        A reviewer compares the generated authorization coverage report with the protected-feature inventory and
+        confirms that each entry references both an allowed and a denied test identifier and the applicable object-level
+        and tenant-level cases.
+      negative_path: false
+      evidence: [code-review, inventory]
+      automation:
+        kind: script
+        reference: tests/authz/coverage_report (per project)
+  VCGF-TEST-002:
+    tests:
+    - id: VCGF-TEST-002-AT01
+      type: review
+      criterion: >-
+        Each security-relevant change carries a completed secure-review record in which every one of the eight areas
+        (trust boundaries, validation, authorization, secrets, data handling, dependencies, errors, tests) holds
+        a finding or an explicit not-applicable note, and the record names the reviewer and the exact revision that
+        was reviewed.
+      method: >-
+        A reviewer samples the merged security-relevant changes of the release, opens each review record and checks
+        the eight areas for blank entries and the recorded revision against the merged commit.
+      negative_path: false
+      evidence: [code-review, approval-record]
+      automation:
+        kind: none
+    - id: VCGF-TEST-002-AT02
+      type: review
+      criterion: >-
+        A change touching an authentication, authorization, migration, secrets-configuration or input-handling path
+        is not merged while its secure-review record is missing or has a blank checklist area, and the project's
+        enforcing mechanism (a merge gate, or the documented review procedure where review is enforced by process)
+        identifies the missing areas.
+      method: >-
+        Where a gate exists, a pipeline test opens a change to a security-relevant path without a review record,
+        asserts the block and the named areas, then attaches a complete record and asserts the pass; otherwise a
+        reviewer samples merged security-relevant changes and confirms each carries a complete review record.
+      negative_path: true
+      evidence: [code-review, configuration-record]
+      automation:
+        kind: ci
+        reference: ci/secure-review-gate (per project, where a merge gate is used)
+    - id: VCGF-TEST-002-AT03
+      type: review
+      criterion: >-
+        No merged security-relevant change of the release has an unresolved affirmative answer to the checklist
+        questions on unvalidated untrusted input, non-parameterized queries, non-allowlisted dynamic identifiers,
+        missing object-level authorization, manipulable user or tenant identifiers, unsafe HTML sinks or unencoded
+        output, server-side URL fetches reaching internal networks, privileged clients, logged sensitive data, exposed
+        secrets, unvalidated state transitions or client-side money and discount calculation; each affirmative answer
+        is fixed before merge or covered by an approved exception.
+      method: >-
+        A reviewer cross-checks the review records against the static-analysis findings for the same changes and
+        confirms a fix commit or an exception identifier for every affirmative answer.
+      negative_path: false
+      evidence: [code-review, security-scan]
+      automation:
+        kind: ci
+        reference: ci/security-lint (per project)
+    - id: VCGF-TEST-002-AT04
+      type: review
+      criterion: >-
+        The tests area of every secure-review record either cites the identifier of a negative test (denied, malformed,
+        replayed or invalid-state input) that exists in the change and runs in the pipeline, or records why no negative
+        test applies to the change.
+      method: >-
+        A reviewer verifies for each sampled change that the cited test exists in the diff, exercises a denied or
+        failed path and appears in the pipeline run, or that the recorded reason is consistent with the diff.
+      negative_path: false
+      evidence: [code-review, test-result]
+      automation:
+        kind: none
+  VCGF-TEST-003:
+    tests:
+    - id: VCGF-TEST-003-AT01
+      type: automated
+      criterion: >-
+        The security regression suite covering authentication, authorization, validation, data isolation and critical
+        workflows runs on every change, and a seeded regression (a disabled tenant filter, a broadened role, a weakened
+        validation rule or an unprotected admin route) makes the suite fail before merge.
+      method: >-
+        The pipeline runs the suite on each change; a mutation check periodically injects one of the seeded regressions
+        on a branch and asserts the suite fails and the merge is blocked.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/regression/test_security_baseline (per project)
+    - id: VCGF-TEST-003-AT02
+      type: automated
+      criterion: >-
+        A change that drops or disables a row-level security policy, broadens a grant or role, makes a storage bucket
+        public or introduces raw SQL is flagged by the policy and schema snapshot diff and cannot merge without
+        an approved migration review.
+      method: >-
+        A pipeline step diffs the database policies, grants, roles and storage visibility between the base and the
+        change and fails on any weakening; a test applies each weakening on a branch and asserts the failure.
+      negative_path: true
+      evidence: [test-result, migration-review]
+      automation:
+        kind: ci
+        reference: tests/regression/test_policy_snapshot_diff (per project)
+    - id: VCGF-TEST-003-AT03
+      type: automated
+      criterion: >-
+        Security headers, cookie flags, rate limits, redirect allow-lists and API response schemas of each changed
+        endpoint are identical to the recorded baseline; a newly exposed API field, a removed rate limit, a weakened
+        cookie or header, or an unsafe redirect target fails the comparison.
+      method: >-
+        A contract test records the response surface of every endpoint, compares it with the committed baseline
+        on each change and requires an explicit baseline update with review for any difference.
+      negative_path: true
+      evidence: [test-result, configuration-record]
+      automation:
+        kind: ci
+        reference: tests/regression/test_response_surface (per project)
+    - id: VCGF-TEST-003-AT04
+      type: review
+      criterion: >-
+        For each change the secret scan, dependency scan and log sample show no exposed secret, no newly added risky
+        dependency, no reset token in a response or log, no logged personal data or token, and no change to encryption
+        key handling without an approved review.
+      method: >-
+        A reviewer reads the scan results and a log sample produced by the test run for the change and confirms
+        each checklist item or the approval reference for an accepted deviation.
+      negative_path: false
+      evidence: [security-scan, log-sample, code-review]
+      automation:
+        kind: ci
+        reference: ci/secret-and-dependency-scan (per project)
+  VCGF-TEST-004:
+    tests:
+    - id: VCGF-TEST-004-AT01
+      type: review
+      criterion: >-
+        A written security test strategy states for each verification layer (static/type/lint, unit, integration,
+        API, authorization, database and row-level security, migration verification, browser end-to-end, dependency
+        scanning, secret scanning, platform scans, manual secure code review, penetration testing) whether it applies
+        to the project's risk tier and profile and the stage or trigger at which it runs, leaving no layer unaddressed.
+      method: >-
+        A reviewer checks the strategy document against the layer list and the project's declared risk tier and
+        profile, confirming an entry with a trigger for each layer or a justified exclusion.
+      negative_path: false
+      evidence: [configuration-record, code-review]
+      automation:
+        kind: none
+    - id: VCGF-TEST-004-AT02
+      type: automated
+      criterion: >-
+        For every sensitive operation named in the strategy the pipeline runs a tagged test for each of the eight
+        mandatory negative cases (unauthenticated, wrong user, wrong tenant, insufficient role, malformed input,
+        oversized input, replay or duplicate, invalid state transition) and each test passes with a rejection from
+        the trusted layer, or the operation carries a recorded not-applicable reason for that case; the coverage
+        report lists zero sensitive operations with an untagged case.
+      method: >-
+        A coverage script maps the sensitive-operation list to the test identifiers tagged with each negative case,
+        requires a passing run of every mapped test in the pipeline and fails when any operation lacks a case without
+        a recorded reason.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/strategy/negative_coverage_report (per project)
+    - id: VCGF-TEST-004-AT03
+      type: review
+      criterion: >-
+        Each confirmed important security defect closed since the previous release has a linked regression test
+        that fails on the pre-fix revision and passes on the fixed revision, or a recorded reason why a test was
+        impractical.
+      method: >-
+        A reviewer takes the closed security defects from the tracker, follows the linked test and checks its result
+        on both revisions in the pipeline history.
+      negative_path: false
+      evidence: [test-result, code-review]
+      automation:
+        kind: ci
+        reference: tests/regression/defects (per project)
+    - id: VCGF-TEST-004-AT04
+      type: review
+      criterion: >-
+        For every release classified as sensitive, the test reports, scan results and manual review or penetration
+        test summaries are stored in the evidence record with the release identifier and a checksum, and the release
+        check evaluates that record against the expected evidence set without missing items.
+      method: >-
+        A reviewer runs the release check on the evidence record and the expected set for the release and confirms
+        every artifact is present, checksummed and retrievable.
+      negative_path: false
+      evidence: [release-checksum, test-result, approval-record]
+      automation:
+        kind: script
+        reference: scripts/vcgf.py release-check
+  VCGF-TEST-005:
+    requirement_sources: [S14]
+    tests:
+    - id: VCGF-TEST-005-AT01
+      type: automated
+      criterion: >-
+        For every critical validation boundary, inputs of the wrong type, below the minimum and above the maximum,
+        over the declared length, with unexpected extra fields, and in URL-encoded, double-encoded and Unicode-normalised
+        variants are sent directly to the trusted layer and each is rejected with a validation error while nothing
+        is persisted.
+      method: >-
+        An integration test generates the variants from each field contract, posts them to the API without the user
+        interface, and asserts the rejection status and an unchanged data store.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/validation/test_boundary_negative (per project)
+    - id: VCGF-TEST-005-AT02
+      type: automated
+      criterion: >-
+        An injection corpus covering SQL, script, operating-system command, path traversal, URL and server-side
+        request, header and newline, template, and export formula contexts reaches no interpreter: queries stay
+        parameterised, no command executes, resolved paths stay inside the allowed root, output is encoded, and
+        exported cells are neutralised.
+      method: >-
+        An integration test sends each payload to every interpreter boundary present in the project and verifies
+        the outcome through query logs, a command spy, path resolution, rendered output and the exported file.
+      negative_path: true
+      evidence: [test-result, security-scan]
+      automation:
+        kind: ci
+        reference: tests/injection/test_interpreter_boundaries (per project)
+    - id: VCGF-TEST-005-AT03
+      type: automated
+      criterion: >-
+        A request body above the configured size limit, an array above its maximum item count or a JSON document
+        nested deeper than the configured depth is rejected before business logic runs, and the service answers
+        the next ordinary request within its normal latency budget.
+      method: >-
+        An integration test sends each oversized form, asserts the rejection status and measures the latency of
+        a subsequent valid request against the budget.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/validation/test_oversized_inputs (per project)
+    - id: VCGF-TEST-005-AT04
+      type: review
+      criterion: >-
+        Each negative validation and injection test asserts the trusted-layer status code and the persisted state
+        rather than a user-interface message, and every interpreter context present in the project (SQL, script,
+        command, path, URL, header, template, export) is covered or marked not applicable with a reason.
+      method: >-
+        A reviewer reads the test assertions and the context coverage table and confirms the server-side assertions
+        and the completeness of the covered contexts.
+      negative_path: false
+      evidence: [code-review, test-result]
+      automation:
+        kind: none
+  VCGF-TEST-006:
+    requirement_sources: [S17, S22]
+    tests:
+    - id: VCGF-TEST-006-AT01
+      type: automated
+      criterion: >-
+        A one-time token for password reset, account recovery or MFA recovery completes the flow exactly once, and
+        a second use of the same token, use after its expiry has passed, and a token with one altered character
+        are each rejected with the credential and MFA state unchanged.
+      method: >-
+        An integration test issues a token, completes the flow, then replays the token, advances the clock past
+        the expiry, and submits a tampered token, asserting each rejection and the stored state.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/recovery/test_token_lifecycle (per project)
+    - id: VCGF-TEST-006-AT02
+      type: automated
+      criterion: >-
+        Initiating recovery for an existing, a non-existent and a disabled account yields byte-identical status
+        and body and median response times within the configured timing_tolerance_percent (default 10) of each other
+        over timing_sample_size (default 50) samples per class, and exceeding the configured request limit from
+        one source is throttled with a response that is the same for all three account classes.
+      method: >-
+        An integration test issues timing_sample_size recovery initiations for each account class, compares status
+        codes, bodies and median timings against timing_tolerance_percent, then exceeds the limit for each class
+        and compares the throttling responses.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/recovery/test_enumeration_and_throttling (per project)
+      parameters:
+      - name: timing_tolerance_percent
+        default: 10
+        unit: percent
+        source: >-
+          test design parameter; VCGF-TEST-006 requires recovery flows to be tested for enumeration resistance without
+          a figure
+        rationale: Exposes a timing oracle while absorbing jitter; adjustable per environment.
+      - name: timing_sample_size
+        default: 50
+        unit: samples
+        source: test design parameter (statistical sample)
+        rationale: Enough samples for a stable median; adjustable.
+    - id: VCGF-TEST-006-AT03
+      type: automated
+      criterion: >-
+        A recovery or one-time token issued for user A that is submitted with user B's identifier or from B's session,
+        and a captured completion request replayed after success, are rejected, and B's credentials, MFA factors
+        and sessions are unchanged.
+      method: >-
+        An integration test issues a token for A, submits it under B's identity and session, replays a captured
+        completion request, and asserts the rejections and B's unchanged state.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/recovery/test_cross_user_and_replay (per project)
+    - id: VCGF-TEST-006-AT04
+      type: automated
+      criterion: >-
+        After a completed password reset or MFA recovery every other pre-existing session and refresh token of the
+        account is invalidated, a request carrying an old session returns an unauthenticated response, and the account
+        holder is notified of the change.
+      method: >-
+        An integration test opens two sessions, completes recovery from one, calls a protected endpoint with the
+        other session and its refresh token, and checks the outgoing notification.
+      negative_path: true
+      evidence: [test-result]
+      automation:
+        kind: ci
+        reference: tests/recovery/test_session_invalidation (per project)

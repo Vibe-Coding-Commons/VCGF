@@ -1,0 +1,137 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/acceptance-results.schema.json",
+  "title": "VCGF 1.1 acceptance results contract",
+  "description": "Results a target project records against acceptance test identifiers (spec/acceptance). A PASS is a claim that must cite hash-pinned evidence; the compliance evaluator verifies the evidence, never the project behaviour itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "project_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "profile": {
+      "$ref": "common.schema.json#/$defs/profile"
+    },
+    "code_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "route_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "recorded_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "valid_until": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "test_id": {
+            "type": "string",
+            "pattern": "^VCGF-[A-Z]+-[0-9]{3}-AT[0-9]{2}$"
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "SKIP",
+              "NOT_TESTED"
+            ]
+          },
+          "executor": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "enum": [
+                  "ci",
+                  "script",
+                  "validator",
+                  "hook",
+                  "manual",
+                  "review"
+                ]
+              },
+              "reference": {
+                "$ref": "common.schema.json#/$defs/text"
+              }
+            },
+            "required": [
+              "kind",
+              "reference"
+            ]
+          },
+          "executed_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "artifact_id": {
+                  "$ref": "common.schema.json#/$defs/id"
+                },
+                "reference": {
+                  "$ref": "common.schema.json#/$defs/text"
+                },
+                "sha256": {
+                  "$ref": "common.schema.json#/$defs/digest"
+                }
+              },
+              "required": [
+                "artifact_id",
+                "reference",
+                "sha256"
+              ]
+            }
+          },
+          "reviewer": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "subject": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "role": {
+                "$ref": "common.schema.json#/$defs/text"
+              }
+            },
+            "required": [
+              "subject",
+              "role"
+            ]
+          },
+          "notes": {
+            "$ref": "common.schema.json#/$defs/text"
+          }
+        },
+        "required": [
+          "test_id",
+          "status",
+          "executor",
+          "executed_at",
+          "evidence"
+        ]
+      }
+    }
+  },
+  "required": [
+    "contract_version",
+    "project_id",
+    "profile",
+    "code_sha256",
+    "recorded_at",
+    "valid_until",
+    "results"
+  ]
+}

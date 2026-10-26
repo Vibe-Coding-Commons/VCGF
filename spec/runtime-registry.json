@@ -1,8 +1,886 @@
 {
   "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "applicability": {
+    "VCGF-AI-001": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-AI-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-AI-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-AI-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-AI-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-AI-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-AI-007": {
+      "load_point": "route",
+      "rationale": "An agent must never weaken a security control as a workaround; applies whenever an AI agent executes a task (development-agent is always requested).",
+      "triggers": {
+        "capabilities": [
+          "development-agent",
+          "governance-change"
+        ]
+      }
+    },
+    "VCGF-AI-008": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent",
+          "product-ai"
+        ]
+      }
+    },
+    "VCGF-AI-009": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "development-agent"
+        ]
+      }
+    },
+    "VCGF-API-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api"
+        ]
+      }
+    },
+    "VCGF-API-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "payment"
+        ]
+      }
+    },
+    "VCGF-API-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api"
+        ]
+      }
+    },
+    "VCGF-API-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api",
+          "payment",
+          "sessions"
+        ]
+      }
+    },
+    "VCGF-API-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "api",
+          "email"
+        ]
+      }
+    },
+    "VCGF-ARCH-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "authorization"
+        ]
+      }
+    },
+    "VCGF-ARCH-002": {
+      "load_point": "route",
+      "rationale": "Security-sensitive decisions cross a trust boundary whenever a task touches APIs, identity, authorization, data, files, payments or server-side integrations.",
+      "triggers": {
+        "capabilities": [
+          "api",
+          "identity",
+          "authorization",
+          "admin",
+          "files",
+          "database",
+          "payment",
+          "product-ai",
+          "email",
+          "sessions",
+          "strong-auth",
+          "step-up",
+          "password-recovery"
+        ]
+      }
+    },
+    "VCGF-ARCH-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-ARCH-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-ARCH-005": {
+      "load_point": "route",
+      "rationale": "Threat modeling is required for HIGH or CRITICAL changes; the trust-boundary-bearing capabilities make it applicable through the profile layer, and deep mode adds it for every task.",
+      "triggers": {
+        "capabilities": [
+          "identity",
+          "authorization",
+          "admin",
+          "payment",
+          "database",
+          "api",
+          "files",
+          "product-ai",
+          "deletion",
+          "incident",
+          "release",
+          "privacy",
+          "strong-auth",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-AUDIT-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "audit"
+        ]
+      }
+    },
+    "VCGF-AUDIT-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "audit"
+        ]
+      }
+    },
+    "VCGF-AUDIT-003": {
+      "load_point": "route",
+      "rationale": "Protecting audit records matters wherever audit trails are in scope.",
+      "triggers": {
+        "capabilities": [
+          "audit"
+        ]
+      }
+    },
+    "VCGF-DATA-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-DATA-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-DATA-003": {
+      "load_point": "route",
+      "rationale": "Field-level encryption applies to personal, payment and backed-up sensitive data.",
+      "triggers": {
+        "capabilities": [
+          "privacy",
+          "payment",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-DATA-004": {
+      "load_point": "route",
+      "rationale": "Key management applies wherever encryption keys, tokens or signing material are introduced or rotated.",
+      "triggers": {
+        "capabilities": [
+          "privacy",
+          "payment",
+          "backup-restore",
+          "email",
+          "strong-auth"
+        ]
+      }
+    },
+    "VCGF-DATA-005": {
+      "load_point": "route",
+      "rationale": "Searchable encrypted data is a privacy design concern.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-DATA-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "email",
+          "payment",
+          "sessions"
+        ]
+      }
+    },
+    "VCGF-DB-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database"
+        ]
+      }
+    },
+    "VCGF-DB-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database",
+          "fields"
+        ]
+      }
+    },
+    "VCGF-DB-003": {
+      "load_point": "route",
+      "rationale": "Database encryption applies to schema, storage and backup work involving sensitive data.",
+      "triggers": {
+        "capabilities": [
+          "database",
+          "privacy",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-DB-004": {
+      "load_point": "route",
+      "rationale": "Row-level authorization must be tested whenever authorization or data-layer policies change.",
+      "triggers": {
+        "capabilities": [
+          "authorization",
+          "admin",
+          "database"
+        ]
+      }
+    },
+    "VCGF-DB-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database"
+        ]
+      }
+    },
+    "VCGF-DB-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "database"
+        ]
+      }
+    },
+    "VCGF-DEP-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-DEP-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-DEP-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-DEP-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-FILE-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "files"
+        ]
+      }
+    },
+    "VCGF-FILE-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "files"
+        ]
+      }
+    },
+    "VCGF-GOV-001": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-GOV-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.",
+      "triggers": {
+        "capabilities": [
+          "admin",
+          "deletion",
+          "exception",
+          "governance-change"
+        ]
+      }
+    },
+    "VCGF-GOV-003": {
+      "load_point": "route",
+      "rationale": "Loaded when a task requests or reviews a security exception.",
+      "triggers": {
+        "capabilities": [
+          "exception"
+        ]
+      }
+    },
+    "VCGF-GOV-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-engineering",
+          "exception"
+        ]
+      }
+    },
+    "VCGF-GOV-005": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-GOV-006": {
+      "load_point": "route",
+      "rationale": "Loaded when a task changes governance definitions, adapters or policy text in the project.",
+      "triggers": {
+        "capabilities": [
+          "governance-change"
+        ]
+      }
+    },
+    "VCGF-IAM-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IAM-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IAM-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "admin",
+          "sessions",
+          "step-up",
+          "strong-auth"
+        ]
+      }
+    },
+    "VCGF-IAM-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IAM-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "password-recovery",
+          "strong-auth"
+        ]
+      }
+    },
+    "VCGF-IAM-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "admin",
+          "step-up"
+        ]
+      }
+    },
+    "VCGF-IAM-007": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "authorization",
+          "identity"
+        ]
+      }
+    },
+    "VCGF-IR-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident"
+        ]
+      }
+    },
+    "VCGF-IR-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident"
+        ]
+      }
+    },
+    "VCGF-IR-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident"
+        ]
+      }
+    },
+    "VCGF-OPS-001": {
+      "load_point": "route",
+      "rationale": "Environment separation applies to releases, migrations, incidents, backups and destructive operations.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "database",
+          "incident",
+          "backup-restore",
+          "deletion",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-OPS-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "incident",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-OPS-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-OPS-004": {
+      "load_point": "route",
+      "rationale": "Configuration drift control applies to release and incident work and to governance configuration changes.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "incident",
+          "governance-change",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-OPS-005": {
+      "load_point": "route",
+      "rationale": "Security monitoring applies to releases, incidents and the surfaces that generate security events.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "incident",
+          "api",
+          "identity",
+          "payment",
+          "operations"
+        ]
+      }
+    },
+    "VCGF-PRIV-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "audit",
+          "email"
+        ]
+      }
+    },
+    "VCGF-PRIV-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-PRIV-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-PRIV-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "deletion",
+          "privacy"
+        ]
+      }
+    },
+    "VCGF-REL-001": {
+      "load_point": "route",
+      "rationale": "Minimum task governance for every route (runtime/routing-policy.yaml minimum_controls).",
+      "triggers": {
+        "always": true
+      }
+    },
+    "VCGF-REL-002": {
+      "load_point": "route",
+      "rationale": "Pre-release security gate applies to release tasks.",
+      "triggers": {
+        "capabilities": [
+          "release"
+        ]
+      }
+    },
+    "VCGF-REL-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk CRITICAL.",
+      "triggers": {
+        "capabilities": [
+          "backup-restore",
+          "incident"
+        ]
+      }
+    },
+    "VCGF-REL-004": {
+      "load_point": "route",
+      "rationale": "Post-release monitoring applies to release tasks.",
+      "triggers": {
+        "capabilities": [
+          "release"
+        ]
+      }
+    },
+    "VCGF-REL-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-SEC-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "files"
+        ]
+      }
+    },
+    "VCGF-SEC-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-004": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux",
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-SEC-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL.",
+      "triggers": {
+        "router_policy": [
+          "risk-high-critical"
+        ]
+      }
+    },
+    "VCGF-SECR-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "email",
+          "product-ai",
+          "script-protection"
+        ]
+      }
+    },
+    "VCGF-SECR-002": {
+      "load_point": "route",
+      "rationale": "Secret rotation and compromise response apply to incidents and to tasks introducing credentials or keys.",
+      "triggers": {
+        "capabilities": [
+          "incident",
+          "identity",
+          "strong-auth",
+          "payment",
+          "email",
+          "backup-restore"
+        ]
+      }
+    },
+    "VCGF-TEST-001": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "authorization"
+        ]
+      }
+    },
+    "VCGF-TEST-002": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for risk HIGH/CRITICAL, deep mode, standard/deep mode.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux",
+          "public-discovery",
+          "ux-accessibility"
+        ]
+      }
+    },
+    "VCGF-TEST-003": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it; also added by the router for deep mode.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux"
+        ]
+      }
+    },
+    "VCGF-TEST-004": {
+      "load_point": "route",
+      "rationale": "A security test strategy is required before release and when the engineering approach is designed.",
+      "triggers": {
+        "capabilities": [
+          "release",
+          "adaptive-engineering"
+        ]
+      }
+    },
+    "VCGF-TEST-005": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "fields"
+        ]
+      }
+    },
+    "VCGF-TEST-006": {
+      "load_point": "route",
+      "rationale": "Loaded through the capabilities that map to it.",
+      "triggers": {
+        "capabilities": [
+          "password-recovery"
+        ]
+      }
+    },
+    "VCGF-UX-001": {
+      "load_point": "route",
+      "rationale": "Accessibility conformance applies to every user-facing interface task.",
+      "triggers": {
+        "capabilities": [
+          "ux-accessibility",
+          "adaptive-ux",
+          "public-discovery"
+        ]
+      }
+    },
+    "VCGF-UX-002": {
+      "load_point": "route",
+      "rationale": "Localization and bidirectional text apply to every user-facing interface task in multilingual or RTL products.",
+      "triggers": {
+        "capabilities": [
+          "ux-accessibility",
+          "adaptive-ux",
+          "public-discovery"
+        ]
+      }
+    },
+    "VCGF-UX-003": {
+      "load_point": "route",
+      "rationale": "Interaction-state integrity applies to interactive screens and forms.",
+      "triggers": {
+        "capabilities": [
+          "ux-accessibility",
+          "adaptive-ux",
+          "fields"
+        ]
+      }
+    },
+    "VCGF-UX-004": {
+      "load_point": "route",
+      "rationale": "Responsive strategy and density apply when screens are composed or redesigned.",
+      "triggers": {
+        "capabilities": [
+          "adaptive-ux",
+          "ux-accessibility"
+        ]
+      }
+    }
+  },
   "bootstrap": {
     "path": "runtime/bootstrap.md",
-    "sha256": "096d2f9db07bc6c71fda7097b253bad1a92ba4a3f8ffb1ff2341d13dbf8f2108"
+    "sha256": "2dd1484c1e6f5446e441455323b0dd04af76b34cd84821de4045bec14d4cca77"
   },
   "capabilities": [
     {
@@ -375,6 +1253,30 @@
       "applies_to": [
         "application"
       ],
+      "capability_id": "exception",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-GOV-003",
+        "VCGF-GOV-002",
+        "VCGF-GOV-004"
+      ],
+      "dependencies": [],
+      "description": "Requesting, approving or reviewing a security exception to a normative control",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
       "capability_id": "fields",
       "contract_version": "1.1.0",
       "control_ids": [
@@ -426,6 +1328,31 @@
         }
       ],
       "description": "Master sections [36, 37, 38, 39]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "governance-change",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-GOV-006",
+        "VCGF-AI-007",
+        "VCGF-GOV-002",
+        "VCGF-OPS-004"
+      ],
+      "dependencies": [],
+      "description": "Changing governance definitions, adapter rules or policy text inside a project",
       "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
       "owner": "Eng. Hamada Sami",
       "required_evidence": [
@@ -533,6 +1460,31 @@
         }
       ],
       "description": "Master sections [34, 35]; task-specific requirements, not standalone product certification",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
+      "capability_id": "operations",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-OPS-001",
+        "VCGF-OPS-002",
+        "VCGF-OPS-004",
+        "VCGF-OPS-005"
+      ],
+      "dependencies": [],
+      "description": "Operational safety across environments: separation, drift control, monitoring and production protection",
       "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
       "owner": "Eng. Hamada Sami",
       "required_evidence": [
@@ -732,6 +1684,40 @@
       "applies_to": [
         "application"
       ],
+      "capability_id": "release",
+      "contract_version": "1.1.0",
+      "control_ids": [
+        "VCGF-REL-001",
+        "VCGF-REL-002",
+        "VCGF-REL-004",
+        "VCGF-REL-005",
+        "VCGF-TEST-004"
+      ],
+      "dependencies": [
+        {
+          "reason": "release requires evaluation of operations",
+          "relation": "requires",
+          "targets": [
+            "operations"
+          ]
+        }
+      ],
+      "description": "Release readiness: pre-release gate, test strategy, artifact integrity and post-release monitoring",
+      "exception_policy": "Explicit owner-approved, expiring exception; no automatic compliance",
+      "owner": "Eng. Hamada Sami",
+      "required_evidence": [
+        "positive and negative tests scoped to capability",
+        "implementation and environment reference"
+      ]
+    },
+    {
+      "applicability": {
+        "conditions": [],
+        "unknown_policy": "block_or_request_fact"
+      },
+      "applies_to": [
+        "application"
+      ],
       "capability_id": "script-protection",
       "contract_version": "1.1.0",
       "control_ids": [
@@ -882,6 +1868,364 @@
       ]
     }
   ],
+  "cards": {
+    "VCGF-AI-001": {
+      "path": "spec/control-cards/VCGF-AI-001.md",
+      "sha256": "68d3777415afcb125358af17fd9b80164afa3110f5e1afcaccc5089eea18ba15"
+    },
+    "VCGF-AI-002": {
+      "path": "spec/control-cards/VCGF-AI-002.md",
+      "sha256": "9c8dfd680683f5c89b5116bce44bfc124b82264f2deaec8fa1428fd17e3c7cdc"
+    },
+    "VCGF-AI-003": {
+      "path": "spec/control-cards/VCGF-AI-003.md",
+      "sha256": "078a980f60c284c9fa73c4f761e66f6c5e5bcc3707961a2efc48f3f107d415c4"
+    },
+    "VCGF-AI-004": {
+      "path": "spec/control-cards/VCGF-AI-004.md",
+      "sha256": "d883a24ef2d53499340aa4131c18ca3edb138d87dd92cc0d3c367a8ac87f5243"
+    },
+    "VCGF-AI-005": {
+      "path": "spec/control-cards/VCGF-AI-005.md",
+      "sha256": "6dd75df752b217abe27156300eac0be7db3e2c7a19a304b798891daeb48e335d"
+    },
+    "VCGF-AI-006": {
+      "path": "spec/control-cards/VCGF-AI-006.md",
+      "sha256": "52a01e75fb12aac002f3c904ec737918807a15c0c6dce9cc27b962943834f1ae"
+    },
+    "VCGF-AI-007": {
+      "path": "spec/control-cards/VCGF-AI-007.md",
+      "sha256": "fbeb18ff4aa6541a400e873f65c2e4b57cc1a244d5b99a00863679ca34b8fce5"
+    },
+    "VCGF-AI-008": {
+      "path": "spec/control-cards/VCGF-AI-008.md",
+      "sha256": "081aad125a06e4f52bc53775db7c1646fe17aa9516ed341df5000b5b35340a4f"
+    },
+    "VCGF-AI-009": {
+      "path": "spec/control-cards/VCGF-AI-009.md",
+      "sha256": "5f96f2437fee1e9f0d64515fc51c4eb11b9f39d144443b1a45ce00d14561ef72"
+    },
+    "VCGF-API-001": {
+      "path": "spec/control-cards/VCGF-API-001.md",
+      "sha256": "9d80821f52cadc50d54ba218b30eacc458098e21f65478db613bbb401be218c3"
+    },
+    "VCGF-API-002": {
+      "path": "spec/control-cards/VCGF-API-002.md",
+      "sha256": "2601144683becb9cce85956355f3aeee4312886b9b1eaa20c74c71732c788af5"
+    },
+    "VCGF-API-003": {
+      "path": "spec/control-cards/VCGF-API-003.md",
+      "sha256": "9d0d9a86b5d729344a83534549fca40af6d38f8a0ef18a45e3b55e45dc5e8034"
+    },
+    "VCGF-API-004": {
+      "path": "spec/control-cards/VCGF-API-004.md",
+      "sha256": "6cbed63ffd243d8d05b8bd5208b2c5b088b477c66a398152f40f315443eb48a0"
+    },
+    "VCGF-API-005": {
+      "path": "spec/control-cards/VCGF-API-005.md",
+      "sha256": "fffa38c704f51b294b8d1cb9fdf2c8f678a400f6a273049ac928dee5721e8d52"
+    },
+    "VCGF-ARCH-001": {
+      "path": "spec/control-cards/VCGF-ARCH-001.md",
+      "sha256": "2f11abd2ae721f77d985dd2072b30fef91638a6e48314fe5aaca364230db9bb4"
+    },
+    "VCGF-ARCH-002": {
+      "path": "spec/control-cards/VCGF-ARCH-002.md",
+      "sha256": "0b54c03e1b94759ed31787df7d62bc2dda306936082454b7245187ab6b38e3c6"
+    },
+    "VCGF-ARCH-003": {
+      "path": "spec/control-cards/VCGF-ARCH-003.md",
+      "sha256": "cbabe44900f6db90f9367e679d4b9bb636c1c403d9192633026c2e9b21650b9c"
+    },
+    "VCGF-ARCH-004": {
+      "path": "spec/control-cards/VCGF-ARCH-004.md",
+      "sha256": "005f7235d645379ad1d0e3569ee695599ba9e93206246f7d9b7826fc2e244913"
+    },
+    "VCGF-ARCH-005": {
+      "path": "spec/control-cards/VCGF-ARCH-005.md",
+      "sha256": "32fa8d61943469911a66ab1b691133d35641c5c5a75d507555b322923cae3df4"
+    },
+    "VCGF-AUDIT-001": {
+      "path": "spec/control-cards/VCGF-AUDIT-001.md",
+      "sha256": "8f1b51a6f4d68f7aa7930af1f20e4324e1d79e5f5bfc39691fd00458a980f2ef"
+    },
+    "VCGF-AUDIT-002": {
+      "path": "spec/control-cards/VCGF-AUDIT-002.md",
+      "sha256": "c0b27a8783a1c0c9fad116ef450202791955f38f81197b8f8d68c094ad07f92f"
+    },
+    "VCGF-AUDIT-003": {
+      "path": "spec/control-cards/VCGF-AUDIT-003.md",
+      "sha256": "25bbd5dae67b735310434ae19dde648c013afb642a7b73b93cfd6dde6e67ae90"
+    },
+    "VCGF-DATA-001": {
+      "path": "spec/control-cards/VCGF-DATA-001.md",
+      "sha256": "77f0cbbfddd2870b4d58ba54ad81fbb22690c23a07cf219db39271798dd1fb99"
+    },
+    "VCGF-DATA-002": {
+      "path": "spec/control-cards/VCGF-DATA-002.md",
+      "sha256": "10315d56022d7dd845b9a414bb4d192b236aa39f1442534bdda4dc7d05e45904"
+    },
+    "VCGF-DATA-003": {
+      "path": "spec/control-cards/VCGF-DATA-003.md",
+      "sha256": "73e8fa88fffd1a0bc03e5bc93023a6e39a24e7f84550c911370aee3f74f8b2bc"
+    },
+    "VCGF-DATA-004": {
+      "path": "spec/control-cards/VCGF-DATA-004.md",
+      "sha256": "11060d4f704e015685eaa69e36b2e8327303d1006a2770f34741afc7383e94a6"
+    },
+    "VCGF-DATA-005": {
+      "path": "spec/control-cards/VCGF-DATA-005.md",
+      "sha256": "45064d22a74722c1227ff9c5ec92270790256a457c80621fc4aab683829ef5f6"
+    },
+    "VCGF-DATA-006": {
+      "path": "spec/control-cards/VCGF-DATA-006.md",
+      "sha256": "19d642544df5396a01d9e853cc7c1066c4cfc1cefa8c0572555811731a48969e"
+    },
+    "VCGF-DB-001": {
+      "path": "spec/control-cards/VCGF-DB-001.md",
+      "sha256": "d75dbf6c19f90f581319b92c195ba9a2ea17e86f837b918b7475ebae65e0364a"
+    },
+    "VCGF-DB-002": {
+      "path": "spec/control-cards/VCGF-DB-002.md",
+      "sha256": "a663b53b304b4601b6fff8bb84d302587bec226e10978a02d427e51d47a41291"
+    },
+    "VCGF-DB-003": {
+      "path": "spec/control-cards/VCGF-DB-003.md",
+      "sha256": "692a93c7e2eed4ad95f2c1bd851cdd299e906f9cd251ca9814d58d05662ca7eb"
+    },
+    "VCGF-DB-004": {
+      "path": "spec/control-cards/VCGF-DB-004.md",
+      "sha256": "5ae2f2f9851ab5121e174cd5d4440321891f6acbefd3a934cc1166eca6c3f0d8"
+    },
+    "VCGF-DB-005": {
+      "path": "spec/control-cards/VCGF-DB-005.md",
+      "sha256": "62b6aa6aafc5cbb62066bd65358aa12e14e7306292d06c1f0f481f434f1bfd22"
+    },
+    "VCGF-DB-006": {
+      "path": "spec/control-cards/VCGF-DB-006.md",
+      "sha256": "d68aabb46b36aa11af0e390498001e70516c1ee18b96ae62eb1e00424f955cc6"
+    },
+    "VCGF-DEP-001": {
+      "path": "spec/control-cards/VCGF-DEP-001.md",
+      "sha256": "6c38b5f746b244448b1b24ebe9cdabbfc2f4f4941822179441c4cc98ccbbada9"
+    },
+    "VCGF-DEP-002": {
+      "path": "spec/control-cards/VCGF-DEP-002.md",
+      "sha256": "0bd17b8b44d14459a97ba39d3608bbfa10a88ea09d7ae4414f7bf14827c82167"
+    },
+    "VCGF-DEP-003": {
+      "path": "spec/control-cards/VCGF-DEP-003.md",
+      "sha256": "6a10ed9d05806358e53c2e1b29bc4b86d74c2c9af20f07901e9a4d3e71fba2cc"
+    },
+    "VCGF-DEP-004": {
+      "path": "spec/control-cards/VCGF-DEP-004.md",
+      "sha256": "bfcdfaa0b33c42035e220bc2f4267de6e768c3ea96ea6044adc0e59421699386"
+    },
+    "VCGF-FILE-001": {
+      "path": "spec/control-cards/VCGF-FILE-001.md",
+      "sha256": "4d01e77aaff90191f611c290cadb604f94f5f43ebaee03500697694f1671230d"
+    },
+    "VCGF-FILE-002": {
+      "path": "spec/control-cards/VCGF-FILE-002.md",
+      "sha256": "b8877f38fada73336e59e09a13d3e10aafc6efdd0c2ddecaa4e45e3457acd24c"
+    },
+    "VCGF-GOV-001": {
+      "path": "spec/control-cards/VCGF-GOV-001.md",
+      "sha256": "ab9a14000f7c160f99a406459adce6cb8dbca5d6eaa9b6b0d287e20c9b685e79"
+    },
+    "VCGF-GOV-002": {
+      "path": "spec/control-cards/VCGF-GOV-002.md",
+      "sha256": "e5fecd8fc1909fcc4e01ec32c02b85169efc3ac6a2dea98e14034899782170d8"
+    },
+    "VCGF-GOV-003": {
+      "path": "spec/control-cards/VCGF-GOV-003.md",
+      "sha256": "538f1d796ec0b0e5b2ac620ec8b49c8523806e7b78c5842fd17da0c032ea6116"
+    },
+    "VCGF-GOV-004": {
+      "path": "spec/control-cards/VCGF-GOV-004.md",
+      "sha256": "fdda5a186a4a4e1ac56ff482ab0bfe81717f35edd4e6a13e2f0420150b9409d8"
+    },
+    "VCGF-GOV-005": {
+      "path": "spec/control-cards/VCGF-GOV-005.md",
+      "sha256": "2ee78f2e4c96604d66a86ed11cc78620e4805c98903aa0a7a382da9685789103"
+    },
+    "VCGF-GOV-006": {
+      "path": "spec/control-cards/VCGF-GOV-006.md",
+      "sha256": "cdb70afb7fbcc942ba72834a42d89487d7ada704ecbd86605beebb3bf6e89fa1"
+    },
+    "VCGF-IAM-001": {
+      "path": "spec/control-cards/VCGF-IAM-001.md",
+      "sha256": "ea6979e1a13bcd3f7b0bc03fc80f5f91ae86655ced37a77f699064a7ba46d010"
+    },
+    "VCGF-IAM-002": {
+      "path": "spec/control-cards/VCGF-IAM-002.md",
+      "sha256": "11455f5be318b38a4850dbcdbab40b70575ee369c53ea0555442d2b6628c4496"
+    },
+    "VCGF-IAM-003": {
+      "path": "spec/control-cards/VCGF-IAM-003.md",
+      "sha256": "a8844ec49a941bcd0dff9ef25242c76d8f3253ab21c1bd012ef610530701176a"
+    },
+    "VCGF-IAM-004": {
+      "path": "spec/control-cards/VCGF-IAM-004.md",
+      "sha256": "345f2df857a9f37de012d3a1acbc92e277181a79f7d01c4534f05ecab9c1679c"
+    },
+    "VCGF-IAM-005": {
+      "path": "spec/control-cards/VCGF-IAM-005.md",
+      "sha256": "d7c4a08ea12e9f76075165f53d7b1c3d37baf22829d711fdaaa1017e4a0398bb"
+    },
+    "VCGF-IAM-006": {
+      "path": "spec/control-cards/VCGF-IAM-006.md",
+      "sha256": "61124f885e316d11384bd956482563167dc36f1f44778ba40e08306310d937dd"
+    },
+    "VCGF-IAM-007": {
+      "path": "spec/control-cards/VCGF-IAM-007.md",
+      "sha256": "6d3a4e152753cab12a6bfc67eba4321757084614b150044850c9c8860881d63d"
+    },
+    "VCGF-IR-001": {
+      "path": "spec/control-cards/VCGF-IR-001.md",
+      "sha256": "777974e222323eee6c6963a7f6b3928540f93af53d6d3c5943676a097ece5a56"
+    },
+    "VCGF-IR-002": {
+      "path": "spec/control-cards/VCGF-IR-002.md",
+      "sha256": "ebf7824fc17918c8351aac482afb8aff47798a56385e84de8403cd9dd2cb764d"
+    },
+    "VCGF-IR-003": {
+      "path": "spec/control-cards/VCGF-IR-003.md",
+      "sha256": "a404c5994650a17b4a822ef411dea701e3230544c70ce4a3af8ee04c761453a9"
+    },
+    "VCGF-OPS-001": {
+      "path": "spec/control-cards/VCGF-OPS-001.md",
+      "sha256": "10090aeb88fb32535a51b9827ba4017b9498951892c28c40c19097bc9e240ce0"
+    },
+    "VCGF-OPS-002": {
+      "path": "spec/control-cards/VCGF-OPS-002.md",
+      "sha256": "9e441f91ae38e20e0d79d2bb599f7ae24026f2be0844331508070277ecb832d0"
+    },
+    "VCGF-OPS-003": {
+      "path": "spec/control-cards/VCGF-OPS-003.md",
+      "sha256": "d0f970bc5d7a3eea71defd104dd97cbbdef481b7ae1492f20fab286c547ea0e8"
+    },
+    "VCGF-OPS-004": {
+      "path": "spec/control-cards/VCGF-OPS-004.md",
+      "sha256": "db6c325d51252a8c5cdb2d64e9f08235bedfef324f20bc9c7827e0dab09b5a22"
+    },
+    "VCGF-OPS-005": {
+      "path": "spec/control-cards/VCGF-OPS-005.md",
+      "sha256": "90b59e62829f12da5e73b03d68e7f6a0d97e2422e02c54a213dbebda961f8c79"
+    },
+    "VCGF-PRIV-001": {
+      "path": "spec/control-cards/VCGF-PRIV-001.md",
+      "sha256": "fa060f43a29c622cd787c4e8da4658cc9a2dcc373d3e668f115548e35e59d653"
+    },
+    "VCGF-PRIV-002": {
+      "path": "spec/control-cards/VCGF-PRIV-002.md",
+      "sha256": "c3acf3454b5156a581ec4ea133bd4b8f7f43e637835f57b6626c8e3623df0589"
+    },
+    "VCGF-PRIV-003": {
+      "path": "spec/control-cards/VCGF-PRIV-003.md",
+      "sha256": "965f4f1f92db85730f813ab6229721fac022bfc227f368af85c2ebfc10cbf033"
+    },
+    "VCGF-PRIV-004": {
+      "path": "spec/control-cards/VCGF-PRIV-004.md",
+      "sha256": "8e795a41bd0b70efb86763ad7f24a42766e770a1bf0abe7060a8c1f8609c2bcb"
+    },
+    "VCGF-REL-001": {
+      "path": "spec/control-cards/VCGF-REL-001.md",
+      "sha256": "ae923ae9cf3840666060d75869197b3e58887c19aa466358caaaca834f47fa37"
+    },
+    "VCGF-REL-002": {
+      "path": "spec/control-cards/VCGF-REL-002.md",
+      "sha256": "e4653f2b68fa74cbfae16a7c97824b0c4ee79be30f2f18d48253bf4c74c1e3f8"
+    },
+    "VCGF-REL-003": {
+      "path": "spec/control-cards/VCGF-REL-003.md",
+      "sha256": "3ad74e6f1d8d646ef9b5468fe9319967110c3ea5cd16c592a91695fed4662ae2"
+    },
+    "VCGF-REL-004": {
+      "path": "spec/control-cards/VCGF-REL-004.md",
+      "sha256": "9b576fe5900c6f31226fcfb848b0456174f2795e3aa6c056a39b84ba43ed17c1"
+    },
+    "VCGF-REL-005": {
+      "path": "spec/control-cards/VCGF-REL-005.md",
+      "sha256": "1d96cfacfb0f9eec07d916879561c93ff9c3aa2911419c9d2aef25143160da21"
+    },
+    "VCGF-SEC-001": {
+      "path": "spec/control-cards/VCGF-SEC-001.md",
+      "sha256": "aed03c7eb48b3c0121ba47fa585a9e523ce1d07e2eb52040d6365dfd16ac94fa"
+    },
+    "VCGF-SEC-002": {
+      "path": "spec/control-cards/VCGF-SEC-002.md",
+      "sha256": "4378e476ccacbbb5b949861aa964a070f370ce993764237de37f978272fa0b6c"
+    },
+    "VCGF-SEC-003": {
+      "path": "spec/control-cards/VCGF-SEC-003.md",
+      "sha256": "f0f9a2ef6a437c5aa8fe06344534197aca08b9669645ee6b530135de2da22329"
+    },
+    "VCGF-SEC-004": {
+      "path": "spec/control-cards/VCGF-SEC-004.md",
+      "sha256": "a2fc332f437ce6ab365abd08afd2c68a2ee7f4c4aae412c3d2cd403548ac6afb"
+    },
+    "VCGF-SEC-005": {
+      "path": "spec/control-cards/VCGF-SEC-005.md",
+      "sha256": "7f54585201dd6ea5028516572fa17535df331e22150d9165fe7a144900ab4ab1"
+    },
+    "VCGF-SEC-006": {
+      "path": "spec/control-cards/VCGF-SEC-006.md",
+      "sha256": "05c64c4d73913125252d48f73eb595681199dc00a577f465088a768b433f459a"
+    },
+    "VCGF-SECR-001": {
+      "path": "spec/control-cards/VCGF-SECR-001.md",
+      "sha256": "af843367f471d8703f124ac92bb9a3bea2d08871d5aa61256320b58eb778e6fa"
+    },
+    "VCGF-SECR-002": {
+      "path": "spec/control-cards/VCGF-SECR-002.md",
+      "sha256": "65c48b878dd44dd50c973af9f0b338393211e7e8e479d1eab8a9a2346346f582"
+    },
+    "VCGF-TEST-001": {
+      "path": "spec/control-cards/VCGF-TEST-001.md",
+      "sha256": "a24c45dfdc6236f8092fb3da9d6b3e610bf37fbf088743b7cf837194cc3e75d4"
+    },
+    "VCGF-TEST-002": {
+      "path": "spec/control-cards/VCGF-TEST-002.md",
+      "sha256": "958fc6f5a627911eca9d009b9bbbcd5836df489b38578b930bd20b04a83800bc"
+    },
+    "VCGF-TEST-003": {
+      "path": "spec/control-cards/VCGF-TEST-003.md",
+      "sha256": "01d1e87052ebd4655beebd1d1ddf6324f748d34d3e799fd8bf3b62341f7fd5c1"
+    },
+    "VCGF-TEST-004": {
+      "path": "spec/control-cards/VCGF-TEST-004.md",
+      "sha256": "cd6f868f44d1c90a56a58294419c47b8b937f9d207a9877b5a6042c58cbfc769"
+    },
+    "VCGF-TEST-005": {
+      "path": "spec/control-cards/VCGF-TEST-005.md",
+      "sha256": "9b3aadca61c048fb628b2a887a21a6cbbc9e6f0d9e558a49bdfa732c25dcf7ae"
+    },
+    "VCGF-TEST-006": {
+      "path": "spec/control-cards/VCGF-TEST-006.md",
+      "sha256": "23c25971d2248a655a3a927b812054fc10364d8f34c9268ed473ab4bf57a26b3"
+    },
+    "VCGF-UX-001": {
+      "path": "spec/control-cards/VCGF-UX-001.md",
+      "sha256": "d829f0927f08416f638f45726c98564aaa628247146a03094facbe0f5860ed53"
+    },
+    "VCGF-UX-002": {
+      "path": "spec/control-cards/VCGF-UX-002.md",
+      "sha256": "25f0f462b2c5bbdc2e640016bfa417578c4f36cd34628388f151819909806e66"
+    },
+    "VCGF-UX-003": {
+      "path": "spec/control-cards/VCGF-UX-003.md",
+      "sha256": "a4e2d922767fbc4f93dd2fabbd06bbbb7157402186600cfac7d7de8171da4791"
+    },
+    "VCGF-UX-004": {
+      "path": "spec/control-cards/VCGF-UX-004.md",
+      "sha256": "da708d8c9cac698eb40a67e0bd2f9188eaab1a399707d694114801d97b1ec506"
+    }
+  },
+  "common_clauses": {
+    "path": "spec/control-cards/common-clauses.md",
+    "sha256": "9cc60fd0868c496a68136dc1cc8c852cc1fe3c2880319f0f5f8904df07595bb1"
+  },
   "controls": {
     "VCGF-AI-001": {
       "domain": "ai-governance",
@@ -2076,6 +3420,60 @@
       "sha256": "971ebb7f465835a9add24f44412bcc7ffc34cc7f247edde84cde77540f57a574",
       "status": "normative",
       "title": "Recovery Flow Testing"
+    },
+    "VCGF-UX-001": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-001",
+      "path": "controls/user-experience/vcgf-ux-001-accessibility-conformance.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "382c9af6eee2632f8eb0f70452be8432c35aada54583071ff951e5cb67a69799",
+      "status": "normative",
+      "title": "Accessibility Conformance"
+    },
+    "VCGF-UX-002": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-002",
+      "path": "controls/user-experience/vcgf-ux-002-localization-and-bidirectional-text.md",
+      "profiles": [
+        "high-assurance",
+        "production"
+      ],
+      "requirement_level": "MUST",
+      "sha256": "7a7a71bf8314c09a55ab0f5a7e773f636c5da34efcf0b1efea2621b23462bbad",
+      "status": "normative",
+      "title": "Localization and Bidirectional Text"
+    },
+    "VCGF-UX-003": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-003",
+      "path": "controls/user-experience/vcgf-ux-003-interaction-state-integrity.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "b16e74bc07ae0e5941f2cd6cf7607cf18e17884af9c3a83466d4b296f9c9c675",
+      "status": "normative",
+      "title": "Interaction State Integrity"
+    },
+    "VCGF-UX-004": {
+      "domain": "user-experience",
+      "framework_version_introduced": "1.4.0",
+      "id": "VCGF-UX-004",
+      "path": "controls/user-experience/vcgf-ux-004-responsive-strategy-and-density.md",
+      "profiles": [
+        "high-assurance"
+      ],
+      "requirement_level": "SHOULD",
+      "sha256": "ec0c9343a89c3c065dc08017094a03aaeffd1387ab767456493268fc576f9c16",
+      "status": "normative",
+      "title": "Responsive Strategy and Density"
     }
   },
   "pack_map": {
@@ -2222,6 +3620,12 @@
         ],
         "risk": "HIGH"
       },
+      "backup": {
+        "capabilities": [
+          "backup-restore"
+        ],
+        "risk": "HIGH"
+      },
       "button-color": {
         "capabilities": [
           "ux-accessibility"
@@ -2247,11 +3651,29 @@
         ],
         "risk": "MEDIUM"
       },
+      "email": {
+        "capabilities": [
+          "email"
+        ],
+        "risk": "MEDIUM"
+      },
       "emergency": {
         "capabilities": [
           "incident"
         ],
         "risk": "CRITICAL"
+      },
+      "exception": {
+        "capabilities": [
+          "exception"
+        ],
+        "risk": "HIGH"
+      },
+      "governance-change": {
+        "capabilities": [
+          "governance-change"
+        ],
+        "risk": "HIGH"
       },
       "login": {
         "capabilities": [
@@ -2291,6 +3713,13 @@
         ],
         "risk": "LOW"
       },
+      "release": {
+        "capabilities": [
+          "release",
+          "operations"
+        ],
+        "risk": "HIGH"
+      },
       "reset": {
         "capabilities": [
           "password-recovery"
@@ -2307,14 +3736,15 @@
     "minimum_controls": [
       "VCGF-AI-001",
       "VCGF-GOV-001",
-      "VCGF-GOV-005"
+      "VCGF-GOV-005",
+      "VCGF-REL-001"
     ],
-    "policy_version": "1.1.0",
+    "policy_version": "1.2.0",
     "standard_review_controls": [
       "VCGF-TEST-002"
     ]
   },
-  "policy_sha256": "a55fecfc5dc5f9f7fcdaa2bd2a7ceda09bd0534c60d52881dedba4875ad08dff",
+  "policy_sha256": "be65266cf37eb0d285d47bba3078429613a231c1db4fedebe2a9f6dd3ae67fdb",
   "profiles": {
     "baseline": [
       "VCGF-AI-001",
@@ -2427,7 +3857,11 @@
       "VCGF-TEST-003",
       "VCGF-TEST-004",
       "VCGF-TEST-005",
-      "VCGF-TEST-006"
+      "VCGF-TEST-006",
+      "VCGF-UX-001",
+      "VCGF-UX-002",
+      "VCGF-UX-003",
+      "VCGF-UX-004"
     ],
     "production": [
       "VCGF-AI-001",
@@ -2506,7 +3940,9 @@
       "VCGF-TEST-003",
       "VCGF-TEST-004",
       "VCGF-TEST-005",
-      "VCGF-TEST-006"
+      "VCGF-TEST-006",
+      "VCGF-UX-001",
+      "VCGF-UX-002"
     ]
   },
   "resources": {
@@ -2520,11 +3956,11 @@
     },
     "packs/requirements/section-14.md": {
       "path": "packs/requirements/section-14.md",
-      "sha256": "873c75554f28d3ab11b72af8db82221430c713361d3e2fca55b6062179936179"
+      "sha256": "bb0160d2853f5c47e9aa146c891833ebeee214e6661aad7295e79a9762ff7c65"
     },
     "packs/requirements/section-15.md": {
       "path": "packs/requirements/section-15.md",
-      "sha256": "1750ee7fd25bf022ffe40f672c10314c8a2388e7e88d1ead6e1ef2a559668e1d"
+      "sha256": "de8fc596c3bbfcf13e7dbe16716eae2ebd2529ebb06a274590e6388c931e6fbe"
     },
     "packs/requirements/section-16.md": {
       "path": "packs/requirements/section-16.md",
@@ -2532,7 +3968,7 @@
     },
     "packs/requirements/section-17.md": {
       "path": "packs/requirements/section-17.md",
-      "sha256": "7841a81c02ef889dca7f53085569ad1a5879fc4009d2ef9981530d7d0c4f8318"
+      "sha256": "771ff07dfa0828ceb831e5c2c45b6c563f688c00700257e9142c4ffdb5566bd5"
     },
     "packs/requirements/section-18.md": {
       "path": "packs/requirements/section-18.md",
@@ -2540,15 +3976,15 @@
     },
     "packs/requirements/section-19.md": {
       "path": "packs/requirements/section-19.md",
-      "sha256": "dc39bc410039d95d5a611660cce49606127d6a354170c9da167131d09ed8e046"
+      "sha256": "744d3f65983b4420c5c0938aa1dd5219735965647c6ac95e2e07b1c894f5757c"
     },
     "packs/requirements/section-20.md": {
       "path": "packs/requirements/section-20.md",
-      "sha256": "3a2061c27817c4ec866e1c1aaf0088ffc936abf7abff5c7cbc2333f9ee360335"
+      "sha256": "3dad0048acf0fc744d4c43428cb7e1f9b252bed6bbdd970b519b4ef1337b7ee1"
     },
     "packs/requirements/section-21.md": {
       "path": "packs/requirements/section-21.md",
-      "sha256": "f495602ee9fb6687aa7fe53b00aec74c7b69d72017cbc309a5f23d1dd66970cf"
+      "sha256": "ac5338487b497d3c8429e2a4db3f5605fb8b7b03ec1fb5b056efe136ae5b17b4"
     },
     "packs/requirements/section-22.md": {
       "path": "packs/requirements/section-22.md",
@@ -2556,27 +3992,27 @@
     },
     "packs/requirements/section-23.md": {
       "path": "packs/requirements/section-23.md",
-      "sha256": "8bb225b2f1c6b57750e4544cf2e342464db26f1c40686593742853e047693b4d"
+      "sha256": "b3e3ae9e41d1ba6a6095c848be4b425c24106322ef6e3ee7404b2f47ba399c43"
     },
     "packs/requirements/section-24.md": {
       "path": "packs/requirements/section-24.md",
-      "sha256": "ebf55177dfd3371bd9fc0602acf521b327ae0d8941c30bcb9430c48d5ed06440"
+      "sha256": "265a5214bcfdac9b1a4f5da54939441f3263b7d2d37446b34d5f37d39ba9cd15"
     },
     "packs/requirements/section-25.md": {
       "path": "packs/requirements/section-25.md",
-      "sha256": "746a2c91473cb43797436411547bac3dcd9e6989febfb9df5fc547e65c8fd2fa"
+      "sha256": "a04061c4d2c83d19c69e3960f916cbfda572a18b312e41010898a2eb64525874"
     },
     "packs/requirements/section-26.md": {
       "path": "packs/requirements/section-26.md",
-      "sha256": "fa13ade97d27bcbc1289636bc9296c4abc758ac31d3b4c4f0f9affa447eb1170"
+      "sha256": "37c14cc0987c025083f5e2a3830e3d3e22bdb4763f83396d5bb6665993ea240c"
     },
     "packs/requirements/section-27.md": {
       "path": "packs/requirements/section-27.md",
-      "sha256": "0a353e0aefb92c8630fd4adc5f5d7dc7c3e809f8fdb775dffb0ea37c19cd7d85"
+      "sha256": "6ae25cd2cc1f59dab84fadd87aa5dfdf4e64abae9ce11adc156930b4089c815b"
     },
     "packs/requirements/section-28.md": {
       "path": "packs/requirements/section-28.md",
-      "sha256": "70963ae92215d6a24c37f0cdd34d0112459dcf479e70da9dbeff0d6f91d52b4e"
+      "sha256": "92899dbbf814d4169488ca71494266e9787882b81fc37328d9df4658eeda367c"
     },
     "packs/requirements/section-29.md": {
       "path": "packs/requirements/section-29.md",
@@ -2600,7 +4036,7 @@
     },
     "packs/requirements/section-34.md": {
       "path": "packs/requirements/section-34.md",
-      "sha256": "6cae4e2df6bd32181147254b59a28b230a4361bbdaf4b1f0c8e9ac403d02bb2f"
+      "sha256": "2139db7fb43988a1d6821b36f4cdabf86c90c6ba170220d314f377e585d6a8c5"
     },
     "packs/requirements/section-35.md": {
       "path": "packs/requirements/section-35.md",
@@ -2612,11 +4048,11 @@
     },
     "packs/requirements/section-37.md": {
       "path": "packs/requirements/section-37.md",
-      "sha256": "1528de5132ff728066d539ff00f486c3494aaca18cb2e31aaabbd31b624b18e3"
+      "sha256": "a3d88d586284b135fb4410f05931199378782181e63167dc83ca26f7b8e9a171"
     },
     "packs/requirements/section-38.md": {
       "path": "packs/requirements/section-38.md",
-      "sha256": "ba613ba2ab6120081f58a665713d8c22429afc8f1d6c3b5fdcad895119503b0e"
+      "sha256": "14149de3f04b72357e14009ac3746a3e12b9c7ab69beab3553ff1e8c149ba365"
     },
     "packs/requirements/section-39.md": {
       "path": "packs/requirements/section-39.md",

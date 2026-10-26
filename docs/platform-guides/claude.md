@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # Using VCGF with Claude Code
 
-**Adapter:** `claude` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.0.0 · **Status:** stable  
+**Adapter:** `claude` · **Adapter version:** 1.0.0 · **Framework:** VCGF 1.4.0 · **Status:** stable  
 **Platform surface:** Claude Code  
 **Official verification source:** https://code.claude.com/docs/en/memory  
 **Last verified:** 2026-10-02
@@ -111,7 +111,7 @@ After changing persistent rules or project context, start a fresh session/conver
 ### First message to send to the AI
 
 ```text
-Before making changes, read the project CLAUDE.md and project context, then inspect the relevant code. Confirm VCGF 1.0.0, the selected profile, the Claude Code adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
+Before making changes, read the project CLAUDE.md and project context, then inspect the relevant code. Confirm VCGF 1.4.0, the selected profile, the Claude Code adapter, relevant controls, impact areas, and any approval gate. Do not modify code yet.
 ```
 
 A healthy response should identify the framework/profile/adapter, summarize what it needs to inspect, identify likely risk areas, and **not** jump directly into a sensitive implementation.
@@ -132,7 +132,7 @@ Add admin access to the application.
 
 The AI should not blindly edit code. It should first inspect the existing authorization model, identify affected routes/data/API/database layers, assess access-control risk, explain its plan, and request approval if the proposed change crosses a VCGF approval gate.
 
-**Platform-specific verification:** Run `/context`, then ask Claude to confirm VCGF 1.0.0, the chosen profile, affected controls, and which changes require approval. Do not accept implementation as the first response to a HIGH/CRITICAL task.
+**Platform-specific verification:** Run `/context`, then ask Claude to confirm VCGF 1.4.0, the chosen profile, affected controls, and which changes require approval. Do not accept implementation as the first response to a HIGH/CRITICAL task.
 
 ## Step 10 — Make your first request
 
@@ -290,3 +290,7 @@ Read [`../../platforms/claude/LIMITATIONS.md`](../../platforms/claude/LIMITATION
 - Choose the appropriate [profile](../../profiles/).
 - Use the [pre-development checklist](../../checklists/pre-development/pre-development.md).
 - For technical detail, open the [VCGF Core specification](../../spec/VCGF-CORE.md) and [control catalog](../../spec/control-catalog.yaml).
+
+## Enforcement and selective context (1.4.0)
+
+What this platform can enforce deterministically is recorded with an honest status in `platforms/enforcement-matrix.yaml` (validators, pre-commit hook, CI gate, agent hook, platform permissions, review gate); prompt text alone enforces nothing. Load context through `scripts/vcgf.py route` (derived control cards, delta loading) and `ui-select` for Smart UI standards; never load `controls/` or the Smart UI package wholesale. Reference hooks live in `scripts/hooks/`; a Claude Code settings example (configurable, not exercised against the live platform) is in `platforms/claude/hooks/`.

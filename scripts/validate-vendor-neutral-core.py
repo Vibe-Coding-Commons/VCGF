@@ -6,7 +6,7 @@
 # GitHub: https://github.com/Vibe-Coding-Commons
 
 import re
-from vcgf_lib import ROOT, rel, fail_if
+from vcgf_lib import ROOT, rel, fail_if, all_files
 
 VENDORS = re.compile(r'\b(?:Lovable|Claude|Anthropic|Bolt|StackBlitz|Replit|Cursor|Vercel)\b|\bv0\b', re.I)
 CORE_DIRS = ('controls','spec','profiles','schemas')
@@ -15,8 +15,8 @@ CORE_DIRS = ('controls','spec','profiles','schemas')
 def main():
     errors=[]
     for d in CORE_DIRS:
-        for p in (ROOT/d).rglob('*'):
-            if not p.is_file():
+        for p in all_files():
+            if not rel(p).startswith(d+'/'):
                 continue
             if p.suffix.lower() not in {'.md','.yaml','.yml','.json'}:
                 continue

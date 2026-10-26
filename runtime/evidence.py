@@ -21,7 +21,7 @@ def evaluate(record, artifact_root, expected, trusted_review=None, now=None):
     if record['scope']['kind'] in ['project','release']:
         path=ROOT/'profiles'/record['profile']/'profile.yaml'
         if not path.is_file():errors.append('unknown profile');required=set()
-        else:required=set(yaml.safe_load(path.read_text())['required_controls'])
+        else:required=set(yaml.safe_load(path.read_text(encoding='utf-8'))['required_controls'])
     else:
         required=set(expected.get('required_control_ids',[]))
         if not required:errors.append('trusted task coverage set missing')

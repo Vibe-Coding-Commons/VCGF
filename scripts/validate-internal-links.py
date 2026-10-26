@@ -10,7 +10,7 @@ from vcgf_lib import *
 
 def main():
     errors=[]; rx=re.compile(r'\[[^\]]+\]\(([^)]+)\)')
-    for p in ROOT.rglob('*.md'):
+    for p in (q for q in all_files() if q.suffix.lower()=='.md'):
         text=p.read_text(encoding='utf-8')
         for target in rx.findall(text):
             target=target.strip().strip('<>')

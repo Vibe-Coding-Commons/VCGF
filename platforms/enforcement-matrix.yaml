@@ -1,0 +1,111 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+#
+# Enforcement matrix (adapter layer, so platform names are allowed here; the logical Core stays vendor-neutral): which mechanisms can enforce VCGF controls automatically, per adapter, with an honest status.
+# Prompt text never enforces anything by itself. A mechanism is `available` only when this repository ships it and a
+# test or validator exercises it here; `configurable` when the platform documents the hook or permission and VCGF ships
+# a reference configuration that has NOT been exercised against the live platform; `unverified` when the platform may
+# support it but nothing here proves it; `unsupported` when the platform offers no such surface.
+# scripts/validate-enforcement.py checks this file against the adapters, the mechanism catalogue and the shipped files.
+matrix_version: 1.0.0
+mechanisms:
+  validators:
+    description: Repository validators and generators run locally or in CI (scripts/validate-*.py, scripts/release-quality-gate.py).
+    reference: scripts/release-quality-gate.py
+    exercised_by: tests/scenarios/test_context_hardening.py, .github/workflows/release-quality-gate.yml
+  pre-commit-hook:
+    description: Git pre-commit hook that runs the fast validators and refuses a commit that changes canonical governance files without the explicit allowance.
+    reference: scripts/hooks/pre-commit-vcgf.py
+    exercised_by: tests/scenarios/test_enforcement.py
+  ci-gate:
+    description: Pull-request and tag workflows running the gate and the full test suite; release drafting refuses development status.
+    reference: .github/workflows/tests.yml
+    exercised_by: .github/workflows/release-quality-gate.yml, .github/workflows/tests.yml
+  agent-hook:
+    description: Platform hook that intercepts a tool call before a sensitive effect (edit or delete of canonical governance files, destructive shell commands) and blocks it unless an approval record (action governance-change, approved, unexpired, naming the resources) is presented; environment flags alone never unlock. Without a host-held identity adapter the record is tamper-evident, not tamper-proof, so this is a process control and no adapter is rated above configurable for it.
+    reference: scripts/hooks/guard-governance-files.py
+    exercised_by: tests/scenarios/test_enforcement.py
+  platform-permissions:
+    description: Platform-native permission or deny lists that stop a tool call independent of the prompt.
+    reference: platforms/claude/hooks/settings.example.json
+    exercised_by: none (platform surface; documented only)
+  review-gate:
+    description: Human or host-owned review required before a sensitive effect (approval contract, evidence gate).
+    reference: runtime/approval.py
+    exercised_by: tests/scenarios/test_gates.py
+adapters:
+  claude:
+    validators: available
+    pre-commit-hook: available
+    ci-gate: available
+    agent-hook: configurable   # Claude Code PreToolUse hooks exist; the shipped settings are an example, not exercised against the product here
+    platform-permissions: configurable
+    review-gate: available
+  cursor:
+    validators: available
+    pre-commit-hook: available
+    ci-gate: available
+    agent-hook: unverified
+    platform-permissions: unverified
+    review-gate: available
+  generic:
+    validators: available
+    pre-commit-hook: available
+    ci-gate: available
+    agent-hook: unsupported
+    platform-permissions: unsupported
+    review-gate: available
+  bolt:
+    validators: available
+    pre-commit-hook: unverified   # hosted editor; local git hooks apply only when the repository is checked out
+    ci-gate: available
+    agent-hook: unsupported
+    platform-permissions: unverified
+    review-gate: available
+  lovable:
+    validators: available
+    pre-commit-hook: unverified
+    ci-gate: available
+    agent-hook: unsupported
+    platform-permissions: unverified
+    review-gate: available
+  replit:
+    validators: available
+    pre-commit-hook: unverified
+    ci-gate: available
+    agent-hook: unsupported
+    platform-permissions: unverified
+    review-gate: available
+  v0:
+    validators: available
+    pre-commit-hook: unverified
+    ci-gate: available
+    agent-hook: unsupported
+    platform-permissions: unverified
+    review-gate: available
+  chatgpt:
+    validators: available
+    pre-commit-hook: unverified
+    ci-gate: available
+    agent-hook: unverified
+    platform-permissions: unverified
+    review-gate: available
+protected_paths:
+  # Canonical governance files: an agent hook or pre-commit hook blocks changes to them unless VCGF_GOVERNANCE_APPROVAL
+  # points to a covering approval record — VCGF-GOV-006 governance change control, VCGF-AI-007 no weakening, VCGF-GOV-002 approval.
+  - controls/
+  - profiles/
+  - schemas/
+  - spec/applicability-matrix.yaml
+  - spec/acceptance/
+  - platforms/enforcement-matrix.yaml
+  - runtime/routing-policy.yaml
+  - runtime/bootstrap.md
+  - capabilities/
+  - legal/
+  - LICENSE
+  - NOTICE.md

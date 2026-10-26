@@ -5,10 +5,14 @@
 # Email: i@hamada.io
 # GitHub: https://github.com/Vibe-Coding-Commons
 
+import argparse
 import yaml
 from vcgf_lib import *
 
 def main():
+    ap=argparse.ArgumentParser(description='Generate spec/control-catalog.yaml from control front matter.')
+    ap.add_argument('--check',action='store_true',help='compare with the existing catalog and exit 1 when stale; writes nothing')
+    args=ap.parse_args()
     rows=[]
     for p in control_files():
         meta,_=parse_frontmatter(p)
@@ -16,6 +20,7 @@ def main():
     rows.sort(key=lambda x:x['id'])
     header="# VCGF — Vibe Coding Governance Framework\n# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami\n# SPDX-License-Identifier: Apache-2.0\n# Founder & Maintainer: Eng. Hamada Sami\n# Email: i@hamada.io\n# GitHub: https://github.com/Vibe-Coding-Commons\n# AUTO-GENERATED — DO NOT EDIT MANUALLY\n\n"
     out={'catalog_version':'1.0.0','framework_version':(ROOT/'VERSION').read_text(encoding='utf-8').strip(),'source':'Control Markdown front matter','control_count':len(rows),'controls':rows}
-    (ROOT/'spec/control-catalog.yaml').write_text(header+yaml.safe_dump(out,sort_keys=False,allow_unicode=True),encoding='utf-8')
-    print(f"generated control catalog: {len(rows)}")
-if __name__=='__main__': main()
+    code=write_generated(ROOT/'spec/control-catalog.yaml',header+yaml.safe_dump(out,sort_keys=False,allow_unicode=True),'generate-control-catalog',args.check)
+    if not args.check: print(f"generated control catalog: {len(rows)}")
+    return code
+if __name__=='__main__': raise SystemExit(main())

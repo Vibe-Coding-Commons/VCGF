@@ -9,6 +9,6 @@ p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');args=p
 data=json.dumps(build_registry(),ensure_ascii=False,indent=2,sort_keys=True)+'\n'
 target=ROOT/'spec/runtime-registry.json'
 if args.check:
-    ok=target.exists() and target.read_text()==data
+    ok=target.exists() and target.read_text(encoding='utf-8').replace('\r\n','\n')==data
     print('PASS registry matches sources' if ok else 'FAIL stale/missing registry');sys.exit(0 if ok else 1)
-target.write_text(data);print(target)
+target.write_text(data,encoding='utf-8',newline='\n');print(target)

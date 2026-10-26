@@ -1,0 +1,30 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Synthetic Smart UI screen context for governed selection tests",
+  "synthetic": true,
+  "record": {
+    "schema_version": "1.0.0",
+    "project_id": "synthetic-ui",
+    "screen_id": "customer-record-edit",
+    "screen_purpose": "Create and edit customer records with scheduled follow-up dates",
+    "has_ui": true,
+    "signals": ["repeated_ui_primitives", "date_field"],
+    "interaction_signals": ["dirty_form", "duplicate_submit_risk"],
+    "composition_signals": ["create_edit_screen", "mobile_focused_task"],
+    "journey_signals": ["search_to_detail"],
+    "languages": ["ar", "en"],
+    "directions": ["rtl", "ltr"],
+    "devices": ["mobile", "desktop"],
+    "tenant_scoped": true,
+    "sensitive_data": true,
+    "existing_capabilities": [],
+    "notes": null,
+    "user_roles": ["agent", "supervisor"],
+    "task_frequency": "regular",
+    "information_density": "medium",
+    "viewport_priority": "balanced",
+    "primary_input": "mixed",
+    "entry_channel": "internal-navigation",
+    "completion_expectation": "detail",
+    "context_continuity": "task-scoped"
+  }
+}

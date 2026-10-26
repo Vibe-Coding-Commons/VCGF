@@ -1,0 +1,367 @@
+{
+  "$comment": "VCGF | SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami | Email: i@hamada.io | GitHub: https://github.com/Vibe-Coding-Commons",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vibe-Coding-Commons/VCGF/schemas/v1.1.0/ui-selection.schema.json",
+  "title": "VCGF 1.1 governed Smart UI selection result",
+  "description": "Output of runtime/ui_select.py: Smart UI standards bound to the user-experience controls of a route, hash-pinned by the package manifest and budgeted. Standards whose governing control is not in the route are deferred, never loaded.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0"
+    },
+    "task_id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "route_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "input_sha256": {
+      "$ref": "common.schema.json#/$defs/digest"
+    },
+    "profile": {
+      "$ref": "common.schema.json#/$defs/profile"
+    },
+    "status": {
+      "enum": [
+        "selected",
+        "no_ui",
+        "not_applicable",
+        "blocked"
+      ]
+    },
+    "ux_controls_in_route": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      }
+    },
+    "context_detail": {
+      "description": "card: requirement cards of the selected standards (lean/standard routes); full: complete standards (deep routes).",
+      "enum": [
+        "card",
+        "full"
+      ]
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "version": {
+          "$ref": "common.schema.json#/$defs/semver"
+        },
+        "status": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "manifest_sha256": {
+          "$ref": "common.schema.json#/$defs/digest"
+        }
+      },
+      "required": [
+        "path",
+        "version",
+        "status",
+        "manifest_sha256"
+      ]
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "state": {
+            "enum": [
+              "loaded",
+              "deferred",
+              "not_selected"
+            ]
+          },
+          "governing_controls": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/control_id"
+            }
+          },
+          "missing_controls": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/control_id"
+            }
+          }
+        },
+        "required": [
+          "state",
+          "governing_controls",
+          "missing_controls"
+        ]
+      }
+    },
+    "standards": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/standard"
+      }
+    },
+    "deferred_standards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "standard_id": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "layer": {
+            "$ref": "#/$defs/layer"
+          },
+          "path": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "missing_controls": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/control_id"
+            }
+          },
+          "reason": {
+            "$ref": "common.schema.json#/$defs/reason"
+          }
+        },
+        "required": [
+          "standard_id",
+          "layer",
+          "path",
+          "missing_controls",
+          "reason"
+        ]
+      }
+    },
+    "governance_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "sha256": {
+            "$ref": "common.schema.json#/$defs/digest"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "bound_controls": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/control_id"
+            }
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "bound_controls"
+        ]
+      }
+    },
+    "signals": {
+      "description": "Explicit screen signals and the signals inferred from the route intents and screen facts (both are recorded; inference never removes an explicit signal).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "explicit": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          }
+        },
+        "inferred": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          }
+        }
+      },
+      "required": [
+        "explicit",
+        "inferred"
+      ]
+    },
+    "precedence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "authoritative": {
+          "const": "controls"
+        },
+        "implementing": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "authoritative",
+        "implementing"
+      ]
+    },
+    "acceptance_tests": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^VCGF-[A-Z]+-[0-9]{3}-AT[0-9]{2}$"
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cost_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cost_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "measurement": {
+          "enum": [
+            "estimated",
+            "observed"
+          ]
+        },
+        "method": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "limit_tokens",
+        "cost_tokens",
+        "measurement",
+        "method"
+      ]
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/text"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/text"
+      }
+    },
+    "selection_plan_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "contract_version",
+    "task_id",
+    "route_sha256",
+    "input_sha256",
+    "profile",
+    "status",
+    "ux_controls_in_route",
+    "package",
+    "layers",
+    "standards",
+    "deferred_standards",
+    "governance_documents",
+    "acceptance_tests",
+    "budget",
+    "blockers",
+    "warnings",
+    "selection_plan_sha256"
+  ],
+  "$defs": {
+    "layer": {
+      "enum": [
+        "components",
+        "interactions",
+        "screen-compositions",
+        "journeys",
+        "external-standards"
+      ]
+    },
+    "standard": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "standard_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "layer": {
+          "$ref": "#/$defs/layer"
+        },
+        "path": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "sha256": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "served_bytes": {
+          "description": "UTF-8 bytes actually served (card or full text); bytes is the pinned source size.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "bound_controls": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/control_id"
+          }
+        },
+        "decision": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "matched_signals": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/text"
+          }
+        }
+      },
+      "required": [
+        "standard_id",
+        "layer",
+        "path",
+        "sha256",
+        "bytes",
+        "bound_controls",
+        "decision",
+        "matched_signals"
+      ]
+    }
+  }
+}

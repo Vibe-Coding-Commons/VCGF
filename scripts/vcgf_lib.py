@@ -7,11 +7,12 @@
 
 from __future__ import annotations
 from pathlib import Path
-import re, json, yaml
+import re, json, yaml, subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
+EXCLUDED_DIRS = {'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'}
 ALLOWED_MAPPING = {"NATIVE","CONFIGURABLE","PROMPT-ENFORCED","EXTERNAL","PARTIAL","UNSUPPORTED","NOT-APPLICABLE","UNVERIFIED"}
-DOMAINS = {"governance","ai-governance","architecture","security","identity-access","data-protection","privacy","database","api","secrets","dependencies","file-handling","logging-auditing","testing","release","operations","incident-response"}
+DOMAINS = {"governance","ai-governance","architecture","security","identity-access","data-protection","privacy","database","api","secrets","dependencies","file-handling","logging-auditing","testing","release","operations","incident-response","user-experience"}
 PROFILE_IDS = {"baseline","production","high-assurance"}
 ADAPTER_IDS = {"generic","lovable","claude","bolt","v0","replit","cursor"}
 
@@ -58,12 +59,45 @@ def fail_if(errors):
 def rel(path: Path):
     return path.relative_to(ROOT).as_posix()
 
+def _excluded(p: Path):
+    return any(part in EXCLUDED_DIRS for part in p.relative_to(ROOT).parts)
+
+def tracked_files():
+    """Deterministic repository enumeration: the files git tracks (``git ls-files -z``, no shell),
+    so untracked local files cannot change validator or manifest results. Falls back to a filesystem
+    walk with the same excluded directories when ROOT is not itself a git work tree (release archive)."""
+    try:
+        probe=subprocess.run(["git","rev-parse","--is-inside-work-tree","--show-toplevel"],cwd=ROOT,capture_output=True,text=True,encoding="utf-8",errors="replace")
+        lines=probe.stdout.splitlines()
+        if probe.returncode==0 and len(lines)>=2 and lines[0].strip()=="true" and Path(lines[1].strip()).resolve()==ROOT:
+            listing=subprocess.run(["git","ls-files","-z"],cwd=ROOT,capture_output=True,check=True).stdout.decode("utf-8")
+            files=[p for p in (ROOT/name for name in listing.split("\0") if name) if p.is_file() and not _excluded(p)]
+            if files:
+                return sorted(files,key=rel)
+    except (OSError,subprocess.SubprocessError,UnicodeDecodeError):
+        pass
+    return sorted((p for p in ROOT.rglob("*") if p.is_file() and not _excluded(p)),key=rel)
+
+def all_files():
+    """Every repository file (tracked set, or the fallback walk) without the text-file filter."""
+    return tracked_files()
+
 def text_files():
     allowed={".md",".yaml",".yml",".json",".py",".cff",".mdc",".txt"}
     names={".gitignore",".gitattributes",".editorconfig","VERSION","LICENSE"}
-    excluded={'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.venv', '.tox', '.coverage'}
-    for p in ROOT.rglob("*"):
-        if any(part in excluded for part in p.relative_to(ROOT).parts):
-            continue
-        if p.is_file() and (p.suffix.lower() in allowed or p.name in names):
+    for p in all_files():
+        if p.suffix.lower() in allowed or p.name in names:
             yield p
+
+def write_generated(target: Path, text: str, name: str, check: bool=False) -> int:
+    """Write generated text as UTF-8 with LF line endings, or with ``check`` compare it to the
+    existing file (CRLF-normalised) without writing. Returns the process exit code."""
+    if not check:
+        target.write_text(text,encoding="utf-8",newline="\n"); return 0
+    current=target.read_text(encoding="utf-8").replace("\r\n","\n") if target.is_file() else ""
+    if current==text:
+        print(f"PASS {name}: up to date"); return 0
+    old,new=current.splitlines(),text.splitlines()
+    line=next((i for i,(a,b) in enumerate(zip(old,new),1) if a!=b),min(len(old),len(new))+1)
+    print(f"FAIL {name}: stale"); print(f"  first difference at line {line}; run without --check to regenerate")
+    return 1

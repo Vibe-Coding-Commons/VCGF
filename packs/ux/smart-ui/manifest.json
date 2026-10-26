@@ -16,8 +16,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 878,
-      "sha256": "381d9daaeb9e4cd6828a14c9e307b52ee7852fbc9dd8723f135f15099641327f"
+      "bytes": 1765,
+      "sha256": "066eabc84c428e93402d1d242979171f84e5feadc98c9ccbcf5b2667f14deeae"
     },
     {
       "path": "INDEX.md",
@@ -816,13 +816,13 @@
     },
     {
       "path": "reports/DOCUMENTATION-VALIDATION.json",
-      "bytes": 8730,
-      "sha256": "aff1380a8341ab4271c97cc8a0b083ca6e6723b88cc2dbbc066660918f408139"
+      "bytes": 8743,
+      "sha256": "7eb65a17b8841faf69c3783d26503ad0eed4747374f796cf14d1fdd3f3dba6f5"
     },
     {
       "path": "reports/DOCUMENTATION-VALIDATION.md",
-      "bytes": 4055,
-      "sha256": "da7fca287d5c6678599160520e4f23c9a2fab20d49f09ae5f9c1b2e777d37f5f"
+      "bytes": 4067,
+      "sha256": "22f84fce21d313ee17b1e412c3b733f1f16f1de424075f7323439fccf90c5870"
     },
     {
       "path": "reports/FINAL-QUALITY-SUMMARY.md",
@@ -1046,8 +1046,8 @@
     },
     {
       "path": "scripts/build_manifest.py",
-      "bytes": 1128,
-      "sha256": "cbfc52c61746bcd9b18981ed9f7c140335b307184c0fa668407bfe84b580170e"
+      "bytes": 1299,
+      "sha256": "d6edd17c21c57ecaf753fb0efde55d0ebb4f02747b4dc69042aa2101193b005b"
     },
     {
       "path": "scripts/report-labels.json",
@@ -1066,8 +1066,8 @@
     },
     {
       "path": "scripts/validate_final.py",
-      "bytes": 21521,
-      "sha256": "6e97c48740aa9197916b3c855215670d26cd5309349c048eb14dc4faf3113eed"
+      "bytes": 22162,
+      "sha256": "9796ba0fdb01f43406a6a0e3e3dcdd6156ffc59f08bf6d19b390404694e67547"
     },
     {
       "path": "scripts/validate_package.py",

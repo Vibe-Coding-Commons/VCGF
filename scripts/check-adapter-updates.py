@@ -5,7 +5,7 @@ import argparse,json,sys
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('previous');p.add_argument('current');args=p.parse_args()
 try:
-    previous=json.loads(Path(args.previous).read_text());current=json.loads(Path(args.current).read_text())
+    previous=json.loads(Path(args.previous).read_text(encoding='utf-8'));current=json.loads(Path(args.current).read_text(encoding='utf-8'))
     changed=[];unavailable=[]
     for source in previous['sources']:
         old=source.get('sha256');new=next((x for x in current['sources'] if x['url']==source['url']),None)

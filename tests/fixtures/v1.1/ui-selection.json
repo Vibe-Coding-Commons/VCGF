@@ -1,0 +1,210 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Synthetic governed Smart UI selection (production profile: components and calendar loaded as requirement cards, other layers deferred)",
+  "synthetic": true,
+  "record": {
+    "contract_version": "1.1.0",
+    "task_id": "synthetic-ui",
+    "route_sha256": "1df657c02b619f6b1b9cda587f515950aa2230f4e241b1f99d9d9501385e448a",
+    "input_sha256": "9a037fa603e2120e5b6c0e2770c625dc0f2e370e26d8f4f12d79208ae9eddec8",
+    "profile": "production",
+    "status": "selected",
+    "ux_controls_in_route": [
+      "VCGF-UX-001",
+      "VCGF-UX-002"
+    ],
+    "context_detail": "card",
+    "package": {
+      "path": "packs/ux/smart-ui",
+      "version": "1.0.0",
+      "status": "final-integration-candidate",
+      "manifest_sha256": "a88545fe39284553284b6b3864e8c072412fcf842a5069f1f69fe285e524ce4a"
+    },
+    "layers": {
+      "components": {
+        "state": "loaded",
+        "governing_controls": [
+          "VCGF-UX-001"
+        ],
+        "missing_controls": []
+      },
+      "interactions": {
+        "state": "deferred",
+        "governing_controls": [
+          "VCGF-UX-003"
+        ],
+        "missing_controls": [
+          "VCGF-UX-003"
+        ]
+      },
+      "screen-compositions": {
+        "state": "deferred",
+        "governing_controls": [
+          "VCGF-UX-004"
+        ],
+        "missing_controls": [
+          "VCGF-UX-004"
+        ]
+      },
+      "journeys": {
+        "state": "deferred",
+        "governing_controls": [
+          "VCGF-UX-003"
+        ],
+        "missing_controls": [
+          "VCGF-UX-003"
+        ]
+      }
+    },
+    "standards": [
+      {
+        "standard_id": "VCGF-UI-COMP-001",
+        "layer": "components",
+        "path": "standards/VCGF-UI-COMP-001-DesignSystemPrimitives.md",
+        "sha256": "f89e96a940e8483bedc27a27e7a8a16621f5c8b5bcbfbc87c99dd4f9b9a9ff72",
+        "bytes": 28139,
+        "bound_controls": [
+          "VCGF-UX-001"
+        ],
+        "decision": "required",
+        "matched_signals": [
+          "repeated_ui_primitives"
+        ],
+        "served_bytes": 14076
+      },
+      {
+        "standard_id": "CALENDAR-GOVERNANCE-ADDENDUM",
+        "layer": "external-standards",
+        "path": "external-standards/CALENDAR-GOVERNANCE-ADDENDUM.md",
+        "sha256": "3f77b5614c7b045c8a6469573e3c16264e375f8bea08a9b08899bee716328376",
+        "bytes": 48943,
+        "bound_controls": [
+          "VCGF-UX-002"
+        ],
+        "decision": "required",
+        "matched_signals": [
+          "date_field"
+        ],
+        "served_bytes": 41651
+      }
+    ],
+    "deferred_standards": [
+      {
+        "standard_id": "VCGF-UI-INT-005",
+        "layer": "interactions",
+        "path": "interactions/VCGF-UI-INT-005-UnsavedChangesProtection.md",
+        "missing_controls": [
+          "VCGF-UX-003"
+        ],
+        "reason": "signals matched but none of VCGF-UX-003 is in the route for profile production; not loaded"
+      },
+      {
+        "standard_id": "VCGF-UI-INT-018",
+        "layer": "interactions",
+        "path": "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
+        "missing_controls": [
+          "VCGF-UX-003"
+        ],
+        "reason": "signals matched but none of VCGF-UX-003 is in the route for profile production; not loaded"
+      },
+      {
+        "standard_id": "VCGF-UI-INT-019",
+        "layer": "interactions",
+        "path": "interactions/VCGF-UI-INT-019-IdempotentSubmissionProtection.md",
+        "missing_controls": [
+          "VCGF-UX-003"
+        ],
+        "reason": "signals matched but none of VCGF-UX-003 is in the route for profile production; not loaded"
+      },
+      {
+        "standard_id": "VCGF-UI-JRN-001",
+        "layer": "journeys",
+        "path": "journeys/VCGF-UI-JRN-001-DiscoveryToDetailReturn.md",
+        "missing_controls": [
+          "VCGF-UX-003"
+        ],
+        "reason": "signals matched but none of VCGF-UX-003 is in the route for profile production; not loaded"
+      },
+      {
+        "standard_id": "VCGF-UI-SCR-004",
+        "layer": "screen-compositions",
+        "path": "screen-compositions/VCGF-UI-SCR-004-FormTransaction.md",
+        "missing_controls": [
+          "VCGF-UX-004"
+        ],
+        "reason": "signals matched but none of VCGF-UX-004 is in the route for profile production; not loaded"
+      },
+      {
+        "standard_id": "VCGF-UI-SCR-019",
+        "layer": "screen-compositions",
+        "path": "screen-compositions/VCGF-UI-SCR-019-MobileFocusedTask.md",
+        "missing_controls": [
+          "VCGF-UX-004"
+        ],
+        "reason": "signals matched but none of VCGF-UX-004 is in the route for profile production; not loaded"
+      }
+    ],
+    "governance_documents": [
+      {
+        "path": "governance/ACCESSIBILITY-RTL.md",
+        "sha256": "1b6be0cf827779baf4450c11f7010ad03eca5608920ff047c645e25a29ded935",
+        "bytes": 3928,
+        "bound_controls": [
+          "VCGF-UX-001",
+          "VCGF-UX-002"
+        ]
+      }
+    ],
+    "acceptance_tests": {
+      "VCGF-UX-001": [
+        "VCGF-UX-001-AT01",
+        "VCGF-UX-001-AT02",
+        "VCGF-UX-001-AT03",
+        "VCGF-UX-001-AT04"
+      ],
+      "VCGF-UX-002": [
+        "VCGF-UX-002-AT01",
+        "VCGF-UX-002-AT02",
+        "VCGF-UX-002-AT03",
+        "VCGF-UX-002-AT04"
+      ]
+    },
+    "signals": {
+      "explicit": {
+        "signals": [
+          "date_field",
+          "repeated_ui_primitives"
+        ],
+        "interaction_signals": [
+          "dirty_form",
+          "duplicate_submit_risk"
+        ],
+        "composition_signals": [
+          "create_edit_screen",
+          "mobile_focused_task"
+        ],
+        "journey_signals": [
+          "search_to_detail"
+        ]
+      },
+      "inferred": {
+        "interaction_signals": [
+          "high_assurance_action"
+        ]
+      }
+    },
+    "precedence": {
+      "authoritative": "controls",
+      "implementing": "packs/ux/smart-ui"
+    },
+    "budget": {
+      "limit_tokens": 9993247,
+      "cost_tokens": 17866,
+      "cost_bytes": 59655,
+      "measurement": "estimated",
+      "method": "estimated: ASCII characters / 4.0 + non-ASCII characters / 1.6; not a tokenizer measurement"
+    },
+    "blockers": [],
+    "warnings": [],
+    "selection_plan_sha256": "30fc7037be2175c2ac1283304bf496ef72f903d21a541cf2f84460a55ade6720"
+  }
+}

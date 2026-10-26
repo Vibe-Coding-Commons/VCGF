@@ -1,0 +1,386 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the governance controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: governance
+controls:
+  VCGF-GOV-001:
+    tests:
+      - id: VCGF-GOV-001-AT01
+        type: review
+        criterion: >-
+          Every non-trivial change carries an impact record, created before the first implementation commit, with a
+          non-empty entry (or an explicit "not affected" statement with a reason) for each of the six impact areas:
+          affected code, data and schema, permissions (roles, grants, row-level policies), integrations, tests, and
+          rollback or forward-fix concerns.
+        method: >-
+          A reviewer compares the impact record timestamp with the first implementation commit of the change, checks
+          that each of the six areas is addressed, and rejects records that leave an area blank.
+        negative_path: false
+        evidence: [code-review]
+        automation:
+          kind: hook
+          reference: hooks/pre-merge/impact-record (per project)
+      - id: VCGF-GOV-001-AT02
+        type: automated
+        criterion: >-
+          A change touching files classified as high risk (authentication, session, recovery, role, row-level
+          security, privileged key, encryption, tenant, payment, approval, destructive migration or file privacy
+          paths) is blocked from merging unless its record names an explicit plan, at least one linked test and a
+          rollback or forward-fix strategy.
+        method: >-
+          A pipeline check matches the diff against the project's high-risk path list and fails when the plan, test
+          link or rollback section is missing; the suite submits a fixture change to a row-level-security policy
+          without a rollback section and asserts the failure.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/governance/test_high_risk_change_gate (per project)
+      - id: VCGF-GOV-001-AT03
+        type: automated
+        criterion: >-
+          Every VCGF route result, for any intent, mode and profile, lists VCGF-GOV-001 in selected_control_ids with
+          the reason "minimum task governance" sourced from routing-policy.yaml, and a task record whose
+          overlay_remove_controls names VCGF-GOV-001 is routed as blocked with the blocker "overlay cannot remove
+          canonical or capability requirements" and an empty loaded_control_ids list.
+        method: >-
+          Run the VCGF router on task records for a LOW intent (button-color), a MEDIUM intent (api) and a CRITICAL
+          intent (deletion) in lean, standard and deep mode and assert the VCGF-GOV-001 reason in each result; then
+          route a task whose overlay_remove_controls contains VCGF-GOV-001 and assert decision blocked, the blocker
+          text, exit code 1 and an empty loaded_control_ids list.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py route
+      - id: VCGF-GOV-001-AT04
+        type: review
+        criterion: >-
+          For every change that alters a database schema, a grant or row-level policy, or an integration contract,
+          the impact record names the concrete rollback or forward-fix step (the reverse migration, the restore point
+          or the compensating forward migration), the data that step cannot restore, and each client or integration
+          whose compatibility is affected; a record whose rollback entry for a destructive migration says only
+          "revert the commit" or "not applicable" is rejected.
+        method: >-
+          A reviewer reads the impact record of each such change, confirms that the named rollback or forward-fix
+          step refers to an artifact that exists (migration file, backup reference or forward migration), compares
+          the named compatibility impact with the consumers listed in the integration inventory, and rejects
+          placeholder rollback statements.
+        negative_path: false
+        evidence: [migration-review, code-review]
+        automation:
+          kind: none
+  VCGF-GOV-002:
+    tests:
+      - id: VCGF-GOV-002-AT01
+        type: automated
+        criterion: >-
+          Every route result whose risk is HIGH or CRITICAL (any intent classified HIGH or CRITICAL in the routing
+          policy, any task carrying a risk signal, or any task whose context environment is production) has
+          approval_required true, and a route-result record edited to risk HIGH with approval_required false is
+          rejected by the contract validator with "HIGH/CRITICAL route cannot suppress required approval".
+        method: >-
+          Run the VCGF router for the login, payment, migration, deletion and emergency intents, for an api intent
+          carrying the destructive risk signal and for a button-color intent in a production context, asserting
+          approval_required true in each route result; then validate a route-result file edited to approval_required
+          false and assert the rejection message and exit code 1.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: validator
+          reference: scripts/vcgf.py validate route-result
+      - id: VCGF-GOV-002-AT02
+        type: automated
+        criterion: >-
+          The host's approval gate denies the guarded operation when the approval record is self-approved
+          (requested_by equals decision_by.subject), not in status approved, expired or not yet valid, revoked,
+          unauthenticated (no identity adapter, or an adapter that does not return true), or when any of action,
+          resources, environment, plan_sha256, action_sha256 or policy_sha256 differs from the expected scope, and
+          runs the operation exactly once only for an authenticated, in-validity, scope-matching approval.
+        method: >-
+          A unit test calls runtime.approval.guarded_call with the project's authenticator and revocation store and
+          one record per denial case, asserts a PermissionError whose message names the reason ("requester cannot
+          self-approve this contract", "not approved", "approval expired/not yet valid", "revoked", "trusted identity
+          adapter unavailable", "authority not authenticated", "scope changed: plan_sha256") and that the operation
+          callable was never invoked, then calls it with a valid record and asserts the operation ran exactly once.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/governance/test_approval_gate (per project, via runtime/approval.py::guarded_call)
+      - id: VCGF-GOV-002-AT03
+        type: review
+        criterion: >-
+          Each merged change affecting authentication, authorization, destructive data operations, secrets,
+          production infrastructure, payments, personal-data processing or a security control contains the agent's
+          stop-point description (proposed change, risks, rollback, required evidence) and an approval reference
+          naming the approver, the decision time and the plan hash approved, dated before the first execution step.
+        method: >-
+          A reviewer samples every change in those categories from the release, locates the stop-point description
+          and the approval reference, and compares the approval timestamp with the timestamp of the first execution
+          (migration run, deploy, secret rotation).
+        negative_path: false
+        evidence: [approval-record, code-review]
+        automation:
+          kind: hook
+          reference: hooks/pre-merge/approval-reference (per project)
+      - id: VCGF-GOV-002-AT04
+        type: automated
+        criterion: >-
+          A pipeline run that reaches a production deploy, destructive migration or secret-rotation step without a
+          recorded human approval for that run never executes the step: the job stops at the protected environment
+          gate and no deploy, migration or rotation side effect is observable afterwards.
+        method: >-
+          Trigger the pipeline for a fixture change without approving the protected environment, wait for the
+          timeout, and assert that the protected job was skipped and that the target environment version, schema
+          version and secret version are unchanged.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: pipeline protected-environment gate for deploy, migration and rotation jobs (per project)
+  VCGF-GOV-003:
+    tests:
+      - id: VCGF-GOV-003-AT01
+        type: automated
+        criterion: >-
+          Every record in the project's security exception register names the bypassed control ID, the blocker, the
+          affected systems, data and users, a risk rating, compensating controls, a risk owner, an expiry date and a
+          review date, an approval by someone other than the requester, and a remediation plan; a record missing any
+          field or lacking an expiry date fails the register check.
+        method: >-
+          A test parses every exception record created from templates/security/security-exception.md, asserts the
+          presence of each field, that expiry and review dates are set and in the future at creation, and that the
+          approver differs from the requester; it submits a fixture record without an expiry date and asserts failure.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/governance/test_exception_register (per project)
+      - id: VCGF-GOV-003-AT02
+        type: automated
+        criterion: >-
+          The evidence gate never accepts an inactive exception as cover: a listed exception whose status is not
+          approved, whose expires_at has passed or whose review_at has been reached produces "exception
+          expired/revoked/review due: <exception_id>", a control citing a non-approved exception is rejected with
+          "a control cannot rely on an unapproved exception", and a control whose verification is not passed with no
+          exception_ref to an active exception produces "unverified/failed control: <control_id>"; a record whose only
+          unverified control cites one active approved exception yields none of these and lists that exception.
+        method: >-
+          Call runtime.evidence.evaluate through the host's trusted review adapter (the scripts/vcgf.py evidence CLI
+          prints the same error texts but, having no identity provider, always adds "trusted reviewer adapter
+          unavailable") on fixture records for an expired, a review-overdue, a revoked-and-cited and a no-exception
+          case and on one with a single active exception, asserting the error texts for the former and status
+          CONDITIONAL with the exception id listed for the latter.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py evidence (error texts) and runtime/evidence.py::evaluate (host gate)
+      - id: VCGF-GOV-003-AT03
+        type: review
+        criterion: >-
+          Each open exception's compensating control addresses the same risk outcome as the bypassed control rather
+          than documenting acceptance, its justification is not an inability statement such as "the tool could not
+          make it work", and its remediation plan has an owner and a target date earlier than the expiry.
+        method: >-
+          A reviewer reads every open exception, maps the compensating control to the risk addressed by the bypassed
+          control, rejects justifications that only state that the implementation failed, and checks the remediation
+          owner and date.
+        negative_path: false
+        evidence: [approval-record, code-review]
+        automation:
+          kind: none
+      - id: VCGF-GOV-003-AT04
+        type: automated
+        criterion: >-
+          No security check is disabled silently: every skipped security test, suppressed scanner finding, disabled
+          lint security rule or weakened policy setting in code or configuration carries an exception ID that
+          resolves to an approved, unexpired register record, and a suppression without such an ID fails the pipeline.
+        method: >-
+          A pipeline step scans skip markers, suppression comments and security-related configuration toggles for
+          exception IDs, resolves each against the register, and fails on unknown, expired or missing IDs; the suite
+          adds a fixture skip without an ID and asserts the failure.
+        negative_path: true
+        evidence: [test-result, security-scan]
+        automation:
+          kind: ci
+          reference: tests/governance/test_no_silent_bypass (per project)
+  VCGF-GOV-004:
+    tests:
+      - id: VCGF-GOV-004-AT01
+        type: automated
+        criterion: >-
+          Every evidence record declares framework_version, adapter_id and adapter_version, profile, environment,
+          scope (task, release or project with its target), code_sha256, policy_sha256 and the covered
+          required_control_ids, and the evidence gate reports "control records must exactly cover the DECLARED
+          required set" when the control records and required_control_ids differ and "incomplete required coverage"
+          when a control required by the profile (project or release scope) or by the trusted expected set (task
+          scope) is absent from required_control_ids.
+        method: >-
+          Validate a complete record with the evidence contract validator and assert accepted true; then run the
+          evidence gate on two fixtures, one whose control records omit a declared required control and one whose
+          required_control_ids omit a profile-required control, and assert the two error texts.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py validate evidence and scripts/vcgf.py evidence
+      - id: VCGF-GOV-004-AT02
+        type: automated
+        criterion: >-
+          Each artifact cited by an evidence record resolves to a file under the artifact root whose SHA-256 digest
+          equals the recorded sha256, and a modified, missing or path-escaping artifact makes the gate return FAIL
+          with "artifact changed" or "artifact missing/unsafe" naming the artifact_id.
+        method: >-
+          Evaluate a record with intact artifacts, then alter one byte of an artifact, delete another and point a
+          third outside the artifact root, re-running the gate after each change and asserting the error text.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py evidence --artifact-root
+      - id: VCGF-GOV-004-AT03
+        type: review
+        criterion: >-
+          For each control claimed conformant in a release, the cited evidence_refs resolve to a reproducible artifact
+          (test output, pipeline run, scan report, configuration snapshot, migration dry-run or manual verification
+          record) tied to the released commit, and a claim supported only by a policy document, README statement or
+          checklist tick is marked unverified.
+        method: >-
+          A reviewer opens each evidence reference of the release record, confirms the artifact type and its binding
+          to the released commit or version, and downgrades documentation-only claims to unverified.
+        negative_path: false
+        evidence: [code-review, release-checksum]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py release-check
+      - id: VCGF-GOV-004-AT04
+        type: automated
+        criterion: >-
+          Evidence is bound to the code and policy it describes: a record whose code_sha256, policy_sha256,
+          environment, profile or scope differs from the release under evaluation fails with "changed evidence
+          binding: <field>", and a record outside its created_at to valid_until window fails with "stale/future
+          evidence".
+        method: >-
+          Run the release check with the release candidate's expected binding against a record produced for an
+          earlier commit and a record whose valid_until has passed, asserting the two error texts, and against the
+          matching record, asserting that neither text appears (the CLI, having no identity provider, still reports
+          "trusted reviewer adapter unavailable"; the host gate with its trusted review adapter returns PASS).
+        negative_path: true
+        evidence: [test-result, release-checksum]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py release-check
+  VCGF-GOV-005:
+    tests:
+      - id: VCGF-GOV-005-AT01
+        type: automated
+        criterion: >-
+          The set of files changed by an implementation is a subset of the approved change manifest, touches no
+          protected file and does not exceed the approved file count; a change outside the manifest is rejected with
+          "change outside approved manifest", a protected file change with "protected file changed" and a change
+          beyond the count with "change size exceeds approved file count".
+        method: >-
+          Snapshot the repository before and after the change with runtime.scope_guard.snapshot, run check_scope
+          against the approved manifest, protected list and max_changed_files and assert allowed true; then introduce
+          an edit to an unlisted file, to a protected file and to one file beyond the count and assert the three
+          errors.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/governance/test_scope_guard (per project, via runtime/scope_guard.py::check_scope)
+      - id: VCGF-GOV-005-AT02
+        type: automated
+        criterion: >-
+          The previous release's contract tests for public interfaces (HTTP API schema, exported functions, database
+          schema read by other services, events and message formats) pass unchanged against the new build, and a
+          change that breaks one of them merges only when it carries an approved breaking-change marker.
+        method: >-
+          The pipeline runs the contract suite frozen at the previous release tag against the candidate build, fails
+          on any failure unless the change record contains the breaking-change marker with an approval reference, and
+          the suite includes a fixture removal of a response field that must be caught.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/contracts/test_backward_compatibility (per project)
+      - id: VCGF-GOV-005-AT03
+        type: review
+        criterion: >-
+          A bug-fix or feature change contains no unrelated refactoring: every renamed symbol, moved file, reformatted
+          block or dependency version change in the diff is required by the stated requirement, and a change that
+          mixes unrelated refactoring is split into separate changes before merge.
+        method: >-
+          A reviewer walks the diff hunk by hunk against the impact record, marks each hunk as required or
+          unrelated, and requests a split when any hunk is unrelated to the requirement.
+        negative_path: false
+        evidence: [code-review]
+        automation:
+          kind: none
+  VCGF-GOV-006:
+    tests:
+      - id: VCGF-GOV-006-AT01
+        type: automated
+        criterion: >-
+          Each control ID is defined by exactly one Markdown file under controls/<domain>/ whose front matter id,
+          folder and file name agree, and every supported adapter's control-mapping.yaml maps every catalog control
+          exactly once with no duplicate, unknown or missing control IDs and a status from the allowed mapping set.
+        method: >-
+          Run the control and adapter validators of the pinned framework version in the pipeline; in a temporary copy
+          of the framework tree the test adds a duplicate control file and a mapping row with an unknown control ID
+          and asserts that the validators fail with "duplicate ID" and "unknown mappings" naming the offending ID.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: validator
+          reference: scripts/validate-controls.py and scripts/validate-adapters.py
+      - id: VCGF-GOV-006-AT02
+        type: automated
+        criterion: >-
+          The logical Core (controls/, spec/, profiles/, schemas/) contains no vendor-specific term, and every
+          always-on adapter entry rule file contains the clause "this rule file is an adapter, not the source of
+          policy" outside HTML comments.
+        method: >-
+          Run the vendor-neutral-core validator and the adapter entry-file clause check; in a temporary copy add a
+          vendor name to a control file and remove the clause from one entry file and assert that each validator
+          fails naming the file.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: validator
+          reference: scripts/validate-vendor-neutral-core.py and scripts/validate-adapters.py
+      - id: VCGF-GOV-006-AT03
+        type: review
+        criterion: >-
+          Every governance statement in the project's instruction files, rule files, templates and pipeline policies
+          cites the VCGF control ID it implements, and no project document restates or alters a control's Requirement
+          text; statements without a control reference are either mapped to a control or removed.
+        method: >-
+          A reviewer lists the canonical controls with the controls command, searches project rule and policy files
+          for normative statements (MUST, SHOULD, never, always), and confirms each cites a control ID and matches the
+          control's Requirement section.
+        negative_path: false
+        evidence: [code-review, configuration-record]
+        automation:
+          kind: script
+          reference: scripts/vcgf.py controls
+      - id: VCGF-GOV-006-AT04
+        type: review
+        criterion: >-
+          Each adapter mapping row for a control describes only implementation, enforcement classification,
+          capability, limitations and evidence, carries a status from the allowed mapping set, a source_claim that
+          resolves to the adapter's verification sources and a last_verified date, and includes no policy text that
+          redefines, weakens or extends the control's Requirement.
+        method: >-
+          A reviewer compares each mapping row against the control's Requirement section, confirms the row's fields
+          stay within the allowed descriptive set and that its source_claim resolves to an entry in
+          verification/sources.yaml with a last_verified date.
+        negative_path: false
+        evidence: [code-review, configuration-record]
+        automation:
+          kind: validator
+          reference: scripts/validate-adapters.py

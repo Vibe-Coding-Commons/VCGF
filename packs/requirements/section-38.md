@@ -1,6 +1,14 @@
 <!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
 
-# 38. Attachment Backup  يجب دعم إعدادات مستقلة، مثل:  ```yaml attachment_backup:   enabled: true    sources:     - storage/attachments     - storage/documents    schedule:     frequency: daily    compression: true    encryption: true    retention:     daily: 7     weekly: 4     monthly: 12 ```  وتدعم:  ```text Manual Backup Scheduled Backup Download Backup Restore Backup Verify Backup ```  ---  
+# 38. Attachment Backup
+
+يجب دعم إعدادات مستقلة، مثل:  ```yaml attachment_backup:   enabled: true    sources:
+
+- storage/attachments
+- storage/documents    schedule:     frequency: daily    compression: true    encryption: true    retention:     daily: 7     weekly: 4     monthly: 12 ```  وتدعم:  ```text Manual Backup Scheduled Backup Download Backup Restore Backup Verify Backup ```  ---
+
+Source units: `S38.001` – `S38.004` (packs/index.yaml)
+
 
 ## Verification boundary
 

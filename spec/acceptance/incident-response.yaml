@@ -1,0 +1,207 @@
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Acceptance tests for the incident-response controls; see spec/acceptance/README.md for the format and rules.
+acceptance_version: 1.0.0
+domain: incident-response
+controls:
+  VCGF-IR-001:
+    tests:
+      - id: VCGF-IR-001-AT01
+        type: review
+        criterion: >-
+          The incident response record names a current incident owner and deputy with contact routes, the internal
+          and external communication path, the critical provider contacts (hosting, identity, payment, email),
+          assigns each of detection, containment, credential and key response, evidence preservation,
+          communication and recovery to a role held by someone in the current roster, and the recovery entry
+          references the backup restore runbook whose last successful restore test falls within the review period.
+        method: >-
+          A reviewer checks every responsibility has an assignee, every named person is in the current roster,
+          every provider contact has been verified within the review period and the referenced restore runbook
+          carries a restore test date inside the period.
+        negative_path: false
+        evidence: [manual-verification, approval-record]
+        automation:
+          kind: none
+      - id: VCGF-IR-001-AT02
+        type: automated
+        criterion: >-
+          An operator can revoke all sessions and tokens of one account and of all accounts, disable a named
+          endpoint or feature flag, and rotate a named secret, each within the time stated in the runbook, and a
+          request presenting a revoked session or targeting a disabled endpoint is rejected afterwards.
+        method: >-
+          A staging exercise runs each containment action with a timer, then replays a revoked session token and a
+          request to the disabled endpoint and asserts both rejections.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/incident/test_containment_actions (per project)
+      - id: VCGF-IR-001-AT03
+        type: automated
+        criterion: >-
+          Audit events for authentication, privileged actions, access to or export of sensitive records and secret
+          access are retained for at least the period set by the incident policy in a store the application
+          identity cannot modify or delete, and a query reconstructs who accessed a given record in a given window.
+        method: >-
+          A test writes known events, attempts to delete them with the application identity and asserts the
+          denial, then queries the store for a chosen record and window and compares the result with the events
+          written.
+        negative_path: true
+        evidence: [test-result, configuration-record]
+        automation:
+          kind: ci
+          reference: tests/incident/test_audit_log_integrity (per project)
+      - id: VCGF-IR-001-AT04
+        type: manual
+        criterion: >-
+          A credential-leak exercise and a data-exposure exercise were run within the review period following the
+          runbook steps (rotate and revoke, inspect usage, invalidate sessions, identify exposure, remove from
+          history, add regression prevention; preserve evidence, restrict access, identify affected data, tenants
+          and users, determine cause, assess notification requirements), and each report records the steps
+          completed, the time to containment and the gaps found.
+        method: >-
+          A reviewer reads both exercise reports, checks each runbook step has a completion entry and that every gap
+          has an owner and a due date.
+        negative_path: false
+        evidence: [manual-verification]
+        automation:
+          kind: none
+  VCGF-IR-002:
+    tests:
+      - id: VCGF-IR-002-AT01
+        type: review
+        criterion: >-
+          The compromise runbook holds a distinct procedure for each of user credential, API secret, signing key,
+          encryption key and deployment credential, each naming the rotation command or console path, the sessions
+          or tokens to invalidate, the dependent systems to update, the evidence to preserve before rotation and
+          the maximum time to rotate, and every secret in the secret inventory maps to exactly one procedure.
+        method: >-
+          A reviewer checks the five procedures for the required fields and reconciles the secret inventory with
+          them so that no secret is left without a procedure.
+        negative_path: false
+        evidence: [inventory, manual-verification]
+        automation:
+          kind: none
+      - id: VCGF-IR-002-AT02
+        type: automated
+        criterion: >-
+          Emergency rotation of an API secret, of the session-signing key and of a deployment credential in staging
+          completes within the runbook time limit after a snapshot of each secret's access log is preserved, after
+          which requests presenting the old API secret, sessions signed with the old key and a deployment attempted
+          with the old credential are rejected, while every dependent system listed in the procedure (pipelines,
+          integrations, scheduled jobs) authenticates with the new values and the application keeps serving requests
+          without a source code deployment.
+        method: >-
+          A rotation exercise runs with a timer, asserts the preserved log snapshots, replays the old API secret,
+          an old-key session and a deployment with the old credential and asserts the three rejections, then runs
+          the smoke suite and checks the access logs for every listed dependent system using the new values and
+          none still using the retired ones.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/incident/test_emergency_rotation (per project)
+      - id: VCGF-IR-002-AT03
+        type: automated
+        criterion: >-
+          For a chosen compromised secret or key, the access logs identify every use (caller, resource, time)
+          during the suspected exposure window and the secret inventory lists every system and environment holding
+          it, so that the affected-systems report is produced within the runbook assessment time.
+        method: >-
+          A test uses a seeded secret from known callers, produces the usage report from the logs, and compares
+          the callers and the holding systems with the seeded set and the inventory.
+        negative_path: false
+        evidence: [log-sample, inventory]
+        automation:
+          kind: ci
+          reference: tests/incident/test_secret_usage_trace (per project)
+      - id: VCGF-IR-002-AT04
+        type: automated
+        criterion: >-
+          Rotating the data-encryption key re-encrypts or re-wraps every protected record so that all records
+          decrypt with the new key, and after the retired key is destroyed no record can be decrypted with it.
+        method: >-
+          A staging dataset is encrypted, the key is rotated, the retired key is destroyed, and the test asserts
+          every record decrypts with the new key and a decryption attempt with the retired key fails.
+        negative_path: true
+        evidence: [test-result]
+        automation:
+          kind: ci
+          reference: tests/incident/test_encryption_key_rotation (per project)
+      - id: VCGF-IR-002-AT05
+        type: automated
+        criterion: >-
+          Marking a user credential as compromised forces a credential reset and invalidates every active session
+          and refresh token of that account within the runbook time, so that a request presenting a session or
+          refresh token issued before the reset is rejected and the next login succeeds only with the new
+          credential, while sessions of other accounts remain valid.
+        method: >-
+          A test logs the account in from two clients, flags the credential as compromised, replays both pre-reset
+          sessions and the refresh token and asserts the rejections, attempts a login with the old and then the new
+          credential, and verifies a control account's session still works.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/incident/test_user_credential_compromise (per project)
+  VCGF-IR-003:
+    tests:
+      - id: VCGF-IR-003-AT01
+        type: review
+        criterion: >-
+          The personal-data incident procedure names the decision owner who declares an incident and triggers
+          notification, the legal or privacy review contact, the containment actions (restrict access, disable
+          export, revoke sharing links) and the notification paths to affected individuals, customers and
+          authorities by reference to the project's regulatory overlay rather than deadlines hard-coded in the
+          procedure.
+        method: >-
+          A reviewer checks the procedure against the roster and the regulatory overlay and confirms no
+          jurisdiction-specific deadline is written into the generic procedure.
+        negative_path: false
+        evidence: [manual-verification, approval-record]
+        automation:
+          kind: none
+      - id: VCGF-IR-003-AT02
+        type: automated
+        criterion: >-
+          For a seeded exposure of a data set, the affected data categories, tenants and users (count and
+          identifiers) are produced from the data-classification register and the access logs within the runbook
+          assessment time and match the seeded set exactly.
+        method: >-
+          A test seeds an exposure in staging (for example a leaked export of known rows), runs the scope
+          assessment procedure with a timer and compares the produced list with the seeded rows.
+        negative_path: false
+        evidence: [test-result, inventory]
+        automation:
+          kind: ci
+          reference: tests/incident/test_personal_data_scope_assessment (per project)
+      - id: VCGF-IR-003-AT03
+        type: automated
+        criterion: >-
+          After containment (sharing link revoked, bucket made private, export endpoint disabled) an
+          unauthenticated request and a previously authorized but now revoked request for the exposed data are both
+          denied, and the pre-containment evidence (access log snapshot, object listing, configuration state) was
+          written to a write-once location before the configuration changed.
+        method: >-
+          A staging exercise exposes a test object, preserves the evidence, applies containment, replays both
+          requests and asserts the denials and the evidence timestamp preceding the configuration change.
+        negative_path: true
+        evidence: [test-result, log-sample]
+        automation:
+          kind: ci
+          reference: tests/incident/test_personal_data_containment (per project)
+      - id: VCGF-IR-003-AT04
+        type: manual
+        criterion: >-
+          A tabletop exercise for a suspected personal-data incident was run within the review period, walking the
+          decision owner through the declaration decision, the legal review trigger and the notification decision
+          under the regulatory overlay, and its report records the time from detection to containment and to the
+          notification decision and the gaps found.
+        method: >-
+          A reviewer reads the exercise report and confirms the three decisions were exercised, the timings are
+          recorded and each gap has an owner and a due date.
+        negative_path: false
+        evidence: [manual-verification]
+        automation:
+          kind: none

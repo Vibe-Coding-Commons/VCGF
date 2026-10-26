@@ -6,7 +6,7 @@
 # GitHub: https://github.com/Vibe-Coding-Commons
 
 profile_id: high-assurance
-profile_version: 1.0.0
+profile_version: 1.1.0
 framework_compatibility: '>=1.0.0 <2.0.0'
 assurance: high-assurance
 description: Strengthened VCGF profile for sensitive, institutional, regulated, or
@@ -96,6 +96,10 @@ required_controls:
 - VCGF-TEST-004
 - VCGF-TEST-005
 - VCGF-TEST-006
+- VCGF-UX-001
+- VCGF-UX-002
+- VCGF-UX-003
+- VCGF-UX-004
 optional_controls: []
 evidence_requirements:
 - Independent or dual-person review for high-risk controls where practical.

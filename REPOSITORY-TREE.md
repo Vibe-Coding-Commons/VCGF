@@ -20,8 +20,13 @@ VCGF/
 │   │   ├── config.yml
 │   │   ├── control-proposal.md
 │   │   └── documentation-issue.md
+│   ├── release-keys
+│   │   └── README.md
 │   ├── workflows
 │   │   ├── release-quality-gate.yml
+│   │   ├── release.yml
+│   │   ├── supply-chain.yml
+│   │   ├── tests.yml
 │   │   ├── validate-adapters.yml
 │   │   ├── validate-adaptive.yml
 │   │   ├── validate-framework.yml
@@ -29,6 +34,7 @@ VCGF/
 │   │   ├── validate-runtime.yml
 │   │   └── validate-schemas.yml
 │   ├── CODEOWNERS
+│   ├── dependabot.yml
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── assets
 │   └── brand
@@ -45,15 +51,19 @@ VCGF/
 │   ├── deletion.yaml
 │   ├── development-agent.yaml
 │   ├── email.yaml
+│   ├── exception.yaml
 │   ├── fields.yaml
 │   ├── files.yaml
+│   ├── governance-change.yaml
 │   ├── identity.yaml
 │   ├── incident.yaml
+│   ├── operations.yaml
 │   ├── password-recovery.yaml
 │   ├── payment.yaml
 │   ├── privacy.yaml
 │   ├── product-ai.yaml
 │   ├── public-discovery.yaml
+│   ├── release.yaml
 │   ├── script-protection.yaml
 │   ├── sessions.yaml
 │   ├── step-up.yaml
@@ -185,14 +195,20 @@ VCGF/
 │   │   ├── vcgf-sec-004-trusted-layer-input-validation.md
 │   │   ├── vcgf-sec-005-output-encoding-and-sanitization.md
 │   │   └── vcgf-sec-006-secure-defaults-and-fail-closed-behavior.md
-│   └── testing
+│   ├── testing
+│   │   ├── README.md
+│   │   ├── vcgf-test-001-authorization-negative-testing.md
+│   │   ├── vcgf-test-002-secure-code-review.md
+│   │   ├── vcgf-test-003-security-regression-review.md
+│   │   ├── vcgf-test-004-security-test-strategy.md
+│   │   ├── vcgf-test-005-validation-and-injection-testing.md
+│   │   └── vcgf-test-006-recovery-flow-testing.md
+│   └── user-experience
 │       ├── README.md
-│       ├── vcgf-test-001-authorization-negative-testing.md
-│       ├── vcgf-test-002-secure-code-review.md
-│       ├── vcgf-test-003-security-regression-review.md
-│       ├── vcgf-test-004-security-test-strategy.md
-│       ├── vcgf-test-005-validation-and-injection-testing.md
-│       └── vcgf-test-006-recovery-flow-testing.md
+│       ├── vcgf-ux-001-accessibility-conformance.md
+│       ├── vcgf-ux-002-localization-and-bidirectional-text.md
+│       ├── vcgf-ux-003-interaction-state-integrity.md
+│       └── vcgf-ux-004-responsive-strategy-and-density.md
 ├── docs
 │   ├── platform-guides
 │   │   ├── bolt.md
@@ -234,7 +250,10 @@ VCGF/
 │   │   │   ├── scope-register.json
 │   │   │   ├── skill-forward-test.json
 │   │   │   └── test-evidence.json
-│   │   └── v1.3.0-smart-ui-integration.md
+│   │   ├── v1.3.0-smart-ui-integration.md
+│   │   ├── v1.4.0-phase1-architecture-governance.md
+│   │   ├── v1.4.0-phase2-token-efficiency.md
+│   │   └── v1.4.0-phase3-verification-enforcement.md
 │   ├── quality
 │   │   ├── v1.2
 │   │   │   ├── evidence
@@ -269,18 +288,29 @@ VCGF/
 │   │   │   ├── evaluation-ar.md
 │   │   │   ├── evaluation-en.md
 │   │   │   ├── executive-summary.md
+│   │   │   ├── HISTORICAL.md
 │   │   │   ├── integration-log.md
 │   │   │   ├── public-release-decision.md
 │   │   │   ├── release-gates.md
 │   │   │   ├── release-notes-v1.2.0.md
 │   │   │   ├── scope-register.json
 │   │   │   └── sources.json
-│   │   └── v1.3
-│   │       ├── baseline-compatibility-v1.3.json
-│   │       ├── public-release-decision.md
-│   │       ├── release-checklist.md
-│   │       ├── release-notes-v1.3.0.md
-│   │       └── release-validation-local.json
+│   │   ├── v1.3
+│   │   │   ├── baseline-compatibility-v1.3.1.json
+│   │   │   ├── baseline-compatibility-v1.3.json
+│   │   │   ├── public-release-decision.md
+│   │   │   ├── release-checklist-v1.3.1.md
+│   │   │   ├── release-checklist.md
+│   │   │   ├── release-notes-v1.3.0.md
+│   │   │   ├── release-notes-v1.3.1.md
+│   │   │   └── release-validation-local.json
+│   │   └── v1.4
+│   │       ├── baseline-compatibility-v1.4.json
+│   │       ├── PULL-REQUEST-v1.4.0.md
+│   │       ├── release-checklist-v1.4.0.md
+│   │       ├── release-notes-v1.4.0.md
+│   │       ├── release-validation-local.json
+│   │       └── self-acceptance-results.json
 │   ├── references
 │   │   ├── owasp-asvs-5-mapping.md
 │   │   └── sources-and-standards.md
@@ -800,6 +830,8 @@ VCGF/
 │   ├── claude
 │   │   ├── examples
 │   │   │   └── example-adoption.md
+│   │   ├── hooks
+│   │   │   └── settings.example.json
 │   │   ├── mappings
 │   │   │   └── README.md
 │   │   ├── prompts
@@ -945,35 +977,36 @@ VCGF/
 │   │   ├── README.md
 │   │   ├── runtime-capabilities.yaml
 │   │   └── RUNTIME-INSTALLATION.md
-│   └── v0
-│       ├── examples
-│       │   └── example-adoption.md
-│       ├── mappings
-│       │   └── README.md
-│       ├── prompts
-│       │   └── pre-change-impact-review.md
-│       ├── rules
-│       │   ├── custom-instructions.md
-│       │   └── runtime.generated.md
-│       ├── templates
-│       │   └── project-context.md
-│       ├── tests
-│       │   ├── adapter-verification.md
-│       │   └── runtime-canary.md
-│       ├── verification
-│       │   ├── sources.yaml
-│       │   └── verification-report.md
-│       ├── ADAPTER.md
-│       ├── adapter.yaml
-│       ├── CAPABILITIES.md
-│       ├── CHANGELOG.md
-│       ├── CONTROL-MAPPING.md
-│       ├── control-mapping.yaml
-│       ├── INSTALLATION.md
-│       ├── LIMITATIONS.md
-│       ├── README.md
-│       ├── runtime-capabilities.yaml
-│       └── RUNTIME-INSTALLATION.md
+│   ├── v0
+│   │   ├── examples
+│   │   │   └── example-adoption.md
+│   │   ├── mappings
+│   │   │   └── README.md
+│   │   ├── prompts
+│   │   │   └── pre-change-impact-review.md
+│   │   ├── rules
+│   │   │   ├── custom-instructions.md
+│   │   │   └── runtime.generated.md
+│   │   ├── templates
+│   │   │   └── project-context.md
+│   │   ├── tests
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
+│   │   ├── verification
+│   │   │   ├── sources.yaml
+│   │   │   └── verification-report.md
+│   │   ├── ADAPTER.md
+│   │   ├── adapter.yaml
+│   │   ├── CAPABILITIES.md
+│   │   ├── CHANGELOG.md
+│   │   ├── CONTROL-MAPPING.md
+│   │   ├── control-mapping.yaml
+│   │   ├── INSTALLATION.md
+│   │   ├── LIMITATIONS.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
+│   └── enforcement-matrix.yaml
 ├── playbooks
 │   ├── existing-project-hardening-plan.md
 │   ├── key-rotation-playbook.md
@@ -1002,23 +1035,30 @@ VCGF/
 │   │   ├── schools.py
 │   │   └── ux.py
 │   ├── __init__.py
+│   ├── acceptance.py
 │   ├── approval.py
 │   ├── bootstrap.md
+│   ├── compliance.py
 │   ├── context-policy.yaml
 │   ├── context.py
 │   ├── contracts.py
 │   ├── evidence.py
 │   ├── evidence_pack.py
 │   ├── loader.py
+│   ├── model-guidance.md
 │   ├── pack-map.yaml
 │   ├── preferences-policy.yaml
 │   ├── registry.py
 │   ├── resolver.py
 │   ├── router.py
 │   ├── routing-policy.yaml
-│   └── scope_guard.py
+│   ├── scope_guard.py
+│   ├── tokens.py
+│   ├── ui-bindings.yaml
+│   └── ui_select.py
 ├── schemas
 │   ├── v1.1.0
+│   │   ├── acceptance-results.schema.json
 │   │   ├── adapter-capabilities.schema.json
 │   │   ├── approval.schema.json
 │   │   ├── capability.schema.json
@@ -1026,35 +1066,53 @@ VCGF/
 │   │   ├── context.schema.json
 │   │   ├── evidence.schema.json
 │   │   ├── preferences.schema.json
-│   │   └── route-result.schema.json
+│   │   ├── route-result.schema.json
+│   │   └── ui-selection.schema.json
 │   ├── v1.2.0
 │   │   ├── architecture-decision.schema.json
 │   │   ├── project-fingerprint.schema.json
 │   │   ├── release-evidence.schema.json
 │   │   ├── ux-decision.schema.json
 │   │   └── ux-discovery.schema.json
+│   ├── v1.4.0
+│   │   └── control.schema.json
 │   ├── adapter.schema.json
 │   ├── conformance.schema.json
 │   ├── control.schema.json
 │   └── profile.schema.json
 ├── scripts
+│   ├── hooks
+│   │   ├── guard-governance-files.py
+│   │   └── pre-commit-vcgf.py
 │   ├── benchmark-adaptive.py
 │   ├── check-adapter-updates.py
 │   ├── generate-adapter-rules.py
+│   ├── generate-control-cards.py
 │   ├── generate-control-catalog.py
 │   ├── generate-file-manifest.py
 │   ├── generate-repository-tree.py
 │   ├── generate-runtime-registry.py
+│   ├── generate-sbom.py
+│   ├── migrate-task-budget.py
+│   ├── record-release-validation.py
 │   ├── release-quality-gate.py
+│   ├── run-self-acceptance.py
 │   ├── test-adaptive-browser.py
+│   ├── validate-acceptance.py
 │   ├── validate-adapters.py
+│   ├── validate-applicability.py
 │   ├── validate-attribution.py
 │   ├── validate-contracts.py
+│   ├── validate-control-cards.py
 │   ├── validate-controls.py
 │   ├── validate-cross-references.py
+│   ├── validate-dependencies.py
 │   ├── validate-documentation.py
+│   ├── validate-enforcement.py
 │   ├── validate-internal-links.py
 │   ├── validate-license.py
+│   ├── validate-operational-map.py
+│   ├── validate-package-integrity.py
 │   ├── validate-placeholders.py
 │   ├── validate-profiles.py
 │   ├── validate-repository-structure.py
@@ -1066,12 +1124,125 @@ VCGF/
 │   ├── vcgf.py
 │   └── vcgf_lib.py
 ├── spec
+│   ├── acceptance
+│   │   ├── ai-governance.yaml
+│   │   ├── api.yaml
+│   │   ├── architecture.yaml
+│   │   ├── data-protection.yaml
+│   │   ├── database.yaml
+│   │   ├── dependencies.yaml
+│   │   ├── file-handling.yaml
+│   │   ├── governance.yaml
+│   │   ├── identity-access.yaml
+│   │   ├── incident-response.yaml
+│   │   ├── logging-auditing.yaml
+│   │   ├── operations.yaml
+│   │   ├── privacy.yaml
+│   │   ├── README.md
+│   │   ├── release.yaml
+│   │   ├── secrets.yaml
+│   │   ├── security.yaml
+│   │   ├── testing.yaml
+│   │   └── user-experience.yaml
+│   ├── control-cards
+│   │   ├── common-clauses.md
+│   │   ├── README.md
+│   │   ├── VCGF-AI-001.md
+│   │   ├── VCGF-AI-002.md
+│   │   ├── VCGF-AI-003.md
+│   │   ├── VCGF-AI-004.md
+│   │   ├── VCGF-AI-005.md
+│   │   ├── VCGF-AI-006.md
+│   │   ├── VCGF-AI-007.md
+│   │   ├── VCGF-AI-008.md
+│   │   ├── VCGF-AI-009.md
+│   │   ├── VCGF-API-001.md
+│   │   ├── VCGF-API-002.md
+│   │   ├── VCGF-API-003.md
+│   │   ├── VCGF-API-004.md
+│   │   ├── VCGF-API-005.md
+│   │   ├── VCGF-ARCH-001.md
+│   │   ├── VCGF-ARCH-002.md
+│   │   ├── VCGF-ARCH-003.md
+│   │   ├── VCGF-ARCH-004.md
+│   │   ├── VCGF-ARCH-005.md
+│   │   ├── VCGF-AUDIT-001.md
+│   │   ├── VCGF-AUDIT-002.md
+│   │   ├── VCGF-AUDIT-003.md
+│   │   ├── VCGF-DATA-001.md
+│   │   ├── VCGF-DATA-002.md
+│   │   ├── VCGF-DATA-003.md
+│   │   ├── VCGF-DATA-004.md
+│   │   ├── VCGF-DATA-005.md
+│   │   ├── VCGF-DATA-006.md
+│   │   ├── VCGF-DB-001.md
+│   │   ├── VCGF-DB-002.md
+│   │   ├── VCGF-DB-003.md
+│   │   ├── VCGF-DB-004.md
+│   │   ├── VCGF-DB-005.md
+│   │   ├── VCGF-DB-006.md
+│   │   ├── VCGF-DEP-001.md
+│   │   ├── VCGF-DEP-002.md
+│   │   ├── VCGF-DEP-003.md
+│   │   ├── VCGF-DEP-004.md
+│   │   ├── VCGF-FILE-001.md
+│   │   ├── VCGF-FILE-002.md
+│   │   ├── VCGF-GOV-001.md
+│   │   ├── VCGF-GOV-002.md
+│   │   ├── VCGF-GOV-003.md
+│   │   ├── VCGF-GOV-004.md
+│   │   ├── VCGF-GOV-005.md
+│   │   ├── VCGF-GOV-006.md
+│   │   ├── VCGF-IAM-001.md
+│   │   ├── VCGF-IAM-002.md
+│   │   ├── VCGF-IAM-003.md
+│   │   ├── VCGF-IAM-004.md
+│   │   ├── VCGF-IAM-005.md
+│   │   ├── VCGF-IAM-006.md
+│   │   ├── VCGF-IAM-007.md
+│   │   ├── VCGF-IR-001.md
+│   │   ├── VCGF-IR-002.md
+│   │   ├── VCGF-IR-003.md
+│   │   ├── VCGF-OPS-001.md
+│   │   ├── VCGF-OPS-002.md
+│   │   ├── VCGF-OPS-003.md
+│   │   ├── VCGF-OPS-004.md
+│   │   ├── VCGF-OPS-005.md
+│   │   ├── VCGF-PRIV-001.md
+│   │   ├── VCGF-PRIV-002.md
+│   │   ├── VCGF-PRIV-003.md
+│   │   ├── VCGF-PRIV-004.md
+│   │   ├── VCGF-REL-001.md
+│   │   ├── VCGF-REL-002.md
+│   │   ├── VCGF-REL-003.md
+│   │   ├── VCGF-REL-004.md
+│   │   ├── VCGF-REL-005.md
+│   │   ├── VCGF-SEC-001.md
+│   │   ├── VCGF-SEC-002.md
+│   │   ├── VCGF-SEC-003.md
+│   │   ├── VCGF-SEC-004.md
+│   │   ├── VCGF-SEC-005.md
+│   │   ├── VCGF-SEC-006.md
+│   │   ├── VCGF-SECR-001.md
+│   │   ├── VCGF-SECR-002.md
+│   │   ├── VCGF-TEST-001.md
+│   │   ├── VCGF-TEST-002.md
+│   │   ├── VCGF-TEST-003.md
+│   │   ├── VCGF-TEST-004.md
+│   │   ├── VCGF-TEST-005.md
+│   │   ├── VCGF-TEST-006.md
+│   │   ├── VCGF-UX-001.md
+│   │   ├── VCGF-UX-002.md
+│   │   ├── VCGF-UX-003.md
+│   │   └── VCGF-UX-004.md
+│   ├── applicability-matrix.yaml
 │   ├── conformance.md
 │   ├── control-catalog.yaml
 │   ├── evidence-model.md
 │   ├── exception-management.md
 │   ├── lifecycle.md
 │   ├── normative-language.md
+│   ├── operational-control-map.yaml
 │   ├── risk-model.md
 │   ├── runtime-registry.json
 │   └── VCGF-CORE.md
@@ -1109,6 +1280,8 @@ VCGF/
 │   └── testing
 │       └── security-test-evidence.md
 ├── tests
+│   ├── acceptance
+│   │   └── test_self_acceptance.py
 │   ├── adaptive
 │   │   ├── conftest.py
 │   │   ├── test_engines.py
@@ -1131,18 +1304,29 @@ VCGF/
 │   │   │   ├── baseline-hashes.json
 │   │   │   └── records.json
 │   │   └── v1.1
+│   │       ├── acceptance-results.json
 │   │       ├── adapter-capabilities.json
 │   │       ├── approval.json
 │   │       ├── capability.json
 │   │       ├── context.json
 │   │       ├── evidence.json
 │   │       ├── preferences.json
-│   │       └── route-result.json
+│   │       ├── route-result.json
+│   │       ├── screen-context.json
+│   │       └── ui-selection.json
 │   └── scenarios
 │       ├── test_adapters.py
+│       ├── test_applicability_triggers.py
+│       ├── test_compliance.py
+│       ├── test_context_efficiency.py
+│       ├── test_context_hardening.py
+│       ├── test_enforcement.py
+│       ├── test_final_consolidation.py
 │       ├── test_gates.py
 │       ├── test_integrations.py
-│       └── test_runtime.py
+│       ├── test_profile_layer.py
+│       ├── test_runtime.py
+│       └── test_ui_select.py
 ├── .editorconfig
 ├── .gitattributes
 ├── .gitignore
