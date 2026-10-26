@@ -9,17 +9,25 @@ from cryptography.x509.oid import NameOID
 from cryptography.hazmat.primitives import hashes,serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.exceptions import InvalidTag
-import pytest
-pytest.importorskip('fcntl', reason='examples/integrations/backup/unified.py uses POSIX file locking; this module is skipped on Windows')
+try:
+    import fcntl  # noqa: F401  (POSIX file locking used by examples/integrations/backup/unified.py)
+    HAVE_FCNTL=True
+except ImportError:  # Windows: the module is skipped, under pytest and under plain unittest alike
+    HAVE_FCNTL=False
+SKIP_REASON='examples/integrations/backup/unified.py uses POSIX file locking (fcntl); skipped where it is absent'
 ROOT=Path(__file__).resolve().parents[2]
 def module(name,path):
     s=importlib.util.spec_from_file_location(name,ROOT/path);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
-backup=module('backup','examples/integrations/backup/unified.py')
-mail=module('mail','examples/integrations/email/delivery.py')
-queue=module('outbox','examples/integrations/email/queue.py')
-operations=module('operations','examples/integrations/backup/operations.py')
+if HAVE_FCNTL:
+    backup=module('backup','examples/integrations/backup/unified.py')
+    mail=module('mail','examples/integrations/email/delivery.py')
+    queue=module('outbox','examples/integrations/email/queue.py')
+    operations=module('operations','examples/integrations/backup/operations.py')
+else:
+    backup=mail=queue=operations=None
 
 
+@unittest.skipUnless(HAVE_FCNTL, SKIP_REASON)
 class BackupTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name)
@@ -83,6 +91,7 @@ class Handler(socketserver.StreamRequestHandler):
             else:self.wfile.write(b'250 OK\r\n')
 
 
+@unittest.skipUnless(HAVE_FCNTL, SKIP_REASON)
 class MailTests(unittest.TestCase):
     def test_no_plaintext_mode(self):
         with self.assertRaises(ValueError):mail.SMTPProvider('localhost',25,['sink@example.test'],tls_mode='none')
@@ -108,6 +117,7 @@ class MailTests(unittest.TestCase):
                 finally:server.shutdown();worker.join(timeout=5)
 
 
+@unittest.skipUnless(HAVE_FCNTL, SKIP_REASON)
 class OperationTests(unittest.TestCase):
     def test_queue_retry_only_explicit_temporary_refusal(self):
         import smtplib
