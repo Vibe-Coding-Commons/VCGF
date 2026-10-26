@@ -33,4 +33,9 @@ Use evidence labels:
 
 After repeated failed fixes, stop speculative patching and return to root-cause analysis.
 
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

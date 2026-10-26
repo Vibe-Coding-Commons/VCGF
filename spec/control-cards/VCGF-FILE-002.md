@@ -8,4 +8,8 @@ Files containing non-public or user-specific data MUST be private by default and
 ## Guidance
 Use unpredictable storage identifiers, separate display names from storage keys, and use scoped or time-limited access mechanisms when appropriate.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

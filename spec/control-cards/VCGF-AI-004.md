@@ -8,4 +8,8 @@ An AI agent MUST NOT remove, rewrite, refactor, rename, or expand unrelated beha
 ## Guidance
 Treat existing working behavior as a contract. Any unrelated opportunity should be reported separately rather than bundled into the requested change.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

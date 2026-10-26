@@ -8,4 +8,8 @@ Projects SHOULD maintain clear separation among presentation, state, business lo
 ## Guidance
 Avoid embedding authorization, database migration logic, privileged credentials, or irreversible business decisions only in presentation components.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

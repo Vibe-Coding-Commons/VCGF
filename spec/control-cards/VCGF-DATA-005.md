@@ -8,4 +8,8 @@ When exact-match search is required over encrypted low-entropy personal data, de
 ## Guidance
 Separate index keys from encryption keys, normalize only according to an explicit field policy, version the index scheme, authorize lookup endpoints, and rate-limit enumeration-sensitive searches.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

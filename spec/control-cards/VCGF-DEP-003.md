@@ -8,4 +8,8 @@ Production dependencies MUST be subject to security advisory or vulnerability re
 ## Guidance
 Triage findings for reachability, exploitability, compensating controls, upgrade impact, and release blocking criteria.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

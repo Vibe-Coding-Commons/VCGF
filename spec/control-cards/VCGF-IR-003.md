@@ -8,4 +8,8 @@ Projects processing personal data MUST define containment, scope assessment, evi
 ## Guidance
 Do not encode jurisdiction-specific notification deadlines into the generic core; regulatory overlays may add them.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

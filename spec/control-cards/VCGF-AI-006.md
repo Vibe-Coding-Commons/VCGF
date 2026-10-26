@@ -8,4 +8,8 @@ AI-assisted changes to authentication, authorization, database migrations, secre
 ## Guidance
 Sensitive changes require explicit affected assets, threat considerations, test plan, rollback, and evidence requirements before implementation.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

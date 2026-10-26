@@ -8,4 +8,8 @@ AI-generated changes MUST preserve the approved project architecture unless an a
 ## Guidance
 Inspect current layering, naming, ownership boundaries, data flows, interfaces, and shared components before adding new patterns.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

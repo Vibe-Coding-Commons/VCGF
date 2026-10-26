@@ -8,4 +8,8 @@ Projects SHOULD use supported lockfiles or equivalent mechanisms to make depende
 ## Guidance
 Do not delete or regenerate lockfiles casually during unrelated work. Major upgrades should be isolated from unrelated changes.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

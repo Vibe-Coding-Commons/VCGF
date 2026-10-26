@@ -19,4 +19,28 @@ Every persistent field should have:
 - logging rule
 - export rule
 
+## Retention
+Do not retain sensitive data indefinitely by default.
+
+## Deletion scope
+Consider:
+- primary DB
+- replicas
+- search indexes
+- object storage
+- caches
+- exports
+- logs
+- backups
+
+If backups cannot delete individual records immediately, document how deleted data is prevented from being restored into active use.
+
+## Test data
+Do not copy production PII casually into development or demos. Prefer synthetic/de-identified data.
+
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

@@ -8,4 +8,8 @@ Security-relevant behavior MUST default to the least-privileged or denied state 
 ## Guidance
 Do not trade secure defaults for development convenience. Document the trade-off when usability or compatibility requires a controlled exception.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

@@ -14,6 +14,10 @@ Interactive screens SHOULD make every state explicit and recoverable: loading, e
 - Session expiry and permission change: preserve the in-progress work, distinguish expired from forbidden, re-authenticate, and resume to the same context when still authorized.
 - Completion feedback reflects the trusted layer's result; a toast or closed dialog is not a record.
 
+## References
+- W3C Web Content Accessibility Guidelines (WCAG) 2.2 (status messages, error identification)
+- Detailed interaction standards: `packs/ux/smart-ui/interactions/` (VCGF-UI-INT-005 unsaved changes, INT-006 save and submit, INT-007 confirmation, INT-008 empty, INT-009 loading, INT-010 error and retry, INT-012 concurrency conflict, INT-016 session expiry, INT-019 idempotent submission)
+
 ## Applicability
 Apply to tasks that create or change interactive screens, forms, workflows or background-job interfaces. Required for the High-Assurance profile and recommended for Production. Read-only presentation changes record the control as not applicable with a reason.
 

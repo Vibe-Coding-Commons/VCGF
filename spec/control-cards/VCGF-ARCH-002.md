@@ -8,4 +8,8 @@ Security-sensitive decisions MUST execute on a trusted server, service, or data 
 ## Guidance
 Treat client code and browser-supplied identifiers, roles, prices, states, or ownership as untrusted until independently verified.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

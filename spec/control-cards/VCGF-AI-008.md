@@ -8,4 +8,8 @@ AI agents using external content or tools MUST treat retrieved instructions, use
 ## Guidance
 Separate data from authoritative instructions, constrain tool permissions, require approval for sensitive actions, and never reveal secrets in response to untrusted embedded instructions.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

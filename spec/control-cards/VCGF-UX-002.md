@@ -15,6 +15,11 @@ Interfaces that support more than one language or a right-to-left language MUST 
 - Plan for text expansion and long names; test wrapping, truncation and tabular numerals in both languages.
 - Translate security-relevant messages (errors, confirmations, consent) with the same precision as the source; never leave placeholders.
 
+## References
+- W3C Internationalization: structural markup for language and direction, inline bidirectional markup
+- W3C Web Content Accessibility Guidelines (WCAG) 2.2
+- Detailed UI standards: `packs/ux/smart-ui/governance/ACCESSIBILITY-RTL.md`, `packs/ux/smart-ui/external-standards/CALENDAR-GOVERNANCE-ADDENDUM.md`, `packs/ux/rtl-ltr.md`
+
 ## Applicability
 Apply to every user-facing task in a product that declares more than one interface language or any right-to-left language. Required for the Production and High-Assurance profiles. Single-language left-to-right products record the control as not applicable with the declared language list as the reason.
 

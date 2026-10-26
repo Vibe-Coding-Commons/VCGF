@@ -8,4 +8,8 @@ For existing projects, current code, schema, tests, interfaces, and documented b
 ## Guidance
 Prefer extension and reuse over duplicate concepts. When implementation conflicts with an approved specification, record the conflict rather than silently choosing one.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

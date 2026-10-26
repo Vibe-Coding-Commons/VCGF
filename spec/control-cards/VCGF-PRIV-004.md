@@ -8,4 +8,9 @@ Projects that store personal, confidential, or regulated data MUST define retent
 ## Guidance
 Retention rules should be enforceable and testable. Deletion workflows must consider primary records, derived data, caches, search indexes, attachments, exports, replicas, and backups according to documented recovery windows. Secure deletion MUST NOT be represented as instantaneous when platform backups or immutable retention make that impossible; the documented lifecycle must state when data becomes inaccessible and when residual copies expire.
 
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0 where applicable
+- NIST Secure Software Development Framework (SSDF) where applicable
+- Project-specific regulatory or contractual overlays where applicable
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[C] Verification[C] Evidence[C] Exceptions[C] Dependencies[C] Related[C] Platform[C]

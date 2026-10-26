@@ -8,4 +8,8 @@ Production releases SHOULD monitor error rate, authentication failures, authoriz
 ## Guidance
 Monitoring must avoid secrets and unnecessary personal data and should define response ownership.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

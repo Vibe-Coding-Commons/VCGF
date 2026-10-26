@@ -8,4 +8,8 @@ High-risk and critical changes MUST receive explicit human approval before execu
 ## Guidance
 Use a documented risk classification. The AI agent must stop before the irreversible or security-sensitive action, describe the proposed change, risks, rollback, and required evidence, and record the approval reference.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

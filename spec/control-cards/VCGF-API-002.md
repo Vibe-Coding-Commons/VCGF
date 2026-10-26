@@ -23,4 +23,18 @@ Never trust client-calculated:
 
 Server recalculates or verifies these values.
 
+## State machines
+Document valid transitions and reject unauthorized transitions.
+
+## Race conditions
+Use transactions, locking/concurrency control, uniqueness, idempotency, and atomic updates where needed.
+
+## Duplicate submissions
+Payments, orders, approvals, emails, vouchers, and provisioning must be resilient to retries.
+
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

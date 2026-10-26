@@ -8,4 +8,8 @@ An AI agent MUST distinguish verified project facts from assumptions and MUST NO
 ## Guidance
 When a material fact cannot be verified, mark it UNVERIFIED or REQUIRES VERIFICATION and avoid destructive or security-sensitive implementation based on the assumption.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

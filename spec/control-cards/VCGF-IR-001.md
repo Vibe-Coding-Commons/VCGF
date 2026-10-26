@@ -15,4 +15,15 @@ Prepare:
 - endpoint/feature disable path
 - critical provider contacts
 
+## Credential leak
+Rotate/revoke, inspect usage, invalidate affected sessions/tokens, identify exposure, remove from code/history as required, add regression prevention.
+
+## Data exposure
+Preserve evidence, restrict access, identify affected data/tenants/users, determine cause, and follow applicable contractual/legal notification requirements.
+
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

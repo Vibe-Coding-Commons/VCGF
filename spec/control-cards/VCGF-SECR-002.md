@@ -8,4 +8,8 @@ Secrets and cryptographic credentials MUST have documented rotation and emergenc
 ## Guidance
 A suspected exposed secret must be treated as compromised: rotate or revoke it, assess logs and dependent systems, and invalidate derived credentials where appropriate.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

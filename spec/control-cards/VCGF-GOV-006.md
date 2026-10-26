@@ -8,4 +8,8 @@ Each normative requirement MUST have one canonical control definition in the VCG
 ## Guidance
 Platform adapters explain implementation, enforcement, capability, limitations, and evidence for a control. They do not redefine the control.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

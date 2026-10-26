@@ -34,4 +34,9 @@ Security-sensitive and business-critical fields MUST have explicit trusted-layer
 | OTP/PIN | Exact format + attempt limits | Expiring, single-use |
 | Reset token | Opaque high-entropy value | Store securely/hashed; expiring, single-use |
 
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

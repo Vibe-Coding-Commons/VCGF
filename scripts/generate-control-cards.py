@@ -11,8 +11,8 @@ Requirement, the Implementation-Neutral Guidance and every control-specific sect
 Method, Required Evidence, Dependencies, Related Controls). Sections whose text is shared verbatim by several controls
 (Exceptions, Platform Considerations and the template variants of Applicability/Verification/Evidence/Dependencies/
 Related Controls) are emitted once in spec/control-cards/common-clauses.md and referenced from the card by variant
-letter, so nothing normative is lost. Purpose, Risk Addressed, Rationale, References and Change History stay in the
-full control text, which the card names. Cards are derived: the control Markdown remains the single normative source,
+letter, so nothing normative is lost; References stay in the card. Purpose, Risk Addressed, Rationale and Change
+History stay in the full control text, which the card names. Cards are derived: the control Markdown remains the single normative source,
 `--check` verifies the cards are current, and the Router loads cards in lean/standard mode and full controls in deep mode.
 """
 import re
@@ -23,8 +23,9 @@ from vcgf_lib import *
 CARDS = ROOT / 'spec' / 'control-cards'
 COMMON = CARDS / 'common-clauses.md'
 SHARED_CANDIDATES = ['Applicability', 'Verification Method', 'Required Evidence', 'Exceptions', 'Dependencies', 'Related Controls', 'Platform Considerations']
-CARD_ONLY = ['Requirement', 'Implementation-Neutral Guidance']
-DROPPED = ['Purpose', 'Risk Addressed', 'Rationale', 'References', 'Change History']
+CARD_ONLY = ['Requirement', 'Implementation-Neutral Guidance', 'References']
+DROPPED = ['Purpose', 'Risk Addressed', 'Rationale', 'Change History']
+CANONICAL = ['Requirement', 'Purpose', 'Risk Addressed', 'Rationale', 'Applicability', 'Implementation-Neutral Guidance', 'Verification Method', 'Required Evidence', 'Exceptions', 'Dependencies', 'Related Controls', 'References', 'Platform Considerations', 'Change History']
 SHORT = {'Applicability': 'Applicability', 'Verification Method': 'Verification', 'Required Evidence': 'Evidence', 'Exceptions': 'Exceptions',
          'Dependencies': 'Dependencies', 'Related Controls': 'Related', 'Platform Considerations': 'Platform'}
 MIN_SHARED = 5  # a section text shared by at least this many controls is a common clause
@@ -34,10 +35,16 @@ SPDX = 'SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier:
 def sections(text):
     end = text.find('\n---\n', 4)
     body = text[end + 5:] if end >= 0 else text
-    out = {}
+    out = {}; current = None
     for part in re.split(r'\n## ', '\n' + body)[1:]:
         name, _, content = part.partition('\n')
-        out[name.strip()] = content.strip()
+        name = name.strip()
+        if name in CANONICAL:
+            out[name] = content.strip(); current = name
+        elif current is not None:  # a sub-heading inside a canonical section (for example '## CSP' under the guidance) stays with it
+            out[current] = (out[current] + '\n\n## ' + name + '\n' + content.strip()).strip()
+        else:
+            out[name] = content.strip()
     return out
 
 
@@ -88,6 +95,9 @@ def build(root=ROOT):
         guidance = re.sub(r'^# .*\n+', '', guidance).strip()
         if guidance:
             out.append('## Guidance'); out.append(guidance); out.append('')
+        references = secs.get('References', '').strip()
+        if references:
+            out.append('## References'); out.append(references); out.append('')
         common_refs = []
         for name in SHARED_CANDIDATES:
             text = secs.get(name)

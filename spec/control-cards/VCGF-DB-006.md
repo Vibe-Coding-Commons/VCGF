@@ -8,4 +8,8 @@ Multi-step operations that can produce inconsistent security or business state M
 ## Guidance
 Identify race-sensitive transitions such as approvals, balances, inventory, one-time tokens, quota consumption, and duplicate submissions.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

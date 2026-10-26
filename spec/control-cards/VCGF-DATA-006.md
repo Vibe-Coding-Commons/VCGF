@@ -8,4 +8,8 @@ Sensitive data and authentication material MUST use authenticated encrypted tran
 ## Guidance
 Disable insecure transport paths, validate peer identity, and avoid moving secrets or personal data through URLs or other leaky channels.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

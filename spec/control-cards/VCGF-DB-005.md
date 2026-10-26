@@ -18,4 +18,9 @@ Stored procedures are not automatically safe; review internal dynamic SQL and pr
 
 Runtime DB credentials should use least privilege and differ from migration/admin credentials when architecture permits.
 
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

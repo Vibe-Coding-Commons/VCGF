@@ -8,4 +8,8 @@ Production-relevant security configuration SHOULD be versioned or otherwise moni
 ## Guidance
 Detect changes to identity, network, storage, database, secret, and deployment settings that can alter the security posture.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

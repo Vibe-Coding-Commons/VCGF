@@ -8,4 +8,8 @@ Projects SHOULD maintain concise persistent AI context covering architecture, se
 ## Guidance
 Platform adapters may map this requirement to native project rules, knowledge, instruction files, or external controls. The canonical requirements remain in VCGF core.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

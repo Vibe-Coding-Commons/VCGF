@@ -8,4 +8,8 @@ Conformance claims MUST be supported by evidence rather than by the presence of 
 ## Guidance
 Evidence may include test output, CI status, code review, configuration snapshots, audit logs, scan results, migration dry-runs, or manual verification. Evidence must identify framework, profile, adapter, and control where practical.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

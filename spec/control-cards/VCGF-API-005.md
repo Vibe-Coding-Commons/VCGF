@@ -8,4 +8,24 @@ Third-party integrations MUST validate trust boundaries, credentials, scopes, pa
 ## Guidance
 External providers are separate trust boundaries.
 
+## Credentials
+Use minimum scopes, keep private credentials server-side, rotate/revoke unused credentials.
+
+## Incoming
+Validate webhook signatures and payload schemas. Treat fields as untrusted.
+
+## Outgoing
+Send only minimum necessary personal/sensitive data and document third-party sharing.
+
+## Failure
+External API failures must not leave partial business transactions inconsistent. Use retries carefully and idempotency where needed.
+
+## OAuth/OIDC
+Use exact redirect URIs and protocol state/nonce protections. Do not implement protocol cryptography from scratch.
+
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

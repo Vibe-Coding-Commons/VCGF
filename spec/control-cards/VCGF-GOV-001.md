@@ -27,4 +27,9 @@ Treat auth, session, recovery, role, RLS, privileged key, encryption, tenant, pa
 
 High-risk changes require an explicit plan, tests, and rollback/forward-fix strategy.
 
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

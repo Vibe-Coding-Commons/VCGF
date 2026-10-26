@@ -26,4 +26,9 @@ Document owner, usage, expiry/rotation, and emergency revocation.
 
 A suspected leak requires rotation; deleting from the latest commit is not enough.
 
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

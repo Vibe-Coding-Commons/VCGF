@@ -8,4 +8,8 @@ Projects handling secrets or encryption keys MUST define emergency rotation, ses
 ## Guidance
 Differentiate user credential, API secret, signing key, encryption key, and deployment credential compromise because their recovery actions differ.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

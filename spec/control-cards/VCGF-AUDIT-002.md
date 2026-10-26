@@ -8,4 +8,8 @@ Security-sensitive administrative, approval, permission, recovery, data-export, 
 ## Guidance
 Record actor, action, resource, timestamp, result, and correlation context while excluding secrets and unnecessary personal data.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

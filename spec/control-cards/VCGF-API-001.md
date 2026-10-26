@@ -8,4 +8,37 @@ Every externally callable endpoint or server function MUST independently enforce
 ## Guidance
 Assume every endpoint is directly callable by an attacker.
 
+## Per-endpoint checklist
+- authentication
+- operation-level authorization
+- object-level authorization
+- tenant validation
+- request schema
+- request/body size limit
+- input validation
+- safe query construction
+- rate limiting/quotas
+- replay/idempotency where relevant
+- minimal response schema
+- safe errors
+- timeout
+- external-call restrictions
+- audit logging for sensitive actions
+
+## Privileged DB clients
+Use service/admin clients only in trusted server code and only after explicit application authorization.
+
+Prefer user-scoped/RLS-scoped access when possible.
+
+## Mass assignment
+Do not pass request JSON directly to persistence for privileged models. Pick allowed fields explicitly.
+
+## Output
+Do not return full DB records by default. Use explicit response schemas.
+
+## References
+- OWASP Application Security Verification Standard (ASVS) 5.0
+- OWASP Cheat Sheet Series where relevant
+- OWASP API Security guidance where relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[A] Verification[A] Evidence[A] Exceptions[A] Dependencies[A] Related[A] Platform[A]

@@ -16,6 +16,11 @@ User-facing interfaces MUST conform to WCAG 2.2 Level AA for every critical user
 - Forms: labels programmatically associated, errors identified in text and linked to the field, required fields and formats stated before submission.
 - Treat screen-reader reading order, focus order and clipboard behavior as test subjects, not assumptions.
 
+## References
+- W3C Web Content Accessibility Guidelines (WCAG) 2.2, Level AA
+- W3C WAI-ARIA Authoring Practices patterns
+- Detailed UI standards: `packs/ux/smart-ui/governance/ACCESSIBILITY-RTL.md` and the accessibility requirements (R10/AC10) of each component and interaction standard in `packs/ux/smart-ui/`
+
 ## Applicability
 Apply to every task that creates or changes a user-facing interface (web, mobile web, kiosk or embedded UI). Required for the Production and High-Assurance profiles; recommended for Baseline. Not applicable to tasks with no user interface (an explicit `has_ui: false` screen context or a service-only change), which MUST be recorded as not applicable with a reason.
 

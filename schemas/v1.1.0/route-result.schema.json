@@ -151,6 +151,28 @@
           "type": "integer",
           "minimum": 0
         },
+        "unit": {
+          "description": "Quantity compared with limit_tokens: tokens (1.4.0 default, estimated or observed) or bytes (pre-1.4 legacy comparison kept on request). Optional for 1.1.0 records.",
+          "enum": [
+            "tokens",
+            "bytes"
+          ]
+        },
+        "declared_unit": {
+          "description": "The budget_unit the task declared, or null when the task relied on the default.",
+          "enum": [
+            "tokens",
+            "bytes",
+            null
+          ]
+        },
+        "legacy_byte_comparison": {
+          "description": "Whether the pre-1.4 byte comparison would have blocked this route; surfaced so a changed outcome is never silent.",
+          "enum": [
+            "would_block",
+            "consistent"
+          ]
+        },
         "measurement": {
           "enum": [
             "observed",

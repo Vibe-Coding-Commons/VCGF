@@ -8,4 +8,8 @@ Development, test, staging, and production environments MUST separate sensitive 
 ## Guidance
 Do not use production secrets or personal data in lower environments unless explicitly authorized and protected with equivalent controls.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

@@ -8,4 +8,8 @@ An AI agent MUST NOT disable or weaken security controls as a workaround for fun
 ## Guidance
 Prohibited shortcuts include disabling row-level controls, broad allow policies, exposing privileged keys, making private storage public, skipping validation, or removing negative tests to make a build pass.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]

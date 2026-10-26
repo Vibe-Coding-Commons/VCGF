@@ -14,6 +14,10 @@ Each screen class SHOULD have an explicit, recorded responsive strategy (mobile-
 - Large screens: use extra width for context (details, comparison, related records) rather than stretching a single column.
 - Test at representative widths (for example 320, 390, 768, 1280, 1920 CSS pixels) in both text directions where VCGF-UX-002 applies.
 
+## References
+- W3C Web Content Accessibility Guidelines (WCAG) 2.2 (reflow, target size)
+- Detailed screen-composition standards: `packs/ux/smart-ui/screen-compositions/` (VCGF-UI-SCR-019 mobile-focused task modifier, VCGF-UI-SCR-020 large-screen operations modifier), `packs/ux/smart-ui/governance/RESPONSIVE-DENSITY-POLICY.md`, `packs/ux/smart-ui/governance/ADAPTIVE-UX-ORCHESTRATION.md`
+
 ## Applicability
 Apply to tasks that compose, redesign or significantly restructure screens. Required for the High-Assurance profile and recommended for Production. Minor styling changes record the control as not applicable with a reason.
 

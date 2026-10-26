@@ -8,4 +8,8 @@ Production configuration, secrets, data, and infrastructure changes MUST be rest
 ## Guidance
 Prefer least-privileged deployment identities, protected branches or equivalent controls, change evidence, and reversible deployment strategies.
 
+## References
+- VCGF core risk and evidence model
+- OWASP guidance where security-relevant
+
 Common clauses (spec/control-cards/common-clauses.md): Applicability[B] Verification[B] Evidence[B] Exceptions[B] Dependencies[B] Related[B] Platform[B]
