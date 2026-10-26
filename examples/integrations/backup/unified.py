@@ -73,10 +73,13 @@ def create(root,destination,key,application_version,schema_version):
     return {'backup_id':manifest['backup_id'],'sha256':sha(payload),'size':len(payload),'restore_status':'Not run'}
 
 
-def restore(source,destination,key,max_uncompressed=128*1024*1024):
+def restore(source,destination,key,max_uncompressed=128*1024*1024,max_payload=256*1024*1024):
     destination=Path(destination)
     if destination.exists():raise FileExistsError('restore destination must be new')
-    payload=Path(source).read_bytes()
+    source=Path(source)
+    if source.stat().st_size>max_payload:raise ValueError('backup payload exceeds the configured size bound; refuse before reading or decrypting')
+    payload=source.read_bytes()
+    if len(payload)<17:raise ValueError('truncated backup payload')
     if not payload.startswith(b'VCGF1'):raise ValueError('unknown backup format')
     data=AESGCM(key).decrypt(payload[5:17],payload[17:],b'VCGF-unified-backup-v1')
     with zipfile.ZipFile(io.BytesIO(data)) as archive:

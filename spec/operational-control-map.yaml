@@ -1,0 +1,47 @@
+# VCGF — Vibe Coding Governance Framework
+# SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+# SPDX-License-Identifier: Apache-2.0
+# Founder & Maintainer: Eng. Hamada Sami
+# Email: i@hamada.io
+# GitHub: https://github.com/Vibe-Coding-Commons
+#
+# Operational files (checklists, playbooks, templates) mapped to the controls they implement or collect evidence for.
+# The operational files are v1.0 originals and stay unchanged; this map gives them Control-ID traceability, and
+# scripts/validate-operational-map.py requires every operational file to be mapped to at least one existing control.
+map_version: 1.0.0
+files:
+  checklists/database-change/database-change.md: [VCGF-DB-001, VCGF-DB-002, VCGF-DB-003, VCGF-DB-006, VCGF-OPS-003, VCGF-REL-003]
+  checklists/pre-commit/pre-commit.md: [VCGF-SEC-001, VCGF-SECR-001, VCGF-DEP-001, VCGF-TEST-001, VCGF-GOV-005]
+  checklists/pre-development/pre-development.md: [VCGF-GOV-001, VCGF-AI-001, VCGF-ARCH-001, VCGF-ARCH-005, VCGF-AI-003]
+  checklists/pre-release/pre-release.md: [VCGF-REL-001, VCGF-REL-002, VCGF-TEST-004, VCGF-SEC-006, VCGF-DEP-002]
+  checklists/production-release/production-release.md: [VCGF-REL-003, VCGF-REL-004, VCGF-REL-005, VCGF-OPS-001, VCGF-OPS-002, VCGF-OPS-004, VCGF-OPS-005]
+  checklists/project-initiation/project-initiation.md: [VCGF-GOV-001, VCGF-GOV-004, VCGF-ARCH-001, VCGF-ARCH-005, VCGF-DATA-001, VCGF-PRIV-001]
+  checklists/security-review/security-review.md: [VCGF-TEST-002, VCGF-SEC-001, VCGF-SEC-002, VCGF-SEC-003, VCGF-SEC-004, VCGF-SEC-005, VCGF-SEC-006, VCGF-IAM-007]
+  playbooks/existing-project-hardening-plan.md: [VCGF-ARCH-003, VCGF-AI-001, VCGF-SEC-006, VCGF-DEP-001]
+  playbooks/key-rotation-playbook.md: [VCGF-SECR-001, VCGF-SECR-002, VCGF-DATA-004]
+  playbooks/new-project-security-bootstrap.md: [VCGF-GOV-001, VCGF-IAM-001, VCGF-IAM-002, VCGF-SECR-001, VCGF-OPS-001]
+  playbooks/password-reset-test-cases.md: [VCGF-IAM-005, VCGF-TEST-006, VCGF-IAM-001]
+  templates/adapters/runtime-rules.template.md: [VCGF-GOV-006, VCGF-AI-007]
+  templates/architecture/change-impact-analysis.md: [VCGF-GOV-001, VCGF-ARCH-002]
+  templates/architecture/security-decision-record.md: [VCGF-ARCH-002, VCGF-GOV-003]
+  templates/database/migration-review.md: [VCGF-DB-001, VCGF-OPS-003, VCGF-REL-003]
+  templates/project-context/project-context.md: [VCGF-GOV-001, VCGF-ARCH-001]
+  templates/project-context/project-security-profile.md: [VCGF-GOV-004, VCGF-ARCH-005]
+  templates/project-context/prompts/auth-password-recovery-audit-prompt.md: [VCGF-IAM-001, VCGF-IAM-005]
+  templates/project-context/prompts/change-impact-analysis-prompt.md: [VCGF-GOV-001, VCGF-ARCH-002]
+  templates/project-context/prompts/dependency-supply-chain-audit-prompt.md: [VCGF-DEP-001, VCGF-DEP-002, VCGF-DEP-003, VCGF-DEP-004]
+  templates/project-context/prompts/initial-read-only-audit-prompt.md: [VCGF-AI-001, VCGF-ARCH-003]
+  templates/project-context/prompts/pii-encryption-audit-prompt.md: [VCGF-PRIV-001, VCGF-DATA-003]
+  templates/project-context/prompts/pre-release-security-review-prompt.md: [VCGF-REL-002, VCGF-TEST-004]
+  templates/project-context/prompts/safe-bugfix-prompt.md: [VCGF-AI-001, VCGF-GOV-005, VCGF-TEST-001]
+  templates/project-context/prompts/safe-feature-prompt.md: [VCGF-AI-001, VCGF-GOV-001, VCGF-TEST-001]
+  templates/project-context/prompts/validation-injection-audit-prompt.md: [VCGF-SEC-001, VCGF-SEC-003]
+  templates/project-context/regulatory-overlay.md: [VCGF-GOV-004, VCGF-PRIV-001]
+  templates/release/release-evidence.md: [VCGF-GOV-004, VCGF-REL-001, VCGF-REL-005]
+  templates/security/data-classification.md: [VCGF-DATA-001, VCGF-PRIV-001]
+  templates/security/encryption-register.md: [VCGF-DATA-003, VCGF-DATA-004, VCGF-DB-003]
+  templates/security/field-validation-matrix.md: [VCGF-SEC-001]
+  templates/security/role-permission-matrix.md: [VCGF-IAM-006, VCGF-IAM-007, VCGF-DB-004]
+  templates/security/security-exception.md: [VCGF-GOV-003]
+  templates/security/threat-model.md: [VCGF-ARCH-005]
+  templates/testing/security-test-evidence.md: [VCGF-TEST-001, VCGF-TEST-004, VCGF-GOV-004]
