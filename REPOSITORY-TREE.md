@@ -21,6 +21,7 @@ VCGF/
 │   │   ├── control-proposal.md
 │   │   └── documentation-issue.md
 │   ├── release-keys
+│   │   ├── hamada-sami.asc
 │   │   └── README.md
 │   ├── workflows
 │   │   ├── release-quality-gate.yml
@@ -308,6 +309,7 @@ VCGF/
 │   │       ├── baseline-compatibility-v1.4.json
 │   │       ├── PULL-REQUEST-v1.4.0.md
 │   │       ├── release-checklist-v1.4.0.md
+│   │       ├── release-notes-v1.4.0.ar.md
 │   │       ├── release-notes-v1.4.0.md
 │   │       ├── release-validation-local.json
 │   │       └── self-acceptance-results.json
