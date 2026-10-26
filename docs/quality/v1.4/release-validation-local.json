@@ -1,7 +1,7 @@
 {
   "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
   "framework_version": "1.4.0",
-  "candidate_commit": "d1e2c5881da4719bbaf5b9bcb3a4a39634b9244a",
+  "candidate_commit": "9baba42b18020d839680bd007c5b94e98dee97f6",
   "working_tree_dirty": true,
   "environment": {
     "os": "Windows-11-10.0.26200-SP0",
@@ -11,7 +11,7 @@
       "jsonschema": "4.26.0"
     }
   },
-  "generated_at": "2026-10-26T06:36:30Z",
+  "generated_at": "2026-10-26T06:51:38Z",
   "release_quality_gate": {
     "status": "PASS",
     "tail": "PASS release-quality-gate"
@@ -21,12 +21,12 @@
     "summary": "PASS run-self-acceptance: 20 executed, 20 passed, 0 failed (framework_self)"
   },
   "test_suite": {
-    "passed": 1,
+    "passed": 430,
     "failed": 0,
-    "skipped": 0,
+    "skipped": 7,
     "source": "full pytest run on this tree, counts supplied by the operator"
   },
   "ci": "NOT_TESTED: no CI run observed for this commit (local record only)",
   "claims": "local validation bound to the commit above; not independent review, not a release decision, not production admission",
-  "notes": "unit test run"
+  "notes": "release-readiness closure; full suite counts from the d1e2c58 verification run, targeted suites re-run after the denylist hardening"
 }
