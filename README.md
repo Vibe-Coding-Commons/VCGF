@@ -19,18 +19,88 @@ VCGF is an open, vendor-neutral governance, security, privacy, and engineering f
 
 > **Start here:** [5-minute quick start](#5-minute-quick-start) · [Choose a platform](#supported-ai-coding-platforms) · [Install VCGF](#install-vcgf) · [Daily user guide](docs/user-guide.md) · [Technical specification](spec/VCGF-CORE.md)
 
-## Current public release: VCGF v1.3.0
+## VCGF v1.4.0 — what's new in the repository
 
-**Official public framework release: v1.3.0 (2026-10-24).** This backward-compatible minor release adds **VCGF Smart UI Components & Interaction Standards v1.0.0**: selective components, interaction patterns, screen compositions and journey orchestration. It preserves the existing normative Control IDs, Profiles, adapters, licensing and founder attribution. Repository validation applies to the framework source; **it is not production certification for every target application or provider**.
+**Source status (26 October 2026):** The v1.4.0 source has been merged into `main`. `VERSION` and `CITATION.cff` identify 1.4.0; the canonical manifest still marks it `release-candidate`. **A signed `v1.4.0` Git tag and a published GitHub Release are not yet present.** The latest published GitHub Release is [v1.3.0](https://github.com/Vibe-Coding-Commons/VCGF/releases/tag/v1.3.0). Public source availability, a signed release, and production acceptance are different milestones.
 
-**Repository version 1.4.0 — release candidate (prepared locally on `develop/v1.4.0`; not released, not published, not signed, not independently reviewed).** It adds the canonical applicability matrix and the Task Router profile layer, the user-experience control domain (VCGF-UX-001..004), verifiable acceptance tests for every control and governed Smart UI selection; see [docs/quality/v1.4/release-notes-v1.4.0.md](docs/quality/v1.4/release-notes-v1.4.0.md). The 1.3.1 release candidate is documented in [docs/quality/v1.3/release-notes-v1.3.1.md](docs/quality/v1.3/release-notes-v1.3.1.md).
+**The main improvement:** v1.4.0 turns VCGF's standards into a more selective, testable, evidence-aware engineering workflow. It improves *which* controls are loaded, *why* they apply, *how* compliance can be checked, and *how much* context an AI agent needs. It builds on the Smart UI standards introduced in v1.3.0; it does **not** claim to ship a production UI component library or certify any downstream application.
 
-### Smart UI in v1.3.0
+### Highlights at a glance
 
-VCGF can now select the minimum relevant UI standards from explicit project/screen evidence instead of loading or building an entire component library. The four independent layers are **Screen Composition → Components → Interactions → Journeys**, governed by reuse-first, no implicit cross-layer activation, compatibility review, RTL/LTR/accessibility rules and evidence-bound acceptance. The Smart UI layer ships as a selectively loadable integration-candidate specification (layer v1.0.0); its runtime acceptance scenarios have not been executed.
+| Area | v1.4.0 improvement | Why it matters |
+|---|---|---|
+| Governance and routing | Canonical applicability matrix; profile-aware, multi-intent Task Router; additional release, operations and exception intents | Relevant mandatory rules are reachable without indiscriminately loading the entire framework |
+| Control coverage | **88 controls:** 84 preserved original controls plus four additive UX controls | Accessibility, localization, interaction state and responsive strategy become traceable governance topics |
+| Acceptance and compliance | **395 acceptance definitions:** 20 framework self-tests executed; 375 target-project definitions awaiting project-specific evidence | Separates documented requirements from tests actually executed and verified |
+| Smart UI orchestration | Governed `ui-select`, explicit/inferred screen signals, hash-pinned standards and selective context | The AI can select appropriate standards for a screen without activating the whole catalog |
+| Context efficiency | Validated control cards, reusable clauses, multi-intent and delta loading, token budgets | **47.2% fewer served context bytes** in the documented 16-scenario comparison, with equivalent selected-control sets |
+| Security enforcement | Approval-record-aware governance-file guard, pre-commit checks, trust-boundary tests | Sensitive edits get additional checks; examples are **not** proof of tamper-proof, platform-wide enforcement |
+| Supply chain and CI | SHA-pinned GitHub Actions, dependency auditing, SBOM and CodeQL; Ubuntu and Windows test jobs | More verifiable framework changes and repeatable release checks |
+| Compatibility | v1.0 controls and frozen schemas preserved; legacy budget behavior explicitly supported | Safer adoption by projects already using VCGF |
+
+### 1. Context-aware routing and risk profiles
+
+- `spec/applicability-matrix.yaml` specifies control triggers, always-applicable rules, load points and rationales. The validator checks that controls remain reachable through the Router.
+- `baseline`, `production` and `high-assurance` add applicable requirements monotonically for the **same task**; a higher-assurance profile does not silently remove a lower-profile control. This is selective loading, **not** a claim that all 88 controls are inserted in every task.
+- New routing coverage includes release readiness, backups, email, exceptions and governance changes. Multi-intent tasks reuse shared controls instead of repeating separate routes.
+- The original 84 control identifiers and normative source texts remain preserved; `VCGF-UX-001..004` are additive.
+
+### 2. Four normative UX controls and Smart UI selection
+
+- **`VCGF-UX-001` Accessibility Conformance (MUST)** and **`VCGF-UX-002` Localization & Bidirectional Text (MUST)** provide explicit UX governance for applicable production tasks.
+- **`VCGF-UX-003` Interaction State Integrity (SHOULD)** and **`VCGF-UX-004` Responsive Strategy & Density (SHOULD)** strengthen advanced UI review without silently turning recommendations into mandatory requirements.
+- `runtime/ui_select.py` and `runtime/ui-bindings.yaml` bind standards to the selected control IDs and profile. Screen context and supported route signals (for example login, upload, payment, sensitive data and RTL) inform selection.
+- Selected standards are hash-pinned and bounded by a context budget. Non-governed standards are deferred; templates, schema files and broad catalogs are not injected as agent instructions.
+- The **v1.3.0 Smart UI specification** remains a separate four-layer catalog: 36 component standards, 24 interaction patterns, 20 screen-composition standards and 18 journey patterns. Calendar month/year selection and searchable-combobox governance remain part of that specification. Its documented project acceptance scenarios are **not** automatically passed by this repository's tests.
+
+### 3. Acceptance criteria versus demonstrated compliance
+
+- `spec/acceptance/` defines 395 structured criteria across 88 controls, including expected result, verification method, negative path and required evidence.
+- **20/20 framework self-acceptance tests** were executed and recorded; **375 target-project definitions** are not executed on this framework repository and require their own applications and evidence.
+- `python scripts/vcgf.py acceptance all` summarizes the definitions and execution states. `python scripts/vcgf.py acceptance VCGF-IAM-001` examines an individual control.
+- `python scripts/vcgf.py compliance ...` evaluates a target project's recorded results against applicable controls, evidence hashes, reviewer requirements and freshness. A definition, an absent evidence file, or a human review not actually performed cannot be counted as a verified pass.
+
+### 4. Leaner, safer AI context
+
+- Derived **Control Cards** retain the required normative content and cited common clauses; `validate-control-cards.py` checks fidelity, including subheadings, references and MUST/SHOULD language. `deep` mode still loads the full canonical control.
+- Multi-intent routing shares overlapping material; delta loading reuses unchanged hash-pinned context and reloads changed or untrusted content.
+- `budget_unit: tokens` uses an explicitly documented estimate by default; `budget_unit: bytes` supports legacy comparison. The migration tool and warnings make changed budget outcomes visible.
+- In the documented **16-scenario baseline comparison**, route-union content fell from **2,800,412 to 1,480,014 UTF-8 bytes (−47.2%)** with matching selected-control sets. **374,463 estimated tokens** versus **326,103 observed tokens from the reference `cl100k_base` tokenizer** are *not* a measurement of any target model's billed tokens or cost. The raw benchmark environment and provider billing were not independently reproduced here.
+
+### 5. Enforcement, verification and supply-chain protection
+
+- `platforms/enforcement-matrix.yaml` distinguishes tested, configurable, unverified and unsupported mechanisms. The governance edit guard requires a covering approval record rather than accepting an environment flag alone; without a trusted host identity verifier this is **tamper-evident, not tamper-proof**.
+- The repository adds a self-acceptance runner, compatibility checks, schema and control-card validators, dependency pin validation, `pip-audit`, CycloneDX SBOM output, CodeQL and CI test matrices.
+- **22/22 GitHub PR checks passed on commit `f67ddeb`** on 26 October 2026, covering Ubuntu/Windows, Python 3.12/3.13, supply chain, CodeQL and quality checks. This is evidence for that tested commit, **not** a substitute for a signed tag, an independent human review or an application's production certification.
+
+### 6. Backward compatibility, known boundaries and upgrade
+
+- The 84 pre-existing normative controls, frozen v1.0 schemas, Apache-2.0 licensing and founder attribution are preserved. The four UX controls and new schema/contracts are additive.
+- Existing 1.x adopters should review their token-budget settings and use the explicit `budget_unit` or `scripts/migrate-task-budget.py` before assuming old budgets behave identically.
+- A Claude Code hook example is provided but still needs live platform verification before its status can be promoted. Four findings inside the frozen Smart UI package remain scheduled for a separate package update; a template/schema mismatch is relevant if that template is copied manually.
+- **A successful VCGF repository gate does not establish ISO certification, platform-wide enforcement, production readiness or conformance of a target product.**
+
+### Try the new read-only commands
+
+```bash
+python scripts/vcgf.py controls
+python scripts/vcgf.py acceptance all
+python scripts/vcgf.py acceptance VCGF-IAM-001
+python scripts/vcgf.py route examples/runtime/login/task.json examples/runtime/login/context.json --project-root . --dry-run
+# Project compliance needs a real results JSON and an evidence directory:
+python scripts/vcgf.py compliance <results.json> --artifact-root <evidence-dir> --profile production
+```
+
+For full engineering details, see the [v1.4.0 release notes](docs/quality/v1.4/release-notes-v1.4.0.md), [CHANGELOG](CHANGELOG.md), [platform guides](docs/platform-guides/README.md) and [daily user guide](docs/user-guide.md).
+
+### Previous milestone — v1.3.0
+
+v1.3.0 introduced the Smart UI Components & Interaction Standards v1.0.0 specification. v1.4.0 adds traceable control bindings, selective runtime routing and verification around it. The earlier [v1.3.1 integrity-hardening candidate](docs/quality/v1.3/release-notes-v1.3.1.md) remains part of the development history.
 
 
 ## Table of contents
+
+- [What's new in VCGF v1.4.0](#vcgf-v140--whats-new-in-the-repository)
 
 - [What is VCGF?](#what-is-vcgf)
 - [Why does VCGF exist?](#why-does-vcgf-exist)
@@ -679,52 +749,8 @@ Licensed under the Apache License 2.0.
 
 ## Acknowledgements
 
-VCGF references external security and engineering sources where appropriate, including OWASP material and official platform documentation. Mapping to an external framework does not imply certification, compliance, accreditation, or endorsement. See [`docs/references/`](docs/references/).
+VCGF references external security and engineering sources where appropriate, including OWASP material and official platform documentation. Mapping to an external framework does not imply certification, compliance, accreditation, or endorsement. See [`docs/references/`](references/).
 
-## VCGF v1.2 — Adaptive Engineering & UX Intelligence
+## Previous versions
 
-**Release Status:** Integration candidate — pending final production acceptance.
-
-VCGF v1.2 introduces two adaptive decision engines while preserving existing VCGF v1.1 capabilities, security controls, governance policies, and founder rights.
-
-### What's New
-
-**Adaptive Engineering Engine**
-
-Analyzes project architecture, complexity, technology stack, and business requirements to recommend suitable design patterns, frameworks, and packages without unnecessary over-engineering.
-
-**Adaptive UX Intelligence Engine**
-
-Evaluates project objectives, target audiences, user roles, workflows, and usage scenarios to recommend appropriate UX strategies and interface design patterns.
-
-**Responsive Mobile & Desktop Experience**
-
-Supports task-oriented interface decisions for mobile, tablet, and desktop environments while preserving essential information and functionality.
-
-**RTL / LTR Support**
-
-Provides bidirectional interface guidance using CSS Logical Properties, direction-aware components, mixed-language content handling, and localization rules.
-
-**Typography & Local Fonts**
-
-Supports locally hosted WOFF2 fonts, Arabic and English typography, fallback fonts, and performance-oriented loading strategies.
-
-**Quality Assurance & Release Governance**
-
-Introduces automated validation, integration tests, evidence requirements, and 21 cumulative release acceptance gates.
-
-### Reference CLI
-
-```bash
-python scripts/vcgf.py advise-engineering examples/adaptive/fingerprint-laravel.json
-python scripts/vcgf.py advise-ux examples/adaptive/ux-crm.json
-```
-
-### Documentation
-
-- [Quality Evaluation](docs/quality/v1.2/evaluation-en.md)
-- [Integration Log](docs/quality/v1.2/integration-log.md)
-- [Release Acceptance Gates](docs/quality/v1.2/release-gates.md)
-- [Test Results](docs/quality/v1.2/evidence/results-summary.json)
-
-**Important:** Successful local tests and Git commits do not constitute production acceptance. Full regression testing, real Laravel/React/Vue integration, and outstanding release gates must be completed before official publication.
+For v1.2 adaptive-engineering and UX history, see the [CHANGELOG](CHANGELOG.md) and [v1.2 quality evidence](docs/quality/v1.2/evaluation-en.md). Earlier version notes are preserved in their original release documentation.
