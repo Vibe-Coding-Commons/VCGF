@@ -7,9 +7,15 @@ Email: i@hamada.io
 GitHub: https://github.com/Vibe-Coding-Commons
 -->
 
-# VCGF 1.4.0 — development notes (Phase 1: architecture and governance)
+# VCGF 1.4.0 — Source release notes (architecture, governance, verification and context efficiency)
 
-**Status:** release candidate on `develop/v1.4.0`, prepared locally. **Not released, not published, not tagged, not signed, not independently reviewed.** Publication requires the external actions listed in the final consolidated report (signed tag, non-author review, branch protection, a first real CI run). The last public release is v1.3.0 and the local release candidate 1.3.1 (`release/v1.3.1`) is unchanged.
+**Source status (2026-10-26):** v1.4.0 source merged to `main` via PR #4; `VERSION` is 1.4.0, manifest remains `release-candidate`. No signed `v1.4.0` tag or published GitHub Release was found during this review. The last published GitHub Release is v1.3.0. A merged source branch is not the same as a signed published release.
+
+## Executive summary
+
+v1.4.0 adds canonical control applicability, monotonic risk profiles, four UX controls, governed Smart UI selection, 395 acceptance definitions (20 framework self-tests executed; 375 target-project definitions not executed here), control-card fidelity verification, delta and multi-intent loading, evidence-backed compliance evaluation, and strengthened supply-chain and CI checks. The documented 16-scenario context comparison shows 47.2% fewer UTF-8 bytes with equivalent selected controls; this is not a measured reduction in billed provider tokens. GitHub PR #4 passed 22/22 checks on `f67ddeb` on Ubuntu/Windows with Python 3.12/3.13. This does not certify target applications.
+
+See the [Arabic release notes](release-notes-v1.4.0.ar.md) and the bilingual READMEs for user-facing details.
 
 ## What changed and why
 
@@ -36,7 +42,17 @@ GitHub: https://github.com/Vibe-Coding-Commons
 - Routing policy 1.2.0 adds intents and capabilities; existing intents keep their capabilities. VCGF-REL-001 is now a minimum control for every route.
 - Cumulative compatibility record: `docs/quality/v1.4/baseline-compatibility-v1.4.json` (inherits v1.3.1).
 
-Phase 2 benchmark (same 16 scenarios on the Phase 1 tree and the Phase 2 tree, identical selected control sets per scenario): see the Phase 2 report outside the source tree; bytes measured, tokens estimated, observed tokens not available.
+Final documented 16-scenario comparison (same selected controls): 2,800,412 → 1,480,014 UTF-8 bytes (−47.2%). Reference tokenizer counts are not actual provider-billed tokens.
+
+## Additional Phase 2–final consolidation capabilities
+
+- Control Cards and shared clauses validated for normative fidelity, including subheadings, references and MUST/SHOULD statements.
+- Multi-intent and hash-aware delta routing, explicit `budget_unit` compatibility and optional reference-tokenizer measurements.
+- 20/20 executed framework self-acceptance checks; 375 target-project definitions require external project evidence.
+- `vcgf.py compliance` verifies project-supplied results, hashes, reviewer requirements and freshness; no evidence means no verified pass.
+- Approval-record-based governance guard, with a documented tamper-evident (not tamper-proof) trust boundary.
+- GitHub PR #4: 22/22 checks green on commit `f67ddeb`, including Ubuntu, Windows, CodeQL, SBOM and supply-chain checks.
+- Four findings inside the frozen Smart UI package remain scheduled for separate remediation; a manually reused schema-invalid template may still be affected.
 
 ## Verification performed locally
 

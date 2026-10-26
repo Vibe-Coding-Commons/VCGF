@@ -11,7 +11,14 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 This project follows a Keep a Changelog-style release history and Semantic Versioning.
 
-## [1.4.0] - 2026-10-26 — Architecture, governance, context efficiency, verification and enforcement (release candidate — prepared locally, not published, not signed)
+## [1.4.0] - 2026-10-26 — Architecture, governance, context efficiency, verification and enforcement (source merged to main; signed GitHub Release not yet published)
+
+### Release state and verification
+- Source merged to `main` via PR #4. `VERSION` and `CITATION.cff` identify v1.4.0; `VCGF-MANIFEST.yaml` remains `release-candidate` pending a signed tag and GitHub Release.
+- GitHub CI on PR head `f67ddeb`: 22/22 checks passed on Ubuntu/Windows, Python 3.12/3.13, CodeQL, supply-chain checks and release gate. This evidence is commit-scoped, not production certification.
+- 395 acceptance definitions across 88 controls: 20 framework self-tests executed and recorded as passing; 375 target-project definitions require separate application evidence.
+- Documented 16-scenario context comparison: 2,800,412 to 1,480,014 UTF-8 bytes (−47.2%), not a measured reduction in provider billing.
+- Detailed [English release notes](docs/quality/v1.4/release-notes-v1.4.0.md) and [Arabic release notes](docs/quality/v1.4/release-notes-v1.4.0.ar.md).
 
 ### Added
 - `spec/applicability-matrix.yaml`: canonical, machine-readable applicability for every control (trigger capabilities, always, load point, rationale). `scripts/validate-applicability.py` enforces that every non-deprecated control is reachable by the Task Router for the high-assurance profile from at least one intent, that the capability floor is never hidden and that no trigger names a capability no intent can select.
