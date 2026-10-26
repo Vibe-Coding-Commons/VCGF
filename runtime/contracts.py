@@ -23,7 +23,7 @@ from referencing import Registry, Resource
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = ROOT / "schemas" / "v1.1.0"
 NAMES = frozenset({"capability", "context", "route-result", "approval", "evidence",
-                   "preferences", "adapter-capabilities", "ui-selection"})
+                   "preferences", "adapter-capabilities", "ui-selection", "acceptance-results"})
 FORMATS = FormatChecker()
 
 
