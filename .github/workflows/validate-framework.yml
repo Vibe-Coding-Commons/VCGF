@@ -36,3 +36,5 @@ jobs:
       - run: python scripts/validate-package-integrity.py
       - run: python scripts/validate-applicability.py
       - run: python scripts/validate-acceptance.py
+      - run: python scripts/validate-control-cards.py
+      - run: python scripts/validate-enforcement.py

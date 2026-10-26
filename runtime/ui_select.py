@@ -30,6 +30,8 @@ from .tokens import count
 # Section headings kept in a Smart UI requirement card (scope, binding requirements, state/stage contracts, discovery
 # signals, acceptance). Settings tables, package candidates, prompts and delivery guides stay in the full standard.
 CARD_HEADINGS = ('الهدف ونطاق', 'المتطلبات', 'القبول', 'عقد الحالة', 'إشارات الاكتشاف', 'عقد المراحل')
+# Sections of a bound external standard that are catalogues or templates rather than requirements.
+EXTERNAL_DROP = ('المكتبات', 'الباكيجز', 'المخرجات المطلوبة', 'الهيكل البرمجي', 'المكوّنات المقترحة', 'المكونات المقترحة')
 
 
 def smart_card(text):
@@ -42,10 +44,22 @@ def smart_card(text):
     return (title + '\n' if title else '') + '\n'.join(kept) + '\n'
 
 
-def _serve(item, detail, card_paths):
+def external_card(text):
+    """Requirement card of a bound external standard: every section except library catalogues, code skeletons and output templates."""
+    parts = text.split('\n## ')
+    kept = ['## ' + part.strip() for part in parts[1:] if not any(k in part.partition('\n')[0] for k in EXTERNAL_DROP)]
+    if len(kept) == len(parts) - 1 or not kept:
+        return text
+    return parts[0].rstrip() + '\n\n' + '\n'.join(kept) + '\n'
+
+
+def _serve(item, detail, card_paths, external_paths=()):
     if detail == 'card' and item['path'] in card_paths:
         text = smart_card(item['text']); measured = count(text)
         return {**item, 'text': text, 'bytes': measured['bytes'], 'tokens': measured['tokens'], 'served': 'card'}
+    if detail == 'card' and item['path'] in external_paths:
+        text = external_card(item['text']); measured = count(text)
+        return {**item, 'text': text, 'bytes': measured['bytes'], 'tokens': measured['tokens'], 'served': 'card' if text != item['text'] else 'full'}
     return {**item, 'served': 'full'}
 
 
@@ -184,7 +198,8 @@ def select_ui(route_result, screen_context, budget=None, root=ROOT):
         else:
             loaded = load(pack, records, 10 ** 12)  # pinned, confined read; the budget is applied to the served text below
             card_paths = {s['path'] for s in standards if s['layer'] != 'external-standards'}
-            served = [_serve(item, detail, card_paths) for item in loaded['items']]
+            external_paths = {s['path'] for s in standards if s['layer'] == 'external-standards'}
+            served = [_serve(item, detail, card_paths, external_paths) for item in loaded['items']]
             cost, cost_bytes = sum(x['tokens'] for x in served), sum(x['bytes'] for x in served)
             served_bytes = {x['path']: x['bytes'] for x in served}
             for s in standards:

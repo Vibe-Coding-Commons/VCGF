@@ -9,6 +9,8 @@ from cryptography.x509.oid import NameOID
 from cryptography.hazmat.primitives import hashes,serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.exceptions import InvalidTag
+import pytest
+pytest.importorskip('fcntl', reason='examples/integrations/backup/unified.py uses POSIX file locking; this module is skipped on Windows')
 ROOT=Path(__file__).resolve().parents[2]
 def module(name,path):
     s=importlib.util.spec_from_file_location(name,ROOT/path);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m

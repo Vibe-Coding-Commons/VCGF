@@ -123,7 +123,10 @@ class LoaderTests(unittest.TestCase):
         with self.assertRaises(ValueError):confined(ROOT,'/etc/passwd')
     def test_symlink(self):
         with tempfile.TemporaryDirectory() as d:
-            (Path(d)/'link').symlink_to('/etc/passwd')
+            try:
+                (Path(d)/'link').symlink_to('/etc/passwd')
+            except (OSError, NotImplementedError) as exc:  # Windows without the symlink privilege
+                self.skipTest(f'symlinks unavailable here: {exc}')
             with self.assertRaises(ValueError):confined(d,'link')
     def test_hash_mismatch(self):
         with self.assertRaises(ValueError):load(ROOT,[{'path':'runtime/bootstrap.md','sha256':'0'*64}],99999)

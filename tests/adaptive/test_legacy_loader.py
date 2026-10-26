@@ -33,6 +33,9 @@ def test_invalid_budget_rejected(tmp_path,entries,budget):
     with pytest.raises(ValueError):load(tmp_path,entries,budget)
 
 def test_symlink_rejected(tmp_path,entries):
-    (tmp_path/'link.md').symlink_to(tmp_path/'safe.md')
+    try:
+        (tmp_path/'link.md').symlink_to(tmp_path/'safe.md')
+    except (OSError, NotImplementedError) as exc:  # Windows without the symlink privilege
+        pytest.skip(f'symlinks unavailable here: {exc}')
     with pytest.raises(ValueError,match='symlink'):
         load(tmp_path,[{**entries[0],'path':'link.md'}],100)

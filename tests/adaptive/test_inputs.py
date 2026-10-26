@@ -60,14 +60,21 @@ def test_read_only_explicit_source(tmp_path):
     assert read_source(tmp_path,'docs/brief.md') == b'verified'
 
 
+def _symlink(link, target, **kw):
+    try:
+        link.symlink_to(target, **kw)
+    except (OSError, NotImplementedError) as exc:  # Windows without the symlink privilege
+        pytest.skip(f'symlinks unavailable here: {exc}')
+
+
 def test_source_symlinks_rejected(tmp_path):
-    (tmp_path/'real').write_text('x');(tmp_path/'link').symlink_to(tmp_path/'real')
+    (tmp_path/'real').write_text('x');_symlink(tmp_path/'link',tmp_path/'real')
     with pytest.raises(InputError):
         read_source(tmp_path,'link')
 
 
 def test_directory_symlink_rejected(tmp_path):
-    (tmp_path/'real').mkdir();(tmp_path/'real/a.md').write_text('x');(tmp_path/'alias').symlink_to(tmp_path/'real',target_is_directory=True)
+    (tmp_path/'real').mkdir();(tmp_path/'real/a.md').write_text('x');_symlink(tmp_path/'alias',tmp_path/'real',target_is_directory=True)
     with pytest.raises(InputError):
         read_source(tmp_path,'alias/a.md')
 
@@ -92,7 +99,7 @@ def test_fifo_is_not_read_or_blocked(tmp_path):
 
 
 def test_json_symlink_and_directory(tmp_path):
-    (tmp_path/'a.json').write_text('{}');(tmp_path/'link').symlink_to(tmp_path/'a.json')
+    (tmp_path/'a.json').write_text('{}');_symlink(tmp_path/'link',tmp_path/'a.json')
     for path in [tmp_path/'link',tmp_path]:
         with pytest.raises(InputError):
             read_json(path)
