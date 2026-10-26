@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **1129**
+Files listed: **1131**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -26,6 +26,7 @@ Files listed: **1129**
 | .github/PULL_REQUEST_TEMPLATE.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/dependabot.yml | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/release-keys/README.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
+| .github/release-keys/hamada-sami.asc | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/release-quality-gate.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/release.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/supply-chain.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
@@ -294,6 +295,7 @@ Files listed: **1129**
 | docs/quality/v1.4/PULL-REQUEST-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/baseline-compatibility-v1.4.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/release-checklist-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
+| docs/quality/v1.4/release-notes-v1.4.0.ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/release-notes-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/release-validation-local.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/self-acceptance-results.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
