@@ -3,7 +3,7 @@
   "scope": "framework_self",
   "claim": "results for VCGF as the system under test; target-project acceptance remains not_executed and no project conformance is inferred",
   "suite": "tests/acceptance/test_self_acceptance.py",
-  "head": "c1303d5",
+  "head": "1b56e7d",
   "counts": {
     "executed": 20,
     "passed": 20,

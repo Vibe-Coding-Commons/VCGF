@@ -2207,11 +2207,11 @@
     },
     "VCGF-UX-001": {
       "path": "spec/control-cards/VCGF-UX-001.md",
-      "sha256": "725f321adcfcddec385f0a3a0abe73bd97b2bc01269e11ad9be4f49dfbdecde5"
+      "sha256": "d829f0927f08416f638f45726c98564aaa628247146a03094facbe0f5860ed53"
     },
     "VCGF-UX-002": {
       "path": "spec/control-cards/VCGF-UX-002.md",
-      "sha256": "68b690c0c23c8755da3b6814867250b895cddbf6747cbad5399c9d89e1401f47"
+      "sha256": "25f0f462b2c5bbdc2e640016bfa417578c4f36cd34628388f151819909806e66"
     },
     "VCGF-UX-003": {
       "path": "spec/control-cards/VCGF-UX-003.md",
@@ -3431,7 +3431,7 @@
         "production"
       ],
       "requirement_level": "MUST",
-      "sha256": "64b8db3300fd9dbef3d314b06e9c1dbf67cd507c349c0b1416fdeeedc12fd7f8",
+      "sha256": "382c9af6eee2632f8eb0f70452be8432c35aada54583071ff951e5cb67a69799",
       "status": "normative",
       "title": "Accessibility Conformance"
     },
@@ -3445,7 +3445,7 @@
         "production"
       ],
       "requirement_level": "MUST",
-      "sha256": "ce88b4b94dd6dc8289024ff96367a241df54b4e6e31fb9f498af3bc2a4082d69",
+      "sha256": "7a7a71bf8314c09a55ab0f5a7e773f636c5da34efcf0b1efea2621b23462bbad",
       "status": "normative",
       "title": "Localization and Bidirectional Text"
     },
@@ -3744,7 +3744,7 @@
       "VCGF-TEST-002"
     ]
   },
-  "policy_sha256": "5d2eade0f78e427d80dd304e2a72f405fa91ed37eb13bf3714478e8b26fa1525",
+  "policy_sha256": "be65266cf37eb0d285d47bba3078429613a231c1db4fedebe2a9f6dd3ae67fdb",
   "profiles": {
     "baseline": [
       "VCGF-AI-001",
@@ -3956,11 +3956,11 @@
     },
     "packs/requirements/section-14.md": {
       "path": "packs/requirements/section-14.md",
-      "sha256": "873c75554f28d3ab11b72af8db82221430c713361d3e2fca55b6062179936179"
+      "sha256": "bb0160d2853f5c47e9aa146c891833ebeee214e6661aad7295e79a9762ff7c65"
     },
     "packs/requirements/section-15.md": {
       "path": "packs/requirements/section-15.md",
-      "sha256": "1750ee7fd25bf022ffe40f672c10314c8a2388e7e88d1ead6e1ef2a559668e1d"
+      "sha256": "de8fc596c3bbfcf13e7dbe16716eae2ebd2529ebb06a274590e6388c931e6fbe"
     },
     "packs/requirements/section-16.md": {
       "path": "packs/requirements/section-16.md",
@@ -3968,7 +3968,7 @@
     },
     "packs/requirements/section-17.md": {
       "path": "packs/requirements/section-17.md",
-      "sha256": "7841a81c02ef889dca7f53085569ad1a5879fc4009d2ef9981530d7d0c4f8318"
+      "sha256": "771ff07dfa0828ceb831e5c2c45b6c563f688c00700257e9142c4ffdb5566bd5"
     },
     "packs/requirements/section-18.md": {
       "path": "packs/requirements/section-18.md",
@@ -3976,15 +3976,15 @@
     },
     "packs/requirements/section-19.md": {
       "path": "packs/requirements/section-19.md",
-      "sha256": "dc39bc410039d95d5a611660cce49606127d6a354170c9da167131d09ed8e046"
+      "sha256": "744d3f65983b4420c5c0938aa1dd5219735965647c6ac95e2e07b1c894f5757c"
     },
     "packs/requirements/section-20.md": {
       "path": "packs/requirements/section-20.md",
-      "sha256": "3a2061c27817c4ec866e1c1aaf0088ffc936abf7abff5c7cbc2333f9ee360335"
+      "sha256": "3dad0048acf0fc744d4c43428cb7e1f9b252bed6bbdd970b519b4ef1337b7ee1"
     },
     "packs/requirements/section-21.md": {
       "path": "packs/requirements/section-21.md",
-      "sha256": "f495602ee9fb6687aa7fe53b00aec74c7b69d72017cbc309a5f23d1dd66970cf"
+      "sha256": "ac5338487b497d3c8429e2a4db3f5605fb8b7b03ec1fb5b056efe136ae5b17b4"
     },
     "packs/requirements/section-22.md": {
       "path": "packs/requirements/section-22.md",
@@ -3992,27 +3992,27 @@
     },
     "packs/requirements/section-23.md": {
       "path": "packs/requirements/section-23.md",
-      "sha256": "8bb225b2f1c6b57750e4544cf2e342464db26f1c40686593742853e047693b4d"
+      "sha256": "b3e3ae9e41d1ba6a6095c848be4b425c24106322ef6e3ee7404b2f47ba399c43"
     },
     "packs/requirements/section-24.md": {
       "path": "packs/requirements/section-24.md",
-      "sha256": "ebf55177dfd3371bd9fc0602acf521b327ae0d8941c30bcb9430c48d5ed06440"
+      "sha256": "265a5214bcfdac9b1a4f5da54939441f3263b7d2d37446b34d5f37d39ba9cd15"
     },
     "packs/requirements/section-25.md": {
       "path": "packs/requirements/section-25.md",
-      "sha256": "746a2c91473cb43797436411547bac3dcd9e6989febfb9df5fc547e65c8fd2fa"
+      "sha256": "a04061c4d2c83d19c69e3960f916cbfda572a18b312e41010898a2eb64525874"
     },
     "packs/requirements/section-26.md": {
       "path": "packs/requirements/section-26.md",
-      "sha256": "fa13ade97d27bcbc1289636bc9296c4abc758ac31d3b4c4f0f9affa447eb1170"
+      "sha256": "37c14cc0987c025083f5e2a3830e3d3e22bdb4763f83396d5bb6665993ea240c"
     },
     "packs/requirements/section-27.md": {
       "path": "packs/requirements/section-27.md",
-      "sha256": "0a353e0aefb92c8630fd4adc5f5d7dc7c3e809f8fdb775dffb0ea37c19cd7d85"
+      "sha256": "6ae25cd2cc1f59dab84fadd87aa5dfdf4e64abae9ce11adc156930b4089c815b"
     },
     "packs/requirements/section-28.md": {
       "path": "packs/requirements/section-28.md",
-      "sha256": "70963ae92215d6a24c37f0cdd34d0112459dcf479e70da9dbeff0d6f91d52b4e"
+      "sha256": "92899dbbf814d4169488ca71494266e9787882b81fc37328d9df4658eeda367c"
     },
     "packs/requirements/section-29.md": {
       "path": "packs/requirements/section-29.md",
@@ -4036,7 +4036,7 @@
     },
     "packs/requirements/section-34.md": {
       "path": "packs/requirements/section-34.md",
-      "sha256": "6cae4e2df6bd32181147254b59a28b230a4361bbdaf4b1f0c8e9ac403d02bb2f"
+      "sha256": "2139db7fb43988a1d6821b36f4cdabf86c90c6ba170220d314f377e585d6a8c5"
     },
     "packs/requirements/section-35.md": {
       "path": "packs/requirements/section-35.md",
@@ -4048,11 +4048,11 @@
     },
     "packs/requirements/section-37.md": {
       "path": "packs/requirements/section-37.md",
-      "sha256": "1528de5132ff728066d539ff00f486c3494aaca18cb2e31aaabbd31b624b18e3"
+      "sha256": "a3d88d586284b135fb4410f05931199378782181e63167dc83ca26f7b8e9a171"
     },
     "packs/requirements/section-38.md": {
       "path": "packs/requirements/section-38.md",
-      "sha256": "ba613ba2ab6120081f58a665713d8c22429afc8f1d6c3b5fdcad895119503b0e"
+      "sha256": "14149de3f04b72357e14009ac3746a3e12b9c7ab69beab3553ff1e8c149ba365"
     },
     "packs/requirements/section-39.md": {
       "path": "packs/requirements/section-39.md",

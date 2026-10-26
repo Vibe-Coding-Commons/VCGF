@@ -25,6 +25,7 @@ VCGF/
 │   ├── workflows
 │   │   ├── release-quality-gate.yml
 │   │   ├── release.yml
+│   │   ├── supply-chain.yml
 │   │   ├── tests.yml
 │   │   ├── validate-adapters.yml
 │   │   ├── validate-adaptive.yml
@@ -33,6 +34,7 @@ VCGF/
 │   │   ├── validate-runtime.yml
 │   │   └── validate-schemas.yml
 │   ├── CODEOWNERS
+│   ├── dependabot.yml
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── assets
 │   └── brand
@@ -286,6 +288,7 @@ VCGF/
 │   │   │   ├── evaluation-ar.md
 │   │   │   ├── evaluation-en.md
 │   │   │   ├── executive-summary.md
+│   │   │   ├── HISTORICAL.md
 │   │   │   ├── integration-log.md
 │   │   │   ├── public-release-decision.md
 │   │   │   ├── release-gates.md
@@ -304,6 +307,7 @@ VCGF/
 │   │   └── v1.4
 │   │       ├── baseline-compatibility-v1.4.json
 │   │       ├── release-notes-v1.4.0.md
+│   │       ├── release-validation-local.json
 │   │       └── self-acceptance-results.json
 │   ├── references
 │   │   ├── owasp-asvs-5-mapping.md
@@ -1032,6 +1036,7 @@ VCGF/
 │   ├── acceptance.py
 │   ├── approval.py
 │   ├── bootstrap.md
+│   ├── compliance.py
 │   ├── context-policy.yaml
 │   ├── context.py
 │   ├── contracts.py
@@ -1051,6 +1056,7 @@ VCGF/
 │   └── ui_select.py
 ├── schemas
 │   ├── v1.1.0
+│   │   ├── acceptance-results.schema.json
 │   │   ├── adapter-capabilities.schema.json
 │   │   ├── approval.schema.json
 │   │   ├── capability.schema.json
@@ -1086,6 +1092,7 @@ VCGF/
 │   ├── generate-runtime-registry.py
 │   ├── generate-sbom.py
 │   ├── migrate-task-budget.py
+│   ├── record-release-validation.py
 │   ├── release-quality-gate.py
 │   ├── run-self-acceptance.py
 │   ├── test-adaptive-browser.py
@@ -1097,10 +1104,12 @@ VCGF/
 │   ├── validate-control-cards.py
 │   ├── validate-controls.py
 │   ├── validate-cross-references.py
+│   ├── validate-dependencies.py
 │   ├── validate-documentation.py
 │   ├── validate-enforcement.py
 │   ├── validate-internal-links.py
 │   ├── validate-license.py
+│   ├── validate-operational-map.py
 │   ├── validate-package-integrity.py
 │   ├── validate-placeholders.py
 │   ├── validate-profiles.py
@@ -1231,6 +1240,7 @@ VCGF/
 │   ├── exception-management.md
 │   ├── lifecycle.md
 │   ├── normative-language.md
+│   ├── operational-control-map.yaml
 │   ├── risk-model.md
 │   ├── runtime-registry.json
 │   └── VCGF-CORE.md
@@ -1292,6 +1302,7 @@ VCGF/
 │   │   │   ├── baseline-hashes.json
 │   │   │   └── records.json
 │   │   └── v1.1
+│   │       ├── acceptance-results.json
 │   │       ├── adapter-capabilities.json
 │   │       ├── approval.json
 │   │       ├── capability.json
@@ -1304,9 +1315,11 @@ VCGF/
 │   └── scenarios
 │       ├── test_adapters.py
 │       ├── test_applicability_triggers.py
+│       ├── test_compliance.py
 │       ├── test_context_efficiency.py
 │       ├── test_context_hardening.py
 │       ├── test_enforcement.py
+│       ├── test_final_consolidation.py
 │       ├── test_gates.py
 │       ├── test_integrations.py
 │       ├── test_profile_layer.py

@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **1114**
+Files listed: **1127**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -24,9 +24,11 @@ Files listed: **1114**
 | .github/ISSUE_TEMPLATE/control-proposal.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/ISSUE_TEMPLATE/documentation-issue.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/PULL_REQUEST_TEMPLATE.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
+| .github/dependabot.yml | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/release-keys/README.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/release-quality-gate.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/release.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
+| .github/workflows/supply-chain.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/tests.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/validate-adapters.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/validate-adaptive.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
@@ -244,6 +246,7 @@ Files listed: **1114**
 | docs/project-history/v1.4.0-phase1-architecture-governance.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/project-history/v1.4.0-phase2-token-efficiency.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/project-history/v1.4.0-phase3-verification-enforcement.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
+| docs/quality/v1.2/HISTORICAL.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/baseline-compatibility-v1.2.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/environment-and-limitations.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/evaluation-ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
@@ -290,6 +293,7 @@ Files listed: **1114**
 | docs/quality/v1.3/release-validation-local.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/baseline-compatibility-v1.4.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/release-notes-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
+| docs/quality/v1.4/release-validation-local.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/self-acceptance-results.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quick-start.ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/references/owasp-asvs-5-mapping.md | External standards/reference documentation | docs | Canonical/maintained | 1.4.0 |
@@ -877,6 +881,7 @@ Files listed: **1114**
 | runtime/adaptive/ux.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/approval.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/bootstrap.md | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
+| runtime/compliance.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/context-policy.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/context.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/contracts.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
@@ -898,6 +903,7 @@ Files listed: **1114**
 | schemas/conformance.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
 | schemas/control.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
 | schemas/profile.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
+| schemas/v1.1.0/acceptance-results.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
 | schemas/v1.1.0/adapter-capabilities.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
 | schemas/v1.1.0/approval.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
 | schemas/v1.1.0/capability.schema.json | Machine-validation schema | schemas | Canonical/maintained | 1.4.0 |
@@ -925,6 +931,7 @@ Files listed: **1114**
 | scripts/hooks/guard-governance-files.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/hooks/pre-commit-vcgf.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/migrate-task-budget.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/record-release-validation.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/release-quality-gate.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/run-self-acceptance.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/test-adaptive-browser.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
@@ -936,10 +943,12 @@ Files listed: **1114**
 | scripts/validate-control-cards.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-controls.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-cross-references.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/validate-dependencies.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-documentation.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-enforcement.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-internal-links.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-license.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/validate-operational-map.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-package-integrity.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-placeholders.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-profiles.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
@@ -1068,6 +1077,7 @@ Files listed: **1114**
 | spec/exception-management.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/lifecycle.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/normative-language.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
+| spec/operational-control-map.yaml | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/risk-model.md | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | spec/runtime-registry.json | Repository governance, release, identity, or project metadata | spec | Canonical/maintained | 1.4.0 |
 | templates/adapters/runtime-rules.template.md | Reusable governance artifact | templates | Canonical/maintained | 1.4.0 |
@@ -1110,6 +1120,7 @@ Files listed: **1114**
 | tests/fixtures/v1.0/schemas/conformance.schema.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/fixtures/v1.0/schemas/control.schema.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/fixtures/v1.0/schemas/profile.schema.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
+| tests/fixtures/v1.1/acceptance-results.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/fixtures/v1.1/adapter-capabilities.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/fixtures/v1.1/approval.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/fixtures/v1.1/capability.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
@@ -1121,9 +1132,11 @@ Files listed: **1114**
 | tests/fixtures/v1.1/ui-selection.json | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_adapters.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_applicability_triggers.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
+| tests/scenarios/test_compliance.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_context_efficiency.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_context_hardening.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_enforcement.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
+| tests/scenarios/test_final_consolidation.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_gates.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_integrations.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_profile_layer.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
