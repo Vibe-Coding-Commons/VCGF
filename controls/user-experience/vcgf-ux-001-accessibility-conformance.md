@@ -50,6 +50,7 @@ Apply to every task that creates or changes a user-facing interface (web, mobile
 # Accessibility conformance
 
 - Prefer native semantic elements (button, a, input, select, dialog) over scripted substitutes; when a custom widget is unavoidable, implement the complete WAI-ARIA pattern (roles, states, keyboard interaction) and test it.
+- Searchable selects and comboboxes follow the WAI-ARIA combobox pattern: `role="combobox"` with `aria-expanded`, `aria-controls` and `aria-activedescendant`, a listbox with `aria-selected`, arrow-key navigation, Escape to close, and the active option announced.
 - Every interactive element: reachable and operable by keyboard in a logical order, with a visible focus indicator that is never removed for aesthetics.
 - Text alternatives for meaningful images and icons; decorative images hidden from assistive technology.
 - Status messages (saving, saved, error, empty, loading) announced programmatically; never color-only.

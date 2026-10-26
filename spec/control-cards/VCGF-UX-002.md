@@ -12,6 +12,7 @@ Interfaces that support more than one language or a right-to-left language MUST 
 - Isolate bidirectional runs (`bdi`, `unicode-bidi: isolate`) for identifiers, codes, numbers, email addresses and user-supplied names.
 - Store canonical values (ISO 8601 instants with offsets, decimal amounts, Gregorian dates where the system of record is Gregorian); format for display per locale; convert between calendars with one shared engine and never change a stored value when the display calendar changes.
 - Date pickers: expose month and year selection directly, distinguish the viewed period from the selected date, and support keyboard and assistive-technology use in both directions.
+- Time handling: store instants as ISO 8601 with an explicit offset (UTC preferred), convert to the user's zone only for display, compute durations across daylight-saving transitions from instants not wall clocks, and test the 29 February and the month-length differences of the Hijri calendar explicitly.
 - Plan for text expansion and long names; test wrapping, truncation and tabular numerals in both languages.
 - Translate security-relevant messages (errors, confirmations, consent) with the same precision as the source; never leave placeholders.
 

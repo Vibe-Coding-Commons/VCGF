@@ -63,6 +63,35 @@ def _serve(item, detail, card_paths, external_paths=()):
     return {**item, 'served': 'full'}
 
 
+SIGNAL_KEYS = ('signals', 'interaction_signals', 'composition_signals', 'journey_signals')
+
+
+def infer_signals(binding, route_result, screen_context):
+    """Signals derived from the reviewed route intents and from screen facts (deterministic, recorded as inferred)."""
+    rules = binding.get('inference') or {}
+    inferred = {k: [] for k in SIGNAL_KEYS}
+
+    def add(table):
+        for key, values in (table or {}).items():
+            for v in values:
+                if v not in (screen_context.get(key) or []) and v not in inferred[key]:
+                    inferred[key].append(v)
+    intents = route_result.get('intents') or []
+    for intent in intents:
+        add((rules.get('intents') or {}).get(intent))
+    screen_rules = rules.get('screen') or {}
+    devices = set(screen_context.get('devices') or [])
+    if devices and devices <= {'mobile', 'tablet'}:
+        add(screen_rules.get('mobile_only_devices'))
+    if 'large-screen' in devices:
+        add(screen_rules.get('large_screen_devices'))
+    if screen_context.get('sensitive_data') is True:
+        add(screen_rules.get('sensitive_data'))
+    if 'rtl' in (screen_context.get('directions') or []):
+        add(screen_rules.get('rtl_direction'))
+    return {k: sorted(v) for k, v in inferred.items() if v}
+
+
 def bindings(root=ROOT):
     return yaml.safe_load((Path(root) / 'runtime' / 'ui-bindings.yaml').read_text(encoding='utf-8'))
 
@@ -135,6 +164,11 @@ def select_ui(route_result, screen_context, budget=None, root=ROOT):
             raise ValueError('standard is not pinned by the package manifest: ' + path)
         return entry
 
+    inferred = infer_signals(binding, route_result, screen_context)
+    merged_context = dict(screen_context)
+    for key, values in inferred.items():
+        merged_context[key] = sorted(set(merged_context.get(key) or []) | set(values))
+    never = tuple(binding.get('never_load_prefixes') or [])
     if not ux_controls:
         status = 'not_applicable'
         warnings.append(f'no user-experience control is in the route for profile {profile}; Smart UI standards are not '
@@ -143,7 +177,7 @@ def select_ui(route_result, screen_context, budget=None, root=ROOT):
         status = 'no_ui'
     else:
         status = 'selected'
-        plan = _run_selector(root, pack, binding, screen_context)
+        plan = _run_selector(root, pack, binding, merged_context)
         for name, layer in binding['layers'].items():
             governing = set(layer['governing_controls'])
             items = plan.get(layer['plan_key']) or []
@@ -184,6 +218,9 @@ def select_ui(route_result, screen_context, budget=None, root=ROOT):
                 else:
                     documents.append({'path': path, 'sha256': entry['sha256'], 'bytes': entry['bytes'], 'bound_controls': [control_id]})
         warnings.extend(str(w) for w in plan.get('warnings') or [])
+    for item in standards + documents:
+        if item['path'].startswith(never):  # catalogues, reports and snapshots are never context, whatever a selection says
+            raise ValueError('refusing to serve a non-standard package file: ' + item['path'])
     standards.sort(key=lambda s: (s['layer'], s['standard_id']))
     deferred.sort(key=lambda s: (s['layer'], s['standard_id']))
     documents.sort(key=lambda d: d['path'])
@@ -219,6 +256,8 @@ def select_ui(route_result, screen_context, budget=None, root=ROOT):
                           'manifest_sha256': hashlib.sha256(manifest_bytes).hexdigest()},
               'layers': layers, 'standards': standards, 'deferred_standards': deferred, 'governance_documents': documents,
               'acceptance_tests': acceptance,
+              'signals': {'explicit': {k: sorted(screen_context.get(k) or []) for k in SIGNAL_KEYS if screen_context.get(k)}, 'inferred': inferred},
+              'precedence': {'authoritative': binding['precedence']['authoritative'], 'implementing': binding['precedence']['implementing']},
               'budget': {'limit_tokens': max(budget, 0), 'cost_tokens': cost, 'cost_bytes': cost_bytes, 'measurement': measurement, 'method': method},
               'blockers': blockers, 'warnings': warnings, 'selection_plan_sha256': digest(plan) if plan is not None else None}
     errors = validate_contract('ui-selection', result)

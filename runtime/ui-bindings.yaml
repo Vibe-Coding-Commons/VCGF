@@ -10,7 +10,32 @@
 # matrix); the governed selector (runtime/ui_select.py, `vcgf.py ui-select`) then loads Smart UI standards ONLY for
 # layers whose governing control is in the route, and only the standards the screen context explicitly signals.
 # Nothing here is permanent context: the pack itself is never loaded wholesale.
-bindings_version: 1.0.0
+bindings_version: 1.1.0
+# Precedence: VCGF controls govern; Smart UI standards implement. Where a standard restates an authentication, session,
+# recovery or rate-limiting requirement, the VCGF-IAM/SEC control text is authoritative and the standard is implementation detail.
+precedence:
+  authoritative: controls
+  implementing: packs/ux/smart-ui
+  governed_topics: {authentication: VCGF-IAM-001, sessions: VCGF-IAM-003, recovery: VCGF-IAM-005, rate_limiting: VCGF-IAM-001, step_up: VCGF-IAM-003}
+# Never served into context whatever the selection says (catalogues, reports, snapshots, traceability dumps).
+never_load_prefixes: [reports/, source-snapshots/, tests/, references/, CATALOG.html, catalog.json, interaction-catalog.json, journey-catalog.json, screen-composition-catalog.json, requirements-validation.txt, SHA256SUMS.txt, manifest.json]
+# Context inference: signals derived from the route (reviewed intents) and from screen facts, merged with the explicit
+# screen signals; the result records which signals were explicit and which were inferred. Keyword matching alone is not relied on.
+inference:
+  intents:
+    login: {composition_signals: [sign_in_screen], journey_signals: [login_then_return]}
+    passkey: {composition_signals: [sign_in_screen]}
+    reset: {composition_signals: [account_recovery_screen], journey_signals: [account_recovery_journey]}
+    upload: {signals: [file_upload, attachments]}
+    payment: {interaction_signals: [payment_like_command], signals: [numeric_money_quantity]}
+    pii: {signals: [contact_fields]}
+    admin: {composition_signals: [admin_configuration]}
+    deletion: {interaction_signals: [destructive_action, confirmation_needed]}
+  screen:
+    mobile_only_devices: {composition_signals: [mobile_focused_task]}
+    large_screen_devices: {composition_signals: [large_screen_operations]}
+    sensitive_data: {interaction_signals: [high_assurance_action]}
+    rtl_direction: {signals: [repeated_ui_primitives]}
 package_root: packs/ux/smart-ui
 manifest: manifest.json
 selector: scripts/select_smart_ui.py

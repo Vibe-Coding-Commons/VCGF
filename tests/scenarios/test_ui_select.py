@@ -92,11 +92,11 @@ class UISelectTests(unittest.TestCase):
                 self.assertEqual(self.manifest[item['path']]['bytes'], item['bytes'])
 
     def test_no_signals_loads_only_governance_documents(self):
-        screen = copy.deepcopy(self.screen)
+        screen = copy.deepcopy(self.screen); screen['sensitive_data'] = False; screen['directions'] = ['ltr']  # nothing explicit, nothing inferable
         for key in ['signals', 'interaction_signals', 'composition_signals', 'journey_signals']:
             screen[key] = []
         s = self.select('high-assurance', screen)['selection']
-        self.assertEqual(s['status'], 'selected'); self.assertEqual(s['standards'], []); self.assertTrue(s['governance_documents'])
+        self.assertEqual(s['status'], 'selected'); self.assertEqual(s['standards'], []); self.assertTrue(s['governance_documents']); self.assertEqual(s['signals']['inferred'], {})
 
     def test_no_ui_screen(self):
         screen = copy.deepcopy(self.screen); screen['has_ui'] = False

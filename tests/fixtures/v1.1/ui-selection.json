@@ -4,8 +4,8 @@
   "record": {
     "contract_version": "1.1.0",
     "task_id": "synthetic-ui",
-    "route_sha256": "f32f2428ad3df5b6d876f6deee141f6357806153afc96ecfc2ffe3ace00cb6bd",
-    "input_sha256": "7004181b3024f22e5a5cab21f5716544c4d0d491655ff5b6809670a3457b00d1",
+    "route_sha256": "1df657c02b619f6b1b9cda587f515950aa2230f4e241b1f99d9d9501385e448a",
+    "input_sha256": "9a037fa603e2120e5b6c0e2770c625dc0f2e370e26d8f4f12d79208ae9eddec8",
     "profile": "production",
     "status": "selected",
     "ux_controls_in_route": [
@@ -84,7 +84,7 @@
         "matched_signals": [
           "date_field"
         ],
-        "served_bytes": 48943
+        "served_bytes": 41651
       }
     ],
     "deferred_standards": [
@@ -92,6 +92,15 @@
         "standard_id": "VCGF-UI-INT-005",
         "layer": "interactions",
         "path": "interactions/VCGF-UI-INT-005-UnsavedChangesProtection.md",
+        "missing_controls": [
+          "VCGF-UX-003"
+        ],
+        "reason": "signals matched but none of VCGF-UX-003 is in the route for profile production; not loaded"
+      },
+      {
+        "standard_id": "VCGF-UI-INT-018",
+        "layer": "interactions",
+        "path": "interactions/VCGF-UI-INT-018-SensitiveActionStepUp.md",
         "missing_controls": [
           "VCGF-UX-003"
         ],
@@ -159,15 +168,43 @@
         "VCGF-UX-002-AT04"
       ]
     },
+    "signals": {
+      "explicit": {
+        "signals": [
+          "date_field",
+          "repeated_ui_primitives"
+        ],
+        "interaction_signals": [
+          "dirty_form",
+          "duplicate_submit_risk"
+        ],
+        "composition_signals": [
+          "create_edit_screen",
+          "mobile_focused_task"
+        ],
+        "journey_signals": [
+          "search_to_detail"
+        ]
+      },
+      "inferred": {
+        "interaction_signals": [
+          "high_assurance_action"
+        ]
+      }
+    },
+    "precedence": {
+      "authoritative": "controls",
+      "implementing": "packs/ux/smart-ui"
+    },
     "budget": {
-      "limit_tokens": 9993887,
-      "cost_tokens": 20049,
-      "cost_bytes": 66947,
+      "limit_tokens": 9993247,
+      "cost_tokens": 17866,
+      "cost_bytes": 59655,
       "measurement": "estimated",
       "method": "estimated: ASCII characters / 4.0 + non-ASCII characters / 1.6; not a tokenizer measurement"
     },
     "blockers": [],
     "warnings": [],
-    "selection_plan_sha256": "48e5b8046badc4c6d3d67c506dfcff75e8c273a6ff122366ccd7a8db5e845af8"
+    "selection_plan_sha256": "30fc7037be2175c2ac1283304bf496ef72f903d21a541cf2f84460a55ade6720"
   }
 }

@@ -173,6 +173,51 @@
         ]
       }
     },
+    "signals": {
+      "description": "Explicit screen signals and the signals inferred from the route intents and screen facts (both are recorded; inference never removes an explicit signal).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "explicit": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          }
+        },
+        "inferred": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          }
+        }
+      },
+      "required": [
+        "explicit",
+        "inferred"
+      ]
+    },
+    "precedence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "authoritative": {
+          "const": "controls"
+        },
+        "implementing": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "authoritative",
+        "implementing"
+      ]
+    },
     "acceptance_tests": {
       "type": "object",
       "additionalProperties": {
