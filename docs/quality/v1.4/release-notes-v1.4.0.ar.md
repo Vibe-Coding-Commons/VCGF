@@ -1,3 +1,12 @@
+<!--
+VCGF — Vibe Coding Governance Framework
+SPDX-FileCopyrightText: 2026 Eng. Hamada Sami
+SPDX-License-Identifier: Apache-2.0
+Founder & Maintainer: Eng. Hamada Sami
+Email: i@hamada.io
+GitHub: https://github.com/Vibe-Coding-Commons
+-->
+
 # VCGF v1.4.0 — تفاصيل التحديث وحالة الإصدار
 
 **التاريخ:** 26 أكتوبر 2026  
