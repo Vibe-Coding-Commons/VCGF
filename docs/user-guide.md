@@ -33,7 +33,7 @@ VCGF does not ask you to become a security engineer before every prompt. It chan
 
 Confirm that the AI can identify:
 
-- VCGF version (`1.0.0` for this release);
+- VCGF version (read the current `VERSION` file; the repository currently identifies `1.4.0`);
 - selected profile;
 - platform adapter;
 - project-context source;
