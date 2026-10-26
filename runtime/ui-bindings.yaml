@@ -18,7 +18,7 @@ precedence:
   implementing: packs/ux/smart-ui
   governed_topics: {authentication: VCGF-IAM-001, sessions: VCGF-IAM-003, recovery: VCGF-IAM-005, rate_limiting: VCGF-IAM-001, step_up: VCGF-IAM-003}
 # Never served into context whatever the selection says (catalogues, reports, snapshots, traceability dumps).
-never_load_prefixes: [reports/, source-snapshots/, tests/, references/, CATALOG.html, catalog.json, interaction-catalog.json, journey-catalog.json, screen-composition-catalog.json, requirements-validation.txt, SHA256SUMS.txt, manifest.json]
+never_load_prefixes: [reports/, source-snapshots/, tests/, references/, templates/, examples/, integration/, config/, scripts/, schemas/, adapters/, catalog/, CATALOG.html, catalog.json, interaction-catalog.json, journey-catalog.json, screen-composition-catalog.json, requirements-validation.txt, SHA256SUMS.txt, manifest.json, CHANGELOG.md, INDEX.md, START-HERE-AR.md, README.ar.md, LICENSE, NOTICE.md]
 # Context inference: signals derived from the route (reviewed intents) and from screen facts, merged with the explicit
 # screen signals; the result records which signals were explicit and which were inferred. Keyword matching alone is not relied on.
 inference:

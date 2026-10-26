@@ -20,7 +20,7 @@
       "reason": "Citation version/date for the 1.4.0 development version."
     },
     "FILE-MANIFEST.md": {
-      "sha256_lf": "1760a5a977616ca4fce69a5df052464e4745403d748294f8b8d584ab9ea8f5f5",
+      "sha256_lf": "a25ffd3cb7e49d6e4c7ba7c9beed52dcf2bc1e316fc3b1bdd7ab1b732e1c97f3",
       "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
     },
     "README.ar.md": {
@@ -32,7 +32,7 @@
       "reason": "Version badge and a short section on the applicability matrix, profile layer, acceptance tests and governed Smart UI selection."
     },
     "REPOSITORY-TREE.md": {
-      "sha256_lf": "0b728ba1c3ccb5855360cee5027fee896fae4a4664a6e3bb8540bce2ab9a95b3",
+      "sha256_lf": "19fd26d97927a34ac6806737ce8ca36c6d8e269d68b5dba2083c2d3e45b59361",
       "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
     },
     "VCGF-MANIFEST.yaml": {

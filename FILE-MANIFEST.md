@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **1127**
+Files listed: **1129**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -291,7 +291,9 @@ Files listed: **1127**
 | docs/quality/v1.3/release-notes-v1.3.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.3/release-notes-v1.3.1.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.3/release-validation-local.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
+| docs/quality/v1.4/PULL-REQUEST-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/baseline-compatibility-v1.4.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
+| docs/quality/v1.4/release-checklist-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/release-notes-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/release-validation-local.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/self-acceptance-results.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
