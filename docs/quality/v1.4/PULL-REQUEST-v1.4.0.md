@@ -27,7 +27,7 @@ Candidate code commit `d1e2c58`; the readiness-closure commits on top of it only
 - **Supply chain and CI.** Exact pins validated, SHA-pinned actions, Dependabot, pip-audit, SBOM artifact, CodeQL; full test matrix on Ubuntu and Windows; release workflow drafts only for a signed tag.
 - **Compatibility.** Budget comparison moved from bytes to estimated tokens with explicit `budget_unit`, disclosure of a changed outcome and a migration tool; v1.1 contracts extended only with optional fields; cumulative compatibility record `docs/quality/v1.4/baseline-compatibility-v1.4.json` with a reason for every changed v1.0 original (44 files).
 
-### Test results (local, Windows 11 / Python 3.14; CI not yet run)
+### Test results (local, Windows 11 / Python 3.14; CI green on the PR head `b1291d7`: 22 checks on ubuntu-latest and windows-latest, Python 3.12 and 3.13)
 | Check | Result |
 |---|---|
 | Release quality gate (21 validators, 4 generators `--check`) | PASS |
@@ -37,10 +37,10 @@ Candidate code commit `d1e2c58`; the readiness-closure commits on top of it only
 | Benchmark (16 scenarios, same inputs on three trees) | `evidence` in the audit workspace; union bytes 2,800,412 → 1,480,014 |
 
 ### Findings register (audit of v1.3.0, 50 findings)
-FIXED_LOCAL 31 · PARTIALLY_FIXED_LOCAL 13 · OPEN (inside the frozen Smart UI package) 4 · OPEN_EXTERNAL_ACTION 2. Release-blocking: V13-001 (signed tag and assets), V13-002 (independent review, branch protection), V13-114 (no CI run yet). Everything else is scheduled (package revision 1.0.x, target-project actions, later minor).
+FIXED_LOCAL 31 · PARTIALLY_FIXED_LOCAL 13 · OPEN (inside the frozen Smart UI package) 4 · OPEN_EXTERNAL_ACTION 2. Release-blocking: V13-001 (signed tag and assets), V13-002 (independent review, branch protection). V13-114 cleared by the green CI run on the PR head. Everything else is scheduled (package revision 1.0.x, target-project actions, later minor).
 
 ### Residual risks for the reviewer
-1. CI has never run on this branch; environment differences on ubuntu-latest may surface (the suite was green locally on Windows only).
+1. CI ran green on the PR head after two fixes found by the first run (an unresolvable action pin and a pytest import in a unittest job); keep watching the re-runs of later commits.
 2. The agent-hook guard is tamper-evident, not tamper-proof: without a host-held identity adapter an agent with file access could forge an approval record. The matrix rates it `configurable` and the product hook was not exercised live.
 3. Budget semantics changed to estimated tokens by default; legacy tasks receive an explicit warning and a migration tool exists, but projects tuned to bytes should review their budgets.
 4. Signal inference for Smart UI loads more standards where the route indicates login, payment or sensitive screens (+21% UI bytes versus Phase 3) — deliberate relevance over minimal size; reviewers may prefer the inference table narrowed.
