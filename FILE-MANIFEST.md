@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 > AUTO-GENERATED — DO NOT EDIT MANUALLY
 
-Files listed: **1099**
+Files listed: **1114**
 
 | Path | Purpose | Category | Canonical / Generated | Version relevance |
 |---|---|---|---|---|
@@ -27,6 +27,7 @@ Files listed: **1099**
 | .github/release-keys/README.md | Repository governance, release, identity, or project metadata | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/release-quality-gate.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/release.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
+| .github/workflows/tests.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/validate-adapters.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/validate-adaptive.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
 | .github/workflows/validate-framework.yml | GitHub Actions validation workflow | .github | Canonical/maintained | 1.4.0 |
@@ -242,6 +243,7 @@ Files listed: **1099**
 | docs/project-history/v1.3.0-smart-ui-integration.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/project-history/v1.4.0-phase1-architecture-governance.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/project-history/v1.4.0-phase2-token-efficiency.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
+| docs/project-history/v1.4.0-phase3-verification-enforcement.md | v1.0.0 migration and release traceability record | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/baseline-compatibility-v1.2.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/environment-and-limitations.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.2/evaluation-ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
@@ -288,6 +290,7 @@ Files listed: **1099**
 | docs/quality/v1.3/release-validation-local.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/baseline-compatibility-v1.4.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quality/v1.4/release-notes-v1.4.0.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
+| docs/quality/v1.4/self-acceptance-results.json | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/quick-start.ar.md | Framework explanatory documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/references/owasp-asvs-5-mapping.md | External standards/reference documentation | docs | Canonical/maintained | 1.4.0 |
 | docs/references/sources-and-standards.md | External standards/reference documentation | docs | Canonical/maintained | 1.4.0 |
@@ -729,6 +732,7 @@ Files listed: **1099**
 | platforms/claude/adapter.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/claude/control-mapping.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/claude/examples/example-adoption.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
+| platforms/claude/hooks/settings.example.json | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/claude/mappings/README.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/claude/prompts/pre-change-impact-review.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/claude/rules/CLAUDE.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
@@ -761,6 +765,7 @@ Files listed: **1099**
 | platforms/cursor/tests/runtime-canary.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/cursor/verification/sources.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/cursor/verification/verification-report.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
+| platforms/enforcement-matrix.yaml | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/generic/ADAPTER.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/generic/CAPABILITIES.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
 | platforms/generic/CHANGELOG.md | Platform adapter implementation, mapping, verification, or asset | platforms | Canonical/maintained | 1.4.0 |
@@ -878,6 +883,7 @@ Files listed: **1099**
 | runtime/evidence.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/evidence_pack.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/loader.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
+| runtime/model-guidance.md | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/pack-map.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/preferences-policy.yaml | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
 | runtime/registry.py | Repository governance, release, identity, or project metadata | runtime | Canonical/maintained | 1.4.0 |
@@ -916,16 +922,22 @@ Files listed: **1099**
 | scripts/generate-repository-tree.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/generate-runtime-registry.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/generate-sbom.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/hooks/guard-governance-files.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/hooks/pre-commit-vcgf.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/migrate-task-budget.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/release-quality-gate.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/run-self-acceptance.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/test-adaptive-browser.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-acceptance.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-adapters.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-applicability.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-attribution.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-contracts.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/validate-control-cards.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-controls.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-cross-references.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-documentation.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
+| scripts/validate-enforcement.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-internal-links.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-license.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
 | scripts/validate-package-integrity.py | Framework validation or generation automation | scripts | Canonical/maintained | 1.4.0 |
@@ -1082,6 +1094,7 @@ Files listed: **1099**
 | templates/security/security-exception.md | Reusable governance artifact | templates | Canonical/maintained | 1.4.0 |
 | templates/security/threat-model.md | Reusable governance artifact | templates | Canonical/maintained | 1.4.0 |
 | templates/testing/security-test-evidence.md | Reusable governance artifact | templates | Canonical/maintained | 1.4.0 |
+| tests/acceptance/test_self_acceptance.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/adaptive/conftest.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/adaptive/test_engines.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/adaptive/test_inputs.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
@@ -1109,6 +1122,8 @@ Files listed: **1099**
 | tests/scenarios/test_adapters.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_applicability_triggers.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_context_efficiency.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
+| tests/scenarios/test_context_hardening.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
+| tests/scenarios/test_enforcement.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_gates.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_integrations.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |
 | tests/scenarios/test_profile_layer.py | Repository governance, release, identity, or project metadata | tests | Canonical/maintained | 1.4.0 |

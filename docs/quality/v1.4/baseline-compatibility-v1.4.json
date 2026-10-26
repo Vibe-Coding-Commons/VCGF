@@ -8,11 +8,11 @@
   "notes": "Phase 1 architecture and governance work prepared locally on develop/v1.4.0: canonical applicability matrix, additive profile layer in the Task Router, user-experience control domain, acceptance tests for every control and governed Smart UI selection. This record is a cumulative delta over the immutable v1.2, v1.3 and v1.3.1 records; it does not rewrite earlier history, does not modify tag v1.3.0 or the release/v1.3.1 branch, and does not imply publication, signature, independent review or production admission. All 84 v1.0 controls, their identifiers and the frozen v1.0 schemas are unchanged.",
   "allowed_original_file_changes": {
     ".github/workflows/validate-framework.yml": {
-      "sha256_lf": "39ecdf39db348327857895c57da27952665387fd3e93f0d05ed729dae14373ca",
+      "sha256_lf": "f12aa19a5708440a32b7138313933e2e5311a6f639039d031f5020fdfbd18d4e",
       "reason": "CI runs the new applicability and acceptance validators."
     },
     "CHANGELOG.md": {
-      "sha256_lf": "899d4b038ae8a1c6bfa8fbe2ee957b6b3456ed506b9884fec707411c0414a36f",
+      "sha256_lf": "46f40743fbf6ff78438393d7afa3e49e352eee87156cace99dac79fa0bfc9cfe",
       "reason": "Document the unreleased 1.4.0 Phase 1 changes (applicability matrix, profile layer, acceptance tests, governed Smart UI selection)."
     },
     "CITATION.cff": {
@@ -20,7 +20,7 @@
       "reason": "Citation version/date for the 1.4.0 development version."
     },
     "FILE-MANIFEST.md": {
-      "sha256_lf": "d72d0fa240fd1eede0fefb4a76d6c72e69f1012b6c47ef6133550fda5f44aca3",
+      "sha256_lf": "646c36ed9eb65114857706d728305f31e3d1b43e8ff641cd79b4de9351c96e1f",
       "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
     },
     "README.ar.md": {
@@ -32,7 +32,7 @@
       "reason": "Version badge and a short section on the applicability matrix, profile layer, acceptance tests and governed Smart UI selection."
     },
     "REPOSITORY-TREE.md": {
-      "sha256_lf": "13ac460f426adf4d9eb2b2446f609e95025a8df7038c506d69c98cf1ddc8bae5",
+      "sha256_lf": "6a247c58caae7a2aabfdfea549e83bd3ea75148b3c66d212273ee1370ff734a6",
       "reason": "Regenerated from tracked files after adding controls, schemas, acceptance tests, runtime modules and tests."
     },
     "VCGF-MANIFEST.yaml": {
@@ -79,29 +79,69 @@
       "sha256_lf": "3e9521107d373603159332aa5725356955411478d34c3196ea6b4f657e12ed6e",
       "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
     },
+    "platforms/bolt/rules/project-knowledge.md": {
+      "sha256_lf": "d57ce9ed98ed69d1909a09258711f17caa959d2a5cc16fea4d3657734d4f9b1c",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
+    },
     "platforms/claude/control-mapping.yaml": {
       "sha256_lf": "98f8ce8130269516010bbc1f53d73a97c7828f2e216df8b8087dc85f8011e278",
       "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/claude/rules/CLAUDE.md": {
+      "sha256_lf": "cda2f0087c1fae1693638972e9fe444d5ef5a0f3aef5c9c7075ae97a2a11d0af",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
     },
     "platforms/cursor/control-mapping.yaml": {
       "sha256_lf": "22a0c4d6a95251fd1d72f03ae118cfb99fead8a1caa845e7196a1bc31d01c71f",
       "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
     },
+    "platforms/cursor/rules/AGENTS.md": {
+      "sha256_lf": "6a3ed3742c1362309b5304a88e45fd9628447999eb7339027949d2c4894814f3",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
+    },
+    "platforms/cursor/rules/vcgf.mdc": {
+      "sha256_lf": "dc1b5fec9162c6bf3730b52621460ed2689ec28ebfdeea6b99201881174f22d3",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
+    },
     "platforms/generic/control-mapping.yaml": {
       "sha256_lf": "93fa0597ddafd0787e478f77442fe078e06f5cbeb6f16882c7fb7fef31f848e0",
       "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/generic/rules/portable-project-rules.md": {
+      "sha256_lf": "6a3ed3742c1362309b5304a88e45fd9628447999eb7339027949d2c4894814f3",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
     },
     "platforms/lovable/control-mapping.yaml": {
       "sha256_lf": "1f61ee1c5f2326096841d147481f031e9517432029ae329448df142b8eb54945",
       "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
     },
+    "platforms/lovable/rules/AGENTS.md": {
+      "sha256_lf": "6a3ed3742c1362309b5304a88e45fd9628447999eb7339027949d2c4894814f3",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
+    },
+    "platforms/lovable/rules/project-knowledge.md": {
+      "sha256_lf": "218f9272a12efba43dd0e6d531482d93b5169aafe32ab65a4c483bceb5de37ea",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
+    },
+    "platforms/lovable/rules/workspace-knowledge.md": {
+      "sha256_lf": "266f9f93dc42ad96f61f3e86f5617eb798fe5d19cdeebd06110c7349a54a7fc4",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
+    },
     "platforms/replit/control-mapping.yaml": {
       "sha256_lf": "af3061b5b98a8b6ce45ab3322f3d8cdf303ce620c663e8444e4b08ceaa5823cc",
       "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
     },
+    "platforms/replit/rules/replit.md": {
+      "sha256_lf": "2eb6cfa1fa00fbbb5d8de8415fc89b42694241e919347ac1c07f230156d3c3b9",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
+    },
     "platforms/v0/control-mapping.yaml": {
       "sha256_lf": "689423009db56ceaeb6a1061b40a7c26d36762b849ccee7cb69507541578d7c1",
       "reason": "Four UNVERIFIED mapping rows added for the new user-experience controls (VCGF-UX-001..004); existing rows unchanged."
+    },
+    "platforms/v0/rules/custom-instructions.md": {
+      "sha256_lf": "14de76509867d8ce92470cf0f38043d2458a1d556227fa05cfb43cc0d43dab33",
+      "reason": "One-line attribution header replacing the nine-line block in an always-on entry file loaded verbatim by the platform (bytes saved, maintainer phone number removed); mandatory clauses unchanged and validated."
     },
     "profiles/baseline/profile.yaml": {
       "sha256_lf": "7b397a28421a2c9afff74e29a09daa65dada567e1670a5aaf0d4b2c6f471c98d",
@@ -116,8 +156,8 @@
       "reason": "profile_version 1.1.0; VCGF-UX-001 and VCGF-UX-002 required, VCGF-UX-003/004 optional; the 77 v1.0 required controls unchanged."
     },
     "scripts/release-quality-gate.py": {
-      "sha256_lf": "a263e979785579b338359ce8b908ac253b5ff20c2cbc7acb997b77eacb7591c7",
-      "reason": "Gate runs the new applicability and acceptance validators and verifies the derived control cards (generate-control-cards --check)."
+      "sha256_lf": "063b39da14bcf485e2c52b5500ddebd383c416ae28c8ea653a65aad6aebd91a4",
+      "reason": "Gate runs the new applicability, acceptance, control-card fidelity and enforcement validators and verifies the derived control cards (generate-control-cards --check)."
     },
     "scripts/validate-controls.py": {
       "sha256_lf": "d4ea6be86a9a5eea11322c666281fe0c092479ba6fd426ac06c2fe5ac63aed9f",

@@ -24,6 +24,9 @@ GitHub: https://github.com/Vibe-Coding-Commons
 | Performance | registry build about 1.2 s (catalog re-parsed per contract validation) | about 0.2 s (content-keyed cache); registry cached per process, second route about 50 ms |
 | Context size (Phase 2) | full control Markdown per route; one route per intent; bytes compared with a token limit | derived control cards and shared clauses (about 37 percent of the control bytes) in lean/standard mode, full controls in deep mode; multi-intent routes; delta loading with hash invalidation; estimated tokens enforced with bytes reported |
 | Tool output (Phase 2) | loaded text inline by default | hash-pinned references by default, `--full` for text; Smart UI requirement cards for lean/standard routes |
+| Verification (Phase 3) | acceptance definitions only | `validate-control-cards.py` fidelity proof; executable self-acceptance for the framework (`framework_self`, recorded results) with target-project definitions kept `not_executed`; delta-loading hardening tests |
+| Enforcement (Phase 3) | prompt text only | enforcement matrix with honest statuses, governance-file guard hook, pre-commit hook, Claude Code settings example (configurable, unverified) |
+| Budget compatibility (Phase 3) | silent change of comparison unit | `budget_unit` tokens/bytes, disclosure of a changed outcome, migration tool |
 
 ## Compatibility
 

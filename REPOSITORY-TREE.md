@@ -25,6 +25,7 @@ VCGF/
 │   ├── workflows
 │   │   ├── release-quality-gate.yml
 │   │   ├── release.yml
+│   │   ├── tests.yml
 │   │   ├── validate-adapters.yml
 │   │   ├── validate-adaptive.yml
 │   │   ├── validate-framework.yml
@@ -249,7 +250,8 @@ VCGF/
 │   │   │   └── test-evidence.json
 │   │   ├── v1.3.0-smart-ui-integration.md
 │   │   ├── v1.4.0-phase1-architecture-governance.md
-│   │   └── v1.4.0-phase2-token-efficiency.md
+│   │   ├── v1.4.0-phase2-token-efficiency.md
+│   │   └── v1.4.0-phase3-verification-enforcement.md
 │   ├── quality
 │   │   ├── v1.2
 │   │   │   ├── evidence
@@ -301,7 +303,8 @@ VCGF/
 │   │   │   └── release-validation-local.json
 │   │   └── v1.4
 │   │       ├── baseline-compatibility-v1.4.json
-│   │       └── release-notes-v1.4.0.md
+│   │       ├── release-notes-v1.4.0.md
+│   │       └── self-acceptance-results.json
 │   ├── references
 │   │   ├── owasp-asvs-5-mapping.md
 │   │   └── sources-and-standards.md
@@ -821,6 +824,8 @@ VCGF/
 │   ├── claude
 │   │   ├── examples
 │   │   │   └── example-adoption.md
+│   │   ├── hooks
+│   │   │   └── settings.example.json
 │   │   ├── mappings
 │   │   │   └── README.md
 │   │   ├── prompts
@@ -966,35 +971,36 @@ VCGF/
 │   │   ├── README.md
 │   │   ├── runtime-capabilities.yaml
 │   │   └── RUNTIME-INSTALLATION.md
-│   └── v0
-│       ├── examples
-│       │   └── example-adoption.md
-│       ├── mappings
-│       │   └── README.md
-│       ├── prompts
-│       │   └── pre-change-impact-review.md
-│       ├── rules
-│       │   ├── custom-instructions.md
-│       │   └── runtime.generated.md
-│       ├── templates
-│       │   └── project-context.md
-│       ├── tests
-│       │   ├── adapter-verification.md
-│       │   └── runtime-canary.md
-│       ├── verification
-│       │   ├── sources.yaml
-│       │   └── verification-report.md
-│       ├── ADAPTER.md
-│       ├── adapter.yaml
-│       ├── CAPABILITIES.md
-│       ├── CHANGELOG.md
-│       ├── CONTROL-MAPPING.md
-│       ├── control-mapping.yaml
-│       ├── INSTALLATION.md
-│       ├── LIMITATIONS.md
-│       ├── README.md
-│       ├── runtime-capabilities.yaml
-│       └── RUNTIME-INSTALLATION.md
+│   ├── v0
+│   │   ├── examples
+│   │   │   └── example-adoption.md
+│   │   ├── mappings
+│   │   │   └── README.md
+│   │   ├── prompts
+│   │   │   └── pre-change-impact-review.md
+│   │   ├── rules
+│   │   │   ├── custom-instructions.md
+│   │   │   └── runtime.generated.md
+│   │   ├── templates
+│   │   │   └── project-context.md
+│   │   ├── tests
+│   │   │   ├── adapter-verification.md
+│   │   │   └── runtime-canary.md
+│   │   ├── verification
+│   │   │   ├── sources.yaml
+│   │   │   └── verification-report.md
+│   │   ├── ADAPTER.md
+│   │   ├── adapter.yaml
+│   │   ├── CAPABILITIES.md
+│   │   ├── CHANGELOG.md
+│   │   ├── CONTROL-MAPPING.md
+│   │   ├── control-mapping.yaml
+│   │   ├── INSTALLATION.md
+│   │   ├── LIMITATIONS.md
+│   │   ├── README.md
+│   │   ├── runtime-capabilities.yaml
+│   │   └── RUNTIME-INSTALLATION.md
+│   └── enforcement-matrix.yaml
 ├── playbooks
 │   ├── existing-project-hardening-plan.md
 │   ├── key-rotation-playbook.md
@@ -1032,6 +1038,7 @@ VCGF/
 │   ├── evidence.py
 │   ├── evidence_pack.py
 │   ├── loader.py
+│   ├── model-guidance.md
 │   ├── pack-map.yaml
 │   ├── preferences-policy.yaml
 │   ├── registry.py
@@ -1066,6 +1073,9 @@ VCGF/
 │   ├── control.schema.json
 │   └── profile.schema.json
 ├── scripts
+│   ├── hooks
+│   │   ├── guard-governance-files.py
+│   │   └── pre-commit-vcgf.py
 │   ├── benchmark-adaptive.py
 │   ├── check-adapter-updates.py
 │   ├── generate-adapter-rules.py
@@ -1075,16 +1085,20 @@ VCGF/
 │   ├── generate-repository-tree.py
 │   ├── generate-runtime-registry.py
 │   ├── generate-sbom.py
+│   ├── migrate-task-budget.py
 │   ├── release-quality-gate.py
+│   ├── run-self-acceptance.py
 │   ├── test-adaptive-browser.py
 │   ├── validate-acceptance.py
 │   ├── validate-adapters.py
 │   ├── validate-applicability.py
 │   ├── validate-attribution.py
 │   ├── validate-contracts.py
+│   ├── validate-control-cards.py
 │   ├── validate-controls.py
 │   ├── validate-cross-references.py
 │   ├── validate-documentation.py
+│   ├── validate-enforcement.py
 │   ├── validate-internal-links.py
 │   ├── validate-license.py
 │   ├── validate-package-integrity.py
@@ -1254,6 +1268,8 @@ VCGF/
 │   └── testing
 │       └── security-test-evidence.md
 ├── tests
+│   ├── acceptance
+│   │   └── test_self_acceptance.py
 │   ├── adaptive
 │   │   ├── conftest.py
 │   │   ├── test_engines.py
@@ -1289,6 +1305,8 @@ VCGF/
 │       ├── test_adapters.py
 │       ├── test_applicability_triggers.py
 │       ├── test_context_efficiency.py
+│       ├── test_context_hardening.py
+│       ├── test_enforcement.py
 │       ├── test_gates.py
 │       ├── test_integrations.py
 │       ├── test_profile_layer.py

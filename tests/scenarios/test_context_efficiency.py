@@ -190,7 +190,10 @@ class ContextEfficiencyTests(unittest.TestCase):
         self.assertEqual(one['summary']['unverified'], one['summary']['defined'])
         self.assertTrue(all(t['execution']['status'] == 'not_executed' and t['execution']['verified'] is False for t in one['tests']))
         overall = acceptance_summary()
-        self.assertEqual(overall['controls'], 88); self.assertEqual(overall['executed'], 0); self.assertGreater(overall['with_parameters'], 10)
+        self.assertEqual(overall['controls'], 88); self.assertGreater(overall['with_parameters'], 10)
+        # only framework_self definitions (recorded by scripts/run-self-acceptance.py) may count as executed; target projects never
+        self.assertEqual(overall['executed'], overall['framework_self']); self.assertEqual(overall['target_project_not_executed'], overall['defined'] - overall['framework_self'])
+        self.assertTrue(all(t['execution']['status'] == 'not_executed' for c in [acceptance_tests('VCGF-IAM-005'), acceptance_tests('VCGF-UX-001')] for t in c['tests']))
 
     # ---- CLI output ----
     def test_cli_route_prints_references_by_default_and_text_only_with_full(self):
