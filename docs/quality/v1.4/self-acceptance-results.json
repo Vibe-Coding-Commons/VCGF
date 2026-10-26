@@ -1,0 +1,35 @@
+{
+  "$comment": "SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0",
+  "scope": "framework_self",
+  "claim": "results for VCGF as the system under test; target-project acceptance remains not_executed and no project conformance is inferred",
+  "suite": "tests/acceptance/test_self_acceptance.py",
+  "head": "c1303d5",
+  "counts": {
+    "executed": 20,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0
+  },
+  "results": {
+    "VCGF-AI-001-AT02": "passed",
+    "VCGF-AI-001-AT05": "passed",
+    "VCGF-AI-002-AT03": "passed",
+    "VCGF-AI-006-AT01": "passed",
+    "VCGF-AI-006-AT04": "passed",
+    "VCGF-AI-006-AT05": "passed",
+    "VCGF-AI-007-AT04": "passed",
+    "VCGF-AI-008-AT04": "passed",
+    "VCGF-AI-009-AT03": "passed",
+    "VCGF-ARCH-003-AT01": "passed",
+    "VCGF-GOV-001-AT03": "passed",
+    "VCGF-GOV-002-AT01": "passed",
+    "VCGF-GOV-003-AT02": "passed",
+    "VCGF-GOV-004-AT01": "passed",
+    "VCGF-GOV-004-AT02": "passed",
+    "VCGF-GOV-004-AT04": "passed",
+    "VCGF-GOV-006-AT01": "passed",
+    "VCGF-GOV-006-AT02": "passed",
+    "VCGF-REL-001-AT04": "passed",
+    "VCGF-REL-005-AT02": "passed"
+  }
+}
