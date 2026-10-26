@@ -18,7 +18,7 @@ Mandatory behavior:
 - test both positive and negative security paths;
 - collect evidence before declaring a change complete.
 
-Use canonical controls in `controls/`; this rule file is an adapter, not the source of policy.
+Use canonical controls in `controls/` (normative text) through `scripts/vcgf.py route`, which loads only the derived control cards in `spec/control-cards/` that apply to the task; never load the whole `controls/` directory; this rule file is an adapter, not the source of policy.
 
 ## Workspace Knowledge
 

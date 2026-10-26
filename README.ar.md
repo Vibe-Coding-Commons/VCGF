@@ -11,7 +11,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 [English → README.md](README.md)
 
-![Version](https://img.shields.io/badge/version-1.4.0-blue) ![Development](https://img.shields.io/badge/v1.4.0-development-orange) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.0-blue) ![Release candidate](https://img.shields.io/badge/v1.4.0-release_candidate-orange) ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **طوّر أسرع بالذكاء الاصطناعي — من غير ما تفقد السيطرة على الأمان والمعمارية والبيانات وجودة الإصدار.**
 
@@ -23,7 +23,7 @@ VCGF هو إطار مفتوح ومحايد تجاه المنصات يجمع **Go
 
 **الإصدار الرسمي العام: v1.3.0 (2026-10-24).** يضيف هذا الإصدار المتوافق مع سلسلة v1 طبقة **VCGF Smart UI Components & Interaction Standards v1.0.0** لاختيار المكونات وأنماط التفاعل وتركيب الشاشات ورحلات المستخدم بشكل انتقائي حسب الدليل والسياق، مع الحفاظ على Control IDs والـProfiles والـAdapters والترخيص وحقوق المؤسس. نجاح فحوص المستودع يخص توزيع الإطار ولا يعني اعتماد كل تطبيق عميل للإنتاج.
 
-**نسخة المستودع 1.4.0 — قيد التطوير (المرحلة الأولى: المعمارية والحوكمة، أُعدّت محليًا على الفرع `develop/v1.4.0`؛ غير مُصدَرة، غير منشورة، غير موقّعة، ولم تُراجَع من طرف مستقل).** تضيف مصفوفة الانطباق القانونية وطبقة الملفات (Profiles) في موجّه المهام، ونطاق ضوابط تجربة المستخدم (VCGF-UX-001..004)، واختبارات قبول قابلة للتحقق لكل ضابط، واختيار Smart UI محكومًا؛ راجع [docs/quality/v1.4/release-notes-v1.4.0.md](docs/quality/v1.4/release-notes-v1.4.0.md). مرشح الإصدار 1.3.1 موثق في [docs/quality/v1.3/release-notes-v1.3.1.md](docs/quality/v1.3/release-notes-v1.3.1.md).
+**نسخة المستودع 1.4.0 — مرشح إصدار (أُعدّ محليًا على الفرع `develop/v1.4.0`؛ غير مُصدَر، غير منشور، غير موقّع، ولم يُراجَع من طرف مستقل).** تضيف مصفوفة الانطباق القانونية وطبقة الملفات (Profiles) في موجّه المهام، ونطاق ضوابط تجربة المستخدم (VCGF-UX-001..004)، واختبارات قبول قابلة للتحقق لكل ضابط، واختيار Smart UI محكومًا؛ راجع [docs/quality/v1.4/release-notes-v1.4.0.md](docs/quality/v1.4/release-notes-v1.4.0.md). مرشح الإصدار 1.3.1 موثق في [docs/quality/v1.3/release-notes-v1.3.1.md](docs/quality/v1.3/release-notes-v1.3.1.md).
 
 ### Smart UI في v1.3.0
 

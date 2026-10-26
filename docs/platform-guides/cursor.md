@@ -291,3 +291,7 @@ Read [`../../platforms/cursor/LIMITATIONS.md`](../../platforms/cursor/LIMITATION
 - Choose the appropriate [profile](../../profiles/).
 - Use the [pre-development checklist](../../checklists/pre-development/pre-development.md).
 - For technical detail, open the [VCGF Core specification](../../spec/VCGF-CORE.md) and [control catalog](../../spec/control-catalog.yaml).
+
+## Enforcement and selective context (1.4.0)
+
+What this platform can enforce deterministically is recorded with an honest status in `platforms/enforcement-matrix.yaml` (validators, pre-commit hook, CI gate, agent hook, platform permissions, review gate); prompt text alone enforces nothing. Load context through `scripts/vcgf.py route` (derived control cards, delta loading) and `ui-select` for Smart UI standards; never load `controls/` or the Smart UI package wholesale. Reference hooks live in `scripts/hooks/`; a Claude Code settings example (configurable, not exercised against the live platform) is in `platforms/claude/hooks/`.

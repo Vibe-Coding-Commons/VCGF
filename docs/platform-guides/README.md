@@ -37,3 +37,7 @@ Use the [Generic adapter](generic.md). It is intentionally vendor-neutral and do
 ## Platform claims
 
 The vendor-specific guides use only behavior recorded in each adapter's `verification/sources.yaml` or clearly label a step as a VCGF convention rather than a platform-native feature.
+
+## Enforcement and selective context (1.4.0)
+
+What this platform can enforce deterministically is recorded with an honest status in `platforms/enforcement-matrix.yaml` (validators, pre-commit hook, CI gate, agent hook, platform permissions, review gate); prompt text alone enforces nothing. Load context through `scripts/vcgf.py route` (derived control cards, delta loading) and `ui-select` for Smart UI standards; never load `controls/` or the Smart UI package wholesale. Reference hooks live in `scripts/hooks/`; a Claude Code settings example (configurable, not exercised against the live platform) is in `platforms/claude/hooks/`.

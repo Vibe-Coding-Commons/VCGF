@@ -9,7 +9,7 @@ GitHub: https://github.com/Vibe-Coding-Commons
 
 # VCGF 1.4.0 — development notes (Phase 1: architecture and governance)
 
-**Status:** development version on `develop/v1.4.0`, prepared locally. **Not released, not published, not tagged, not signed, not independently reviewed.** These notes describe the state of the develop branch; they are not release notes for a shipped version. The last public release is v1.3.0 and the local release candidate 1.3.1 (`release/v1.3.1`) is unchanged.
+**Status:** release candidate on `develop/v1.4.0`, prepared locally. **Not released, not published, not tagged, not signed, not independently reviewed.** Publication requires the external actions listed in the final consolidated report (signed tag, non-author review, branch protection, a first real CI run). The last public release is v1.3.0 and the local release candidate 1.3.1 (`release/v1.3.1`) is unchanged.
 
 ## What changed and why
 

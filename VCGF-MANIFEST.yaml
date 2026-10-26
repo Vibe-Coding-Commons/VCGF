@@ -9,7 +9,7 @@ framework_name: Vibe Coding Governance Framework
 framework_acronym: VCGF
 framework_version: 1.4.0
 specification_version: 1.0.0
-release_status: development
+release_status: release-candidate
 release_date: '2026-10-24'
 maintainer: Eng. Hamada Sami
 license: Apache-2.0
@@ -72,6 +72,7 @@ contract_schema_versions:
   preferences: 1.1.0
   route-result: 1.1.0
   ui-selection: 1.1.0
+  acceptance-results: 1.1.0
   control: 1.4.0
   architecture-decision: 1.2.0
   project-fingerprint: 1.2.0
