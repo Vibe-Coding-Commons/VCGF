@@ -5,7 +5,7 @@
   "baseline": "tests/fixtures/v1.0/baseline-hashes.json plus the immutable v1.2, v1.3 and v1.3.1 compatibility records",
   "review_status": "PENDING_INDEPENDENT_REVIEW",
   "release_status": "DEVELOPMENT__NOT_RELEASED__NOT_PUBLISHED__NOT_SIGNED",
-  "notes": "Phase 1 architecture and governance work prepared locally on develop/v1.4.0: canonical applicability matrix, additive profile layer in the Task Router, user-experience control domain, acceptance tests for every control and governed Smart UI selection. This record is a cumulative delta over the immutable v1.2, v1.3 and v1.3.1 records; it does not rewrite earlier history, does not modify tag v1.3.0 or the release/v1.3.1 branch, and does not imply publication, signature, independent review or production admission. All 84 v1.0 controls, their identifiers and the frozen v1.0 schemas are unchanged. Documentation addendum (2026-10-26): only README.md, README.ar.md, CHANGELOG.md, REPOSITORY-TREE.md and FILE-MANIFEST.md original-file hash entries refreshed after verified documentation edits; immutable historical baselines and 84 controls remain unchanged. The docs/user-guide.md wording correction is not a v1.0 original-file delta.",
+  "notes": "Phase 1 architecture and governance work prepared locally on develop/v1.4.0: canonical applicability matrix, additive profile layer in the Task Router, user-experience control domain, acceptance tests for every control and governed Smart UI selection. This record is a cumulative delta over the immutable v1.2, v1.3 and v1.3.1 records; it does not rewrite earlier history, does not modify tag v1.3.0 or the release/v1.3.1 branch, and does not imply publication, signature, independent review or production admission. All 84 v1.0 controls, their identifiers and the frozen v1.0 schemas are unchanged. Documentation addendum (2026-10-26): only README.md, README.ar.md, CHANGELOG.md, REPOSITORY-TREE.md and FILE-MANIFEST.md original-file hash entries refreshed after verified documentation edits; immutable historical baselines and 84 controls remain unchanged. The docs/user-guide.md inherited original-file delta is explicitly recorded here, preserving the v1.3.1 record.",
   "allowed_original_file_changes": {
     ".github/workflows/validate-framework.yml": {
       "sha256_lf": "f12aa19a5708440a32b7138313933e2e5311a6f639039d031f5020fdfbd18d4e",
@@ -182,6 +182,10 @@
     "spec/control-catalog.yaml": {
       "sha256_lf": "47870af36814fbf8dccef11cf79a5adeaac8db771046946d0878800c84d46770",
       "reason": "Regenerated: framework_version 1.4.0 and the four user-experience controls appended; the 84 v1.0 controls unchanged."
+    },
+    "docs/user-guide.md": {
+      "sha256_lf": "1fcbf766eddf82711ebefd45b7eb58d7ebd6759605dd34294103d33fdd58d604",
+      "reason": "Corrected stale hard-coded framework version in daily user guide to refer to the canonical VERSION; documentation-only, no changes to any normative controls."
     }
   }
 }
