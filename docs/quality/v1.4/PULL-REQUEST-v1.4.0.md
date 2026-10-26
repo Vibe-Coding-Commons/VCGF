@@ -17,7 +17,7 @@ gh pr create --base main --head develop/v1.4.0 --title "VCGF v1.4.0 release cand
 VCGF v1.4.0 release candidate: architecture, governance, context efficiency, verification and enforcement
 
 ## Summary
-Candidate commit `d1e2c58` on `develop/v1.4.0` (46 commits over `main`, cut from `release/v1.3.1` at `08cd4cf`, itself cut from tag `v1.3.0`). The 84 v1.0 controls, their identifiers and texts, the frozen v1.0 schemas, the licence and the founder attribution are unchanged. The frozen Smart UI package (267 files) is unchanged.
+Candidate code commit `d1e2c58`; the readiness-closure commits on top of it only add documentation and the validation record (the PR head is the authoritative reference). Branch `develop/v1.4.0` (33 commits over `main`, cut from `release/v1.3.1` at `08cd4cf`, itself cut from tag `v1.3.0`). The 84 v1.0 controls, their identifiers and texts, the frozen v1.0 schemas, the licence and the founder attribution are unchanged. The frozen Smart UI package (267 files) is unchanged.
 
 ### What changes
 - **Routing and governance.** Canonical applicability matrix (`spec/applicability-matrix.yaml`) and an additive profile layer: every control is reachable for high-assurance, profiles are monotonic (baseline ⊆ production ⊆ high-assurance) and never load controls unrelated to the task; new capabilities and intents for release, operations, exceptions and governance changes; VCGF-REL-001 in the minimum set. User-experience domain VCGF-UX-001..004 bound to profiles, matrix and Smart UI standards.
