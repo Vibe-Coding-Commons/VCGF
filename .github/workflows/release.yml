@@ -13,9 +13,6 @@
 
 name: Draft release for a signed tag
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/release.yml']
   workflow_dispatch:
     inputs:
       tag:
@@ -29,7 +26,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   draft-release:
-    if: github.event_name == 'workflow_dispatch' && github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
@@ -130,51 +127,3 @@ jobs:
           gh release create "$TAG" --draft --verify-tag --title "VCGF $TAG" --notes-file "$NOTES" \
             "VCGF-$TAG.tar.gz" "VCGF-$TAG.zip" sbom.cdx.json SHA256SUMS.txt
           echo "Draft release created for $TAG. Publishing it is a separate manual action after independent review."
-
-  link-arabic-translation:
-    # One-time requested GitHub Release description update. Remove this job after success.
-    if: github.event_name == 'push' && github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    permissions:
-      contents: write
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - name: Link published English release to Arabic translation and correct release status
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import json, os, re, pathlib, subprocess, tempfile
-          repo=os.environ['GITHUB_REPOSITORY']
-          ar_url='https://github.com/Vibe-Coding-Commons/VCGF/blob/main/docs/quality/v1.4/release-notes-v1.4.0.ar.md'
-          result=subprocess.check_output(['gh','release','view','v1.4.0','--repo',repo,'--json','body,isDraft,isPrerelease'],text=True)
-          release=json.loads(result)
-          if release['isDraft'] or release['isPrerelease']:
-              raise SystemExit('Refusing to rewrite a draft or pre-release')
-          original=release['body']
-          if '# VCGF 1.4.0' not in original or 'SPDX-FileCopyrightText: 2026 Eng. Hamada Sami' not in original:
-              raise SystemExit('Release body changed unexpectedly')
-          updated=original
-          language='**Language / اللغة:** **English (this page)** | [العربية — ملاحظات إصدار VCGF v1.4.0]('+ar_url+')'
-          if language not in updated:
-              marker='-->\n\n'
-              if marker not in updated: raise SystemExit('Missing attribution marker')
-              updated=updated.replace(marker,marker+language+'\n\n',1)
-          updated=updated.replace('[Arabic release notes](release-notes-v1.4.0.ar.md)','[Arabic release notes]('+ar_url+')')
-          newstatus='**Release status (27 October 2026):** VCGF v1.4.0 is officially published as a public, non-draft, non-prerelease GitHub Release. Its signed tag points to commit '+chr(96)+'377e3eb382f7c89fea4a036c297ace83599bd316'+chr(96)+'. The tagged source manifest retains the pre-publication '+chr(96)+'release-candidate'+chr(96)+' metadata; this does not change GitHub publication status or retroactively alter the signed tag.'
-          updated,count=re.subn(r'^\*\*Source status \(2026-10-26\):\*\*.*$',lambda m:newstatus,updated,count=1,flags=re.MULTILINE)
-          if count!=1 and '**Release status (27 October 2026):**' not in updated: raise SystemExit('Expected status line absent')
-          updated=updated.replace('Now (1.4.0 development)','Now (1.4.0 published source)')
-          updated=updated.replace('Not a release decision, not a conformance claim for any project or platform, and not a substitute for the independent review required before publication.','Publication of this release is not a conformance claim for any project or platform and does not replace project-specific independent review.')
-          if ar_url not in updated or 'English (this page)' not in updated or 'officially published' not in updated: raise SystemExit('Incomplete links')
-          if updated != original:
-              with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',suffix='.md',delete=False) as fp:
-                  fp.write(updated)
-                  filename=fp.name
-              subprocess.run(['gh','release','edit','v1.4.0','--repo',repo,'--notes-file',filename],check=True)
-              pathlib.Path(filename).unlink(missing_ok=True)
-              print('Updated published GitHub Release with Arabic link and accurate status')
-          else:
-              print('Bilingual release navigation already current')
-          PY
