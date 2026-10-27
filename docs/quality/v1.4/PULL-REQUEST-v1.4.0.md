@@ -1,15 +1,17 @@
 <!-- SPDX-FileCopyrightText: 2026 Eng. Hamada Sami | SPDX-License-Identifier: Apache-2.0 | Founder & Maintainer: Eng. Hamada Sami -->
-# Pull request draft — VCGF v1.4.0 release candidate
+# Pull request record — VCGF v1.4.0 (PR #4, merged and released)
 
-Prepared locally for an independent, non-author review. Not pushed, not opened, not merged. When a maintainer with push rights decides to proceed:
+This file was the body of pull request [Vibe-Coding-Commons/VCGF#4](https://github.com/Vibe-Coding-Commons/VCGF/pull/4). What happened to it:
 
-```bash
-git push origin develop/v1.4.0
-```
+| Date | Event | Evidence |
+|---|---|---|
+| 2026-10-26 | `develop/v1.4.0` pushed; PR #4 opened against `main` | PR #4 |
+| 2026-10-26 | First real CI run failed 8 checks (unresolvable `actions/checkout` pin, pytest import in a unittest-only job); fixed in `b1291d7`; 22 checks green on ubuntu-latest and windows-latest, Python 3.12 and 3.13; documentation commit `f67ddeb` also green | Actions runs on the PR head |
+| 2026-10-26 | Merged by the repository owner as merge commit `82bd70f` **without a non-author review** (owner decision; audit finding V13-002 remains open) | PR #4 has no reviews |
+| 2026-10-26 | Signer public key enrolled on `main` (`73b41c3`) | `.github/release-keys/hamada-sami.asc` |
+| 2026-10-27 | GPG-signed tag `v1.4.0` on `377e3eb`; `release.yml` verified signature, VERSION, checks and gate, built the assets and drafted the release; the maintainer published it through a one-time trigger | release `v1.4.0`; `docs/quality/v1.4/release-checklist-v1.4.0.md` sections B and D |
 
-```bash
-gh pr create --base main --head develop/v1.4.0 --title "VCGF v1.4.0 release candidate: architecture, governance, context efficiency, verification and enforcement" --body-file docs/quality/v1.4/PULL-REQUEST-v1.4.0.md
-```
+The text below is the review body as submitted, kept for the record. Its "residual risks" and "review focus" were never worked through by an independent reviewer.
 
 ---
 
@@ -51,9 +53,9 @@ FIXED_LOCAL 31 · PARTIALLY_FIXED_LOCAL 13 · OPEN (inside the frozen Smart UI p
 `spec/applicability-matrix.yaml` triggers (22 hand-assigned), `spec/acceptance/*.yaml` parameters and SHOULD wording, `runtime/router.py` profile layer and delta loading, `scripts/hooks/guard-governance-files.py`, `runtime/compliance.py`, `platforms/enforcement-matrix.yaml` statuses.
 
 ### Checklist for merging
-- [ ] All workflows green on the PR head (Test suite ubuntu+windows, Supply chain, Release quality gate, validate-*)
-- [ ] Non-author approval; branch protection active
-- [ ] No change to the 84 v1.0 controls, frozen schemas, licence, attribution (compatibility suite confirms)
-- [ ] Release checklist `docs/quality/v1.4/release-checklist-v1.4.0.md` steps B1–B5 done before merge; B6–B9 after
+- [x] All workflows green on the PR head (Test suite ubuntu+windows, Supply chain, Release quality gate, validate-*) — 22 checks on `b1291d7` and `f67ddeb`
+- [ ] Non-author approval; branch protection active — **NOT DONE**, waived by owner decision; V13-002 open
+- [x] No change to the 84 v1.0 controls, frozen schemas, licence, attribution (compatibility suite confirms) — 100/100 locally and in CI
+- [x] Release checklist `docs/quality/v1.4/release-checklist-v1.4.0.md`: B1, B2 done before merge; B5 not done; B6–B9 done after merge with the deviations recorded in its section D
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
