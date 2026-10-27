@@ -8,14 +8,11 @@
 # This workflow never creates or moves tags. It only drafts a GitHub release for
 # a tag that already exists, is GPG-signed by an allowed maintainer key committed
 # under .github/release-keys/, matches VERSION, and has every required check
-# succeeded on the tagged commit. The one-time push trigger is explicitly authorized by the maintainer for
-# v1.4.0 only, without skipping signed-tag, CI, quality or artifact checks.
+# succeeded on the tagged commit. Publishing the draft remains a manual action
+# after independent review; a green run here is not release approval.
 
 name: Draft release for a signed tag
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/release.yml']
   workflow_dispatch:
     inputs:
       tag:
@@ -33,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      TAG: ${{ github.event_name == 'push' && 'v1.4.0' || inputs.tag }}
+      TAG: ${{ inputs.tag }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -127,26 +124,6 @@ jobs:
           set -euo pipefail
           NOTES="docs/quality/v$(echo "$TAG" | sed -E 's/^v([0-9]+\.[0-9]+).*/\1/')/release-notes-$TAG.md"
           test -f "$NOTES" || { echo "::error::Release notes file $NOTES not found in the tagged tree"; exit 1; }
-          if gh release view "$TAG" --json isDraft >/dev/null 2>&1; then
-            echo "Existing release detected; will verify its assets and draft state."
-          else
-            gh release create "$TAG" --draft --verify-tag --title "VCGF $TAG" --notes-file "$NOTES" \
-              "VCGF-$TAG.tar.gz" "VCGF-$TAG.zip" sbom.cdx.json SHA256SUMS.txt
-          fi
-          echo "Draft release present for $TAG."
-      - name: Publish owner-authorized one-time v1.4.0 release after verification
-        if: github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          test "$TAG" = 'v1.4.0'
-          gh release view "$TAG" --json assets --jq '.assets[].name' > release-assets.txt
-          for filename in "VCGF-$TAG.tar.gz" "VCGF-$TAG.zip" sbom.cdx.json SHA256SUMS.txt; do
-            grep -Fxq "$filename" release-assets.txt || { echo "::error::Missing release asset $filename"; exit 1; }
-          done
-          if [ "$(gh release view "$TAG" --json isDraft --jq '.isDraft')" = 'true' ]; then
-            gh release edit "$TAG" --draft=false --latest
-          fi
-          gh release view "$TAG" --json isDraft,isPrerelease,url --jq '{isDraft,isPrerelease,url}'
-
+          gh release create "$TAG" --draft --verify-tag --title "VCGF $TAG" --notes-file "$NOTES" \
+            "VCGF-$TAG.tar.gz" "VCGF-$TAG.zip" sbom.cdx.json SHA256SUMS.txt
+          echo "Draft release created for $TAG. Publishing it is a separate manual action after independent review."
